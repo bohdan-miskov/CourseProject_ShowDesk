@@ -18,7 +18,8 @@ namespace CourseProject_TheaterHub
         public AuthenticateForm()
         {
             InitializeComponent();
-            comboBoxUser.SelectedIndex = 1;
+
+            comboBoxUser.SelectedIndex = 0;
       
         }
 
