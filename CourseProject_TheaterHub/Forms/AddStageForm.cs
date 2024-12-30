@@ -61,18 +61,6 @@ namespace CourseProject_TheaterHub
             }
         }
 
-        private bool NameValidator(string name)
-        {
-            if (name.Length > 2)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         private void textBoxIndex_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -91,7 +79,7 @@ namespace CourseProject_TheaterHub
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!NameValidator(textBoxName.Text))
+            if (!ParametersValidator.NameValidator(textBoxName.Text))
             {
                 MessageBox.Show(this,
                                 "There was an error in the name of the stage: the name must be more than two characters long",
@@ -115,6 +103,16 @@ namespace CourseProject_TheaterHub
         public Stage GetNewStage()
         {
             return newStage;
+        }
+
+        private void textBoxName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+
+            if (!(Char.IsDigit(number) || number == '\b'))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

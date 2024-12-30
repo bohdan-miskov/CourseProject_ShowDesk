@@ -168,7 +168,6 @@ namespace CourseProject_TheaterHub
         private void ManagePerformancesFormClosing(object sender, FormClosingEventArgs e)
         {
             SavePerformancesToFile();
-            Owner.Show();
         }
 
         private void addSpecToolStripMenuItem_Click(object sender, EventArgs e)

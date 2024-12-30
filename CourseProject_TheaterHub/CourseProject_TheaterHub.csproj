@@ -134,6 +134,7 @@
     <Compile Include="Forms\EditStageForm.Designer.cs">
       <DependentUpon>EditStageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scripts\ParametersValidator.cs" />
     <Compile Include="Scripts\FileHandler.cs" />
     <Compile Include="Forms\ManagePerformancesForm.cs">
       <SubType>Form</SubType>

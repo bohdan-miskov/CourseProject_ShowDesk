@@ -65,6 +65,7 @@
             this.textBoxIncrease.Name = "textBoxIncrease";
             this.textBoxIncrease.Size = new System.Drawing.Size(168, 28);
             this.textBoxIncrease.TabIndex = 18;
+            this.textBoxIncrease.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxIncrease_KeyPress);
             this.textBoxIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxIncrease_KeyUp);
             // 
             // groupBoxZone

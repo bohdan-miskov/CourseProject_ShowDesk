@@ -56,6 +56,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(168, 28);
             this.textBoxName.TabIndex = 8;
+            this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
             this.textBoxName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
             // 
             // labelName
@@ -110,7 +111,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Red;
             this.ClientSize = new System.Drawing.Size(363, 247);
             this.Controls.Add(this.groupBoxStage);
             this.Name = "AddStageForm";

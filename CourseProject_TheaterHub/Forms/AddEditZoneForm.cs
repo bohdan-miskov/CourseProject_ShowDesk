@@ -45,46 +45,6 @@ namespace CourseProject_TheaterHub
             numericUpDownEndPosition.Value = stage.GetZone(zoneIndex).EndPosition;
         }
 
-        private bool NameValidator(string name)
-        {
-            if (name.Length > 2)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private bool IncreaseValidator(string increase)
-        {
-            double currentIncrease;
-
-            if (increase.Length == 0)
-            {
-                return false;
-            }
-
-            try
-            {
-                currentIncrease = Convert.ToDouble(increase);
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
-            catch (OverflowException)
-            {
-                return false;
-            }
-
-            if (currentIncrease < 0)
-                return false;
-
-            return true;
-        }
-
         private void textBoxName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -121,7 +81,7 @@ namespace CourseProject_TheaterHub
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!NameValidator(textBoxName.Text))
+            if (!ParametersValidator.NameValidator(textBoxName.Text))
             {
                 MessageBox.Show(this,
                                 "There was an error in the name of the zone: the name must be more than two characters long",
@@ -131,7 +91,7 @@ namespace CourseProject_TheaterHub
                 return;
             }
 
-            if (!IncreaseValidator(textBoxIncrease.Text))
+            if (!ParametersValidator.DoubleValidator(textBoxIncrease.Text))
             {
                 MessageBox.Show(this,
                                 "The surcharge must be entered in the format 0.000, cannot be negative or empty",
@@ -169,6 +129,10 @@ namespace CourseProject_TheaterHub
             return isValid;
         }
 
+        private void textBoxIncrease_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ParametersValidator.ValidatorDoubleDigit(sender, e);
+        }
     }
 }
 

@@ -51,13 +51,11 @@ namespace CourseProject_TheaterHub
         {
             if (comboBoxUser.SelectedIndex == 0)
             {
-                new ManageStagesForm().Show(this);
-                this.Hide();
+                new ManageStagesForm().ShowDialog(this);
             }
             else if (comboBoxUser.SelectedIndex == 1)
             {
-                new ManagePerformancesForm().Show(this);
-                this.Hide();
+                new ManagePerformancesForm().ShowDialog(this);
             }
         }
     }

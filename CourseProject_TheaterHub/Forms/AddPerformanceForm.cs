@@ -54,48 +54,7 @@ namespace CourseProject_TheaterHub
             }
         }
 
-        private bool NameValidator(string name)
-        {
-            if (name.Length > 2)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private bool PriceValidator(string increase)
-        {
-            double currentPrice;
-
-            if (increase.Length == 0)
-            {
-                return false;
-            }
-
-            try
-            {
-                currentPrice = Convert.ToDouble(increase);
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
-            catch (OverflowException)
-            {
-                return false;
-            }
-
-            if (currentPrice < 0)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
+        
         private void dateTimePickerPerfomanceDate_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -127,7 +86,7 @@ namespace CourseProject_TheaterHub
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!NameValidator(textBoxName.Text))
+            if (!ParametersValidator.NameValidator(textBoxName.Text))
             {
                 MessageBox.Show(this,
                                 "There was an error in the name of the Performance: the name must be more than two characters long",
@@ -137,7 +96,7 @@ namespace CourseProject_TheaterHub
                 return;
             }
 
-            if (!PriceValidator(textBoxBaseTicketPrice.Text))
+            if (!ParametersValidator.DoubleValidator(textBoxBaseTicketPrice.Text))
             {
                 MessageBox.Show(this,
                                 "The base price of the ticket must be entered in the format 0.000, cannot be negative or empty",
@@ -166,5 +125,9 @@ namespace CourseProject_TheaterHub
             return isValid;
         }
 
+        private void textBoxBaseTicketPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ParametersValidator.ValidatorDoubleDigit(sender, e);
+        }
     }
 }

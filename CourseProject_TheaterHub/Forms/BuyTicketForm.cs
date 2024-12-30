@@ -95,36 +95,6 @@ namespace CourseProject_TheaterHub
             }
         }
 
-        private bool PriceValidator(string increase)
-        {
-            double currentPrice;
-
-            if (increase.Length == 0)
-            {
-                return false;
-            }
-
-            try
-            {
-                currentPrice = Convert.ToDouble(increase);
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
-            catch (OverflowException)
-            {
-                return false;
-            }
-
-            if (currentPrice < 0)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         private Ticket RecalculatePrice()
         {
             double increase = 0;

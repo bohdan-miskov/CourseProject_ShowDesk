@@ -45,13 +45,13 @@
             this.groupBoxPerformance = new System.Windows.Forms.GroupBox();
             this.textBoxBaseTicketPrice = new System.Windows.Forms.TextBox();
             this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
-            this.groupBoxTickets = new System.Windows.Forms.GroupBox();
-            this.groupBoxForm = new System.Windows.Forms.GroupBox();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBoxTickets = new System.Windows.Forms.GroupBox();
+            this.groupBoxForm = new System.Windows.Forms.GroupBox();
             this.menuStrip.SuspendLayout();
             this.groupBoxPerformance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
@@ -63,7 +63,7 @@
             // 
             this.removeTicketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeTicketToolStripMenuItem.Name = "removeTicketToolStripMenuItem";
-            this.removeTicketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeTicketToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.removeTicketToolStripMenuItem.Text = "Remove";
             this.removeTicketToolStripMenuItem.Click += new System.EventHandler(this.removeTicketToolStripMenuItem_Click);
             // 
@@ -71,7 +71,7 @@
             // 
             this.addTicketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addTicketToolStripMenuItem.Name = "addTicketToolStripMenuItem";
-            this.addTicketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addTicketToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.addTicketToolStripMenuItem.Text = "Add";
             this.addTicketToolStripMenuItem.Click += new System.EventHandler(this.BuyTicketFormToolStripMenuItem_Click);
             // 
@@ -90,7 +90,7 @@
             // 
             this.ChangeStatusToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChangeStatusToolStripMenuItem.Name = "ChangeStatusToolStripMenuItem";
-            this.ChangeStatusToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ChangeStatusToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.ChangeStatusToolStripMenuItem.Text = "Change status";
             this.ChangeStatusToolStripMenuItem.Click += new System.EventHandler(this.ChangeStatusToolStripMenuItem_Click);
             // 
@@ -240,6 +240,7 @@
             this.textBoxBaseTicketPrice.Name = "textBoxBaseTicketPrice";
             this.textBoxBaseTicketPrice.Size = new System.Drawing.Size(299, 28);
             this.textBoxBaseTicketPrice.TabIndex = 11;
+            this.textBoxBaseTicketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBaseTicketPrice_KeyPress);
             this.textBoxBaseTicketPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxBaseTicketPrice_KeyUp);
             // 
             // dataGridViewTickets
@@ -268,33 +269,6 @@
             this.dataGridViewTickets.TabIndex = 12;
             this.dataGridViewTickets.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTickets_RowEnter);
             this.dataGridViewTickets.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTickets_RowLeave);
-            // 
-            // groupBoxTickets
-            // 
-            this.groupBoxTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxTickets.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxTickets.Controls.Add(this.dataGridViewTickets);
-            this.groupBoxTickets.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxTickets.Location = new System.Drawing.Point(10, 255);
-            this.groupBoxTickets.Name = "groupBoxTickets";
-            this.groupBoxTickets.Size = new System.Drawing.Size(570, 218);
-            this.groupBoxTickets.TabIndex = 16;
-            this.groupBoxTickets.TabStop = false;
-            this.groupBoxTickets.Text = "Tickets";
-            // 
-            // groupBoxForm
-            // 
-            this.groupBoxForm.BackgroundImage = global::CourseProject_TheaterHub.Properties.Resources.formBackground;
-            this.groupBoxForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBoxForm.Controls.Add(this.groupBoxPerformance);
-            this.groupBoxForm.Controls.Add(this.groupBoxTickets);
-            this.groupBoxForm.Location = new System.Drawing.Point(0, 63);
-            this.groupBoxForm.Name = "groupBoxForm";
-            this.groupBoxForm.Size = new System.Drawing.Size(594, 517);
-            this.groupBoxForm.TabIndex = 18;
-            this.groupBoxForm.TabStop = false;
             // 
             // columnName
             // 
@@ -325,6 +299,33 @@
             this.columnReserved.HeaderText = "Reserved";
             this.columnReserved.Name = "columnReserved";
             this.columnReserved.ReadOnly = true;
+            // 
+            // groupBoxTickets
+            // 
+            this.groupBoxTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxTickets.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxTickets.Controls.Add(this.dataGridViewTickets);
+            this.groupBoxTickets.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxTickets.Location = new System.Drawing.Point(10, 255);
+            this.groupBoxTickets.Name = "groupBoxTickets";
+            this.groupBoxTickets.Size = new System.Drawing.Size(570, 218);
+            this.groupBoxTickets.TabIndex = 16;
+            this.groupBoxTickets.TabStop = false;
+            this.groupBoxTickets.Text = "Tickets";
+            // 
+            // groupBoxForm
+            // 
+            this.groupBoxForm.BackgroundImage = global::CourseProject_TheaterHub.Properties.Resources.formBackground;
+            this.groupBoxForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxForm.Controls.Add(this.groupBoxPerformance);
+            this.groupBoxForm.Controls.Add(this.groupBoxTickets);
+            this.groupBoxForm.Location = new System.Drawing.Point(0, 63);
+            this.groupBoxForm.Name = "groupBoxForm";
+            this.groupBoxForm.Size = new System.Drawing.Size(594, 517);
+            this.groupBoxForm.TabIndex = 18;
+            this.groupBoxForm.TabStop = false;
             // 
             // EditPerformanceForm
             // 

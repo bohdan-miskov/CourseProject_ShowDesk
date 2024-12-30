@@ -123,6 +123,7 @@
             this.textBoxBaseTicketPrice.Name = "textBoxBaseTicketPrice";
             this.textBoxBaseTicketPrice.Size = new System.Drawing.Size(222, 28);
             this.textBoxBaseTicketPrice.TabIndex = 11;
+            this.textBoxBaseTicketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBaseTicketPrice_KeyPress);
             this.textBoxBaseTicketPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxBaseTicketPrice_KeyUp);
             // 
             // textBoxName
