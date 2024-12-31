@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 namespace CourseProject_TheaterHub
 {
     [Serializable]
+
     public class Ticket
     {
-        protected int index;          
-        protected int position;         
-        protected double calculatedPrice; 
-        protected bool reserved;   
+        private int index;          
+        private int position;         
+        private double calculatedPrice; 
+        private bool reserved;
+        private string type;
+        private double typeIncrease = 1;
 
         public Ticket()
         {
@@ -21,12 +24,12 @@ namespace CourseProject_TheaterHub
             calculatedPrice = 0.0;
             reserved = false;
         }
-        public Ticket(int index, int position, double calculatedPrice, bool reserved)
+        public Ticket(int index, int position, bool reserved, string type)
         {
             this.index = index;
             this.position = position;
-            this.calculatedPrice = calculatedPrice;
             this.reserved = reserved;
+            this.type = type;
         }
         public int Index
         {
@@ -51,7 +54,7 @@ namespace CourseProject_TheaterHub
             }
             set
             {
-                position = (value < 0) ? 0 : value;
+                position = (value < 0) ? -1 : value;
             }
         }
         public double CalculatedPrice
@@ -77,6 +80,25 @@ namespace CourseProject_TheaterHub
             }
         }
 
+        public string Type
+        {
+            get
+            {
+                return type;
+            }
+            set
+            {
+                type = (value == "Standard" || value == "Standard Plus" || value == "Premium") ? value : "Standard";
+            }
+        }
+
+        private void CalculateTypeIcrease()
+        {
+            if (type == "Standard") typeIncrease = 1;
+            else if (type == "Standard Plus") typeIncrease = 1.5;
+            else if (type == "Premium") typeIncrease = 3;
+        }
+
         public void ChangeStatus()
         {
             reserved = !reserved;
@@ -84,7 +106,8 @@ namespace CourseProject_TheaterHub
 
         public void CalculatePrice(double basePrice, double increase)
         {
-            calculatedPrice = basePrice * increase;
+            CalculateTypeIcrease();
+            calculatedPrice= basePrice * increase * typeIncrease;
         }
     }
     

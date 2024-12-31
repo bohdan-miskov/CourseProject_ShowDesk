@@ -55,13 +55,7 @@ namespace CourseProject_TheaterHub
 
             foreach (Ticket ticket in performance.Tickets)
             {
-                string ticketType = "Undefined";
-                if (ticket.GetType() == new Ticket().GetType())
-                {
-                    ticketType = "Base";
-                }
-
-                dataGridViewTickets.Rows.Add(ticket.Index, ticketType, ticket.Position, ticket.CalculatedPrice, Convert.ToString(ticket.Reserved ? "Yes" : "No"));
+                dataGridViewTickets.Rows.Add(ticket.Index, ticket.Type, ticket.Position, ticket.CalculatedPrice, Convert.ToString(ticket.Reserved ? "Yes" : "No"));
             }
         }
 

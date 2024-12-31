@@ -23,6 +23,7 @@ namespace CourseProject_TheaterHub
 
         private bool isValid;
 
+        private Ticket ticket;
         private Ticket newTicket;
 
        
@@ -86,7 +87,6 @@ namespace CourseProject_TheaterHub
             if (positions.Count == 0)
             {
                 comboBoxPositions.Enabled = false;
-                buttonGetPrice.Enabled = false;
                 buttonAdd.Enabled = false;
             }
             else
@@ -97,34 +97,52 @@ namespace CourseProject_TheaterHub
 
         private Ticket RecalculatePrice()
         {
-            double increase = 0;
-
-            foreach (Stage stage in stages)
+            if (comboBoxPositions.SelectedIndex != -1 && comboBoxTicketType.SelectedIndex != -1)
             {
-                if (stage.Index == performance.StageIndex)
+                double increase = 0;
+                int position = Convert.ToInt32(comboBoxPositions.SelectedItem.ToString());
+                bool reserved = checkBoxReserved.Checked; ;
+                string type = comboBoxTicketType.SelectedItem.ToString();
+
+                foreach (Stage stage in stages)
                 {
-                    int position = Convert.ToInt32(comboBoxPositions.SelectedItem.ToString());
-                    foreach (Zone zone in stage.Zones)
+                    if (stage.Index == performance.StageIndex)
                     {
-                        if ((zone.StartPosition <= position) && (zone.EndPosition >= position))
+                        foreach (Zone zone in stage.Zones)
                         {
-                            increase = zone.Increase;
+                            if ((zone.StartPosition <= position) && (zone.EndPosition >= position))
+                            {
+                                increase = zone.Increase;
+                            }
                         }
                     }
                 }
-            }
 
-            if (comboBoxTicketType.SelectedIndex == 0)
-            {
-
-                Ticket ticket = new Ticket(index,
-                    Convert.ToInt32(comboBoxPositions.SelectedItem.ToString()),
-                    0,
-                    checkBoxReserved.Checked);
+                Ticket ticket = new Ticket(index, position, reserved, type);
                 ticket.CalculatePrice(performance.Price, increase);
+
                 return ticket;
             }
             return null;
+        }
+
+        private void ChangeTicketInfo()
+        {
+            if(comboBoxTicketType.SelectedIndex == 0)
+            {
+                labelInfo.Text = "Only position";
+            }
+            else if (comboBoxTicketType.SelectedIndex == 1)
+            {
+                labelInfo.Text = "Standard + Separate entrance +" +
+                    "Drink of choice (Coffee or tea or juice)";
+            }
+            else if (comboBoxTicketType.SelectedIndex == 2)
+            {
+                labelInfo.Text = "Standard Plus +" +
+                    "A souvenir from the theater +" +
+                    "Backstage access";
+            }
         }
 
         private void textBoxIndex_KeyUp(object sender, KeyEventArgs e)
@@ -168,32 +186,24 @@ namespace CourseProject_TheaterHub
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            Ticket ticket = RecalculatePrice();
-            if (ticket == null)
-            {
-                textBoxPrice.Text = "Not all fields are populated";
-            }
-            else
-            {
-                textBoxPrice.Text = Convert.ToString(ticket.CalculatedPrice);
-            }
-
             isValid = true;
             newTicket = ticket;
 
             this.Close();
         }
 
-        private void buttonGetPrice_Click(object sender, EventArgs e)
+        private void GetTicketPrice()
         {
-            Ticket ticket = RecalculatePrice();
+            ticket = RecalculatePrice();
             if (ticket == null)
             {
                 textBoxPrice.Text = "Not all fields are populated";
+                buttonAdd.Enabled = false;
             }
             else
             {
                 textBoxPrice.Text = Convert.ToString(ticket.CalculatedPrice);
+                buttonAdd.Enabled = true;
             }
         }
 
@@ -207,5 +217,15 @@ namespace CourseProject_TheaterHub
             return newTicket;
         }
 
+        private void comboBoxTicketType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeTicketInfo();
+            GetTicketPrice();
+        }
+
+        private void comboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetTicketPrice();
+        }
     }
 }

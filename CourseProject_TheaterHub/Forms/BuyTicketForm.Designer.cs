@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonGetPrice = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
@@ -40,25 +39,14 @@
             this.comboBoxPositions = new System.Windows.Forms.ComboBox();
             this.comboBoxTicketType = new System.Windows.Forms.ComboBox();
             this.groupBoxTicket = new System.Windows.Forms.GroupBox();
+            this.labelInfo = new System.Windows.Forms.Label();
             this.groupBoxTicket.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // buttonGetPrice
-            // 
-            this.buttonGetPrice.BackColor = System.Drawing.Color.Silver;
-            this.buttonGetPrice.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGetPrice.Location = new System.Drawing.Point(38, 217);
-            this.buttonGetPrice.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.buttonGetPrice.Name = "buttonGetPrice";
-            this.buttonGetPrice.Size = new System.Drawing.Size(140, 36);
-            this.buttonGetPrice.TabIndex = 39;
-            this.buttonGetPrice.Text = "Get price";
-            this.buttonGetPrice.UseVisualStyleBackColor = false;
-            this.buttonGetPrice.Click += new System.EventHandler(this.buttonGetPrice_Click);
             // 
             // buttonAdd
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.Silver;
+            this.buttonAdd.Enabled = false;
             this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.Location = new System.Drawing.Point(221, 217);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
@@ -159,6 +147,7 @@
             this.comboBoxPositions.Name = "comboBoxPositions";
             this.comboBoxPositions.Size = new System.Drawing.Size(213, 29);
             this.comboBoxPositions.TabIndex = 28;
+            this.comboBoxPositions.SelectedIndexChanged += new System.EventHandler(this.comboBoxPositions_SelectedIndexChanged);
             this.comboBoxPositions.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxPositions_KeyUp);
             // 
             // comboBoxTicketType
@@ -172,11 +161,14 @@
             this.comboBoxTicketType.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTicketType.FormattingEnabled = true;
             this.comboBoxTicketType.Items.AddRange(new object[] {
-            "Base"});
+            "Standard",
+            "Standard Plus",
+            "Premium"});
             this.comboBoxTicketType.Location = new System.Drawing.Point(148, 74);
             this.comboBoxTicketType.Name = "comboBoxTicketType";
             this.comboBoxTicketType.Size = new System.Drawing.Size(213, 29);
             this.comboBoxTicketType.TabIndex = 27;
+            this.comboBoxTicketType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTicketType_SelectedIndexChanged);
             this.comboBoxTicketType.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxTicketType_KeyUp);
             // 
             // groupBoxTicket
@@ -184,8 +176,8 @@
             this.groupBoxTicket.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxTicket.BackgroundImage = global::CourseProject_TheaterHub.Properties.Resources.formBackground;
             this.groupBoxTicket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxTicket.Controls.Add(this.labelInfo);
             this.groupBoxTicket.Controls.Add(this.textBoxPrice);
-            this.groupBoxTicket.Controls.Add(this.buttonGetPrice);
             this.groupBoxTicket.Controls.Add(this.comboBoxTicketType);
             this.groupBoxTicket.Controls.Add(this.comboBoxPositions);
             this.groupBoxTicket.Controls.Add(this.labelType);
@@ -203,6 +195,19 @@
             this.groupBoxTicket.TabStop = false;
             this.groupBoxTicket.Text = "Ticket";
             // 
+            // labelInfo
+            // 
+            this.labelInfo.AutoSize = true;
+            this.labelInfo.BackColor = System.Drawing.Color.Silver;
+            this.labelInfo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.labelInfo.Location = new System.Drawing.Point(35, 217);
+            this.labelInfo.MaximumSize = new System.Drawing.Size(180, 0);
+            this.labelInfo.Name = "labelInfo";
+            this.labelInfo.Size = new System.Drawing.Size(96, 18);
+            this.labelInfo.TabIndex = 37;
+            this.labelInfo.Text = "Only position";
+            // 
             // BuyTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -218,8 +223,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button buttonGetPrice;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label labelPrice;
@@ -231,5 +234,6 @@
         private System.Windows.Forms.ComboBox comboBoxPositions;
         private System.Windows.Forms.ComboBox comboBoxTicketType;
         private System.Windows.Forms.GroupBox groupBoxTicket;
+        private System.Windows.Forms.Label labelInfo;
     }
 }
