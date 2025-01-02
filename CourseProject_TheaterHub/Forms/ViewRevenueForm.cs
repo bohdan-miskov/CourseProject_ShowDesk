@@ -36,16 +36,16 @@ namespace CourseProject_TheaterHub
             }
             else
             {
-                minDate = maxDate = performances[0].PerformanceDate;
+                minDate = maxDate = performances[0].PerformanceDateTime;
                 foreach (Performance performance in performances)
                 {
-                    if (minDate > performance.PerformanceDate)
+                    if (minDate > performance.PerformanceDateTime)
                     {
-                        minDate = performance.PerformanceDate;
+                        minDate = performance.PerformanceDateTime;
                     }
-                    if (maxDate < performance.PerformanceDate)
+                    if (maxDate < performance.PerformanceDateTime)
                     {
-                        maxDate = performance.PerformanceDate;
+                        maxDate = performance.PerformanceDateTime;
                     }
                 }
 
@@ -90,7 +90,7 @@ namespace CourseProject_TheaterHub
             {
                 for (int j = 0; j < performances.Count; j++)
                 {
-                    if (performances[i].PerformanceDate < performances[j].PerformanceDate)
+                    if (performances[i].PerformanceDateTime < performances[j].PerformanceDateTime)
                     {
                         Swap(performances, i, j);
                     }
@@ -103,12 +103,12 @@ namespace CourseProject_TheaterHub
                 DateTime dtfrom = dateTimePickerStartDate.Value.Date;
                 DateTime dtto = dateTimePickerFinishDate.Value;
 
-                if ((spectacle.PerformanceDate < dtfrom) ||
-                    (spectacle.PerformanceDate > dtto))
+                if ((spectacle.PerformanceDateTime < dtfrom) ||
+                    (spectacle.PerformanceDateTime > dtto))
                 {
                     continue;
                 }
-                string key = Convert.ToString(spectacle.PerformanceDate.Month) + "." + Convert.ToString(spectacle.PerformanceDate.Year);
+                string key = Convert.ToString(spectacle.PerformanceDateTime.Month) + "." + Convert.ToString(spectacle.PerformanceDateTime.Year);
                 if (data.ContainsKey(key))
                 {
                     data[key] = data[key] + spectacle.GetRevenue();

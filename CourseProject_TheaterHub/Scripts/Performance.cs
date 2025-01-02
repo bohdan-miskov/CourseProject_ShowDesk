@@ -9,7 +9,7 @@ namespace CourseProject_TheaterHub
     [Serializable]
     public class Performance
     {
-        private DateTime performanceDate;   
+        private DateTime performanceDateTime;
         private string name;       
         private double basePrice;       
         private int stageIndex;          
@@ -17,30 +17,30 @@ namespace CourseProject_TheaterHub
 
         public Performance()
         {
-            performanceDate = DateTime.Now;
+            performanceDateTime = DateTime.Now;
             name = "";
             basePrice = 0.0;
             stageIndex = -1;
             tickets = new List<Ticket>();
         }
-        public Performance(DateTime performanceDate, string name, double basePrice, int stageIndex)
+        public Performance(DateTime performanceDateTime, string name, double basePrice, int stageIndex)
         {
-            this.performanceDate = performanceDate;
+            this.performanceDateTime = performanceDateTime;
             this.name = name;
             this.basePrice = basePrice;
             this.stageIndex = stageIndex;
             this.tickets = new List<Ticket>();
         }
 
-        public DateTime PerformanceDate
+        public DateTime PerformanceDateTime
         {
             get
             {
-                return performanceDate;
+                return performanceDateTime;
             }
             set
             {
-                performanceDate = value;
+                performanceDateTime = value;
             }
         }
         public string Name
@@ -119,20 +119,5 @@ namespace CourseProject_TheaterHub
 
             return revenue;
         }
-
-        public object Clone()
-        {
-            List<Ticket> tickets = new List<Ticket>(this.Tickets);
-            return new Performance
-            {
-                PerformanceDate = this.PerformanceDate,
-                Name = this.Name,
-                Price = this.Price,
-                StageIndex = this.StageIndex,
-                Tickets = tickets
-            };
-        }
     }
-
-
 }

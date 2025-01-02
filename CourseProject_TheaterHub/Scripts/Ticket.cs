@@ -10,12 +10,12 @@ namespace CourseProject_TheaterHub
 
     public class Ticket
     {
-        private int index;          
-        private int position;         
-        private double calculatedPrice; 
-        private bool reserved;
-        private string type;
-        private double typeIncrease = 1;
+        protected int index;
+        protected int position;
+        protected double calculatedPrice;
+        protected bool reserved;
+        protected string type="Standard";
+        protected double typeIncrease=1;
 
         public Ticket()
         {
@@ -24,12 +24,12 @@ namespace CourseProject_TheaterHub
             calculatedPrice = 0.0;
             reserved = false;
         }
-        public Ticket(int index, int position, bool reserved, string type)
+        public Ticket(int index, int position, bool reserved)
         {
             this.index = index;
             this.position = position;
             this.reserved = reserved;
-            this.type = type;
+
         }
         public int Index
         {
@@ -88,17 +88,9 @@ namespace CourseProject_TheaterHub
             }
             set
             {
-                type = (value == "Standard" || value == "Standard Plus" || value == "Premium") ? value : "Standard";
+                type = value;
             }
         }
-
-        private void CalculateTypeIcrease()
-        {
-            if (type == "Standard") typeIncrease = 1;
-            else if (type == "Standard Plus") typeIncrease = 1.5;
-            else if (type == "Premium") typeIncrease = 3;
-        }
-
         public void ChangeStatus()
         {
             reserved = !reserved;
@@ -106,12 +98,15 @@ namespace CourseProject_TheaterHub
 
         public void CalculatePrice(double basePrice, double increase)
         {
-            CalculateTypeIcrease();
-            calculatedPrice= basePrice * increase * typeIncrease;
+            calculatedPrice = basePrice * increase * typeIncrease;
         }
-    }
-    
-    
+
+        public virtual string GetAdditionalServices()
+        {
+            return "None";
+        }
+
+    }  
 }
 
 

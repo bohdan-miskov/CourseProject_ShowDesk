@@ -39,7 +39,7 @@ namespace CourseProject_TheaterHub
 
         private void PopulateFields()
         {
-            textBoxName.Text = stage.GetZone(zoneIndex).Name;
+            textBoxZoneName.Text = stage.GetZone(zoneIndex).Name;
             textBoxIncrease.Text = Convert.ToString(stage.GetZone(zoneIndex).Increase);
             numericUpDownStartPosition.Value = stage.GetZone(zoneIndex).StartPosition;
             numericUpDownEndPosition.Value = stage.GetZone(zoneIndex).EndPosition;
@@ -81,13 +81,13 @@ namespace CourseProject_TheaterHub
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!ParametersValidator.NameValidator(textBoxName.Text))
+            if (!ParametersValidator.NameValidator(textBoxZoneName.Text))
             {
                 MessageBox.Show(this,
                                 "There was an error in the name of the zone: the name must be more than two characters long",
                                 "Name zone error",
                                 MessageBoxButtons.OK);
-                textBoxName.Focus();
+                textBoxZoneName.Focus();
                 return;
             }
 
@@ -101,7 +101,7 @@ namespace CourseProject_TheaterHub
                 return;
             }
 
-            if (!stage.AddZone(new Zone(textBoxName.Text,
+            if (!stage.AddZone(new Zone(textBoxZoneName.Text,
                 Convert.ToDouble(textBoxIncrease.Text),
                 Convert.ToInt32(numericUpDownStartPosition.Value),
                 Convert.ToInt32(numericUpDownEndPosition.Value))))

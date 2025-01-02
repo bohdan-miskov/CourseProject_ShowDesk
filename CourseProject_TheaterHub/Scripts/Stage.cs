@@ -181,17 +181,5 @@ namespace CourseProject_TheaterHub
 
             return temp;
         }
-
-        public object Clone()
-        {
-            List<Zone> zones = new List<Zone>(this.Zones);
-            return new Stage
-            {
-                Index = this.Index,
-                Name = this.Name,
-                Zones = zones
-            };
-        }
     }
-
 }

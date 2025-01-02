@@ -83,7 +83,7 @@ namespace CourseProject_TheaterHub
 
         private void editStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditStageForm editStageForm = new EditStageForm((Stage)stages[dataGridViewStages.CurrentRow.Index].Clone());
+            EditStageForm editStageForm = new EditStageForm(stages[dataGridViewStages.CurrentRow.Index]);
             editStageForm.ShowDialog(this);
 
             if (editStageForm.GetIsValid())

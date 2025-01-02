@@ -92,6 +92,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FactoryMethod\CreatePremiumTicket.cs" />
+    <Compile Include="FactoryMethod\CreateStandardPlusTicket.cs" />
+    <Compile Include="FactoryMethod\CreateStandardTicket.cs" />
+    <Compile Include="FactoryMethod\ICreateTicket.cs" />
     <Compile Include="Forms\AddPerformanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,9 +153,11 @@
       <DependentUpon>ManageStagesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Performance.cs" />
+    <Compile Include="Scripts\PremiumTicket.cs" />
     <Compile Include="Scripts\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Stage.cs" />
+    <Compile Include="Scripts\StandartPlusTicket.cs" />
     <Compile Include="Scripts\Ticket.cs" />
     <Compile Include="Forms\ViewRevenueForm.cs">
       <SubType>Form</SubType>
@@ -230,5 +236,6 @@
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPerformances = new System.Windows.Forms.DataGridView();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.menuStripManagePerformance = new System.Windows.Forms.MenuStrip();
             this.spectacleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addSpecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editSpecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +39,7 @@
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.columnPerformanceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPerformanceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStage = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +47,7 @@
             this.columnSold = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).BeginInit();
-            this.menuStrip.SuspendLayout();
+            this.menuStripManagePerformance.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewPerformances
@@ -68,6 +69,7 @@
             this.dataGridViewPerformances.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPerformances.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnPerformanceDate,
+            this.ColumnPerformanceTime,
             this.columnName,
             this.columnPrice,
             this.columnStage,
@@ -94,18 +96,18 @@
             this.dataGridViewPerformances.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPerformances_RowEnter);
             this.dataGridViewPerformances.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPerformances_RowLeave);
             // 
-            // menuStrip
+            // menuStripManagePerformance
             // 
-            this.menuStrip.BackColor = System.Drawing.Color.Teal;
-            this.menuStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripManagePerformance.BackColor = System.Drawing.Color.Teal;
+            this.menuStripManagePerformance.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStripManagePerformance.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.spectacleToolStripMenuItem,
             this.reportToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(158, 26);
-            this.menuStrip.TabIndex = 4;
-            this.menuStrip.Text = "menuStrip1";
+            this.menuStripManagePerformance.Location = new System.Drawing.Point(0, 0);
+            this.menuStripManagePerformance.Name = "menuStripManagePerformance";
+            this.menuStripManagePerformance.Size = new System.Drawing.Size(158, 26);
+            this.menuStripManagePerformance.TabIndex = 4;
+            this.menuStripManagePerformance.Text = "menuStripManagePerformance";
             // 
             // spectacleToolStripMenuItem
             // 
@@ -122,7 +124,7 @@
             // 
             this.addSpecToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addSpecToolStripMenuItem.Name = "addSpecToolStripMenuItem";
-            this.addSpecToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addSpecToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.addSpecToolStripMenuItem.Text = "Добавить";
             this.addSpecToolStripMenuItem.Click += new System.EventHandler(this.addSpecToolStripMenuItem_Click);
             // 
@@ -130,7 +132,7 @@
             // 
             this.editSpecToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editSpecToolStripMenuItem.Name = "editSpecToolStripMenuItem";
-            this.editSpecToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editSpecToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.editSpecToolStripMenuItem.Text = "Изменить";
             this.editSpecToolStripMenuItem.Click += new System.EventHandler(this.editSpecToolStripMenuItem_Click);
             // 
@@ -138,7 +140,7 @@
             // 
             this.removeSpecToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeSpecToolStripMenuItem.Name = "removeSpecToolStripMenuItem";
-            this.removeSpecToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeSpecToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.removeSpecToolStripMenuItem.Text = "Удалить";
             this.removeSpecToolStripMenuItem.Click += new System.EventHandler(this.removeSpecToolStripMenuItem_Click);
             // 
@@ -161,9 +163,15 @@
             // 
             // columnPerformanceDate
             // 
-            this.columnPerformanceDate.HeaderText = "Performance date";
+            this.columnPerformanceDate.HeaderText = "Date";
             this.columnPerformanceDate.Name = "columnPerformanceDate";
             this.columnPerformanceDate.ReadOnly = true;
+            // 
+            // ColumnPerformanceTime
+            // 
+            this.ColumnPerformanceTime.HeaderText = "Time";
+            this.ColumnPerformanceTime.Name = "ColumnPerformanceTime";
+            this.ColumnPerformanceTime.ReadOnly = true;
             // 
             // columnName
             // 
@@ -207,13 +215,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 306);
             this.Controls.Add(this.dataGridViewPerformances);
-            this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.menuStripManagePerformance);
             this.Name = "ManagePerformancesForm";
             this.Text = "ManagePerformanceForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManagePerformancesFormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).EndInit();
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
+            this.menuStripManagePerformance.ResumeLayout(false);
+            this.menuStripManagePerformance.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,7 +230,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewPerformances;
-        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.MenuStrip menuStripManagePerformance;
         private System.Windows.Forms.ToolStripMenuItem spectacleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addSpecToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editSpecToolStripMenuItem;
@@ -230,6 +238,7 @@
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem revenueReportToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPerformanceDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPerformanceTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStage;

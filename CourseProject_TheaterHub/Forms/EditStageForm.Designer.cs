@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxIndex = new System.Windows.Forms.TextBox();
-            this.labelName = new System.Windows.Forms.Label();
+            this.labelStageName = new System.Windows.Forms.Label();
             this.labelIndex = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.textBoxStageName = new System.Windows.Forms.TextBox();
+            this.menuStripStage = new System.Windows.Forms.MenuStrip();
             this.zoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +47,7 @@
             this.columnEndPositions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxZones = new System.Windows.Forms.GroupBox();
             this.groupBoxForm = new System.Windows.Forms.GroupBox();
-            this.menuStrip1.SuspendLayout();
+            this.menuStripStage.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZones)).BeginInit();
             this.groupBoxZones.SuspendLayout();
@@ -78,16 +78,16 @@
             this.textBoxIndex.TabIndex = 5;
             this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxIndex_KeyUp);
             // 
-            // labelName
+            // labelStageName
             // 
-            this.labelName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.labelStageName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(50, 59);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(54, 21);
-            this.labelName.TabIndex = 6;
-            this.labelName.Text = "Name";
+            this.labelStageName.AutoSize = true;
+            this.labelStageName.Location = new System.Drawing.Point(50, 59);
+            this.labelStageName.Name = "labelStageName";
+            this.labelStageName.Size = new System.Drawing.Size(54, 21);
+            this.labelStageName.TabIndex = 6;
+            this.labelStageName.Text = "Name";
             // 
             // labelIndex
             // 
@@ -100,27 +100,27 @@
             this.labelIndex.TabIndex = 4;
             this.labelIndex.Text = "Index";
             // 
-            // textBoxName
+            // textBoxStageName
             // 
-            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxStageName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxName.Location = new System.Drawing.Point(169, 52);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(232, 28);
-            this.textBoxName.TabIndex = 7;
-            this.textBoxName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
+            this.textBoxStageName.Location = new System.Drawing.Point(169, 52);
+            this.textBoxStageName.Name = "textBoxStageName";
+            this.textBoxStageName.Size = new System.Drawing.Size(232, 28);
+            this.textBoxStageName.TabIndex = 7;
+            this.textBoxStageName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
             // 
-            // menuStrip1
+            // menuStripStage
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Teal;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripStage.BackColor = System.Drawing.Color.Teal;
+            this.menuStripStage.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStripStage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zoneToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(59, 26);
-            this.menuStrip1.TabIndex = 12;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStripStage.Location = new System.Drawing.Point(0, 0);
+            this.menuStripStage.Name = "menuStripStage";
+            this.menuStripStage.Size = new System.Drawing.Size(59, 26);
+            this.menuStripStage.TabIndex = 12;
+            this.menuStripStage.Text = "menuStrip1";
             // 
             // zoneToolStripMenuItem
             // 
@@ -164,9 +164,9 @@
             this.groupBoxStage.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxStage.Controls.Add(this.buttonSave);
             this.groupBoxStage.Controls.Add(this.textBoxIndex);
-            this.groupBoxStage.Controls.Add(this.labelName);
+            this.groupBoxStage.Controls.Add(this.labelStageName);
             this.groupBoxStage.Controls.Add(this.labelIndex);
-            this.groupBoxStage.Controls.Add(this.textBoxName);
+            this.groupBoxStage.Controls.Add(this.textBoxStageName);
             this.groupBoxStage.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxStage.Location = new System.Drawing.Point(6, 19);
             this.groupBoxStage.Name = "groupBoxStage";
@@ -186,14 +186,14 @@
             this.rolumnRate,
             this.columnStartSeads,
             this.columnEndPositions});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewZones.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewZones.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewZones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewZones.Location = new System.Drawing.Point(3, 24);
             this.dataGridViewZones.Name = "dataGridViewZones";
@@ -262,11 +262,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(470, 490);
             this.Controls.Add(this.groupBoxForm);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStripStage);
             this.Name = "EditStageForm";
             this.Text = "EditStageForm";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStripStage.ResumeLayout(false);
+            this.menuStripStage.PerformLayout();
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZones)).EndInit();
@@ -281,10 +281,10 @@
 
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxIndex;
-        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelStageName;
         private System.Windows.Forms.Label labelIndex;
-        private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.TextBox textBoxStageName;
+        private System.Windows.Forms.MenuStrip menuStripStage;
         private System.Windows.Forms.ToolStripMenuItem zoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addZoneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editZoneToolStripMenuItem;

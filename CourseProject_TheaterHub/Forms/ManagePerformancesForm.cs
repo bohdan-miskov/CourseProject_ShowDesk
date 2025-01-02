@@ -43,8 +43,10 @@ namespace CourseProject_TheaterHub
 
             foreach (Performance performance in performances)
             {
+                string timePerformance = $"{performance.PerformanceDateTime.Hour:D2}:{performance.PerformanceDateTime.Minute:D2}";
                 dataGridViewPerformances.Rows.Add(
-                    Convert.ToString(performance.PerformanceDate),
+                    performance.PerformanceDateTime.Date.ToShortDateString(),
+                    timePerformance,
                     performance.Name,
                     performance.Price,
                     GetStageName(performance.StageIndex),
@@ -187,7 +189,7 @@ namespace CourseProject_TheaterHub
 
         private void editSpecToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditPerformanceForm editPerformanceForm = new EditPerformanceForm(stages, (Performance)performances[dataGridViewPerformances.CurrentRow.Index].Clone());
+            EditPerformanceForm editPerformanceForm = new EditPerformanceForm(stages, performances[dataGridViewPerformances.CurrentRow.Index]);
             editPerformanceForm.ShowDialog(this);
 
             if (editPerformanceForm.GetIsValid())

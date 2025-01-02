@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_TheaterHub.FactoryMethod;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +27,7 @@ namespace CourseProject_TheaterHub
         private Ticket ticket;
         private Ticket newTicket;
 
-       
+        private int formHeight;
 
         public BuyTicketForm(List<Stage> stages, Performance performance)
         {
@@ -36,25 +37,30 @@ namespace CourseProject_TheaterHub
             this.performance = performance;
 
             CreateTicketIndex();
-
+            
             textBoxIndex.Text = Convert.ToString(index);
 
             PopulateComboBox();
 
+
             isValid = false;
 
+            this.Height = 355;
+            groupBoxTicket.Height = 288;
         }
 
         private void CreateTicketIndex()
         {
             Random rnd = new Random();
-            index = Convert.ToInt32(DateTime.Now.DayOfYear);
+            index = Convert.ToInt32(DateTime.Now.Second);
             index =  Convert.ToInt32( index * rnd.Next(30,100));
         }
 
         private void PopulateComboBox()
         {
             comboBoxTicketType.SelectedIndex = 0;
+            comboBoxDrink.SelectedIndex = 0;
+            comboBoxSouvenir.SelectedIndex = 0;
 
             List<int> positions = new List<int>();
             foreach (Stage stage in stages)
@@ -102,7 +108,6 @@ namespace CourseProject_TheaterHub
                 double increase = 0;
                 int position = Convert.ToInt32(comboBoxPositions.SelectedItem.ToString());
                 bool reserved = checkBoxReserved.Checked; ;
-                string type = comboBoxTicketType.SelectedItem.ToString();
 
                 foreach (Stage stage in stages)
                 {
@@ -118,7 +123,27 @@ namespace CourseProject_TheaterHub
                     }
                 }
 
-                Ticket ticket = new Ticket(index, position, reserved, type);
+                Ticket ticket;
+                if(comboBoxTicketType.SelectedIndex == 0)
+                {
+                    ticket = new CreateStandardTicket().CreateTicket();
+                }
+                else if(comboBoxTicketType.SelectedIndex == 1)
+                {
+                    string drink = comboBoxDrink.SelectedItem.ToString();
+                    ticket = new CreateStandardPlusTicket(drink).CreateTicket();
+                    
+                }
+                else
+                {
+                    string drink = comboBoxDrink.SelectedItem.ToString();
+                    string souvenir = comboBoxSouvenir.SelectedItem.ToString();
+                    ticket = new CreatePremiumTicket(drink, souvenir).CreateTicket();
+                }
+                ticket.Index = index;
+                ticket.Position = position;
+                ticket.Reserved = reserved;
+
                 ticket.CalculatePrice(performance.Price, increase);
 
                 return ticket;
@@ -131,17 +156,41 @@ namespace CourseProject_TheaterHub
             if(comboBoxTicketType.SelectedIndex == 0)
             {
                 labelInfo.Text = "Only position";
+                formHeight = 355;
+                timerScaleUp.Enabled = true;
             }
             else if (comboBoxTicketType.SelectedIndex == 1)
             {
                 labelInfo.Text = "Standard + Separate entrance +" +
-                    "Drink of choice (Coffee or tea or juice)";
+                    "Drink of choice";
+                formHeight = 424;
+                timerScaleUp.Enabled = true;
             }
             else if (comboBoxTicketType.SelectedIndex == 2)
             {
                 labelInfo.Text = "Standard Plus +" +
                     "A souvenir from the theater +" +
                     "Backstage access";
+                formHeight = 505;
+                timerScaleUp.Enabled = true;
+            }
+        }
+
+        private void SlowlyScaleUp()
+        {
+            if (this.Height < formHeight && Math.Abs(this.Height - formHeight) > 3)
+            {
+                this.Height += 3;
+                groupBoxTicket.Height += 3;
+            }
+            else if (this.Height > formHeight && Math.Abs(this.Height - formHeight) > 3)
+            {
+                this.Height -= 3;
+                groupBoxTicket.Height -= 3;
+            }
+            else
+            {
+                timerScaleUp.Enabled = false;
             }
         }
 
@@ -226,6 +275,11 @@ namespace CourseProject_TheaterHub
         private void comboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetTicketPrice();
+        }
+
+        private void timerScaleUp_Tick(object sender, EventArgs e)
+        {
+            SlowlyScaleUp();
         }
     }
 }

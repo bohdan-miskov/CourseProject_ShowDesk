@@ -31,9 +31,9 @@
             this.numericUpDownStartPosition = new System.Windows.Forms.NumericUpDown();
             this.textBoxIncrease = new System.Windows.Forms.TextBox();
             this.groupBoxZone = new System.Windows.Forms.GroupBox();
-            this.labelName = new System.Windows.Forms.Label();
+            this.labelZoneName = new System.Windows.Forms.Label();
             this.labelEndPosition = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxZoneName = new System.Windows.Forms.TextBox();
             this.labelStartPosition = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.numericUpDownEndPosition = new System.Windows.Forms.NumericUpDown();
@@ -71,10 +71,11 @@
             // groupBoxZone
             // 
             this.groupBoxZone.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxZone.BackgroundImage = global::CourseProject_TheaterHub.Properties.Resources.formBackground;
             this.groupBoxZone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBoxZone.Controls.Add(this.labelName);
+            this.groupBoxZone.Controls.Add(this.labelZoneName);
             this.groupBoxZone.Controls.Add(this.labelEndPosition);
-            this.groupBoxZone.Controls.Add(this.textBoxName);
+            this.groupBoxZone.Controls.Add(this.textBoxZoneName);
             this.groupBoxZone.Controls.Add(this.labelStartPosition);
             this.groupBoxZone.Controls.Add(this.buttonAdd);
             this.groupBoxZone.Controls.Add(this.numericUpDownEndPosition);
@@ -89,16 +90,16 @@
             this.groupBoxZone.TabStop = false;
             this.groupBoxZone.Text = "Zone";
             // 
-            // labelName
+            // labelZoneName
             // 
-            this.labelName.AutoSize = true;
-            this.labelName.BackColor = System.Drawing.Color.Transparent;
-            this.labelName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(16, 44);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(54, 21);
-            this.labelName.TabIndex = 14;
-            this.labelName.Text = "Name";
+            this.labelZoneName.AutoSize = true;
+            this.labelZoneName.BackColor = System.Drawing.Color.Transparent;
+            this.labelZoneName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelZoneName.Location = new System.Drawing.Point(16, 44);
+            this.labelZoneName.Name = "labelZoneName";
+            this.labelZoneName.Size = new System.Drawing.Size(54, 21);
+            this.labelZoneName.TabIndex = 14;
+            this.labelZoneName.Text = "Name";
             // 
             // labelEndPosition
             // 
@@ -111,14 +112,14 @@
             this.labelEndPosition.TabIndex = 22;
             this.labelEndPosition.Text = "End position";
             // 
-            // textBoxName
+            // textBoxZoneName
             // 
-            this.textBoxName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(174, 37);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(168, 28);
-            this.textBoxName.TabIndex = 15;
-            this.textBoxName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
+            this.textBoxZoneName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxZoneName.Location = new System.Drawing.Point(174, 37);
+            this.textBoxZoneName.Name = "textBoxZoneName";
+            this.textBoxZoneName.Size = new System.Drawing.Size(168, 28);
+            this.textBoxZoneName.TabIndex = 15;
+            this.textBoxZoneName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
             // 
             // labelStartPosition
             // 
@@ -189,9 +190,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDownStartPosition;
         private System.Windows.Forms.TextBox textBoxIncrease;
         private System.Windows.Forms.GroupBox groupBoxZone;
-        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelZoneName;
         private System.Windows.Forms.Label labelEndPosition;
-        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxZoneName;
         private System.Windows.Forms.Label labelStartPosition;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.NumericUpDown numericUpDownEndPosition;

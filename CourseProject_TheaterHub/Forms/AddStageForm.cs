@@ -65,7 +65,7 @@ namespace CourseProject_TheaterHub
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxName.Focus();
+                textBoxStageName.Focus();
             }
         }
 
@@ -79,18 +79,18 @@ namespace CourseProject_TheaterHub
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!ParametersValidator.NameValidator(textBoxName.Text))
+            if (!ParametersValidator.NameValidator(textBoxStageName.Text))
             {
                 MessageBox.Show(this,
                                 "There was an error in the name of the stage: the name must be more than two characters long",
                                 "Stage name error",
                                 MessageBoxButtons.OK);
-                textBoxName.Focus();
+                textBoxStageName.Focus();
                 return;
             }
 
             isValid = true;
-            newStage = new Stage(index, textBoxName.Text);
+            newStage = new Stage(index, textBoxStageName.Text);
 
             this.Close();
         }

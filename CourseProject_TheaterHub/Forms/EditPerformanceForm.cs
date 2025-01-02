@@ -38,8 +38,9 @@ namespace CourseProject_TheaterHub
 
         private void ShowZone()
         {
-            dateTimePickerPerfomanceDate.Value = performance.PerformanceDate;
-            textBoxName.Text = performance.Name;
+            dateTimePickerPerfomanceDate.Value = performance.PerformanceDateTime;
+            dateTimePickerPerformanceTime.Value = performance.PerformanceDateTime;
+            textBoxPerformanceName.Text = performance.Name;
             textBoxBaseTicketPrice.Text = Convert.ToString(performance.Price);
 
             textBoxBaseTicketPrice.Enabled = false;
@@ -55,7 +56,7 @@ namespace CourseProject_TheaterHub
 
             foreach (Ticket ticket in performance.Tickets)
             {
-                dataGridViewTickets.Rows.Add(ticket.Index, ticket.Type, ticket.Position, ticket.CalculatedPrice, Convert.ToString(ticket.Reserved ? "Yes" : "No"));
+                dataGridViewTickets.Rows.Add(ticket.Index, ticket.Type, ticket.Position, ticket.CalculatedPrice, Convert.ToString(ticket.Reserved ? "Yes" : "No"), ticket.GetAdditionalServices());
             }
         }
 
@@ -87,7 +88,7 @@ namespace CourseProject_TheaterHub
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxName.Focus();
+                textBoxPerformanceName.Focus();
             }
         }
         private void textBoxName_KeyUp(object sender, KeyEventArgs e)
@@ -139,13 +140,13 @@ namespace CourseProject_TheaterHub
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (!ParametersValidator.NameValidator(textBoxName.Text))
+            if (!ParametersValidator.NameValidator(textBoxPerformanceName.Text))
             {
                 MessageBox.Show(this,
                                 "There was an error in the name of the performance: the name should be more than two characters long",
                                 "Performance name error",
                                 MessageBoxButtons.OK);
-                textBoxName.Focus();
+                textBoxPerformanceName.Focus();
                 return;
             }
 
@@ -161,18 +162,12 @@ namespace CourseProject_TheaterHub
 
             isValid = true;
 
-            if (stages[comboBoxStage.SelectedIndex].Index == performance.StageIndex)
+            performance.PerformanceDateTime = dateTimePickerPerfomanceDate.Value.Add(dateTimePickerPerformanceTime.Value.TimeOfDay);
+            performance.Name = textBoxPerformanceName.Text;
+            performance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
+
+            if (stages[comboBoxStage.SelectedIndex].Index != performance.StageIndex)
             {
-                performance.PerformanceDate = dateTimePickerPerfomanceDate.Value;
-                performance.Name = textBoxName.Text;
-                performance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
-                performance.StageIndex = stages[comboBoxStage.SelectedIndex].Index;
-            }
-            else
-            {
-                performance.PerformanceDate = dateTimePickerPerfomanceDate.Value;
-                performance.Name = textBoxName.Text;
-                performance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
                 performance.StageIndex = stages[comboBoxStage.SelectedIndex].Index;
                 performance.RemoveAllTickets();
             }

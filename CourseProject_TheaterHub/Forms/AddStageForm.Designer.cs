@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.labelName = new System.Windows.Forms.Label();
+            this.textBoxStageName = new System.Windows.Forms.TextBox();
+            this.labelStageName = new System.Windows.Forms.Label();
             this.textBoxIndex = new System.Windows.Forms.TextBox();
             this.labelIndex = new System.Windows.Forms.Label();
             this.groupBoxStage = new System.Windows.Forms.GroupBox();
@@ -49,25 +49,25 @@
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // textBoxName
+            // textBoxStageName
             // 
-            this.textBoxName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxName.Location = new System.Drawing.Point(138, 74);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(168, 28);
-            this.textBoxName.TabIndex = 8;
-            this.textBoxName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
-            this.textBoxName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
+            this.textBoxStageName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxStageName.Location = new System.Drawing.Point(138, 74);
+            this.textBoxStageName.Name = "textBoxStageName";
+            this.textBoxStageName.Size = new System.Drawing.Size(168, 28);
+            this.textBoxStageName.TabIndex = 8;
+            this.textBoxStageName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxName_KeyPress);
+            this.textBoxStageName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
             // 
-            // labelName
+            // labelStageName
             // 
-            this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(40, 81);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(54, 21);
-            this.labelName.TabIndex = 7;
-            this.labelName.Text = "Name";
+            this.labelStageName.AutoSize = true;
+            this.labelStageName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStageName.Location = new System.Drawing.Point(40, 81);
+            this.labelStageName.Name = "labelStageName";
+            this.labelStageName.Size = new System.Drawing.Size(54, 21);
+            this.labelStageName.TabIndex = 7;
+            this.labelStageName.Text = "Name";
             // 
             // textBoxIndex
             // 
@@ -97,8 +97,8 @@
             this.groupBoxStage.Controls.Add(this.labelIndex);
             this.groupBoxStage.Controls.Add(this.buttonAdd);
             this.groupBoxStage.Controls.Add(this.textBoxIndex);
-            this.groupBoxStage.Controls.Add(this.textBoxName);
-            this.groupBoxStage.Controls.Add(this.labelName);
+            this.groupBoxStage.Controls.Add(this.textBoxStageName);
+            this.groupBoxStage.Controls.Add(this.labelStageName);
             this.groupBoxStage.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxStage.Location = new System.Drawing.Point(1, 62);
             this.groupBoxStage.Name = "groupBoxStage";
@@ -124,8 +124,8 @@
         #endregion
 
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.TextBox textBoxStageName;
+        private System.Windows.Forms.Label labelStageName;
         private System.Windows.Forms.TextBox textBoxIndex;
         private System.Windows.Forms.Label labelIndex;
         private System.Windows.Forms.GroupBox groupBoxStage;

@@ -40,7 +40,7 @@ namespace CourseProject_TheaterHub
         private void ShowStage()
         {
             textBoxIndex.Text = Convert.ToString(stage.Index);
-            textBoxName.Text = stage.Name;
+            textBoxStageName.Text = stage.Name;
         }
 
         private void UpdateDataGridZones()
@@ -57,7 +57,7 @@ namespace CourseProject_TheaterHub
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxName.Focus();
+                textBoxStageName.Focus();
             }
         }
 
@@ -106,18 +106,18 @@ namespace CourseProject_TheaterHub
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (!ParametersValidator.NameValidator(textBoxName.Text))
+            if (!ParametersValidator.NameValidator(textBoxStageName.Text))
             {
                 MessageBox.Show(this,
                                 "There was an error in the name of the stage: the name must be more than two characters long",
                                 "Name stage error",
                                 MessageBoxButtons.OK);
-                textBoxName.Focus();
+                textBoxStageName.Focus();
                 return;
             }
 
             isValid = true;
-            stage.Name = textBoxName.Text;
+            stage.Name = textBoxStageName.Text;
 
             this.Close();
         }

@@ -59,7 +59,7 @@ namespace CourseProject_TheaterHub
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxName.Focus();
+                textBoxPerformanceName.Focus();
             }
         }
         private void textBoxName_KeyUp(object sender, KeyEventArgs e)
@@ -86,13 +86,13 @@ namespace CourseProject_TheaterHub
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!ParametersValidator.NameValidator(textBoxName.Text))
+            if (!ParametersValidator.NameValidator(textBoxPerformanceName.Text))
             {
                 MessageBox.Show(this,
                                 "There was an error in the name of the Performance: the name must be more than two characters long",
                                 "Performance name error",
                                 MessageBoxButtons.OK);
-                textBoxName.Focus();
+                textBoxPerformanceName.Focus();
                 return;
             }
 
@@ -107,10 +107,14 @@ namespace CourseProject_TheaterHub
             }
 
             isValid = true;
-            newPerformance = new Performance(dateTimePickerPerfomanceDate.Value, 
-                textBoxName.Text, 
-                Convert.ToDouble(textBoxBaseTicketPrice.Text), 
-                stages[comboBoxStage.SelectedIndex].Index);
+            DateTime performanceDate = dateTimePickerPerfomanceDate.Value;
+            DateTime performanceTime =dateTimePickerPerformanceTime.Value;
+            DateTime performanceDateTime = performanceDate.Add(performanceTime.TimeOfDay);
+            string performanceName = textBoxPerformanceName.Text;
+            double baseTicketPrice = Convert.ToDouble(textBoxBaseTicketPrice.Text);
+            int stageIndex = stages[comboBoxStage.SelectedIndex].Index;
+
+            newPerformance = new Performance(performanceDateTime, performanceName, baseTicketPrice, stageIndex);
 
             this.Close();
         }
