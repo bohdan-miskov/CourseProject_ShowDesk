@@ -71,6 +71,14 @@ namespace CourseProject_ShowDesk
 
         private void addZoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AddZone();
+
+            UpdateDataGridZones();
+            DisableEditAndRemoveZone();
+        }
+
+        private void AddZone()
+        {
             AddEditZoneForm addZoneForm = new AddEditZoneForm(stage, null);
             addZoneForm.ShowDialog(this);
 
@@ -78,12 +86,17 @@ namespace CourseProject_ShowDesk
             {
                 stage = addZoneForm.GetStage();
             }
+        }
+
+        private void editZoneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditZone();
 
             UpdateDataGridZones();
             DisableEditAndRemoveZone();
         }
 
-        private void editZoneToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditZone()
         {
             AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, dataGridViewZones.CurrentRow.Index);
             editZoneForm.ShowDialog(this);
@@ -92,19 +105,33 @@ namespace CourseProject_ShowDesk
             {
                 stage = editZoneForm.GetStage();
             }
-
-            UpdateDataGridZones();
-            DisableEditAndRemoveZone();
         }
 
         private void removeZoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            stage.removeZone(dataGridViewZones.CurrentRow.Index);
+            stage.RemoveZone(dataGridViewZones.CurrentRow.Index);
             UpdateDataGridZones();
             DisableEditAndRemoveZone();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (ValidateOfStage())
+            {
+                isValid = true;
+
+                SaveStage();
+
+                this.Close();
+            }
+        }
+
+        private void SaveStage()
+        {
+            stage.Name = textBoxStageName.Text;
+        }
+
+        private bool ValidateOfStage()
         {
             if (!ParametersValidator.NameValidator(textBoxStageName.Text))
             {
@@ -113,13 +140,9 @@ namespace CourseProject_ShowDesk
                                 "Name stage error",
                                 MessageBoxButtons.OK);
                 textBoxStageName.Focus();
-                return;
+                return false;
             }
-
-            isValid = true;
-            stage.Name = textBoxStageName.Text;
-
-            this.Close();
+            return true;
         }
 
         private void DisableEditAndRemoveZone()

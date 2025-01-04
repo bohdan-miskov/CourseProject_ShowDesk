@@ -11,9 +11,9 @@ namespace CourseProject_ShowDesk
     {
         public static void ValidatorIntDigit(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
+            char symbol = e.KeyChar;
 
-            if (!(Char.IsDigit(number) || number == '\b'))
+            if (IsDigitOrBackspace(symbol))
             {
                 e.Handled = true;
             }
@@ -21,9 +21,9 @@ namespace CourseProject_ShowDesk
 
         public static void ValidatorDoubleDigit(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
+            char symbol = e.KeyChar;
 
-            if (!(Char.IsDigit(number) || number == '\b' || number == ','))
+            if (!(IsDigitOrBackspace(symbol) || symbol == ','))
             {
                 e.Handled = true;
             }
@@ -31,9 +31,9 @@ namespace CourseProject_ShowDesk
 
         public static void ValidatorLetter(object sender, KeyPressEventArgs e)
         {
-            char number = e.KeyChar;
+            char symbol = e.KeyChar;
 
-            if ((Char.IsDigit(number) ||  number == ','))
+            if (IsLetterOrBackspace(symbol))
             {
                 e.Handled = true;
             }
@@ -41,46 +41,27 @@ namespace CourseProject_ShowDesk
 
         public static bool NameValidator(string name)
         {
-            if (name.Length > 2)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return name.Length > 2 && !string.IsNullOrWhiteSpace(name);
         }
 
         public static bool DoubleValidator(string value)
         {
-            double currentValue;
-
-            if (value.Length == 0)
-            {
-                return false;
-            }
-
-            try
-            {
-                currentValue = Convert.ToDouble(value);
-            }
-            catch (FormatException)
-            {
-                return false;
-            }
-            catch (OverflowException)
-            {
-                return false;
-            }
-
-            if (currentValue < 0)
-            {
-                return false;
-            }
-
-            return true;
+            return double.TryParse(value, out double currentValue) && currentValue >= 0;
         }
 
+        public static bool IntValidator(string value)
+        {
+            return int.TryParse(value, out int currentValue) && currentValue >= 0;
+        }
 
+        private static bool IsDigitOrBackspace(char symbol)
+        {
+            return (Char.IsDigit(symbol) || symbol == '\b');
+        }
+
+        private static bool IsLetterOrBackspace(char symbol)
+        {
+            return (Char.IsLetter(symbol) || symbol == '\b');
+        }
     }
 }

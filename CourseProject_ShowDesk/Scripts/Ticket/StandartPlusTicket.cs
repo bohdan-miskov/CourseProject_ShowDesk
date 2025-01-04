@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts
 {
-    public class StandardPlusTicket : Ticket
+    public class StandardPlusTicket : StandardTicket
     {
         protected string drink;
 
@@ -14,11 +14,12 @@ namespace CourseProject_ShowDesk.Scripts
         {
             typeIncrease = 1.5;
             type = "Standard Plus";
+            drink = "Сoffee";
         }
 
         public StandardPlusTicket(int index, int position, bool reserved, string drink) : base(index, position, reserved)
         {
-            this.drink = drink;
+            Drink = drink;
             typeIncrease = 1.5;
             type = "Standard Plus";
         }
@@ -31,6 +32,10 @@ namespace CourseProject_ShowDesk.Scripts
             }
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Drink cannot be null, empty, or whitespace.", nameof(Drink));
+                }
                 drink = value;
             }
         }

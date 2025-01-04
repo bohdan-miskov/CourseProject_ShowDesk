@@ -81,6 +81,39 @@ namespace CourseProject_ShowDesk
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            if (ValidateOfZone())
+            {
+                if (AddZone())
+                {
+                    isValid = true;
+
+                    this.Close();
+                }
+            }
+        }
+
+        private bool AddZone()
+        {
+            string zoneName = textBoxZoneName.Text;
+            double increase = Convert.ToDouble(textBoxIncrease.Text);
+            int startPosition = Convert.ToInt32(numericUpDownStartPosition.Value);
+            int endPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
+
+            if (!stage.AddZone(new Zone(zoneName, increase, startPosition, endPosition)))
+            {
+                MessageBox.Show(this,
+                "The starting position cannot be larger than the final position and the range of positions in the new sector cannot intersect with any range of positions in another sector of the hall",
+                "Range of positions error",
+                MessageBoxButtons.OK);
+                numericUpDownStartPosition.Focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidateOfZone()
+        {
             if (!ParametersValidator.NameValidator(textBoxZoneName.Text))
             {
                 MessageBox.Show(this,
@@ -88,7 +121,7 @@ namespace CourseProject_ShowDesk
                                 "Name zone error",
                                 MessageBoxButtons.OK);
                 textBoxZoneName.Focus();
-                return;
+                return false;
             }
 
             if (!ParametersValidator.DoubleValidator(textBoxIncrease.Text))
@@ -98,25 +131,9 @@ namespace CourseProject_ShowDesk
                                 "Increase zone error",
                                 MessageBoxButtons.OK);
                 textBoxIncrease.Focus();
-                return;
+                return false;
             }
-
-            if (!stage.AddZone(new Zone(textBoxZoneName.Text,
-                Convert.ToDouble(textBoxIncrease.Text),
-                Convert.ToInt32(numericUpDownStartPosition.Value),
-                Convert.ToInt32(numericUpDownEndPosition.Value))))
-            {
-                MessageBox.Show(this,
-                "The starting position cannot be larger than the final position and the range of positions in the new sector cannot intersect with any range of positions in another sector of the hall",
-                "Range of positions error",
-                MessageBoxButtons.OK);
-                numericUpDownStartPosition.Focus();
-                return;
-            }
-
-            isValid = true;
-
-            this.Close();
+            return true;
         }
 
         public Stage GetStage()

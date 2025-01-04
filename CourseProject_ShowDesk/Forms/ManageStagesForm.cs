@@ -49,14 +49,14 @@ namespace CourseProject_ShowDesk
 
         private void SaveStagesToFile()
         {
-            FileHandler.SaveStagesToJson(stageFileName, stages);
+            FileHandler.SaveToJson(stageFileName, stages);
         }
 
         private void LoadStagesFromFile()
         {
             if (File.Exists(stageFileName))
             {
-                stages = FileHandler.LoadStagesFromJson(stageFileName);
+                stages = FileHandler.LoadFromJson<Stage>(stageFileName);
             }
             else
             {
@@ -69,6 +69,14 @@ namespace CourseProject_ShowDesk
 
         private void addStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AddStage();
+
+            UpdateDataGridStages();
+            DisableEditAndRemoveStage();
+        }
+
+        private void AddStage()
+        {
             AddStageForm addStageForm = new AddStageForm(stages);
             addStageForm.ShowDialog(this);
 
@@ -76,12 +84,17 @@ namespace CourseProject_ShowDesk
             {
                 stages.Add(addStageForm.GetNewStage());
             }
+        }
+
+        private void editStageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditStage();
 
             UpdateDataGridStages();
             DisableEditAndRemoveStage();
         }
 
-        private void editStageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditStage()
         {
             EditStageForm editStageForm = new EditStageForm(stages[dataGridViewStages.CurrentRow.Index]);
             editStageForm.ShowDialog(this);
@@ -90,14 +103,12 @@ namespace CourseProject_ShowDesk
             {
                 stages[dataGridViewStages.CurrentRow.Index] = editStageForm.GetStage();
             }
-
-            UpdateDataGridStages();
-            DisableEditAndRemoveStage();
         }
 
         private void removeStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             stages.RemoveAt(dataGridViewStages.CurrentRow.Index);
+
             UpdateDataGridStages();
             DisableEditAndRemoveStage();
         }
@@ -105,7 +116,6 @@ namespace CourseProject_ShowDesk
         private void ManageStagesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveStagesToFile();
-            Owner.Show();
         }
 
         private void DisableEditAndRemoveStage()

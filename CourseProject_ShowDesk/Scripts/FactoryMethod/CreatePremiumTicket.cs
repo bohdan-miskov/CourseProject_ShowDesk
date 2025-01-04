@@ -18,7 +18,7 @@ namespace CourseProject_ShowDesk.FactoryMethod
             this.souvenir = souvenir;
         }
 
-        public Ticket CreateTicket()
+        public StandardTicket CreateTicket()
         {
             return new PremiumTicket
             {

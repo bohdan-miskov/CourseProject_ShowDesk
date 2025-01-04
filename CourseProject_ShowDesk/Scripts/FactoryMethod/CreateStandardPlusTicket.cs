@@ -15,7 +15,7 @@ namespace CourseProject_ShowDesk.FactoryMethod
             this.drink = drink;
         }
 
-        public Ticket CreateTicket()
+        public StandardTicket CreateTicket()
         {
             return new StandardPlusTicket
             {

@@ -8,7 +8,7 @@ namespace CourseProject_ShowDesk
 {
     [Serializable]
 
-    public class Ticket
+    public class StandardTicket
     {
         protected int index;
         protected int position;
@@ -17,18 +17,18 @@ namespace CourseProject_ShowDesk
         protected string type="Standard";
         protected double typeIncrease=1;
 
-        public Ticket()
+        public StandardTicket()
         {
             index = 0;
-            position = -1;
+            position = 0;
             calculatedPrice = 0.0;
             reserved = false;
         }
-        public Ticket(int index, int position, bool reserved)
+        public StandardTicket(int index, int position, bool reserved)
         {
-            this.index = index;
-            this.position = position;
-            this.reserved = reserved;
+            Index = index;
+            Position = position;
+            Reserved = reserved;
 
         }
         public int Index
@@ -41,7 +41,7 @@ namespace CourseProject_ShowDesk
             {
                 if (value < 0 || value > int.MaxValue)
                 {
-                    throw new ArgumentOutOfRangeException($"The Ticket ID value must be between 0 and {int.MaxValue}");
+                    throw new ArgumentOutOfRangeException(nameof(Index), $"The Ticket ID must be between 0 and {int.MaxValue}.");
                 }
                 index = value;
             }
@@ -54,7 +54,11 @@ namespace CourseProject_ShowDesk
             }
             set
             {
-                position = (value < 0) ? -1 : value;
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Position), "Position cannot be negative.");
+                }
+                position = value;
             }
         }
         public double CalculatedPrice
@@ -65,7 +69,11 @@ namespace CourseProject_ShowDesk
             }
             set
             {
-                calculatedPrice = (value < 0) ? -1 : value;
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(CalculatedPrice), "Calculated price cannot be negative.");
+                }
+                calculatedPrice = value;
             }
         }
         public bool Reserved
@@ -88,6 +96,10 @@ namespace CourseProject_ShowDesk
             }
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Ticket type cannot be null, empty, or whitespace.", nameof(Type));
+                }
                 type = value;
             }
         }
@@ -96,9 +108,18 @@ namespace CourseProject_ShowDesk
             reserved = !reserved;
         }
 
-        public void CalculatePrice(double basePrice, double increase)
+        public void CalculatePrice(double price, double increase)
         {
-            calculatedPrice = basePrice * increase * typeIncrease;
+            if (price < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(price), "Base price cannot be negative.");
+            }
+
+            if (increase <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(increase), "Price increase factor must be greater than 0.");
+            }
+            calculatedPrice = price * increase * typeIncrease;
         }
 
         public virtual string GetAdditionalServices()

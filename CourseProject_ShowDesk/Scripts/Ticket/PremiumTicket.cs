@@ -12,13 +12,14 @@ namespace CourseProject_ShowDesk.Scripts
 
         public PremiumTicket()
         {
+            souvenir = "Poster";
             typeIncrease = 3;
             type = "Premium";
         }
 
         public PremiumTicket(int index, int position, bool reserved, string drink, string souvenir) : base(index, position, reserved, drink)
         {
-            this.souvenir = souvenir;
+            Souvenir = souvenir;
             typeIncrease = 3;
             type = "Premium";
         }
@@ -31,6 +32,10 @@ namespace CourseProject_ShowDesk.Scripts
             }
             set
             {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Souvenir cannot be null, empty, or whitespace.", nameof(Souvenir));
+                }
                 souvenir = value;
             }
         }

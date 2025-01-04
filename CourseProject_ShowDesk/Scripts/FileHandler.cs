@@ -10,40 +10,22 @@ namespace CourseProject_ShowDesk
 {
     public class FileHandler
     {
-        public static void SavePerformancesToJson(string fileName, List<Performance> performances)
+        public static void SaveToJson<T>(string fileName, List<T> objects)
         {
-            string jsonPerformances = JsonConvert.SerializeObject(performances, Formatting.Indented, new JsonSerializerSettings
+            string jsonData = JsonConvert.SerializeObject(objects, Formatting.Indented, new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All
             });
-            File.WriteAllText(fileName, jsonPerformances);
+            File.WriteAllText(fileName, jsonData);
         }
 
-        public static List<Performance> LoadPerformancesFromJson(string fileName)
+        public static List<T> LoadFromJson<T>(string fileName)
         {
-            var jsonPerformances = JsonConvert.DeserializeObject<List<Performance>>(File.ReadAllText(fileName), new JsonSerializerSettings
+            string jsonData = File.ReadAllText(fileName);
+            return JsonConvert.DeserializeObject<List<T>>(jsonData, new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All
             });
-            return jsonPerformances;
-        }
-
-        public static void SaveStagesToJson(string fileName, List<Stage> stages)
-        {
-            string jsonStages = JsonConvert.SerializeObject(stages, Formatting.Indented, new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.All
-            });
-            File.WriteAllText(fileName, jsonStages);
-        }
-
-        public static List<Stage> LoadStagesFromJson(string fileName)
-        {
-            var jsonStages = JsonConvert.DeserializeObject<List<Stage>>(File.ReadAllText(fileName), new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.All
-            });
-            return jsonStages;
         }
 
     }

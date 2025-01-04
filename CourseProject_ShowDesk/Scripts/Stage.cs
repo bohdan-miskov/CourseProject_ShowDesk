@@ -23,8 +23,8 @@ namespace CourseProject_ShowDesk
         }
         public Stage(int index, string name)
         {
-            this.index = index;
-            this.name = name;
+            Index = index;
+            Name = name;
             zones = new List<Zone>();
         }
 
@@ -38,7 +38,7 @@ namespace CourseProject_ShowDesk
             {
                 if (value < 0 || value > int.MaxValue)
                 {
-                    throw new ArgumentOutOfRangeException($"The Stage ID value must be between 0 and {int.MaxValue}");
+                    throw new ArgumentOutOfRangeException(nameof(Index), $"The Stage ID value must be between 0 and {int.MaxValue}.");
                 }
                 index = value;
             }
@@ -51,7 +51,11 @@ namespace CourseProject_ShowDesk
             }
             set
             {
-                name = (value.Length > 0) ? value : "Undefined";
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Name of stage cannot be empty or whitespace.", nameof(Name));
+                }
+                name = value;
             }
         }
         public List<Zone> Zones
@@ -62,38 +66,46 @@ namespace CourseProject_ShowDesk
             }
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(Zones), "Zones list cannot be null.");
+                }
                 zones = value;
             }
         }
 
-        public bool AddZone(Zone newZone)
+        public bool AddZone(Zone zone)
+        {
+            if (ValidateZone(zone))
+            {
+                zones.Add(zone);
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool ValidateZone(Zone zone)
         {
 
-            if (newZone.StartPosition < 0 || newZone.EndPosition < 0)
+            if (zone.StartPosition < 0 || zone.EndPosition < 0)
             {
                 return false;
             }
 
-            if (zones.Count == 0)
+            if (zones.Count > 0)
             {
-                zones.Add(newZone);
-                return true;
-            }
-
-            for (int i = 0; i < zones.Count; i++)
-            {
-                if ((newZone.StartPosition < zones[i].StartPosition && newZone.EndPosition < zones[i].StartPosition) ||
-                    (newZone.StartPosition > zones[i].EndPosition && newZone.EndPosition > zones[i].EndPosition))
+                for (int i = 0; i < zones.Count; i++)
                 {
-                    continue;
-                }
-                else
-                {
-                    return false;
+                    if (!(
+                        (zone.StartPosition < zones[i].StartPosition && zone.EndPosition < zones[i].StartPosition) ||
+                        (zone.StartPosition > zones[i].EndPosition && zone.EndPosition > zones[i].EndPosition))
+                        )
+                    {
+                        return false;
+                    }
                 }
             }
-
-            zones.Add(newZone);
 
             return true;
         }
@@ -102,57 +114,21 @@ namespace CourseProject_ShowDesk
         {
             if (index < 0 || index >= zones.Count)
             {
-                return null;
+                throw new ArgumentOutOfRangeException(nameof(index), "Zone index is out of range.");
             }
 
             return zones[index];
         }
 
-        public bool SetZone(Zone newZone, int zoneIndex)
-        {
-            if (newZone.StartPosition < 0 || newZone.EndPosition < 0)
-            {
-                return false;
-            }
-
-            if (zones.Count == 0)
-            {
-                return false;
-            }
-
-            for (int i = 0; i < zones.Count; i++)
-            {
-                if (i == zoneIndex)
-                {
-                    continue;
-                }
-
-                if ((newZone.StartPosition < zones[i].StartPosition && newZone.EndPosition < zones[i].StartPosition) ||
-                    (newZone.StartPosition > zones[i].EndPosition && newZone.EndPosition > zones[i].EndPosition))
-                {
-                    continue;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            zones[zoneIndex] = newZone;
-
-            return true;
-        }
-
-        public bool removeZone(int index)
+        public void RemoveZone(int index)
         {
             if (index < 0 || index >= zones.Count)
             {
-                return false;
+                throw new ArgumentOutOfRangeException(nameof(index), "Zone index is out of range.");
             }
 
             zones.RemoveAt(index);
 
-            return true;
         }
 
         public int GetTotalPositions()
@@ -167,19 +143,21 @@ namespace CourseProject_ShowDesk
 
         public List<int> GetPositions()
         {
-            List<int> temp = new List<int>();
+            List<int> positions = new List<int>();
 
             foreach (Zone zone in zones)
             {
                 for (int i = zone.StartPosition; i <= zone.EndPosition; i++)
                 {
-                    temp.Add(i);
+                    positions.Add(i);
                 }
             }
 
-            temp.Sort();
+            positions.Sort();
 
-            return temp;
+            return positions;
         }
+
+        
     }
 }

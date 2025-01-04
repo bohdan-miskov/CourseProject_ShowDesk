@@ -33,6 +33,16 @@ namespace CourseProject_ShowDesk
 
         private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ChangeOfImage();
+        }
+
+        private void buttonAuthentificate_Click(object sender, EventArgs e)
+        {
+            Authenticate();
+        }
+
+        private void ChangeOfImage()
+        {
             if (comboBoxUser.SelectedIndex == 0)
             {
                 pictureBoxAvatar.Image = Properties.Resources.Administrator;
@@ -47,7 +57,7 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        private void buttonAuthentificate_Click(object sender, EventArgs e)
+        private void Authenticate()
         {
             if (comboBoxUser.SelectedIndex == 0)
             {

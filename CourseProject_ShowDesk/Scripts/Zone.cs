@@ -24,10 +24,10 @@ namespace CourseProject_ShowDesk
         }
         public Zone(string name, double increase, int startPosition, int endPosition)
         {
-            this.name = name;
-            this.increase = increase;
-            this.startPosition = startPosition;
-            this.endPosition = endPosition;
+            Name = name;
+            Increase = increase;
+            StartPosition = startPosition;
+            EndPosition = endPosition;
         }
 
         public string Name
@@ -38,7 +38,11 @@ namespace CourseProject_ShowDesk
             }
             set
             {
-                name = (value.Length > 0) ? value : "Undefined";
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Name of zone cannot be empty or whitespace.", nameof(Name));
+                }
+                name = value;
             }
         }
         public double Increase
@@ -49,7 +53,11 @@ namespace CourseProject_ShowDesk
             }
             set
             {
-                increase = (value < 0) ? 0 : value;
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Increase), "Increase value cannot be negative.");
+                }
+                increase = value;
             }
         }
         public int StartPosition
@@ -60,6 +68,10 @@ namespace CourseProject_ShowDesk
             }
             set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(StartPosition), "StartPosition must be a non-negative integer.");
+                }
                 startPosition = value;
             }
         }
@@ -71,6 +83,16 @@ namespace CourseProject_ShowDesk
             }
             set
             {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(EndPosition), "EndPosition must be a non-negative integer.");
+                }
+
+                if (value < startPosition)
+                {
+                    throw new ArgumentException("EndPosition cannot be less than StartPosition.", nameof(EndPosition));
+                }
+
                 endPosition = value;
             }
         }

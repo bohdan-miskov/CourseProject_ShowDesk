@@ -28,7 +28,6 @@ namespace CourseProject_ShowDesk
 
         public void SetDateLimit()
         {
-            DateTime minDate, maxDate;
             if (performances.Count == 0)
             {
                 groupBoxPeriod.Enabled = false;
@@ -36,18 +35,8 @@ namespace CourseProject_ShowDesk
             }
             else
             {
-                minDate = maxDate = performances[0].PerformanceDateTime;
-                foreach (Performance performance in performances)
-                {
-                    if (minDate > performance.PerformanceDateTime)
-                    {
-                        minDate = performance.PerformanceDateTime;
-                    }
-                    if (maxDate < performance.PerformanceDateTime)
-                    {
-                        maxDate = performance.PerformanceDateTime;
-                    }
-                }
+                DateTime minDate = GetMinDate(performances);
+                DateTime maxDate = GetMaxDate(performances);
 
                 dateTimePickerStartDate.MinDate = minDate;
                 dateTimePickerStartDate.MaxDate = maxDate;
@@ -56,6 +45,36 @@ namespace CourseProject_ShowDesk
                 dateTimePickerStartDate.Value = minDate;
                 dateTimePickerFinishDate.Value = maxDate;
             }
+        }
+
+        private DateTime GetMinDate(List<Performance> performances)
+        {
+            DateTime minDate = performances[0].PerformanceDateTime;
+
+            foreach (Performance performance in performances)
+            {
+                if (minDate > performance.PerformanceDateTime)
+                {
+                    minDate = performance.PerformanceDateTime;
+                }
+            }
+
+            return minDate;
+        }
+
+        private DateTime GetMaxDate(List<Performance> performances)
+        {
+            DateTime maxDate = performances[0].PerformanceDateTime;
+
+            foreach (Performance performance in performances)
+            {
+                if (maxDate < performance.PerformanceDateTime)
+                {
+                    maxDate = performance.PerformanceDateTime;
+                }
+            }
+
+            return maxDate;
         }
 
         private void dateTimePickerFrom_ValueChanged(object sender, EventArgs e)
@@ -68,60 +87,86 @@ namespace CourseProject_ShowDesk
             dateTimePickerStartDate.MaxDate = dateTimePickerFinishDate.Value;
         }
 
-        private static void Swap<T>(List<T> list, int indexA, int indexB)
-        {
-            T tmp = list[indexA];
-            list[indexA] = list[indexB];
-            list[indexB] = tmp;
-        }
-
         private void buttonCalculate_Click(object sender, EventArgs e)
         {
-            chartRevenue.Series.Clear();
-            chartRevenue.Titles.Clear();
+            CreateGraph();
+        }
 
-            chartRevenue.Series.Clear();
+        private void CreateGraph()
+        {
+            ClearGraph();
 
             chartRevenue.Titles.Add("Revenue");
 
             Series series = chartRevenue.Series.Add("Revenue");
 
-            for (int i = 0; i < performances.Count; i++)
+            performances = SortPerformancesByDate(performances);
+
+            Dictionary<string, double> revenueDictionary = CreateRevenueDictionary(performances);
+
+            BuildGraph(series, revenueDictionary);
+        }
+
+        private void ClearGraph()
+        {
+            chartRevenue.Series.Clear();
+            chartRevenue.Titles.Clear();
+
+            chartRevenue.Series.Clear();
+        }
+
+        private List<Performance> SortPerformancesByDate (List<Performance> performances)
+        {
+            for (int i = 0; i < performances.Count - 1; i++)
             {
-                for (int j = 0; j < performances.Count; j++)
+                for (int j = 0; j < performances.Count - i - 1; j++)
                 {
                     if (performances[i].PerformanceDateTime < performances[j].PerformanceDateTime)
                     {
-                        Swap(performances, i, j);
+                        Performance temp = performances[i];
+                        performances[i] = performances[j];
+                        performances[j] = temp;
                     }
                 }
             }
 
-            Dictionary<string, double> data = new Dictionary<string, double>();
-            foreach (Performance spectacle in performances)
-            {
-                DateTime dtfrom = dateTimePickerStartDate.Value.Date;
-                DateTime dtto = dateTimePickerFinishDate.Value;
+            return performances;
+        }
 
-                if ((spectacle.PerformanceDateTime < dtfrom) ||
-                    (spectacle.PerformanceDateTime > dtto))
+        private Dictionary<string, double> CreateRevenueDictionary(List<Performance> performances)
+        {
+            Dictionary<string, double> revenueDictionary = new Dictionary<string, double>();
+
+            foreach (Performance performance in performances)
+            {
+                DateTime dateStart = dateTimePickerStartDate.Value.Date;
+                DateTime dateFinish = dateTimePickerFinishDate.Value.Date;
+
+                if (!(
+                    (performance.PerformanceDateTime < dateStart) ||
+                    (performance.PerformanceDateTime > dateFinish)
+                    ))
                 {
-                    continue;
-                }
-                string key = Convert.ToString(spectacle.PerformanceDateTime.Month) + "." + Convert.ToString(spectacle.PerformanceDateTime.Year);
-                if (data.ContainsKey(key))
-                {
-                    data[key] = data[key] + spectacle.GetRevenue();
-                }
-                else
-                {
-                    data.Add(key, spectacle.GetRevenue());
+                    string key = Convert.ToString(performance.PerformanceDateTime.Month) + "." + Convert.ToString(performance.PerformanceDateTime.Year);
+
+                    if (revenueDictionary.ContainsKey(key))
+                    {
+                        revenueDictionary[key] = revenueDictionary[key] + performance.GetRevenue();
+                    }
+                    else
+                    {
+                        revenueDictionary.Add(key, performance.GetRevenue());
+                    }
                 }
             }
+            return revenueDictionary;
+        }
 
-            foreach (KeyValuePair<string, double> record in data)
+        private void BuildGraph(Series series, Dictionary<string, double> revenueDictionary)
+        {
+            foreach (KeyValuePair<string, double> part in revenueDictionary)
             {
-                series.Points.AddXY(Convert.ToString(record.Key), record.Value);
+                series.Points.AddXY(Convert.ToString(part.Key), part.Value);
             }
         }
     }

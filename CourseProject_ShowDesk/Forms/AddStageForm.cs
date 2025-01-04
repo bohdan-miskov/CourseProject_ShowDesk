@@ -79,6 +79,25 @@ namespace CourseProject_ShowDesk
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            if (ValidateOfStage())
+            {
+                isValid = true;
+
+                AddStage();
+
+                this.Close();
+            }
+        }
+
+        private void AddStage()
+        {
+            string stageName = textBoxStageName.Text;
+
+            newStage = new Stage(index, stageName);
+        }
+
+        private bool ValidateOfStage()
+        {
             if (!ParametersValidator.NameValidator(textBoxStageName.Text))
             {
                 MessageBox.Show(this,
@@ -86,13 +105,9 @@ namespace CourseProject_ShowDesk
                                 "Stage name error",
                                 MessageBoxButtons.OK);
                 textBoxStageName.Focus();
-                return;
+                return false;
             }
-
-            isValid = true;
-            newStage = new Stage(index, textBoxStageName.Text);
-
-            this.Close();
+            return true;
         }
 
         public bool GetIsValid()

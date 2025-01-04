@@ -9,27 +9,58 @@ namespace CourseProject_ShowDesk
     [Serializable]
     public class Performance
     {
-        private DateTime performanceDateTime;
         private string name;       
-        private double basePrice;       
+        private double price;       
+        private DateTime performanceDateTime;
         private int stageIndex;          
-        private List<Ticket> tickets;   
+        private List<StandardTicket> tickets;   
 
         public Performance()
         {
-            performanceDateTime = DateTime.Now;
             name = "";
-            basePrice = 0.0;
+            price = 0.0;
+            performanceDateTime = DateTime.Now;
             stageIndex = -1;
-            tickets = new List<Ticket>();
+            tickets = new List<StandardTicket>();
         }
-        public Performance(DateTime performanceDateTime, string name, double basePrice, int stageIndex)
+        public Performance( string name, double price,DateTime performanceDateTime, int stageIndex)
         {
-            this.performanceDateTime = performanceDateTime;
-            this.name = name;
-            this.basePrice = basePrice;
-            this.stageIndex = stageIndex;
-            this.tickets = new List<Ticket>();
+            Name = name;
+            Price = price;
+            PerformanceDateTime = performanceDateTime;
+            StageIndex = stageIndex;
+            tickets = new List<StandardTicket>();
+        }
+
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Performance name cannot be empty or whitespace.", nameof(Name));
+                }
+                name = value;
+            }
+        }
+        public double Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(Price), "Price cannot be negative.");
+                }
+                price = value;
+            }
         }
 
         public DateTime PerformanceDateTime
@@ -40,31 +71,14 @@ namespace CourseProject_ShowDesk
             }
             set
             {
+                if (value < DateTime.Now)
+                {
+                    throw new ArgumentException("Performance date and time cannot be in the past.", nameof(PerformanceDateTime));
+                }
                 performanceDateTime = value;
             }
         }
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                name = (value.Length > 0) ? value : "Undefined";
-            }
-        }
-        public double Price
-        {
-            get
-            {
-                return basePrice;
-            }
-            set
-            {
-                basePrice = (value < 0) ? 0 : value;
-            }
-        }
+
         public int StageIndex
         {
             get
@@ -73,10 +87,14 @@ namespace CourseProject_ShowDesk
             }
             set
             {
-                stageIndex = (value < 0) ? -1 : value;
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(StageIndex), "Stage index cannot be negative.");
+                }
+                stageIndex = value;
             }
         }
-        public List<Ticket> Tickets
+        public List<StandardTicket> Tickets
         {
             get
             {
@@ -84,22 +102,38 @@ namespace CourseProject_ShowDesk
             }
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException(nameof(Tickets), "Tickets list cannot be null.");
+                }
                 tickets = value;
             }
         }
 
-        public void BuyTicket(Ticket newTicket)
+        public void BuyTicket(StandardTicket newTicket)
         {
+            if (newTicket == null)
+            {
+                throw new ArgumentNullException(nameof(newTicket), "Ticket cannot be null.");
+            }
             tickets.Add(newTicket);
         }
 
         public void ChangeTicketStatus(int ticketIndex)
         {
+            if (ticketIndex < 0 || ticketIndex >= tickets.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(ticketIndex), "Ticket index is out of range.");
+            }
             tickets[ticketIndex].ChangeStatus();
         }
 
         public void RemoveTicket(int ticketIndex)
         {
+            if (ticketIndex < 0 || ticketIndex >= tickets.Count)
+            {
+                throw new ArgumentOutOfRangeException(nameof(ticketIndex), "Ticket index is out of range.");
+            }
             tickets.RemoveAt(ticketIndex);
         }
 
@@ -110,9 +144,15 @@ namespace CourseProject_ShowDesk
 
         public double GetRevenue()
         {
+
+            if (tickets == null || tickets.Count == 0)
+            {
+                throw new InvalidOperationException("No tickets available to calculate revenue.");
+            }
+
             double revenue = 0.0;
 
-            foreach (Ticket ticket in tickets)
+            foreach (StandardTicket ticket in tickets)
             {
                 revenue += ticket.CalculatedPrice;
             }

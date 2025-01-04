@@ -90,7 +90,7 @@
             this.labelBaseTicketPrice.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.labelBaseTicketPrice.Size = new System.Drawing.Size(103, 25);
             this.labelBaseTicketPrice.TabIndex = 14;
-            this.labelBaseTicketPrice.Text = "Ticket price";
+            this.labelBaseTicketPrice.Text = "StandardTicket price";
             // 
             // labelPerfomanceDate
             // 

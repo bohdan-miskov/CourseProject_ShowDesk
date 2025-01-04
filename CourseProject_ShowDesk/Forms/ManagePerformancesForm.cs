@@ -81,10 +81,10 @@ namespace CourseProject_ShowDesk
             return 0;
         }
 
-        private int GetSoldTickets(List<Ticket> tickets)
+        private int GetSoldTickets(List<StandardTicket> tickets)
         {
             int counter = 0;
-            foreach (Ticket ticket in tickets)
+            foreach (StandardTicket ticket in tickets)
             {
                 if (!ticket.Reserved)
                 {
@@ -94,10 +94,10 @@ namespace CourseProject_ShowDesk
             return counter;
         }
 
-        private int GetReservedTickets(List<Ticket> tickets)
+        private int GetReservedTickets(List<StandardTicket> tickets)
         {
             int counter = 0;
-            foreach (Ticket ticket in tickets)
+            foreach (StandardTicket ticket in tickets)
             {
                 if (ticket.Reserved)
                 {
@@ -109,14 +109,14 @@ namespace CourseProject_ShowDesk
 
         private void SavePerformancesToFile()
         {
-            FileHandler.SavePerformancesToJson(performanceFileName, performances);
+            FileHandler.SaveToJson(performanceFileName, performances);
         }
 
         private void LoadPerformancesFromFile()
         {
             if (File.Exists(performanceFileName))
             {
-                performances = FileHandler.LoadPerformancesFromJson(performanceFileName);
+                performances = FileHandler.LoadFromJson<Performance>(performanceFileName);
             }
             else
             {
@@ -131,7 +131,7 @@ namespace CourseProject_ShowDesk
         {
             if (File.Exists(stageFileName))
             {
-                stages = FileHandler.LoadStagesFromJson(stageFileName);
+                stages = FileHandler.LoadFromJson<Stage>(stageFileName);
             }
             else
             {
@@ -174,6 +174,14 @@ namespace CourseProject_ShowDesk
 
         private void addSpecToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AddPerformance();
+
+            UpdateDataGridPerformances();
+            DisableEditAndRemoveStage();
+        }
+
+        private void AddPerformance()
+        {
             AddPerformanceForm addPerformanceForm = new AddPerformanceForm(stages, performances);
             addPerformanceForm.BackgroundImage = Properties.Resources.formBackground;
             addPerformanceForm.ShowDialog();
@@ -182,12 +190,17 @@ namespace CourseProject_ShowDesk
             {
                 performances.Add(addPerformanceForm.GetNewPerformance());
             }
+        }
+
+        private void editSpecToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditPerformance();
 
             UpdateDataGridPerformances();
             DisableEditAndRemoveStage();
         }
 
-        private void editSpecToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditPerformance()
         {
             EditPerformanceForm editPerformanceForm = new EditPerformanceForm(stages, performances[dataGridViewPerformances.CurrentRow.Index]);
             editPerformanceForm.ShowDialog(this);
@@ -196,19 +209,22 @@ namespace CourseProject_ShowDesk
             {
                 performances[dataGridViewPerformances.CurrentRow.Index] = editPerformanceForm.GetNewPerformance();
             }
-
-            UpdateDataGridPerformances();
-            DisableEditAndRemoveStage();
         }
 
         private void removeSpecToolStripMenuItem_Click(object sender, EventArgs e)
         {
             performances.RemoveAt(dataGridViewPerformances.CurrentRow.Index);
+
             UpdateDataGridPerformances();
             DisableEditAndRemoveStage();
         }
 
         private void revenueReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenRevenue();
+        }
+
+        private void OpenRevenue()
         {
             ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performances);
             viewRevenueForm.ShowDialog(this);

@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.FactoryMethod
 {
-    public class CreateStandardTicket:ICreateTicket
+    public interface ICreateTicket
     {
-        public Ticket CreateTicket() 
-        { 
-            return new Ticket(); 
-        }
+        StandardTicket CreateTicket();
     }
 }

@@ -26,7 +26,7 @@ namespace CourseProject_ShowDesk
             this.stages = stages;
             this.performance = performance;
 
-            ShowZone();
+            PopulateFields();
 
             UpdateDataGridTickets();
 
@@ -36,7 +36,7 @@ namespace CourseProject_ShowDesk
         }
 
 
-        private void ShowZone()
+        private void PopulateFields()
         {
             dateTimePickerPerfomanceDate.Value = performance.PerformanceDateTime;
             dateTimePickerPerformanceTime.Value = performance.PerformanceDateTime;
@@ -54,7 +54,7 @@ namespace CourseProject_ShowDesk
         {
             dataGridViewTickets.Rows.Clear();
 
-            foreach (Ticket ticket in performance.Tickets)
+            foreach (StandardTicket ticket in performance.Tickets)
             {
                 dataGridViewTickets.Rows.Add(ticket.Index, ticket.Type, ticket.Position, ticket.CalculatedPrice, Convert.ToString(ticket.Reserved ? "Yes" : "No"), ticket.GetAdditionalServices());
             }
@@ -127,41 +127,36 @@ namespace CourseProject_ShowDesk
             }
             else
             {
-                for (int i = 0; i < stages.Count; i++)
+                comboBoxStage.SelectedIndex = GetIndexOfStage();
+            }
+        }
+
+        private int GetIndexOfStage()
+        {
+            for (int i = 0; i < stages.Count; i++)
+            {
+                if (stages[i].Index == performance.StageIndex)
                 {
-                    if (stages[i].Index == performance.StageIndex)
-                    {
-                        comboBoxStage.SelectedIndex = i;
-                        break;
-                    }
+                    return i;
                 }
             }
+            return -1;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (!ParametersValidator.NameValidator(textBoxPerformanceName.Text))
+            if (ValidateOfPerformance())
             {
-                MessageBox.Show(this,
-                                "There was an error in the name of the performance: the name should be more than two characters long",
-                                "Performance name error",
-                                MessageBoxButtons.OK);
-                textBoxPerformanceName.Focus();
-                return;
+                isValid = true;
+
+                SavePerformance();
+
+                this.Close();
             }
+        }
 
-            if (!ParametersValidator.DoubleValidator(textBoxBaseTicketPrice.Text))
-            {
-                MessageBox.Show(this,
-                                "The base price of the ticket must be entered in the format 0.000, cannot be negative or empty",
-                                "Ticket price error",
-                                MessageBoxButtons.OK);
-                textBoxBaseTicketPrice.Focus();
-                return;
-            }
-
-            isValid = true;
-
+        private void SavePerformance()
+        {
             performance.PerformanceDateTime = dateTimePickerPerfomanceDate.Value.Add(dateTimePickerPerformanceTime.Value.TimeOfDay);
             performance.Name = textBoxPerformanceName.Text;
             performance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
@@ -171,13 +166,40 @@ namespace CourseProject_ShowDesk
                 performance.StageIndex = stages[comboBoxStage.SelectedIndex].Index;
                 performance.RemoveAllTickets();
             }
+        }
 
-            this.Close();
+        private bool ValidateOfPerformance()
+        {
+            if (!ParametersValidator.NameValidator(textBoxPerformanceName.Text))
+            {
+                MessageBox.Show(this,
+                                "There was an error in the name of the performance: the name should be more than two characters long",
+                                "Performance name error",
+                                MessageBoxButtons.OK);
+                textBoxPerformanceName.Focus();
+                return false;
+            }
+
+            if (!ParametersValidator.DoubleValidator(textBoxBaseTicketPrice.Text))
+            {
+                MessageBox.Show(this,
+                                "The base price of the ticket must be entered in the format 0.000, cannot be negative or empty",
+                                "StandardTicket price error",
+                                MessageBoxButtons.OK);
+                textBoxBaseTicketPrice.Focus();
+                return false;
+            }
+
+            return true;
         }
 
         private void BuyTicketFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            BuyOfTicket();
+        }
 
+        private void BuyOfTicket()
+        {
             BuyTicketForm buyTicketForm = new BuyTicketForm(stages, performance);
             buyTicketForm.ShowDialog(this);
 

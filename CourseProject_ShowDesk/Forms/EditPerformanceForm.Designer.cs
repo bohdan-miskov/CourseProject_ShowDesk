@@ -88,7 +88,7 @@
             this.ticketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ticketToolStripMenuItem.Name = "ticketToolStripMenuItem";
             this.ticketToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
-            this.ticketToolStripMenuItem.Text = "Ticket";
+            this.ticketToolStripMenuItem.Text = "StandardTicket";
             // 
             // ChangeStatusToolStripMenuItem
             // 
@@ -147,7 +147,7 @@
             this.labelTicketPrice.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.labelTicketPrice.Size = new System.Drawing.Size(103, 25);
             this.labelTicketPrice.TabIndex = 14;
-            this.labelTicketPrice.Text = "Ticket price";
+            this.labelTicketPrice.Text = "StandardTicket price";
             // 
             // labelPerfomanceDate
             // 
