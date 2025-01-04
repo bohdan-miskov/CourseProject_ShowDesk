@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk
 {
@@ -14,8 +10,8 @@ namespace CourseProject_ShowDesk
         protected int position;
         protected double calculatedPrice;
         protected bool reserved;
-        protected string type="Standard";
-        protected double typeIncrease=1;
+        protected string type = "Standard";
+        protected double typeIncrease = 1;
 
         public StandardTicket()
         {
@@ -127,7 +123,7 @@ namespace CourseProject_ShowDesk
             return "None";
         }
 
-    }  
+    }
 }
 
 

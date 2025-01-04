@@ -1,13 +1,8 @@
 ﻿using CourseProject_ShowDesk.Scripts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.FactoryMethod
 {
-    public class CreatePremiumTicket:ICreateTicket
+    public class CreatePremiumTicket : ICreateTicket
     {
         private string drink;
         private string souvenir;
@@ -23,7 +18,7 @@ namespace CourseProject_ShowDesk.FactoryMethod
             return new PremiumTicket
             {
                 Drink = drink,
-                Souvenir=souvenir
+                Souvenir = souvenir
             };
 
         }

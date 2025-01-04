@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Collections.Specialized.BitVector32;
 
 namespace CourseProject_ShowDesk
 {
 
     [Serializable]
-    public class Stage 
+    public class Stage
     {
-        private int index;        
-        private string name;        
-        private List<Zone> zones;  
+        private int index;
+        private string name;
+        private List<Zone> zones;
 
         public Stage()
         {
@@ -158,6 +154,6 @@ namespace CourseProject_ShowDesk
             return positions;
         }
 
-        
+
     }
 }

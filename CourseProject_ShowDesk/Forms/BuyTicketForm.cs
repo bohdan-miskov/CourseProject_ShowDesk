@@ -1,15 +1,7 @@
 ﻿using CourseProject_ShowDesk.FactoryMethod;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Collections.Specialized.BitVector32;
 
 namespace CourseProject_ShowDesk
 {
@@ -37,7 +29,7 @@ namespace CourseProject_ShowDesk
             this.performance = performance;
 
             CreateTicketIndex();
-            
+
             textBoxIndex.Text = Convert.ToString(index);
 
             PopulateComboBox();
@@ -53,7 +45,7 @@ namespace CourseProject_ShowDesk
         {
             Random rnd = new Random();
             index = Convert.ToInt32(DateTime.Now.Second);
-            index =  Convert.ToInt32( index * rnd.Next(30,100));
+            index = Convert.ToInt32(index * rnd.Next(30, 100));
         }
 
         private void PopulateComboBox()
@@ -65,7 +57,7 @@ namespace CourseProject_ShowDesk
             List<int> positions = GetAllPositions();
 
             positions = ToFindFreePositions(positions);
-            
+
 
             foreach (int position in positions)
             {
@@ -76,9 +68,9 @@ namespace CourseProject_ShowDesk
             {
                 comboBoxPositions.Enabled = false;
                 buttonAdd.Enabled = false;
-                MessageBox.Show(this, 
-                    "All tickets are sold out", 
-                    "Not available", 
+                MessageBox.Show(this,
+                    "All tickets are sold out",
+                    "Not available",
                     MessageBoxButtons.OK);
             }
             else
@@ -128,7 +120,7 @@ namespace CourseProject_ShowDesk
                 double increase = GetIncrease(position);
 
                 StandardTicket ticket = GetTicketType();
-                
+
                 ticket.Index = index;
                 ticket.Position = position;
                 ticket.Reserved = reserved;
@@ -179,7 +171,7 @@ namespace CourseProject_ShowDesk
 
         private void ChangeTicketInfo()
         {
-            if(comboBoxTicketType.SelectedIndex == 0)
+            if (comboBoxTicketType.SelectedIndex == 0)
             {
                 labelInfo.Text = "Only position";
                 formHeight = 355;

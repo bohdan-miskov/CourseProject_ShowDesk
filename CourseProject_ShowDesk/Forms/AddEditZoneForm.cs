@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using static System.Collections.Specialized.BitVector32;
 
 namespace CourseProject_ShowDesk
 {
@@ -29,8 +19,8 @@ namespace CourseProject_ShowDesk
             isValid = false;
             this.stage = stage;
 
-            
-            if(zoneIndex!=null)
+
+            if (zoneIndex != null)
             {
                 this.zoneIndex = Convert.ToInt32(zoneIndex);
                 PopulateFields();

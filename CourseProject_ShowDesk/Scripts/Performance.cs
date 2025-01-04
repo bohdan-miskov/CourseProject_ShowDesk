@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk
 {
     [Serializable]
     public class Performance
     {
-        private string name;       
-        private double price;       
+        private string name;
+        private double price;
         private DateTime performanceDateTime;
-        private int stageIndex;          
-        private List<StandardTicket> tickets;   
+        private int stageIndex;
+        private List<StandardTicket> tickets;
 
         public Performance()
         {
@@ -23,7 +20,7 @@ namespace CourseProject_ShowDesk
             stageIndex = -1;
             tickets = new List<StandardTicket>();
         }
-        public Performance( string name, double price,DateTime performanceDateTime, int stageIndex)
+        public Performance(string name, double price, DateTime performanceDateTime, int stageIndex)
         {
             Name = name;
             Price = price;

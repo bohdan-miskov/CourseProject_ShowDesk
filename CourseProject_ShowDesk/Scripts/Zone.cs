@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk
 {
@@ -10,10 +6,10 @@ namespace CourseProject_ShowDesk
     [Serializable]
     public class Zone
     {
-        private string name;     
-        private double increase;   
-        private int startPosition;    
-        private int endPosition;    
+        private string name;
+        private double increase;
+        private int startPosition;
+        private int endPosition;
 
         public Zone()
         {
