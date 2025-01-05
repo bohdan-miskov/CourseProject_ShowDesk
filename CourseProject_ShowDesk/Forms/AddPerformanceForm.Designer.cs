@@ -76,9 +76,9 @@
             this.labelPerformanceName.Location = new System.Drawing.Point(26, 105);
             this.labelPerformanceName.Name = "labelPerformanceName";
             this.labelPerformanceName.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.labelPerformanceName.Size = new System.Drawing.Size(54, 25);
+            this.labelPerformanceName.Size = new System.Drawing.Size(155, 25);
             this.labelPerformanceName.TabIndex = 15;
-            this.labelPerformanceName.Text = "Name";
+            this.labelPerformanceName.Text = "Performance name";
             // 
             // labelBaseTicketPrice
             // 
@@ -90,7 +90,7 @@
             this.labelBaseTicketPrice.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.labelBaseTicketPrice.Size = new System.Drawing.Size(103, 25);
             this.labelBaseTicketPrice.TabIndex = 14;
-            this.labelBaseTicketPrice.Text = "StandardTicket price";
+            this.labelBaseTicketPrice.Text = "Ticket price";
             // 
             // labelPerfomanceDate
             // 

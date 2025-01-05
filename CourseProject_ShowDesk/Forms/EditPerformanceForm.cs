@@ -28,45 +28,6 @@ namespace CourseProject_ShowDesk
             isValid = false;
         }
 
-
-        private void PopulateFields()
-        {
-            dateTimePickerPerfomanceDate.Value = performance.PerformanceDateTime;
-            dateTimePickerPerformanceTime.Value = performance.PerformanceDateTime;
-            textBoxPerformanceName.Text = performance.Name;
-            textBoxBaseTicketPrice.Text = Convert.ToString(performance.Price);
-
-            textBoxBaseTicketPrice.Enabled = false;
-            comboBoxStage.Enabled = false;
-
-            PopulateComboBox();
-        }
-
-
-        private void UpdateDataGridTickets()
-        {
-            dataGridViewTickets.Rows.Clear();
-
-            foreach (StandardTicket ticket in performance.Tickets)
-            {
-                dataGridViewTickets.Rows.Add(ticket.Index, ticket.Type, ticket.Position, ticket.CalculatedPrice, Convert.ToString(ticket.Reserved ? "Yes" : "No"), ticket.GetAdditionalServices());
-            }
-        }
-
-        private void DisableEditAndRemoveZone()
-        {
-            if (dataGridViewTickets.CurrentRow != null)
-            {
-                ChangeStatusToolStripMenuItem.Enabled = true;
-                removeTicketToolStripMenuItem.Enabled = true;
-            }
-            else
-            {
-                ChangeStatusToolStripMenuItem.Enabled = false;
-                removeTicketToolStripMenuItem.Enabled = false;
-            }
-        }
-
         private void dataGridViewTickets_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveZone();
@@ -106,6 +67,77 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void BuyTicketFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BuyOfTicket();
+        }
+
+        private void ChangeStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            performance.ChangeTicketStatus(dataGridViewTickets.CurrentRow.Index);
+
+            UpdateDataGridTickets();
+            DisableEditAndRemoveZone();
+        }
+
+        private void removeTicketToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            performance.RemoveTicket(dataGridViewTickets.CurrentRow.Index);
+
+            UpdateDataGridTickets();
+            DisableEditAndRemoveZone();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (ValidateOfPerformance())
+            {
+                isValid = true;
+
+                SavePerformance();
+
+                this.Close();
+            }
+        }
+
+        private void PopulateFields()
+        {
+            dateTimePickerPerfomanceDate.Value = performance.PerformanceDateTime;
+            dateTimePickerPerformanceTime.Value = performance.PerformanceDateTime;
+            textBoxPerformanceName.Text = performance.Name;
+            textBoxBaseTicketPrice.Text = Convert.ToString(performance.Price);
+
+            textBoxBaseTicketPrice.Enabled = false;
+            comboBoxStage.Enabled = false;
+
+            PopulateComboBox();
+        }
+
+
+        private void UpdateDataGridTickets()
+        {
+            dataGridViewTickets.Rows.Clear();
+
+            foreach (StandardTicket ticket in performance.Tickets)
+            {
+                dataGridViewTickets.Rows.Add(ticket.Index, ticket.Type, ticket.Position, ticket.CalculatedPrice, Convert.ToString(ticket.Reserved ? "Yes" : "No"), ticket.GetAdditionalServices());
+            }
+        }
+
+        private void DisableEditAndRemoveZone()
+        {
+            if (dataGridViewTickets.CurrentRow != null)
+            {
+                ChangeStatusToolStripMenuItem.Enabled = true;
+                removeTicketToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                ChangeStatusToolStripMenuItem.Enabled = false;
+                removeTicketToolStripMenuItem.Enabled = false;
+            }
+        }
+
         private void PopulateComboBox()
         {
             foreach (Stage stage in stages)
@@ -136,17 +168,6 @@ namespace CourseProject_ShowDesk
             return -1;
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            if (ValidateOfPerformance())
-            {
-                isValid = true;
-
-                SavePerformance();
-
-                this.Close();
-            }
-        }
 
         private void SavePerformance()
         {
@@ -186,11 +207,6 @@ namespace CourseProject_ShowDesk
             return true;
         }
 
-        private void BuyTicketFormToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            BuyOfTicket();
-        }
-
         private void BuyOfTicket()
         {
             BuyTicketForm buyTicketForm = new BuyTicketForm(stages, performance);
@@ -200,22 +216,6 @@ namespace CourseProject_ShowDesk
             {
                 performance.BuyTicket(buyTicketForm.GetNewTicket());
             }
-
-            UpdateDataGridTickets();
-            DisableEditAndRemoveZone();
-        }
-
-        private void ChangeStatusToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            performance.ChangeTicketStatus(dataGridViewTickets.CurrentRow.Index);
-
-            UpdateDataGridTickets();
-            DisableEditAndRemoveZone();
-        }
-
-        private void removeTicketToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            performance.RemoveTicket(dataGridViewTickets.CurrentRow.Index);
 
             UpdateDataGridTickets();
             DisableEditAndRemoveZone();

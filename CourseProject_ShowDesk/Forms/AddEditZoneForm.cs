@@ -27,14 +27,6 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        private void PopulateFields()
-        {
-            textBoxZoneName.Text = stage.GetZone(zoneIndex).Name;
-            textBoxIncrease.Text = Convert.ToString(stage.GetZone(zoneIndex).Increase);
-            numericUpDownStartPosition.Value = stage.GetZone(zoneIndex).StartPosition;
-            numericUpDownEndPosition.Value = stage.GetZone(zoneIndex).EndPosition;
-        }
-
         private void textBoxName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -69,6 +61,11 @@ namespace CourseProject_ShowDesk
             numericUpDownStartPosition.Maximum = numericUpDownEndPosition.Value;
         }
 
+        private void textBoxIncrease_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ParametersValidator.ValidatorDoubleDigit(sender, e);
+        }
+
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (ValidateOfZone())
@@ -80,6 +77,14 @@ namespace CourseProject_ShowDesk
                     this.Close();
                 }
             }
+        }
+
+        private void PopulateFields()
+        {
+            textBoxZoneName.Text = stage.GetZone(zoneIndex).Name;
+            textBoxIncrease.Text = Convert.ToString(stage.GetZone(zoneIndex).Increase);
+            numericUpDownStartPosition.Value = stage.GetZone(zoneIndex).StartPosition;
+            numericUpDownEndPosition.Value = stage.GetZone(zoneIndex).EndPosition;
         }
 
         private bool AddZone()
@@ -134,12 +139,7 @@ namespace CourseProject_ShowDesk
         public bool GetIsValid()
         {
             return isValid;
-        }
-
-        private void textBoxIncrease_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ParametersValidator.ValidatorDoubleDigit(sender, e);
-        }
+        }     
     }
 }
 

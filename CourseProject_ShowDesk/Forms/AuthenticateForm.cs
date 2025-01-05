@@ -6,7 +6,6 @@ namespace CourseProject_ShowDesk
 {
     public partial class AuthenticateForm : MetroFramework.Forms.MetroForm
     {
-
         public AuthenticateForm()
         {
             InitializeComponent();

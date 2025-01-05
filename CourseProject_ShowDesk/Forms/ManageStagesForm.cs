@@ -24,6 +24,45 @@ namespace CourseProject_ShowDesk
             DisableEditAndRemoveStage();
         }
 
+        private void dataGridViewStages_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveStage();
+        }
+
+        private void dataGridViewStages_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveStage();
+        }
+
+        private void addStageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddStage();
+
+            UpdateDataGridStages();
+            DisableEditAndRemoveStage();
+        }
+
+        private void editStageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditStage();
+
+            UpdateDataGridStages();
+            DisableEditAndRemoveStage();
+        }
+
+        private void removeStageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            stages.RemoveAt(dataGridViewStages.CurrentRow.Index);
+
+            UpdateDataGridStages();
+            DisableEditAndRemoveStage();
+        }
+
+        private void ManageStagesForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveStagesToFile();
+        }
+
         private void UpdateDataGridStages()
         {
             dataGridViewStages.Rows.Clear();
@@ -58,13 +97,6 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        private void addStageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddStage();
-
-            UpdateDataGridStages();
-            DisableEditAndRemoveStage();
-        }
 
         private void AddStage()
         {
@@ -77,14 +109,6 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        private void editStageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EditStage();
-
-            UpdateDataGridStages();
-            DisableEditAndRemoveStage();
-        }
-
         private void EditStage()
         {
             EditStageForm editStageForm = new EditStageForm(stages[dataGridViewStages.CurrentRow.Index]);
@@ -94,19 +118,6 @@ namespace CourseProject_ShowDesk
             {
                 stages[dataGridViewStages.CurrentRow.Index] = editStageForm.GetStage();
             }
-        }
-
-        private void removeStageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            stages.RemoveAt(dataGridViewStages.CurrentRow.Index);
-
-            UpdateDataGridStages();
-            DisableEditAndRemoveStage();
-        }
-
-        private void ManageStagesForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SaveStagesToFile();
         }
 
         private void DisableEditAndRemoveStage()
@@ -121,16 +132,6 @@ namespace CourseProject_ShowDesk
                 editStageToolStripMenuItem.Enabled = false;
                 removeStageToolStripMenuItem.Enabled = false;
             }
-        }
-
-        private void dataGridViewStages_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            DisableEditAndRemoveStage();
-        }
-
-        private void dataGridViewStages_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            DisableEditAndRemoveStage();
         }
     }
 }

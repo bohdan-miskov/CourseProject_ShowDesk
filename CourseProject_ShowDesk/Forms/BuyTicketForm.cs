@@ -7,7 +7,6 @@ namespace CourseProject_ShowDesk
 {
     public partial class BuyTicketForm : MetroFramework.Forms.MetroForm
     {
-
         private List<Stage> stages;
 
         private Performance performance;
@@ -34,11 +33,74 @@ namespace CourseProject_ShowDesk
 
             PopulateComboBox();
 
-
             isValid = false;
 
             this.Height = 355;
             groupBoxTicket.Height = 288;
+        }
+
+        private void textBoxIndex_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                comboBoxTicketType.Focus();
+            }
+        }
+
+        private void comboBoxTicketType_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                comboBoxPositions.Focus();
+            }
+        }
+
+        private void comboBoxPositions_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                checkBoxReserved.Focus();
+            }
+        }
+
+        private void checkBoxReserved_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBoxPrice.Focus();
+            }
+        }
+
+        private void textBoxPrice_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAdd.Focus();
+            }
+        }
+
+        private void comboBoxTicketType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeTicketInfo();
+            GetTicketPrice();
+        }
+
+        private void comboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetTicketPrice();
+        }
+
+        private void timerScaleUp_Tick(object sender, EventArgs e)
+        {
+            SlowlyScaleUp();
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            isValid = true;
+            newTicket = ticket;
+
+            this.Close();
         }
 
         private void CreateTicketIndex()
@@ -212,53 +274,6 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        private void textBoxIndex_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                comboBoxTicketType.Focus();
-            }
-        }
-
-        private void comboBoxTicketType_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                comboBoxPositions.Focus();
-            }
-        }
-
-        private void comboBoxPositions_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                checkBoxReserved.Focus();
-            }
-        }
-
-        private void checkBoxReserved_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxPrice.Focus();
-            }
-        }
-        private void textBoxPrice_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonAdd.Focus();
-            }
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            isValid = true;
-            newTicket = ticket;
-
-            this.Close();
-        }
-
         private void GetTicketPrice()
         {
             ticket = CreateTicket();
@@ -282,22 +297,6 @@ namespace CourseProject_ShowDesk
         public StandardTicket GetNewTicket()
         {
             return newTicket;
-        }
-
-        private void comboBoxTicketType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ChangeTicketInfo();
-            GetTicketPrice();
-        }
-
-        private void comboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GetTicketPrice();
-        }
-
-        private void timerScaleUp_Tick(object sender, EventArgs e)
-        {
-            SlowlyScaleUp();
         }
     }
 }

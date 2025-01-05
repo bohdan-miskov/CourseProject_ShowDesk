@@ -25,28 +25,7 @@ namespace CourseProject_ShowDesk
 
             isValid = false;
             newPerformance = new Performance();
-
         }
-
-
-        private void PopulateComboBox()
-        {
-            foreach (Stage stage in stages)
-            {
-                comboBoxStage.Items.Add(stage.Name);
-            }
-
-            if (stages.Count == 0)
-            {
-                comboBoxStage.Enabled = false;
-                buttonAdd.Enabled = false;
-            }
-            else
-            {
-                comboBoxStage.SelectedIndex = 0;
-            }
-        }
-
 
         private void dateTimePickerPerfomanceDate_KeyUp(object sender, KeyEventArgs e)
         {
@@ -77,6 +56,11 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void textBoxBaseTicketPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ParametersValidator.ValidatorDoubleDigit(sender, e);
+        }
+
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             if (ValidateOfPerformance())
@@ -86,6 +70,24 @@ namespace CourseProject_ShowDesk
                 AddPerformance();
 
                 this.Close();
+            }
+        }
+
+        private void PopulateComboBox()
+        {
+            foreach (Stage stage in stages)
+            {
+                comboBoxStage.Items.Add(stage.Name);
+            }
+
+            if (stages.Count == 0)
+            {
+                comboBoxStage.Enabled = false;
+                buttonAdd.Enabled = false;
+            }
+            else
+            {
+                comboBoxStage.SelectedIndex = 0;
             }
         }
 
@@ -133,11 +135,6 @@ namespace CourseProject_ShowDesk
         public bool GetIsValid()
         {
             return isValid;
-        }
-
-        private void textBoxBaseTicketPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ParametersValidator.ValidatorDoubleDigit(sender, e);
         }
     }
 }

@@ -85,9 +85,9 @@
             this.labelStageName.AutoSize = true;
             this.labelStageName.Location = new System.Drawing.Point(50, 59);
             this.labelStageName.Name = "labelStageName";
-            this.labelStageName.Size = new System.Drawing.Size(54, 21);
+            this.labelStageName.Size = new System.Drawing.Size(97, 21);
             this.labelStageName.TabIndex = 6;
-            this.labelStageName.Text = "Name";
+            this.labelStageName.Text = "Stage name";
             // 
             // labelIndex
             // 
@@ -96,9 +96,9 @@
             this.labelIndex.AutoSize = true;
             this.labelIndex.Location = new System.Drawing.Point(50, 29);
             this.labelIndex.Name = "labelIndex";
-            this.labelIndex.Size = new System.Drawing.Size(54, 21);
+            this.labelIndex.Size = new System.Drawing.Size(98, 21);
             this.labelIndex.TabIndex = 4;
-            this.labelIndex.Text = "Index";
+            this.labelIndex.Text = "Stage index";
             // 
             // textBoxStageName
             // 

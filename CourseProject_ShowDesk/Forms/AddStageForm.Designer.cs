@@ -41,7 +41,7 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.Silver;
             this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(138, 108);
+            this.buttonAdd.Location = new System.Drawing.Point(148, 112);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(119, 36);
             this.buttonAdd.TabIndex = 9;
@@ -52,7 +52,7 @@
             // textBoxStageName
             // 
             this.textBoxStageName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxStageName.Location = new System.Drawing.Point(138, 74);
+            this.textBoxStageName.Location = new System.Drawing.Point(149, 74);
             this.textBoxStageName.Name = "textBoxStageName";
             this.textBoxStageName.Size = new System.Drawing.Size(168, 28);
             this.textBoxStageName.TabIndex = 8;
@@ -62,17 +62,17 @@
             // 
             this.labelStageName.AutoSize = true;
             this.labelStageName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStageName.Location = new System.Drawing.Point(40, 81);
+            this.labelStageName.Location = new System.Drawing.Point(37, 81);
             this.labelStageName.Name = "labelStageName";
-            this.labelStageName.Size = new System.Drawing.Size(54, 21);
+            this.labelStageName.Size = new System.Drawing.Size(97, 21);
             this.labelStageName.TabIndex = 7;
-            this.labelStageName.Text = "Name";
+            this.labelStageName.Text = "Stage name";
             // 
             // textBoxIndex
             // 
             this.textBoxIndex.Enabled = false;
             this.textBoxIndex.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxIndex.Location = new System.Drawing.Point(138, 40);
+            this.textBoxIndex.Location = new System.Drawing.Point(149, 40);
             this.textBoxIndex.Name = "textBoxIndex";
             this.textBoxIndex.Size = new System.Drawing.Size(168, 28);
             this.textBoxIndex.TabIndex = 6;
@@ -82,11 +82,11 @@
             // 
             this.labelIndex.AutoSize = true;
             this.labelIndex.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIndex.Location = new System.Drawing.Point(40, 47);
+            this.labelIndex.Location = new System.Drawing.Point(37, 47);
             this.labelIndex.Name = "labelIndex";
-            this.labelIndex.Size = new System.Drawing.Size(54, 21);
+            this.labelIndex.Size = new System.Drawing.Size(98, 21);
             this.labelIndex.TabIndex = 5;
-            this.labelIndex.Text = "Index";
+            this.labelIndex.Text = "Stage index";
             // 
             // groupBoxStage
             // 

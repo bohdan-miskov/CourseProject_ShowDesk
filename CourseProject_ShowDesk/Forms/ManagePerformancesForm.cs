@@ -28,6 +28,50 @@ namespace CourseProject_ShowDesk
             DisableEditAndRemoveStage();
         }
 
+        private void dataGridViewPerformances_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveStage();
+        }
+
+        private void dataGridViewPerformances_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveStage();
+        }
+
+        private void ManagePerformancesFormClosing(object sender, FormClosingEventArgs e)
+        {
+            SavePerformancesToFile();
+        }
+
+        private void addSpecToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddPerformance();
+
+            UpdateDataGridPerformances();
+            DisableEditAndRemoveStage();
+        }
+
+        private void editSpecToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditPerformance();
+
+            UpdateDataGridPerformances();
+            DisableEditAndRemoveStage();
+        }
+
+        private void removeSpecToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            performances.RemoveAt(dataGridViewPerformances.CurrentRow.Index);
+
+            UpdateDataGridPerformances();
+            DisableEditAndRemoveStage();
+        }
+
+        private void revenueReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenRevenue();
+        }
+
         private void UpdateDataGridPerformances()
         {
             dataGridViewPerformances.Rows.Clear();
@@ -133,7 +177,6 @@ namespace CourseProject_ShowDesk
             }
         }
 
-
         private void DisableEditAndRemoveStage()
         {
             if (dataGridViewPerformances.CurrentRow != null)
@@ -148,28 +191,6 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        private void dataGridViewPerformances_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            DisableEditAndRemoveStage();
-        }
-
-        private void dataGridViewPerformances_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            DisableEditAndRemoveStage();
-        }
-
-        private void ManagePerformancesFormClosing(object sender, FormClosingEventArgs e)
-        {
-            SavePerformancesToFile();
-        }
-
-        private void addSpecToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddPerformance();
-
-            UpdateDataGridPerformances();
-            DisableEditAndRemoveStage();
-        }
 
         private void AddPerformance()
         {
@@ -183,14 +204,6 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        private void editSpecToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EditPerformance();
-
-            UpdateDataGridPerformances();
-            DisableEditAndRemoveStage();
-        }
-
         private void EditPerformance()
         {
             EditPerformanceForm editPerformanceForm = new EditPerformanceForm(stages, performances[dataGridViewPerformances.CurrentRow.Index]);
@@ -200,19 +213,6 @@ namespace CourseProject_ShowDesk
             {
                 performances[dataGridViewPerformances.CurrentRow.Index] = editPerformanceForm.GetNewPerformance();
             }
-        }
-
-        private void removeSpecToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            performances.RemoveAt(dataGridViewPerformances.CurrentRow.Index);
-
-            UpdateDataGridPerformances();
-            DisableEditAndRemoveStage();
-        }
-
-        private void revenueReportToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenRevenue();
         }
 
         private void OpenRevenue()

@@ -23,25 +23,7 @@ namespace CourseProject_ShowDesk
 
             DisableEditAndRemoveZone();
 
-
             isValid = false;
-
-        }
-
-        private void ShowStage()
-        {
-            textBoxIndex.Text = Convert.ToString(stage.Index);
-            textBoxStageName.Text = stage.Name;
-        }
-
-        private void UpdateDataGridZones()
-        {
-            dataGridViewZones.Rows.Clear();
-
-            foreach (Zone seсtor in stage.Zones)
-            {
-                dataGridViewZones.Rows.Add(seсtor.Name, seсtor.Increase, seсtor.StartPosition, seсtor.EndPosition);
-            }
         }
 
         private void textBoxIndex_KeyUp(object sender, KeyEventArgs e)
@@ -60,23 +42,22 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void dataGridViewZones_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveZone();
+        }
+
+        private void dataGridViewZones_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveZone();
+        }
+
         private void addZoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddZone();
 
             UpdateDataGridZones();
             DisableEditAndRemoveZone();
-        }
-
-        private void AddZone()
-        {
-            AddEditZoneForm addZoneForm = new AddEditZoneForm(stage, null);
-            addZoneForm.ShowDialog(this);
-
-            if (addZoneForm.GetIsValid())
-            {
-                stage = addZoneForm.GetStage();
-            }
         }
 
         private void editZoneToolStripMenuItem_Click(object sender, EventArgs e)
@@ -87,20 +68,10 @@ namespace CourseProject_ShowDesk
             DisableEditAndRemoveZone();
         }
 
-        private void EditZone()
-        {
-            AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, dataGridViewZones.CurrentRow.Index);
-            editZoneForm.ShowDialog(this);
-
-            if (editZoneForm.GetIsValid())
-            {
-                stage = editZoneForm.GetStage();
-            }
-        }
-
         private void removeZoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             stage.RemoveZone(dataGridViewZones.CurrentRow.Index);
+
             UpdateDataGridZones();
             DisableEditAndRemoveZone();
         }
@@ -114,6 +85,44 @@ namespace CourseProject_ShowDesk
                 SaveStage();
 
                 this.Close();
+            }
+        }
+
+        private void ShowStage()
+        {
+            textBoxIndex.Text = Convert.ToString(stage.Index);
+            textBoxStageName.Text = stage.Name;
+        }
+
+        private void UpdateDataGridZones()
+        {
+            dataGridViewZones.Rows.Clear();
+
+            foreach (Zone seсtor in stage.Zones)
+            {
+                dataGridViewZones.Rows.Add(seсtor.Name, seсtor.Increase, seсtor.StartPosition, seсtor.EndPosition);
+            }
+        }
+
+        private void AddZone()
+        {
+            AddEditZoneForm addZoneForm = new AddEditZoneForm(stage, null);
+            addZoneForm.ShowDialog(this);
+
+            if (addZoneForm.GetIsValid())
+            {
+                stage = addZoneForm.GetStage();
+            }
+        }
+
+        private void EditZone()
+        {
+            AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, dataGridViewZones.CurrentRow.Index);
+            editZoneForm.ShowDialog(this);
+
+            if (editZoneForm.GetIsValid())
+            {
+                stage = editZoneForm.GetStage();
             }
         }
 
@@ -148,16 +157,6 @@ namespace CourseProject_ShowDesk
                 editZoneToolStripMenuItem.Enabled = false;
                 removeZoneToolStripMenuItem.Enabled = false;
             }
-        }
-
-        private void dataGridViewZones_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            DisableEditAndRemoveZone();
-        }
-
-        private void dataGridViewZones_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            DisableEditAndRemoveZone();
         }
 
         public bool GetIsValid()

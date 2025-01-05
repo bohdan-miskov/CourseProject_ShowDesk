@@ -18,6 +18,21 @@ namespace CourseProject_ShowDesk
             SetDateLimit();
         }
 
+        private void dateTimePickerFrom_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerFinishDate.MinDate = dateTimePickerStartDate.Value;
+        }
+
+        private void dateTimePickerTo_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePickerStartDate.MaxDate = dateTimePickerFinishDate.Value;
+        }
+
+        private void buttonCalculate_Click(object sender, EventArgs e)
+        {
+            CreateGraph();
+        }
+
         public void SetDateLimit()
         {
             if (performances.Count == 0)
@@ -68,22 +83,6 @@ namespace CourseProject_ShowDesk
 
             return maxDate;
         }
-
-        private void dateTimePickerFrom_ValueChanged(object sender, EventArgs e)
-        {
-            dateTimePickerFinishDate.MinDate = dateTimePickerStartDate.Value;
-        }
-
-        private void dateTimePickerTo_ValueChanged(object sender, EventArgs e)
-        {
-            dateTimePickerStartDate.MaxDate = dateTimePickerFinishDate.Value;
-        }
-
-        private void buttonCalculate_Click(object sender, EventArgs e)
-        {
-            CreateGraph();
-        }
-
         private void CreateGraph()
         {
             ClearGraph();

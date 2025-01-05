@@ -44,18 +44,18 @@
             this.textBoxPerformanceName = new System.Windows.Forms.TextBox();
             this.dateTimePickerPerfomanceDate = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPerformance = new System.Windows.Forms.GroupBox();
-            this.textBoxBaseTicketPrice = new System.Windows.Forms.TextBox();
-            this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
-            this.groupBoxTickets = new System.Windows.Forms.GroupBox();
-            this.groupBoxForm = new System.Windows.Forms.GroupBox();
             this.labelPerformanceTime = new System.Windows.Forms.Label();
             this.dateTimePickerPerformanceTime = new System.Windows.Forms.DateTimePicker();
+            this.textBoxBaseTicketPrice = new System.Windows.Forms.TextBox();
+            this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnAdditionalServices = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBoxTickets = new System.Windows.Forms.GroupBox();
+            this.groupBoxForm = new System.Windows.Forms.GroupBox();
             this.menuStripPerformance.SuspendLayout();
             this.groupBoxPerformance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
@@ -67,7 +67,7 @@
             // 
             this.removeTicketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeTicketToolStripMenuItem.Name = "removeTicketToolStripMenuItem";
-            this.removeTicketToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.removeTicketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeTicketToolStripMenuItem.Text = "Remove";
             this.removeTicketToolStripMenuItem.Click += new System.EventHandler(this.removeTicketToolStripMenuItem_Click);
             // 
@@ -75,7 +75,7 @@
             // 
             this.addTicketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addTicketToolStripMenuItem.Name = "addTicketToolStripMenuItem";
-            this.addTicketToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.addTicketToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addTicketToolStripMenuItem.Text = "Add";
             this.addTicketToolStripMenuItem.Click += new System.EventHandler(this.BuyTicketFormToolStripMenuItem_Click);
             // 
@@ -87,14 +87,14 @@
             this.removeTicketToolStripMenuItem});
             this.ticketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ticketToolStripMenuItem.Name = "ticketToolStripMenuItem";
-            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
+            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.ticketToolStripMenuItem.Text = "StandardTicket";
             // 
             // ChangeStatusToolStripMenuItem
             // 
             this.ChangeStatusToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChangeStatusToolStripMenuItem.Name = "ChangeStatusToolStripMenuItem";
-            this.ChangeStatusToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.ChangeStatusToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ChangeStatusToolStripMenuItem.Text = "Change status";
             this.ChangeStatusToolStripMenuItem.Click += new System.EventHandler(this.ChangeStatusToolStripMenuItem_Click);
             // 
@@ -103,7 +103,7 @@
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSave.BackColor = System.Drawing.Color.Silver;
             this.buttonSave.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSave.Location = new System.Drawing.Point(217, 214);
+            this.buttonSave.Location = new System.Drawing.Point(225, 214);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(128, 38);
@@ -132,9 +132,9 @@
             this.labelPerformanceName.Location = new System.Drawing.Point(51, 107);
             this.labelPerformanceName.Name = "labelPerformanceName";
             this.labelPerformanceName.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.labelPerformanceName.Size = new System.Drawing.Size(54, 25);
+            this.labelPerformanceName.Size = new System.Drawing.Size(155, 25);
             this.labelPerformanceName.TabIndex = 15;
-            this.labelPerformanceName.Text = "Name";
+            this.labelPerformanceName.Text = "Performance name";
             // 
             // labelTicketPrice
             // 
@@ -147,7 +147,7 @@
             this.labelTicketPrice.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.labelTicketPrice.Size = new System.Drawing.Size(103, 25);
             this.labelTicketPrice.TabIndex = 14;
-            this.labelTicketPrice.Text = "StandardTicket price";
+            this.labelTicketPrice.Text = "Ticket price";
             // 
             // labelPerfomanceDate
             // 
@@ -170,7 +170,7 @@
             this.ticketToolStripMenuItem});
             this.menuStripPerformance.Location = new System.Drawing.Point(0, 0);
             this.menuStripPerformance.Name = "menuStripPerformance";
-            this.menuStripPerformance.Size = new System.Drawing.Size(68, 26);
+            this.menuStripPerformance.Size = new System.Drawing.Size(126, 26);
             this.menuStripPerformance.TabIndex = 17;
             this.menuStripPerformance.Text = "menuStrip1";
             // 
@@ -184,7 +184,7 @@
             this.comboBoxStage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxStage.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxStage.FormattingEnabled = true;
-            this.comboBoxStage.Location = new System.Drawing.Point(217, 172);
+            this.comboBoxStage.Location = new System.Drawing.Point(225, 172);
             this.comboBoxStage.Name = "comboBoxStage";
             this.comboBoxStage.Size = new System.Drawing.Size(299, 29);
             this.comboBoxStage.TabIndex = 12;
@@ -195,7 +195,7 @@
             this.textBoxPerformanceName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPerformanceName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPerformanceName.Location = new System.Drawing.Point(217, 104);
+            this.textBoxPerformanceName.Location = new System.Drawing.Point(225, 104);
             this.textBoxPerformanceName.Name = "textBoxPerformanceName";
             this.textBoxPerformanceName.Size = new System.Drawing.Size(299, 28);
             this.textBoxPerformanceName.TabIndex = 10;
@@ -206,7 +206,7 @@
             this.dateTimePickerPerfomanceDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePickerPerfomanceDate.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerPerfomanceDate.Location = new System.Drawing.Point(217, 36);
+            this.dateTimePickerPerfomanceDate.Location = new System.Drawing.Point(225, 36);
             this.dateTimePickerPerfomanceDate.Name = "dateTimePickerPerfomanceDate";
             this.dateTimePickerPerfomanceDate.Size = new System.Drawing.Size(299, 28);
             this.dateTimePickerPerfomanceDate.TabIndex = 9;
@@ -237,12 +237,33 @@
             this.groupBoxPerformance.TabStop = false;
             this.groupBoxPerformance.Text = "Performance";
             // 
+            // labelPerformanceTime
+            // 
+            this.labelPerformanceTime.AutoSize = true;
+            this.labelPerformanceTime.BackColor = System.Drawing.Color.Transparent;
+            this.labelPerformanceTime.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPerformanceTime.Location = new System.Drawing.Point(51, 73);
+            this.labelPerformanceTime.Name = "labelPerformanceTime";
+            this.labelPerformanceTime.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.labelPerformanceTime.Size = new System.Drawing.Size(141, 25);
+            this.labelPerformanceTime.TabIndex = 21;
+            this.labelPerformanceTime.Text = "Perfomance time";
+            // 
+            // dateTimePickerPerformanceTime
+            // 
+            this.dateTimePickerPerformanceTime.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerPerformanceTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerPerformanceTime.Location = new System.Drawing.Point(225, 70);
+            this.dateTimePickerPerformanceTime.Name = "dateTimePickerPerformanceTime";
+            this.dateTimePickerPerformanceTime.Size = new System.Drawing.Size(299, 28);
+            this.dateTimePickerPerformanceTime.TabIndex = 20;
+            // 
             // textBoxBaseTicketPrice
             // 
             this.textBoxBaseTicketPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxBaseTicketPrice.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxBaseTicketPrice.Location = new System.Drawing.Point(217, 138);
+            this.textBoxBaseTicketPrice.Location = new System.Drawing.Point(225, 138);
             this.textBoxBaseTicketPrice.Name = "textBoxBaseTicketPrice";
             this.textBoxBaseTicketPrice.Size = new System.Drawing.Size(299, 28);
             this.textBoxBaseTicketPrice.TabIndex = 11;
@@ -286,54 +307,6 @@
             this.dataGridViewTickets.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTickets_RowEnter);
             this.dataGridViewTickets.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTickets_RowLeave);
             // 
-            // groupBoxTickets
-            // 
-            this.groupBoxTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxTickets.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxTickets.Controls.Add(this.dataGridViewTickets);
-            this.groupBoxTickets.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxTickets.Location = new System.Drawing.Point(10, 295);
-            this.groupBoxTickets.Name = "groupBoxTickets";
-            this.groupBoxTickets.Size = new System.Drawing.Size(670, 224);
-            this.groupBoxTickets.TabIndex = 16;
-            this.groupBoxTickets.TabStop = false;
-            this.groupBoxTickets.Text = "Tickets";
-            // 
-            // groupBoxForm
-            // 
-            this.groupBoxForm.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
-            this.groupBoxForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBoxForm.Controls.Add(this.groupBoxPerformance);
-            this.groupBoxForm.Controls.Add(this.groupBoxTickets);
-            this.groupBoxForm.Location = new System.Drawing.Point(0, 63);
-            this.groupBoxForm.Name = "groupBoxForm";
-            this.groupBoxForm.Size = new System.Drawing.Size(694, 525);
-            this.groupBoxForm.TabIndex = 18;
-            this.groupBoxForm.TabStop = false;
-            // 
-            // labelPerformanceTime
-            // 
-            this.labelPerformanceTime.AutoSize = true;
-            this.labelPerformanceTime.BackColor = System.Drawing.Color.Transparent;
-            this.labelPerformanceTime.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPerformanceTime.Location = new System.Drawing.Point(51, 73);
-            this.labelPerformanceTime.Name = "labelPerformanceTime";
-            this.labelPerformanceTime.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.labelPerformanceTime.Size = new System.Drawing.Size(141, 25);
-            this.labelPerformanceTime.TabIndex = 21;
-            this.labelPerformanceTime.Text = "Perfomance time";
-            // 
-            // dateTimePickerPerformanceTime
-            // 
-            this.dateTimePickerPerformanceTime.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerPerformanceTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerPerformanceTime.Location = new System.Drawing.Point(217, 70);
-            this.dateTimePickerPerformanceTime.Name = "dateTimePickerPerformanceTime";
-            this.dateTimePickerPerformanceTime.Size = new System.Drawing.Size(299, 28);
-            this.dateTimePickerPerformanceTime.TabIndex = 20;
-            // 
             // columnName
             // 
             this.columnName.HeaderText = "Name";
@@ -369,6 +342,33 @@
             this.columnAdditionalServices.HeaderText = "Additional services";
             this.columnAdditionalServices.Name = "columnAdditionalServices";
             this.columnAdditionalServices.ReadOnly = true;
+            // 
+            // groupBoxTickets
+            // 
+            this.groupBoxTickets.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxTickets.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxTickets.Controls.Add(this.dataGridViewTickets);
+            this.groupBoxTickets.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxTickets.Location = new System.Drawing.Point(10, 295);
+            this.groupBoxTickets.Name = "groupBoxTickets";
+            this.groupBoxTickets.Size = new System.Drawing.Size(670, 224);
+            this.groupBoxTickets.TabIndex = 16;
+            this.groupBoxTickets.TabStop = false;
+            this.groupBoxTickets.Text = "Tickets";
+            // 
+            // groupBoxForm
+            // 
+            this.groupBoxForm.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
+            this.groupBoxForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxForm.Controls.Add(this.groupBoxPerformance);
+            this.groupBoxForm.Controls.Add(this.groupBoxTickets);
+            this.groupBoxForm.Location = new System.Drawing.Point(0, 63);
+            this.groupBoxForm.Name = "groupBoxForm";
+            this.groupBoxForm.Size = new System.Drawing.Size(694, 525);
+            this.groupBoxForm.TabIndex = 18;
+            this.groupBoxForm.TabStop = false;
             // 
             // EditPerformanceForm
             // 

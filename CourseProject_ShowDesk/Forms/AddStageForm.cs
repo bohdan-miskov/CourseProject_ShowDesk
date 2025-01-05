@@ -6,8 +6,6 @@ namespace CourseProject_ShowDesk
 {
     public partial class AddStageForm : MetroFramework.Forms.MetroForm
     {
-
-
         private int index;
 
         private bool isValid;
@@ -24,34 +22,6 @@ namespace CourseProject_ShowDesk
 
             isValid = false;
             newStage = new Stage();
-        }
-
-        private void CreateIndex(List<Stage> stages)
-        {
-            if (stages.Count == 0)
-            {
-                index = 1;
-                return;
-            }
-
-            bool isRepeat;
-            for (int i = 1; i < int.MaxValue; i++)
-            {
-                isRepeat = false;
-                for (int j = 0; j < stages.Count; j++)
-                {
-                    if (i == stages[j].Index)
-                    {
-                        isRepeat = true;
-                        break;
-                    }
-                }
-                if (!isRepeat)
-                {
-                    index = i;
-                    return;
-                }
-            }
         }
 
         private void textBoxIndex_KeyUp(object sender, KeyEventArgs e)
@@ -79,6 +49,33 @@ namespace CourseProject_ShowDesk
                 AddStage();
 
                 this.Close();
+            }
+        }
+        private void CreateIndex(List<Stage> stages)
+        {
+            if (stages.Count == 0)
+            {
+                index = 1;
+                return;
+            }
+
+            bool isRepeat;
+            for (int i = 1; i < int.MaxValue; i++)
+            {
+                isRepeat = false;
+                for (int j = 0; j < stages.Count; j++)
+                {
+                    if (i == stages[j].Index)
+                    {
+                        isRepeat = true;
+                        break;
+                    }
+                }
+                if (!isRepeat)
+                {
+                    index = i;
+                    return;
+                }
             }
         }
 
@@ -112,6 +109,5 @@ namespace CourseProject_ShowDesk
         {
             return newStage;
         }
-
     }
 }

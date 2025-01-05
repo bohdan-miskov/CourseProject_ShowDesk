@@ -97,9 +97,9 @@
             this.labelZoneName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelZoneName.Location = new System.Drawing.Point(16, 44);
             this.labelZoneName.Name = "labelZoneName";
-            this.labelZoneName.Size = new System.Drawing.Size(54, 21);
+            this.labelZoneName.Size = new System.Drawing.Size(94, 21);
             this.labelZoneName.TabIndex = 14;
-            this.labelZoneName.Text = "Name";
+            this.labelZoneName.Text = "Zone name";
             // 
             // labelEndPosition
             // 
