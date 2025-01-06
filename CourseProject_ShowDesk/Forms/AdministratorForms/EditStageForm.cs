@@ -107,7 +107,7 @@ namespace CourseProject_ShowDesk
         private void AddZone()
         {
             AddEditZoneForm addZoneForm = new AddEditZoneForm(stage, null);
-            addZoneForm.ShowDialog(this);
+            addZoneForm.ShowDialog();
 
             if (addZoneForm.GetIsValid())
             {
@@ -118,7 +118,7 @@ namespace CourseProject_ShowDesk
         private void EditZone()
         {
             AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, dataGridViewZones.CurrentRow.Index);
-            editZoneForm.ShowDialog(this);
+            editZoneForm.ShowDialog();
 
             if (editZoneForm.GetIsValid())
             {

@@ -9,7 +9,7 @@ namespace CourseProject_ShowDesk
         {
             char symbol = e.KeyChar;
 
-            if (IsDigitOrBackspace(symbol))
+            if (!(IsDigitOrBackspace(symbol)))
             {
                 e.Handled = true;
             }
@@ -29,7 +29,17 @@ namespace CourseProject_ShowDesk
         {
             char symbol = e.KeyChar;
 
-            if (IsLetterOrBackspace(symbol))
+            if (!(IsLetterOrBackspace(symbol) || symbol==' '))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public static void ValidatorLoginAndPassword(object sender, KeyPressEventArgs e)
+        {
+            char symbol = e.KeyChar;
+
+            if (!(IsLetterOrBackspace(symbol) || IsDigitOrBackspace(symbol)))
             {
                 e.Handled = true;
             }
@@ -38,6 +48,11 @@ namespace CourseProject_ShowDesk
         public static bool NameValidator(string name)
         {
             return name.Length > 2 && !string.IsNullOrWhiteSpace(name);
+        }
+
+        public static bool PasswordValidator(string password)
+        {
+            return password.Length>=8 && !string.IsNullOrWhiteSpace(password);
         }
 
         public static bool DoubleValidator(string value)

@@ -30,25 +30,33 @@ namespace CourseProject_ShowDesk
         private void textBoxName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 textBoxIncrease.Focus();
+            }
         }
 
         private void textBoxIncrease_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 numericUpDownStartPosition.Focus();
+            }
         }
 
         private void numericUpDownStartPosition_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 numericUpDownEndPosition.Focus();
+            }
         }
 
         private void numericUpDownEndPosition_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 buttonAdd.Focus();
+            }
         }
 
         private void numericUpDownStartPosition_ValueChanged(object sender, EventArgs e)

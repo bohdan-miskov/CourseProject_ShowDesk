@@ -101,7 +101,7 @@ namespace CourseProject_ShowDesk
         private void AddStage()
         {
             AddStageForm addStageForm = new AddStageForm(stages);
-            addStageForm.ShowDialog(this);
+            addStageForm.ShowDialog();
 
             if (addStageForm.GetIsValid())
             {
@@ -112,7 +112,7 @@ namespace CourseProject_ShowDesk
         private void EditStage()
         {
             EditStageForm editStageForm = new EditStageForm(stages[dataGridViewStages.CurrentRow.Index]);
-            editStageForm.ShowDialog(this);
+            editStageForm.ShowDialog();
 
             if (editStageForm.GetIsValid())
             {

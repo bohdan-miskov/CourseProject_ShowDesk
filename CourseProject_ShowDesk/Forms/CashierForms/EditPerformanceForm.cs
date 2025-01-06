@@ -210,7 +210,7 @@ namespace CourseProject_ShowDesk
         private void BuyOfTicket()
         {
             BuyTicketForm buyTicketForm = new BuyTicketForm(stages, performance);
-            buyTicketForm.ShowDialog(this);
+            buyTicketForm.ShowDialog();
 
             if (buyTicketForm.GetIsValid())
             {

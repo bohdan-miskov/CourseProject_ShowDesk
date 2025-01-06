@@ -64,7 +64,7 @@ namespace CourseProject_ShowDesk
             {
                 if (value == null)
                 {
-                    throw new ArgumentNullException(nameof(Zones), "Zones list cannot be null.");
+                    throw new ArgumentNullException(nameof(zones), "Zones list cannot be null.");
                 }
                 zones = value;
             }

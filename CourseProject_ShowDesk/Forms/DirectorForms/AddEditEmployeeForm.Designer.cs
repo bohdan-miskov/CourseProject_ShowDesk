@@ -1,0 +1,221 @@
+﻿namespace CourseProject_ShowDesk.Scripts
+{
+    partial class AddEditEmployeeForm
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.groupBoxEmployee = new System.Windows.Forms.GroupBox();
+            this.labelEmployeeFullName = new System.Windows.Forms.Label();
+            this.textBoxFullName = new System.Windows.Forms.TextBox();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.buttonAddEmployee = new System.Windows.Forms.Button();
+            this.labelLogin = new System.Windows.Forms.Label();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.groupBoxProfessionList = new System.Windows.Forms.GroupBox();
+            this.checkBoxAdministrator = new System.Windows.Forms.CheckBox();
+            this.checkBoxDirector = new System.Windows.Forms.CheckBox();
+            this.checkBoxCashier = new System.Windows.Forms.CheckBox();
+            this.groupBoxEmployee.SuspendLayout();
+            this.groupBoxProfessionList.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // groupBoxEmployee
+            // 
+            this.groupBoxEmployee.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxEmployee.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
+            this.groupBoxEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxEmployee.Controls.Add(this.groupBoxProfessionList);
+            this.groupBoxEmployee.Controls.Add(this.textBoxPassword);
+            this.groupBoxEmployee.Controls.Add(this.labelEmployeeFullName);
+            this.groupBoxEmployee.Controls.Add(this.textBoxFullName);
+            this.groupBoxEmployee.Controls.Add(this.labelPassword);
+            this.groupBoxEmployee.Controls.Add(this.buttonAddEmployee);
+            this.groupBoxEmployee.Controls.Add(this.labelLogin);
+            this.groupBoxEmployee.Controls.Add(this.textBoxLogin);
+            this.groupBoxEmployee.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxEmployee.Location = new System.Drawing.Point(0, 63);
+            this.groupBoxEmployee.Name = "groupBoxEmployee";
+            this.groupBoxEmployee.Size = new System.Drawing.Size(368, 257);
+            this.groupBoxEmployee.TabIndex = 24;
+            this.groupBoxEmployee.TabStop = false;
+            this.groupBoxEmployee.Text = "Employee";
+            // 
+            // labelEmployeeFullName
+            // 
+            this.labelEmployeeFullName.AutoSize = true;
+            this.labelEmployeeFullName.BackColor = System.Drawing.Color.Transparent;
+            this.labelEmployeeFullName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmployeeFullName.Location = new System.Drawing.Point(16, 44);
+            this.labelEmployeeFullName.Name = "labelEmployeeFullName";
+            this.labelEmployeeFullName.Size = new System.Drawing.Size(90, 21);
+            this.labelEmployeeFullName.TabIndex = 14;
+            this.labelEmployeeFullName.Text = "Full name";
+            // 
+            // textBoxFullName
+            // 
+            this.textBoxFullName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxFullName.Location = new System.Drawing.Point(174, 37);
+            this.textBoxFullName.Name = "textBoxFullName";
+            this.textBoxFullName.Size = new System.Drawing.Size(168, 28);
+            this.textBoxFullName.TabIndex = 15;
+            this.textBoxFullName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFullName_KeyPress);
+            this.textBoxFullName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxFullName_KeyUp);
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.BackColor = System.Drawing.Color.Transparent;
+            this.labelPassword.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPassword.Location = new System.Drawing.Point(16, 109);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(82, 21);
+            this.labelPassword.TabIndex = 21;
+            this.labelPassword.Text = "Password";
+            // 
+            // buttonAddEmployee
+            // 
+            this.buttonAddEmployee.BackColor = System.Drawing.Color.Silver;
+            this.buttonAddEmployee.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddEmployee.Location = new System.Drawing.Point(174, 196);
+            this.buttonAddEmployee.Name = "buttonAddEmployee";
+            this.buttonAddEmployee.Size = new System.Drawing.Size(168, 48);
+            this.buttonAddEmployee.TabIndex = 16;
+            this.buttonAddEmployee.Text = "Save";
+            this.buttonAddEmployee.UseVisualStyleBackColor = false;
+            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
+            // 
+            // labelLogin
+            // 
+            this.labelLogin.AutoSize = true;
+            this.labelLogin.BackColor = System.Drawing.Color.Transparent;
+            this.labelLogin.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLogin.Location = new System.Drawing.Point(16, 75);
+            this.labelLogin.Name = "labelLogin";
+            this.labelLogin.Size = new System.Drawing.Size(56, 21);
+            this.labelLogin.TabIndex = 17;
+            this.labelLogin.Text = "Login";
+            // 
+            // textBoxLogin
+            // 
+            this.textBoxLogin.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxLogin.Location = new System.Drawing.Point(174, 68);
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(168, 28);
+            this.textBoxLogin.TabIndex = 18;
+            this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLogin_KeyPress);
+            this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLogin_KeyUp);
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(174, 102);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(168, 28);
+            this.textBoxPassword.TabIndex = 23;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
+            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
+            // 
+            // groupBoxProfessionList
+            // 
+            this.groupBoxProfessionList.Controls.Add(this.checkBoxCashier);
+            this.groupBoxProfessionList.Controls.Add(this.checkBoxDirector);
+            this.groupBoxProfessionList.Controls.Add(this.checkBoxAdministrator);
+            this.groupBoxProfessionList.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxProfessionList.Location = new System.Drawing.Point(9, 142);
+            this.groupBoxProfessionList.Name = "groupBoxProfessionList";
+            this.groupBoxProfessionList.Size = new System.Drawing.Size(162, 108);
+            this.groupBoxProfessionList.TabIndex = 24;
+            this.groupBoxProfessionList.TabStop = false;
+            this.groupBoxProfessionList.Text = "Professions";
+            // 
+            // checkBoxAdministrator
+            // 
+            this.checkBoxAdministrator.AutoSize = true;
+            this.checkBoxAdministrator.Location = new System.Drawing.Point(11, 52);
+            this.checkBoxAdministrator.Name = "checkBoxAdministrator";
+            this.checkBoxAdministrator.Size = new System.Drawing.Size(119, 22);
+            this.checkBoxAdministrator.TabIndex = 0;
+            this.checkBoxAdministrator.Text = "Administrator";
+            this.checkBoxAdministrator.UseVisualStyleBackColor = true;
+            this.checkBoxAdministrator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxAdministrator_KeyUp);
+            // 
+            // checkBoxDirector
+            // 
+            this.checkBoxDirector.AutoSize = true;
+            this.checkBoxDirector.Location = new System.Drawing.Point(11, 24);
+            this.checkBoxDirector.Name = "checkBoxDirector";
+            this.checkBoxDirector.Size = new System.Drawing.Size(80, 22);
+            this.checkBoxDirector.TabIndex = 1;
+            this.checkBoxDirector.Text = "Director";
+            this.checkBoxDirector.UseVisualStyleBackColor = true;
+            this.checkBoxDirector.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxDirector_KeyUp);
+            // 
+            // checkBoxCashier
+            // 
+            this.checkBoxCashier.AutoSize = true;
+            this.checkBoxCashier.Location = new System.Drawing.Point(11, 80);
+            this.checkBoxCashier.Name = "checkBoxCashier";
+            this.checkBoxCashier.Size = new System.Drawing.Size(75, 22);
+            this.checkBoxCashier.TabIndex = 2;
+            this.checkBoxCashier.Text = "Cashier";
+            this.checkBoxCashier.UseVisualStyleBackColor = true;
+            this.checkBoxCashier.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxCashier_KeyUp);
+            // 
+            // AddEditEmployeeForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(368, 320);
+            this.Controls.Add(this.groupBoxEmployee);
+            this.Name = "AddEditEmployeeForm";
+            this.Text = "AddEditEmployeeForm";
+            this.groupBoxEmployee.ResumeLayout(false);
+            this.groupBoxEmployee.PerformLayout();
+            this.groupBoxProfessionList.ResumeLayout(false);
+            this.groupBoxProfessionList.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.GroupBox groupBoxEmployee;
+        private System.Windows.Forms.Label labelEmployeeFullName;
+        private System.Windows.Forms.TextBox textBoxFullName;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.Button buttonAddEmployee;
+        private System.Windows.Forms.Label labelLogin;
+        private System.Windows.Forms.TextBox textBoxLogin;
+        private System.Windows.Forms.GroupBox groupBoxProfessionList;
+        private System.Windows.Forms.CheckBox checkBoxCashier;
+        private System.Windows.Forms.CheckBox checkBoxDirector;
+        private System.Windows.Forms.CheckBox checkBoxAdministrator;
+        private System.Windows.Forms.TextBox textBoxPassword;
+    }
+}

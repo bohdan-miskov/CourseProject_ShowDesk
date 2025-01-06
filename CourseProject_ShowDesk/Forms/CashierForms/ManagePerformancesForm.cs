@@ -207,7 +207,7 @@ namespace CourseProject_ShowDesk
         private void EditPerformance()
         {
             EditPerformanceForm editPerformanceForm = new EditPerformanceForm(stages, performances[dataGridViewPerformances.CurrentRow.Index]);
-            editPerformanceForm.ShowDialog(this);
+            editPerformanceForm.ShowDialog();
 
             if (editPerformanceForm.GetIsValid())
             {
@@ -218,7 +218,7 @@ namespace CourseProject_ShowDesk
         private void OpenRevenue()
         {
             ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performances);
-            viewRevenueForm.ShowDialog(this);
+            viewRevenueForm.ShowDialog();
         }
     }
 }
