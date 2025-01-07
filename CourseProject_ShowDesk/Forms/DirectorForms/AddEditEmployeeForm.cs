@@ -114,9 +114,9 @@ namespace CourseProject_ShowDesk.Scripts
             textBoxFullName.Text = currentEmployee.FullName;
             textBoxLogin.Text = currentEmployee.Login;
             textBoxPassword.Text = currentEmployee.Password;
-            checkBoxDirector.Checked = currentEmployee.ProfessionList.Contains("Director");
-            checkBoxAdministrator.Checked = currentEmployee.ProfessionList.Contains("Administrator");
-            checkBoxCashier.Checked = currentEmployee.ProfessionList.Contains("Cashier");
+            checkBoxDirector.Checked = currentEmployee.ProfessionList.Contains(AppConstants.ListOfProfessions[0]);
+            checkBoxAdministrator.Checked = currentEmployee.ProfessionList.Contains(AppConstants.ListOfProfessions[1]);
+            checkBoxCashier.Checked = currentEmployee.ProfessionList.Contains(AppConstants.ListOfProfessions[2]);
         }
 
         private void AddEmployee()
@@ -129,17 +129,17 @@ namespace CourseProject_ShowDesk.Scripts
 
             if (checkBoxDirector.Checked)
             {
-                newEmployee.AddProfession("Director");
+                newEmployee.AddProfession(AppConstants.ListOfProfessions[0]);
             }
 
             if (checkBoxAdministrator.Checked)
             {
-                newEmployee.AddProfession("Administrator");
+                newEmployee.AddProfession(AppConstants.ListOfProfessions[1]);
             }
 
             if (checkBoxCashier.Checked)
             {
-                newEmployee.AddProfession("Cashier");
+                newEmployee.AddProfession(AppConstants.ListOfProfessions[2]);
             }
         }
 

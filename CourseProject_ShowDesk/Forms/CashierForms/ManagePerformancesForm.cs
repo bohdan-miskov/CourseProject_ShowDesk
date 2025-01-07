@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -7,9 +8,6 @@ namespace CourseProject_ShowDesk
 {
     public partial class ManagePerformancesForm : MetroFramework.Forms.MetroForm
     {
-        private string performanceFileName = "performances.json";
-        private string stageFileName = "stages.json";
-
         private List<Stage> stages;
 
         private List<Performance> performances;
@@ -144,19 +142,19 @@ namespace CourseProject_ShowDesk
 
         private void SavePerformancesToFile()
         {
-            FileHandler.SaveToJson(performanceFileName, performances);
+            FileHandler.SaveToJson(AppConstants.PerformancesFileName, performances);
         }
 
         private void LoadPerformancesFromFile()
         {
-            if (File.Exists(performanceFileName))
+            if (File.Exists(AppConstants.PerformancesFileName))
             {
-                performances = FileHandler.LoadFromJson<Performance>(performanceFileName);
+                performances = FileHandler.LoadFromJson<Performance>(AppConstants.PerformancesFileName);
             }
             else
             {
                 MessageBox.Show(this,
-                                $"File {performanceFileName} not found",
+                                $"File {AppConstants.PerformancesFileName} not found",
                                 "Load performances error",
                                 MessageBoxButtons.OK);
             }
@@ -164,14 +162,14 @@ namespace CourseProject_ShowDesk
 
         private void LoadStagesFromFile()
         {
-            if (File.Exists(stageFileName))
+            if (File.Exists(AppConstants.StagesFileName))
             {
-                stages = FileHandler.LoadFromJson<Stage>(stageFileName);
+                stages = FileHandler.LoadFromJson<Stage>(AppConstants.StagesFileName);
             }
             else
             {
                 MessageBox.Show(this,
-                                $"File {stageFileName} not found",
+                                $"File {AppConstants.StagesFileName} not found",
                                 "Load stages error",
                                 MessageBoxButtons.OK);
             }

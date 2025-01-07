@@ -9,20 +9,19 @@ namespace CourseProject_ShowDesk
 {
     public partial class AuthenticateForm : MetroFramework.Forms.MetroForm
     {
-        private string employeesFileName = "employees.json";
-
         private List<Employee> employees;
 
         public AuthenticateForm()
         {
             InitializeComponent();
 
-            comboBoxUser.SelectedIndex = 0;
-
             employees = new List<Employee>();
 
             LoadEmployeesFromFile();
 
+            PopulateComboBox();
+
+            comboBoxUser.SelectedIndex = 2;
         }
 
         private void comboBoxUser_KeyUp(object sender, KeyEventArgs e)
@@ -45,16 +44,24 @@ namespace CourseProject_ShowDesk
 
         private void LoadEmployeesFromFile()
         {
-            if (File.Exists(employeesFileName))
+            if (File.Exists(AppConstants.EmployeesFileName))
             {
-                employees = FileHandler.LoadFromJson<Employee>(employeesFileName);
+                employees = FileHandler.LoadFromJson<Employee>(AppConstants.EmployeesFileName);
             }
             else
             {
                 MessageBox.Show(this,
-                                $"File {employeesFileName} not found",
+                                $"File {AppConstants.EmployeesFileName} not found",
                                 "Load employees error",
                                 MessageBoxButtons.OK);
+            }
+        }
+
+        private void PopulateComboBox()
+        {
+            foreach (string profession in AppConstants.ListOfProfessions)
+            {
+                comboBoxUser.Items.Add(profession);
             }
         }
 
@@ -62,15 +69,15 @@ namespace CourseProject_ShowDesk
         {
             if (comboBoxUser.SelectedIndex == 0)
             {
-                pictureBoxAvatar.Image = Properties.Resources.Administrator;
+                pictureBoxAvatar.Image = Properties.Resources.Director;
             }
             else if (comboBoxUser.SelectedIndex == 1)
             {
-                pictureBoxAvatar.Image = Properties.Resources.Cashier;
+                pictureBoxAvatar.Image = Properties.Resources.Administrator;
             }
             else if (comboBoxUser.SelectedIndex == 2)
             {
-                pictureBoxAvatar.Image = Properties.Resources.Director;
+                pictureBoxAvatar.Image = Properties.Resources.Cashier;
             }
         }
 
@@ -78,7 +85,7 @@ namespace CourseProject_ShowDesk
         {
             if (comboBoxUser.SelectedIndex == 0)
             {
-                if (CheckAccount("Administrator"))
+                if (CheckAccount(AppConstants.ListOfProfessions[0]))
                 {
                     new ManageStagesForm().ShowDialog();
                 }
@@ -89,7 +96,7 @@ namespace CourseProject_ShowDesk
             }
             else if (comboBoxUser.SelectedIndex == 1)
             {
-                if (CheckAccount("Cashier"))
+                if (CheckAccount(AppConstants.ListOfProfessions[1]))
                 {
                     new ManagePerformancesForm().ShowDialog();
                 }
@@ -100,7 +107,7 @@ namespace CourseProject_ShowDesk
             }
             else if (comboBoxUser.SelectedIndex == 2)
             {
-                if (CheckAccount("Cashier"))
+                if (CheckAccount(AppConstants.ListOfProfessions[2]))
                 {
                     new ManageEmployeesForm().ShowDialog();
                 }

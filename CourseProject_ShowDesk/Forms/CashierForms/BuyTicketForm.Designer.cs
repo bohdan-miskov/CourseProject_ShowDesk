@@ -170,10 +170,6 @@
             this.comboBoxTicketType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTicketType.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTicketType.FormattingEnabled = true;
-            this.comboBoxTicketType.Items.AddRange(new object[] {
-            "Standard",
-            "Standard Plus",
-            "Premium"});
             this.comboBoxTicketType.Location = new System.Drawing.Point(148, 74);
             this.comboBoxTicketType.Name = "comboBoxTicketType";
             this.comboBoxTicketType.Size = new System.Drawing.Size(213, 29);
@@ -227,11 +223,6 @@
             this.comboBoxSouvenir.BackColor = System.Drawing.Color.Silver;
             this.comboBoxSouvenir.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxSouvenir.FormattingEnabled = true;
-            this.comboBoxSouvenir.Items.AddRange(new object[] {
-            "Poster",
-            "Mask",
-            "Book",
-            "Coulomb"});
             this.comboBoxSouvenir.Location = new System.Drawing.Point(119, 27);
             this.comboBoxSouvenir.Name = "comboBoxSouvenir";
             this.comboBoxSouvenir.Size = new System.Drawing.Size(219, 29);
@@ -268,10 +259,6 @@
             this.comboBoxDrink.BackColor = System.Drawing.Color.Silver;
             this.comboBoxDrink.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDrink.FormattingEnabled = true;
-            this.comboBoxDrink.Items.AddRange(new object[] {
-            "Coffee",
-            "Tea",
-            "Juice"});
             this.comboBoxDrink.Location = new System.Drawing.Point(119, 27);
             this.comboBoxDrink.Name = "comboBoxDrink";
             this.comboBoxDrink.Size = new System.Drawing.Size(219, 29);

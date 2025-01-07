@@ -1,4 +1,5 @@
 ﻿using CourseProject_ShowDesk.FactoryMethod;
+using CourseProject_ShowDesk.Scripts;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -31,7 +32,8 @@ namespace CourseProject_ShowDesk
 
             textBoxIndex.Text = Convert.ToString(index);
 
-            PopulateComboBox();
+            PopulateComboBoxTicketType();
+            PopulateComboBoxPositions();
 
             isValid = false;
 
@@ -110,12 +112,30 @@ namespace CourseProject_ShowDesk
             index = Convert.ToInt32(index * rnd.Next(30, 100));
         }
 
-        private void PopulateComboBox()
+        private void PopulateComboBoxTicketType()
         {
-            comboBoxTicketType.SelectedIndex = 0;
-            comboBoxDrink.SelectedIndex = 0;
-            comboBoxSouvenir.SelectedIndex = 0;
+            foreach (string type in AppConstants.ListOfTicketTypes)
+            {
+                comboBoxTicketType.Items.Add(type);
+            }
 
+            if (AppConstants.ListOfTicketTypes.Count == 0)
+            {
+                comboBoxTicketType.Enabled = false;
+                buttonAdd.Enabled = false;
+                MessageBox.Show(this,
+                    "Tickets is not available",
+                    "Not available",
+                    MessageBoxButtons.OK);
+            }
+            else
+            {
+                comboBoxTicketType.SelectedIndex = 0;
+            }
+        }
+
+        private void PopulateComboBoxPositions()
+        {
             List<int> positions = GetAllPositions();
 
             positions = ToFindFreePositions(positions);
@@ -138,6 +158,48 @@ namespace CourseProject_ShowDesk
             else
             {
                 comboBoxPositions.SelectedIndex = 0;
+            }
+        }
+
+        private void PopulateComboBoxDrink()
+        {
+            foreach (string drink in AppConstants.ListOfDrinks)
+            {
+                comboBoxDrink.Items.Add(drink);
+            }
+
+            if (AppConstants.ListOfDrinks.Count == 0)
+            {
+                comboBoxDrink.Enabled = false;
+                MessageBox.Show(this,
+                    "Drinks is not available",
+                    "Not available",
+                    MessageBoxButtons.OK);
+            }
+            else
+            {
+                comboBoxDrink.SelectedIndex = 0;
+            }
+        }
+
+        private void PopulateComboBoxSouvenir()
+        {
+            foreach (string souvenir in AppConstants.ListOfSouvenirs)
+            {
+                comboBoxSouvenir.Items.Add(souvenir);
+            }
+
+            if (AppConstants.ListOfSouvenirs.Count == 0)
+            {
+                comboBoxSouvenir.Enabled = false;
+                MessageBox.Show(this,
+                    "Souvenirs is not available",
+                    "Not available",
+                    MessageBoxButtons.OK);
+            }
+            else
+            {
+                comboBoxSouvenir.SelectedIndex = 0;
             }
         }
 
@@ -245,14 +307,17 @@ namespace CourseProject_ShowDesk
                     "Drink of choice";
                 formHeight = 424;
                 timerScaleUp.Enabled = true;
+                PopulateComboBoxDrink();
             }
             else if (comboBoxTicketType.SelectedIndex == 2)
             {
                 labelInfo.Text = "Standard Plus +" +
-                    "A souvenir from the theater +" +
+                    "A souvenir from the event +" +
                     "Backstage access";
                 formHeight = 505;
                 timerScaleUp.Enabled = true;
+                PopulateComboBoxDrink();
+                PopulateComboBoxSouvenir();
             }
         }
 

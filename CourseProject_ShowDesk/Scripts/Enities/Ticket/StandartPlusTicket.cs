@@ -8,16 +8,14 @@ namespace CourseProject_ShowDesk.Scripts
 
         public StandardPlusTicket()
         {
-            typeIncrease = 1.5;
-            type = "Standard Plus";
-            drink = "Сoffee";
+            typeIncrease = AppConstants.StandardPlusIncrease;
+            type = AppConstants.ListOfTicketTypes[1];
+            drink = AppConstants.ListOfDrinks[0];
         }
 
         public StandardPlusTicket(int index, int position, bool reserved, string drink) : base(index, position, reserved)
         {
             Drink = drink;
-            typeIncrease = 1.5;
-            type = "Standard Plus";
         }
 
         public string Drink

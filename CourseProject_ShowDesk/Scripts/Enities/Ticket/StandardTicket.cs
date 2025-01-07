@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts;
+using System;
 
 namespace CourseProject_ShowDesk
 {
@@ -10,8 +11,8 @@ namespace CourseProject_ShowDesk
         protected int position;
         protected double calculatedPrice;
         protected bool reserved;
-        protected string type = "Standard";
-        protected double typeIncrease = 1;
+        protected string type;
+        protected double typeIncrease;
 
         public StandardTicket()
         {
@@ -19,13 +20,14 @@ namespace CourseProject_ShowDesk
             position = 0;
             calculatedPrice = 0.0;
             reserved = false;
+            type = AppConstants.ListOfTicketTypes[0];
+            typeIncrease = AppConstants.StandardIncrease;
         }
         public StandardTicket(int index, int position, bool reserved)
         {
             Index = index;
             Position = position;
             Reserved = reserved;
-
         }
         public int Index
         {

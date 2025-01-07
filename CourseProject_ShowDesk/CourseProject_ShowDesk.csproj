@@ -113,6 +113,7 @@
     <Compile Include="Forms\DirectorForms\AddEditEmployeeForm.Designer.cs">
       <DependentUpon>AddEditEmployeeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scripts\AppConstants.cs" />
     <Compile Include="Scripts\Enities\Employee.cs" />
     <Compile Include="Scripts\FactoryMethod\CreatePremiumTicket.cs" />
     <Compile Include="Scripts\FactoryMethod\CreateStandardPlusTicket.cs" />

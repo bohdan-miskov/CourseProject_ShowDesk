@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -7,8 +8,6 @@ namespace CourseProject_ShowDesk
 {
     public partial class ManageStagesForm : MetroFramework.Forms.MetroForm
     {
-        private string stageFileName = "stages.json";
-
         private List<Stage> stages;
 
         public ManageStagesForm()
@@ -79,19 +78,19 @@ namespace CourseProject_ShowDesk
 
         private void SaveStagesToFile()
         {
-            FileHandler.SaveToJson(stageFileName, stages);
+            FileHandler.SaveToJson(AppConstants.StagesFileName, stages);
         }
 
         private void LoadStagesFromFile()
         {
-            if (File.Exists(stageFileName))
+            if (File.Exists(AppConstants.StagesFileName))
             {
-                stages = FileHandler.LoadFromJson<Stage>(stageFileName);
+                stages = FileHandler.LoadFromJson<Stage>(AppConstants.StagesFileName);
             }
             else
             {
                 MessageBox.Show(this,
-                                $"File {stageFileName} not found",
+                                $"File {AppConstants.StagesFileName} not found",
                                 "Load stages error",
                                 MessageBoxButtons.OK);
             }

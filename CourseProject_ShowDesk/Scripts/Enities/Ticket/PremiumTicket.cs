@@ -8,16 +8,15 @@ namespace CourseProject_ShowDesk.Scripts
 
         public PremiumTicket()
         {
-            souvenir = "Poster";
-            typeIncrease = 3;
-            type = "Premium";
+            souvenir = AppConstants.ListOfSouvenirs[0];
+            typeIncrease = AppConstants.PremiumIncrease;
+            type = AppConstants.ListOfTicketTypes[2];
+            drink = AppConstants.ListOfDrinks[0];
         }
 
         public PremiumTicket(int index, int position, bool reserved, string drink, string souvenir) : base(index, position, reserved, drink)
         {
             Souvenir = souvenir;
-            typeIncrease = 3;
-            type = "Premium";
         }
 
         public string Souvenir

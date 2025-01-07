@@ -13,8 +13,6 @@ namespace CourseProject_ShowDesk.Scripts
 {
     public partial class ManageEmployeesForm : MetroFramework.Forms.MetroForm
     {
-        private string employeesFileName = "employees.json";
-
         private List<Employee> employees;
 
         public ManageEmployeesForm()
@@ -47,19 +45,19 @@ namespace CourseProject_ShowDesk.Scripts
 
         private void SaveEmployeesToFile()
         {
-            FileHandler.SaveToJson(employeesFileName, employees);
+            FileHandler.SaveToJson(AppConstants.EmployeesFileName, employees);
         }
 
         private void LoadEmployeesFromFile()
         {
-            if (File.Exists(employeesFileName))
+            if (File.Exists(AppConstants.EmployeesFileName))
             {
-                employees = FileHandler.LoadFromJson<Employee>(employeesFileName);
+                employees = FileHandler.LoadFromJson<Employee>(AppConstants.EmployeesFileName);
             }
             else
             {
                 MessageBox.Show(this,
-                                $"File {employeesFileName} not found",
+                                $"File {AppConstants.EmployeesFileName} not found",
                                 "Load employees error",
                                 MessageBoxButtons.OK);
             }
