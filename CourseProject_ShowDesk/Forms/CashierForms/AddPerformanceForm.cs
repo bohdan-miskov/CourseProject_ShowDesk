@@ -75,6 +75,8 @@ namespace CourseProject_ShowDesk
 
         private void PopulateComboBox()
         {
+            comboBoxStage.Items.Clear();
+
             foreach (Stage stage in stages)
             {
                 comboBoxStage.Items.Add(stage.Name);

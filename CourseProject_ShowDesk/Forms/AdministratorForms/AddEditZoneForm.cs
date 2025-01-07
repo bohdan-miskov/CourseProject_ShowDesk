@@ -61,12 +61,18 @@ namespace CourseProject_ShowDesk
 
         private void numericUpDownStartPosition_ValueChanged(object sender, EventArgs e)
         {
-            numericUpDownEndPosition.Minimum = numericUpDownStartPosition.Value;
+            if(numericUpDownEndPosition.Value < numericUpDownStartPosition.Value)
+            {
+                numericUpDownEndPosition.Value = numericUpDownStartPosition.Value;
+            }
         }
 
         private void numericUpDownEndPosition_ValueChanged(object sender, EventArgs e)
         {
-            numericUpDownStartPosition.Maximum = numericUpDownEndPosition.Value;
+            if (numericUpDownEndPosition.Value < numericUpDownStartPosition.Value)
+            {
+                numericUpDownStartPosition.Value = numericUpDownEndPosition.Value;
+            }
         }
 
         private void textBoxIncrease_KeyPress(object sender, KeyPressEventArgs e)

@@ -59,6 +59,8 @@ namespace CourseProject_ShowDesk
 
         private void PopulateComboBox()
         {
+            comboBoxUser.Items.Clear();
+
             foreach (string profession in AppConstants.ListOfProfessions)
             {
                 comboBoxUser.Items.Add(profession);
@@ -87,7 +89,7 @@ namespace CourseProject_ShowDesk
             {
                 if (CheckAccount(AppConstants.ListOfProfessions[0]))
                 {
-                    new ManageStagesForm().ShowDialog();
+                    new ManageEmployeesForm().ShowDialog();
                 }
                 else
                 {
@@ -98,7 +100,7 @@ namespace CourseProject_ShowDesk
             {
                 if (CheckAccount(AppConstants.ListOfProfessions[1]))
                 {
-                    new ManagePerformancesForm().ShowDialog();
+                    new ManageStagesForm().ShowDialog();
                 }
                 else
                 {
@@ -109,7 +111,7 @@ namespace CourseProject_ShowDesk
             {
                 if (CheckAccount(AppConstants.ListOfProfessions[2]))
                 {
-                    new ManageEmployeesForm().ShowDialog();
+                    new ManagePerformancesForm().ShowDialog();
                 }
                 else
                 {

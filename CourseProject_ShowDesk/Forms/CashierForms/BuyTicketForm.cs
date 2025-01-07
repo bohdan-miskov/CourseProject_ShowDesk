@@ -114,6 +114,8 @@ namespace CourseProject_ShowDesk
 
         private void PopulateComboBoxTicketType()
         {
+            comboBoxTicketType.Items.Clear();
+
             foreach (string type in AppConstants.ListOfTicketTypes)
             {
                 comboBoxTicketType.Items.Add(type);
@@ -136,6 +138,8 @@ namespace CourseProject_ShowDesk
 
         private void PopulateComboBoxPositions()
         {
+            comboBoxPositions.Items.Clear();
+
             List<int> positions = GetAllPositions();
 
             positions = ToFindFreePositions(positions);
@@ -163,6 +167,8 @@ namespace CourseProject_ShowDesk
 
         private void PopulateComboBoxDrink()
         {
+            comboBoxDrink.Items.Clear();
+
             foreach (string drink in AppConstants.ListOfDrinks)
             {
                 comboBoxDrink.Items.Add(drink);
@@ -184,6 +190,8 @@ namespace CourseProject_ShowDesk
 
         private void PopulateComboBoxSouvenir()
         {
+            comboBoxSouvenir.Items.Clear();
+
             foreach (string souvenir in AppConstants.ListOfSouvenirs)
             {
                 comboBoxSouvenir.Items.Add(souvenir);

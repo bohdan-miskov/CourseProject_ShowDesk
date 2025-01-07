@@ -30,8 +30,8 @@
         {
             this.groupBoxAuthenticate = new System.Windows.Forms.GroupBox();
             this.pictureBoxAvatar = new System.Windows.Forms.PictureBox();
-            this.comboBoxUser = new System.Windows.Forms.ComboBox();
             this.groupBoxChoice = new System.Windows.Forms.GroupBox();
+            this.comboBoxUser = new System.Windows.Forms.ComboBox();
             this.buttonAuthentificate = new System.Windows.Forms.Button();
             this.groupBoxSignIn = new System.Windows.Forms.GroupBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
@@ -69,22 +69,6 @@
             this.pictureBoxAvatar.TabIndex = 8;
             this.pictureBoxAvatar.TabStop = false;
             // 
-            // comboBoxUser
-            // 
-            this.comboBoxUser.BackColor = System.Drawing.Color.Silver;
-            this.comboBoxUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Items.AddRange(new object[] {
-            "Administrator",
-            "Cashier",
-            "Director"});
-            this.comboBoxUser.Location = new System.Drawing.Point(6, 40);
-            this.comboBoxUser.Name = "comboBoxUser";
-            this.comboBoxUser.Size = new System.Drawing.Size(173, 29);
-            this.comboBoxUser.TabIndex = 1;
-            this.comboBoxUser.SelectedIndexChanged += new System.EventHandler(this.comboBoxUser_SelectedIndexChanged);
-            this.comboBoxUser.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxUser_KeyUp);
-            // 
             // groupBoxChoice
             // 
             this.groupBoxChoice.BackColor = System.Drawing.Color.Transparent;
@@ -97,6 +81,18 @@
             this.groupBoxChoice.TabIndex = 9;
             this.groupBoxChoice.TabStop = false;
             this.groupBoxChoice.Text = "Choice role";
+            // 
+            // comboBoxUser
+            // 
+            this.comboBoxUser.BackColor = System.Drawing.Color.Silver;
+            this.comboBoxUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxUser.FormattingEnabled = true;
+            this.comboBoxUser.Location = new System.Drawing.Point(6, 40);
+            this.comboBoxUser.Name = "comboBoxUser";
+            this.comboBoxUser.Size = new System.Drawing.Size(173, 29);
+            this.comboBoxUser.TabIndex = 1;
+            this.comboBoxUser.SelectedIndexChanged += new System.EventHandler(this.comboBoxUser_SelectedIndexChanged);
+            this.comboBoxUser.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxUser_KeyUp);
             // 
             // buttonAuthentificate
             // 
@@ -133,6 +129,7 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(147, 28);
             this.textBoxPassword.TabIndex = 27;
+            this.textBoxPassword.Text = "Administrator";
             // 
             // labelPassword
             // 
@@ -163,6 +160,7 @@
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(147, 28);
             this.textBoxLogin.TabIndex = 25;
+            this.textBoxLogin.Text = "Admin";
             // 
             // AuthenticateForm
             // 
