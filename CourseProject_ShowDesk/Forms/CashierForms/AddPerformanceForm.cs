@@ -95,9 +95,7 @@ namespace CourseProject_ShowDesk
 
         private void AddPerformance()
         {
-            DateTime performanceDate = dateTimePickerPerfomanceDate.Value;
-            DateTime performanceTime = dateTimePickerPerformanceTime.Value;
-            DateTime performanceDateTime = performanceDate.Add(performanceTime.TimeOfDay);
+            DateTime performanceDateTime = dateTimePickerPerfomanceDate.Value;
             string performanceName = textBoxPerformanceName.Text;
             double baseTicketPrice = Convert.ToDouble(textBoxBaseTicketPrice.Text);
             int stageIndex = stages[comboBoxStage.SelectedIndex].Index;
@@ -121,11 +119,22 @@ namespace CourseProject_ShowDesk
             {
                 MessageBox.Show(this,
                                 "The base price of the ticket must be entered in the format 0.000, cannot be negative or empty",
-                                "StandardTicket price error",
+                                "Ticket price error",
                                 MessageBoxButtons.OK);
                 textBoxBaseTicketPrice.Focus();
                 return false;
             }
+
+            if(dateTimePickerPerfomanceDate.Value<DateTime.Now)
+            {
+                MessageBox.Show(this,
+                                "Performance date and time cannot be in the past.",
+                                "Performance date error",
+                                MessageBoxButtons.OK);
+                dateTimePickerPerfomanceDate.Focus();
+                return false;
+            }
+
             return true;
         }
 

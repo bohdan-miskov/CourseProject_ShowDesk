@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.removeTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,8 +44,6 @@
             this.textBoxPerformanceName = new System.Windows.Forms.TextBox();
             this.dateTimePickerPerfomanceDate = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPerformance = new System.Windows.Forms.GroupBox();
-            this.labelPerformanceTime = new System.Windows.Forms.Label();
-            this.dateTimePickerPerformanceTime = new System.Windows.Forms.DateTimePicker();
             this.textBoxBaseTicketPrice = new System.Windows.Forms.TextBox();
             this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,8 +85,8 @@
             this.removeTicketToolStripMenuItem});
             this.ticketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ticketToolStripMenuItem.Name = "ticketToolStripMenuItem";
-            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.ticketToolStripMenuItem.Text = "StandardTicket";
+            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(60, 22);
+            this.ticketToolStripMenuItem.Text = "Ticket";
             // 
             // ChangeStatusToolStripMenuItem
             // 
@@ -129,7 +127,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPerformanceName.AutoSize = true;
             this.labelPerformanceName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPerformanceName.Location = new System.Drawing.Point(51, 107);
+            this.labelPerformanceName.Location = new System.Drawing.Point(51, 73);
             this.labelPerformanceName.Name = "labelPerformanceName";
             this.labelPerformanceName.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             this.labelPerformanceName.Size = new System.Drawing.Size(155, 25);
@@ -170,7 +168,7 @@
             this.ticketToolStripMenuItem});
             this.menuStripPerformance.Location = new System.Drawing.Point(0, 0);
             this.menuStripPerformance.Name = "menuStripPerformance";
-            this.menuStripPerformance.Size = new System.Drawing.Size(126, 26);
+            this.menuStripPerformance.Size = new System.Drawing.Size(68, 26);
             this.menuStripPerformance.TabIndex = 17;
             this.menuStripPerformance.Text = "menuStrip1";
             // 
@@ -195,7 +193,7 @@
             this.textBoxPerformanceName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPerformanceName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPerformanceName.Location = new System.Drawing.Point(225, 104);
+            this.textBoxPerformanceName.Location = new System.Drawing.Point(225, 70);
             this.textBoxPerformanceName.Name = "textBoxPerformanceName";
             this.textBoxPerformanceName.Size = new System.Drawing.Size(299, 28);
             this.textBoxPerformanceName.TabIndex = 10;
@@ -205,11 +203,14 @@
             // 
             this.dateTimePickerPerfomanceDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerPerfomanceDate.CustomFormat = "dd.MM.yyyy HH:mm";
             this.dateTimePickerPerfomanceDate.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerPerfomanceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerPerfomanceDate.Location = new System.Drawing.Point(225, 36);
             this.dateTimePickerPerfomanceDate.Name = "dateTimePickerPerfomanceDate";
             this.dateTimePickerPerfomanceDate.Size = new System.Drawing.Size(299, 28);
             this.dateTimePickerPerfomanceDate.TabIndex = 9;
+            this.dateTimePickerPerfomanceDate.Value = new System.DateTime(2025, 1, 8, 13, 0, 0, 0);
             this.dateTimePickerPerfomanceDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dateTimePickerPerfomanceDate_KeyUp);
             // 
             // groupBoxPerformance
@@ -217,8 +218,6 @@
             this.groupBoxPerformance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxPerformance.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxPerformance.Controls.Add(this.labelPerformanceTime);
-            this.groupBoxPerformance.Controls.Add(this.dateTimePickerPerformanceTime);
             this.groupBoxPerformance.Controls.Add(this.buttonSave);
             this.groupBoxPerformance.Controls.Add(this.labelStage);
             this.groupBoxPerformance.Controls.Add(this.labelPerformanceName);
@@ -236,27 +235,6 @@
             this.groupBoxPerformance.TabIndex = 15;
             this.groupBoxPerformance.TabStop = false;
             this.groupBoxPerformance.Text = "Performance";
-            // 
-            // labelPerformanceTime
-            // 
-            this.labelPerformanceTime.AutoSize = true;
-            this.labelPerformanceTime.BackColor = System.Drawing.Color.Transparent;
-            this.labelPerformanceTime.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPerformanceTime.Location = new System.Drawing.Point(51, 73);
-            this.labelPerformanceTime.Name = "labelPerformanceTime";
-            this.labelPerformanceTime.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.labelPerformanceTime.Size = new System.Drawing.Size(141, 25);
-            this.labelPerformanceTime.TabIndex = 21;
-            this.labelPerformanceTime.Text = "Perfomance time";
-            // 
-            // dateTimePickerPerformanceTime
-            // 
-            this.dateTimePickerPerformanceTime.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerPerformanceTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerPerformanceTime.Location = new System.Drawing.Point(225, 70);
-            this.dateTimePickerPerformanceTime.Name = "dateTimePickerPerformanceTime";
-            this.dateTimePickerPerformanceTime.Size = new System.Drawing.Size(299, 28);
-            this.dateTimePickerPerformanceTime.TabIndex = 20;
             // 
             // textBoxBaseTicketPrice
             // 
@@ -285,22 +263,22 @@
             this.columnPrice,
             this.columnReserved,
             this.columnAdditionalServices});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTickets.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTickets.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewTickets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTickets.Location = new System.Drawing.Point(3, 24);
             this.dataGridViewTickets.Name = "dataGridViewTickets";
             this.dataGridViewTickets.ReadOnly = true;
             this.dataGridViewTickets.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTickets.Size = new System.Drawing.Size(664, 197);
             this.dataGridViewTickets.TabIndex = 12;
@@ -411,8 +389,6 @@
         private System.Windows.Forms.DataGridView dataGridViewTickets;
         private System.Windows.Forms.GroupBox groupBoxTickets;
         private System.Windows.Forms.GroupBox groupBoxForm;
-        private System.Windows.Forms.Label labelPerformanceTime;
-        private System.Windows.Forms.DateTimePicker dateTimePickerPerformanceTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnType;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPosition;

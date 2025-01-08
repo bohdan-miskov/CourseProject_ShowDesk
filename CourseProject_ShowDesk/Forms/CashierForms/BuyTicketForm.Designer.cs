@@ -201,7 +201,7 @@
             this.groupBoxTicket.Size = new System.Drawing.Size(415, 438);
             this.groupBoxTicket.TabIndex = 40;
             this.groupBoxTicket.TabStop = false;
-            this.groupBoxTicket.Text = "StandardTicket";
+            this.groupBoxTicket.Text = "Ticket";
             // 
             // groupBoxPremium
             // 

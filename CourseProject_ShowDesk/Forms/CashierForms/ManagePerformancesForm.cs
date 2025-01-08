@@ -12,6 +12,10 @@ namespace CourseProject_ShowDesk
 
         private List<Performance> performances;
 
+        private int countOfPastPerformances;
+
+        private bool isPastPerformances = false;
+
         public ManagePerformancesForm()
         {
             InitializeComponent();
@@ -20,6 +24,8 @@ namespace CourseProject_ShowDesk
 
             LoadPerformancesFromFile();
             LoadStagesFromFile();
+
+            FliterPerformancesByDate();
 
             UpdateDataGridPerformances();
 
@@ -59,7 +65,7 @@ namespace CourseProject_ShowDesk
 
         private void removeSpecToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            performances.RemoveAt(dataGridViewPerformances.CurrentRow.Index);
+            performances.RemoveAt(dataGridViewPerformances.CurrentRow.Index + countOfPastPerformances);
 
             UpdateDataGridPerformances();
             DisableEditAndRemoveStage();
@@ -70,25 +76,91 @@ namespace CourseProject_ShowDesk
             OpenRevenue();
         }
 
+        private void buttonSwitch_Click(object sender, EventArgs e)
+        {
+            if (isPastPerformances)
+            {
+                UpdateDataGridPerformances();
+                isPastPerformances = !isPastPerformances;
+            }
+            else
+            {
+                UpdateDataGridPastPerformances();
+                isPastPerformances = !isPastPerformances;
+            }
+        }
+
         private void UpdateDataGridPerformances()
         {
             dataGridViewPerformances.Rows.Clear();
+            performanceToolStripMenuItem.Enabled = true;
+            countOfPastPerformances = 0;
+
+            SortPerformancesByDate();
 
             foreach (Performance performance in performances)
             {
-                string timePerformance = $"{performance.PerformanceDateTime.Hour:D2}:{performance.PerformanceDateTime.Minute:D2}";
-                dataGridViewPerformances.Rows.Add(
-                    performance.PerformanceDateTime.Date.ToShortDateString(),
-                    timePerformance,
-                    performance.Name,
-                    performance.Price,
-                    GetStageName(performance.StageIndex),
-                    GetTotalPositions(performance.StageIndex),
-                    GetSoldTickets(performance.Tickets),
-                    GetReservedTickets(performance.Tickets)
-                    );
+                if (performance.PerformanceDateTime > DateTime.Now)
+                {
+                    string timePerformance = $"{performance.PerformanceDateTime.Hour:D2}:{performance.PerformanceDateTime.Minute:D2}";
+                    dataGridViewPerformances.Rows.Add(
+                        performance.PerformanceDateTime.Date.ToShortDateString(),
+                        timePerformance,
+                        performance.Name,
+                        performance.Price,
+                        GetStageName(performance.StageIndex),
+                        GetTotalPositions(performance.StageIndex),
+                        GetSoldTickets(performance.Tickets),
+                        GetReservedTickets(performance.Tickets)
+                        );
+                }
+                else
+                {
+                    countOfPastPerformances++;
+                }
             }
         }
+
+        private void UpdateDataGridPastPerformances()
+        {
+            dataGridViewPerformances.Rows.Clear();
+            performanceToolStripMenuItem.Enabled = false;
+
+            foreach (Performance performance in performances)
+            {
+                if (performance.PerformanceDateTime < DateTime.Now)
+                {
+                    string timePerformance = $"{performance.PerformanceDateTime.Hour:D2}:{performance.PerformanceDateTime.Minute:D2}";
+                    dataGridViewPerformances.Rows.Add(
+                        performance.PerformanceDateTime.Date.ToShortDateString(),
+                        timePerformance,
+                        performance.Name,
+                        performance.Price,
+                        GetStageName(performance.StageIndex),
+                        GetTotalPositions(performance.StageIndex),
+                        GetSoldTickets(performance.Tickets),
+                        GetReservedTickets(performance.Tickets)
+                        );
+                }
+            }
+        }
+
+        private void SortPerformancesByDate()
+        {
+            for(int i=0; i<performances.Count-1; i++)
+            {
+                for(int j=0; j<performances.Count-i-1;  j++)
+                {
+                    if (performances[j].PerformanceDateTime > performances[j+1].PerformanceDateTime)
+                    {
+                        Performance tempPerformance=performances[j];
+                        performances[j] = performances[j + 1];
+                        performances[j + 1] = tempPerformance;
+                    }
+                }
+            }
+        }
+
 
         private string GetStageName(int stageIndex)
         {
@@ -175,17 +247,32 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void FliterPerformancesByDate()
+        {
+            List<Performance> filteredPerformances = new List<Performance>();
+
+            foreach(Performance performance in performances)
+            {
+                if((DateTime.Now - performance.PerformanceDateTime).Days < AppConstants.RangeDateOfPastPerformances)
+                {
+                    filteredPerformances.Add(performance);
+                }
+            }
+
+            performances = filteredPerformances;
+        }
+
         private void DisableEditAndRemoveStage()
         {
             if (dataGridViewPerformances.CurrentRow != null)
             {
-                editSpecToolStripMenuItem.Enabled = true;
-                removeSpecToolStripMenuItem.Enabled = true;
+                editPerformanceToolStripMenuItem.Enabled = true;
+                removePerformanceToolStripMenuItem.Enabled = true;
             }
             else
             {
-                editSpecToolStripMenuItem.Enabled = false;
-                removeSpecToolStripMenuItem.Enabled = false;
+                editPerformanceToolStripMenuItem.Enabled = false;
+                removePerformanceToolStripMenuItem.Enabled = false;
             }
         }
 
@@ -193,7 +280,6 @@ namespace CourseProject_ShowDesk
         private void AddPerformance()
         {
             AddPerformanceForm addPerformanceForm = new AddPerformanceForm(stages, performances);
-            addPerformanceForm.BackgroundImage = Properties.Resources.formBackground;
             addPerformanceForm.ShowDialog();
 
             if (addPerformanceForm.GetIsValid())
@@ -204,12 +290,12 @@ namespace CourseProject_ShowDesk
 
         private void EditPerformance()
         {
-            EditPerformanceForm editPerformanceForm = new EditPerformanceForm(stages, performances[dataGridViewPerformances.CurrentRow.Index]);
+            EditPerformanceForm editPerformanceForm = new EditPerformanceForm(stages, performances[dataGridViewPerformances.CurrentRow.Index+countOfPastPerformances]);
             editPerformanceForm.ShowDialog();
 
             if (editPerformanceForm.GetIsValid())
             {
-                performances[dataGridViewPerformances.CurrentRow.Index] = editPerformanceForm.GetNewPerformance();
+                performances[dataGridViewPerformances.CurrentRow.Index+countOfPastPerformances] = editPerformanceForm.GetNewPerformance();
             }
         }
 

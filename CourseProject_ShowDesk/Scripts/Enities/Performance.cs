@@ -68,10 +68,6 @@ namespace CourseProject_ShowDesk
             }
             set
             {
-                if (value < DateTime.Now)
-                {
-                    throw new ArgumentException("Performance date and time cannot be in the past.", nameof(PerformanceDateTime));
-                }
                 performanceDateTime = value;
             }
         }

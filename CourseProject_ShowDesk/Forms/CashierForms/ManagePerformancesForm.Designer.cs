@@ -28,16 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPerformances = new System.Windows.Forms.DataGridView();
-            this.menuStripManagePerformance = new System.Windows.Forms.MenuStrip();
-            this.spectacleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addSpecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editSpecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeSpecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.columnPerformanceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPerformanceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +39,14 @@
             this.columnTicketsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnSold = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStripManagePerformance = new System.Windows.Forms.MenuStrip();
+            this.performanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonSwitch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).BeginInit();
             this.menuStripManagePerformance.SuspendLayout();
             this.SuspendLayout();
@@ -58,14 +59,14 @@
             this.dataGridViewPerformances.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPerformances.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPerformances.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPerformances.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPerformances.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPerformances.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnPerformanceDate,
@@ -76,14 +77,14 @@
             this.columnTicketsCount,
             this.columnSold,
             this.columnReserved});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPerformances.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPerformances.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPerformances.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewPerformances.Location = new System.Drawing.Point(0, 64);
             this.dataGridViewPerformances.MultiSelect = false;
@@ -95,71 +96,6 @@
             this.dataGridViewPerformances.TabIndex = 3;
             this.dataGridViewPerformances.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPerformances_RowEnter);
             this.dataGridViewPerformances.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPerformances_RowLeave);
-            // 
-            // menuStripManagePerformance
-            // 
-            this.menuStripManagePerformance.BackColor = System.Drawing.Color.Teal;
-            this.menuStripManagePerformance.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStripManagePerformance.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.spectacleToolStripMenuItem,
-            this.reportToolStripMenuItem});
-            this.menuStripManagePerformance.Location = new System.Drawing.Point(0, 0);
-            this.menuStripManagePerformance.Name = "menuStripManagePerformance";
-            this.menuStripManagePerformance.Size = new System.Drawing.Size(158, 26);
-            this.menuStripManagePerformance.TabIndex = 4;
-            this.menuStripManagePerformance.Text = "menuStripManagePerformance";
-            // 
-            // spectacleToolStripMenuItem
-            // 
-            this.spectacleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addSpecToolStripMenuItem,
-            this.editSpecToolStripMenuItem,
-            this.removeSpecToolStripMenuItem});
-            this.spectacleToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spectacleToolStripMenuItem.Name = "spectacleToolStripMenuItem";
-            this.spectacleToolStripMenuItem.Size = new System.Drawing.Size(89, 22);
-            this.spectacleToolStripMenuItem.Text = "Спектакль";
-            // 
-            // addSpecToolStripMenuItem
-            // 
-            this.addSpecToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addSpecToolStripMenuItem.Name = "addSpecToolStripMenuItem";
-            this.addSpecToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.addSpecToolStripMenuItem.Text = "Добавить";
-            this.addSpecToolStripMenuItem.Click += new System.EventHandler(this.addSpecToolStripMenuItem_Click);
-            // 
-            // editSpecToolStripMenuItem
-            // 
-            this.editSpecToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editSpecToolStripMenuItem.Name = "editSpecToolStripMenuItem";
-            this.editSpecToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.editSpecToolStripMenuItem.Text = "Изменить";
-            this.editSpecToolStripMenuItem.Click += new System.EventHandler(this.editSpecToolStripMenuItem_Click);
-            // 
-            // removeSpecToolStripMenuItem
-            // 
-            this.removeSpecToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeSpecToolStripMenuItem.Name = "removeSpecToolStripMenuItem";
-            this.removeSpecToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.removeSpecToolStripMenuItem.Text = "Удалить";
-            this.removeSpecToolStripMenuItem.Click += new System.EventHandler(this.removeSpecToolStripMenuItem_Click);
-            // 
-            // reportToolStripMenuItem
-            // 
-            this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.revenueReportToolStripMenuItem});
-            this.reportToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(61, 22);
-            this.reportToolStripMenuItem.Text = "Отчет";
-            // 
-            // revenueReportToolStripMenuItem
-            // 
-            this.revenueReportToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.revenueReportToolStripMenuItem.Name = "revenueReportToolStripMenuItem";
-            this.revenueReportToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.revenueReportToolStripMenuItem.Text = "Отчет о прибыли";
-            this.revenueReportToolStripMenuItem.Click += new System.EventHandler(this.revenueReportToolStripMenuItem_Click);
             // 
             // columnPerformanceDate
             // 
@@ -209,11 +145,89 @@
             this.columnReserved.Name = "columnReserved";
             this.columnReserved.ReadOnly = true;
             // 
+            // menuStripManagePerformance
+            // 
+            this.menuStripManagePerformance.BackColor = System.Drawing.Color.Teal;
+            this.menuStripManagePerformance.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStripManagePerformance.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.performanceToolStripMenuItem,
+            this.reportToolStripMenuItem});
+            this.menuStripManagePerformance.Location = new System.Drawing.Point(0, 0);
+            this.menuStripManagePerformance.Name = "menuStripManagePerformance";
+            this.menuStripManagePerformance.Size = new System.Drawing.Size(172, 26);
+            this.menuStripManagePerformance.TabIndex = 4;
+            this.menuStripManagePerformance.Text = "menuStripManagePerformance";
+            // 
+            // performanceToolStripMenuItem
+            // 
+            this.performanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addPerformanceToolStripMenuItem,
+            this.editPerformanceToolStripMenuItem,
+            this.removePerformanceToolStripMenuItem});
+            this.performanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.performanceToolStripMenuItem.Name = "performanceToolStripMenuItem";
+            this.performanceToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.performanceToolStripMenuItem.Text = "Performance";
+            // 
+            // addPerformanceToolStripMenuItem
+            // 
+            this.addPerformanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addPerformanceToolStripMenuItem.Name = "addPerformanceToolStripMenuItem";
+            this.addPerformanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addPerformanceToolStripMenuItem.Text = "Add";
+            this.addPerformanceToolStripMenuItem.Click += new System.EventHandler(this.addSpecToolStripMenuItem_Click);
+            // 
+            // editPerformanceToolStripMenuItem
+            // 
+            this.editPerformanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editPerformanceToolStripMenuItem.Name = "editPerformanceToolStripMenuItem";
+            this.editPerformanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editPerformanceToolStripMenuItem.Text = "Edit";
+            this.editPerformanceToolStripMenuItem.Click += new System.EventHandler(this.editSpecToolStripMenuItem_Click);
+            // 
+            // removePerformanceToolStripMenuItem
+            // 
+            this.removePerformanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removePerformanceToolStripMenuItem.Name = "removePerformanceToolStripMenuItem";
+            this.removePerformanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removePerformanceToolStripMenuItem.Text = "Remove";
+            this.removePerformanceToolStripMenuItem.Click += new System.EventHandler(this.removeSpecToolStripMenuItem_Click);
+            // 
+            // reportToolStripMenuItem
+            // 
+            this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.revenueReportToolStripMenuItem});
+            this.reportToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(63, 22);
+            this.reportToolStripMenuItem.Text = "Report";
+            // 
+            // revenueReportToolStripMenuItem
+            // 
+            this.revenueReportToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.revenueReportToolStripMenuItem.Name = "revenueReportToolStripMenuItem";
+            this.revenueReportToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.revenueReportToolStripMenuItem.Text = "Report of revenue";
+            this.revenueReportToolStripMenuItem.Click += new System.EventHandler(this.revenueReportToolStripMenuItem_Click);
+            // 
+            // buttonSwitch
+            // 
+            this.buttonSwitch.BackColor = System.Drawing.Color.Teal;
+            this.buttonSwitch.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSwitch.Location = new System.Drawing.Point(591, 21);
+            this.buttonSwitch.Name = "buttonSwitch";
+            this.buttonSwitch.Size = new System.Drawing.Size(99, 31);
+            this.buttonSwitch.TabIndex = 5;
+            this.buttonSwitch.Text = "Switch";
+            this.buttonSwitch.UseVisualStyleBackColor = false;
+            this.buttonSwitch.Click += new System.EventHandler(this.buttonSwitch_Click);
+            // 
             // ManagePerformancesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 306);
+            this.Controls.Add(this.buttonSwitch);
             this.Controls.Add(this.dataGridViewPerformances);
             this.Controls.Add(this.menuStripManagePerformance);
             this.Name = "ManagePerformancesForm";
@@ -231,10 +245,10 @@
 
         private System.Windows.Forms.DataGridView dataGridViewPerformances;
         private System.Windows.Forms.MenuStrip menuStripManagePerformance;
-        private System.Windows.Forms.ToolStripMenuItem spectacleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addSpecToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editSpecToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeSpecToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem performanceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addPerformanceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editPerformanceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removePerformanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem revenueReportToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPerformanceDate;
@@ -245,5 +259,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnTicketsCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSold;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnReserved;
+        private System.Windows.Forms.Button buttonSwitch;
     }
 }

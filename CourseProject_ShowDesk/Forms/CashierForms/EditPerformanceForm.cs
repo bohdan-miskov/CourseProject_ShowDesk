@@ -88,6 +88,11 @@ namespace CourseProject_ShowDesk
             DisableEditAndRemoveZone();
         }
 
+        private void textBoxBaseTicketPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ParametersValidator.ValidatorDoubleDigit(sender, e);
+        }
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (ValidateOfPerformance())
@@ -103,7 +108,6 @@ namespace CourseProject_ShowDesk
         private void PopulateFields()
         {
             dateTimePickerPerfomanceDate.Value = performance.PerformanceDateTime;
-            dateTimePickerPerformanceTime.Value = performance.PerformanceDateTime;
             textBoxPerformanceName.Text = performance.Name;
             textBoxBaseTicketPrice.Text = Convert.ToString(performance.Price);
 
@@ -171,7 +175,7 @@ namespace CourseProject_ShowDesk
 
         private void SavePerformance()
         {
-            performance.PerformanceDateTime = dateTimePickerPerfomanceDate.Value.Add(dateTimePickerPerformanceTime.Value.TimeOfDay);
+            performance.PerformanceDateTime = dateTimePickerPerfomanceDate.Value/*.Add(dateTimePickerPerformanceTime.Value.TimeOfDay)*/;
             performance.Name = textBoxPerformanceName.Text;
             performance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
 
@@ -229,11 +233,6 @@ namespace CourseProject_ShowDesk
         public Performance GetNewPerformance()
         {
             return performance;
-        }
-
-        private void textBoxBaseTicketPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ParametersValidator.ValidatorDoubleDigit(sender, e);
         }
     }
 }

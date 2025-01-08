@@ -15,6 +15,7 @@ namespace CourseProject_ShowDesk.Scripts
         public const double StandardIncrease = 1;
         public const double StandardPlusIncrease = 1.5;
         public const double PremiumIncrease = 2;
+        public const int RangeDateOfPastPerformances = 7;
 
         public static readonly List<string> ListOfProfessions = new List<string> { "Director", "Administrator", "Cashier" };
         public static readonly List<string> ListOfTicketTypes = new List<string> { "Standard", "StandardPlus", "Premium" };
