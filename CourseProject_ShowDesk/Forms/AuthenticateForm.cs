@@ -50,10 +50,11 @@ namespace CourseProject_ShowDesk
             }
             else
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 $"File {AppConstants.EmployeesFileName} not found",
                                 "Load employees error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 
@@ -137,9 +138,11 @@ namespace CourseProject_ShowDesk
 
         private void ShowErrorMessage()
         {
-            MessageBox.Show($"Authenticate data is uncorrect",
-                                "Authenticate error",
-                                MessageBoxButtons.OK);
+            MessageBox.Show(
+                            $"Authenticate data is uncorrect",
+                            "Authenticate error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
         }
     }
 }

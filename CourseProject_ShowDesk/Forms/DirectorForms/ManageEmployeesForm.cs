@@ -110,10 +110,11 @@ namespace CourseProject_ShowDesk.Scripts
             }
             else
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 $"File {AppConstants.EmployeesFileName} not found",
                                 "Load employees error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 

@@ -147,30 +147,33 @@ namespace CourseProject_ShowDesk.Scripts
         {
             if (!(ParametersValidator.NameValidator(textBoxFullName.Text)))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "There was an error in the full name of the employee: the full name must be more than two characters long",
                                 "Full name employee error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxFullName.Focus();
                 return false;
             }
 
             if (!(ParametersValidator.NameValidator(textBoxLogin.Text)))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "There was an error in the login of the employee: the login must be more than two characters long",
                                 "Login employee error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxLogin.Focus();
                 return false;
             }
 
             if (LoginIsRepeat())
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "There was an error in the login of the employee: the login must not be repeat",
                                 "Login employee error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxLogin.Focus();
                 return false;
             }
@@ -178,10 +181,11 @@ namespace CourseProject_ShowDesk.Scripts
             if (!(ParametersValidator.PasswordValidator(textBoxPassword.Text)))
             {
 
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "There was an error in the password of the employee: the password must be more than seven characters long",
                                 "Password employee error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxPassword.Focus();
                 return false;
             }
@@ -191,7 +195,8 @@ namespace CourseProject_ShowDesk.Scripts
                 MessageBox.Show(this,
                                 "There was an error in the check boxes professions of the employee: at least one profession must be chosen",
                                 "СheckBoxProfession employee error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 checkBoxCashier.Focus();
                 return false;
             }

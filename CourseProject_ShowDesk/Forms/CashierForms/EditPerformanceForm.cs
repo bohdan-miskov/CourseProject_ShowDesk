@@ -177,7 +177,7 @@ namespace CourseProject_ShowDesk
 
         private void SavePerformance()
         {
-            performance.PerformanceDateTime = dateTimePickerPerfomanceDate.Value/*.Add(dateTimePickerPerformanceTime.Value.TimeOfDay)*/;
+            performance.PerformanceDateTime = dateTimePickerPerfomanceDate.Value;
             performance.Name = textBoxPerformanceName.Text;
             performance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
 
@@ -192,22 +192,47 @@ namespace CourseProject_ShowDesk
         {
             if (!ParametersValidator.NameValidator(textBoxPerformanceName.Text))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "There was an error in the name of the performance: the name should be more than two characters long",
                                 "Performance name error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxPerformanceName.Focus();
                 return false;
             }
 
             if (!ParametersValidator.DoubleValidator(textBoxBaseTicketPrice.Text))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "The base price of the ticket must be entered in the format 0.000, cannot be negative or empty",
                                 "StandardTicket price error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxBaseTicketPrice.Focus();
                 return false;
+            }
+
+            if(stages[comboBoxStage.SelectedIndex].Index != performance.StageIndex)
+            {
+                DialogResult result= 
+                    MessageBox.Show(
+                                "If you change the stage, all tickets will be cancelled.\n" +
+                                "Are you sure you want to do this?",
+                                "Stage warning!",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Warning);
+                if(result==DialogResult.No)
+                {
+                    for(int i=0; i<stages.Count; i++)
+                    {
+                        if (stages[i].Index == performance.StageIndex)
+                        {
+                            comboBoxStage.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                    return false;
+                }
             }
 
             return true;

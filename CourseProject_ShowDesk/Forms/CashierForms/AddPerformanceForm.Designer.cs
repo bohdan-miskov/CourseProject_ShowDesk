@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.labelStage = new System.Windows.Forms.Label();
             this.labelPerformanceName = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.textBoxPerformanceName = new System.Windows.Forms.TextBox();
             this.dateTimePickerPerfomanceDate = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPerformance = new System.Windows.Forms.GroupBox();
+            this.toolTipPerformance = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxPerformance.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,6 +125,7 @@
             this.textBoxBaseTicketPrice.Name = "textBoxBaseTicketPrice";
             this.textBoxBaseTicketPrice.Size = new System.Drawing.Size(222, 28);
             this.textBoxBaseTicketPrice.TabIndex = 11;
+            this.toolTipPerformance.SetToolTip(this.textBoxBaseTicketPrice, "Base price, without increase");
             this.textBoxBaseTicketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBaseTicketPrice_KeyPress);
             this.textBoxBaseTicketPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxBaseTicketPrice_KeyUp);
             // 
@@ -195,5 +198,6 @@
         private System.Windows.Forms.TextBox textBoxPerformanceName;
         private System.Windows.Forms.DateTimePicker dateTimePickerPerfomanceDate;
         private System.Windows.Forms.GroupBox groupBoxPerformance;
+        private System.Windows.Forms.ToolTip toolTipPerformance;
     }
 }

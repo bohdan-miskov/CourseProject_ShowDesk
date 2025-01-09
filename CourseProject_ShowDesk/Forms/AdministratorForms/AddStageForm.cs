@@ -90,10 +90,11 @@ namespace CourseProject_ShowDesk
         {
             if (!ParametersValidator.NameValidator(textBoxStageName.Text))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "There was an error in the name of the stage: the name must be more than two characters long",
                                 "Stage name error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxStageName.Focus();
                 return false;
             }

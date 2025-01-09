@@ -110,10 +110,11 @@ namespace CourseProject_ShowDesk
 
             if (!stage.AddZone(new Zone(zoneName, increase, startPosition, endPosition)))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                 "The starting position cannot be larger than the final position and the range of positions in the new sector cannot intersect with any range of positions in another sector of the hall",
                 "Range of positions error",
-                MessageBoxButtons.OK);
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
                 numericUpDownStartPosition.Focus();
                 return false;
             }
@@ -125,20 +126,22 @@ namespace CourseProject_ShowDesk
         {
             if (!ParametersValidator.NameValidator(textBoxZoneName.Text))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "There was an error in the name of the zone: the name must be more than two characters long",
                                 "Name zone error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxZoneName.Focus();
                 return false;
             }
 
             if (!ParametersValidator.DoubleValidator(textBoxIncrease.Text))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "The surcharge must be entered in the format 0.000, cannot be negative or empty",
                                 "Increase zone error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxIncrease.Focus();
                 return false;
             }

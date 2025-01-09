@@ -125,10 +125,11 @@ namespace CourseProject_ShowDesk
             {
                 comboBoxTicketType.Enabled = false;
                 buttonAdd.Enabled = false;
-                MessageBox.Show(this,
+                MessageBox.Show(
                     "Tickets is not available",
                     "Not available",
-                    MessageBoxButtons.OK);
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
             else
             {
@@ -154,10 +155,11 @@ namespace CourseProject_ShowDesk
             {
                 comboBoxPositions.Enabled = false;
                 buttonAdd.Enabled = false;
-                MessageBox.Show(this,
+                MessageBox.Show(
                     "All tickets are sold out",
                     "Not available",
-                    MessageBoxButtons.OK);
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
             else
             {
@@ -177,10 +179,11 @@ namespace CourseProject_ShowDesk
             if (AppConstants.ListOfDrinks.Count == 0)
             {
                 comboBoxDrink.Enabled = false;
-                MessageBox.Show(this,
+                MessageBox.Show(
                     "Drinks is not available",
                     "Not available",
-                    MessageBoxButtons.OK);
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
             else
             {
@@ -200,10 +203,11 @@ namespace CourseProject_ShowDesk
             if (AppConstants.ListOfSouvenirs.Count == 0)
             {
                 comboBoxSouvenir.Enabled = false;
-                MessageBox.Show(this,
+                MessageBox.Show(
                     "Souvenirs is not available",
                     "Not available",
-                    MessageBoxButtons.OK);
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Information);
             }
             else
             {

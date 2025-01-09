@@ -109,30 +109,33 @@ namespace CourseProject_ShowDesk
         {
             if (!ParametersValidator.NameValidator(textBoxPerformanceName.Text))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "There was an error in the name of the Performance: the name must be more than two characters long",
                                 "Performance name error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxPerformanceName.Focus();
                 return false;
             }
 
             if (!ParametersValidator.DoubleValidator(textBoxBaseTicketPrice.Text))
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "The base price of the ticket must be entered in the format 0.000, cannot be negative or empty",
                                 "Ticket price error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 textBoxBaseTicketPrice.Focus();
                 return false;
             }
 
             if(dateTimePickerPerfomanceDate.Value<DateTime.Now)
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 "Performance date and time cannot be in the past.",
                                 "Performance date error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                 dateTimePickerPerfomanceDate.Focus();
                 return false;
             }

@@ -225,10 +225,11 @@ namespace CourseProject_ShowDesk
             }
             else
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 $"File {AppConstants.PerformancesFileName} not found",
                                 "Load performances error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 
@@ -240,10 +241,11 @@ namespace CourseProject_ShowDesk
             }
             else
             {
-                MessageBox.Show(this,
+                MessageBox.Show(
                                 $"File {AppConstants.StagesFileName} not found",
                                 "Load stages error",
-                                MessageBoxButtons.OK);
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
             }
         }
 
