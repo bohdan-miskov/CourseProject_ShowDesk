@@ -117,7 +117,7 @@ namespace CourseProject_ShowDesk
             {
                 throw new ArgumentOutOfRangeException(nameof(increase), "Price increase factor must be greater than 0.");
             }
-            calculatedPrice = price * increase * typeIncrease;
+            calculatedPrice = price + (price * increase / 100) + (price * (typeIncrease-1));
         }
 
         public virtual string GetAdditionalServices()

@@ -21,6 +21,8 @@ namespace CourseProject_ShowDesk
             this.stages = stages;
             this.performances = performances;
 
+            dateTimePickerPerfomanceDate.MinDate = DateTime.Now.Date;
+
             PopulateComboBox();
 
             isValid = false;

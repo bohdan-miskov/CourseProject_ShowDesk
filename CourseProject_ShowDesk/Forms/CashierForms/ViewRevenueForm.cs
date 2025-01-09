@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CourseProject_ShowDesk
@@ -9,13 +10,34 @@ namespace CourseProject_ShowDesk
 
         private List<Performance> performances;
 
+        private int formMinWidth = 268;
+        private int formMaxWidth=870;
+
         public ViewRevenueForm(List<Performance> performances)
         {
             InitializeComponent();
 
             this.performances = performances;
 
+            this.Width = formMinWidth;
+
             SetDateLimit();
+        }
+
+        private void dateTimePickerStartDate_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dateTimePickerFinishDate.Focus();
+            }
+        }
+
+        private void dateTimePickerFinishDate_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonCalculate.Focus();
+            }
         }
 
         private void dateTimePickerFrom_ValueChanged(object sender, EventArgs e)
@@ -31,6 +53,12 @@ namespace CourseProject_ShowDesk
         private void buttonCalculate_Click(object sender, EventArgs e)
         {
             CreateGraph();
+            timerRevenue.Enabled = true;
+        }
+
+        private void timerRevenue_Tick(object sender, EventArgs e)
+        {
+            GrowUpOfForm();
         }
 
         public void SetDateLimit()
@@ -158,6 +186,19 @@ namespace CourseProject_ShowDesk
             foreach (KeyValuePair<string, double> part in revenueDictionary)
             {
                 series.Points.AddXY(Convert.ToString(part.Key), part.Value);
+            }
+        }
+
+        private void GrowUpOfForm()
+        {
+            if(this.Width<formMaxWidth)
+            {
+                this.Width +=5;
+                groupBoxForm.Width += 5;
+            }
+            else
+            {
+                timerRevenue.Enabled = false;
             }
         }
     }

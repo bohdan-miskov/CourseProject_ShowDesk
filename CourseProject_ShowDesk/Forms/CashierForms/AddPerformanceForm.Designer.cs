@@ -141,6 +141,7 @@
             this.dateTimePickerPerfomanceDate.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerPerfomanceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerPerfomanceDate.Location = new System.Drawing.Point(198, 34);
+            this.dateTimePickerPerfomanceDate.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
             this.dateTimePickerPerfomanceDate.Name = "dateTimePickerPerfomanceDate";
             this.dateTimePickerPerfomanceDate.Size = new System.Drawing.Size(222, 28);
             this.dateTimePickerPerfomanceDate.TabIndex = 9;

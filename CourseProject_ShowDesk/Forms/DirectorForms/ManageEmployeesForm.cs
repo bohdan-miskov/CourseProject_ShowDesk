@@ -15,6 +15,8 @@ namespace CourseProject_ShowDesk.Scripts
     {
         private List<Employee> employees;
 
+        private string cipher = new string('*', 12);
+
         public ManageEmployeesForm()
         {
             InitializeComponent();
@@ -28,6 +30,58 @@ namespace CourseProject_ShowDesk.Scripts
             DisableEditAndRemoveEmployees();
         }
 
+        private void dataGridViewEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveEmployees();
+        }
+
+        private void dataGridViewEmployees_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveEmployees();
+        }
+
+        private void ManageEmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveEmployeesToFile();
+        }
+
+        private void addEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEmployee();
+
+            UpdateDataGridEmployees();
+
+            DisableEditAndRemoveEmployees();
+        }
+
+        private void editEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditEmployee();
+
+            UpdateDataGridEmployees();
+
+            DisableEditAndRemoveEmployees();
+        }
+
+        private void removeEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            employees.RemoveAt(dataGridViewEmployees.CurrentRow.Index);
+
+            UpdateDataGridEmployees();
+
+            DisableEditAndRemoveEmployees();
+        }
+
+        private void toolStripMenuItemShowPassword_Click(object sender, EventArgs e)
+        {
+            ShowPassword();
+        }
+
+        private void toolStripMenuItemHidePassword_Click(object sender, EventArgs e)
+        {
+            HidePassword();
+        }
+
         private void UpdateDataGridEmployees()
         {
             dataGridViewEmployees.Rows.Clear();
@@ -37,7 +91,7 @@ namespace CourseProject_ShowDesk.Scripts
                 dataGridViewEmployees.Rows.Add(
                     employee.FullName,
                     employee.Login,
-                    employee.Password,
+                    cipher,
                     employee.GetStringOfProfessionList()
                     );
             }
@@ -100,46 +154,16 @@ namespace CourseProject_ShowDesk.Scripts
 
         }
 
-        private void dataGridViewEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void ShowPassword()
         {
-            DisableEditAndRemoveEmployees();
+            int index = dataGridViewEmployees.CurrentRow.Index;
+
+            dataGridViewEmployees.CurrentRow.Cells[2].Value=employees[index].Password;
         }
 
-        private void dataGridViewEmployees_RowLeave(object sender, DataGridViewCellEventArgs e)
+        private void HidePassword()
         {
-            DisableEditAndRemoveEmployees();
-        }
-
-        private void ManageEmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SaveEmployeesToFile();
-        }
-
-        private void addEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AddEmployee();
-
-            UpdateDataGridEmployees();
-
-            DisableEditAndRemoveEmployees();
-        }
-
-        private void editEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EditEmployee();
-
-            UpdateDataGridEmployees();
-
-            DisableEditAndRemoveEmployees();
-        }
-
-        private void removeEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            employees.RemoveAt(dataGridViewEmployees.CurrentRow.Index);
-
-            UpdateDataGridEmployees();
-
-            DisableEditAndRemoveEmployees();
+            dataGridViewEmployees.CurrentRow.Cells[2].Value = cipher;
         }
     }
 }

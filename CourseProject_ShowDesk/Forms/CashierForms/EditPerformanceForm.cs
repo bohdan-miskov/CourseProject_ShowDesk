@@ -19,6 +19,8 @@ namespace CourseProject_ShowDesk
             this.stages = stages;
             this.performance = performance;
 
+            dateTimePickerPerfomanceDate.MinDate = DateTime.Now.Date;
+
             PopulateFields();
 
             UpdateDataGridTickets();

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStripManageEmployees = new System.Windows.Forms.MenuStrip();
             this.emloyeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,8 +41,12 @@
             this.columnLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnProfessionList = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStripDataGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemShowPassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemHidePassword = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripManageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
+            this.contextMenuStripDataGrid.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripManageEmployees
@@ -52,7 +57,7 @@
             this.emloyeeToolStripMenuItem});
             this.menuStripManageEmployees.Location = new System.Drawing.Point(0, 0);
             this.menuStripManageEmployees.Name = "menuStripManageEmployees";
-            this.menuStripManageEmployees.Size = new System.Drawing.Size(210, 26);
+            this.menuStripManageEmployees.Size = new System.Drawing.Size(90, 26);
             this.menuStripManageEmployees.TabIndex = 13;
             this.menuStripManageEmployees.Text = "menuStrip1";
             // 
@@ -71,7 +76,7 @@
             // 
             this.addEmployeeToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addEmployeeToolStripMenuItem.Name = "addEmployeeToolStripMenuItem";
-            this.addEmployeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addEmployeeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.addEmployeeToolStripMenuItem.Text = "Add";
             this.addEmployeeToolStripMenuItem.Click += new System.EventHandler(this.addEmployeeToolStripMenuItem_Click);
             // 
@@ -79,7 +84,7 @@
             // 
             this.editEmployeeToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editEmployeeToolStripMenuItem.Name = "editEmployeeToolStripMenuItem";
-            this.editEmployeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editEmployeeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.editEmployeeToolStripMenuItem.Text = "Edit";
             this.editEmployeeToolStripMenuItem.Click += new System.EventHandler(this.editEmployeeToolStripMenuItem_Click);
             // 
@@ -87,7 +92,7 @@
             // 
             this.removeEmployeeToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeEmployeeToolStripMenuItem.Name = "removeEmployeeToolStripMenuItem";
-            this.removeEmployeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeEmployeeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.removeEmployeeToolStripMenuItem.Text = "Remove";
             this.removeEmployeeToolStripMenuItem.Click += new System.EventHandler(this.removeEmployeeToolStripMenuItem_Click);
             // 
@@ -97,28 +102,29 @@
             this.dataGridViewEmployees.AllowUserToDeleteRows = false;
             this.dataGridViewEmployees.AllowUserToResizeRows = false;
             this.dataGridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewEmployees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnFullName,
             this.columnLogin,
             this.columnPassword,
             this.columnProfessionList});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewEmployees.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dataGridViewEmployees.ContextMenuStrip = this.contextMenuStripDataGrid;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployees.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewEmployees.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewEmployees.Location = new System.Drawing.Point(0, 64);
             this.dataGridViewEmployees.MultiSelect = false;
@@ -155,6 +161,28 @@
             this.columnProfessionList.Name = "columnProfessionList";
             this.columnProfessionList.ReadOnly = true;
             // 
+            // contextMenuStripDataGrid
+            // 
+            this.contextMenuStripDataGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemShowPassword,
+            this.toolStripMenuItemHidePassword});
+            this.contextMenuStripDataGrid.Name = "contextMenuStripDataGrid";
+            this.contextMenuStripDataGrid.Size = new System.Drawing.Size(181, 70);
+            // 
+            // toolStripMenuItemShowPassword
+            // 
+            this.toolStripMenuItemShowPassword.Name = "toolStripMenuItemShowPassword";
+            this.toolStripMenuItemShowPassword.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemShowPassword.Text = "Show password";
+            this.toolStripMenuItemShowPassword.Click += new System.EventHandler(this.toolStripMenuItemShowPassword_Click);
+            // 
+            // toolStripMenuItemHidePassword
+            // 
+            this.toolStripMenuItemHidePassword.Name = "toolStripMenuItemHidePassword";
+            this.toolStripMenuItemHidePassword.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemHidePassword.Text = "Hide password";
+            this.toolStripMenuItemHidePassword.Click += new System.EventHandler(this.toolStripMenuItemHidePassword_Click);
+            // 
             // ManageEmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,6 +196,7 @@
             this.menuStripManageEmployees.ResumeLayout(false);
             this.menuStripManageEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).EndInit();
+            this.contextMenuStripDataGrid.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +214,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnLogin;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPassword;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnProfessionList;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripDataGrid;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShowPassword;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHidePassword;
     }
 }

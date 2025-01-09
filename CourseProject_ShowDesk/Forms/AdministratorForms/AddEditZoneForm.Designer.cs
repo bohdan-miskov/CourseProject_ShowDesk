@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.numericUpDownStartPosition = new System.Windows.Forms.NumericUpDown();
             this.textBoxIncrease = new System.Windows.Forms.TextBox();
             this.groupBoxZone = new System.Windows.Forms.GroupBox();
@@ -38,6 +39,7 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.numericUpDownEndPosition = new System.Windows.Forms.NumericUpDown();
             this.labelIncrease = new System.Windows.Forms.Label();
+            this.toolTipZone = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).BeginInit();
             this.groupBoxZone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).BeginInit();
@@ -65,6 +67,7 @@
             this.textBoxIncrease.Name = "textBoxIncrease";
             this.textBoxIncrease.Size = new System.Drawing.Size(168, 28);
             this.textBoxIncrease.TabIndex = 18;
+            this.toolTipZone.SetToolTip(this.textBoxIncrease, "Additional percentage increaze");
             this.textBoxIncrease.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxIncrease_KeyPress);
             this.textBoxIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxIncrease_KeyUp);
             // 
@@ -197,5 +200,6 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.NumericUpDown numericUpDownEndPosition;
         private System.Windows.Forms.Label labelIncrease;
+        private System.Windows.Forms.ToolTip toolTipZone;
     }
 }
