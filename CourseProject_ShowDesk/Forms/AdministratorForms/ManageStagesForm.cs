@@ -51,7 +51,9 @@ namespace CourseProject_ShowDesk
 
         private void removeStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            stages.RemoveAt(dataGridViewStages.CurrentRow.Index);
+            int index = dataGridViewStages.CurrentRow.Index;
+
+            stages.RemoveAt(index);
 
             UpdateDataGridStages();
             DisableEditAndRemoveStage();
@@ -68,12 +70,17 @@ namespace CourseProject_ShowDesk
 
             foreach (Stage stage in stages)
             {
-                dataGridViewStages.Rows.Add(
+                AddStageToDataGrid(stage);
+            }
+        }
+
+        private void AddStageToDataGrid(Stage stage)
+        {
+            dataGridViewStages.Rows.Add(
                     stage.Index,
                     stage.Name,
                     stage.Zones.Count
                     );
-            }
         }
 
         private void SaveStagesToFile()
@@ -111,12 +118,14 @@ namespace CourseProject_ShowDesk
 
         private void EditStage()
         {
-            EditStageForm editStageForm = new EditStageForm(stages[dataGridViewStages.CurrentRow.Index]);
+            int index = dataGridViewStages.CurrentRow.Index;
+
+            EditStageForm editStageForm = new EditStageForm(stages[index]);
             editStageForm.ShowDialog();
 
             if (editStageForm.GetIsValid())
             {
-                stages[dataGridViewStages.CurrentRow.Index] = editStageForm.GetStage();
+                stages[index] = editStageForm.GetStage();
             }
         }
 

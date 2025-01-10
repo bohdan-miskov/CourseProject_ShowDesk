@@ -70,7 +70,9 @@ namespace CourseProject_ShowDesk
 
         private void removeZoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            stage.RemoveZone(dataGridViewZones.CurrentRow.Index);
+            int index = dataGridViewZones.CurrentRow.Index;
+
+            stage.RemoveZone(index);
 
             UpdateDataGridZones();
             DisableEditAndRemoveZone();
@@ -98,10 +100,19 @@ namespace CourseProject_ShowDesk
         {
             dataGridViewZones.Rows.Clear();
 
-            foreach (Zone seсtor in stage.Zones)
+            foreach (Zone zone in stage.Zones)
             {
-                dataGridViewZones.Rows.Add(seсtor.Name, seсtor.Increase, seсtor.StartPosition, seсtor.EndPosition);
+                AddZoneToDateGrid(zone);
             }
+        }
+
+        private void AddZoneToDateGrid(Zone zone)
+        {
+            dataGridViewZones.Rows.Add(
+                zone.Name, 
+                zone.Increase, 
+                zone.StartPosition, 
+                zone.EndPosition);
         }
 
         private void AddZone()
@@ -117,7 +128,9 @@ namespace CourseProject_ShowDesk
 
         private void EditZone()
         {
-            AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, dataGridViewZones.CurrentRow.Index);
+            int index = dataGridViewZones.CurrentRow.Index;
+
+            AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, index);
             editZoneForm.ShowDialog();
 
             if (editZoneForm.GetIsValid())
@@ -133,6 +146,13 @@ namespace CourseProject_ShowDesk
 
         private bool ValidateOfStage()
         {
+            if(!ValidateOfStageName()) return false;
+
+            return true;
+        }
+
+        private bool ValidateOfStageName()
+        {
             if (!ParametersValidator.NameValidator(textBoxStageName.Text))
             {
                 MessageBox.Show(
@@ -143,6 +163,7 @@ namespace CourseProject_ShowDesk
                 textBoxStageName.Focus();
                 return false;
             }
+
             return true;
         }
 

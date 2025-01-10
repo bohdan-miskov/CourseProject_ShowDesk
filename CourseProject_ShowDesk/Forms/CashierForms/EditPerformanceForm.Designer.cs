@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.removeTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ticketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +56,8 @@
             this.groupBoxTickets = new System.Windows.Forms.GroupBox();
             this.groupBoxForm = new System.Windows.Forms.GroupBox();
             this.toolTipPerformancce = new System.Windows.Forms.ToolTip(this.components);
+            this.dateTimePickerDuration = new System.Windows.Forms.DateTimePicker();
+            this.labelDuration = new System.Windows.Forms.Label();
             this.menuStripPerformance.SuspendLayout();
             this.groupBoxPerformance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
@@ -221,6 +223,8 @@
             this.groupBoxPerformance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxPerformance.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxPerformance.Controls.Add(this.dateTimePickerDuration);
+            this.groupBoxPerformance.Controls.Add(this.labelDuration);
             this.groupBoxPerformance.Controls.Add(this.buttonSave);
             this.groupBoxPerformance.Controls.Add(this.labelStage);
             this.groupBoxPerformance.Controls.Add(this.labelPerformanceName);
@@ -268,22 +272,22 @@
             this.columnPrice,
             this.columnReserved,
             this.columnAdditionalServices});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTickets.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTickets.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTickets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTickets.Location = new System.Drawing.Point(3, 24);
             this.dataGridViewTickets.Name = "dataGridViewTickets";
             this.dataGridViewTickets.ReadOnly = true;
             this.dataGridViewTickets.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTickets.Size = new System.Drawing.Size(664, 197);
             this.dataGridViewTickets.TabIndex = 12;
@@ -353,6 +357,30 @@
             this.groupBoxForm.TabIndex = 18;
             this.groupBoxForm.TabStop = false;
             // 
+            // dateTimePickerDuration
+            // 
+            this.dateTimePickerDuration.CustomFormat = "";
+            this.dateTimePickerDuration.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerDuration.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerDuration.Location = new System.Drawing.Point(225, 104);
+            this.dateTimePickerDuration.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
+            this.dateTimePickerDuration.Name = "dateTimePickerDuration";
+            this.dateTimePickerDuration.ShowUpDown = true;
+            this.dateTimePickerDuration.Size = new System.Drawing.Size(299, 28);
+            this.dateTimePickerDuration.TabIndex = 22;
+            // 
+            // labelDuration
+            // 
+            this.labelDuration.AutoSize = true;
+            this.labelDuration.BackColor = System.Drawing.Color.Transparent;
+            this.labelDuration.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDuration.Location = new System.Drawing.Point(53, 107);
+            this.labelDuration.Name = "labelDuration";
+            this.labelDuration.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.labelDuration.Size = new System.Drawing.Size(81, 25);
+            this.labelDuration.TabIndex = 21;
+            this.labelDuration.Text = "Duration";
+            // 
             // EditPerformanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -401,5 +429,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnReserved;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnAdditionalServices;
         private System.Windows.Forms.ToolTip toolTipPerformancce;
+        private System.Windows.Forms.DateTimePicker dateTimePickerDuration;
+        private System.Windows.Forms.Label labelDuration;
     }
 }

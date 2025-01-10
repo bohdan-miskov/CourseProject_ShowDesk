@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.UI;
 
 namespace CourseProject_ShowDesk
 {
@@ -9,6 +10,7 @@ namespace CourseProject_ShowDesk
         private string name;
         private double price;
         private DateTime performanceDateTime;
+        private TimeSpan duration;
         private int stageIndex;
         private List<StandardTicket> tickets;
 
@@ -17,14 +19,16 @@ namespace CourseProject_ShowDesk
             name = "";
             price = 0.0;
             performanceDateTime = DateTime.Now;
+            duration=TimeSpan.MinValue;
             stageIndex = -1;
             tickets = new List<StandardTicket>();
         }
-        public Performance(string name, double price, DateTime performanceDateTime, int stageIndex)
+        public Performance(string name, double price, DateTime performanceDateTime,TimeSpan duration, int stageIndex)
         {
             Name = name;
             Price = price;
             PerformanceDateTime = performanceDateTime;
+            Duration = duration;
             StageIndex = stageIndex;
             tickets = new List<StandardTicket>();
         }
@@ -68,7 +72,27 @@ namespace CourseProject_ShowDesk
             }
             set
             {
-                performanceDateTime = value;
+                if (value < DateTime.Now.AddYears(-1) && value > DateTime.Now.AddYears(1))
+                {
+                    throw new ArgumentException("The date of the performance cannot be later or erlier than a year later.");
+                }
+            }
+        }
+
+        public TimeSpan Duration
+        {
+            get
+            {
+                return duration;
+            }
+            set
+            {
+                if (value < TimeSpan.Zero)
+                {
+                    throw new ArgumentException("Duration cannot be negative.");
+                }
+
+                duration = value;
             }
         }
 

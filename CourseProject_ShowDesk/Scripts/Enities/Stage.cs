@@ -70,21 +70,15 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        public bool AddZone(Zone zone)
-        {
-            if (ValidateZone(zone))
-            {
-                zones.Add(zone);
-                return true;
-            }
-
-            return false;
+        public void AddZone(Zone zone)
+        { 
+            zones.Add(zone);
         }
 
-        private bool ValidateZone(Zone zone)
+        public bool CheckZonePositions(int startPosition, int endPosition)
         {
 
-            if (zone.StartPosition < 0 || zone.EndPosition < 0)
+            if (startPosition < 0 || endPosition < 0)
             {
                 return false;
             }
@@ -94,8 +88,8 @@ namespace CourseProject_ShowDesk
                 for (int i = 0; i < zones.Count; i++)
                 {
                     if (!(
-                        (zone.StartPosition < zones[i].StartPosition && zone.EndPosition < zones[i].StartPosition) ||
-                        (zone.StartPosition > zones[i].EndPosition && zone.EndPosition > zones[i].EndPosition))
+                        (startPosition < zones[i].StartPosition && endPosition < zones[i].StartPosition) ||
+                        (startPosition > zones[i].EndPosition && endPosition > zones[i].EndPosition))
                         )
                     {
                         return false;

@@ -65,7 +65,9 @@ namespace CourseProject_ShowDesk.Scripts
 
         private void removeEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            employees.RemoveAt(dataGridViewEmployees.CurrentRow.Index);
+            int index = dataGridViewEmployees.CurrentRow.Index;
+
+            employees.RemoveAt(index);
 
             UpdateDataGridEmployees();
 
@@ -88,13 +90,18 @@ namespace CourseProject_ShowDesk.Scripts
 
             foreach (Employee employee in employees)
             {
-                dataGridViewEmployees.Rows.Add(
+                AddEmployeeToDataGrid(employee);
+            }
+        }
+
+        private void AddEmployeeToDataGrid(Employee employee)
+        {
+            dataGridViewEmployees.Rows.Add(
                     employee.FullName,
                     employee.Login,
                     cipher,
                     employee.GetStringOfProfessionList()
                     );
-            }
         }
 
         private void SaveEmployeesToFile()
@@ -145,12 +152,14 @@ namespace CourseProject_ShowDesk.Scripts
 
         private void EditEmployee()
         {
-            AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(employees, employees[dataGridViewEmployees.CurrentRow.Index]);
+            int index = dataGridViewEmployees.CurrentRow.Index;
+
+            AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(employees, index);
             editEmployeeForm.ShowDialog();
 
             if(editEmployeeForm.GetIsValid())
             {
-                employees[dataGridViewEmployees.CurrentRow.Index] = editEmployeeForm.GetEmployee();
+                employees[index] = editEmployeeForm.GetEmployee();
             }
 
         }

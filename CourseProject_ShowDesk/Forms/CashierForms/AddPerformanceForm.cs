@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -22,6 +23,7 @@ namespace CourseProject_ShowDesk
             this.performances = performances;
 
             dateTimePickerPerfomanceDate.MinDate = DateTime.Now.Date;
+            dateTimePickerDuration.Value = (DateTime.Today)+(AppConstants.InitialPerformanceDuration);
 
             PopulateComboBox();
 
@@ -101,11 +103,23 @@ namespace CourseProject_ShowDesk
             string performanceName = textBoxPerformanceName.Text;
             double baseTicketPrice = Convert.ToDouble(textBoxBaseTicketPrice.Text);
             int stageIndex = stages[comboBoxStage.SelectedIndex].Index;
+            TimeSpan duration = new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute,0);
 
-            newPerformance = new Performance(performanceName, baseTicketPrice, performanceDateTime, stageIndex);
+            newPerformance = new Performance(performanceName, baseTicketPrice, performanceDateTime, duration, stageIndex);
         }
 
         private bool ValidateOfPerformance()
+        {
+            if (!ValidateOfPerformanceName()) return false;
+            if (!ValidateOfPerformancePrice()) return false;
+            if (!ValidateOfPerformanceDate()) return false;
+            if (!ValidateOfPerformanceDuration()) return false;
+            if (!ValidateIntersectsOfPerformances()) return false;
+
+            return true;
+        }
+
+        private bool ValidateOfPerformanceName()
         {
             if (!ParametersValidator.NameValidator(textBoxPerformanceName.Text))
             {
@@ -118,6 +132,11 @@ namespace CourseProject_ShowDesk
                 return false;
             }
 
+            return true;
+        }
+
+        private bool ValidateOfPerformancePrice()
+        {
             if (!ParametersValidator.DoubleValidator(textBoxBaseTicketPrice.Text))
             {
                 MessageBox.Show(
@@ -129,7 +148,13 @@ namespace CourseProject_ShowDesk
                 return false;
             }
 
-            if(dateTimePickerPerfomanceDate.Value<DateTime.Now)
+            return true;
+
+        }
+
+        private bool ValidateOfPerformanceDate()
+        {
+            if (dateTimePickerPerfomanceDate.Value < DateTime.Now)
             {
                 MessageBox.Show(
                                 "Performance date and time cannot be in the past.",
@@ -141,6 +166,89 @@ namespace CourseProject_ShowDesk
             }
 
             return true;
+        }
+
+        private bool ValidateOfPerformanceDuration()
+        {
+            TimeSpan currentDuration = new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
+            if (currentDuration<=TimeSpan.Zero || currentDuration>AppConstants.MaxDuration)
+            {
+                MessageBox.Show(
+                                $"There was an error in the duration of the Performance: The duration cannot be negative or exceed the {AppConstants.MaxDuration.ToString()}",
+                                "Performance duration error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+
+                dateTimePickerDuration.Focus();
+
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidateIntersectsOfPerformances()
+        {
+            string intersectsPerformanceName = FindIntersectionPerformance();
+            if (intersectsPerformanceName != null)
+            {
+                MessageBox.Show(
+                               $"The screening of the current performance is interspersed with the screening of the {intersectsPerformanceName} performance in {stages[comboBoxStage.SelectedIndex].Name}",
+                               "Performance error",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
+                comboBoxStage.Focus();
+                return false;
+            }
+
+            return true;
+
+        }
+
+        private string FindIntersectionPerformance()
+        {
+            DateTime currentDate = dateTimePickerPerfomanceDate.Value;
+
+            foreach (Performance performance in performances)
+            {
+                if (performance.StageIndex == stages[comboBoxStage.SelectedIndex].Index)
+                {
+                    if ((currentDate - performance.PerformanceDateTime).Days < 1)
+                    {
+                        if(IsIntersectionOfPerformances(currentDate, performance))
+                        {
+                            return performance.Name;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private bool IsIntersectionOfPerformances(DateTime currentDate, Performance performance)
+        {
+            double currentTimeDifference=0;
+            double minTimeDifference=0;
+
+            if (currentDate > performance.PerformanceDateTime)
+            {
+                currentTimeDifference = (currentDate - performance.PerformanceDateTime).TotalMinutes;
+                minTimeDifference = performance.Duration.TotalMinutes + AppConstants.MinBreakBetweenPerformance.TotalMinutes;
+            }
+            else
+            {
+                currentTimeDifference = (performance.PerformanceDateTime - currentDate).TotalMinutes;
+                TimeSpan currentDuration = new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
+                minTimeDifference = currentDuration.TotalMinutes + AppConstants.MinBreakBetweenPerformance.TotalMinutes;
+            }
+
+            if (currentTimeDifference < minTimeDifference)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public Performance GetNewPerformance()

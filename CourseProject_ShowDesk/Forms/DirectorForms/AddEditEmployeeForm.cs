@@ -19,15 +19,15 @@ namespace CourseProject_ShowDesk.Scripts
 
         private bool isValid;
 
-        public AddEditEmployeeForm(List<Employee> employees, Employee currentEmployee)
+        public AddEditEmployeeForm(List<Employee> employees, int? index)
         {
             this.employees = employees;
 
             isValid = false;
 
-            if (currentEmployee != null)
+            if (index != null)
             {
-                this.currentEmployee = currentEmployee;
+                this.currentEmployee = employees[Convert.ToInt32(index)];
                 PopulateFields();
             }
 
@@ -145,6 +145,16 @@ namespace CourseProject_ShowDesk.Scripts
 
         private bool ValidateOfEmployee()
         {
+            if (!ValidateOfEmployeeName()) return false;
+            if (!ValidateOfEmployeeLogin()) return false;
+            if (!ValidateOfEmployeePassword()) return false;
+            if (!ValidateOfEmployeeProfessions()) return false;
+
+            return true;
+        }
+
+        private bool ValidateOfEmployeeName()
+        {
             if (!(ParametersValidator.NameValidator(textBoxFullName.Text)))
             {
                 MessageBox.Show(
@@ -156,6 +166,11 @@ namespace CourseProject_ShowDesk.Scripts
                 return false;
             }
 
+            return true;
+        }
+
+        private bool ValidateOfEmployeeLogin()
+        {
             if (!(ParametersValidator.NameValidator(textBoxLogin.Text)))
             {
                 MessageBox.Show(
@@ -178,6 +193,11 @@ namespace CourseProject_ShowDesk.Scripts
                 return false;
             }
 
+            return true;
+        }
+
+        private bool ValidateOfEmployeePassword()
+        {
             if (!(ParametersValidator.PasswordValidator(textBoxPassword.Text)))
             {
 
@@ -190,6 +210,11 @@ namespace CourseProject_ShowDesk.Scripts
                 return false;
             }
 
+            return true;
+        }
+
+        private bool ValidateOfEmployeeProfessions()
+        {
             if (!(checkBoxDirector.Checked || checkBoxAdministrator.Checked || checkBoxCashier.Checked))
             {
                 MessageBox.Show(this,

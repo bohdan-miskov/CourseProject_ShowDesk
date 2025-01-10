@@ -88,6 +88,13 @@ namespace CourseProject_ShowDesk
 
         private bool ValidateOfStage()
         {
+            if (!ValidateOfStageName()) return false;
+
+            return true;
+        }
+
+        private bool ValidateOfStageName()
+        {
             if (!ParametersValidator.NameValidator(textBoxStageName.Text))
             {
                 MessageBox.Show(

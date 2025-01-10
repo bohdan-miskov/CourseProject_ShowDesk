@@ -17,6 +17,10 @@ namespace CourseProject_ShowDesk.Scripts
         public const double PremiumIncrease = 2;
         public const int RangeDateOfPastPerformances = 7;
 
+        public static readonly TimeSpan MinBreakBetweenPerformance = new TimeSpan(0, 15, 0);
+        public static readonly TimeSpan InitialPerformanceDuration = new TimeSpan(1, 30, 0);
+        public static readonly TimeSpan MaxDuration = new TimeSpan(5, 0, 0);
+
         public static readonly List<string> ListOfProfessions = new List<string> { "Director", "Administrator", "Cashier" };
         public static readonly List<string> ListOfTicketTypes = new List<string> { "Standard", "StandardPlus", "Premium" };
         public static readonly List<string> ListOfSouvenirs = new List<string> { "Poster", "Mask", "Book", "Coulomb" };
