@@ -113,7 +113,7 @@
             this.ClientSize = new System.Drawing.Size(363, 247);
             this.Controls.Add(this.groupBoxStage);
             this.Name = "AddStageForm";
-            this.Text = "AddStageForm";
+            this.Text = "AddStage";
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
             this.ResumeLayout(false);

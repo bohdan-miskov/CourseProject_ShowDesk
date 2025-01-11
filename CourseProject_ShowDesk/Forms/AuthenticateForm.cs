@@ -24,6 +24,22 @@ namespace CourseProject_ShowDesk
             comboBoxUser.SelectedIndex = 2;
         }
 
+        private void textBoxLogin_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBoxPassword.Focus();
+            }
+        }
+
+        private void textBoxPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                comboBoxUser.Focus();
+            }
+        }
+
         private void comboBoxUser_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -143,6 +159,6 @@ namespace CourseProject_ShowDesk
                             "Authenticate error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
-        }
+        }  
     }
 }

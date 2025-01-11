@@ -167,19 +167,19 @@
             this.toolStripMenuItemShowPassword,
             this.toolStripMenuItemHidePassword});
             this.contextMenuStripDataGrid.Name = "contextMenuStripDataGrid";
-            this.contextMenuStripDataGrid.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStripDataGrid.Size = new System.Drawing.Size(157, 48);
             // 
             // toolStripMenuItemShowPassword
             // 
             this.toolStripMenuItemShowPassword.Name = "toolStripMenuItemShowPassword";
-            this.toolStripMenuItemShowPassword.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemShowPassword.Size = new System.Drawing.Size(156, 22);
             this.toolStripMenuItemShowPassword.Text = "Show password";
             this.toolStripMenuItemShowPassword.Click += new System.EventHandler(this.toolStripMenuItemShowPassword_Click);
             // 
             // toolStripMenuItemHidePassword
             // 
             this.toolStripMenuItemHidePassword.Name = "toolStripMenuItemHidePassword";
-            this.toolStripMenuItemHidePassword.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItemHidePassword.Size = new System.Drawing.Size(156, 22);
             this.toolStripMenuItemHidePassword.Text = "Hide password";
             this.toolStripMenuItemHidePassword.Click += new System.EventHandler(this.toolStripMenuItemHidePassword_Click);
             // 
@@ -191,7 +191,7 @@
             this.Controls.Add(this.dataGridViewEmployees);
             this.Controls.Add(this.menuStripManageEmployees);
             this.Name = "ManageEmployeesForm";
-            this.Text = "ManageEmployeesForm";
+            this.Text = "ManageEmployees";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageEmployeesForm_FormClosing);
             this.menuStripManageEmployees.ResumeLayout(false);
             this.menuStripManageEmployees.PerformLayout();

@@ -264,7 +264,7 @@
             this.Controls.Add(this.groupBoxForm);
             this.Controls.Add(this.menuStripStage);
             this.Name = "EditStageForm";
-            this.Text = "EditStageForm";
+            this.Text = "EditStage";
             this.menuStripStage.ResumeLayout(false);
             this.menuStripStage.PerformLayout();
             this.groupBoxStage.ResumeLayout(false);

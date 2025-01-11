@@ -130,6 +130,7 @@
             this.textBoxPassword.Size = new System.Drawing.Size(147, 28);
             this.textBoxPassword.TabIndex = 27;
             this.textBoxPassword.Text = "Administrator";
+            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
             // 
             // labelPassword
             // 
@@ -161,6 +162,7 @@
             this.textBoxLogin.Size = new System.Drawing.Size(147, 28);
             this.textBoxLogin.TabIndex = 25;
             this.textBoxLogin.Text = "Admin";
+            this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLogin_KeyUp);
             // 
             // AuthenticateForm
             // 
@@ -171,7 +173,7 @@
             this.ClientSize = new System.Drawing.Size(530, 334);
             this.Controls.Add(this.groupBoxAuthenticate);
             this.Name = "AuthenticateForm";
-            this.Text = "AuthenticateForm";
+            this.Text = "Authenticate";
             this.groupBoxAuthenticate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).EndInit();
             this.groupBoxChoice.ResumeLayout(false);

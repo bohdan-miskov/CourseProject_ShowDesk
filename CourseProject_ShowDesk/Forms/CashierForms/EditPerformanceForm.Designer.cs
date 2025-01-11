@@ -45,6 +45,8 @@
             this.textBoxPerformanceName = new System.Windows.Forms.TextBox();
             this.dateTimePickerPerfomanceDate = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPerformance = new System.Windows.Forms.GroupBox();
+            this.dateTimePickerDuration = new System.Windows.Forms.DateTimePicker();
+            this.labelDuration = new System.Windows.Forms.Label();
             this.textBoxBaseTicketPrice = new System.Windows.Forms.TextBox();
             this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,8 +58,6 @@
             this.groupBoxTickets = new System.Windows.Forms.GroupBox();
             this.groupBoxForm = new System.Windows.Forms.GroupBox();
             this.toolTipPerformancce = new System.Windows.Forms.ToolTip(this.components);
-            this.dateTimePickerDuration = new System.Windows.Forms.DateTimePicker();
-            this.labelDuration = new System.Windows.Forms.Label();
             this.menuStripPerformance.SuspendLayout();
             this.groupBoxPerformance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
@@ -243,6 +243,30 @@
             this.groupBoxPerformance.TabStop = false;
             this.groupBoxPerformance.Text = "Performance";
             // 
+            // dateTimePickerDuration
+            // 
+            this.dateTimePickerDuration.CustomFormat = "";
+            this.dateTimePickerDuration.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerDuration.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerDuration.Location = new System.Drawing.Point(225, 104);
+            this.dateTimePickerDuration.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
+            this.dateTimePickerDuration.Name = "dateTimePickerDuration";
+            this.dateTimePickerDuration.ShowUpDown = true;
+            this.dateTimePickerDuration.Size = new System.Drawing.Size(299, 28);
+            this.dateTimePickerDuration.TabIndex = 22;
+            // 
+            // labelDuration
+            // 
+            this.labelDuration.AutoSize = true;
+            this.labelDuration.BackColor = System.Drawing.Color.Transparent;
+            this.labelDuration.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDuration.Location = new System.Drawing.Point(53, 107);
+            this.labelDuration.Name = "labelDuration";
+            this.labelDuration.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.labelDuration.Size = new System.Drawing.Size(81, 25);
+            this.labelDuration.TabIndex = 21;
+            this.labelDuration.Text = "Duration";
+            // 
             // textBoxBaseTicketPrice
             // 
             this.textBoxBaseTicketPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -357,30 +381,6 @@
             this.groupBoxForm.TabIndex = 18;
             this.groupBoxForm.TabStop = false;
             // 
-            // dateTimePickerDuration
-            // 
-            this.dateTimePickerDuration.CustomFormat = "";
-            this.dateTimePickerDuration.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerDuration.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerDuration.Location = new System.Drawing.Point(225, 104);
-            this.dateTimePickerDuration.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
-            this.dateTimePickerDuration.Name = "dateTimePickerDuration";
-            this.dateTimePickerDuration.ShowUpDown = true;
-            this.dateTimePickerDuration.Size = new System.Drawing.Size(299, 28);
-            this.dateTimePickerDuration.TabIndex = 22;
-            // 
-            // labelDuration
-            // 
-            this.labelDuration.AutoSize = true;
-            this.labelDuration.BackColor = System.Drawing.Color.Transparent;
-            this.labelDuration.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDuration.Location = new System.Drawing.Point(53, 107);
-            this.labelDuration.Name = "labelDuration";
-            this.labelDuration.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.labelDuration.Size = new System.Drawing.Size(81, 25);
-            this.labelDuration.TabIndex = 21;
-            this.labelDuration.Text = "Duration";
-            // 
             // EditPerformanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,7 +389,7 @@
             this.Controls.Add(this.groupBoxForm);
             this.Controls.Add(this.menuStripPerformance);
             this.Name = "EditPerformanceForm";
-            this.Text = "EditPerformanceForm";
+            this.Text = "EditPerformance";
             this.menuStripPerformance.ResumeLayout(false);
             this.menuStripPerformance.PerformLayout();
             this.groupBoxPerformance.ResumeLayout(false);

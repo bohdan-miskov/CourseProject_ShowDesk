@@ -12,6 +12,8 @@ namespace CourseProject_ShowDesk
 
         private bool isValid;
 
+        private int currentIndex;
+
         private Performance performance;
         private List<Performance> performances;
 
@@ -21,6 +23,7 @@ namespace CourseProject_ShowDesk
             this.stages = stages;
             this.performance = performances[currentIndex];
             this.performances= performances;
+            this.currentIndex = currentIndex;
 
             dateTimePickerPerfomanceDate.MinDate = DateTime.Now.Date;
 
@@ -326,11 +329,13 @@ namespace CourseProject_ShowDesk
         {
             DateTime currentDate = dateTimePickerPerfomanceDate.Value;
 
+            int index = 0;
+
             foreach (Performance performance in performances)
             {
                 if (performance.StageIndex == stages[comboBoxStage.SelectedIndex].Index)
                 {
-                    if ((currentDate - performance.PerformanceDateTime).Days < 1)
+                    if ((currentDate - performance.PerformanceDateTime).Days < 1 && index!=currentIndex)
                     {
                         if (IsIntersectionOfPerformances(currentDate, performance))
                         {
@@ -338,6 +343,8 @@ namespace CourseProject_ShowDesk
                         }
                     }
                 }
+
+                index++;
             }
 
             return null;

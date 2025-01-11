@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBoxEmployee = new System.Windows.Forms.GroupBox();
+            this.groupBoxProfessionList = new System.Windows.Forms.GroupBox();
+            this.checkBoxCashier = new System.Windows.Forms.CheckBox();
+            this.checkBoxDirector = new System.Windows.Forms.CheckBox();
+            this.checkBoxAdministrator = new System.Windows.Forms.CheckBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.labelEmployeeFullName = new System.Windows.Forms.Label();
             this.textBoxFullName = new System.Windows.Forms.TextBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.buttonAddEmployee = new System.Windows.Forms.Button();
             this.labelLogin = new System.Windows.Forms.Label();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.groupBoxProfessionList = new System.Windows.Forms.GroupBox();
-            this.checkBoxAdministrator = new System.Windows.Forms.CheckBox();
-            this.checkBoxDirector = new System.Windows.Forms.CheckBox();
-            this.checkBoxCashier = new System.Windows.Forms.CheckBox();
             this.groupBoxEmployee.SuspendLayout();
             this.groupBoxProfessionList.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +64,63 @@
             this.groupBoxEmployee.TabIndex = 24;
             this.groupBoxEmployee.TabStop = false;
             this.groupBoxEmployee.Text = "Employee";
+            // 
+            // groupBoxProfessionList
+            // 
+            this.groupBoxProfessionList.Controls.Add(this.checkBoxCashier);
+            this.groupBoxProfessionList.Controls.Add(this.checkBoxDirector);
+            this.groupBoxProfessionList.Controls.Add(this.checkBoxAdministrator);
+            this.groupBoxProfessionList.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxProfessionList.Location = new System.Drawing.Point(9, 142);
+            this.groupBoxProfessionList.Name = "groupBoxProfessionList";
+            this.groupBoxProfessionList.Size = new System.Drawing.Size(162, 108);
+            this.groupBoxProfessionList.TabIndex = 24;
+            this.groupBoxProfessionList.TabStop = false;
+            this.groupBoxProfessionList.Text = "Professions";
+            // 
+            // checkBoxCashier
+            // 
+            this.checkBoxCashier.AutoSize = true;
+            this.checkBoxCashier.Location = new System.Drawing.Point(11, 80);
+            this.checkBoxCashier.Name = "checkBoxCashier";
+            this.checkBoxCashier.Size = new System.Drawing.Size(75, 22);
+            this.checkBoxCashier.TabIndex = 2;
+            this.checkBoxCashier.Text = "Cashier";
+            this.checkBoxCashier.UseVisualStyleBackColor = true;
+            this.checkBoxCashier.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxCashier_KeyUp);
+            // 
+            // checkBoxDirector
+            // 
+            this.checkBoxDirector.AutoSize = true;
+            this.checkBoxDirector.Location = new System.Drawing.Point(11, 24);
+            this.checkBoxDirector.Name = "checkBoxDirector";
+            this.checkBoxDirector.Size = new System.Drawing.Size(80, 22);
+            this.checkBoxDirector.TabIndex = 1;
+            this.checkBoxDirector.Text = "Director";
+            this.checkBoxDirector.UseVisualStyleBackColor = true;
+            this.checkBoxDirector.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxDirector_KeyUp);
+            // 
+            // checkBoxAdministrator
+            // 
+            this.checkBoxAdministrator.AutoSize = true;
+            this.checkBoxAdministrator.Location = new System.Drawing.Point(11, 52);
+            this.checkBoxAdministrator.Name = "checkBoxAdministrator";
+            this.checkBoxAdministrator.Size = new System.Drawing.Size(119, 22);
+            this.checkBoxAdministrator.TabIndex = 0;
+            this.checkBoxAdministrator.Text = "Administrator";
+            this.checkBoxAdministrator.UseVisualStyleBackColor = true;
+            this.checkBoxAdministrator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxAdministrator_KeyUp);
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(174, 102);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(168, 28);
+            this.textBoxPassword.TabIndex = 23;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
+            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
             // 
             // labelEmployeeFullName
             // 
@@ -130,63 +187,6 @@
             this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLogin_KeyPress);
             this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLogin_KeyUp);
             // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(174, 102);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(168, 28);
-            this.textBoxPassword.TabIndex = 23;
-            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
-            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
-            // 
-            // groupBoxProfessionList
-            // 
-            this.groupBoxProfessionList.Controls.Add(this.checkBoxCashier);
-            this.groupBoxProfessionList.Controls.Add(this.checkBoxDirector);
-            this.groupBoxProfessionList.Controls.Add(this.checkBoxAdministrator);
-            this.groupBoxProfessionList.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxProfessionList.Location = new System.Drawing.Point(9, 142);
-            this.groupBoxProfessionList.Name = "groupBoxProfessionList";
-            this.groupBoxProfessionList.Size = new System.Drawing.Size(162, 108);
-            this.groupBoxProfessionList.TabIndex = 24;
-            this.groupBoxProfessionList.TabStop = false;
-            this.groupBoxProfessionList.Text = "Professions";
-            // 
-            // checkBoxAdministrator
-            // 
-            this.checkBoxAdministrator.AutoSize = true;
-            this.checkBoxAdministrator.Location = new System.Drawing.Point(11, 52);
-            this.checkBoxAdministrator.Name = "checkBoxAdministrator";
-            this.checkBoxAdministrator.Size = new System.Drawing.Size(119, 22);
-            this.checkBoxAdministrator.TabIndex = 0;
-            this.checkBoxAdministrator.Text = "Administrator";
-            this.checkBoxAdministrator.UseVisualStyleBackColor = true;
-            this.checkBoxAdministrator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxAdministrator_KeyUp);
-            // 
-            // checkBoxDirector
-            // 
-            this.checkBoxDirector.AutoSize = true;
-            this.checkBoxDirector.Location = new System.Drawing.Point(11, 24);
-            this.checkBoxDirector.Name = "checkBoxDirector";
-            this.checkBoxDirector.Size = new System.Drawing.Size(80, 22);
-            this.checkBoxDirector.TabIndex = 1;
-            this.checkBoxDirector.Text = "Director";
-            this.checkBoxDirector.UseVisualStyleBackColor = true;
-            this.checkBoxDirector.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxDirector_KeyUp);
-            // 
-            // checkBoxCashier
-            // 
-            this.checkBoxCashier.AutoSize = true;
-            this.checkBoxCashier.Location = new System.Drawing.Point(11, 80);
-            this.checkBoxCashier.Name = "checkBoxCashier";
-            this.checkBoxCashier.Size = new System.Drawing.Size(75, 22);
-            this.checkBoxCashier.TabIndex = 2;
-            this.checkBoxCashier.Text = "Cashier";
-            this.checkBoxCashier.UseVisualStyleBackColor = true;
-            this.checkBoxCashier.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxCashier_KeyUp);
-            // 
             // AddEditEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,7 +194,7 @@
             this.ClientSize = new System.Drawing.Size(368, 320);
             this.Controls.Add(this.groupBoxEmployee);
             this.Name = "AddEditEmployeeForm";
-            this.Text = "AddEditEmployeeForm";
+            this.Text = "AddEditEmployee";
             this.groupBoxEmployee.ResumeLayout(false);
             this.groupBoxEmployee.PerformLayout();
             this.groupBoxProfessionList.ResumeLayout(false);

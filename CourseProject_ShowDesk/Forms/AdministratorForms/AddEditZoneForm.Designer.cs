@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.numericUpDownStartPosition = new System.Windows.Forms.NumericUpDown();
-            this.textBoxIncrease = new System.Windows.Forms.TextBox();
             this.groupBoxZone = new System.Windows.Forms.GroupBox();
             this.labelZoneName = new System.Windows.Forms.Label();
             this.labelEndPosition = new System.Windows.Forms.Label();
@@ -40,9 +39,11 @@
             this.numericUpDownEndPosition = new System.Windows.Forms.NumericUpDown();
             this.labelIncrease = new System.Windows.Forms.Label();
             this.toolTipZone = new System.Windows.Forms.ToolTip(this.components);
+            this.numericUpDownIncrease = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).BeginInit();
             this.groupBoxZone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrease)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDownStartPosition
@@ -60,22 +61,12 @@
             this.numericUpDownStartPosition.ValueChanged += new System.EventHandler(this.numericUpDownStartPosition_ValueChanged);
             this.numericUpDownStartPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownStartPosition_KeyUp);
             // 
-            // textBoxIncrease
-            // 
-            this.textBoxIncrease.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxIncrease.Location = new System.Drawing.Point(174, 68);
-            this.textBoxIncrease.Name = "textBoxIncrease";
-            this.textBoxIncrease.Size = new System.Drawing.Size(168, 28);
-            this.textBoxIncrease.TabIndex = 18;
-            this.toolTipZone.SetToolTip(this.textBoxIncrease, "Additional percentage increaze");
-            this.textBoxIncrease.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxIncrease_KeyPress);
-            this.textBoxIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxIncrease_KeyUp);
-            // 
             // groupBoxZone
             // 
             this.groupBoxZone.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxZone.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
             this.groupBoxZone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxZone.Controls.Add(this.numericUpDownIncrease);
             this.groupBoxZone.Controls.Add(this.labelZoneName);
             this.groupBoxZone.Controls.Add(this.labelEndPosition);
             this.groupBoxZone.Controls.Add(this.textBoxZoneName);
@@ -84,7 +75,6 @@
             this.groupBoxZone.Controls.Add(this.numericUpDownEndPosition);
             this.groupBoxZone.Controls.Add(this.labelIncrease);
             this.groupBoxZone.Controls.Add(this.numericUpDownStartPosition);
-            this.groupBoxZone.Controls.Add(this.textBoxIncrease);
             this.groupBoxZone.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxZone.Location = new System.Drawing.Point(0, 63);
             this.groupBoxZone.Name = "groupBoxZone";
@@ -173,6 +163,19 @@
             this.labelIncrease.TabIndex = 17;
             this.labelIncrease.Text = "Increase";
             // 
+            // numericUpDownIncrease
+            // 
+            this.numericUpDownIncrease.DecimalPlaces = 1;
+            this.numericUpDownIncrease.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownIncrease.Location = new System.Drawing.Point(174, 70);
+            this.numericUpDownIncrease.Name = "numericUpDownIncrease";
+            this.numericUpDownIncrease.Size = new System.Drawing.Size(168, 28);
+            this.numericUpDownIncrease.TabIndex = 23;
+            // 
             // AddEditZoneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,18 +183,18 @@
             this.ClientSize = new System.Drawing.Size(368, 313);
             this.Controls.Add(this.groupBoxZone);
             this.Name = "AddEditZoneForm";
-            this.Text = "AddZoneForm";
+            this.Text = "AddEditZone";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).EndInit();
             this.groupBoxZone.ResumeLayout(false);
             this.groupBoxZone.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrease)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.NumericUpDown numericUpDownStartPosition;
-        private System.Windows.Forms.TextBox textBoxIncrease;
         private System.Windows.Forms.GroupBox groupBoxZone;
         private System.Windows.Forms.Label labelZoneName;
         private System.Windows.Forms.Label labelEndPosition;
@@ -201,5 +204,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownEndPosition;
         private System.Windows.Forms.Label labelIncrease;
         private System.Windows.Forms.ToolTip toolTipZone;
+        private System.Windows.Forms.NumericUpDown numericUpDownIncrease;
     }
 }

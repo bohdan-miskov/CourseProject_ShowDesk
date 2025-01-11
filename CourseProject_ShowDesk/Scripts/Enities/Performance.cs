@@ -76,6 +76,8 @@ namespace CourseProject_ShowDesk
                 {
                     throw new ArgumentException("The date of the performance cannot be later or erlier than a year later.");
                 }
+
+                performanceDateTime = value;
             }
         }
 
@@ -161,12 +163,6 @@ namespace CourseProject_ShowDesk
 
         public double GetRevenue()
         {
-
-            if (tickets == null || tickets.Count == 0)
-            {
-                throw new InvalidOperationException("No tickets available to calculate revenue.");
-            }
-
             double revenue = 0.0;
 
             foreach (StandardTicket ticket in tickets)

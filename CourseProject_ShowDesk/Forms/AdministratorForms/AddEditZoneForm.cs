@@ -31,7 +31,7 @@ namespace CourseProject_ShowDesk
         {
             if (e.KeyCode == Keys.Enter)
             {
-                textBoxIncrease.Focus();
+                numericUpDownIncrease.Focus();
             }
         }
 
@@ -95,7 +95,7 @@ namespace CourseProject_ShowDesk
         private void PopulateFields()
         {
             textBoxZoneName.Text = stage.GetZone(zoneIndex).Name;
-            textBoxIncrease.Text = Convert.ToString(stage.GetZone(zoneIndex).Increase);
+            numericUpDownIncrease.Value = Convert.ToDecimal(stage.GetZone(zoneIndex).Increase);
             numericUpDownStartPosition.Value = stage.GetZone(zoneIndex).StartPosition;
             numericUpDownEndPosition.Value = stage.GetZone(zoneIndex).EndPosition;
         }
@@ -105,7 +105,7 @@ namespace CourseProject_ShowDesk
             int startPosition = Convert.ToInt32(numericUpDownStartPosition.Value);
             int endPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
             string zoneName = textBoxZoneName.Text;
-            double increase = Convert.ToDouble(textBoxIncrease.Text);
+            double increase = Convert.ToDouble(numericUpDownIncrease.Value);
 
             stage.AddZone(new Zone(zoneName, increase, startPosition, endPosition));
         }
@@ -137,14 +137,14 @@ namespace CourseProject_ShowDesk
 
         private bool ValidateOfZoneIncrease()
         {
-            if (!ParametersValidator.DoubleValidator(textBoxIncrease.Text))
+            if (!ParametersValidator.DoubleValidator(numericUpDownIncrease.Value.ToString()))
             {
                 MessageBox.Show(
                                 "The surcharge must be entered in the format 0.000, cannot be negative or empty",
                                 "Increase zone error",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
-                textBoxIncrease.Focus();
+                numericUpDownIncrease.Focus();
                 return false;
             }
 

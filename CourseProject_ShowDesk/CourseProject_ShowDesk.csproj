@@ -113,6 +113,12 @@
     <Compile Include="Forms\DirectorForms\AddEditEmployeeForm.Designer.cs">
       <DependentUpon>AddEditEmployeeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DirectorForms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DirectorForms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Scripts\AppConstants.cs" />
     <Compile Include="Scripts\Enities\Employee.cs" />
     <Compile Include="Scripts\FactoryMethod\CreatePremiumTicket.cs" />
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdministratorForms\ManageStagesForm.resx">
       <DependentUpon>ManageStagesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DirectorForms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -300,7 +300,7 @@
             this.ClientSize = new System.Drawing.Size(415, 505);
             this.Controls.Add(this.groupBoxTicket);
             this.Name = "BuyTicketForm";
-            this.Text = "BuyTicketForm";
+            this.Text = "BuyTicket";
             this.groupBoxTicket.ResumeLayout(false);
             this.groupBoxTicket.PerformLayout();
             this.groupBoxPremium.ResumeLayout(false);

@@ -10,7 +10,7 @@ namespace CourseProject_ShowDesk
 
         private List<Performance> performances;
 
-        private int formMinWidth = 268;
+        private int formMinWidth = 875;
         private int formMaxWidth=870;
 
         public ViewRevenueForm(List<Performance> performances)
@@ -117,7 +117,7 @@ namespace CourseProject_ShowDesk
 
             chartRevenue.Titles.Add("Revenue");
 
-            Series series = chartRevenue.Series.Add("Revenue");
+            Series series = chartRevenue.Series[0];
 
             performances = SortPerformancesByDate(performances);
 
@@ -128,10 +128,9 @@ namespace CourseProject_ShowDesk
 
         private void ClearGraph()
         {
-            chartRevenue.Series.Clear();
-            chartRevenue.Titles.Clear();
-
-            chartRevenue.Series.Clear();
+            chartRevenue.Series[0].Points.Clear();
+            //chartRevenue.Series.Clear();
+            //chartRevenue.Titles.Clear();
         }
 
         private List<Performance> SortPerformancesByDate(List<Performance> performances)

@@ -110,7 +110,7 @@
             this.stageToolStripMenuItem});
             this.menuStripManageStages.Location = new System.Drawing.Point(0, 0);
             this.menuStripManageStages.Name = "menuStripManageStages";
-            this.menuStripManageStages.Size = new System.Drawing.Size(176, 24);
+            this.menuStripManageStages.Size = new System.Drawing.Size(56, 24);
             this.menuStripManageStages.TabIndex = 3;
             this.menuStripManageStages.Text = "menuStrip1";
             // 
@@ -153,7 +153,7 @@
             this.Controls.Add(this.dataGridViewStages);
             this.Controls.Add(this.menuStripManageStages);
             this.Name = "ManageStagesForm";
-            this.Text = "ManageStagesForm";
+            this.Text = "ManageStages";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageStagesForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).EndInit();
             this.menuStripManageStages.ResumeLayout(false);

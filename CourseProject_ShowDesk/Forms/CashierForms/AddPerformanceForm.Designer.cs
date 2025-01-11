@@ -39,9 +39,9 @@
             this.textBoxPerformanceName = new System.Windows.Forms.TextBox();
             this.dateTimePickerPerfomanceDate = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPerformance = new System.Windows.Forms.GroupBox();
-            this.toolTipPerformance = new System.Windows.Forms.ToolTip(this.components);
-            this.labelDuration = new System.Windows.Forms.Label();
             this.dateTimePickerDuration = new System.Windows.Forms.DateTimePicker();
+            this.labelDuration = new System.Windows.Forms.Label();
+            this.toolTipPerformance = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxPerformance.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -176,18 +176,6 @@
             this.groupBoxPerformance.TabStop = false;
             this.groupBoxPerformance.Text = "Performance";
             // 
-            // labelDuration
-            // 
-            this.labelDuration.AutoSize = true;
-            this.labelDuration.BackColor = System.Drawing.Color.Transparent;
-            this.labelDuration.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDuration.Location = new System.Drawing.Point(26, 105);
-            this.labelDuration.Name = "labelDuration";
-            this.labelDuration.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            this.labelDuration.Size = new System.Drawing.Size(81, 25);
-            this.labelDuration.TabIndex = 19;
-            this.labelDuration.Text = "Duration";
-            // 
             // dateTimePickerDuration
             // 
             this.dateTimePickerDuration.CustomFormat = "";
@@ -200,6 +188,18 @@
             this.dateTimePickerDuration.Size = new System.Drawing.Size(222, 28);
             this.dateTimePickerDuration.TabIndex = 20;
             // 
+            // labelDuration
+            // 
+            this.labelDuration.AutoSize = true;
+            this.labelDuration.BackColor = System.Drawing.Color.Transparent;
+            this.labelDuration.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDuration.Location = new System.Drawing.Point(26, 105);
+            this.labelDuration.Name = "labelDuration";
+            this.labelDuration.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.labelDuration.Size = new System.Drawing.Size(81, 25);
+            this.labelDuration.TabIndex = 19;
+            this.labelDuration.Text = "Duration";
+            // 
             // AddPerformanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,7 +207,7 @@
             this.ClientSize = new System.Drawing.Size(469, 339);
             this.Controls.Add(this.groupBoxPerformance);
             this.Name = "AddPerformanceForm";
-            this.Text = "AddPerformanceForm";
+            this.Text = "AddPerformance";
             this.groupBoxPerformance.ResumeLayout(false);
             this.groupBoxPerformance.PerformLayout();
             this.ResumeLayout(false);
