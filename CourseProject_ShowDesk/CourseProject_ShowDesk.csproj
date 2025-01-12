@@ -119,9 +119,9 @@
     <Compile Include="Forms\DirectorForms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scripts\AppConstants.cs" />
-    <Compile Include="Scripts\AppConstantsData.cs" />
-    <Compile Include="Scripts\AppCostantsManager.cs" />
+    <Compile Include="Scripts\Constants\AppConstants.cs" />
+    <Compile Include="Scripts\Constants\AppConstantsData.cs" />
+    <Compile Include="Scripts\Constants\AppCostantsManager.cs" />
     <Compile Include="Scripts\Enities\Employee.cs" />
     <Compile Include="Scripts\FactoryMethod\CreatePremiumTicket.cs" />
     <Compile Include="Scripts\FactoryMethod\CreateStandardPlusTicket.cs" />
