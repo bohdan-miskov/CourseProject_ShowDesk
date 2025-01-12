@@ -293,6 +293,7 @@ namespace CourseProject_ShowDesk.Forms
             }
         }
 
+
         private void PopulateTextBoxName()
         {
             textBoxItemName.Text = listBoxViewNames.SelectedItem.ToString();
