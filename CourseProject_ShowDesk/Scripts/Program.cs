@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts;
+using System;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk
@@ -13,6 +14,7 @@ namespace CourseProject_ShowDesk
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            AppCostantsManager.LoadAppConstantsFromFile();
             Application.Run(new AuthenticateForm());
         }
     }

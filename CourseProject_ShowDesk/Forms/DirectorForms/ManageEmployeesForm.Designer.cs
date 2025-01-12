@@ -44,6 +44,7 @@
             this.contextMenuStripDataGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemShowPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemHidePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripManageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
             this.contextMenuStripDataGrid.SuspendLayout();
@@ -54,10 +55,11 @@
             this.menuStripManageEmployees.BackColor = System.Drawing.Color.Teal;
             this.menuStripManageEmployees.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStripManageEmployees.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.emloyeeToolStripMenuItem});
+            this.emloyeeToolStripMenuItem,
+            this.settingsToolStripMenuItem});
             this.menuStripManageEmployees.Location = new System.Drawing.Point(0, 0);
             this.menuStripManageEmployees.Name = "menuStripManageEmployees";
-            this.menuStripManageEmployees.Size = new System.Drawing.Size(90, 26);
+            this.menuStripManageEmployees.Size = new System.Drawing.Size(281, 26);
             this.menuStripManageEmployees.TabIndex = 13;
             this.menuStripManageEmployees.Text = "menuStrip1";
             // 
@@ -76,7 +78,7 @@
             // 
             this.addEmployeeToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addEmployeeToolStripMenuItem.Name = "addEmployeeToolStripMenuItem";
-            this.addEmployeeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.addEmployeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addEmployeeToolStripMenuItem.Text = "Add";
             this.addEmployeeToolStripMenuItem.Click += new System.EventHandler(this.addEmployeeToolStripMenuItem_Click);
             // 
@@ -84,7 +86,7 @@
             // 
             this.editEmployeeToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editEmployeeToolStripMenuItem.Name = "editEmployeeToolStripMenuItem";
-            this.editEmployeeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.editEmployeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editEmployeeToolStripMenuItem.Text = "Edit";
             this.editEmployeeToolStripMenuItem.Click += new System.EventHandler(this.editEmployeeToolStripMenuItem_Click);
             // 
@@ -92,7 +94,7 @@
             // 
             this.removeEmployeeToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeEmployeeToolStripMenuItem.Name = "removeEmployeeToolStripMenuItem";
-            this.removeEmployeeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.removeEmployeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeEmployeeToolStripMenuItem.Text = "Remove";
             this.removeEmployeeToolStripMenuItem.Click += new System.EventHandler(this.removeEmployeeToolStripMenuItem_Click);
             // 
@@ -183,6 +185,14 @@
             this.toolStripMenuItemHidePassword.Text = "Hide password";
             this.toolStripMenuItemHidePassword.Click += new System.EventHandler(this.toolStripMenuItemHidePassword_Click);
             // 
+            // settingsToolStripMenuItem
+            // 
+            this.settingsToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(71, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
+            // 
             // ManageEmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,5 +227,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripDataGrid;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShowPassword;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHidePassword;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
     }
 }

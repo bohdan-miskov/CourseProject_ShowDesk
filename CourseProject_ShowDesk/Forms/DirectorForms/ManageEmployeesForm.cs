@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using CourseProject_ShowDesk.Forms;
 
 namespace CourseProject_ShowDesk.Scripts
 {
@@ -74,6 +75,11 @@ namespace CourseProject_ShowDesk.Scripts
             DisableEditAndRemoveEmployees();
         }
 
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenSettings();
+        }
+
         private void toolStripMenuItemShowPassword_Click(object sender, EventArgs e)
         {
             ShowPassword();
@@ -106,14 +112,14 @@ namespace CourseProject_ShowDesk.Scripts
 
         private void SaveEmployeesToFile()
         {
-            FileHandler.SaveToJson(AppConstants.EmployeesFileName, employees);
+            FileHandler.SaveListToJson(AppConstants.EmployeesFileName, employees);
         }
 
         private void LoadEmployeesFromFile()
         {
             if (File.Exists(AppConstants.EmployeesFileName))
             {
-                employees = FileHandler.LoadFromJson<Employee>(AppConstants.EmployeesFileName);
+                employees = FileHandler.LoadListFromJson<Employee>(AppConstants.EmployeesFileName);
             }
             else
             {
@@ -164,6 +170,11 @@ namespace CourseProject_ShowDesk.Scripts
 
         }
 
+        private void OpenSettings()
+        {
+            new SettingsForm().ShowDialog();
+        }
+
         private void ShowPassword()
         {
             int index = dataGridViewEmployees.CurrentRow.Index;
@@ -175,5 +186,6 @@ namespace CourseProject_ShowDesk.Scripts
         {
             dataGridViewEmployees.CurrentRow.Cells[2].Value = cipher;
         }
+
     }
 }

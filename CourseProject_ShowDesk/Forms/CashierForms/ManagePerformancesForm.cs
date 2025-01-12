@@ -212,14 +212,14 @@ namespace CourseProject_ShowDesk
 
         private void SavePerformancesToFile()
         {
-            FileHandler.SaveToJson(AppConstants.PerformancesFileName, performances);
+            FileHandler.SaveListToJson(AppConstants.PerformancesFileName, performances);
         }
 
         private void LoadPerformancesFromFile()
         {
             if (File.Exists(AppConstants.PerformancesFileName))
             {
-                performances = FileHandler.LoadFromJson<Performance>(AppConstants.PerformancesFileName);
+                performances = FileHandler.LoadListFromJson<Performance>(AppConstants.PerformancesFileName);
             }
             else
             {
@@ -235,7 +235,7 @@ namespace CourseProject_ShowDesk
         {
             if (File.Exists(AppConstants.StagesFileName))
             {
-                stages = FileHandler.LoadFromJson<Stage>(AppConstants.StagesFileName);
+                stages = FileHandler.LoadListFromJson<Stage>(AppConstants.StagesFileName);
             }
             else
             {

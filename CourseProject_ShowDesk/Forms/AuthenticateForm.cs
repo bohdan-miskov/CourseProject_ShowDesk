@@ -62,7 +62,7 @@ namespace CourseProject_ShowDesk
         {
             if (File.Exists(AppConstants.EmployeesFileName))
             {
-                employees = FileHandler.LoadFromJson<Employee>(AppConstants.EmployeesFileName);
+                employees = FileHandler.LoadListFromJson<Employee>(AppConstants.EmployeesFileName);
             }
             else
             {

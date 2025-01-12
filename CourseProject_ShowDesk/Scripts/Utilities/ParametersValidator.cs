@@ -45,6 +45,16 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        public static void ValidatorFileName(object sender, KeyPressEventArgs e)
+        {
+            char symbol = e.KeyChar;
+
+            if (!(IsLetterOrBackspace(symbol) || IsDigitOrBackspace(symbol)))
+            {
+                e.Handled = true;
+            }
+        }
+
         public static bool NameValidator(string name)
         {
             return name.Length > 2 && !string.IsNullOrWhiteSpace(name);
@@ -63,6 +73,11 @@ namespace CourseProject_ShowDesk
         public static bool IntValidator(string value)
         {
             return int.TryParse(value, out int currentValue) && currentValue >= 0;
+        }
+
+        public static bool FileNameValidator(string fileName)
+        {
+            return fileName.Length > 3 && !string.IsNullOrWhiteSpace(fileName);
         }
 
         private static bool IsDigitOrBackspace(char symbol)

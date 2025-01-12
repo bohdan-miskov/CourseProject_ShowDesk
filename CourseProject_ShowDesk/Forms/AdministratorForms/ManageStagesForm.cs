@@ -85,14 +85,14 @@ namespace CourseProject_ShowDesk
 
         private void SaveStagesToFile()
         {
-            FileHandler.SaveToJson(AppConstants.StagesFileName, stages);
+            FileHandler.SaveListToJson(AppConstants.StagesFileName, stages);
         }
 
         private void LoadStagesFromFile()
         {
             if (File.Exists(AppConstants.StagesFileName))
             {
-                stages = FileHandler.LoadFromJson<Stage>(AppConstants.StagesFileName);
+                stages = FileHandler.LoadListFromJson<Stage>(AppConstants.StagesFileName);
             }
             else
             {

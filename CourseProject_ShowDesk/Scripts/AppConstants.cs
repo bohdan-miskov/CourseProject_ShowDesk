@@ -9,21 +9,66 @@ namespace CourseProject_ShowDesk.Scripts
 {
     public static class AppConstants
     {
-        public static string PerformancesFileName { get; private set; } = "performances.json";
-        public static string StagesFileName = "stages.json";
-        public static string EmployeesFileName = "employees.json";
-        public static double StandardIncrease = 1;
-        public static double StandardPlusIncrease = 1.5;
-        public static double PremiumIncrease = 3;
-        public static int RangeDateOfPastPerformances = 7;
+        public static string PerformancesFileName { get; private set; }
+        public static string StagesFileName { get; private set; }
+        public static string EmployeesFileName { get; private set; }
+        public static double StandardIncrease { get; private set; }
+        public static double StandardPlusIncrease { get; private set; } 
+        public static double PremiumIncrease { get; private set; }
+        public static int RangeDateOfPastPerformances { get; private set; } 
+            
+        public static TimeSpan MinBreakBetweenPerformance { get; private set; } 
+        public static TimeSpan InitialPerformanceDuration { get; private set; }
+        public static TimeSpan MaxDuration { get; private set; } 
 
-        public static TimeSpan MinBreakBetweenPerformance = new TimeSpan(0, 15, 0);
-        public static TimeSpan InitialPerformanceDuration = new TimeSpan(1, 30, 0);
-        public static TimeSpan MaxDuration = new TimeSpan(5, 0, 0);
+        public static List<string> ListOfProfessions { get; private set; } 
+        public static List<string> ListOfTicketTypes { get; private set; } 
+        public static List<string> ListOfSouvenirs { get; private set; } 
+        public static List<string> ListOfDrinks { get; private set; }
+        
 
-        public static List<string> ListOfProfessions = new List<string> { "Director", "Administrator", "Cashier" };
-        public static List<string> ListOfTicketTypes = new List<string> { "Standard", "StandardPlus", "Premium" };
-        public static List<string> ListOfSouvenirs = new List<string> { "Poster", "Mask", "Book", "Coulomb" };
-        public static List<string> ListOfDrinks = new List<string> {"Water", "Coffee", "Tea", "Juice" };
+        public static void PopulateConstants(AppConstantsData constantsData)
+        {
+            PerformancesFileName = constantsData.PerformancesFileName;
+            StagesFileName = constantsData.StagesFileName;
+            EmployeesFileName= constantsData.EmployeesFileName;
+            StandardIncrease = constantsData.StandardIncrease;
+            StandardPlusIncrease = constantsData.StandardPlusIncrease;
+            PremiumIncrease = constantsData.PremiumIncrease;
+            RangeDateOfPastPerformances = constantsData.RangeDateOfPastPerformances;
+
+            MinBreakBetweenPerformance = constantsData.MinBreakBetweenPerformance;
+            InitialPerformanceDuration = constantsData.InitialPerformanceDuration;
+            MaxDuration = constantsData.MaxDuration;
+
+            ListOfProfessions = constantsData.ListOfProfessions;
+            ListOfTicketTypes=constantsData.ListOfTicketTypes;
+            ListOfSouvenirs = constantsData.ListOfSouvenirs;
+            ListOfDrinks = constantsData.ListOfDrinks;
+        }
+
+        public static AppConstantsData CloneConstants()
+        {
+            return  new AppConstantsData
+            {
+                PerformancesFileName = AppConstants.PerformancesFileName,
+                StagesFileName = AppConstants.StagesFileName,
+                EmployeesFileName = AppConstants.EmployeesFileName,
+                StandardIncrease = AppConstants.StandardIncrease,
+                StandardPlusIncrease = AppConstants.StandardPlusIncrease,
+                PremiumIncrease = AppConstants.PremiumIncrease,
+                RangeDateOfPastPerformances = AppConstants.RangeDateOfPastPerformances,
+                MinBreakBetweenPerformance = AppConstants.MinBreakBetweenPerformance,
+                InitialPerformanceDuration = AppConstants.InitialPerformanceDuration,
+                MaxDuration = AppConstants.MaxDuration,
+                ListOfProfessions = new List<string>(AppConstants.ListOfProfessions),
+                ListOfTicketTypes = new List<string>(AppConstants.ListOfTicketTypes),
+                ListOfSouvenirs = new List<string>(AppConstants.ListOfSouvenirs),
+                ListOfDrinks = new List<string>(AppConstants.ListOfDrinks)
+            };
+        }
+
     }
+
+
 }
