@@ -45,7 +45,6 @@
             this.addPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonSwitch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).BeginInit();
@@ -159,10 +158,10 @@
             this.menuStripManagePerformance.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStripManagePerformance.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.performanceToolStripMenuItem,
-            this.reportToolStripMenuItem});
+            this.revenueReportToolStripMenuItem});
             this.menuStripManagePerformance.Location = new System.Drawing.Point(0, 0);
             this.menuStripManagePerformance.Name = "menuStripManagePerformance";
-            this.menuStripManagePerformance.Size = new System.Drawing.Size(172, 26);
+            this.menuStripManagePerformance.Size = new System.Drawing.Size(292, 26);
             this.menuStripManagePerformance.TabIndex = 4;
             this.menuStripManagePerformance.Text = "menuStripManagePerformance";
             // 
@@ -201,21 +200,12 @@
             this.removePerformanceToolStripMenuItem.Text = "Remove";
             this.removePerformanceToolStripMenuItem.Click += new System.EventHandler(this.removeSpecToolStripMenuItem_Click);
             // 
-            // reportToolStripMenuItem
-            // 
-            this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.revenueReportToolStripMenuItem});
-            this.reportToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
-            this.reportToolStripMenuItem.Size = new System.Drawing.Size(63, 22);
-            this.reportToolStripMenuItem.Text = "Report";
-            // 
             // revenueReportToolStripMenuItem
             // 
             this.revenueReportToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.revenueReportToolStripMenuItem.Name = "revenueReportToolStripMenuItem";
-            this.revenueReportToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.revenueReportToolStripMenuItem.Text = "Report of revenue";
+            this.revenueReportToolStripMenuItem.Size = new System.Drawing.Size(63, 22);
+            this.revenueReportToolStripMenuItem.Text = "Report";
             this.revenueReportToolStripMenuItem.Click += new System.EventHandler(this.revenueReportToolStripMenuItem_Click);
             // 
             // buttonSwitch
@@ -257,7 +247,6 @@
         private System.Windows.Forms.ToolStripMenuItem addPerformanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editPerformanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removePerformanceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem revenueReportToolStripMenuItem;
         private System.Windows.Forms.Button buttonSwitch;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPerformanceDate;

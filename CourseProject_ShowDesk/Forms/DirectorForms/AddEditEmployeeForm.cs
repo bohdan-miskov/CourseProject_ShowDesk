@@ -25,6 +25,8 @@ namespace CourseProject_ShowDesk.Scripts
 
             isValid = false;
 
+            PopulateProfessionsGroup();
+
             if (index != null)
             {
                 this.currentEmployee = employees[Convert.ToInt32(index)];
@@ -107,6 +109,13 @@ namespace CourseProject_ShowDesk.Scripts
 
                 this.Close();
             }
+        }
+
+        private void PopulateProfessionsGroup()
+        {
+            checkBoxDirector.Text = AppConstants.ListOfProfessions[0];
+            checkBoxAdministrator.Text = AppConstants.ListOfProfessions[1];
+            checkBoxCashier.Text = AppConstants.ListOfProfessions[2];
         }
 
         private void PopulateFields()

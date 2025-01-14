@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Web.UI;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -11,7 +13,7 @@ namespace CourseProject_ShowDesk
         private List<Performance> performances;
 
         private int formMinWidth = 875;
-        private int formMaxWidth=870;
+        private int formMaxWidth = 870;
 
         public ViewRevenueForm(List<Performance> performances)
         {
@@ -20,6 +22,8 @@ namespace CourseProject_ShowDesk
             this.performances = performances;
 
             this.Width = formMinWidth;
+
+            PopulateComboBoxChartType();
 
             SetDateLimit();
         }
@@ -61,7 +65,18 @@ namespace CourseProject_ShowDesk
             GrowUpOfForm();
         }
 
-        public void SetDateLimit()
+        private void PopulateComboBoxChartType()
+        {
+            comboBoxChartType.Items.Add("Line");
+            comboBoxChartType.Items.Add("Column");
+            comboBoxChartType.Items.Add("Spline");
+            comboBoxChartType.Items.Add("Pie chart");
+
+            comboBoxChartType.SelectedIndex = 0;
+        }
+
+
+        private void SetDateLimit()
         {
             if (performances.Count == 0)
             {
@@ -111,81 +126,105 @@ namespace CourseProject_ShowDesk
 
             return maxDate;
         }
+
         private void CreateGraph()
         {
-            ClearGraph();
+            chartRevenue.Series.Clear();
 
-            chartRevenue.Titles.Add("Revenue");
+            chartRevenue.Series.Add(CreateSeries());
 
-            Series series = chartRevenue.Series[0];
-
-            performances = SortPerformancesByDate(performances);
-
-            Dictionary<string, double> revenueDictionary = CreateRevenueDictionary(performances);
-
-            BuildGraph(series, revenueDictionary);
+            Calculate(FilterPerformanceByDate(performances));
         }
 
-        private void ClearGraph()
+        private Series CreateSeries()
         {
-            chartRevenue.Series[0].Points.Clear();
-            //chartRevenue.Series.Clear();
-            //chartRevenue.Titles.Clear();
+            Series series = new Series("Revenue");
+
+            if (comboBoxChartType.SelectedIndex == 0) series.ChartType = SeriesChartType.Line; ;
+            if (comboBoxChartType.SelectedIndex == 1) series.ChartType = SeriesChartType.Column;
+            if (comboBoxChartType.SelectedIndex == 2) series.ChartType = SeriesChartType.Spline;
+            if (comboBoxChartType.SelectedIndex == 3) series.ChartType = SeriesChartType.Pie;
+
+            series.MarkerStyle = MarkerStyle.Circle;
+            series.MarkerSize = 8;
+            series.MarkerColor = System.Drawing.Color.Red;
+            series.IsValueShownAsLabel = true;
+
+            return series;
         }
 
-        private List<Performance> SortPerformancesByDate(List<Performance> performances)
+        private List<Performance> FilterPerformanceByDate(List<Performance> performances)
         {
-            for (int i = 0; i < performances.Count - 1; i++)
+            List<Performance> filteredPerformances = new List<Performance>();
+
+            DateTime dateStart = dateTimePickerStartDate.Value.Date;
+            DateTime dateFinish = dateTimePickerFinishDate.Value.Date;
+
+            foreach (Performance performance in performances)
             {
-                for (int j = 0; j < performances.Count - i - 1; j++)
+                if (performance.PerformanceDateTime > dateStart &&
+                    performance.PerformanceDateTime < dateFinish)
                 {
-                    if (performances[i].PerformanceDateTime < performances[j].PerformanceDateTime)
-                    {
-                        Performance temp = performances[i];
-                        performances[i] = performances[j];
-                        performances[j] = temp;
-                    }
+                    filteredPerformances.Add(performance);
                 }
             }
 
             return performances;
         }
 
-        private Dictionary<string, double> CreateRevenueDictionary(List<Performance> performances)
+        private void Calculate(List<Performance> performances)
         {
-            Dictionary<string, double> revenueDictionary = new Dictionary<string, double>();
+            double dayRevenue= performances[0].GetRevenue();
+            double sumRevenue = 0;
+            int dayCount = 1;
+            DateTime thisDate= performances[0].PerformanceDateTime.Date;
+            KeyValuePair<string, double> maxRevenuePerformance = new KeyValuePair<string, double>(performances[0].Name, performances[0].GetRevenue());
+            KeyValuePair<string, double> minRevenuePerformance = new KeyValuePair<string, double>(performances[0].Name, performances[0].GetRevenue());
 
-            foreach (Performance performance in performances)
+            for (int i = 1; i < performances.Count; i++)
             {
-                DateTime dateStart = dateTimePickerStartDate.Value.Date;
-                DateTime dateFinish = dateTimePickerFinishDate.Value.Date;
+                Performance performance = performances[i];
 
-                if (!(
-                    (performance.PerformanceDateTime < dateStart) ||
-                    (performance.PerformanceDateTime > dateFinish)
-                    ))
+                if (performance.GetRevenue() > maxRevenuePerformance.Value)
                 {
-                    string key = Convert.ToString(performance.PerformanceDateTime.Month) + "." + Convert.ToString(performance.PerformanceDateTime.Year);
-
-                    if (revenueDictionary.ContainsKey(key))
-                    {
-                        revenueDictionary[key] = revenueDictionary[key] + performance.GetRevenue();
-                    }
-                    else
-                    {
-                        revenueDictionary.Add(key, performance.GetRevenue());
-                    }
+                    maxRevenuePerformance = new KeyValuePair<string, double>(performance.Name, performance.GetRevenue());
                 }
+
+                if (performance.GetRevenue() < minRevenuePerformance.Value)
+                {
+                    minRevenuePerformance = new KeyValuePair<string, double>(performance.Name, performance.GetRevenue());
+                }
+
+                if (thisDate == performance.PerformanceDateTime.Date)
+                {
+                    dayRevenue += performance.GetRevenue();
+                }
+                else
+                {
+                    AddPoint(thisDate, dayRevenue);
+
+                    dayCount++;
+                    dayRevenue = performance.GetRevenue();
+                    thisDate = performance.PerformanceDateTime.Date;
+                }
+
+                sumRevenue += performance.GetRevenue();
             }
-            return revenueDictionary;
+
+            AddPoint(thisDate, dayRevenue);
+
+            textBoxSum.Text = sumRevenue.ToString();
+            textBoxAverage.Text = (sumRevenue / dayCount).ToString("0.00");
+            textBoxBestPerformance.Text = maxRevenuePerformance.Key;
+            textBoxWorstPerformance.Text = minRevenuePerformance.Key;
         }
 
-        private void BuildGraph(Series series, Dictionary<string, double> revenueDictionary)
+        private void AddPoint(DateTime thisDate, double dayRevenue)
         {
-            foreach (KeyValuePair<string, double> part in revenueDictionary)
-            {
-                series.Points.AddXY(Convert.ToString(part.Key), part.Value);
-            }
+            Series series = chartRevenue.Series[0];
+
+            series.Points.AddXY(thisDate.ToShortDateString(), dayRevenue);
+            series.Points[series.Points.Count - 1].ToolTip = $"Date: {thisDate.ToShortDateString()}\nRevenue: {dayRevenue.ToString("0.00")}";
         }
 
         private void GrowUpOfForm()
