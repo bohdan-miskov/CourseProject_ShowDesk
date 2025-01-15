@@ -134,7 +134,7 @@ namespace CourseProject_ShowDesk
                 performance.PerformanceDateTime.Date.ToShortDateString(),
                 timePerformance,
                 performance.Name,
-                performance.Price,
+                performance.Price.ToString()+AppConstants.CurrencySymbol.ToString(),
                 performance.Duration.ToString(),
                 GetStageName(performance.StageIndex),
                 GetTotalPositions(performance.StageIndex),

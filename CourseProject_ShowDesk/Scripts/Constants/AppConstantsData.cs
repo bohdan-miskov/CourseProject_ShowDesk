@@ -15,6 +15,7 @@ namespace CourseProject_ShowDesk.Scripts
         private double standardPlusIncrease;
         private double premiumIncrease;
         private int rangeDateOfPastPerformances;
+        private char currencySymbol;
         private TimeSpan minBreakBetweenPerformance;
         private TimeSpan initialPerformanceDuration;
         private TimeSpan maxDuration;
@@ -132,6 +133,23 @@ namespace CourseProject_ShowDesk.Scripts
                     throw new ArgumentOutOfRangeException("Range date of past performances cannot be negative.");
                 }
                 rangeDateOfPastPerformances = value;
+            }
+        }
+
+        public char CurrencySymbol
+        {
+            get
+            {
+                return currencySymbol;
+            }
+            set
+            {
+                if (!char.IsSymbol(value))
+                {
+                    throw new ArgumentException("Currency symbol must be a symbol");
+                }
+
+                currencySymbol = value;
             }
         }
 

@@ -55,6 +55,16 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        public static void ValidatorSymbol(object senderm, KeyPressEventArgs e)
+        {
+            char symbol = e.KeyChar;
+
+            if (!IsSymbolOrBackspace(symbol))
+            {
+                e.Handled = true;
+            }
+        }
+
         public static bool NameValidator(string name)
         {
             return name.Length > 2 && !string.IsNullOrWhiteSpace(name);
@@ -88,6 +98,11 @@ namespace CourseProject_ShowDesk
         private static bool IsLetterOrBackspace(char symbol)
         {
             return (Char.IsLetter(symbol) || symbol == '\b');
+        }
+
+        private static bool IsSymbolOrBackspace(char symbol)
+        {
+            return (Char.IsSymbol(symbol) || symbol == '\b');
         }
     }
 }

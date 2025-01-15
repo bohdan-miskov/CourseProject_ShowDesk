@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Web.UI;
@@ -12,8 +13,8 @@ namespace CourseProject_ShowDesk
 
         private List<Performance> performances;
 
-        private int formMinWidth = 875;
-        private int formMaxWidth = 870;
+        private int formMinWidth = 333;
+        private int formMaxWidth = 955;
 
         public ViewRevenueForm(List<Performance> performances)
         {
@@ -22,6 +23,10 @@ namespace CourseProject_ShowDesk
             this.performances = performances;
 
             this.Width = formMinWidth;
+            groupBoxForm.Width = formMinWidth;
+
+            labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
+            labelCurrency2.Text = AppConstants.CurrencySymbol.ToString();
 
             PopulateComboBoxChartType();
 
@@ -224,7 +229,7 @@ namespace CourseProject_ShowDesk
             Series series = chartRevenue.Series[0];
 
             series.Points.AddXY(thisDate.ToShortDateString(), dayRevenue);
-            series.Points[series.Points.Count - 1].ToolTip = $"Date: {thisDate.ToShortDateString()}\nRevenue: {dayRevenue.ToString("0.00")}";
+            series.Points[series.Points.Count - 1].ToolTip = $"Date: {thisDate.ToShortDateString()}\nRevenue: {dayRevenue.ToString("0.00")+AppConstants.CurrencySymbol}";
         }
 
         private void GrowUpOfForm()

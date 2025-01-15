@@ -31,10 +31,11 @@
             this.labelPerformancesFileName = new System.Windows.Forms.Label();
             this.textBoxPerformancesFileName = new System.Windows.Forms.TextBox();
             this.groupBoxSettings = new System.Windows.Forms.GroupBox();
-            this.buttonCancelChanges = new System.Windows.Forms.Button();
-            this.numericUpDownRangeDateOfPastPerformances = new System.Windows.Forms.NumericUpDown();
-            this.buttonSaveChanges = new System.Windows.Forms.Button();
+            this.groupBoxOther = new System.Windows.Forms.GroupBox();
             this.labelRangeDateOfPastPerformances = new System.Windows.Forms.Label();
+            this.numericUpDownRangeDateOfPastPerformances = new System.Windows.Forms.NumericUpDown();
+            this.buttonCancelChanges = new System.Windows.Forms.Button();
+            this.buttonSaveChanges = new System.Windows.Forms.Button();
             this.groupBoxNames = new System.Windows.Forms.GroupBox();
             this.buttonCancelName = new System.Windows.Forms.Button();
             this.buttonSaveName = new System.Windows.Forms.Button();
@@ -62,8 +63,10 @@
             this.textBoxEmployeesFileName = new System.Windows.Forms.TextBox();
             this.labelStagesFileName = new System.Windows.Forms.Label();
             this.textBoxStagesFileName = new System.Windows.Forms.TextBox();
-            this.groupBoxOther = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxCurrencySymbol = new System.Windows.Forms.TextBox();
             this.groupBoxSettings.SuspendLayout();
+            this.groupBoxOther.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRangeDateOfPastPerformances)).BeginInit();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxPerformanceDuration.SuspendLayout();
@@ -72,7 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStandardPlusIncrease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStandardIncrease)).BeginInit();
             this.groupBoxFileName.SuspendLayout();
-            this.groupBoxOther.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelPerformancesFileName
@@ -117,10 +119,42 @@
             this.groupBoxSettings.TabStop = false;
             this.groupBoxSettings.Text = "App settings";
             // 
+            // groupBoxOther
+            // 
+            this.groupBoxOther.Controls.Add(this.textBoxCurrencySymbol);
+            this.groupBoxOther.Controls.Add(this.label1);
+            this.groupBoxOther.Controls.Add(this.labelRangeDateOfPastPerformances);
+            this.groupBoxOther.Controls.Add(this.numericUpDownRangeDateOfPastPerformances);
+            this.groupBoxOther.Location = new System.Drawing.Point(21, 352);
+            this.groupBoxOther.Name = "groupBoxOther";
+            this.groupBoxOther.Size = new System.Drawing.Size(308, 110);
+            this.groupBoxOther.TabIndex = 9;
+            this.groupBoxOther.TabStop = false;
+            this.groupBoxOther.Text = "Other";
+            // 
+            // labelRangeDateOfPastPerformances
+            // 
+            this.labelRangeDateOfPastPerformances.AutoSize = true;
+            this.labelRangeDateOfPastPerformances.BackColor = System.Drawing.Color.Transparent;
+            this.labelRangeDateOfPastPerformances.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRangeDateOfPastPerformances.Location = new System.Drawing.Point(6, 28);
+            this.labelRangeDateOfPastPerformances.Name = "labelRangeDateOfPastPerformances";
+            this.labelRangeDateOfPastPerformances.Size = new System.Drawing.Size(149, 42);
+            this.labelRangeDateOfPastPerformances.TabIndex = 6;
+            this.labelRangeDateOfPastPerformances.Text = "Range of view of\r\npast performances";
+            // 
+            // numericUpDownRangeDateOfPastPerformances
+            // 
+            this.numericUpDownRangeDateOfPastPerformances.Location = new System.Drawing.Point(182, 38);
+            this.numericUpDownRangeDateOfPastPerformances.Name = "numericUpDownRangeDateOfPastPerformances";
+            this.numericUpDownRangeDateOfPastPerformances.Size = new System.Drawing.Size(120, 28);
+            this.numericUpDownRangeDateOfPastPerformances.TabIndex = 8;
+            this.numericUpDownRangeDateOfPastPerformances.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownRangeDateOfPastPerformances_KeyUp);
+            // 
             // buttonCancelChanges
             // 
             this.buttonCancelChanges.BackColor = System.Drawing.Color.Silver;
-            this.buttonCancelChanges.Location = new System.Drawing.Point(181, 460);
+            this.buttonCancelChanges.Location = new System.Drawing.Point(181, 468);
             this.buttonCancelChanges.Name = "buttonCancelChanges";
             this.buttonCancelChanges.Size = new System.Drawing.Size(125, 45);
             this.buttonCancelChanges.TabIndex = 8;
@@ -128,35 +162,16 @@
             this.buttonCancelChanges.UseVisualStyleBackColor = false;
             this.buttonCancelChanges.Click += new System.EventHandler(this.buttonCancelChanges_Click);
             // 
-            // numericUpDownRangeDateOfPastPerformances
-            // 
-            this.numericUpDownRangeDateOfPastPerformances.Location = new System.Drawing.Point(171, 48);
-            this.numericUpDownRangeDateOfPastPerformances.Name = "numericUpDownRangeDateOfPastPerformances";
-            this.numericUpDownRangeDateOfPastPerformances.Size = new System.Drawing.Size(120, 28);
-            this.numericUpDownRangeDateOfPastPerformances.TabIndex = 8;
-            this.numericUpDownRangeDateOfPastPerformances.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownRangeDateOfPastPerformances_KeyUp);
-            // 
             // buttonSaveChanges
             // 
             this.buttonSaveChanges.BackColor = System.Drawing.Color.Silver;
-            this.buttonSaveChanges.Location = new System.Drawing.Point(21, 460);
+            this.buttonSaveChanges.Location = new System.Drawing.Point(21, 468);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
             this.buttonSaveChanges.Size = new System.Drawing.Size(125, 45);
             this.buttonSaveChanges.TabIndex = 7;
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = false;
             this.buttonSaveChanges.Click += new System.EventHandler(this.buttonSaveChanges_Click);
-            // 
-            // labelRangeDateOfPastPerformances
-            // 
-            this.labelRangeDateOfPastPerformances.AutoSize = true;
-            this.labelRangeDateOfPastPerformances.BackColor = System.Drawing.Color.Transparent;
-            this.labelRangeDateOfPastPerformances.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRangeDateOfPastPerformances.Location = new System.Drawing.Point(6, 34);
-            this.labelRangeDateOfPastPerformances.Name = "labelRangeDateOfPastPerformances";
-            this.labelRangeDateOfPastPerformances.Size = new System.Drawing.Size(149, 42);
-            this.labelRangeDateOfPastPerformances.TabIndex = 6;
-            this.labelRangeDateOfPastPerformances.Text = "Range of view of\r\npast performances";
             // 
             // groupBoxNames
             // 
@@ -476,16 +491,27 @@
             this.textBoxStagesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStagesFileName_KeyPress);
             this.textBoxStagesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxStagesFileName_KeyUp);
             // 
-            // groupBoxOther
+            // label1
             // 
-            this.groupBoxOther.Controls.Add(this.labelRangeDateOfPastPerformances);
-            this.groupBoxOther.Controls.Add(this.numericUpDownRangeDateOfPastPerformances);
-            this.groupBoxOther.Location = new System.Drawing.Point(21, 352);
-            this.groupBoxOther.Name = "groupBoxOther";
-            this.groupBoxOther.Size = new System.Drawing.Size(308, 100);
-            this.groupBoxOther.TabIndex = 9;
-            this.groupBoxOther.TabStop = false;
-            this.groupBoxOther.Text = "Other";
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 21);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Currency symbol";
+            // 
+            // textBoxCurrencySymbol
+            // 
+            this.textBoxCurrencySymbol.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCurrencySymbol.Location = new System.Drawing.Point(182, 72);
+            this.textBoxCurrencySymbol.MaxLength = 1;
+            this.textBoxCurrencySymbol.Name = "textBoxCurrencySymbol";
+            this.textBoxCurrencySymbol.Size = new System.Drawing.Size(120, 28);
+            this.textBoxCurrencySymbol.TabIndex = 7;
+            this.textBoxCurrencySymbol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCurrencySymbol_KeyPress);
+            this.textBoxCurrencySymbol.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxCurrencySymbol_KeyUp);
             // 
             // SettingsForm
             // 
@@ -496,6 +522,8 @@
             this.Name = "SettingsForm";
             this.Text = "Settings";
             this.groupBoxSettings.ResumeLayout(false);
+            this.groupBoxOther.ResumeLayout(false);
+            this.groupBoxOther.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRangeDateOfPastPerformances)).EndInit();
             this.groupBoxNames.ResumeLayout(false);
             this.groupBoxNames.PerformLayout();
@@ -508,8 +536,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStandardIncrease)).EndInit();
             this.groupBoxFileName.ResumeLayout(false);
             this.groupBoxFileName.PerformLayout();
-            this.groupBoxOther.ResumeLayout(false);
-            this.groupBoxOther.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -551,5 +577,7 @@
         private System.Windows.Forms.Button buttonCancelChanges;
         private System.Windows.Forms.Button buttonSaveChanges;
         private System.Windows.Forms.GroupBox groupBoxOther;
+        private System.Windows.Forms.TextBox textBoxCurrencySymbol;
+        private System.Windows.Forms.Label label1;
     }
 }

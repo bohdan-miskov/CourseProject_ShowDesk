@@ -34,24 +34,26 @@
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFinishDate = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPeriod = new System.Windows.Forms.GroupBox();
+            this.comboBoxChartType = new System.Windows.Forms.ComboBox();
+            this.labelChartType = new System.Windows.Forms.Label();
             this.labelFinishDate = new System.Windows.Forms.Label();
             this.labelStartDate = new System.Windows.Forms.Label();
             this.buttonCalculate = new System.Windows.Forms.Button();
             this.groupBoxRevenue = new System.Windows.Forms.GroupBox();
             this.chartRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxForm = new System.Windows.Forms.GroupBox();
-            this.timerRevenue = new System.Windows.Forms.Timer(this.components);
             this.groupBoxAdditionalParameter = new System.Windows.Forms.GroupBox();
-            this.labelSum = new System.Windows.Forms.Label();
-            this.textBoxSum = new System.Windows.Forms.TextBox();
-            this.textBoxAverage = new System.Windows.Forms.TextBox();
-            this.labelAverage = new System.Windows.Forms.Label();
-            this.textBoxBestPerformance = new System.Windows.Forms.TextBox();
-            this.labelBestPerformance = new System.Windows.Forms.Label();
+            this.labelCurrency2 = new System.Windows.Forms.Label();
+            this.labelCurrency = new System.Windows.Forms.Label();
             this.textBoxWorstPerformance = new System.Windows.Forms.TextBox();
             this.labelWorstPerformance = new System.Windows.Forms.Label();
-            this.labelChartType = new System.Windows.Forms.Label();
-            this.comboBoxChartType = new System.Windows.Forms.ComboBox();
+            this.textBoxBestPerformance = new System.Windows.Forms.TextBox();
+            this.labelBestPerformance = new System.Windows.Forms.Label();
+            this.textBoxAverage = new System.Windows.Forms.TextBox();
+            this.labelAverage = new System.Windows.Forms.Label();
+            this.textBoxSum = new System.Windows.Forms.TextBox();
+            this.labelSum = new System.Windows.Forms.Label();
+            this.timerRevenue = new System.Windows.Forms.Timer(this.components);
             this.groupBoxPeriod.SuspendLayout();
             this.groupBoxRevenue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).BeginInit();
@@ -97,6 +99,25 @@
             this.groupBoxPeriod.TabStop = false;
             this.groupBoxPeriod.Text = "Period";
             // 
+            // comboBoxChartType
+            // 
+            this.comboBoxChartType.FormattingEnabled = true;
+            this.comboBoxChartType.Location = new System.Drawing.Point(126, 98);
+            this.comboBoxChartType.Name = "comboBoxChartType";
+            this.comboBoxChartType.Size = new System.Drawing.Size(181, 29);
+            this.comboBoxChartType.TabIndex = 6;
+            // 
+            // labelChartType
+            // 
+            this.labelChartType.AutoSize = true;
+            this.labelChartType.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelChartType.Location = new System.Drawing.Point(21, 106);
+            this.labelChartType.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.labelChartType.Name = "labelChartType";
+            this.labelChartType.Size = new System.Drawing.Size(90, 21);
+            this.labelChartType.TabIndex = 5;
+            this.labelChartType.Text = "Chart type";
+            // 
             // labelFinishDate
             // 
             this.labelFinishDate.AutoSize = true;
@@ -133,9 +154,6 @@
             // 
             // groupBoxRevenue
             // 
-            this.groupBoxRevenue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxRevenue.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxRevenue.Controls.Add(this.chartRevenue);
             this.groupBoxRevenue.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -166,6 +184,7 @@
             // 
             // groupBoxForm
             // 
+            this.groupBoxForm.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxForm.Controls.Add(this.groupBoxAdditionalParameter);
             this.groupBoxForm.Controls.Add(this.groupBoxPeriod);
@@ -176,13 +195,10 @@
             this.groupBoxForm.TabIndex = 8;
             this.groupBoxForm.TabStop = false;
             // 
-            // timerRevenue
-            // 
-            this.timerRevenue.Interval = 10;
-            this.timerRevenue.Tick += new System.EventHandler(this.timerRevenue_Tick);
-            // 
             // groupBoxAdditionalParameter
             // 
+            this.groupBoxAdditionalParameter.Controls.Add(this.labelCurrency2);
+            this.groupBoxAdditionalParameter.Controls.Add(this.labelCurrency);
             this.groupBoxAdditionalParameter.Controls.Add(this.textBoxWorstPerformance);
             this.groupBoxAdditionalParameter.Controls.Add(this.labelWorstPerformance);
             this.groupBoxAdditionalParameter.Controls.Add(this.textBoxBestPerformance);
@@ -199,56 +215,27 @@
             this.groupBoxAdditionalParameter.TabStop = false;
             this.groupBoxAdditionalParameter.Text = "Additional parameter";
             // 
-            // labelSum
+            // labelCurrency2
             // 
-            this.labelSum.AutoSize = true;
-            this.labelSum.Location = new System.Drawing.Point(13, 37);
-            this.labelSum.Name = "labelSum";
-            this.labelSum.Size = new System.Drawing.Size(83, 21);
-            this.labelSum.TabIndex = 0;
-            this.labelSum.Text = "Summary";
+            this.labelCurrency2.AutoSize = true;
+            this.labelCurrency2.BackColor = System.Drawing.Color.Transparent;
+            this.labelCurrency2.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrency2.Location = new System.Drawing.Point(282, 66);
+            this.labelCurrency2.Name = "labelCurrency2";
+            this.labelCurrency2.Size = new System.Drawing.Size(22, 24);
+            this.labelCurrency2.TabIndex = 42;
+            this.labelCurrency2.Text = "$";
             // 
-            // textBoxSum
+            // labelCurrency
             // 
-            this.textBoxSum.Location = new System.Drawing.Point(125, 30);
-            this.textBoxSum.Name = "textBoxSum";
-            this.textBoxSum.ReadOnly = true;
-            this.textBoxSum.Size = new System.Drawing.Size(181, 28);
-            this.textBoxSum.TabIndex = 1;
-            // 
-            // textBoxAverage
-            // 
-            this.textBoxAverage.Location = new System.Drawing.Point(125, 64);
-            this.textBoxAverage.Name = "textBoxAverage";
-            this.textBoxAverage.ReadOnly = true;
-            this.textBoxAverage.Size = new System.Drawing.Size(181, 28);
-            this.textBoxAverage.TabIndex = 3;
-            // 
-            // labelAverage
-            // 
-            this.labelAverage.AutoSize = true;
-            this.labelAverage.Location = new System.Drawing.Point(13, 71);
-            this.labelAverage.Name = "labelAverage";
-            this.labelAverage.Size = new System.Drawing.Size(71, 21);
-            this.labelAverage.TabIndex = 2;
-            this.labelAverage.Text = "Average";
-            // 
-            // textBoxBestPerformance
-            // 
-            this.textBoxBestPerformance.Location = new System.Drawing.Point(125, 111);
-            this.textBoxBestPerformance.Name = "textBoxBestPerformance";
-            this.textBoxBestPerformance.ReadOnly = true;
-            this.textBoxBestPerformance.Size = new System.Drawing.Size(181, 28);
-            this.textBoxBestPerformance.TabIndex = 5;
-            // 
-            // labelBestPerformance
-            // 
-            this.labelBestPerformance.AutoSize = true;
-            this.labelBestPerformance.Location = new System.Drawing.Point(13, 97);
-            this.labelBestPerformance.Name = "labelBestPerformance";
-            this.labelBestPerformance.Size = new System.Drawing.Size(106, 42);
-            this.labelBestPerformance.TabIndex = 4;
-            this.labelBestPerformance.Text = "Best \r\nperformance";
+            this.labelCurrency.AutoSize = true;
+            this.labelCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.labelCurrency.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrency.Location = new System.Drawing.Point(282, 31);
+            this.labelCurrency.Name = "labelCurrency";
+            this.labelCurrency.Size = new System.Drawing.Size(22, 24);
+            this.labelCurrency.TabIndex = 41;
+            this.labelCurrency.Text = "$";
             // 
             // textBoxWorstPerformance
             // 
@@ -267,29 +254,67 @@
             this.labelWorstPerformance.TabIndex = 6;
             this.labelWorstPerformance.Text = "Worst\r\nperformance";
             // 
-            // labelChartType
+            // textBoxBestPerformance
             // 
-            this.labelChartType.AutoSize = true;
-            this.labelChartType.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelChartType.Location = new System.Drawing.Point(21, 106);
-            this.labelChartType.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            this.labelChartType.Name = "labelChartType";
-            this.labelChartType.Size = new System.Drawing.Size(90, 21);
-            this.labelChartType.TabIndex = 5;
-            this.labelChartType.Text = "Chart type";
+            this.textBoxBestPerformance.Location = new System.Drawing.Point(125, 111);
+            this.textBoxBestPerformance.Name = "textBoxBestPerformance";
+            this.textBoxBestPerformance.ReadOnly = true;
+            this.textBoxBestPerformance.Size = new System.Drawing.Size(181, 28);
+            this.textBoxBestPerformance.TabIndex = 5;
             // 
-            // comboBoxChartType
+            // labelBestPerformance
             // 
-            this.comboBoxChartType.FormattingEnabled = true;
-            this.comboBoxChartType.Location = new System.Drawing.Point(126, 98);
-            this.comboBoxChartType.Name = "comboBoxChartType";
-            this.comboBoxChartType.Size = new System.Drawing.Size(181, 29);
-            this.comboBoxChartType.TabIndex = 6;
+            this.labelBestPerformance.AutoSize = true;
+            this.labelBestPerformance.Location = new System.Drawing.Point(13, 97);
+            this.labelBestPerformance.Name = "labelBestPerformance";
+            this.labelBestPerformance.Size = new System.Drawing.Size(106, 42);
+            this.labelBestPerformance.TabIndex = 4;
+            this.labelBestPerformance.Text = "Best \r\nperformance";
+            // 
+            // textBoxAverage
+            // 
+            this.textBoxAverage.Location = new System.Drawing.Point(125, 64);
+            this.textBoxAverage.Name = "textBoxAverage";
+            this.textBoxAverage.ReadOnly = true;
+            this.textBoxAverage.Size = new System.Drawing.Size(181, 28);
+            this.textBoxAverage.TabIndex = 3;
+            // 
+            // labelAverage
+            // 
+            this.labelAverage.AutoSize = true;
+            this.labelAverage.Location = new System.Drawing.Point(13, 71);
+            this.labelAverage.Name = "labelAverage";
+            this.labelAverage.Size = new System.Drawing.Size(71, 21);
+            this.labelAverage.TabIndex = 2;
+            this.labelAverage.Text = "Average";
+            // 
+            // textBoxSum
+            // 
+            this.textBoxSum.Location = new System.Drawing.Point(125, 30);
+            this.textBoxSum.Name = "textBoxSum";
+            this.textBoxSum.ReadOnly = true;
+            this.textBoxSum.Size = new System.Drawing.Size(181, 28);
+            this.textBoxSum.TabIndex = 1;
+            // 
+            // labelSum
+            // 
+            this.labelSum.AutoSize = true;
+            this.labelSum.Location = new System.Drawing.Point(13, 37);
+            this.labelSum.Name = "labelSum";
+            this.labelSum.Size = new System.Drawing.Size(83, 21);
+            this.labelSum.TabIndex = 0;
+            this.labelSum.Text = "Summary";
+            // 
+            // timerRevenue
+            // 
+            this.timerRevenue.Interval = 10;
+            this.timerRevenue.Tick += new System.EventHandler(this.timerRevenue_Tick);
             // 
             // ViewRevenueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(954, 502);
             this.Controls.Add(this.groupBoxForm);
             this.Name = "ViewRevenueForm";
@@ -328,5 +353,7 @@
         private System.Windows.Forms.Label labelSum;
         private System.Windows.Forms.ComboBox comboBoxChartType;
         private System.Windows.Forms.Label labelChartType;
+        private System.Windows.Forms.Label labelCurrency2;
+        private System.Windows.Forms.Label labelCurrency;
     }
 }

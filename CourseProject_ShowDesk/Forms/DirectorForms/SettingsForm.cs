@@ -143,6 +143,14 @@ namespace CourseProject_ShowDesk.Forms
         {
             if (e.KeyCode == Keys.Enter)
             {
+                textBoxCurrencySymbol.Focus();
+            }
+        }
+
+        private void textBoxCurrencySymbol_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
                 buttonSaveChanges.Focus();
             }
         }
@@ -165,6 +173,11 @@ namespace CourseProject_ShowDesk.Forms
         private void textBoxPerformancesFileName_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorFileName(sender, e);
+        }
+
+        private void textBoxCurrencySymbol_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ParametersValidator.ValidatorSymbol(sender, e);
         }
 
         private void comboBoxListName_SelectedIndexChanged(object sender, EventArgs e)
@@ -259,6 +272,7 @@ namespace CourseProject_ShowDesk.Forms
         private void PopulateOtherGroup()
         {
             numericUpDownRangeDateOfPastPerformances.Value = Convert.ToDecimal(appConstantsData.RangeDateOfPastPerformances);
+            textBoxCurrencySymbol.Text = appConstantsData.CurrencySymbol.ToString();
         }
 
         private void PopulateComboBoxName()
@@ -421,6 +435,20 @@ namespace CourseProject_ShowDesk.Forms
 
                 return false;
             }
+
+            if (textBoxCurrencySymbol.Text.Length == 0)
+            {
+                MessageBox.Show(
+                    "Currency symbol must have 1 symbol",
+                    "Other Group Validation Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                textBoxCurrencySymbol.Focus();
+
+                return false;
+            }
+
             return true;
         }
 
@@ -472,6 +500,8 @@ namespace CourseProject_ShowDesk.Forms
         private void SaveOtherGroup()
         {
             appConstantsData.RangeDateOfPastPerformances = Convert.ToInt32(numericUpDownRangeDateOfPastPerformances.Value);
+            appConstantsData.CurrencySymbol = Convert.ToChar(textBoxCurrencySymbol.Text);
         }
+
     }
 }

@@ -48,6 +48,7 @@
             this.labelDrink = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
             this.timerScaleUp = new System.Windows.Forms.Timer(this.components);
+            this.labelCurrency = new System.Windows.Forms.Label();
             this.groupBoxTicket.SuspendLayout();
             this.groupBoxPremium.SuspendLayout();
             this.groupBoxStandardPlus.SuspendLayout();
@@ -182,6 +183,7 @@
             this.groupBoxTicket.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxTicket.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
             this.groupBoxTicket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxTicket.Controls.Add(this.labelCurrency);
             this.groupBoxTicket.Controls.Add(this.groupBoxPremium);
             this.groupBoxTicket.Controls.Add(this.groupBoxStandardPlus);
             this.groupBoxTicket.Controls.Add(this.labelInfo);
@@ -293,6 +295,17 @@
             this.timerScaleUp.Interval = 3;
             this.timerScaleUp.Tick += new System.EventHandler(this.timerScaleUp_Tick);
             // 
+            // labelCurrency
+            // 
+            this.labelCurrency.AutoSize = true;
+            this.labelCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.labelCurrency.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrency.Location = new System.Drawing.Point(337, 181);
+            this.labelCurrency.Name = "labelCurrency";
+            this.labelCurrency.Size = new System.Drawing.Size(22, 24);
+            this.labelCurrency.TabIndex = 40;
+            this.labelCurrency.Text = "$";
+            // 
             // BuyTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,5 +344,6 @@
         private System.Windows.Forms.ComboBox comboBoxSouvenir;
         private System.Windows.Forms.Label labelSouvenir;
         private System.Windows.Forms.Timer timerScaleUp;
+        private System.Windows.Forms.Label labelCurrency;
     }
 }

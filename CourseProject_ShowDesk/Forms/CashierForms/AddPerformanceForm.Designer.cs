@@ -42,6 +42,7 @@
             this.dateTimePickerDuration = new System.Windows.Forms.DateTimePicker();
             this.labelDuration = new System.Windows.Forms.Label();
             this.toolTipPerformance = new System.Windows.Forms.ToolTip(this.components);
+            this.labelCurrency = new System.Windows.Forms.Label();
             this.groupBoxPerformance.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,6 +158,7 @@
             this.groupBoxPerformance.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxPerformance.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
             this.groupBoxPerformance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxPerformance.Controls.Add(this.labelCurrency);
             this.groupBoxPerformance.Controls.Add(this.dateTimePickerDuration);
             this.groupBoxPerformance.Controls.Add(this.labelDuration);
             this.groupBoxPerformance.Controls.Add(this.labelPerfomanceDate);
@@ -200,6 +202,17 @@
             this.labelDuration.TabIndex = 19;
             this.labelDuration.Text = "Duration";
             // 
+            // labelCurrency
+            // 
+            this.labelCurrency.AutoSize = true;
+            this.labelCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.labelCurrency.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrency.Location = new System.Drawing.Point(396, 138);
+            this.labelCurrency.Name = "labelCurrency";
+            this.labelCurrency.Size = new System.Drawing.Size(22, 24);
+            this.labelCurrency.TabIndex = 41;
+            this.labelCurrency.Text = "$";
+            // 
             // AddPerformanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,5 +242,6 @@
         private System.Windows.Forms.ToolTip toolTipPerformance;
         private System.Windows.Forms.Label labelDuration;
         private System.Windows.Forms.DateTimePicker dateTimePickerDuration;
+        private System.Windows.Forms.Label labelCurrency;
     }
 }

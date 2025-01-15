@@ -27,6 +27,8 @@ namespace CourseProject_ShowDesk
 
             dateTimePickerPerfomanceDate.MinDate = DateTime.Now.Date;
 
+            labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
+
             PopulateFields();
 
             UpdateDataGridTickets();
@@ -150,7 +152,7 @@ namespace CourseProject_ShowDesk
                 ticket.Index, 
                 ticket.Type, 
                 ticket.Position, 
-                ticket.CalculatedPrice, 
+                ticket.CalculatedPrice.ToString()+AppConstants.CurrencySymbol.ToString(), 
                 ticket.Reserved ? "Yes" : "No", 
                 ticket.GetAdditionalServices());
         }

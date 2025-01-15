@@ -28,6 +28,8 @@ namespace CourseProject_ShowDesk
             this.stages = stages;
             this.performance = performance;
 
+            labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
+
             CreateTicketIndex();
 
             textBoxIndex.Text = Convert.ToString(index);

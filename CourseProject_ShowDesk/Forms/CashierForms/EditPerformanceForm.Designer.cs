@@ -58,6 +58,7 @@
             this.groupBoxTickets = new System.Windows.Forms.GroupBox();
             this.groupBoxForm = new System.Windows.Forms.GroupBox();
             this.toolTipPerformancce = new System.Windows.Forms.ToolTip(this.components);
+            this.labelCurrency = new System.Windows.Forms.Label();
             this.menuStripPerformance.SuspendLayout();
             this.groupBoxPerformance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
@@ -223,6 +224,7 @@
             this.groupBoxPerformance.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxPerformance.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxPerformance.Controls.Add(this.labelCurrency);
             this.groupBoxPerformance.Controls.Add(this.dateTimePickerDuration);
             this.groupBoxPerformance.Controls.Add(this.labelDuration);
             this.groupBoxPerformance.Controls.Add(this.buttonSave);
@@ -381,6 +383,17 @@
             this.groupBoxForm.TabIndex = 18;
             this.groupBoxForm.TabStop = false;
             // 
+            // labelCurrency
+            // 
+            this.labelCurrency.AutoSize = true;
+            this.labelCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.labelCurrency.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrency.Location = new System.Drawing.Point(500, 140);
+            this.labelCurrency.Name = "labelCurrency";
+            this.labelCurrency.Size = new System.Drawing.Size(22, 24);
+            this.labelCurrency.TabIndex = 41;
+            this.labelCurrency.Text = "$";
+            // 
             // EditPerformanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -431,5 +444,6 @@
         private System.Windows.Forms.ToolTip toolTipPerformancce;
         private System.Windows.Forms.DateTimePicker dateTimePickerDuration;
         private System.Windows.Forms.Label labelDuration;
+        private System.Windows.Forms.Label labelCurrency;
     }
 }

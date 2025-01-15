@@ -25,6 +25,8 @@ namespace CourseProject_ShowDesk
             dateTimePickerPerfomanceDate.MinDate = DateTime.Now.Date;
             dateTimePickerDuration.Value = (DateTime.Today)+(AppConstants.InitialPerformanceDuration);
 
+            labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
+
             PopulateComboBox();
 
             isValid = false;

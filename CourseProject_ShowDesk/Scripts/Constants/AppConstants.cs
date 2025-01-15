@@ -12,10 +12,14 @@ namespace CourseProject_ShowDesk.Scripts
         public static string PerformancesFileName { get; private set; }
         public static string StagesFileName { get; private set; }
         public static string EmployeesFileName { get; private set; }
+
         public static double StandardIncrease { get; private set; }
         public static double StandardPlusIncrease { get; private set; } 
         public static double PremiumIncrease { get; private set; }
+
         public static int RangeDateOfPastPerformances { get; private set; } 
+
+        public static char CurrencySymbol { get; private set;}
             
         public static TimeSpan MinBreakBetweenPerformance { get; private set; } 
         public static TimeSpan InitialPerformanceDuration { get; private set; }
@@ -36,6 +40,7 @@ namespace CourseProject_ShowDesk.Scripts
             StandardPlusIncrease = constantsData.StandardPlusIncrease;
             PremiumIncrease = constantsData.PremiumIncrease;
             RangeDateOfPastPerformances = constantsData.RangeDateOfPastPerformances;
+            CurrencySymbol = constantsData.CurrencySymbol;
 
             MinBreakBetweenPerformance = constantsData.MinBreakBetweenPerformance;
             InitialPerformanceDuration = constantsData.InitialPerformanceDuration;
@@ -58,6 +63,7 @@ namespace CourseProject_ShowDesk.Scripts
                 StandardPlusIncrease = AppConstants.StandardPlusIncrease,
                 PremiumIncrease = AppConstants.PremiumIncrease,
                 RangeDateOfPastPerformances = AppConstants.RangeDateOfPastPerformances,
+                CurrencySymbol=AppConstants.CurrencySymbol,
                 MinBreakBetweenPerformance = AppConstants.MinBreakBetweenPerformance,
                 InitialPerformanceDuration = AppConstants.InitialPerformanceDuration,
                 MaxDuration = AppConstants.MaxDuration,
