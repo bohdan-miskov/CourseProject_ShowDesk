@@ -83,7 +83,7 @@
             // 
             // groupBoxPeriod
             // 
-            this.groupBoxPeriod.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxPeriod.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxPeriod.Controls.Add(this.comboBoxChartType);
             this.groupBoxPeriod.Controls.Add(this.labelChartType);
             this.groupBoxPeriod.Controls.Add(this.labelFinishDate);
@@ -133,7 +133,7 @@
             // 
             this.labelStartDate.AutoSize = true;
             this.labelStartDate.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartDate.Location = new System.Drawing.Point(21, 37);
+            this.labelStartDate.Location = new System.Drawing.Point(23, 37);
             this.labelStartDate.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.labelStartDate.Name = "labelStartDate";
             this.labelStartDate.Size = new System.Drawing.Size(85, 21);
@@ -142,7 +142,7 @@
             // 
             // buttonCalculate
             // 
-            this.buttonCalculate.BackColor = System.Drawing.Color.Silver;
+            this.buttonCalculate.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonCalculate.Location = new System.Drawing.Point(126, 136);
             this.buttonCalculate.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.buttonCalculate.Name = "buttonCalculate";
@@ -154,12 +154,12 @@
             // 
             // groupBoxRevenue
             // 
-            this.groupBoxRevenue.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxRevenue.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxRevenue.Controls.Add(this.chartRevenue);
             this.groupBoxRevenue.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxRevenue.Location = new System.Drawing.Point(325, 19);
             this.groupBoxRevenue.Name = "groupBoxRevenue";
-            this.groupBoxRevenue.Size = new System.Drawing.Size(606, 401);
+            this.groupBoxRevenue.Size = new System.Drawing.Size(606, 418);
             this.groupBoxRevenue.TabIndex = 7;
             this.groupBoxRevenue.TabStop = false;
             this.groupBoxRevenue.Text = "Revenue";
@@ -170,6 +170,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartRevenue.BackColor = System.Drawing.Color.Transparent;
+            this.chartRevenue.BorderlineColor = System.Drawing.Color.DimGray;
             chartArea1.Name = "ChartArea1";
             this.chartRevenue.ChartAreas.Add(chartArea1);
             legend1.Enabled = false;
@@ -179,24 +180,25 @@
             this.chartRevenue.Legends.Add(legend1);
             this.chartRevenue.Location = new System.Drawing.Point(9, 30);
             this.chartRevenue.Name = "chartRevenue";
-            this.chartRevenue.Size = new System.Drawing.Size(591, 371);
+            this.chartRevenue.Size = new System.Drawing.Size(591, 388);
             this.chartRevenue.TabIndex = 0;
             // 
             // groupBoxForm
             // 
-            this.groupBoxForm.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxForm.BackColor = System.Drawing.Color.LightGray;
+            this.groupBoxForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBoxForm.Controls.Add(this.groupBoxAdditionalParameter);
             this.groupBoxForm.Controls.Add(this.groupBoxPeriod);
             this.groupBoxForm.Controls.Add(this.groupBoxRevenue);
             this.groupBoxForm.Location = new System.Drawing.Point(-1, 65);
             this.groupBoxForm.Name = "groupBoxForm";
-            this.groupBoxForm.Size = new System.Drawing.Size(951, 436);
+            this.groupBoxForm.Size = new System.Drawing.Size(951, 453);
             this.groupBoxForm.TabIndex = 8;
             this.groupBoxForm.TabStop = false;
             // 
             // groupBoxAdditionalParameter
             // 
+            this.groupBoxAdditionalParameter.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxAdditionalParameter.Controls.Add(this.labelCurrency2);
             this.groupBoxAdditionalParameter.Controls.Add(this.labelCurrency);
             this.groupBoxAdditionalParameter.Controls.Add(this.textBoxWorstPerformance);
@@ -210,7 +212,7 @@
             this.groupBoxAdditionalParameter.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxAdditionalParameter.Location = new System.Drawing.Point(7, 221);
             this.groupBoxAdditionalParameter.Name = "groupBoxAdditionalParameter";
-            this.groupBoxAdditionalParameter.Size = new System.Drawing.Size(312, 199);
+            this.groupBoxAdditionalParameter.Size = new System.Drawing.Size(312, 216);
             this.groupBoxAdditionalParameter.TabIndex = 8;
             this.groupBoxAdditionalParameter.TabStop = false;
             this.groupBoxAdditionalParameter.Text = "Additional parameter";
@@ -315,7 +317,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(954, 502);
+            this.ClientSize = new System.Drawing.Size(954, 517);
             this.Controls.Add(this.groupBoxForm);
             this.Name = "ViewRevenueForm";
             this.Text = "ViewRevenue";

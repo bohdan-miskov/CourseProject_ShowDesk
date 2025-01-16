@@ -46,8 +46,8 @@
             // 
             // groupBoxAuthenticate
             // 
-            this.groupBoxAuthenticate.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
-            this.groupBoxAuthenticate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxAuthenticate.BackColor = System.Drawing.Color.LightGray;
+            this.groupBoxAuthenticate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBoxAuthenticate.Controls.Add(this.pictureBoxAvatar);
             this.groupBoxAuthenticate.Controls.Add(this.groupBoxChoice);
             this.groupBoxAuthenticate.Controls.Add(this.groupBoxSignIn);
@@ -71,13 +71,13 @@
             // 
             // groupBoxChoice
             // 
-            this.groupBoxChoice.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxChoice.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxChoice.Controls.Add(this.comboBoxUser);
             this.groupBoxChoice.Controls.Add(this.buttonAuthentificate);
             this.groupBoxChoice.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxChoice.Location = new System.Drawing.Point(244, 19);
             this.groupBoxChoice.Name = "groupBoxChoice";
-            this.groupBoxChoice.Size = new System.Drawing.Size(185, 118);
+            this.groupBoxChoice.Size = new System.Drawing.Size(218, 118);
             this.groupBoxChoice.TabIndex = 9;
             this.groupBoxChoice.TabStop = false;
             this.groupBoxChoice.Text = "Choice role";
@@ -87,7 +87,7 @@
             this.comboBoxUser.BackColor = System.Drawing.Color.Silver;
             this.comboBoxUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxUser.FormattingEnabled = true;
-            this.comboBoxUser.Location = new System.Drawing.Point(6, 40);
+            this.comboBoxUser.Location = new System.Drawing.Point(26, 37);
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(173, 29);
             this.comboBoxUser.TabIndex = 1;
@@ -96,9 +96,9 @@
             // 
             // buttonAuthentificate
             // 
-            this.buttonAuthentificate.BackColor = System.Drawing.Color.Silver;
+            this.buttonAuthentificate.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonAuthentificate.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.buttonAuthentificate.Location = new System.Drawing.Point(6, 75);
+            this.buttonAuthentificate.Location = new System.Drawing.Point(26, 72);
             this.buttonAuthentificate.Name = "buttonAuthentificate";
             this.buttonAuthentificate.Size = new System.Drawing.Size(173, 37);
             this.buttonAuthentificate.TabIndex = 0;
@@ -108,7 +108,7 @@
             // 
             // groupBoxSignIn
             // 
-            this.groupBoxSignIn.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxSignIn.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxSignIn.Controls.Add(this.textBoxPassword);
             this.groupBoxSignIn.Controls.Add(this.labelPassword);
             this.groupBoxSignIn.Controls.Add(this.labelLogin);

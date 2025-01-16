@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.numericUpDownStartPosition = new System.Windows.Forms.NumericUpDown();
             this.groupBoxZone = new System.Windows.Forms.GroupBox();
+            this.numericUpDownIncrease = new System.Windows.Forms.NumericUpDown();
             this.labelZoneName = new System.Windows.Forms.Label();
             this.labelEndPosition = new System.Windows.Forms.Label();
             this.textBoxZoneName = new System.Windows.Forms.TextBox();
@@ -39,11 +40,10 @@
             this.numericUpDownEndPosition = new System.Windows.Forms.NumericUpDown();
             this.labelIncrease = new System.Windows.Forms.Label();
             this.toolTipZone = new System.Windows.Forms.ToolTip(this.components);
-            this.numericUpDownIncrease = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).BeginInit();
             this.groupBoxZone.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrease)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDownStartPosition
@@ -63,8 +63,7 @@
             // 
             // groupBoxZone
             // 
-            this.groupBoxZone.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxZone.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
+            this.groupBoxZone.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxZone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxZone.Controls.Add(this.numericUpDownIncrease);
             this.groupBoxZone.Controls.Add(this.labelZoneName);
@@ -82,6 +81,19 @@
             this.groupBoxZone.TabIndex = 23;
             this.groupBoxZone.TabStop = false;
             this.groupBoxZone.Text = "Zone";
+            // 
+            // numericUpDownIncrease
+            // 
+            this.numericUpDownIncrease.DecimalPlaces = 1;
+            this.numericUpDownIncrease.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericUpDownIncrease.Location = new System.Drawing.Point(174, 70);
+            this.numericUpDownIncrease.Name = "numericUpDownIncrease";
+            this.numericUpDownIncrease.Size = new System.Drawing.Size(168, 28);
+            this.numericUpDownIncrease.TabIndex = 23;
             // 
             // labelZoneName
             // 
@@ -107,6 +119,7 @@
             // 
             // textBoxZoneName
             // 
+            this.textBoxZoneName.BackColor = System.Drawing.Color.White;
             this.textBoxZoneName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxZoneName.Location = new System.Drawing.Point(174, 37);
             this.textBoxZoneName.Name = "textBoxZoneName";
@@ -127,7 +140,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.Silver;
+            this.buttonAdd.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.Location = new System.Drawing.Point(105, 186);
             this.buttonAdd.Name = "buttonAdd";
@@ -163,19 +176,6 @@
             this.labelIncrease.TabIndex = 17;
             this.labelIncrease.Text = "Increase";
             // 
-            // numericUpDownIncrease
-            // 
-            this.numericUpDownIncrease.DecimalPlaces = 1;
-            this.numericUpDownIncrease.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownIncrease.Location = new System.Drawing.Point(174, 70);
-            this.numericUpDownIncrease.Name = "numericUpDownIncrease";
-            this.numericUpDownIncrease.Size = new System.Drawing.Size(168, 28);
-            this.numericUpDownIncrease.TabIndex = 23;
-            // 
             // AddEditZoneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,8 +187,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).EndInit();
             this.groupBoxZone.ResumeLayout(false);
             this.groupBoxZone.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrease)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).EndInit();
             this.ResumeLayout(false);
 
         }

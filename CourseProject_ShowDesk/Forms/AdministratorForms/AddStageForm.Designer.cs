@@ -39,7 +39,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.Silver;
+            this.buttonAdd.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.Location = new System.Drawing.Point(148, 112);
             this.buttonAdd.Name = "buttonAdd";
@@ -90,8 +90,7 @@
             // 
             // groupBoxStage
             // 
-            this.groupBoxStage.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxStage.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
+            this.groupBoxStage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxStage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxStage.Controls.Add(this.labelIndex);
             this.groupBoxStage.Controls.Add(this.buttonAdd);

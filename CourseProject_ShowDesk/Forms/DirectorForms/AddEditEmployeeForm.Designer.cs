@@ -46,8 +46,7 @@
             // 
             // groupBoxEmployee
             // 
-            this.groupBoxEmployee.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxEmployee.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
+            this.groupBoxEmployee.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxEmployee.Controls.Add(this.groupBoxProfessionList);
             this.groupBoxEmployee.Controls.Add(this.textBoxPassword);
@@ -156,7 +155,7 @@
             // 
             // buttonAddEmployee
             // 
-            this.buttonAddEmployee.BackColor = System.Drawing.Color.Silver;
+            this.buttonAddEmployee.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonAddEmployee.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddEmployee.Location = new System.Drawing.Point(174, 196);
             this.buttonAddEmployee.Name = "buttonAddEmployee";

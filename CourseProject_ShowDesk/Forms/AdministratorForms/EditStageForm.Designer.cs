@@ -57,7 +57,7 @@
             // buttonSave
             // 
             this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSave.BackColor = System.Drawing.Color.Silver;
+            this.buttonSave.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonSave.Location = new System.Drawing.Point(169, 89);
             this.buttonSave.MinimumSize = new System.Drawing.Size(120, 0);
             this.buttonSave.Name = "buttonSave";
@@ -112,7 +112,7 @@
             // 
             // menuStripStage
             // 
-            this.menuStripStage.BackColor = System.Drawing.Color.Teal;
+            this.menuStripStage.BackColor = System.Drawing.Color.Azure;
             this.menuStripStage.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStripStage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.zoneToolStripMenuItem});
@@ -124,6 +124,7 @@
             // 
             // zoneToolStripMenuItem
             // 
+            this.zoneToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
             this.zoneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addZoneToolStripMenuItem,
             this.editZoneToolStripMenuItem,
@@ -137,7 +138,7 @@
             // 
             this.addZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addZoneToolStripMenuItem.Name = "addZoneToolStripMenuItem";
-            this.addZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.addZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addZoneToolStripMenuItem.Text = "Add";
             this.addZoneToolStripMenuItem.Click += new System.EventHandler(this.addZoneToolStripMenuItem_Click);
             // 
@@ -145,7 +146,7 @@
             // 
             this.editZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editZoneToolStripMenuItem.Name = "editZoneToolStripMenuItem";
-            this.editZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.editZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editZoneToolStripMenuItem.Text = "Edit";
             this.editZoneToolStripMenuItem.Click += new System.EventHandler(this.editZoneToolStripMenuItem_Click);
             // 
@@ -153,7 +154,7 @@
             // 
             this.removeZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeZoneToolStripMenuItem.Name = "removeZoneToolStripMenuItem";
-            this.removeZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.removeZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeZoneToolStripMenuItem.Text = "Remove";
             this.removeZoneToolStripMenuItem.Click += new System.EventHandler(this.removeZoneToolStripMenuItem_Click);
             // 
@@ -161,7 +162,7 @@
             // 
             this.groupBoxStage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxStage.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxStage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxStage.Controls.Add(this.buttonSave);
             this.groupBoxStage.Controls.Add(this.textBoxIndex);
             this.groupBoxStage.Controls.Add(this.labelStageName);
@@ -180,6 +181,7 @@
             this.dataGridViewZones.AllowUserToAddRows = false;
             this.dataGridViewZones.AllowUserToDeleteRows = false;
             this.dataGridViewZones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewZones.BackgroundColor = System.Drawing.Color.LightGray;
             this.dataGridViewZones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewZones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnName,
@@ -234,7 +236,7 @@
             this.groupBoxZones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxZones.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxZones.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxZones.Controls.Add(this.dataGridViewZones);
             this.groupBoxZones.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxZones.Location = new System.Drawing.Point(6, 157);
@@ -246,7 +248,7 @@
             // 
             // groupBoxForm
             // 
-            this.groupBoxForm.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
+            this.groupBoxForm.BackColor = System.Drawing.Color.LightGray;
             this.groupBoxForm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxForm.Controls.Add(this.groupBoxStage);
             this.groupBoxForm.Controls.Add(this.groupBoxZones);

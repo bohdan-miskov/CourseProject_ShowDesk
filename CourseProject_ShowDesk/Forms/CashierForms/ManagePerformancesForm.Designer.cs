@@ -59,6 +59,7 @@
             this.dataGridViewPerformances.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPerformances.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewPerformances.BackgroundColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -154,14 +155,14 @@
             // 
             // menuStripManagePerformance
             // 
-            this.menuStripManagePerformance.BackColor = System.Drawing.Color.Teal;
+            this.menuStripManagePerformance.BackColor = System.Drawing.Color.Azure;
             this.menuStripManagePerformance.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStripManagePerformance.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.performanceToolStripMenuItem,
             this.revenueReportToolStripMenuItem});
             this.menuStripManagePerformance.Location = new System.Drawing.Point(0, 0);
             this.menuStripManagePerformance.Name = "menuStripManagePerformance";
-            this.menuStripManagePerformance.Size = new System.Drawing.Size(292, 26);
+            this.menuStripManagePerformance.Size = new System.Drawing.Size(172, 26);
             this.menuStripManagePerformance.TabIndex = 4;
             this.menuStripManagePerformance.Text = "menuStripManagePerformance";
             // 
@@ -210,7 +211,7 @@
             // 
             // buttonSwitch
             // 
-            this.buttonSwitch.BackColor = System.Drawing.Color.Teal;
+            this.buttonSwitch.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonSwitch.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSwitch.Location = new System.Drawing.Point(778, 27);
             this.buttonSwitch.Name = "buttonSwitch";

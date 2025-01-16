@@ -39,16 +39,16 @@
             this.textBoxPerformanceName = new System.Windows.Forms.TextBox();
             this.dateTimePickerPerfomanceDate = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPerformance = new System.Windows.Forms.GroupBox();
+            this.labelCurrency = new System.Windows.Forms.Label();
             this.dateTimePickerDuration = new System.Windows.Forms.DateTimePicker();
             this.labelDuration = new System.Windows.Forms.Label();
             this.toolTipPerformance = new System.Windows.Forms.ToolTip(this.components);
-            this.labelCurrency = new System.Windows.Forms.Label();
             this.groupBoxPerformance.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.Silver;
+            this.buttonAdd.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.Location = new System.Drawing.Point(198, 212);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
@@ -155,9 +155,8 @@
             // 
             // groupBoxPerformance
             // 
-            this.groupBoxPerformance.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxPerformance.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
-            this.groupBoxPerformance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxPerformance.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxPerformance.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBoxPerformance.Controls.Add(this.labelCurrency);
             this.groupBoxPerformance.Controls.Add(this.dateTimePickerDuration);
             this.groupBoxPerformance.Controls.Add(this.labelDuration);
@@ -177,6 +176,17 @@
             this.groupBoxPerformance.TabIndex = 18;
             this.groupBoxPerformance.TabStop = false;
             this.groupBoxPerformance.Text = "Performance";
+            // 
+            // labelCurrency
+            // 
+            this.labelCurrency.AutoSize = true;
+            this.labelCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.labelCurrency.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrency.Location = new System.Drawing.Point(396, 138);
+            this.labelCurrency.Name = "labelCurrency";
+            this.labelCurrency.Size = new System.Drawing.Size(22, 24);
+            this.labelCurrency.TabIndex = 41;
+            this.labelCurrency.Text = "$";
             // 
             // dateTimePickerDuration
             // 
@@ -201,17 +211,6 @@
             this.labelDuration.Size = new System.Drawing.Size(81, 25);
             this.labelDuration.TabIndex = 19;
             this.labelDuration.Text = "Duration";
-            // 
-            // labelCurrency
-            // 
-            this.labelCurrency.AutoSize = true;
-            this.labelCurrency.BackColor = System.Drawing.Color.Transparent;
-            this.labelCurrency.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCurrency.Location = new System.Drawing.Point(396, 138);
-            this.labelCurrency.Name = "labelCurrency";
-            this.labelCurrency.Size = new System.Drawing.Size(22, 24);
-            this.labelCurrency.TabIndex = 41;
-            this.labelCurrency.Text = "$";
             // 
             // AddPerformanceForm
             // 

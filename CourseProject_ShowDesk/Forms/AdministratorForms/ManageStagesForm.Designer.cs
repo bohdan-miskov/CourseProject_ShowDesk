@@ -51,6 +51,7 @@
             this.dataGridViewStages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewStages.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewStages.BackgroundColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -104,7 +105,7 @@
             // 
             // menuStripManageStages
             // 
-            this.menuStripManageStages.BackColor = System.Drawing.Color.Teal;
+            this.menuStripManageStages.BackColor = System.Drawing.Color.Azure;
             this.menuStripManageStages.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStripManageStages.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stageToolStripMenuItem});
@@ -127,21 +128,21 @@
             // addStageToolStripMenuItem
             // 
             this.addStageToolStripMenuItem.Name = "addStageToolStripMenuItem";
-            this.addStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.addStageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addStageToolStripMenuItem.Text = "Add";
             this.addStageToolStripMenuItem.Click += new System.EventHandler(this.addStageToolStripMenuItem_Click);
             // 
             // editStageToolStripMenuItem
             // 
             this.editStageToolStripMenuItem.Name = "editStageToolStripMenuItem";
-            this.editStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.editStageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editStageToolStripMenuItem.Text = "Edit";
             this.editStageToolStripMenuItem.Click += new System.EventHandler(this.editStageToolStripMenuItem_Click);
             // 
             // removeStageToolStripMenuItem
             // 
             this.removeStageToolStripMenuItem.Name = "removeStageToolStripMenuItem";
-            this.removeStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeStageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeStageToolStripMenuItem.Text = "Remove";
             this.removeStageToolStripMenuItem.Click += new System.EventHandler(this.removeStageToolStripMenuItem_Click);
             // 

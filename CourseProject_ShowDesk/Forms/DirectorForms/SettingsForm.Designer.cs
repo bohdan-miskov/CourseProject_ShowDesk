@@ -32,6 +32,8 @@
             this.textBoxPerformancesFileName = new System.Windows.Forms.TextBox();
             this.groupBoxSettings = new System.Windows.Forms.GroupBox();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
+            this.textBoxCurrencySymbol = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.labelRangeDateOfPastPerformances = new System.Windows.Forms.Label();
             this.numericUpDownRangeDateOfPastPerformances = new System.Windows.Forms.NumericUpDown();
             this.buttonCancelChanges = new System.Windows.Forms.Button();
@@ -63,8 +65,6 @@
             this.textBoxEmployeesFileName = new System.Windows.Forms.TextBox();
             this.labelStagesFileName = new System.Windows.Forms.Label();
             this.textBoxStagesFileName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxCurrencySymbol = new System.Windows.Forms.TextBox();
             this.groupBoxSettings.SuspendLayout();
             this.groupBoxOther.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRangeDateOfPastPerformances)).BeginInit();
@@ -103,6 +103,7 @@
             this.groupBoxSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxSettings.BackColor = System.Drawing.Color.LightGray;
             this.groupBoxSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.groupBoxSettings.Controls.Add(this.groupBoxOther);
             this.groupBoxSettings.Controls.Add(this.buttonCancelChanges);
@@ -121,6 +122,7 @@
             // 
             // groupBoxOther
             // 
+            this.groupBoxOther.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxOther.Controls.Add(this.textBoxCurrencySymbol);
             this.groupBoxOther.Controls.Add(this.label1);
             this.groupBoxOther.Controls.Add(this.labelRangeDateOfPastPerformances);
@@ -131,6 +133,28 @@
             this.groupBoxOther.TabIndex = 9;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "Other";
+            // 
+            // textBoxCurrencySymbol
+            // 
+            this.textBoxCurrencySymbol.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCurrencySymbol.Location = new System.Drawing.Point(182, 72);
+            this.textBoxCurrencySymbol.MaxLength = 1;
+            this.textBoxCurrencySymbol.Name = "textBoxCurrencySymbol";
+            this.textBoxCurrencySymbol.Size = new System.Drawing.Size(120, 28);
+            this.textBoxCurrencySymbol.TabIndex = 7;
+            this.textBoxCurrencySymbol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCurrencySymbol_KeyPress);
+            this.textBoxCurrencySymbol.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxCurrencySymbol_KeyUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 79);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 21);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Currency symbol";
             // 
             // labelRangeDateOfPastPerformances
             // 
@@ -153,7 +177,7 @@
             // 
             // buttonCancelChanges
             // 
-            this.buttonCancelChanges.BackColor = System.Drawing.Color.Silver;
+            this.buttonCancelChanges.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonCancelChanges.Location = new System.Drawing.Point(181, 468);
             this.buttonCancelChanges.Name = "buttonCancelChanges";
             this.buttonCancelChanges.Size = new System.Drawing.Size(125, 45);
@@ -164,7 +188,7 @@
             // 
             // buttonSaveChanges
             // 
-            this.buttonSaveChanges.BackColor = System.Drawing.Color.Silver;
+            this.buttonSaveChanges.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonSaveChanges.Location = new System.Drawing.Point(21, 468);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
             this.buttonSaveChanges.Size = new System.Drawing.Size(125, 45);
@@ -175,6 +199,7 @@
             // 
             // groupBoxNames
             // 
+            this.groupBoxNames.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxNames.Controls.Add(this.buttonCancelName);
             this.groupBoxNames.Controls.Add(this.buttonSaveName);
             this.groupBoxNames.Controls.Add(this.labelItemName);
@@ -191,7 +216,7 @@
             // 
             // buttonCancelName
             // 
-            this.buttonCancelName.BackColor = System.Drawing.Color.Silver;
+            this.buttonCancelName.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonCancelName.Location = new System.Drawing.Point(145, 269);
             this.buttonCancelName.Name = "buttonCancelName";
             this.buttonCancelName.Size = new System.Drawing.Size(108, 32);
@@ -203,7 +228,7 @@
             // 
             // buttonSaveName
             // 
-            this.buttonSaveName.BackColor = System.Drawing.Color.Silver;
+            this.buttonSaveName.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonSaveName.Location = new System.Drawing.Point(9, 269);
             this.buttonSaveName.Name = "buttonSaveName";
             this.buttonSaveName.Size = new System.Drawing.Size(108, 32);
@@ -268,6 +293,7 @@
             // 
             // groupBoxPerformanceDuration
             // 
+            this.groupBoxPerformanceDuration.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxPerformanceDuration.Controls.Add(this.dateTimePickerMaxDuration);
             this.groupBoxPerformanceDuration.Controls.Add(this.dateTimePickerMinBreak);
             this.groupBoxPerformanceDuration.Controls.Add(this.dateTimePickerInitialDuration);
@@ -346,6 +372,7 @@
             // 
             // groupBoxTicketIncrease
             // 
+            this.groupBoxTicketIncrease.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxTicketIncrease.Controls.Add(this.numericUpDownPremiumIncrease);
             this.groupBoxTicketIncrease.Controls.Add(this.numericUpDownStandardPlusIncrease);
             this.groupBoxTicketIncrease.Controls.Add(this.numericUpDownStandardIncrease);
@@ -436,6 +463,7 @@
             // 
             // groupBoxFileName
             // 
+            this.groupBoxFileName.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxFileName.Controls.Add(this.labelEmployeesFileName);
             this.groupBoxFileName.Controls.Add(this.textBoxEmployeesFileName);
             this.groupBoxFileName.Controls.Add(this.labelStagesFileName);
@@ -490,28 +518,6 @@
             this.textBoxStagesFileName.TabIndex = 3;
             this.textBoxStagesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStagesFileName_KeyPress);
             this.textBoxStagesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxStagesFileName_KeyUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 79);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 21);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Currency symbol";
-            // 
-            // textBoxCurrencySymbol
-            // 
-            this.textBoxCurrencySymbol.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCurrencySymbol.Location = new System.Drawing.Point(182, 72);
-            this.textBoxCurrencySymbol.MaxLength = 1;
-            this.textBoxCurrencySymbol.Name = "textBoxCurrencySymbol";
-            this.textBoxCurrencySymbol.Size = new System.Drawing.Size(120, 28);
-            this.textBoxCurrencySymbol.TabIndex = 7;
-            this.textBoxCurrencySymbol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCurrencySymbol_KeyPress);
-            this.textBoxCurrencySymbol.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxCurrencySymbol_KeyUp);
             // 
             // SettingsForm
             // 

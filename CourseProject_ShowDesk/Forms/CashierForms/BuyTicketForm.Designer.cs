@@ -40,6 +40,7 @@
             this.comboBoxPositions = new System.Windows.Forms.ComboBox();
             this.comboBoxTicketType = new System.Windows.Forms.ComboBox();
             this.groupBoxTicket = new System.Windows.Forms.GroupBox();
+            this.labelCurrency = new System.Windows.Forms.Label();
             this.groupBoxPremium = new System.Windows.Forms.GroupBox();
             this.comboBoxSouvenir = new System.Windows.Forms.ComboBox();
             this.labelSouvenir = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.labelDrink = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
             this.timerScaleUp = new System.Windows.Forms.Timer(this.components);
-            this.labelCurrency = new System.Windows.Forms.Label();
             this.groupBoxTicket.SuspendLayout();
             this.groupBoxPremium.SuspendLayout();
             this.groupBoxStandardPlus.SuspendLayout();
@@ -56,7 +56,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.Silver;
+            this.buttonAdd.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonAdd.Enabled = false;
             this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.Location = new System.Drawing.Point(221, 217);
@@ -151,7 +151,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxPositions.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxPositions.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxPositions.BackColor = System.Drawing.Color.Silver;
+            this.comboBoxPositions.BackColor = System.Drawing.Color.White;
             this.comboBoxPositions.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxPositions.FormattingEnabled = true;
             this.comboBoxPositions.Location = new System.Drawing.Point(148, 109);
@@ -167,7 +167,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxTicketType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxTicketType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxTicketType.BackColor = System.Drawing.Color.Silver;
+            this.comboBoxTicketType.BackColor = System.Drawing.Color.White;
             this.comboBoxTicketType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTicketType.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxTicketType.FormattingEnabled = true;
@@ -180,9 +180,8 @@
             // 
             // groupBoxTicket
             // 
-            this.groupBoxTicket.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxTicket.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
-            this.groupBoxTicket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.groupBoxTicket.BackColor = System.Drawing.Color.LightGray;
+            this.groupBoxTicket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBoxTicket.Controls.Add(this.labelCurrency);
             this.groupBoxTicket.Controls.Add(this.groupBoxPremium);
             this.groupBoxTicket.Controls.Add(this.groupBoxStandardPlus);
@@ -205,8 +204,20 @@
             this.groupBoxTicket.TabStop = false;
             this.groupBoxTicket.Text = "Ticket";
             // 
+            // labelCurrency
+            // 
+            this.labelCurrency.AutoSize = true;
+            this.labelCurrency.BackColor = System.Drawing.Color.Transparent;
+            this.labelCurrency.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCurrency.Location = new System.Drawing.Point(337, 181);
+            this.labelCurrency.Name = "labelCurrency";
+            this.labelCurrency.Size = new System.Drawing.Size(22, 24);
+            this.labelCurrency.TabIndex = 40;
+            this.labelCurrency.Text = "$";
+            // 
             // groupBoxPremium
             // 
+            this.groupBoxPremium.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxPremium.Controls.Add(this.comboBoxSouvenir);
             this.groupBoxPremium.Controls.Add(this.labelSouvenir);
             this.groupBoxPremium.Location = new System.Drawing.Point(23, 356);
@@ -222,7 +233,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSouvenir.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxSouvenir.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxSouvenir.BackColor = System.Drawing.Color.Silver;
+            this.comboBoxSouvenir.BackColor = System.Drawing.Color.White;
             this.comboBoxSouvenir.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxSouvenir.FormattingEnabled = true;
             this.comboBoxSouvenir.Location = new System.Drawing.Point(119, 27);
@@ -243,6 +254,7 @@
             // 
             // groupBoxStandardPlus
             // 
+            this.groupBoxStandardPlus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxStandardPlus.Controls.Add(this.comboBoxDrink);
             this.groupBoxStandardPlus.Controls.Add(this.labelDrink);
             this.groupBoxStandardPlus.Location = new System.Drawing.Point(23, 283);
@@ -258,7 +270,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxDrink.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxDrink.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxDrink.BackColor = System.Drawing.Color.Silver;
+            this.comboBoxDrink.BackColor = System.Drawing.Color.White;
             this.comboBoxDrink.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDrink.FormattingEnabled = true;
             this.comboBoxDrink.Location = new System.Drawing.Point(119, 27);
@@ -282,7 +294,7 @@
             this.labelInfo.AutoSize = true;
             this.labelInfo.BackColor = System.Drawing.Color.Silver;
             this.labelInfo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.labelInfo.ForeColor = System.Drawing.Color.RoyalBlue;
             this.labelInfo.Location = new System.Drawing.Point(35, 217);
             this.labelInfo.MaximumSize = new System.Drawing.Size(180, 0);
             this.labelInfo.Name = "labelInfo";
@@ -294,17 +306,6 @@
             // 
             this.timerScaleUp.Interval = 3;
             this.timerScaleUp.Tick += new System.EventHandler(this.timerScaleUp_Tick);
-            // 
-            // labelCurrency
-            // 
-            this.labelCurrency.AutoSize = true;
-            this.labelCurrency.BackColor = System.Drawing.Color.Transparent;
-            this.labelCurrency.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCurrency.Location = new System.Drawing.Point(337, 181);
-            this.labelCurrency.Name = "labelCurrency";
-            this.labelCurrency.Size = new System.Drawing.Size(22, 24);
-            this.labelCurrency.TabIndex = 40;
-            this.labelCurrency.Text = "$";
             // 
             // BuyTicketForm
             // 
