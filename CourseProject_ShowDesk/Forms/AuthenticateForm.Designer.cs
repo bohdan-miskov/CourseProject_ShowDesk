@@ -62,9 +62,9 @@
             // pictureBoxAvatar
             // 
             this.pictureBoxAvatar.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAvatar.Location = new System.Drawing.Point(22, 27);
+            this.pictureBoxAvatar.Location = new System.Drawing.Point(20, 19);
             this.pictureBoxAvatar.Name = "pictureBoxAvatar";
-            this.pictureBoxAvatar.Size = new System.Drawing.Size(203, 236);
+            this.pictureBoxAvatar.Size = new System.Drawing.Size(203, 244);
             this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxAvatar.TabIndex = 8;
             this.pictureBoxAvatar.TabStop = false;
