@@ -18,11 +18,15 @@ namespace CourseProject_ShowDesk.Scripts
 
         private string cipher = new string('*', 12);
 
-        public ManageEmployeesForm()
+        public ManageEmployeesForm(string accountName)
         {
             InitializeComponent();
 
             employees = new List<Employee>();
+
+            labelAccountName.Text = accountName;
+
+            ShowGreetings(accountName);
 
             LoadEmployeesFromFile();
 
@@ -88,6 +92,15 @@ namespace CourseProject_ShowDesk.Scripts
         private void toolStripMenuItemHidePassword_Click(object sender, EventArgs e)
         {
             HidePassword();
+        }
+
+        private void ShowGreetings(string name)
+        {
+            MessageBox.Show(
+                $"{name} Welcome to our program! You entered under the profession of {AppConstants.ListOfProfessions[0]}",
+                "Welcome",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void UpdateDataGridEmployees()
@@ -186,6 +199,5 @@ namespace CourseProject_ShowDesk.Scripts
         {
             dataGridViewEmployees.CurrentRow.Cells[2].Value = cipher;
         }
-
     }
 }

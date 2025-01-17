@@ -102,11 +102,15 @@ namespace CourseProject_ShowDesk
 
         private void Authenticate()
         {
+            string accountName;
+
             if (comboBoxUser.SelectedIndex == 0)
             {
-                if (CheckAccount(AppConstants.ListOfProfessions[0]))
+                accountName = CheckAccountAndGetName(AppConstants.ListOfProfessions[0]);
+
+                if (accountName!=null)
                 {
-                    new ManageEmployeesForm().ShowDialog();
+                    new ManageEmployeesForm(accountName).ShowDialog();
                 }
                 else
                 {
@@ -115,9 +119,11 @@ namespace CourseProject_ShowDesk
             }
             else if (comboBoxUser.SelectedIndex == 1)
             {
-                if (CheckAccount(AppConstants.ListOfProfessions[1]))
+                accountName = CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
+
+                if (accountName!=null)
                 {
-                    new ManageStagesForm().ShowDialog();
+                    new ManageStagesForm(accountName).ShowDialog();
                 }
                 else
                 {
@@ -126,9 +132,11 @@ namespace CourseProject_ShowDesk
             }
             else if (comboBoxUser.SelectedIndex == 2)
             {
-                if (CheckAccount(AppConstants.ListOfProfessions[2]))
+                accountName = CheckAccountAndGetName(AppConstants.ListOfProfessions[2]);
+
+                if (accountName!=null)
                 {
-                    new ManagePerformancesForm().ShowDialog();
+                    new ManagePerformancesForm(accountName).ShowDialog();
                 }
                 else
                 {
@@ -137,7 +145,7 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        private bool CheckAccount(string currentProfession)
+        private string CheckAccountAndGetName(string currentProfession)
         {
             foreach (Employee employee in employees)
             {
@@ -145,11 +153,11 @@ namespace CourseProject_ShowDesk
                     employee.Password == textBoxPassword.Text &&
                     employee.ProfessionList.Contains(currentProfession))
                 {
-                    return true;
+                    return employee.FullName;
                 }
             }
 
-            return false;
+            return null;
         }
 
         private void ShowErrorMessage()

@@ -168,8 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.formBackground;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(530, 334);
             this.Controls.Add(this.groupBoxAuthenticate);
             this.Name = "AuthenticateForm";

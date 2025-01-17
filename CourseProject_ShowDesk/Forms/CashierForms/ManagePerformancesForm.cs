@@ -16,11 +16,15 @@ namespace CourseProject_ShowDesk
 
         private bool isPastPerformances = false;
 
-        public ManagePerformancesForm()
+        public ManagePerformancesForm(string accountName)
         {
             InitializeComponent();
             stages = new List<Stage>();
             performances = new List<Performance>();
+
+            labelAccountName.Text = accountName;
+
+            ShowGreetings(accountName);
 
             LoadPerformancesFromFile();
             LoadStagesFromFile();
@@ -80,16 +84,16 @@ namespace CourseProject_ShowDesk
 
         private void buttonSwitch_Click(object sender, EventArgs e)
         {
-            if (isPastPerformances)
-            {
-                UpdateDataGridPerformances();
-                isPastPerformances = !isPastPerformances;
-            }
-            else
-            {
-                UpdateDataGridPastPerformances();
-                isPastPerformances = !isPastPerformances;
-            }
+            SwitchPerformances();
+        }
+
+        private void ShowGreetings(string name)
+        {
+            MessageBox.Show(
+                $"{name} Welcome to our program! You entered under the profession of {AppConstants.ListOfProfessions[2]}",
+                "Welcome",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void UpdateDataGridPerformances()
@@ -305,6 +309,20 @@ namespace CourseProject_ShowDesk
         {
             ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performances);
             viewRevenueForm.ShowDialog();
+        }
+
+        private void SwitchPerformances()
+        {
+            if (isPastPerformances)
+            {
+                UpdateDataGridPerformances();
+                isPastPerformances = !isPastPerformances;
+            }
+            else
+            {
+                UpdateDataGridPastPerformances();
+                isPastPerformances = !isPastPerformances;
+            }
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagePerformancesForm));
             this.dataGridViewPerformances = new System.Windows.Forms.DataGridView();
             this.columnPerformanceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPerformanceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,8 +48,13 @@
             this.removePerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonSwitch = new System.Windows.Forms.Button();
+            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).BeginInit();
             this.menuStripManagePerformance.SuspendLayout();
+            this.groupBoxProfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewPerformances
@@ -213,7 +219,7 @@
             // 
             this.buttonSwitch.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonSwitch.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSwitch.Location = new System.Drawing.Point(778, 27);
+            this.buttonSwitch.Location = new System.Drawing.Point(592, 30);
             this.buttonSwitch.Name = "buttonSwitch";
             this.buttonSwitch.Size = new System.Drawing.Size(99, 31);
             this.buttonSwitch.TabIndex = 5;
@@ -221,11 +227,45 @@
             this.buttonSwitch.UseVisualStyleBackColor = false;
             this.buttonSwitch.Click += new System.EventHandler(this.buttonSwitch_Click);
             // 
+            // groupBoxProfile
+            // 
+            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
+            this.groupBoxProfile.Controls.Add(this.labelAccountName);
+            this.groupBoxProfile.Location = new System.Drawing.Point(709, 27);
+            this.groupBoxProfile.Name = "groupBoxProfile";
+            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
+            this.groupBoxProfile.TabIndex = 16;
+            this.groupBoxProfile.TabStop = false;
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
+            // 
+            // labelAccountName
+            // 
+            this.labelAccountName.AutoSize = true;
+            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
+            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelAccountName.Name = "labelAccountName";
+            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
+            this.labelAccountName.TabIndex = 0;
+            this.labelAccountName.Text = "AccountName";
+            // 
             // ManagePerformancesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 339);
+            this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.buttonSwitch);
             this.Controls.Add(this.dataGridViewPerformances);
             this.Controls.Add(this.menuStripManagePerformance);
@@ -235,6 +275,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).EndInit();
             this.menuStripManagePerformance.ResumeLayout(false);
             this.menuStripManagePerformance.PerformLayout();
+            this.groupBoxProfile.ResumeLayout(false);
+            this.groupBoxProfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,5 +302,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnTicketsCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSold;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnReserved;
+        private System.Windows.Forms.GroupBox groupBoxProfile;
+        private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
+        private System.Windows.Forms.Label labelAccountName;
     }
 }

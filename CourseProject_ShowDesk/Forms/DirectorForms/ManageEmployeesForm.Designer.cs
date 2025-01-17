@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageEmployeesForm));
             this.menuStripManageEmployees = new System.Windows.Forms.MenuStrip();
             this.emloyeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addEmployeeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,9 +47,14 @@
             this.contextMenuStripDataGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemShowPassword = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemHidePassword = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
             this.menuStripManageEmployees.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).BeginInit();
             this.contextMenuStripDataGrid.SuspendLayout();
+            this.groupBoxProfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripManageEmployees
@@ -78,7 +85,7 @@
             // 
             this.addEmployeeToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addEmployeeToolStripMenuItem.Name = "addEmployeeToolStripMenuItem";
-            this.addEmployeeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.addEmployeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addEmployeeToolStripMenuItem.Text = "Add";
             this.addEmployeeToolStripMenuItem.Click += new System.EventHandler(this.addEmployeeToolStripMenuItem_Click);
             // 
@@ -86,7 +93,7 @@
             // 
             this.editEmployeeToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editEmployeeToolStripMenuItem.Name = "editEmployeeToolStripMenuItem";
-            this.editEmployeeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.editEmployeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editEmployeeToolStripMenuItem.Text = "Edit";
             this.editEmployeeToolStripMenuItem.Click += new System.EventHandler(this.editEmployeeToolStripMenuItem_Click);
             // 
@@ -94,7 +101,7 @@
             // 
             this.removeEmployeeToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeEmployeeToolStripMenuItem.Name = "removeEmployeeToolStripMenuItem";
-            this.removeEmployeeToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.removeEmployeeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeEmployeeToolStripMenuItem.Text = "Remove";
             this.removeEmployeeToolStripMenuItem.Click += new System.EventHandler(this.removeEmployeeToolStripMenuItem_Click);
             // 
@@ -112,6 +119,7 @@
             this.dataGridViewEmployees.AllowUserToDeleteRows = false;
             this.dataGridViewEmployees.AllowUserToResizeRows = false;
             this.dataGridViewEmployees.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEmployees.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewEmployees.BackgroundColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -142,6 +150,8 @@
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
             this.dataGridViewEmployees.RowHeadersVisible = false;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewEmployees.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEmployees.Size = new System.Drawing.Size(552, 196);
             this.dataGridViewEmployees.TabIndex = 14;
@@ -194,11 +204,45 @@
             this.toolStripMenuItemHidePassword.Text = "Hide password";
             this.toolStripMenuItemHidePassword.Click += new System.EventHandler(this.toolStripMenuItemHidePassword_Click);
             // 
+            // groupBoxProfile
+            // 
+            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
+            this.groupBoxProfile.Controls.Add(this.labelAccountName);
+            this.groupBoxProfile.Location = new System.Drawing.Point(376, 27);
+            this.groupBoxProfile.Name = "groupBoxProfile";
+            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
+            this.groupBoxProfile.TabIndex = 15;
+            this.groupBoxProfile.TabStop = false;
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
+            // 
+            // labelAccountName
+            // 
+            this.labelAccountName.AutoSize = true;
+            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
+            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelAccountName.Name = "labelAccountName";
+            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
+            this.labelAccountName.TabIndex = 0;
+            this.labelAccountName.Text = "AccountName";
+            // 
             // ManageEmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 260);
+            this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.dataGridViewEmployees);
             this.Controls.Add(this.menuStripManageEmployees);
             this.Name = "ManageEmployeesForm";
@@ -208,6 +252,9 @@
             this.menuStripManageEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).EndInit();
             this.contextMenuStripDataGrid.ResumeLayout(false);
+            this.groupBoxProfile.ResumeLayout(false);
+            this.groupBoxProfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,5 +276,8 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShowPassword;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemHidePassword;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBoxProfile;
+        private System.Windows.Forms.Label labelAccountName;
+        private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
     }
 }

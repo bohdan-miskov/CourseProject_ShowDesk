@@ -10,11 +10,15 @@ namespace CourseProject_ShowDesk
     {
         private List<Stage> stages;
 
-        public ManageStagesForm()
+        public ManageStagesForm(string accountName)
         {
             InitializeComponent();
 
             stages = new List<Stage>();
+
+            labelAccountName.Text = accountName;
+
+            ShowGreetings(accountName);
 
             LoadStagesFromFile();
 
@@ -62,6 +66,15 @@ namespace CourseProject_ShowDesk
         private void ManageStagesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveStagesToFile();
+        }
+
+        private void ShowGreetings(string name)
+        {
+            MessageBox.Show(
+                $"{name} Welcome to our program! You entered under the profession of {AppConstants.ListOfProfessions[1]}",
+                "Welcome",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void UpdateDataGridStages()
