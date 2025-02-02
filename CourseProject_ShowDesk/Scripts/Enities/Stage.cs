@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CourseProject_ShowDesk.Scripts.Enities;
 
 namespace CourseProject_ShowDesk
 {
@@ -10,6 +11,8 @@ namespace CourseProject_ShowDesk
         private int index;
         private string name;
         private List<Zone> zones;
+        private List<Seat> seatList;
+        private List<DecorativeElement> decorList;
 
         public Stage()
         {
@@ -70,12 +73,36 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        public List<Seat> SeatList
+        {
+            get
+            {
+                return seatList;
+            }
+            set
+            {
+                seatList = value;
+            }
+        }
+
+        public List<DecorativeElement> DecorList
+        {
+            get
+            {
+                return decorList;
+            }
+            set
+            {
+                decorList = value;
+            }
+        }
+
         public void AddZone(Zone zone)
         { 
             zones.Add(zone);
         }
 
-        public bool CheckZonePositions(int startPosition, int endPosition)
+        public bool CheckZonePositions(int startPosition, int endPosition, int currentZoneIndex)
         {
 
             if (startPosition < 0 || endPosition < 0)
@@ -92,7 +119,10 @@ namespace CourseProject_ShowDesk
                         (startPosition > zones[i].EndPosition && endPosition > zones[i].EndPosition))
                         )
                     {
-                        return false;
+                        if (currentZoneIndex != i)
+                        {
+                            return false;
+                        }
                     }
                 }
             }

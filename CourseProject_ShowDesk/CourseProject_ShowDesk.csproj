@@ -107,6 +107,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AdministratorForms\AddEditSeatingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AdministratorForms\AddEditSeatingForm.Designer.cs">
+      <DependentUpon>AddEditSeatingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DirectorForms\AddEditEmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,7 +128,9 @@
     <Compile Include="Scripts\Constants\AppConstants.cs" />
     <Compile Include="Scripts\Constants\AppConstantsData.cs" />
     <Compile Include="Scripts\Constants\AppCostantsManager.cs" />
+    <Compile Include="Scripts\Enities\DecorativeElement.cs" />
     <Compile Include="Scripts\Enities\Employee.cs" />
+    <Compile Include="Scripts\Enities\Seat.cs" />
     <Compile Include="Scripts\FactoryMethod\CreatePremiumTicket.cs" />
     <Compile Include="Scripts\FactoryMethod\CreateStandardPlusTicket.cs" />
     <Compile Include="Scripts\FactoryMethod\CreateStandardTicket.cs" />
@@ -203,6 +211,9 @@
       <DependentUpon>ViewRevenueForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Scripts\Enities\Zone.cs" />
+    <EmbeddedResource Include="Forms\AdministratorForms\AddEditSeatingForm.resx">
+      <DependentUpon>AddEditSeatingForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DirectorForms\AddEditEmployeeForm.resx">
       <DependentUpon>AddEditEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>

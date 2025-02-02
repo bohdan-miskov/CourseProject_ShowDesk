@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxIndex = new System.Windows.Forms.TextBox();
             this.labelStageName = new System.Windows.Forms.Label();
@@ -47,6 +47,7 @@
             this.columnEndPositions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxZones = new System.Windows.Forms.GroupBox();
             this.groupBoxForm = new System.Windows.Forms.GroupBox();
+            this.buttonEditSeating = new System.Windows.Forms.Button();
             this.menuStripStage.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZones)).BeginInit();
@@ -56,12 +57,13 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonSave.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonSave.Location = new System.Drawing.Point(169, 89);
-            this.buttonSave.MinimumSize = new System.Drawing.Size(120, 0);
+            this.buttonSave.MinimumSize = new System.Drawing.Size(80, 0);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(132, 37);
+            this.buttonSave.Size = new System.Drawing.Size(111, 37);
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
@@ -138,7 +140,7 @@
             // 
             this.addZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addZoneToolStripMenuItem.Name = "addZoneToolStripMenuItem";
-            this.addZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.addZoneToolStripMenuItem.Text = "Add";
             this.addZoneToolStripMenuItem.Click += new System.EventHandler(this.addZoneToolStripMenuItem_Click);
             // 
@@ -146,7 +148,7 @@
             // 
             this.editZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editZoneToolStripMenuItem.Name = "editZoneToolStripMenuItem";
-            this.editZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.editZoneToolStripMenuItem.Text = "Edit";
             this.editZoneToolStripMenuItem.Click += new System.EventHandler(this.editZoneToolStripMenuItem_Click);
             // 
@@ -154,7 +156,7 @@
             // 
             this.removeZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeZoneToolStripMenuItem.Name = "removeZoneToolStripMenuItem";
-            this.removeZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.removeZoneToolStripMenuItem.Text = "Remove";
             this.removeZoneToolStripMenuItem.Click += new System.EventHandler(this.removeZoneToolStripMenuItem_Click);
             // 
@@ -163,6 +165,7 @@
             this.groupBoxStage.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxStage.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxStage.Controls.Add(this.buttonEditSeating);
             this.groupBoxStage.Controls.Add(this.buttonSave);
             this.groupBoxStage.Controls.Add(this.textBoxIndex);
             this.groupBoxStage.Controls.Add(this.labelStageName);
@@ -188,14 +191,14 @@
             this.rolumnRate,
             this.columnStartSeads,
             this.columnEndPositions});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewZones.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewZones.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewZones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewZones.Location = new System.Drawing.Point(3, 24);
             this.dataGridViewZones.Name = "dataGridViewZones";
@@ -258,6 +261,20 @@
             this.groupBoxForm.TabIndex = 15;
             this.groupBoxForm.TabStop = false;
             // 
+            // buttonEditSeating
+            // 
+            this.buttonEditSeating.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonEditSeating.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonEditSeating.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonEditSeating.Location = new System.Drawing.Point(286, 89);
+            this.buttonEditSeating.MinimumSize = new System.Drawing.Size(80, 0);
+            this.buttonEditSeating.Name = "buttonEditSeating";
+            this.buttonEditSeating.Size = new System.Drawing.Size(115, 37);
+            this.buttonEditSeating.TabIndex = 9;
+            this.buttonEditSeating.Text = "Edit Seating";
+            this.buttonEditSeating.UseVisualStyleBackColor = false;
+            this.buttonEditSeating.Click += new System.EventHandler(this.buttonEditSeating_Click);
+            // 
             // EditStageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,5 +316,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStartSeads;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnEndPositions;
         private System.Windows.Forms.GroupBox groupBoxForm;
+        private System.Windows.Forms.Button buttonEditSeating;
     }
 }

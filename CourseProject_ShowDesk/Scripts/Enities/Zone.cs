@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace CourseProject_ShowDesk
 {
@@ -10,6 +11,7 @@ namespace CourseProject_ShowDesk
         private double increase;
         private int startPosition;
         private int endPosition;
+        private Color color;
 
         public Zone()
         {
@@ -17,13 +19,15 @@ namespace CourseProject_ShowDesk
             increase = 1.0;
             startPosition = 0;
             endPosition = 0;
+            color = Color.LightBlue;
         }
-        public Zone(string name, double increase, int startPosition, int endPosition)
+        public Zone(string name, double increase, int startPosition, int endPosition, Color color)
         {
             Name = name;
             Increase = increase;
             StartPosition = startPosition;
             EndPosition = endPosition;
+            Color = color;
         }
 
         public string Name
@@ -90,6 +94,18 @@ namespace CourseProject_ShowDesk
                 }
 
                 endPosition = value;
+            }
+        }
+
+        public Color Color
+        {
+            get
+            {
+                return color;
+            }
+            set
+            {
+                color = value;
             }
         }
     }

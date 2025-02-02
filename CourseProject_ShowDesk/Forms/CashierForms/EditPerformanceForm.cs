@@ -129,8 +129,8 @@ namespace CourseProject_ShowDesk
             textBoxBaseTicketPrice.Text = Convert.ToString(performance.Price);
             dateTimePickerDuration.Value = DateTime.Today + performance.Duration;
 
-            textBoxBaseTicketPrice.Enabled = false;
-            comboBoxStage.Enabled = false;
+            //textBoxBaseTicketPrice.Enabled = false;
+            //comboBoxStage.Enabled = false;
 
             PopulateComboBox();
         }
@@ -380,7 +380,9 @@ namespace CourseProject_ShowDesk
 
         private void BuyOfTicket()
         {
-            BuyTicketForm buyTicketForm = new BuyTicketForm(stages, performance);
+            int stageIndex = FindInitialStageIndex();
+
+            BuyTicketForm buyTicketForm = new BuyTicketForm(stages[stageIndex], performance);
             buyTicketForm.ShowDialog();
 
             if (buyTicketForm.GetIsValid())

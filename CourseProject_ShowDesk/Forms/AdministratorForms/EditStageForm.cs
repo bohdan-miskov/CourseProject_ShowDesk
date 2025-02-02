@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
+using System;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk
@@ -78,6 +79,11 @@ namespace CourseProject_ShowDesk
             DisableEditAndRemoveZone();
         }
 
+        private void buttonEditSeating_Click(object sender, EventArgs e)
+        {
+            EditSeating();
+        }
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (ValidateOfStage())
@@ -136,6 +142,18 @@ namespace CourseProject_ShowDesk
             if (editZoneForm.GetIsValid())
             {
                 stage = editZoneForm.GetStage();
+            }
+        }
+        
+        private void EditSeating()
+        {
+            AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(stage);
+            addSeatingForm.ShowDialog();
+
+            if (addSeatingForm.GetIsValid())
+            {
+                stage.SeatList = addSeatingForm.GetSeatList();
+                stage.DecorList = addSeatingForm.GetDecorList();
             }
         }
 

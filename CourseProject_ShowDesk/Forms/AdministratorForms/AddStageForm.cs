@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -42,14 +43,7 @@ namespace CourseProject_ShowDesk
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (ValidateOfStage())
-            {
-                isValid = true;
-
-                AddStage();
-
-                this.Close();
-            }
+            SaveStage();
         }
         private void CreateIndex(List<Stage> stages)
         {
@@ -79,11 +73,32 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void SaveStage()
+        {
+            if (ValidateOfStage())
+            {
+
+                AddStage();
+
+                AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(null);
+                addSeatingForm.ShowDialog();
+
+                if (addSeatingForm.GetIsValid())
+                {
+                    newStage.SeatList = addSeatingForm.GetSeatList();
+                    newStage.DecorList = addSeatingForm.GetDecorList();
+
+                    isValid = true;
+                    this.Close();
+                }
+            }
+        }
+
         private void AddStage()
         {
             string stageName = textBoxStageName.Text;
 
-            newStage = new Stage(index, stageName);
+            newStage = new Stage(index, stageName);    
         }
 
         private bool ValidateOfStage()

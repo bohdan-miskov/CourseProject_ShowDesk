@@ -40,6 +40,7 @@
             this.comboBoxPositions = new System.Windows.Forms.ComboBox();
             this.comboBoxTicketType = new System.Windows.Forms.ComboBox();
             this.groupBoxTicket = new System.Windows.Forms.GroupBox();
+            this.panelSeating = new System.Windows.Forms.Panel();
             this.labelCurrency = new System.Windows.Forms.Label();
             this.groupBoxPremium = new System.Windows.Forms.GroupBox();
             this.comboBoxSouvenir = new System.Windows.Forms.ComboBox();
@@ -49,6 +50,7 @@
             this.labelDrink = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
             this.timerScaleUp = new System.Windows.Forms.Timer(this.components);
+            this.labelSeatInfo = new System.Windows.Forms.Label();
             this.groupBoxTicket.SuspendLayout();
             this.groupBoxPremium.SuspendLayout();
             this.groupBoxStandardPlus.SuspendLayout();
@@ -182,6 +184,8 @@
             // 
             this.groupBoxTicket.BackColor = System.Drawing.Color.LightGray;
             this.groupBoxTicket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBoxTicket.Controls.Add(this.labelSeatInfo);
+            this.groupBoxTicket.Controls.Add(this.panelSeating);
             this.groupBoxTicket.Controls.Add(this.labelCurrency);
             this.groupBoxTicket.Controls.Add(this.groupBoxPremium);
             this.groupBoxTicket.Controls.Add(this.groupBoxStandardPlus);
@@ -199,10 +203,19 @@
             this.groupBoxTicket.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxTicket.Location = new System.Drawing.Point(1, 65);
             this.groupBoxTicket.Name = "groupBoxTicket";
-            this.groupBoxTicket.Size = new System.Drawing.Size(415, 438);
+            this.groupBoxTicket.Size = new System.Drawing.Size(1177, 438);
             this.groupBoxTicket.TabIndex = 40;
             this.groupBoxTicket.TabStop = false;
             this.groupBoxTicket.Text = "Ticket";
+            // 
+            // panelSeating
+            // 
+            this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelSeating.Location = new System.Drawing.Point(381, 27);
+            this.panelSeating.Name = "panelSeating";
+            this.panelSeating.Size = new System.Drawing.Size(645, 396);
+            this.panelSeating.TabIndex = 41;
+            this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelSeating_MouseDown);
             // 
             // labelCurrency
             // 
@@ -222,7 +235,7 @@
             this.groupBoxPremium.Controls.Add(this.labelSouvenir);
             this.groupBoxPremium.Location = new System.Drawing.Point(23, 356);
             this.groupBoxPremium.Name = "groupBoxPremium";
-            this.groupBoxPremium.Size = new System.Drawing.Size(373, 67);
+            this.groupBoxPremium.Size = new System.Drawing.Size(336, 67);
             this.groupBoxPremium.TabIndex = 39;
             this.groupBoxPremium.TabStop = false;
             this.groupBoxPremium.Text = "Premium";
@@ -238,7 +251,7 @@
             this.comboBoxSouvenir.FormattingEnabled = true;
             this.comboBoxSouvenir.Location = new System.Drawing.Point(119, 27);
             this.comboBoxSouvenir.Name = "comboBoxSouvenir";
-            this.comboBoxSouvenir.Size = new System.Drawing.Size(219, 29);
+            this.comboBoxSouvenir.Size = new System.Drawing.Size(182, 29);
             this.comboBoxSouvenir.TabIndex = 31;
             // 
             // labelSouvenir
@@ -259,7 +272,7 @@
             this.groupBoxStandardPlus.Controls.Add(this.labelDrink);
             this.groupBoxStandardPlus.Location = new System.Drawing.Point(23, 283);
             this.groupBoxStandardPlus.Name = "groupBoxStandardPlus";
-            this.groupBoxStandardPlus.Size = new System.Drawing.Size(373, 67);
+            this.groupBoxStandardPlus.Size = new System.Drawing.Size(338, 67);
             this.groupBoxStandardPlus.TabIndex = 38;
             this.groupBoxStandardPlus.TabStop = false;
             this.groupBoxStandardPlus.Text = "Standard Plus";
@@ -275,7 +288,7 @@
             this.comboBoxDrink.FormattingEnabled = true;
             this.comboBoxDrink.Location = new System.Drawing.Point(119, 27);
             this.comboBoxDrink.Name = "comboBoxDrink";
-            this.comboBoxDrink.Size = new System.Drawing.Size(219, 29);
+            this.comboBoxDrink.Size = new System.Drawing.Size(184, 29);
             this.comboBoxDrink.TabIndex = 31;
             // 
             // labelDrink
@@ -307,11 +320,21 @@
             this.timerScaleUp.Interval = 3;
             this.timerScaleUp.Tick += new System.EventHandler(this.timerScaleUp_Tick);
             // 
+            // labelSeatInfo
+            // 
+            this.labelSeatInfo.BackColor = System.Drawing.Color.Gainsboro;
+            this.labelSeatInfo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSeatInfo.Location = new System.Drawing.Point(1032, 27);
+            this.labelSeatInfo.Name = "labelSeatInfo";
+            this.labelSeatInfo.Size = new System.Drawing.Size(139, 124);
+            this.labelSeatInfo.TabIndex = 42;
+            this.labelSeatInfo.Text = "Seat info";
+            // 
             // BuyTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(415, 505);
+            this.ClientSize = new System.Drawing.Size(1178, 505);
             this.Controls.Add(this.groupBoxTicket);
             this.Name = "BuyTicketForm";
             this.Text = "BuyTicket";
@@ -346,5 +369,7 @@
         private System.Windows.Forms.Label labelSouvenir;
         private System.Windows.Forms.Timer timerScaleUp;
         private System.Windows.Forms.Label labelCurrency;
+        private System.Windows.Forms.Panel panelSeating;
+        private System.Windows.Forms.Label labelSeatInfo;
     }
 }

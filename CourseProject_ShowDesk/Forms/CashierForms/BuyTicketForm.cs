@@ -1,14 +1,17 @@
 ﻿using CourseProject_ShowDesk.FactoryMethod;
 using CourseProject_ShowDesk.Scripts;
+using CourseProject_ShowDesk.Scripts.Enities;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk
 {
     public partial class BuyTicketForm : MetroFramework.Forms.MetroForm
     {
-        private List<Stage> stages;
+        private Stage stage;
 
         private Performance performance;
 
@@ -21,11 +24,16 @@ namespace CourseProject_ShowDesk
 
         private int formHeight;
 
-        public BuyTicketForm(List<Stage> stages, Performance performance)
+        private Control selectedControl;
+        private List<Control> selectedControls = new List<Control>();
+        private List<Seat> seatList = new List<Seat>();
+
+
+        public BuyTicketForm(Stage stage, Performance performance)
         {
             InitializeComponent();
 
-            this.stages = stages;
+            this.stage = stage;
             this.performance = performance;
 
             labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
@@ -36,6 +44,9 @@ namespace CourseProject_ShowDesk
 
             PopulateComboBoxTicketType();
             PopulateComboBoxPositions();
+            PopulateSeating();
+
+            seatList = stage.SeatList;
 
             isValid = false;
 
@@ -103,6 +114,8 @@ namespace CourseProject_ShowDesk
         {
             isValid = true;
             newTicket = ticket;
+
+            CloseSoldPositions();
 
             this.Close();
         }
@@ -208,7 +221,7 @@ namespace CourseProject_ShowDesk
                 MessageBox.Show(
                     "Souvenirs is not available",
                     "Not available",
-                    MessageBoxButtons.OK, 
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
             else
@@ -217,17 +230,22 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void PopulateSeating()
+        {
+            foreach (Seat seat in stage.SeatList)
+            {
+                panelSeating.Controls.Add(seat.ToLabel());
+            }
+            foreach (DecorativeElement decor in stage.DecorList)
+            {
+                panelSeating.Controls.Add(decor.ToPanel());
+            }
+        }
+
         private List<int> GetAllPositions()
         {
-            List<int> positions = new List<int>();
-            foreach (Stage stage in stages)
-            {
-                if (stage.Index == performance.StageIndex)
-                {
-                    positions = stage.GetPositions();
-                    break;
-                }
-            }
+            List<int> positions = stage.GetPositions();
+
             return positions;
         }
 
@@ -272,19 +290,16 @@ namespace CourseProject_ShowDesk
 
         private double GetIncrease(int position)
         {
-            foreach (Stage stage in stages)
+
+            foreach (Zone zone in stage.Zones)
             {
-                if (stage.Index == performance.StageIndex)
+                if ((zone.StartPosition <= position) && (zone.EndPosition >= position))
                 {
-                    foreach (Zone zone in stage.Zones)
-                    {
-                        if ((zone.StartPosition <= position) && (zone.EndPosition >= position))
-                        {
-                            return zone.Increase;
-                        }
-                    }
+                    return zone.Increase;
                 }
             }
+
+
             return 0;
         }
 
@@ -368,6 +383,13 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void CloseSoldPositions()
+        {
+            int position = Convert.ToInt32(comboBoxPositions.SelectedItem.ToString());
+
+            stage.SeatList[position - 1].IsAvailable = false;
+        }
+
         public bool GetIsValid()
         {
             return isValid;
@@ -377,5 +399,88 @@ namespace CourseProject_ShowDesk
         {
             return newTicket;
         }
+
+        private void panelSeating_MouseDown(object sender, MouseEventArgs e)
+        {
+            SeatingMouseDown(sender, e);
+        }
+
+        private void SeatingMouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                selectedControl = null;
+
+                foreach (Control control in panelSeating.Controls)
+                {
+                    if (control.Bounds.Contains(e.Location) && control is Label)
+                    {
+                        selectedControl = control;
+                        break;
+                    }
+                }
+
+                if (ModifierKeys == Keys.Control)
+                {
+                    if (selectedControl != null && !selectedControls.Contains(selectedControl))
+                    {
+                        selectedControls.Add(selectedControl);
+                        selectedControl.BackColor = Color.Yellow;
+                        comboBoxPositions.SelectedItem = selectedControl.Text;
+                        int seatIndex = GetCurrentSeatIndex(selectedControl);
+                        labelSeatInfo.Text = seatList[seatIndex].GetInfo();
+                    }
+                }
+                else
+                {
+
+                    foreach (Control control in selectedControls.OfType<Label>().ToList())
+                    {
+
+                        int seatIndex = GetCurrentSeatIndex(control);
+
+                        if (seatIndex != -1)
+                        {
+                            control.BackColor = seatList[seatIndex].CurrentZone.Color;
+                        }
+                        else
+                        {
+                            control.BackColor = Color.LightGray;
+                        }
+                    }
+                }
+
+                selectedControls.Clear();
+
+                if (selectedControl != null && selectedControl is Label)
+                {
+                    selectedControls.Add(selectedControl);
+                    selectedControl.BackColor = Color.Yellow;
+                    comboBoxPositions.SelectedItem = selectedControl.Text;
+                    int seatIndex = GetCurrentSeatIndex(selectedControl);
+                    labelSeatInfo.Text = seatList[seatIndex].GetInfo();
+                }
+            }
+        }
+        private int GetCurrentSeatIndex(Control control)
+        {
+
+            if (control is Label label)
+            {
+                bool isInteger = int.TryParse(control.Text, out int result);
+
+                if (isInteger)
+                {
+                    return result - 1;
+                }
+            }
+
+            return -1;
+
+        }
+
     }
+    
+
 }
+

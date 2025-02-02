@@ -21,6 +21,8 @@ namespace CourseProject_ShowDesk.Scripts
 
         public AddEditEmployeeForm(List<Employee> employees, int? index)
         {
+            InitializeComponent();
+
             this.employees = employees;
 
             isValid = false;
@@ -32,8 +34,6 @@ namespace CourseProject_ShowDesk.Scripts
                 this.currentEmployee = employees[Convert.ToInt32(index)];
                 PopulateFields();
             }
-
-            InitializeComponent();
         }
 
         private void textBoxFullName_KeyUp(object sender, KeyEventArgs e)
