@@ -102,6 +102,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities
 
             };
 
+            
+
             label.Paint += (s, e) =>
             {
                 //e.Graphics.DrawString(SeatNumber.ToString(), label.Font, Brushes.Black, new Point(15, 15));

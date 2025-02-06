@@ -40,6 +40,7 @@
             this.comboBoxPositions = new System.Windows.Forms.ComboBox();
             this.comboBoxTicketType = new System.Windows.Forms.ComboBox();
             this.groupBoxTicket = new System.Windows.Forms.GroupBox();
+            this.labelSeatInfo = new System.Windows.Forms.Label();
             this.panelSeating = new System.Windows.Forms.Panel();
             this.labelCurrency = new System.Windows.Forms.Label();
             this.groupBoxPremium = new System.Windows.Forms.GroupBox();
@@ -50,7 +51,6 @@
             this.labelDrink = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
             this.timerScaleUp = new System.Windows.Forms.Timer(this.components);
-            this.labelSeatInfo = new System.Windows.Forms.Label();
             this.groupBoxTicket.SuspendLayout();
             this.groupBoxPremium.SuspendLayout();
             this.groupBoxStandardPlus.SuspendLayout();
@@ -208,12 +208,23 @@
             this.groupBoxTicket.TabStop = false;
             this.groupBoxTicket.Text = "Ticket";
             // 
+            // labelSeatInfo
+            // 
+            this.labelSeatInfo.BackColor = System.Drawing.Color.Gainsboro;
+            this.labelSeatInfo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSeatInfo.Location = new System.Drawing.Point(376, 24);
+            this.labelSeatInfo.Name = "labelSeatInfo";
+            this.labelSeatInfo.Size = new System.Drawing.Size(139, 124);
+            this.labelSeatInfo.TabIndex = 42;
+            this.labelSeatInfo.Text = "Seat info";
+            // 
             // panelSeating
             // 
             this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelSeating.Location = new System.Drawing.Point(381, 27);
+            this.panelSeating.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelSeating.Location = new System.Drawing.Point(529, 24);
             this.panelSeating.Name = "panelSeating";
-            this.panelSeating.Size = new System.Drawing.Size(645, 396);
+            this.panelSeating.Size = new System.Drawing.Size(645, 411);
             this.panelSeating.TabIndex = 41;
             this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelSeating_MouseDown);
             // 
@@ -319,16 +330,6 @@
             // 
             this.timerScaleUp.Interval = 3;
             this.timerScaleUp.Tick += new System.EventHandler(this.timerScaleUp_Tick);
-            // 
-            // labelSeatInfo
-            // 
-            this.labelSeatInfo.BackColor = System.Drawing.Color.Gainsboro;
-            this.labelSeatInfo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeatInfo.Location = new System.Drawing.Point(1032, 27);
-            this.labelSeatInfo.Name = "labelSeatInfo";
-            this.labelSeatInfo.Size = new System.Drawing.Size(139, 124);
-            this.labelSeatInfo.TabIndex = 42;
-            this.labelSeatInfo.Text = "Seat info";
             // 
             // BuyTicketForm
             // 

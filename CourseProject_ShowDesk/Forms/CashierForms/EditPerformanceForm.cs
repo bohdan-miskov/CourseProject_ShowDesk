@@ -100,6 +100,7 @@ namespace CourseProject_ShowDesk
             int index = dataGridViewTickets.CurrentRow.Index;
 
             performance.RemoveTicket(index);
+            SetAvailable(performance.Tickets[index].Position - 1);
 
             UpdateDataGridTickets();
             DisableEditAndRemoveZone();
@@ -187,6 +188,12 @@ namespace CourseProject_ShowDesk
             {
                 comboBoxStage.SelectedIndex = GetIndexOfStage();
             }
+        }
+
+        private void SetAvailable(int seatIndex)
+        {
+            int stageIndex = comboBoxStage.SelectedIndex;
+            stages[stageIndex].SeatList[seatIndex].IsAvailable = true;
         }
 
         private int GetIndexOfStage()
@@ -387,7 +394,10 @@ namespace CourseProject_ShowDesk
 
             if (buyTicketForm.GetIsValid())
             {
-                performance.BuyTicket(buyTicketForm.GetNewTicket());
+                foreach (StandardTicket ticket in buyTicketForm.GetNewTickets())
+                {
+                    performance.BuyTicket(ticket);
+                }
             }
         }
 

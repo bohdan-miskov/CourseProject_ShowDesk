@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.numericUpDownStartPosition = new System.Windows.Forms.NumericUpDown();
             this.groupBoxZone = new System.Windows.Forms.GroupBox();
+            this.textBoxColor = new System.Windows.Forms.TextBox();
+            this.buttonChangeColor = new System.Windows.Forms.Button();
+            this.labelColor = new System.Windows.Forms.Label();
             this.numericUpDownIncrease = new System.Windows.Forms.NumericUpDown();
             this.labelZoneName = new System.Windows.Forms.Label();
             this.labelEndPosition = new System.Windows.Forms.Label();
@@ -40,10 +43,8 @@
             this.numericUpDownEndPosition = new System.Windows.Forms.NumericUpDown();
             this.labelIncrease = new System.Windows.Forms.Label();
             this.toolTipZone = new System.Windows.Forms.ToolTip(this.components);
-            this.labelColor = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.buttonChangeColor = new System.Windows.Forms.Button();
-            this.textBoxColor = new System.Windows.Forms.TextBox();
+            this.panelSeating = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).BeginInit();
             this.groupBoxZone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrease)).BeginInit();
@@ -81,13 +82,47 @@
             this.groupBoxZone.Controls.Add(this.numericUpDownEndPosition);
             this.groupBoxZone.Controls.Add(this.labelIncrease);
             this.groupBoxZone.Controls.Add(this.numericUpDownStartPosition);
+            this.groupBoxZone.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxZone.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxZone.Location = new System.Drawing.Point(0, 63);
+            this.groupBoxZone.Location = new System.Drawing.Point(20, 60);
             this.groupBoxZone.Name = "groupBoxZone";
-            this.groupBoxZone.Size = new System.Drawing.Size(368, 260);
+            this.groupBoxZone.Size = new System.Drawing.Size(368, 257);
             this.groupBoxZone.TabIndex = 23;
             this.groupBoxZone.TabStop = false;
             this.groupBoxZone.Text = "Zone";
+            // 
+            // textBoxColor
+            // 
+            this.textBoxColor.BackColor = System.Drawing.Color.White;
+            this.textBoxColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxColor.Location = new System.Drawing.Point(174, 104);
+            this.textBoxColor.Name = "textBoxColor";
+            this.textBoxColor.ReadOnly = true;
+            this.textBoxColor.Size = new System.Drawing.Size(168, 28);
+            this.textBoxColor.TabIndex = 26;
+            // 
+            // buttonChangeColor
+            // 
+            this.buttonChangeColor.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonChangeColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonChangeColor.Location = new System.Drawing.Point(20, 208);
+            this.buttonChangeColor.Name = "buttonChangeColor";
+            this.buttonChangeColor.Size = new System.Drawing.Size(134, 42);
+            this.buttonChangeColor.TabIndex = 25;
+            this.buttonChangeColor.Text = "Change color";
+            this.buttonChangeColor.UseVisualStyleBackColor = false;
+            this.buttonChangeColor.Click += new System.EventHandler(this.buttonChangeColor_Click);
+            // 
+            // labelColor
+            // 
+            this.labelColor.AutoSize = true;
+            this.labelColor.BackColor = System.Drawing.Color.Transparent;
+            this.labelColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelColor.Location = new System.Drawing.Point(16, 111);
+            this.labelColor.Name = "labelColor";
+            this.labelColor.Size = new System.Drawing.Size(92, 21);
+            this.labelColor.TabIndex = 24;
+            this.labelColor.Text = "Zone color";
             // 
             // numericUpDownIncrease
             // 
@@ -193,44 +228,21 @@
             this.labelIncrease.TabIndex = 17;
             this.labelIncrease.Text = "Increase";
             // 
-            // labelColor
+            // panelSeating
             // 
-            this.labelColor.AutoSize = true;
-            this.labelColor.BackColor = System.Drawing.Color.Transparent;
-            this.labelColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelColor.Location = new System.Drawing.Point(16, 111);
-            this.labelColor.Name = "labelColor";
-            this.labelColor.Size = new System.Drawing.Size(92, 21);
-            this.labelColor.TabIndex = 24;
-            this.labelColor.Text = "Zone color";
-            // 
-            // buttonChangeColor
-            // 
-            this.buttonChangeColor.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonChangeColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonChangeColor.Location = new System.Drawing.Point(20, 208);
-            this.buttonChangeColor.Name = "buttonChangeColor";
-            this.buttonChangeColor.Size = new System.Drawing.Size(134, 42);
-            this.buttonChangeColor.TabIndex = 25;
-            this.buttonChangeColor.Text = "Change color";
-            this.buttonChangeColor.UseVisualStyleBackColor = false;
-            this.buttonChangeColor.Click += new System.EventHandler(this.buttonChangeColor_Click);
-            // 
-            // textBoxColor
-            // 
-            this.textBoxColor.BackColor = System.Drawing.Color.White;
-            this.textBoxColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxColor.Location = new System.Drawing.Point(174, 104);
-            this.textBoxColor.Name = "textBoxColor";
-            this.textBoxColor.ReadOnly = true;
-            this.textBoxColor.Size = new System.Drawing.Size(168, 28);
-            this.textBoxColor.TabIndex = 26;
+            this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelSeating.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelSeating.Location = new System.Drawing.Point(389, 60);
+            this.panelSeating.Name = "panelSeating";
+            this.panelSeating.Size = new System.Drawing.Size(645, 257);
+            this.panelSeating.TabIndex = 42;
             // 
             // AddEditZoneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 324);
+            this.ClientSize = new System.Drawing.Size(1054, 337);
+            this.Controls.Add(this.panelSeating);
             this.Controls.Add(this.groupBoxZone);
             this.Name = "AddEditZoneForm";
             this.Text = "AddEditZone";
@@ -259,5 +271,6 @@
         private System.Windows.Forms.Button buttonChangeColor;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.TextBox textBoxColor;
+        private System.Windows.Forms.Panel panelSeating;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts.Enities;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -31,6 +32,8 @@ namespace CourseProject_ShowDesk
                 this.zoneIndex = Convert.ToInt32(zoneIndex);
                 PopulateFields();
             }
+
+            PopulateSeating();
         }
 
         private void textBoxName_KeyUp(object sender, KeyEventArgs e)
@@ -111,13 +114,48 @@ namespace CourseProject_ShowDesk
             numericUpDownEndPosition.Value = stage.GetZone(zoneIndex).EndPosition;
         }
 
+        private void PopulateSeating()
+        {
+            foreach (Seat seat in stage.SeatList)
+            {
+                panelSeating.Controls.Add(seat.ToLabel());
+            }
+            foreach (DecorativeElement decor in stage.DecorList)
+            {
+                panelSeating.Controls.Add(decor.ToPanel());
+            }
+        }
+
         private void ChangeColor()
         {
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 color = colorDialog.Color;
                 textBoxColor.Text = color.Name;
+                SeatinColorChange();
             }
+        }
+
+        private void SeatinColorChange()
+        {
+            int startIndex = Convert.ToInt32(numericUpDownStartPosition.Value);
+            int endIndex = Convert.ToInt32(numericUpDownEndPosition.Value);
+            foreach (Control control in panelSeating.Controls)
+            {
+                if(control is Label)
+                {
+                    int index = Convert.ToInt32(control.Text);
+                    if (index>=startIndex && index<=endIndex)
+                    {
+                        control.BackColor = colorDialog.Color;
+                    }
+                    else
+                    {
+                        control.BackColor = new Zone().Color;
+                    }
+                }
+            }
+
         }
 
         private void AddZone()

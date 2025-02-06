@@ -27,6 +27,7 @@ namespace CourseProject_ShowDesk
         private Control selectedControl;
         private List<Control> selectedControls = new List<Control>();
         private List<Seat> seatList = new List<Seat>();
+        private List<StandardTicket> newTickets = new List<StandardTicket>();
 
 
         public BuyTicketForm(Stage stage, Performance performance)
@@ -97,11 +98,13 @@ namespace CourseProject_ShowDesk
         private void comboBoxTicketType_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeTicketInfo();
+            ticket = CreateTicket();
             GetTicketPrice();
         }
 
         private void comboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ticket = CreateTicket();
             GetTicketPrice();
         }
 
@@ -370,24 +373,37 @@ namespace CourseProject_ShowDesk
 
         private void GetTicketPrice()
         {
-            ticket = CreateTicket();
-            if (ticket == null)
+            //if (newTickets == null)
+            //{
+            //    textBoxPrice.Text = "Not all fields are populated";
+            //    buttonAdd.Enabled = false;
+            //}
+            //else
+            //{
+            //    double totalPrice = 0;
+            //    foreach (StandardTicket ticket in newTickets)
+            //    {
+            //        totalPrice+=ticket.CalculatedPrice;
+            //    }
+            //    textBoxPrice.Text = Convert.ToString(totalPrice);
+            //    buttonAdd.Enabled = true;
+            //}
+            double totalPrice = 0;
+            foreach (StandardTicket ticket in newTickets)
             {
-                textBoxPrice.Text = "Not all fields are populated";
-                buttonAdd.Enabled = false;
+                totalPrice += ticket.CalculatedPrice;
             }
-            else
-            {
-                textBoxPrice.Text = Convert.ToString(ticket.CalculatedPrice);
-                buttonAdd.Enabled = true;
-            }
+            textBoxPrice.Text = Convert.ToString(totalPrice);
+            buttonAdd.Enabled = true;
         }
 
         private void CloseSoldPositions()
         {
-            int position = Convert.ToInt32(comboBoxPositions.SelectedItem.ToString());
+            foreach(StandardTicket ticket in newTickets)
+            {
+                stage.SeatList[ticket.Position - 1].IsAvailable = false;
+            }
 
-            stage.SeatList[position - 1].IsAvailable = false;
         }
 
         public bool GetIsValid()
@@ -395,9 +411,9 @@ namespace CourseProject_ShowDesk
             return isValid;
         }
 
-        public StandardTicket GetNewTicket()
+        public List<StandardTicket> GetNewTickets()
         {
-            return newTicket;
+            return newTickets;
         }
 
         private void panelSeating_MouseDown(object sender, MouseEventArgs e)
@@ -413,10 +429,20 @@ namespace CourseProject_ShowDesk
 
                 foreach (Control control in panelSeating.Controls)
                 {
-                    if (control.Bounds.Contains(e.Location) && control is Label)
+                    if (control.Bounds.Contains(e.Location) && control is Label && isAvailable(GetCurrentSeatIndex(control)))
                     {
                         selectedControl = control;
                         break;
+                    }
+                }
+
+                if(selectedControls.Count==0)
+                {
+                    newTickets = new List<StandardTicket>();
+                    if(selectedControl!=null )
+                    {
+                        newTickets.Add(CreateTicket());
+                        GetTicketPrice();
                     }
                 }
 
@@ -429,6 +455,8 @@ namespace CourseProject_ShowDesk
                         comboBoxPositions.SelectedItem = selectedControl.Text;
                         int seatIndex = GetCurrentSeatIndex(selectedControl);
                         labelSeatInfo.Text = seatList[seatIndex].GetInfo();
+                        newTickets.Add(CreateTicket());
+                        GetTicketPrice();
                     }
                 }
                 else
@@ -442,6 +470,8 @@ namespace CourseProject_ShowDesk
                         if (seatIndex != -1)
                         {
                             control.BackColor = seatList[seatIndex].CurrentZone.Color;
+                            newTickets.Remove(CreateTicket());
+                            GetTicketPrice();
                         }
                         else
                         {
@@ -459,6 +489,9 @@ namespace CourseProject_ShowDesk
                     comboBoxPositions.SelectedItem = selectedControl.Text;
                     int seatIndex = GetCurrentSeatIndex(selectedControl);
                     labelSeatInfo.Text = seatList[seatIndex].GetInfo();
+                    //newTickets = new List<StandardTicket>();
+                    //newTickets.Add(CreateTicket());
+                    //GetTicketPrice();
                 }
             }
         }
@@ -477,6 +510,16 @@ namespace CourseProject_ShowDesk
 
             return -1;
 
+        }
+
+        private bool isAvailable(int index)
+        {
+            if (seatList[index].IsAvailable)
+            {
+                return true;
+            }
+
+            return false;
         }
 
     }
