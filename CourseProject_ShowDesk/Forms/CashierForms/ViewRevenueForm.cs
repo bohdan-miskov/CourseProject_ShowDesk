@@ -70,6 +70,11 @@ namespace CourseProject_ShowDesk
             GrowUpOfForm();
         }
 
+        private void ViewRevenueForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
         private void PopulateComboBoxChartType()
         {
             comboBoxChartType.Items.Add("Line");

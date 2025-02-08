@@ -111,6 +111,11 @@ namespace CourseProject_ShowDesk.Scripts
             }
         }
 
+        private void AddEditEmployeeForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
         private void PopulateProfessionsGroup()
         {
             checkBoxDirector.Text = AppConstants.ListOfProfessions[0];
@@ -260,6 +265,5 @@ namespace CourseProject_ShowDesk.Scripts
         {
             return newEmployee;
         }
-
     }
 }

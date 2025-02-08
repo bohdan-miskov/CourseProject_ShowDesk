@@ -96,6 +96,11 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void EditStageForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
         private void ShowStage()
         {
             textBoxIndex.Text = Convert.ToString(stage.Index);
@@ -124,7 +129,9 @@ namespace CourseProject_ShowDesk
         private void AddZone()
         {
             AddEditZoneForm addZoneForm = new AddEditZoneForm(stage, null);
+            this.Hide();
             addZoneForm.ShowDialog();
+            this.Show();
 
             if (addZoneForm.GetIsValid())
             {
@@ -137,7 +144,9 @@ namespace CourseProject_ShowDesk
             int index = dataGridViewZones.CurrentRow.Index;
 
             AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, index);
+            this.Hide();
             editZoneForm.ShowDialog();
+            this.Show();
 
             if (editZoneForm.GetIsValid())
             {
@@ -148,7 +157,9 @@ namespace CourseProject_ShowDesk
         private void EditSeating()
         {
             AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(stage);
+            this.Hide();
             addSeatingForm.ShowDialog();
+            this.Show();
 
             if (addSeatingForm.GetIsValid())
             {
@@ -191,11 +202,15 @@ namespace CourseProject_ShowDesk
             {
                 editZoneToolStripMenuItem.Enabled = true;
                 removeZoneToolStripMenuItem.Enabled = true;
+                editZoneToolStripMenuItem1.Enabled = true;
+                removeZoneToolStripMenuItem1.Enabled = true;
             }
             else
             {
                 editZoneToolStripMenuItem.Enabled = false;
                 removeZoneToolStripMenuItem.Enabled = false;
+                editZoneToolStripMenuItem1.Enabled = false;
+                removeZoneToolStripMenuItem1.Enabled = false;
             }
         }
 

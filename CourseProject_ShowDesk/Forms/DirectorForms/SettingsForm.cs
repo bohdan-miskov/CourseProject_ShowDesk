@@ -218,13 +218,18 @@ namespace CourseProject_ShowDesk.Forms
 
                 AppCostantsManager.SaveAppConstantsToFile(appConstantsData);
 
-                Close();
+                this.Close();
             }
         }
 
         private void buttonCancelChanges_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
+        }
+
+        private void SettingsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
 
         private void PopulateAllField()
@@ -502,6 +507,5 @@ namespace CourseProject_ShowDesk.Forms
             appConstantsData.RangeDateOfPastPerformances = Convert.ToInt32(numericUpDownRangeDateOfPastPerformances.Value);
             appConstantsData.CurrencySymbol = Convert.ToChar(textBoxCurrencySymbol.Text);
         }
-
     }
 }

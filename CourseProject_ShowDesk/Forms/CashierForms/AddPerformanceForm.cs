@@ -79,6 +79,11 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void AddPerformanceForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
         private void PopulateComboBox()
         {
             comboBoxStage.Items.Clear();

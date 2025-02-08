@@ -125,6 +125,11 @@
     <Compile Include="Forms\DirectorForms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Scripts\Constants\AppConstants.cs" />
     <Compile Include="Scripts\Constants\AppConstantsData.cs" />
     <Compile Include="Scripts\Constants\AppCostantsManager.cs" />
@@ -250,14 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Forms\CashierForms\ViewRevenueForm.resx">
       <DependentUpon>ViewRevenueForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,10 +288,22 @@
     <None Include="Resources\Director.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\formBackground.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\exit-icon.png" />
+    <None Include="Resources\change-icon.png" />
+    <None Include="Resources\zone-icon.png" />
+    <None Include="Resources\ticket-icon.png" />
+    <None Include="Resources\stage-icon.png" />
+    <None Include="Resources\settings-icon.png" />
+    <None Include="Resources\seat-icon.png" />
+    <None Include="Resources\report-icon.png" />
+    <None Include="Resources\performance-icon.png" />
+    <None Include="Resources\employee-icon.png" />
+    <None Include="Resources\show-icon.png" />
+    <None Include="Resources\remove-icon.png" />
+    <None Include="Resources\hide-icon.png" />
+    <None Include="Resources\edit-icon.png" />
+    <None Include="Resources\add-icon.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">

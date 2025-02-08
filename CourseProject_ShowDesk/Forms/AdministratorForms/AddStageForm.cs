@@ -45,6 +45,12 @@ namespace CourseProject_ShowDesk
         {
             SaveStage();
         }
+
+        private void AddStageForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
         private void CreateIndex(List<Stage> stages)
         {
             if (stages.Count == 0)
@@ -81,7 +87,9 @@ namespace CourseProject_ShowDesk
                 AddStage();
 
                 AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(null);
+                this.Hide();
                 addSeatingForm.ShowDialog();
+                this.Show();
 
                 if (addSeatingForm.GetIsValid())
                 {

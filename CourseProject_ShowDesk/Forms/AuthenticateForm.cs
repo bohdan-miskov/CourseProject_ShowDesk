@@ -58,6 +58,11 @@ namespace CourseProject_ShowDesk
             Authenticate();
         }
 
+        private void AuthenticateForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void LoadEmployeesFromFile()
         {
             if (File.Exists(AppConstants.EmployeesFileName))
@@ -110,7 +115,10 @@ namespace CourseProject_ShowDesk
 
                 if (accountName!=null)
                 {
-                    new ManageEmployeesForm(accountName).ShowDialog();
+                    ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(accountName);
+                    manageEmployeesForm.Show();
+                    this.Hide();
+                    //ClearLogInField();
                 }
                 else
                 {
@@ -123,7 +131,10 @@ namespace CourseProject_ShowDesk
 
                 if (accountName!=null)
                 {
-                    new ManageStagesForm(accountName).ShowDialog();
+                    ManageStagesForm manageStagesForm = new ManageStagesForm(accountName);
+                    manageStagesForm.Show();
+                    this.Hide();
+                    //ClearLogInField();
                 }
                 else
                 {
@@ -136,7 +147,10 @@ namespace CourseProject_ShowDesk
 
                 if (accountName!=null)
                 {
-                    new ManagePerformancesForm(accountName).ShowDialog();
+                    ManagePerformancesForm managePerformancesForm = new ManagePerformancesForm(accountName);
+                    managePerformancesForm.Show();
+                    this.Hide();
+                    //ClearLogInField();
                 }
                 else
                 {
@@ -160,6 +174,13 @@ namespace CourseProject_ShowDesk
             return null;
         }
 
+        private void ClearLogInField()
+        {
+            comboBoxUser.SelectedIndex = 2;
+            textBoxLogin.Clear();
+            textBoxPassword.Clear();
+        }
+
         private void ShowErrorMessage()
         {
             MessageBox.Show(
@@ -167,6 +188,6 @@ namespace CourseProject_ShowDesk
                             "Authenticate error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
-        }  
+        }
     }
 }

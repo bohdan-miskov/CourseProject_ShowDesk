@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxIndex = new System.Windows.Forms.TextBox();
@@ -35,24 +36,29 @@
             this.labelIndex = new System.Windows.Forms.Label();
             this.textBoxStageName = new System.Windows.Forms.TextBox();
             this.menuStripStage = new System.Windows.Forms.MenuStrip();
+            this.groupBoxStage = new System.Windows.Forms.GroupBox();
+            this.buttonEditSeating = new System.Windows.Forms.Button();
+            this.dataGridViewZones = new System.Windows.Forms.DataGridView();
+            this.groupBoxZones = new System.Windows.Forms.GroupBox();
+            this.groupBoxForm = new System.Windows.Forms.GroupBox();
+            this.contextMenuStripStage = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnIncrease = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnStartSeads = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnEndPositions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addZoneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editZoneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeZoneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.zoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeZoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBoxStage = new System.Windows.Forms.GroupBox();
-            this.dataGridViewZones = new System.Windows.Forms.DataGridView();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rolumnRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnStartSeads = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnEndPositions = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBoxZones = new System.Windows.Forms.GroupBox();
-            this.groupBoxForm = new System.Windows.Forms.GroupBox();
-            this.buttonEditSeating = new System.Windows.Forms.Button();
             this.menuStripStage.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZones)).BeginInit();
             this.groupBoxZones.SuspendLayout();
             this.groupBoxForm.SuspendLayout();
+            this.contextMenuStripStage.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSave
@@ -120,45 +126,9 @@
             this.zoneToolStripMenuItem});
             this.menuStripStage.Location = new System.Drawing.Point(0, 0);
             this.menuStripStage.Name = "menuStripStage";
-            this.menuStripStage.Size = new System.Drawing.Size(59, 26);
+            this.menuStripStage.Size = new System.Drawing.Size(75, 26);
             this.menuStripStage.TabIndex = 12;
             this.menuStripStage.Text = "menuStrip1";
-            // 
-            // zoneToolStripMenuItem
-            // 
-            this.zoneToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
-            this.zoneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addZoneToolStripMenuItem,
-            this.editZoneToolStripMenuItem,
-            this.removeZoneToolStripMenuItem});
-            this.zoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zoneToolStripMenuItem.Name = "zoneToolStripMenuItem";
-            this.zoneToolStripMenuItem.Size = new System.Drawing.Size(51, 22);
-            this.zoneToolStripMenuItem.Text = "Zone";
-            // 
-            // addZoneToolStripMenuItem
-            // 
-            this.addZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addZoneToolStripMenuItem.Name = "addZoneToolStripMenuItem";
-            this.addZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.addZoneToolStripMenuItem.Text = "Add";
-            this.addZoneToolStripMenuItem.Click += new System.EventHandler(this.addZoneToolStripMenuItem_Click);
-            // 
-            // editZoneToolStripMenuItem
-            // 
-            this.editZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editZoneToolStripMenuItem.Name = "editZoneToolStripMenuItem";
-            this.editZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.editZoneToolStripMenuItem.Text = "Edit";
-            this.editZoneToolStripMenuItem.Click += new System.EventHandler(this.editZoneToolStripMenuItem_Click);
-            // 
-            // removeZoneToolStripMenuItem
-            // 
-            this.removeZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeZoneToolStripMenuItem.Name = "removeZoneToolStripMenuItem";
-            this.removeZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.removeZoneToolStripMenuItem.Text = "Remove";
-            this.removeZoneToolStripMenuItem.Click += new System.EventHandler(this.removeZoneToolStripMenuItem_Click);
             // 
             // groupBoxStage
             // 
@@ -179,6 +149,20 @@
             this.groupBoxStage.TabStop = false;
             this.groupBoxStage.Text = "Stage";
             // 
+            // buttonEditSeating
+            // 
+            this.buttonEditSeating.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonEditSeating.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.buttonEditSeating.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonEditSeating.Location = new System.Drawing.Point(286, 89);
+            this.buttonEditSeating.MinimumSize = new System.Drawing.Size(80, 0);
+            this.buttonEditSeating.Name = "buttonEditSeating";
+            this.buttonEditSeating.Size = new System.Drawing.Size(115, 37);
+            this.buttonEditSeating.TabIndex = 9;
+            this.buttonEditSeating.Text = "Edit Seating";
+            this.buttonEditSeating.UseVisualStyleBackColor = false;
+            this.buttonEditSeating.Click += new System.EventHandler(this.buttonEditSeating_Click);
+            // 
             // dataGridViewZones
             // 
             this.dataGridViewZones.AllowUserToAddRows = false;
@@ -188,9 +172,10 @@
             this.dataGridViewZones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewZones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columnName,
-            this.rolumnRate,
+            this.columnIncrease,
             this.columnStartSeads,
             this.columnEndPositions});
+            this.dataGridViewZones.ContextMenuStrip = this.contextMenuStripStage;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -209,30 +194,6 @@
             this.dataGridViewZones.TabIndex = 12;
             this.dataGridViewZones.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewZones_RowEnter);
             this.dataGridViewZones.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewZones_RowLeave);
-            // 
-            // columnName
-            // 
-            this.columnName.HeaderText = "Name";
-            this.columnName.Name = "columnName";
-            this.columnName.ReadOnly = true;
-            // 
-            // rolumnRate
-            // 
-            this.rolumnRate.HeaderText = "Rate";
-            this.rolumnRate.Name = "rolumnRate";
-            this.rolumnRate.ReadOnly = true;
-            // 
-            // columnStartSeads
-            // 
-            this.columnStartSeads.HeaderText = "Start position";
-            this.columnStartSeads.Name = "columnStartSeads";
-            this.columnStartSeads.ReadOnly = true;
-            // 
-            // columnEndPositions
-            // 
-            this.columnEndPositions.HeaderText = "End position";
-            this.columnEndPositions.Name = "columnEndPositions";
-            this.columnEndPositions.ReadOnly = true;
             // 
             // groupBoxZones
             // 
@@ -261,19 +222,103 @@
             this.groupBoxForm.TabIndex = 15;
             this.groupBoxForm.TabStop = false;
             // 
-            // buttonEditSeating
+            // contextMenuStripStage
             // 
-            this.buttonEditSeating.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonEditSeating.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonEditSeating.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonEditSeating.Location = new System.Drawing.Point(286, 89);
-            this.buttonEditSeating.MinimumSize = new System.Drawing.Size(80, 0);
-            this.buttonEditSeating.Name = "buttonEditSeating";
-            this.buttonEditSeating.Size = new System.Drawing.Size(115, 37);
-            this.buttonEditSeating.TabIndex = 9;
-            this.buttonEditSeating.Text = "Edit Seating";
-            this.buttonEditSeating.UseVisualStyleBackColor = false;
-            this.buttonEditSeating.Click += new System.EventHandler(this.buttonEditSeating_Click);
+            this.contextMenuStripStage.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripStage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addZoneToolStripMenuItem1,
+            this.editZoneToolStripMenuItem1,
+            this.removeZoneToolStripMenuItem1});
+            this.contextMenuStripStage.Name = "contextMenuStripStage";
+            this.contextMenuStripStage.Size = new System.Drawing.Size(160, 70);
+            // 
+            // columnName
+            // 
+            this.columnName.HeaderText = "Name";
+            this.columnName.Name = "columnName";
+            this.columnName.ReadOnly = true;
+            // 
+            // columnIncrease
+            // 
+            this.columnIncrease.HeaderText = "Increase";
+            this.columnIncrease.Name = "columnIncrease";
+            this.columnIncrease.ReadOnly = true;
+            // 
+            // columnStartSeads
+            // 
+            this.columnStartSeads.HeaderText = "Start position";
+            this.columnStartSeads.Name = "columnStartSeads";
+            this.columnStartSeads.ReadOnly = true;
+            // 
+            // columnEndPositions
+            // 
+            this.columnEndPositions.HeaderText = "End position";
+            this.columnEndPositions.Name = "columnEndPositions";
+            this.columnEndPositions.ReadOnly = true;
+            // 
+            // addZoneToolStripMenuItem1
+            // 
+            this.addZoneToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
+            this.addZoneToolStripMenuItem1.Name = "addZoneToolStripMenuItem1";
+            this.addZoneToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.addZoneToolStripMenuItem1.Text = "Add zone";
+            this.addZoneToolStripMenuItem1.Click += new System.EventHandler(this.addZoneToolStripMenuItem_Click);
+            // 
+            // editZoneToolStripMenuItem1
+            // 
+            this.editZoneToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.edit_icon;
+            this.editZoneToolStripMenuItem1.Name = "editZoneToolStripMenuItem1";
+            this.editZoneToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.editZoneToolStripMenuItem1.Text = "Edit zone";
+            this.editZoneToolStripMenuItem1.Click += new System.EventHandler(this.editZoneToolStripMenuItem_Click);
+            // 
+            // removeZoneToolStripMenuItem1
+            // 
+            this.removeZoneToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
+            this.removeZoneToolStripMenuItem1.Name = "removeZoneToolStripMenuItem1";
+            this.removeZoneToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.removeZoneToolStripMenuItem1.Text = "Remove zone";
+            this.removeZoneToolStripMenuItem1.Click += new System.EventHandler(this.removeZoneToolStripMenuItem_Click);
+            // 
+            // zoneToolStripMenuItem
+            // 
+            this.zoneToolStripMenuItem.BackColor = System.Drawing.Color.Azure;
+            this.zoneToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addZoneToolStripMenuItem,
+            this.editZoneToolStripMenuItem,
+            this.removeZoneToolStripMenuItem});
+            this.zoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zoneToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.zone_icon;
+            this.zoneToolStripMenuItem.Name = "zoneToolStripMenuItem";
+            this.zoneToolStripMenuItem.Size = new System.Drawing.Size(67, 22);
+            this.zoneToolStripMenuItem.Text = "Zone";
+            // 
+            // addZoneToolStripMenuItem
+            // 
+            this.addZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addZoneToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
+            this.addZoneToolStripMenuItem.Name = "addZoneToolStripMenuItem";
+            this.addZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addZoneToolStripMenuItem.Text = "Add";
+            this.addZoneToolStripMenuItem.Click += new System.EventHandler(this.addZoneToolStripMenuItem_Click);
+            // 
+            // editZoneToolStripMenuItem
+            // 
+            this.editZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editZoneToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.edit_icon;
+            this.editZoneToolStripMenuItem.Name = "editZoneToolStripMenuItem";
+            this.editZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editZoneToolStripMenuItem.Text = "Edit";
+            this.editZoneToolStripMenuItem.Click += new System.EventHandler(this.editZoneToolStripMenuItem_Click);
+            // 
+            // removeZoneToolStripMenuItem
+            // 
+            this.removeZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeZoneToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
+            this.removeZoneToolStripMenuItem.Name = "removeZoneToolStripMenuItem";
+            this.removeZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeZoneToolStripMenuItem.Text = "Remove";
+            this.removeZoneToolStripMenuItem.Click += new System.EventHandler(this.removeZoneToolStripMenuItem_Click);
             // 
             // EditStageForm
             // 
@@ -291,6 +336,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZones)).EndInit();
             this.groupBoxZones.ResumeLayout(false);
             this.groupBoxForm.ResumeLayout(false);
+            this.contextMenuStripStage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -311,11 +357,15 @@
         private System.Windows.Forms.GroupBox groupBoxStage;
         private System.Windows.Forms.DataGridView dataGridViewZones;
         private System.Windows.Forms.GroupBox groupBoxZones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rolumnRate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnStartSeads;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnEndPositions;
         private System.Windows.Forms.GroupBox groupBoxForm;
         private System.Windows.Forms.Button buttonEditSeating;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripStage;
+        private System.Windows.Forms.ToolStripMenuItem addZoneToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem editZoneToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem removeZoneToolStripMenuItem1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnIncrease;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnStartSeads;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnEndPositions;
     }
 }

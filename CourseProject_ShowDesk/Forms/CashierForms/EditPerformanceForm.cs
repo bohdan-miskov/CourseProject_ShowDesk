@@ -123,6 +123,11 @@ namespace CourseProject_ShowDesk
             }
         }
 
+        private void EditPerformanceForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
         private void PopulateFields()
         {
             dateTimePickerPerfomanceDate.Value = performance.PerformanceDateTime;
@@ -162,13 +167,17 @@ namespace CourseProject_ShowDesk
         {
             if (dataGridViewTickets.CurrentRow != null)
             {
-                ChangeStatusToolStripMenuItem.Enabled = true;
+                changeStatusToolStripMenuItem.Enabled = true;
                 removeTicketToolStripMenuItem.Enabled = true;
+                changeStatusToolStripMenuItem1.Enabled = true;
+                removeTicketToolStripMenuItem1.Enabled = true;
             }
             else
             {
-                ChangeStatusToolStripMenuItem.Enabled = false;
+                changeStatusToolStripMenuItem.Enabled = false;
                 removeTicketToolStripMenuItem.Enabled = false;
+                changeStatusToolStripMenuItem1.Enabled = false;
+                removeTicketToolStripMenuItem1.Enabled = false;
             }
         }
 
@@ -390,7 +399,9 @@ namespace CourseProject_ShowDesk
             int stageIndex = FindInitialStageIndex();
 
             BuyTicketForm buyTicketForm = new BuyTicketForm(stages[stageIndex], performance);
+            this.Hide();
             buyTicketForm.ShowDialog();
+            this.Show();
 
             if (buyTicketForm.GetIsValid())
             {

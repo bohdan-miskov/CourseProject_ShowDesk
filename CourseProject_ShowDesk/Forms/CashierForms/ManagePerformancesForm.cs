@@ -24,8 +24,6 @@ namespace CourseProject_ShowDesk
 
             labelAccountName.Text = accountName;
 
-            ShowGreetings(accountName);
-
             LoadPerformancesFromFile();
             LoadStagesFromFile();
 
@@ -34,6 +32,8 @@ namespace CourseProject_ShowDesk
             UpdateDataGridPerformances();
 
             DisableEditAndRemoveStage();
+
+            ShowGreetings(accountName);
         }
 
         private void dataGridViewPerformances_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -46,12 +46,7 @@ namespace CourseProject_ShowDesk
             DisableEditAndRemoveStage();
         }
 
-        private void ManagePerformancesFormClosing(object sender, FormClosingEventArgs e)
-        {
-            SavePerformancesToFile();
-        }
-
-        private void addSpecToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddPerformance();
 
@@ -59,7 +54,7 @@ namespace CourseProject_ShowDesk
             DisableEditAndRemoveStage();
         }
 
-        private void editSpecToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditPerformance();
 
@@ -67,7 +62,7 @@ namespace CourseProject_ShowDesk
             DisableEditAndRemoveStage();
         }
 
-        private void removeSpecToolStripMenuItem_Click(object sender, EventArgs e)
+        private void removePerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int index = dataGridViewPerformances.CurrentRow.Index + countOfPastPerformances;
 
@@ -87,6 +82,21 @@ namespace CourseProject_ShowDesk
             SwitchPerformances();
         }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ManagePerformancesFormClosing(object sender, FormClosingEventArgs e)
+        {
+            SavePerformancesToFile();
+        }
+
+        private void ManagePerformancesForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void ShowGreetings(string name)
         {
             MessageBox.Show(
@@ -100,6 +110,9 @@ namespace CourseProject_ShowDesk
         {
             dataGridViewPerformances.Rows.Clear();
             performanceToolStripMenuItem.Enabled = true;
+            addPerformanceToolStripMenuItem1.Enabled = true;
+            editPerformanceToolStripMenuItem1.Enabled = true;
+            removePerformanceToolStripMenuItem1.Enabled = true;
             countOfPastPerformances = 0;
 
             SortPerformancesByDate();
@@ -121,6 +134,9 @@ namespace CourseProject_ShowDesk
         {
             dataGridViewPerformances.Rows.Clear();
             performanceToolStripMenuItem.Enabled = false;
+            addPerformanceToolStripMenuItem1.Enabled = false;
+            editPerformanceToolStripMenuItem1.Enabled = false;
+            removePerformanceToolStripMenuItem1.Enabled = false;
 
             foreach (Performance performance in performances)
             {
@@ -272,11 +288,15 @@ namespace CourseProject_ShowDesk
             {
                 editPerformanceToolStripMenuItem.Enabled = true;
                 removePerformanceToolStripMenuItem.Enabled = true;
+                editPerformanceToolStripMenuItem1.Enabled = true;
+                removePerformanceToolStripMenuItem1.Enabled = true;
             }
             else
             {
                 editPerformanceToolStripMenuItem.Enabled = false;
                 removePerformanceToolStripMenuItem.Enabled = false;
+                editPerformanceToolStripMenuItem1.Enabled = false;
+                removePerformanceToolStripMenuItem1.Enabled = false;
             }
         }
 
@@ -284,7 +304,9 @@ namespace CourseProject_ShowDesk
         private void AddPerformance()
         {
             AddPerformanceForm addPerformanceForm = new AddPerformanceForm(stages, performances);
+            this.Hide();
             addPerformanceForm.ShowDialog();
+            this.Show();
 
             if (addPerformanceForm.GetIsValid())
             {
@@ -297,7 +319,9 @@ namespace CourseProject_ShowDesk
             int index = dataGridViewPerformances.CurrentRow.Index + countOfPastPerformances;
 
             EditPerformanceForm editPerformanceForm = new EditPerformanceForm(stages, performances, index);
+            this.Hide();
             editPerformanceForm.ShowDialog();
+            this.Show();
 
             if (editPerformanceForm.GetIsValid())
             {
@@ -308,7 +332,9 @@ namespace CourseProject_ShowDesk
         private void OpenRevenue()
         {
             ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performances);
+            this.Hide();
             viewRevenueForm.ShowDialog();
+            this.Show();
         }
 
         private void SwitchPerformances()

@@ -18,13 +18,13 @@ namespace CourseProject_ShowDesk
 
             labelAccountName.Text = accountName;
 
-            ShowGreetings(accountName);
-
             LoadStagesFromFile();
 
             UpdateDataGridStages();
 
             DisableEditAndRemoveStage();
+
+            ShowGreetings(accountName);
         }
 
         private void dataGridViewStages_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -63,9 +63,19 @@ namespace CourseProject_ShowDesk
             DisableEditAndRemoveStage();
         }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void ManageStagesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveStagesToFile();
+        }
+
+        private void ManageStagesForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void ShowGreetings(string name)
@@ -121,7 +131,9 @@ namespace CourseProject_ShowDesk
         private void AddStage()
         {
             AddStageForm addStageForm = new AddStageForm(stages);
+            this.Hide();
             addStageForm.ShowDialog();
+            this.Show();
 
             if (addStageForm.GetIsValid())
             {
@@ -134,7 +146,9 @@ namespace CourseProject_ShowDesk
             int index = dataGridViewStages.CurrentRow.Index;
 
             EditStageForm editStageForm = new EditStageForm(stages[index]);
+            this.Hide();
             editStageForm.ShowDialog();
+            this.Show();
 
             if (editStageForm.GetIsValid())
             {
@@ -148,11 +162,15 @@ namespace CourseProject_ShowDesk
             {
                 editStageToolStripMenuItem.Enabled = true;
                 removeStageToolStripMenuItem.Enabled = true;
+                editStageToolStripMenuItem1.Enabled = true;
+                removeStageToolStripMenuItem1.Enabled = true;
             }
             else
             {
                 editStageToolStripMenuItem.Enabled = false;
                 removeStageToolStripMenuItem.Enabled = false;
+                editStageToolStripMenuItem1.Enabled = false;
+                removeStageToolStripMenuItem1.Enabled = false;
             }
         }
     }

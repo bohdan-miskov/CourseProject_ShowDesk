@@ -123,6 +123,11 @@ namespace CourseProject_ShowDesk
             this.Close();
         }
 
+        private void BuyTicketForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
         private void CreateTicketIndex()
         {
             Random rnd = new Random();
@@ -521,7 +526,6 @@ namespace CourseProject_ShowDesk
 
             return false;
         }
-
     }
     
 

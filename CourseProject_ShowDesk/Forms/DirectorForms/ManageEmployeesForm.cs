@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using CourseProject_ShowDesk.Forms;
+using System.Reflection;
 
 namespace CourseProject_ShowDesk.Scripts
 {
@@ -26,13 +27,13 @@ namespace CourseProject_ShowDesk.Scripts
 
             labelAccountName.Text = accountName;
 
-            ShowGreetings(accountName);
-
             LoadEmployeesFromFile();
 
             UpdateDataGridEmployees();
 
             DisableEditAndRemoveEmployees();
+
+            ShowGreetings(accountName);
         }
 
         private void dataGridViewEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -43,11 +44,6 @@ namespace CourseProject_ShowDesk.Scripts
         private void dataGridViewEmployees_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveEmployees();
-        }
-
-        private void ManageEmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            SaveEmployeesToFile();
         }
 
         private void addEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -92,6 +88,26 @@ namespace CourseProject_ShowDesk.Scripts
         private void toolStripMenuItemHidePassword_Click(object sender, EventArgs e)
         {
             HidePassword();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Owner != null)
+            {
+                Owner.Show();
+            }
+
+            this.Close();
+        }
+
+        private void ManageEmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveEmployeesToFile();
+        }
+
+        private void ManageEmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void ShowGreetings(string name)
@@ -150,20 +166,26 @@ namespace CourseProject_ShowDesk.Scripts
             {
                 editEmployeeToolStripMenuItem.Enabled = true;
                 removeEmployeeToolStripMenuItem.Enabled = true;
+                editEmployeeToolStripMenuItem1.Enabled = true;
+                removeEmployeeToolStripMenuItem1.Enabled = true;
             }
             else
             {
                 editEmployeeToolStripMenuItem.Enabled = false;
                 removeEmployeeToolStripMenuItem.Enabled = false;
+                editEmployeeToolStripMenuItem1.Enabled = false;
+                removeEmployeeToolStripMenuItem1.Enabled = false;
             }
         }
 
         private void AddEmployee()
         {
             AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(employees, null);
+            this.Hide();
             addEmployeeForm.ShowDialog();
+            this.Show();
 
-            if(addEmployeeForm.GetIsValid())
+            if (addEmployeeForm.GetIsValid())
             {
                 employees.Add(addEmployeeForm.GetEmployee());
             }
@@ -174,9 +196,11 @@ namespace CourseProject_ShowDesk.Scripts
             int index = dataGridViewEmployees.CurrentRow.Index;
 
             AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(employees, index);
+            this.Hide();
             editEmployeeForm.ShowDialog();
+            this.Show();
 
-            if(editEmployeeForm.GetIsValid())
+            if (editEmployeeForm.GetIsValid())
             {
                 employees[index] = editEmployeeForm.GetEmployee();
             }
@@ -185,7 +209,10 @@ namespace CourseProject_ShowDesk.Scripts
 
         private void OpenSettings()
         {
-            new SettingsForm().ShowDialog();
+            SettingsForm settingsForm = new SettingsForm();
+            this.Hide();
+            settingsForm.ShowDialog();
+            this.Show();
         }
 
         private void ShowPassword()
