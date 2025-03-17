@@ -29,7 +29,9 @@ namespace CourseProject_ShowDesk.Scripts
         public static List<string> ListOfTicketTypes { get; private set; } 
         public static List<string> ListOfSouvenirs { get; private set; } 
         public static List<string> ListOfDrinks { get; private set; }
-        
+        public static readonly string ConnectionString =  "mongodb+srv://bohdanmiskov07:7XRSvDHvZt2rL6gr@showdesk.tqctr.mongodb.net/?retryWrites=true&w=majority&appName=ShowDesk";
+
+
 
         public static void PopulateConstants(AppConstantsData constantsData)
         {

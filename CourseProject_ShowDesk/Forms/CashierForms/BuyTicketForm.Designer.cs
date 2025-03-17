@@ -72,6 +72,7 @@
             // 
             // textBoxPrice
             // 
+            this.textBoxPrice.Enabled = false;
             this.textBoxPrice.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPrice.Location = new System.Drawing.Point(148, 179);
             this.textBoxPrice.Name = "textBoxPrice";

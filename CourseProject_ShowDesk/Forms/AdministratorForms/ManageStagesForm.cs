@@ -1,4 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts;
+using CourseProject_ShowDesk.Scripts.Enities.StageManager;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,17 +10,20 @@ namespace CourseProject_ShowDesk
 {
     public partial class ManageStagesForm : MetroFramework.Forms.MetroForm
     {
-        private List<Stage> stages;
+        //private List<Stage> stages;
+        private StageManager stageManager;
 
         public ManageStagesForm(string accountName)
         {
             InitializeComponent();
 
-            stages = new List<Stage>();
+            stageManager = new StageManager();
+
+            //stages = new List<Stage>();
 
             labelAccountName.Text = accountName;
 
-            LoadStagesFromFile();
+            //LoadStagesFromFile();
 
             UpdateDataGridStages();
 
@@ -55,9 +60,9 @@ namespace CourseProject_ShowDesk
 
         private void removeStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int index = dataGridViewStages.CurrentRow.Index;
+            Guid stageId = Guid.Parse(dataGridViewStages.CurrentRow.Cells[0].Value.ToString());
 
-            stages.RemoveAt(index);
+            stageManager.RemoveStage(stageId);
 
             UpdateDataGridStages();
             DisableEditAndRemoveStage();
@@ -70,7 +75,7 @@ namespace CourseProject_ShowDesk
 
         private void ManageStagesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveStagesToFile();
+            //SaveStagesToFile();
         }
 
         private void ManageStagesForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -91,7 +96,7 @@ namespace CourseProject_ShowDesk
         {
             dataGridViewStages.Rows.Clear();
 
-            foreach (Stage stage in stages)
+            foreach (Stage stage in stageManager.Stages)
             {
                 AddStageToDataGrid(stage);
             }
@@ -100,59 +105,60 @@ namespace CourseProject_ShowDesk
         private void AddStageToDataGrid(Stage stage)
         {
             dataGridViewStages.Rows.Add(
-                    stage.Index,
-                    stage.Name,
-                    stage.Zones.Count
+                stage.Id,
+                stage.Index,
+                stage.Name,
+                stage.Zones.Count
                     );
         }
 
-        private void SaveStagesToFile()
-        {
-            FileHandler.SaveListToJson(AppConstants.StagesFileName, stages);
-        }
+        //private void SaveStagesToFile()
+        //{
+        //    FileHandler.SaveListToJson(AppConstants.StagesFileName, stages);
+        //}
 
-        private void LoadStagesFromFile()
-        {
-            if (File.Exists(AppConstants.StagesFileName))
-            {
-                stages = FileHandler.LoadListFromJson<Stage>(AppConstants.StagesFileName);
-            }
-            else
-            {
-                MessageBox.Show(
-                                $"File {AppConstants.StagesFileName} not found",
-                                "Load stages error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
+        //private void LoadStagesFromFile()
+        //{
+        //    if (File.Exists(AppConstants.StagesFileName))
+        //    {
+        //        stages = FileHandler.LoadListFromJson<Stage>(AppConstants.StagesFileName);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show(
+        //                        $"File {AppConstants.StagesFileName} not found",
+        //                        "Load stages error",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //    }
+        //}
 
 
         private void AddStage()
         {
-            AddStageForm addStageForm = new AddStageForm(stages);
+            AddStageForm addStageForm = new AddStageForm(stageManager.CreateIndex());
             this.Hide();
             addStageForm.ShowDialog();
             this.Show();
 
             if (addStageForm.GetIsValid())
             {
-                stages.Add(addStageForm.GetNewStage());
+                stageManager.AddStage(addStageForm.GetNewStage());
             }
         }
 
         private void EditStage()
         {
-            int index = dataGridViewStages.CurrentRow.Index;
+            Guid stageId = Guid.Parse(dataGridViewStages.CurrentRow.Cells[0].Value.ToString());
 
-            EditStageForm editStageForm = new EditStageForm(stages[index]);
+            EditStageForm editStageForm = new EditStageForm(stageManager.GetById(stageId));
             this.Hide();
             editStageForm.ShowDialog();
             this.Show();
 
             if (editStageForm.GetIsValid())
             {
-                stages[index] = editStageForm.GetStage();
+                stageManager.UpdateStage(editStageForm.GetStage());
             }
         }
 

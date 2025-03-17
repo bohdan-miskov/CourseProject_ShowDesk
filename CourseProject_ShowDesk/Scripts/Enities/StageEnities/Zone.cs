@@ -7,6 +7,7 @@ namespace CourseProject_ShowDesk
     [Serializable]
     public class Zone
     {
+        private readonly Guid id=Guid.NewGuid();
         private string name;
         private double increase;
         private int startPosition;
@@ -29,7 +30,13 @@ namespace CourseProject_ShowDesk
             EndPosition = endPosition;
             Color = color;
         }
-
+        public Guid Id
+        {
+            get
+            {
+                return id;
+            }
+        }
         public string Name
         {
             get

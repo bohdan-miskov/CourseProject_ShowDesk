@@ -1,0 +1,127 @@
+﻿using CourseProject_ShowDesk.Scripts;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CourseProject_ShowDesk.Forms.CashierForms
+{
+    public partial class ManageTicketsForm : MetroFramework.Forms.MetroForm
+    {
+        private Stage currentStage;
+        private Performance currentPerformance;
+
+        public ManageTicketsForm(Stage currentStage, Performance currentPerformance)
+        {
+            InitializeComponent();
+
+            this.currentStage = currentStage;
+            this.currentPerformance = currentPerformance;
+            UpdateDataGridTickets();
+
+            DisableEditAndRemoveTicket();
+        }
+        private void dataGridViewTickets_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveTicket();
+        }
+
+        private void dataGridViewTickets_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            DisableEditAndRemoveTicket();
+        }
+        private void ChangeStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Guid id = Guid.Parse(dataGridViewTickets.CurrentRow.Cells[0].Value.ToString());
+
+            currentPerformance.ChangeTicketStatus(id);
+
+            UpdateDataGridTickets();
+            DisableEditAndRemoveTicket();
+        }
+
+        private void removeTicketToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Guid id = Guid.Parse(dataGridViewTickets.CurrentRow.Cells[0].Value.ToString());
+
+            currentPerformance.RemoveTicket(id);
+            //SetAvailable(currentPerformance.Tickets[index].Position - 1);
+
+            UpdateDataGridTickets();
+            DisableEditAndRemoveTicket();
+        }
+        private void BuyTicketFormToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BuyOfTicket();
+
+            UpdateDataGridTickets();
+            DisableEditAndRemoveTicket();
+        }
+        private void UpdateDataGridTickets()
+        {
+            dataGridViewTickets.Rows.Clear();
+
+            foreach (StandardTicket ticket in currentPerformance.Tickets)
+            {
+                AddTicketToDataGrid(ticket);
+            }
+        }
+
+        private void AddTicketToDataGrid(StandardTicket ticket)
+        {
+            dataGridViewTickets.Rows.Add(
+                ticket.Id,
+                ticket.Index,
+                ticket.Type,
+                ticket.Position,
+                ticket.CalculatedPrice.ToString() + AppConstants.CurrencySymbol.ToString(),
+                ticket.Reserved ? "Yes" : "No",
+                ticket.GetAdditionalServices());
+        }
+
+        private void DisableEditAndRemoveTicket()
+        {
+            if (dataGridViewTickets.CurrentRow != null)
+            {
+                changeStatusToolStripMenuItem.Enabled = true;
+                removeTicketToolStripMenuItem.Enabled = true;
+                changeStatusToolStripMenuItem1.Enabled = true;
+                removeTicketToolStripMenuItem1.Enabled = true;
+            }
+            else
+            {
+                changeStatusToolStripMenuItem.Enabled = false;
+                removeTicketToolStripMenuItem.Enabled = false;
+                changeStatusToolStripMenuItem1.Enabled = false;
+                removeTicketToolStripMenuItem1.Enabled = false;
+            }
+        }
+        private void BuyOfTicket()
+        {
+            BuyTicketForm buyTicketForm = new BuyTicketForm(currentStage, currentPerformance);
+            this.Hide();
+            buyTicketForm.ShowDialog();
+            this.Show();
+
+            if (buyTicketForm.GetIsValid())
+            {
+                foreach (StandardTicket ticket in buyTicketForm.GetNewTickets())
+                {
+                    currentPerformance.BuyTicket(ticket);
+                }
+            }
+        }
+        //private void SetAvailable(int seatIndex)
+        //{
+        //    int stageIndex = comboBoxStage.SelectedIndex;
+        //    stages[stageIndex].SeatList[seatIndex].IsAvailable = true;
+        //}
+
+    }
+
+}

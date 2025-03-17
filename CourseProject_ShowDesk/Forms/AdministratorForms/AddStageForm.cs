@@ -1,4 +1,6 @@
 ﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
+using CourseProject_ShowDesk.Scripts.Enities;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -13,11 +15,11 @@ namespace CourseProject_ShowDesk
 
         private Stage newStage;
 
-        public AddStageForm(List<Stage> stages)
+        public AddStageForm(int index)
         {
             InitializeComponent();
 
-            CreateIndex(stages);
+            this.index = index;
 
             textBoxIndex.Text = Convert.ToString(index);
 
@@ -50,35 +52,6 @@ namespace CourseProject_ShowDesk
         {
 
         }
-
-        private void CreateIndex(List<Stage> stages)
-        {
-            if (stages.Count == 0)
-            {
-                index = 1;
-                return;
-            }
-
-            bool isRepeat;
-            for (int i = 1; i < int.MaxValue; i++)
-            {
-                isRepeat = false;
-                for (int j = 0; j < stages.Count; j++)
-                {
-                    if (i == stages[j].Index)
-                    {
-                        isRepeat = true;
-                        break;
-                    }
-                }
-                if (!isRepeat)
-                {
-                    index = i;
-                    return;
-                }
-            }
-        }
-
         private void SaveStage()
         {
             if (ValidateOfStage())

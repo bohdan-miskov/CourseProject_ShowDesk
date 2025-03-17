@@ -41,6 +41,67 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
+        private void buttonDeleteSeat_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedSeat();
+        }
+
+        private void buttonAddSeat_Click(object sender, EventArgs e)
+        {
+            AddSeat();
+        }
+
+        private void buttonInsertSeat_Click(object sender, EventArgs e)
+        {
+            InsertSeat();
+        }
+
+        private void buttonSetUnavailable_Click(object sender, EventArgs e)
+        {
+            SetUnavailable();
+        }
+
+        private void buttonAddDecor_Click(object sender, EventArgs e)
+        {
+            AddDecorativeElement();
+        }
+
+        private void buttonDeleteDecor_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedDecor();
+        }
+
+        private void buttonChangeColor_Click(object sender, EventArgs e)
+        {
+            ChangeColor();
+        }
+
+        private void panelSeating_MouseDown(object sender, MouseEventArgs e)
+        {
+            FormMouseDown(sender, e);
+        }
+
+        private void panelSeating_MouseMove(object sender, MouseEventArgs e)
+        {
+            FormMouseMove(sender, e);
+        }
+
+        private void panelSeating_MouseUp(object sender, MouseEventArgs e)
+        {
+            FormMouseUp(sender, e);
+        }
+
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (ValidateOfSeating())
+            {
+                isValid = true;
+
+                this.Close();
+            }
+        }
+
         private void PopulateSeating()
         {
             foreach(Seat seat in seatList)
@@ -356,7 +417,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             {
                 for (int i = 0; i < decorList.Count; i++)
                 {
-                    if (control.Name == decorList[i].DecorId.ToString())
+                    if (control.Name == decorList[i].Id.ToString())
                     {
                         return i;
                     }
@@ -388,67 +449,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             foreach (Seat seat in seatList)
             {
                 panelSeating.Controls.Add(seat.ToLabel());
-            }
-        }
-
-        private void buttonDeleteSeat_Click(object sender, EventArgs e)
-        {
-            DeleteSelectedSeat();
-        }
-
-        private void buttonAddSeat_Click(object sender, EventArgs e)
-        {
-            AddSeat();
-        }
-
-        private void buttonInsertSeat_Click(object sender, EventArgs e)
-        {
-            InsertSeat();
-        }
-
-        private void buttonSetUnavailable_Click(object sender, EventArgs e)
-        {
-            SetUnavailable();
-        }
-
-        private void buttonAddDecor_Click(object sender, EventArgs e)
-        {
-            AddDecorativeElement();
-        }
-
-        private void buttonDeleteDecor_Click(object sender, EventArgs e)
-        {
-            DeleteSelectedDecor();
-        }
-
-        private void buttonChangeColor_Click(object sender, EventArgs e)
-        {
-            ChangeColor();
-        }
-
-        private void panelSeating_MouseDown(object sender, MouseEventArgs e)
-        {
-            FormMouseDown(sender, e);
-        }
-
-        private void panelSeating_MouseMove(object sender, MouseEventArgs e)
-        {
-            FormMouseMove(sender, e);
-        }
-
-        private void panelSeating_MouseUp(object sender, MouseEventArgs e)
-        {
-            FormMouseUp(sender, e);
-        }
-
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            if(ValidateOfSeating())
-            {
-                isValid = true;
-
-                this.Close();
             }
         }
 

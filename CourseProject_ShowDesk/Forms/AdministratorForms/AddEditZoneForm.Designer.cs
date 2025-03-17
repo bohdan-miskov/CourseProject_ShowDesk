@@ -60,9 +60,19 @@
             0,
             0,
             0});
+            this.numericUpDownStartPosition.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownStartPosition.Name = "numericUpDownStartPosition";
             this.numericUpDownStartPosition.Size = new System.Drawing.Size(168, 28);
             this.numericUpDownStartPosition.TabIndex = 19;
+            this.numericUpDownStartPosition.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownStartPosition.ValueChanged += new System.EventHandler(this.numericUpDownStartPosition_ValueChanged);
             this.numericUpDownStartPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownStartPosition_KeyUp);
             // 
@@ -211,9 +221,19 @@
             0,
             0,
             0});
+            this.numericUpDownEndPosition.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownEndPosition.Name = "numericUpDownEndPosition";
             this.numericUpDownEndPosition.Size = new System.Drawing.Size(168, 28);
             this.numericUpDownEndPosition.TabIndex = 20;
+            this.numericUpDownEndPosition.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.numericUpDownEndPosition.ValueChanged += new System.EventHandler(this.numericUpDownEndPosition_ValueChanged);
             this.numericUpDownEndPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownEndPosition_KeyUp);
             // 

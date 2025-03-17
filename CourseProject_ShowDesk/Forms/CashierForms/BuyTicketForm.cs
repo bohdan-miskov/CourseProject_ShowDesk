@@ -242,6 +242,10 @@ namespace CourseProject_ShowDesk
         {
             foreach (Seat seat in stage.SeatList)
             {
+                if (!performance.AvailablePositions.Contains(seat.SeatNumber))
+                {
+                    seat.IsAvailable = false;
+                }
                 panelSeating.Controls.Add(seat.ToLabel());
             }
             foreach (DecorativeElement decor in stage.DecorList)

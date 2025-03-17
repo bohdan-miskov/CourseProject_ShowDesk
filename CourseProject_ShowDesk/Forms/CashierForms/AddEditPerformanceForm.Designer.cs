@@ -1,6 +1,6 @@
 ﻿namespace CourseProject_ShowDesk
 {
-    partial class AddPerformanceForm
+    partial class AddEditPerformanceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.labelStage = new System.Windows.Forms.Label();
             this.labelPerformanceName = new System.Windows.Forms.Label();
             this.labelBaseTicketPrice = new System.Windows.Forms.Label();
@@ -46,18 +46,18 @@
             this.groupBoxPerformance.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonAdd
+            // buttonSave
             // 
-            this.buttonAdd.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(198, 212);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(147, 40);
-            this.buttonAdd.TabIndex = 17;
-            this.buttonAdd.Text = "Add";
-            this.buttonAdd.UseVisualStyleBackColor = false;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonSave.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonSave.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSave.Location = new System.Drawing.Point(198, 212);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(147, 40);
+            this.buttonSave.TabIndex = 17;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // labelStage
             // 
@@ -161,7 +161,7 @@
             this.groupBoxPerformance.Controls.Add(this.dateTimePickerDuration);
             this.groupBoxPerformance.Controls.Add(this.labelDuration);
             this.groupBoxPerformance.Controls.Add(this.labelPerfomanceDate);
-            this.groupBoxPerformance.Controls.Add(this.buttonAdd);
+            this.groupBoxPerformance.Controls.Add(this.buttonSave);
             this.groupBoxPerformance.Controls.Add(this.dateTimePickerPerfomanceDate);
             this.groupBoxPerformance.Controls.Add(this.labelStage);
             this.groupBoxPerformance.Controls.Add(this.textBoxPerformanceName);
@@ -212,13 +212,13 @@
             this.labelDuration.TabIndex = 19;
             this.labelDuration.Text = "Duration";
             // 
-            // AddPerformanceForm
+            // AddEditPerformanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 339);
             this.Controls.Add(this.groupBoxPerformance);
-            this.Name = "AddPerformanceForm";
+            this.Name = "AddEditPerformanceForm";
             this.Text = "AddPerformance";
             this.groupBoxPerformance.ResumeLayout(false);
             this.groupBoxPerformance.PerformLayout();
@@ -228,7 +228,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label labelStage;
         private System.Windows.Forms.Label labelPerformanceName;
         private System.Windows.Forms.Label labelBaseTicketPrice;

@@ -29,33 +29,34 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageStagesForm));
             this.dataGridViewStages = new System.Windows.Forms.DataGridView();
-            this.columnNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnZonesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuStripManageStages = new System.Windows.Forms.MenuStrip();
-            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
-            this.labelAccountName = new System.Windows.Forms.Label();
             this.contextMenuStripStages = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.addStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.removeStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripManageStages = new System.Windows.Forms.MenuStrip();
             this.stageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addStageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editStageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeStageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnZonesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).BeginInit();
+            this.contextMenuStripStages.SuspendLayout();
             this.menuStripManageStages.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
-            this.contextMenuStripStages.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.contextMenuStripAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewStages
@@ -67,28 +68,29 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewStages.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewStages.BackgroundColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStages.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStages.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewStages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStages.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idColumn,
             this.columnNumber,
             this.columnName,
             this.columnZonesCount});
             this.dataGridViewStages.ContextMenuStrip = this.contextMenuStripStages;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewStages.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewStages.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewStages.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewStages.Location = new System.Drawing.Point(0, 64);
             this.dataGridViewStages.MultiSelect = false;
@@ -101,58 +103,6 @@
             this.dataGridViewStages.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStages_RowEnter);
             this.dataGridViewStages.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStages_RowLeave);
             // 
-            // columnNumber
-            // 
-            this.columnNumber.HeaderText = "Number";
-            this.columnNumber.Name = "columnNumber";
-            this.columnNumber.ReadOnly = true;
-            // 
-            // columnName
-            // 
-            this.columnName.HeaderText = "Name";
-            this.columnName.Name = "columnName";
-            this.columnName.ReadOnly = true;
-            // 
-            // columnZonesCount
-            // 
-            this.columnZonesCount.HeaderText = "Zones count";
-            this.columnZonesCount.Name = "columnZonesCount";
-            this.columnZonesCount.ReadOnly = true;
-            // 
-            // menuStripManageStages
-            // 
-            this.menuStripManageStages.BackColor = System.Drawing.Color.Azure;
-            this.menuStripManageStages.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStripManageStages.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stageToolStripMenuItem});
-            this.menuStripManageStages.Location = new System.Drawing.Point(0, 0);
-            this.menuStripManageStages.Name = "menuStripManageStages";
-            this.menuStripManageStages.Size = new System.Drawing.Size(72, 24);
-            this.menuStripManageStages.TabIndex = 3;
-            this.menuStripManageStages.Text = "menuStrip1";
-            // 
-            // groupBoxProfile
-            // 
-            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
-            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
-            this.groupBoxProfile.Controls.Add(this.labelAccountName);
-            this.groupBoxProfile.Location = new System.Drawing.Point(373, 27);
-            this.groupBoxProfile.Name = "groupBoxProfile";
-            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
-            this.groupBoxProfile.TabIndex = 16;
-            this.groupBoxProfile.TabStop = false;
-            // 
-            // labelAccountName
-            // 
-            this.labelAccountName.AutoSize = true;
-            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
-            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
-            this.labelAccountName.Name = "labelAccountName";
-            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
-            this.labelAccountName.TabIndex = 0;
-            this.labelAccountName.Text = "AccountName";
-            // 
             // contextMenuStripStages
             // 
             this.contextMenuStripStages.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -162,18 +112,6 @@
             this.removeStageToolStripMenuItem1});
             this.contextMenuStripStages.Name = "contextMenuStripStages";
             this.contextMenuStripStages.Size = new System.Drawing.Size(162, 70);
-            // 
-            // pictureBoxAccountIcon
-            // 
-            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
-            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
-            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
-            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
-            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAccountIcon.TabIndex = 1;
-            this.pictureBoxAccountIcon.TabStop = false;
             // 
             // addStageToolStripMenuItem1
             // 
@@ -198,6 +136,18 @@
             this.removeStageToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.removeStageToolStripMenuItem1.Text = "Remove stage";
             this.removeStageToolStripMenuItem1.Click += new System.EventHandler(this.removeStageToolStripMenuItem_Click);
+            // 
+            // menuStripManageStages
+            // 
+            this.menuStripManageStages.BackColor = System.Drawing.Color.Azure;
+            this.menuStripManageStages.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStripManageStages.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stageToolStripMenuItem});
+            this.menuStripManageStages.Location = new System.Drawing.Point(0, 0);
+            this.menuStripManageStages.Name = "menuStripManageStages";
+            this.menuStripManageStages.Size = new System.Drawing.Size(72, 24);
+            this.menuStripManageStages.TabIndex = 3;
+            this.menuStripManageStages.Text = "menuStrip1";
             // 
             // stageToolStripMenuItem
             // 
@@ -234,6 +184,17 @@
             this.removeStageToolStripMenuItem.Text = "Remove";
             this.removeStageToolStripMenuItem.Click += new System.EventHandler(this.removeStageToolStripMenuItem_Click);
             // 
+            // groupBoxProfile
+            // 
+            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
+            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
+            this.groupBoxProfile.Controls.Add(this.labelAccountName);
+            this.groupBoxProfile.Location = new System.Drawing.Point(373, 27);
+            this.groupBoxProfile.Name = "groupBoxProfile";
+            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
+            this.groupBoxProfile.TabIndex = 16;
+            this.groupBoxProfile.TabStop = false;
+            // 
             // contextMenuStripAccount
             // 
             this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -250,6 +211,54 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
+            // 
+            // labelAccountName
+            // 
+            this.labelAccountName.AutoSize = true;
+            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
+            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelAccountName.Name = "labelAccountName";
+            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
+            this.labelAccountName.TabIndex = 0;
+            this.labelAccountName.Text = "AccountName";
+            // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Visible = false;
+            // 
+            // columnNumber
+            // 
+            this.columnNumber.HeaderText = "Number";
+            this.columnNumber.Name = "columnNumber";
+            this.columnNumber.ReadOnly = true;
+            // 
+            // columnName
+            // 
+            this.columnName.HeaderText = "Name";
+            this.columnName.Name = "columnName";
+            this.columnName.ReadOnly = true;
+            // 
+            // columnZonesCount
+            // 
+            this.columnZonesCount.HeaderText = "Zones count";
+            this.columnZonesCount.Name = "columnZonesCount";
+            this.columnZonesCount.ReadOnly = true;
+            // 
             // ManageStagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,13 +272,13 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageStagesForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManageStagesForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).EndInit();
+            this.contextMenuStripStages.ResumeLayout(false);
             this.menuStripManageStages.ResumeLayout(false);
             this.menuStripManageStages.PerformLayout();
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
-            this.contextMenuStripStages.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.contextMenuStripAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,9 +292,6 @@
         private System.Windows.Forms.ToolStripMenuItem addStageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editStageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeStageToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnZonesCount;
         private System.Windows.Forms.GroupBox groupBoxProfile;
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.Label labelAccountName;
@@ -295,5 +301,9 @@
         private System.Windows.Forms.ToolStripMenuItem removeStageToolStripMenuItem1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnZonesCount;
     }
 }

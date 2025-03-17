@@ -1,0 +1,121 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Driver;
+
+namespace CourseProject_ShowDesk.Scripts.Utilities
+{
+    public class PerformanceBaseService
+    {
+        private readonly IMongoCollection<Performance> upcomingCollection;
+        private readonly IMongoCollection<Performance> pastCollection;
+        private readonly MongoClient client;
+
+        public PerformanceBaseService( string dbName = "Event")
+        {
+            client = new MongoClient(AppConstants.ConnectionString);
+            var db = client.GetDatabase(dbName);
+
+            upcomingCollection = db.GetCollection<Performance>("UpcomingPerformances");
+            pastCollection = db.GetCollection<Performance>("PastPerformances");
+        }
+        public List<Performance> GetAllUpcomingPerformances()
+        {
+            return upcomingCollection.Find(_ => true).ToList();
+        }
+
+        public List<Performance> GetAllPastPerformances()
+        {
+            return pastCollection.Find(_ => true).ToList();
+        }
+
+        public void MovePastPerformances()
+        {
+            var now = DateTime.Now;
+            var pastFilter = Builders<Performance>.Filter.Lt(p => p.PerformanceDateTime, now);
+            var pastPerformances = upcomingCollection.Find(pastFilter).ToList();
+
+            if (pastPerformances.Any())
+            {
+                pastCollection.InsertMany(pastPerformances);
+
+                var idsToDelete = pastPerformances.Select(p => p.Id).ToList();
+                var deleteFilter = Builders<Performance>.Filter.In(p => p.Id, idsToDelete);
+                upcomingCollection.DeleteMany(deleteFilter);
+            }
+        }
+        public void AddPerformance(Performance performance)
+        {
+            upcomingCollection.InsertOne(performance);
+        }
+        public void RemovePerformance(Guid id)
+        {
+            var filter = Builders<Performance>.Filter.Eq("Id", id);
+            upcomingCollection.DeleteOne(filter);
+        }
+        public void AddTicket(Guid performanceId, StandardTicket ticket)
+        {
+            var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
+            var update = Builders<Performance>.Update.Push(p => p.Tickets, ticket);
+            upcomingCollection.UpdateOne(filter, update);
+        }
+        public void RemoveTicket(Guid performanceId, Guid ticketId)
+        {
+            var filter = Builders<Performance>.Filter.Eq(s => s.Id, performanceId);
+            var update = Builders<Performance>.Update.PullFilter(s => s.Tickets, z => z.Id == ticketId);
+            upcomingCollection.UpdateOne(filter, update);
+        }
+        public void UpdatePerformance(Performance updatedPerformance)
+        {
+            var filter = Builders<Performance>.Filter.Eq(p => p.Id, updatedPerformance.Id);
+            upcomingCollection.ReplaceOne(filter, updatedPerformance);
+        }
+        public void UpdateTicket(Guid performanceId, StandardTicket updatedTicket)
+        {
+            var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
+
+            // Видалення квитка за його унікальним Id або Index
+            var pull = Builders<Performance>.Update.PullFilter(
+                p => p.Tickets,
+                t => t.Index == updatedTicket.Index
+            );
+
+            // Додати новий квиток (оновлений)
+            var push = Builders<Performance>.Update.Push(p => p.Tickets, updatedTicket);
+
+            // ⚠ Дві окремі операції — потенційно не атомарно. Рішення: ТРАНЗАКЦІЯ
+            using (var session = client.StartSession())
+            {
+                session.StartTransaction();
+
+                upcomingCollection.UpdateOne(session, filter, pull);
+                upcomingCollection.UpdateOne(session, filter, push);
+
+                session.CommitTransaction();
+            }
+        }
+        public void AddPosition(Guid performanceId, int position)
+        {
+            var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
+            var update = Builders<Performance>.Update.Push(p => p.AvailablePositions, position);
+
+            // Виконуємо оновлення
+            upcomingCollection.UpdateOne(filter, update);
+        }
+        public void RemovePosition(Guid performanceId, int position)
+        {
+            var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
+            var update = Builders<Performance>.Update.Pull(p => p.AvailablePositions, position);
+
+            // Виконуємо оновлення
+            upcomingCollection.UpdateOne(filter, update);
+        }
+
+
+
+
+    }
+}

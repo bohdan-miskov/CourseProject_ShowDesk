@@ -1,4 +1,5 @@
 ﻿using CourseProject_ShowDesk.Scripts;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceManager;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ namespace CourseProject_ShowDesk
     {
         private List<Stage> stages;
 
-        private List<Performance> performances;
+        private PerformanceManager performanceManager;
 
         private int countOfPastPerformances;
 
@@ -20,7 +21,7 @@ namespace CourseProject_ShowDesk
         {
             InitializeComponent();
             stages = new List<Stage>();
-            performances = new List<Performance>();
+            performanceManager = new PerformanceManager();
 
             labelAccountName.Text = accountName;
 
@@ -64,9 +65,9 @@ namespace CourseProject_ShowDesk
 
         private void removePerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int index = dataGridViewPerformances.CurrentRow.Index + countOfPastPerformances;
+            Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].ToString());
 
-            performances.RemoveAt(index);
+            performanceManager.RemovePerformance(id);
 
             UpdateDataGridPerformances();
             DisableEditAndRemoveStage();
@@ -117,7 +118,7 @@ namespace CourseProject_ShowDesk
 
             SortPerformancesByDate();
 
-            foreach (Performance performance in performances)
+            foreach (Performance performance in performanceManager.Performances)
             {
                 if (performance.PerformanceDateTime > DateTime.Now)
                 {
@@ -138,7 +139,7 @@ namespace CourseProject_ShowDesk
             editPerformanceToolStripMenuItem1.Enabled = false;
             removePerformanceToolStripMenuItem1.Enabled = false;
 
-            foreach (Performance performance in performances)
+            foreach (Performance performance in performanceManager.Performances)
             {
                 if (performance.PerformanceDateTime < DateTime.Now)
                 {
@@ -163,21 +164,21 @@ namespace CourseProject_ShowDesk
                 );
         }
 
-        private void SortPerformancesByDate()
-        {
-            for(int i=0; i<performances.Count-1; i++)
-            {
-                for(int j=0; j<performances.Count-i-1;  j++)
-                {
-                    if (performances[j].PerformanceDateTime > performances[j+1].PerformanceDateTime)
-                    {
-                        Performance tempPerformance=performances[j];
-                        performances[j] = performances[j + 1];
-                        performances[j + 1] = tempPerformance;
-                    }
-                }
-            }
-        }
+        //private void SortPerformancesByDate()
+        //{
+        //    for(int i=0; i<performanceManager.Performances.Count-1; i++)
+        //    {
+        //        for(int j=0; j< performanceManager.Performances.Count-i-1;  j++)
+        //        {
+        //            if (performances[j].PerformanceDateTime > performances[j+1].PerformanceDateTime)
+        //            {
+        //                Performance tempPerformance=performances[j];
+        //                performances[j] = performances[j + 1];
+        //                performances[j + 1] = tempPerformance;
+        //            }
+        //        }
+        //    }
+        //}
 
 
         private string GetStageName(int stageIndex)
@@ -230,26 +231,26 @@ namespace CourseProject_ShowDesk
             return counter;
         }
 
-        private void SavePerformancesToFile()
-        {
-            FileHandler.SaveListToJson(AppConstants.PerformancesFileName, performances);
-        }
+        //private void SavePerformancesToFile()
+        //{
+        //    FileHandler.SaveListToJson(AppConstants.PerformancesFileName, performances);
+        //}
 
-        private void LoadPerformancesFromFile()
-        {
-            if (File.Exists(AppConstants.PerformancesFileName))
-            {
-                performances = FileHandler.LoadListFromJson<Performance>(AppConstants.PerformancesFileName);
-            }
-            else
-            {
-                MessageBox.Show(
-                                $"File {AppConstants.PerformancesFileName} not found",
-                                "Load performances error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
+        //private void LoadPerformancesFromFile()
+        //{
+        //    if (File.Exists(AppConstants.PerformancesFileName))
+        //    {
+        //        performances = FileHandler.LoadListFromJson<Performance>(AppConstants.PerformancesFileName);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show(
+        //                        $"File {AppConstants.PerformancesFileName} not found",
+        //                        "Load performances error",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void LoadStagesFromFile()
         {
@@ -267,20 +268,20 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        private void FliterPerformancesByDate()
-        {
-            List<Performance> filteredPerformances = new List<Performance>();
+        //private void FliterPerformancesByDate()
+        //{
+        //    List<Performance> filteredPerformances = new List<Performance>();
 
-            foreach(Performance performance in performances)
-            {
-                if((DateTime.Now - performance.PerformanceDateTime).Days < AppConstants.RangeDateOfPastPerformances)
-                {
-                    filteredPerformances.Add(performance);
-                }
-            }
+        //    foreach(Performance performance in performances)
+        //    {
+        //        if((DateTime.Now - performance.PerformanceDateTime).Days < AppConstants.RangeDateOfPastPerformances)
+        //        {
+        //            filteredPerformances.Add(performance);
+        //        }
+        //    }
 
-            performances = filteredPerformances;
-        }
+        //    performances = filteredPerformances;
+        //}
 
         private void DisableEditAndRemoveStage()
         {
@@ -303,35 +304,35 @@ namespace CourseProject_ShowDesk
 
         private void AddPerformance()
         {
-            AddPerformanceForm addPerformanceForm = new AddPerformanceForm(stages, performances);
+            AddEditPerformanceForm addPerformanceForm = new AddEditPerformanceForm(stages, performanceManager.Performances);
             this.Hide();
             addPerformanceForm.ShowDialog();
             this.Show();
 
             if (addPerformanceForm.GetIsValid())
             {
-                performances.Add(addPerformanceForm.GetNewPerformance());
+                performanceManager.AddPerformance(addPerformanceForm.GetPerformance());
             }
         }
 
         private void EditPerformance()
         {
-            int index = dataGridViewPerformances.CurrentRow.Index + countOfPastPerformances;
+            Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].Value.ToString());
 
-            EditPerformanceForm editPerformanceForm = new EditPerformanceForm(stages, performances, index);
+            AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(stages, performanceManager.Performances, performanceManager.GetById(id));
             this.Hide();
             editPerformanceForm.ShowDialog();
             this.Show();
 
             if (editPerformanceForm.GetIsValid())
             {
-                performances[index] = editPerformanceForm.GetNewPerformance();
+                performanceManager.UpdatePerformance(editPerformanceForm.GetPerformance());
             }
         }
 
         private void OpenRevenue()
         {
-            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performances);
+            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performanceManager.Performances);
             this.Hide();
             viewRevenueForm.ShowDialog();
             this.Show();

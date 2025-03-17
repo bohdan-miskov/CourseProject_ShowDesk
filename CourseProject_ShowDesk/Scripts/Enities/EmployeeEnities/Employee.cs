@@ -9,6 +9,7 @@ namespace CourseProject_ShowDesk.Scripts
 {
     public class Employee
     {
+        private readonly Guid id = Guid.NewGuid();
         private string fullName;
         private string login;
         private string password;
@@ -16,7 +17,7 @@ namespace CourseProject_ShowDesk.Scripts
 
         public Employee() 
         {
-            professionList=new List<string>();
+            professionList =new List<string>();
         }
 
         public Employee(string fullName, string login, string password)
@@ -26,7 +27,13 @@ namespace CourseProject_ShowDesk.Scripts
             this.password = password;
             this.professionList = new List<string>();
         }
-
+        public Guid Id
+        {
+            get
+            {
+                return id;
+            }
+        }
         public string FullName
         {
             get

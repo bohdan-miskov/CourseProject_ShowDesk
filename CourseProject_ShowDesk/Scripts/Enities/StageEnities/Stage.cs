@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CourseProject_ShowDesk.Scripts.Enities;
+using CourseProject_ShowDesk.Scripts.Utilities;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace CourseProject_ShowDesk
 {
@@ -8,25 +12,33 @@ namespace CourseProject_ShowDesk
     [Serializable]
     public class Stage
     {
+        [BsonId]
+        private Guid id = Guid.NewGuid();
         private int index;
         private string name;
         private List<Zone> zones;
         private List<Seat> seatList;
         private List<DecorativeElement> decorList;
 
-        public Stage()
-        {
-            index = 0;
-            name = "";
-            zones = new List<Zone>();
-        }
+        //public Stage()
+        //{
+        //    index = 0;
+        //    name = "";
+        //    zones = new List<Zone>();
+        //}
         public Stage(int index, string name)
         {
             Index = index;
             Name = name;
             zones = new List<Zone>();
         }
-
+        public Guid Id
+        {
+            get
+            {
+                return id;
+            }
+        }
         public int Index
         {
             get
@@ -100,9 +112,10 @@ namespace CourseProject_ShowDesk
         public void AddZone(Zone zone)
         { 
             zones.Add(zone);
+            UpdateZoneSeats(zone);
         }
 
-        public bool CheckZonePositions(int startPosition, int endPosition, int currentZoneIndex)
+        public bool CheckZonePositions(int startPosition, int endPosition, Zone currentZone)
         {
 
             if (startPosition < 0 || endPosition < 0)
@@ -112,14 +125,14 @@ namespace CourseProject_ShowDesk
 
             if (zones.Count > 0)
             {
-                for (int i = 0; i < zones.Count; i++)
+                foreach(Zone zone in zones) 
                 {
                     if (!(
-                        (startPosition < zones[i].StartPosition && endPosition < zones[i].StartPosition) ||
-                        (startPosition > zones[i].EndPosition && endPosition > zones[i].EndPosition))
+                        (startPosition < zone.StartPosition && endPosition < zone.StartPosition) ||
+                        (startPosition > zone.EndPosition && endPosition > zone.EndPosition))
                         )
                     {
-                        if (currentZoneIndex != i)
+                        if (currentZone.Id!=zone.Id)
                         {
                             return false;
                         }
@@ -130,25 +143,49 @@ namespace CourseProject_ShowDesk
             return true;
         }
 
-        public Zone GetZone(int index)
+        public Zone GetZone(Guid zoneId)
         {
-            if (index < 0 || index >= zones.Count)
+            var zone = zones.FirstOrDefault(z => z.Id == zoneId);
+            if (zone == null)
             {
-                throw new ArgumentOutOfRangeException(nameof(index), "Zone index is out of range.");
+                throw new ArgumentException("Zone with the given id does not exist.", nameof(zoneId));
             }
 
-            return zones[index];
+            return zone;
         }
 
-        public void RemoveZone(int index)
+
+        public void RemoveZone(Guid zoneId)
         {
-            if (index < 0 || index >= zones.Count)
+            var zoneToRemove = zones.FirstOrDefault(z => z.Id == zoneId);
+            if (zoneToRemove == null)
             {
-                throw new ArgumentOutOfRangeException(nameof(index), "Zone index is out of range.");
+                throw new ArgumentException("Zone with the given id does not exist.", nameof(zoneId));
             }
 
-            zones.RemoveAt(index);
+            zones.Remove(zoneToRemove);
+            //new Stage
+        }
 
+        private void UpdateZoneSeats(Zone zone)
+        {
+            for (int i = zone.StartPosition-1; i <= zone.EndPosition-1; i++)
+            {
+                seatList[i].CurrentZone = zone;
+            }
+        }
+
+        public void UpdateZone(Zone newZone)
+        {
+            var zoneToUpdate = zones.FirstOrDefault(z => z.Id == newZone.Id);
+            if (zoneToUpdate == null)
+            {
+                throw new ArgumentException("Zone with the given id does not exist.", nameof(newZone.Id));
+            }
+
+            var index = zones.IndexOf(zoneToUpdate);
+            zones[index] = newZone;
+            UpdateZoneSeats(newZone);
         }
 
         public int GetTotalPositions()
@@ -177,7 +214,5 @@ namespace CourseProject_ShowDesk
 
             return positions;
         }
-
-
     }
 }

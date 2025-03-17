@@ -1,4 +1,5 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -12,11 +13,11 @@ namespace CourseProject_ShowDesk
 
         private Stage stage;
 
-        private int zoneIndex=-1;
+        private Zone currentZone;
 
         private Color color = Color.LightBlue;
 
-        public AddEditZoneForm(Stage stage, int? zoneIndex)
+        public AddEditZoneForm(Stage stage, Zone zone=null)
         {
             InitializeComponent();
 
@@ -26,10 +27,10 @@ namespace CourseProject_ShowDesk
             numericUpDownStartPosition.Minimum = 1;
             numericUpDownEndPosition.Maximum = stage.SeatList.Count;
             textBoxColor.Text = color.Name;
+            this.currentZone = zone;
 
-            if (zoneIndex != null)
+            if (zone != null)
             {
-                this.zoneIndex = Convert.ToInt32(zoneIndex);
                 PopulateFields();
             }
 
@@ -108,10 +109,10 @@ namespace CourseProject_ShowDesk
 
         private void PopulateFields()
         {
-            textBoxZoneName.Text = stage.GetZone(zoneIndex).Name;
-            numericUpDownIncrease.Value = Convert.ToDecimal(stage.GetZone(zoneIndex).Increase);
-            numericUpDownStartPosition.Value = stage.GetZone(zoneIndex).StartPosition;
-            numericUpDownEndPosition.Value = stage.GetZone(zoneIndex).EndPosition;
+            textBoxZoneName.Text = currentZone.Name;
+            numericUpDownIncrease.Value = Convert.ToDecimal(currentZone.Increase);
+            numericUpDownStartPosition.Value = currentZone.StartPosition;
+            numericUpDownEndPosition.Value = currentZone.EndPosition;
         }
 
         private void PopulateSeating()
@@ -132,11 +133,11 @@ namespace CourseProject_ShowDesk
             {
                 color = colorDialog.Color;
                 textBoxColor.Text = color.Name;
-                SeatinColorChange();
+                SeatingColorChange();
             }
         }
 
-        private void SeatinColorChange()
+        private void SeatingColorChange()
         {
             int startIndex = Convert.ToInt32(numericUpDownStartPosition.Value);
             int endIndex = Convert.ToInt32(numericUpDownEndPosition.Value);
@@ -160,25 +161,18 @@ namespace CourseProject_ShowDesk
 
         private void AddZone()
         {
-            int startPosition = Convert.ToInt32(numericUpDownStartPosition.Value);
-            int endPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
-            string zoneName = textBoxZoneName.Text;
-            double increase = Convert.ToDouble(numericUpDownIncrease.Value);
+            //AddZoneForSeats(startPosition-1, endPosition-1, newZone);
 
-            Zone newZone = new Zone(zoneName, increase, startPosition, endPosition, color);
-
-            AddZoneForSeats(startPosition-1, endPosition-1, newZone);
-
-            if (zoneIndex != -1)
+            if (currentZone == null)
             {
-                stage.Zones[zoneIndex] = newZone;
+                currentZone = new Zone();
             }
-            else
-            {
-                stage.AddZone(newZone);
-            }
+
+            currentZone.StartPosition = Convert.ToInt32(numericUpDownStartPosition.Value);
+            currentZone.EndPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
+            currentZone.Name = textBoxZoneName.Text;
+            currentZone.Increase = Convert.ToDouble(numericUpDownIncrease.Value);
         }
-
         private bool ValidateOfZone()
         {
             if (!ValidateOfZoneName()) return false;
@@ -225,7 +219,7 @@ namespace CourseProject_ShowDesk
             int startPosition = Convert.ToInt32(numericUpDownStartPosition.Value);
             int endPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
 
-            if (!stage.CheckZonePositions(startPosition, endPosition, zoneIndex))
+            if (!stage.CheckZonePositions(startPosition, endPosition, currentZone))
             {
                 MessageBox.Show(
                 "The starting position cannot be larger than the final position and the range of positions in the new sector cannot intersect with any range of positions in another sector of the hall",
@@ -239,17 +233,17 @@ namespace CourseProject_ShowDesk
             return true;
         }
 
-        private void AddZoneForSeats(int startIndex, int endIndex, Zone zone)
-        {
-            for(int i=startIndex; i<=endIndex; i++)
-            {
-                stage.SeatList[i].CurrentZone = zone;
-            }
-        }
+        //private void AddZoneForSeats(int startIndex, int endIndex, Zone zone)
+        //{
+        //    for(int i=startIndex; i<=endIndex; i++)
+        //    {
+        //        stage.SeatList[i].CurrentZone = zone;
+        //    }
+        //}
 
-        public Stage GetStage()
+        public Zone GetZone()
         {
-            return stage;
+            return currentZone;
         }
 
         public bool GetIsValid()

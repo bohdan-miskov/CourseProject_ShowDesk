@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts.Utilities;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Web.UI;
 
@@ -7,32 +10,49 @@ namespace CourseProject_ShowDesk
     [Serializable]
     public class Performance
     {
+        [BsonIgnore]
+        private readonly PerformanceBaseService performanceBaseService;
+        [BsonId]
+        private readonly Guid id = Guid.NewGuid();
         private string name;
         private double price;
         private DateTime performanceDateTime;
+        private List<int> availablePositions;
         private TimeSpan duration;
-        private int stageIndex;
+        private Guid stageId;
         private List<StandardTicket> tickets;
 
-        public Performance()
+        //public Performance()
+        //{
+        //    name = "";
+        //    price = 0.0;
+        //    performanceDateTime = DateTime.Now;
+        //    duration=TimeSpan.MinValue;
+        //    stageIndex = -1;
+        //    tickets = new List<StandardTicket>();
+        //}
+        public Performance(PerformanceBaseService performanceBaseService)
         {
-            name = "";
-            price = 0.0;
-            performanceDateTime = DateTime.Now;
-            duration=TimeSpan.MinValue;
-            stageIndex = -1;
+            this.performanceBaseService = performanceBaseService;
             tickets = new List<StandardTicket>();
         }
-        public Performance(string name, double price, DateTime performanceDateTime,TimeSpan duration, int stageIndex)
+        public Performance(string name, double price, DateTime performanceDateTime,TimeSpan duration, Guid stageId, List<int> availablePositions)
         {
             Name = name;
             Price = price;
             PerformanceDateTime = performanceDateTime;
             Duration = duration;
-            StageIndex = stageIndex;
+            StageId = stageId;
             tickets = new List<StandardTicket>();
+            this.availablePositions = availablePositions;
         }
-
+        public Guid Id
+        {
+            get
+            {
+                return id;
+            }
+        }
         public string Name
         {
             get
@@ -98,19 +118,26 @@ namespace CourseProject_ShowDesk
             }
         }
 
-        public int StageIndex
+        public Guid StageId
         {
             get
             {
-                return stageIndex;
+                return stageId;
             }
             set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(StageIndex), "Stage index cannot be negative.");
-                }
-                stageIndex = value;
+                stageId = value;
+            }
+        }
+        public List<int> AvailablePositions
+        {
+            get
+            {
+                return availablePositions;
+            }
+            set
+            {
+                availablePositions = value;
             }
         }
         public List<StandardTicket> Tickets
@@ -135,30 +162,55 @@ namespace CourseProject_ShowDesk
             {
                 throw new ArgumentNullException(nameof(newTicket), "Ticket cannot be null.");
             }
+            availablePositions.Remove(newTicket.Position);
             tickets.Add(newTicket);
+
+            performanceBaseService.RemovePosition(this.id, newTicket.Position);
+            performanceBaseService.AddTicket(this.id, newTicket);
+
         }
 
-        public void ChangeTicketStatus(int ticketIndex)
+        public void ChangeTicketStatus(Guid ticketId)
         {
-            if (ticketIndex < 0 || ticketIndex >= tickets.Count)
+            var existingTicket = tickets.FirstOrDefault(s => s.Id == ticketId);
+            if (existingTicket != null)
             {
-                throw new ArgumentOutOfRangeException(nameof(ticketIndex), "Ticket index is out of range.");
+                int index = tickets.IndexOf(existingTicket);
+                tickets[index].ChangeStatus();
+                performanceBaseService.UpdateTicket(this.id, tickets[index]);
             }
-            tickets[ticketIndex].ChangeStatus();
         }
 
-        public void RemoveTicket(int ticketIndex)
+        public void RemoveTicket(Guid ticketId)
         {
-            if (ticketIndex < 0 || ticketIndex >= tickets.Count)
+            StandardTicket ticket = tickets.FirstOrDefault(p => p.Id == ticketId);
+            if (ticket != null)
             {
-                throw new ArgumentOutOfRangeException(nameof(ticketIndex), "Ticket index is out of range.");
+                tickets.Remove(ticket);
+                availablePositions.Add(ticket.Position);
+                availablePositions.Sort();
+                performanceBaseService.RemoveTicket(this.id, ticketId);
+                performanceBaseService.AddPosition(this.id, ticket.Position);
             }
-            tickets.RemoveAt(ticketIndex);
         }
 
-        public void RemoveAllTickets()
+        //public void RemoveAllTickets()
+        //{
+        //    tickets.Clear();
+        //}
+        public StandardTicket GetTicketById(Guid id)
         {
-            tickets.Clear();
+            return tickets.FirstOrDefault(s => s.Id == id);
+        }
+        public void UpdateTicket(StandardTicket updatedTicket)
+        {
+            var existingTicket = tickets.FirstOrDefault(s => s.Id == updatedTicket.Id);
+            if (existingTicket != null)
+            {
+                int index = tickets.IndexOf(existingTicket);
+                tickets[index] = updatedTicket;
+                performanceBaseService.UpdateTicket(this.id, updatedTicket);
+            }
         }
 
         public double GetRevenue()

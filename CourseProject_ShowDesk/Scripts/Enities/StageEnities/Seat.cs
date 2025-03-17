@@ -11,6 +11,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities
 {
     public class Seat
     {
+        private readonly Guid id = Guid.NewGuid();
         private int seatNumber;
         private bool isAvailable = true;
         private Zone currentZone;
@@ -26,7 +27,13 @@ namespace CourseProject_ShowDesk.Scripts.Enities
             Location = location;
             CurrentZone = new Zone();
         }
-
+        public Guid Id
+        {
+            get
+            {
+                return id;
+            }
+        }
         public int SeatNumber
         {
             get

@@ -7,6 +7,7 @@ namespace CourseProject_ShowDesk
 
     public class StandardTicket
     {
+        protected readonly Guid id = Guid.NewGuid();
         protected int index;
         protected int position;
         protected double calculatedPrice;
@@ -28,6 +29,13 @@ namespace CourseProject_ShowDesk
             Index = index;
             Position = position;
             Reserved = reserved;
+        }
+        public Guid Id
+        {
+            get
+            {
+                return id;
+            }
         }
         public int Index
         {

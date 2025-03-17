@@ -1,4 +1,5 @@
 ﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using System;
 using System.Windows.Forms;
 
@@ -71,9 +72,9 @@ namespace CourseProject_ShowDesk
 
         private void removeZoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int index = dataGridViewZones.CurrentRow.Index;
+            Guid zoneId = Guid.Parse(dataGridViewZones.CurrentRow.Cells[0].Value.ToString());
 
-            stage.RemoveZone(index);
+            stage.RemoveZone(zoneId);
 
             UpdateDataGridZones();
             DisableEditAndRemoveZone();
@@ -120,6 +121,7 @@ namespace CourseProject_ShowDesk
         private void AddZoneToDateGrid(Zone zone)
         {
             dataGridViewZones.Rows.Add(
+                zone.Id,
                 zone.Name, 
                 zone.Increase, 
                 zone.StartPosition, 
@@ -135,22 +137,22 @@ namespace CourseProject_ShowDesk
 
             if (addZoneForm.GetIsValid())
             {
-                stage = addZoneForm.GetStage();
+                stage.AddZone(addZoneForm.GetZone());
             }
         }
 
         private void EditZone()
         {
-            int index = dataGridViewZones.CurrentRow.Index;
-
-            AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, index);
+            Guid zoneId = Guid.Parse(dataGridViewZones.CurrentRow.Cells[0].Value.ToString());
+            
+            AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, stage.GetZone(zoneId));
             this.Hide();
             editZoneForm.ShowDialog();
             this.Show();
 
             if (editZoneForm.GetIsValid())
             {
-                stage = editZoneForm.GetStage();
+                stage.UpdateZone(editZoneForm.GetZone());
             }
         }
         

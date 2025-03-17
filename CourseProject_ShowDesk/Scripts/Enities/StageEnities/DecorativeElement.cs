@@ -10,7 +10,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities
 {
     public class DecorativeElement
     {
-        private int decorId;
+        private readonly Guid id = Guid.NewGuid();
         private Color color = Color.LightGray;
         public Point Location;
         public Size Size = new Size(50, 50);
@@ -20,22 +20,15 @@ namespace CourseProject_ShowDesk.Scripts.Enities
         // Конструктор
         public DecorativeElement(Point location)
         {
-
             Location = location;
-            decorId =(int)(DateTime.Now.Ticks%1000000) *new Random().Next(1, 10)/10;
         }
 
-        public int DecorId
+        public Guid Id
         {
             get
             {
-                return decorId;
+                return id;
             }
-            set
-            {
-                decorId = value;
-            }
-
         }
 
         public Color Color
@@ -61,7 +54,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities
         {
             Panel panel = new Panel
             {
-                Name = this.DecorId.ToString(),
+                Name = this.Id.ToString(),
                 Size = this.Size,
                 Location = this.Location,
                 BackColor = this.Color,
