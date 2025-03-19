@@ -1,4 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts;
+using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,7 +8,7 @@ using System.Web.UI;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class ViewRevenueForm : MetroFramework.Forms.MetroForm
     {

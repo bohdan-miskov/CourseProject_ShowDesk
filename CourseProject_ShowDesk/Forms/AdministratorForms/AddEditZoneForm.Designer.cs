@@ -1,4 +1,4 @@
-﻿namespace CourseProject_ShowDesk
+﻿namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
     partial class AddEditZoneForm
     {

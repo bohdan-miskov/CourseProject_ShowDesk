@@ -1,9 +1,10 @@
 ﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
-using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
     public partial class EditStageForm : MetroFramework.Forms.MetroForm
     {
@@ -87,20 +88,21 @@ namespace CourseProject_ShowDesk
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (ValidateOfStage())
+            SaveStage();
+            StageValidator validator=new StageValidator();
+            if (validator.Validate(stage, out string errorMessage))
             {
                 isValid = true;
-
-                SaveStage();
-
                 this.Close();
             }
+            MessageBox.Show(
+                                errorMessage,
+                                "Stage error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
         }
 
-        private void EditStageForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
+        
 
         private void ShowStage()
         {
@@ -173,29 +175,6 @@ namespace CourseProject_ShowDesk
         private void SaveStage()
         {
             stage.Name = textBoxStageName.Text;
-        }
-
-        private bool ValidateOfStage()
-        {
-            if(!ValidateOfStageName()) return false;
-
-            return true;
-        }
-
-        private bool ValidateOfStageName()
-        {
-            if (!ParametersValidator.NameValidator(textBoxStageName.Text))
-            {
-                MessageBox.Show(
-                                "There was an error in the name of the stage: the name must be more than two characters long",
-                                "Name stage error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                textBoxStageName.Focus();
-                return false;
-            }
-
-            return true;
         }
 
         private void DisableEditAndRemoveZone()

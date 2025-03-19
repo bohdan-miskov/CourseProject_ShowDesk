@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk.Scripts.Enities
+namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
     public class Seat
     {

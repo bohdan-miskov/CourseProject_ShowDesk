@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
 
     [Serializable]

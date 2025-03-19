@@ -1,6 +1,6 @@
-﻿using CourseProject_ShowDesk.Scripts;
+﻿using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket;
 
-namespace CourseProject_ShowDesk.FactoryMethod
+namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket
 {
     public class CreateStandardPlusTicket : ICreateTicket
     {

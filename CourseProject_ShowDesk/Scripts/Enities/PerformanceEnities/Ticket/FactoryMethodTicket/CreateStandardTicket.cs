@@ -1,4 +1,4 @@
-﻿namespace CourseProject_ShowDesk.FactoryMethod
+﻿namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket
 {
     public class CreateStandardTicket : ICreateTicket
     {

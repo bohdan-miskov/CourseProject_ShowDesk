@@ -218,10 +218,10 @@
     <Compile Include="Scripts\Enities\EmployeeEnities\Employee.cs" />
     <Compile Include="Scripts\Enities\StageEnities\Seat.cs" />
     <Compile Include="Scripts\Enities\StageEnities\StageManager.cs" />
-    <Compile Include="Scripts\FactoryMethod\CreatePremiumTicket.cs" />
-    <Compile Include="Scripts\FactoryMethod\CreateStandardPlusTicket.cs" />
-    <Compile Include="Scripts\FactoryMethod\CreateStandardTicket.cs" />
-    <Compile Include="Scripts\FactoryMethod\ICreateTicket.cs" />
+    <Compile Include="Scripts\Enities\PerformanceEnities\Ticket\FactoryMethodTicket\CreatePremiumTicket.cs" />
+    <Compile Include="Scripts\Enities\PerformanceEnities\Ticket\FactoryMethodTicket\CreateStandardPlusTicket.cs" />
+    <Compile Include="Scripts\Enities\PerformanceEnities\Ticket\FactoryMethodTicket\CreateStandardTicket.cs" />
+    <Compile Include="Scripts\Enities\PerformanceEnities\Ticket\FactoryMethodTicket\ICreateTicket.cs" />
     <Compile Include="Forms\CashierForms\AddEditPerformanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,10 +252,6 @@
     <Compile Include="Forms\CashierForms\BuyTicketForm.Designer.cs">
       <DependentUpon>BuyTicketForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CashierForms\EditPerformanceForm.cs" />
-    <Compile Include="Forms\CashierForms\EditPerformanceForm.Designer.cs">
-      <DependentUpon>EditPerformanceForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\AdministratorForms\EditStageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -271,8 +267,9 @@
     <Compile Include="Scripts\Utilities\DataBaseService\EmployeeBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\PerformanceBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\StageBaseService.cs" />
+    <Compile Include="Scripts\Utilities\Validators\EmployeeValidator.cs" />
     <Compile Include="Scripts\Utilities\Validators\ParametersValidator.cs" />
-    <Compile Include="Scripts\Utilities\FileHandler.cs" />
+    <Compile Include="Scripts\Utilities\FileService\FileHandler.cs" />
     <Compile Include="Forms\CashierForms\ManagePerformancesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +297,8 @@
     </Compile>
     <Compile Include="Scripts\Enities\StageEnities\Zone.cs" />
     <Compile Include="Scripts\Utilities\Validators\PerformanceValidator.cs" />
+    <Compile Include="Scripts\Utilities\Validators\StageValidator.cs" />
+    <Compile Include="Scripts\Utilities\Validators\ZoneValidator.cs" />
     <EmbeddedResource Include="Forms\AdministratorForms\AddEditSeatingForm.resx">
       <DependentUpon>AddEditSeatingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,9 +322,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CashierForms\BuyTicketForm.resx">
       <DependentUpon>BuyTicketForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CashierForms\EditPerformanceForm.resx">
-      <DependentUpon>EditPerformanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdministratorForms\EditStageForm.resx">
       <DependentUpon>EditStageForm.cs</DependentUpon>

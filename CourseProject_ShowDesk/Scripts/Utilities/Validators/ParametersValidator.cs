@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
 {
     public class ParametersValidator
     {

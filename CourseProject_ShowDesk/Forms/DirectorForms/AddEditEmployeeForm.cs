@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts.Utilities.Validators;
+using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk.Scripts
+namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     public partial class AddEditEmployeeForm : MetroFramework.Forms.MetroForm
     {
@@ -101,14 +104,19 @@ namespace CourseProject_ShowDesk.Scripts
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
-            if(ValidateOfEmployee())
+            CreateEmployee();
+            EmployeeValidator validator = new EmployeeValidator(employees);
+            if (validator.Validate(newEmployee, out string errorMessage))
             {
-                AddEmployee();
-
                 isValid = true;
 
                 this.Close();
             }
+            MessageBox.Show(
+                errorMessage,
+                "Employee error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
 
         private void AddEditEmployeeForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -133,7 +141,7 @@ namespace CourseProject_ShowDesk.Scripts
             checkBoxCashier.Checked = currentEmployee.ProfessionList.Contains(AppConstants.ListOfProfessions[2]);
         }
 
-        private void AddEmployee()
+        private void CreateEmployee()
         {
             string fullName = textBoxFullName.Text;
             string login = textBoxLogin.Text;
@@ -155,105 +163,6 @@ namespace CourseProject_ShowDesk.Scripts
             {
                 newEmployee.AddProfession(AppConstants.ListOfProfessions[2]);
             }
-        }
-
-        private bool ValidateOfEmployee()
-        {
-            if (!ValidateOfEmployeeName()) return false;
-            if (!ValidateOfEmployeeLogin()) return false;
-            if (!ValidateOfEmployeePassword()) return false;
-            if (!ValidateOfEmployeeProfessions()) return false;
-
-            return true;
-        }
-
-        private bool ValidateOfEmployeeName()
-        {
-            if (!(ParametersValidator.NameValidator(textBoxFullName.Text)))
-            {
-                MessageBox.Show(
-                                "There was an error in the full name of the employee: the full name must be more than two characters long",
-                                "Full name employee error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                textBoxFullName.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool ValidateOfEmployeeLogin()
-        {
-            if (!(ParametersValidator.NameValidator(textBoxLogin.Text)))
-            {
-                MessageBox.Show(
-                                "There was an error in the login of the employee: the login must be more than two characters long",
-                                "Login employee error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                textBoxLogin.Focus();
-                return false;
-            }
-
-            if (LoginIsRepeat())
-            {
-                MessageBox.Show(
-                                "There was an error in the login of the employee: the login must not be repeat",
-                                "Login employee error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                textBoxLogin.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool ValidateOfEmployeePassword()
-        {
-            if (!(ParametersValidator.PasswordValidator(textBoxPassword.Text)))
-            {
-
-                MessageBox.Show(
-                                "There was an error in the password of the employee: the password must be more than seven characters long",
-                                "Password employee error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                textBoxPassword.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool ValidateOfEmployeeProfessions()
-        {
-            if (!(checkBoxDirector.Checked || checkBoxAdministrator.Checked || checkBoxCashier.Checked))
-            {
-                MessageBox.Show(this,
-                                "There was an error in the check boxes professions of the employee: at least one profession must be chosen",
-                                "СheckBoxProfession employee error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                checkBoxCashier.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        private bool LoginIsRepeat()
-        {
-            foreach (Employee employee in employees)
-            {
-                if (textBoxLogin.Text == employee.Login)
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         public bool GetIsValid()

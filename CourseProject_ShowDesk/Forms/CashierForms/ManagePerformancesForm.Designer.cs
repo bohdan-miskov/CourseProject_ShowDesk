@@ -1,4 +1,4 @@
-﻿namespace CourseProject_ShowDesk
+﻿namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     partial class ManagePerformancesForm
     {
@@ -73,7 +73,7 @@
             this.dataGridViewPerformances.AllowUserToAddRows = false;
             this.dataGridViewPerformances.AllowUserToDeleteRows = false;
             this.dataGridViewPerformances.AllowUserToResizeRows = false;
-            this.dataGridViewPerformances.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.dataGridViewPerformances.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPerformances.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPerformances.BackgroundColor = System.Drawing.Color.LightGray;

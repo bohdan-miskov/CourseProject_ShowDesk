@@ -1,4 +1,5 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

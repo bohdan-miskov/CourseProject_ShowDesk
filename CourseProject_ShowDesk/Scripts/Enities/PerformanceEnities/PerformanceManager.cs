@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 
-namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceManager
+namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 {
     public class PerformanceManager
     {

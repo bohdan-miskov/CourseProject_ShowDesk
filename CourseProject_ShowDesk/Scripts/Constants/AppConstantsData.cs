@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseProject_ShowDesk.Scripts
+namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public class AppConstantsData
     {

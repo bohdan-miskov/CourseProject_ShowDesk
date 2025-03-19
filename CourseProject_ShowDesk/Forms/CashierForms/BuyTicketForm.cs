@@ -1,13 +1,20 @@
-﻿using CourseProject_ShowDesk.FactoryMethod;
-using CourseProject_ShowDesk.Scripts;
+﻿using CourseProject_ShowDesk.Scripts;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class BuyTicketForm : MetroFramework.Forms.MetroForm
     {
@@ -28,6 +35,7 @@ namespace CourseProject_ShowDesk
         private List<Control> selectedControls = new List<Control>();
         private List<Seat> seatList = new List<Seat>();
         private List<StandardTicket> newTickets = new List<StandardTicket>();
+        private PerformanceBaseService dataBase = new PerformanceBaseService();
 
 
         public BuyTicketForm(Stage stage, Performance performance)
@@ -117,15 +125,33 @@ namespace CourseProject_ShowDesk
         {
             isValid = true;
             newTicket = ticket;
+            List<int> canceledPosition = CheckPositions();
+            if (canceledPosition.Count != 0)
+            {
+                MessageBox.Show(
+                     $"Sorry, follow positions sold: {canceledPosition.ToString()}",
+                     "Not available",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error);
+                UpdateAllTicketsInformation();
+            }
+            else
+            {
 
             CloseSoldPositions();
 
             this.Close();
+            }
         }
-
-        private void BuyTicketForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void UpdateAllTicketsInformation()
         {
-
+            Performance newPerformance = dataBase.GetUpdatedPerformance(performance);
+            if (newPerformance != performance)
+            {
+                performance = newPerformance;
+                PopulateComboBoxPositions();
+                PopulateSeating();
+            }
         }
 
         private void CreateTicketIndex()
@@ -256,9 +282,7 @@ namespace CourseProject_ShowDesk
 
         private List<int> GetAllPositions()
         {
-            List<int> positions = stage.GetPositions();
-
-            return positions;
+            return performance.AvailablePositions;
         }
 
         private List<int> ToFindFreePositions(List<int> positions)
@@ -521,14 +545,28 @@ namespace CourseProject_ShowDesk
 
         }
 
-        private bool isAvailable(int index)
+        private bool isAvailable(int position)
         {
-            if (seatList[index].IsAvailable)
+            if (performance.AvailablePositions.Contains(position))
             {
                 return true;
             }
 
             return false;
+        }
+
+        private List<int> CheckPositions()
+        {
+            List<int> canceledPositions = new List<int>();
+            foreach(StandardTicket ticket in newTickets)
+            {
+                if(!dataBase.IsPositionAvailable(performance.Id, ticket.Position))
+                {
+                    canceledPositions.Add(ticket.Position);
+                }
+            }
+
+            return canceledPositions;
         }
     }
     

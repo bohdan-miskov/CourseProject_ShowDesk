@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Scripts.Utilities.FileService
 {
     public class FileHandler
     {

@@ -1,11 +1,15 @@
 ﻿
-using CourseProject_ShowDesk.Scripts;
+using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Forms.AdministratorForms;
+using CourseProject_ShowDesk.Forms.CashierForms;
+using CourseProject_ShowDesk.Forms.DirectorForms;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Forms
 {
     public partial class AuthenticateForm : MetroFramework.Forms.MetroForm
     {

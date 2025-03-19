@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
+using CourseProject_ShowDesk.Scripts.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +9,7 @@ using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace CourseProject_ShowDesk.Scripts.Utilities
+namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
     public class PerformanceBaseService
     {
@@ -112,6 +115,20 @@ namespace CourseProject_ShowDesk.Scripts.Utilities
 
             // Виконуємо оновлення
             upcomingCollection.UpdateOne(filter, update);
+        }
+        public bool IsPositionAvailable(Guid performanceId, int position)
+        {
+            var filter = Builders<Performance>.Filter.And(
+                Builders<Performance>.Filter.Eq(p => p.Id, performanceId),
+                Builders<Performance>.Filter.AnyEq(p => p.AvailablePositions, position)
+            );
+
+            return upcomingCollection.Find(filter).Any();
+        }
+        public Performance GetUpdatedPerformance(Performance performance)
+        {
+            var filter = Builders<Performance>.Filter.Eq(p => p.Id, performance.Id);
+            return upcomingCollection.Find(filter).FirstOrDefault();
         }
 
 

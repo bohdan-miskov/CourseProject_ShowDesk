@@ -6,7 +6,7 @@ using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
 
     [Serializable]
@@ -20,12 +20,12 @@ namespace CourseProject_ShowDesk
         private List<Seat> seatList;
         private List<DecorativeElement> decorList;
 
-        //public Stage()
-        //{
-        //    index = 0;
-        //    name = "";
-        //    zones = new List<Zone>();
-        //}
+        public Stage()
+        {
+            index = 0;
+            name = "";
+            zones = new List<Zone>();
+        }
         public Stage(int index, string name)
         {
             Index = index;

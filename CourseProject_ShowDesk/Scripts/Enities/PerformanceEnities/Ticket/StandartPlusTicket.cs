@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CourseProject_ShowDesk.Scripts
+namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
 {
     public class StandardPlusTicket : StandardTicket
     {
@@ -8,9 +8,9 @@ namespace CourseProject_ShowDesk.Scripts
 
         public StandardPlusTicket()
         {
-            typeIncrease = AppConstants.StandardPlusIncrease;
-            type = AppConstants.ListOfTicketTypes[1];
-            drink = AppConstants.ListOfDrinks[0];
+            //typeIncrease = AppConstants.StandardPlusIncrease;
+            //type = AppConstants.ListOfTicketTypes[1];
+            //drink = AppConstants.ListOfDrinks[0];
         }
 
         public StandardPlusTicket(int index, int position, bool reserved, string drink) : base(index, position, reserved)

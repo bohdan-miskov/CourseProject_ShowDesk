@@ -1,12 +1,13 @@
 ﻿using CourseProject_ShowDesk.Scripts;
-using CourseProject_ShowDesk.Scripts.Enities.StageManager;
+using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
     public partial class ManageStagesForm : MetroFramework.Forms.MetroForm
     {

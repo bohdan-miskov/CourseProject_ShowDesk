@@ -1,11 +1,13 @@
 ﻿using CourseProject_ShowDesk.Scripts.Utilities;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Web.UI;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 {
     [Serializable]
     public class Performance
@@ -161,6 +163,10 @@ namespace CourseProject_ShowDesk
             if (newTicket == null)
             {
                 throw new ArgumentNullException(nameof(newTicket), "Ticket cannot be null.");
+            }
+            if (!availablePositions.Contains(newTicket.Position))
+            {
+                throw new ArgumentNullException(nameof(newTicket), "Current position sold");
             }
             availablePositions.Remove(newTicket.Position);
             tickets.Add(newTicket);

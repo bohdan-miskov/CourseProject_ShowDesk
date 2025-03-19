@@ -1,11 +1,12 @@
 ﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
-using CourseProject_ShowDesk.Scripts.Enities;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
     public partial class AddStageForm : MetroFramework.Forms.MetroForm
     {
@@ -47,18 +48,12 @@ namespace CourseProject_ShowDesk
         {
             SaveStage();
         }
-
-        private void AddStageForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
         private void SaveStage()
         {
-            if (ValidateOfStage())
+            newStage = CreateStage();
+            StageValidator validator = new StageValidator();
+            if (validator.Validate(newStage,out string errorMessage))
             {
-
-                AddStage();
-
                 AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(null);
                 this.Hide();
                 addSeatingForm.ShowDialog();
@@ -73,35 +68,18 @@ namespace CourseProject_ShowDesk
                     this.Close();
                 }
             }
+            MessageBox.Show(
+                                errorMessage,
+                                "Stage error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
         }
 
-        private void AddStage()
+        private Stage CreateStage()
         {
             string stageName = textBoxStageName.Text;
 
-            newStage = new Stage(index, stageName);    
-        }
-
-        private bool ValidateOfStage()
-        {
-            if (!ValidateOfStageName()) return false;
-
-            return true;
-        }
-
-        private bool ValidateOfStageName()
-        {
-            if (!ParametersValidator.NameValidator(textBoxStageName.Text))
-            {
-                MessageBox.Show(
-                                "There was an error in the name of the stage: the name must be more than two characters long",
-                                "Stage name error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                textBoxStageName.Focus();
-                return false;
-            }
-            return true;
+            return newStage = new Stage(index, stageName);    
         }
 
         public bool GetIsValid()

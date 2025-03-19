@@ -1,4 +1,4 @@
-﻿namespace CourseProject_ShowDesk.Forms
+﻿namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     partial class SettingsForm
     {

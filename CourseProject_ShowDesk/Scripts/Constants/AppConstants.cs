@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseProject_ShowDesk.Scripts
+namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public static class AppConstants
     {

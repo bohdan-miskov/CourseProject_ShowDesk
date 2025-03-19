@@ -1,4 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts;
+using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk.Forms
+namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     public partial class SettingsForm : MetroFramework.Forms.MetroForm
     {

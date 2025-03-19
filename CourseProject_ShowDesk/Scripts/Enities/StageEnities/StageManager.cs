@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 
-namespace CourseProject_ShowDesk.Scripts.Enities.StageManager
+namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
     public class StageManager
     {

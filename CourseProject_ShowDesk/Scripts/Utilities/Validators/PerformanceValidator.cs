@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+using CourseProject_ShowDesk.Scripts.Constants;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -93,7 +95,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             // Примерний код для перевірки перетину, можливо, потрібно буде адаптувати під вашу ситуацію
             foreach (var performance in performances)
             {
-                if (performance.StageIndex == newPerformance.StageIndex)
+                if (performance.StageId == newPerformance.StageId)
                 {
                     if ((newPerformance.PerformanceDateTime - performance.PerformanceDateTime).Days < 1 && performance.Id != newPerformance.Id)
                     {

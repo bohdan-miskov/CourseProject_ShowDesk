@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace CourseProject_ShowDesk.Scripts
+namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 {
     public class Employee
     {

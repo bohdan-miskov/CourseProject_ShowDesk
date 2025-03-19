@@ -1,7 +1,7 @@
 ﻿using CourseProject_ShowDesk.Scripts;
 using System;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
 {
     [Serializable]
 
@@ -21,8 +21,8 @@ namespace CourseProject_ShowDesk
             position = 0;
             calculatedPrice = 0.0;
             reserved = false;
-            type = AppConstants.ListOfTicketTypes[0];
-            typeIncrease = AppConstants.StandardIncrease;
+            //type = AppConstants.ListOfTicketTypes[0];
+            //typeIncrease = AppConstants.StandardIncrease;
         }
         public StandardTicket(int index, int position, bool reserved)
         {

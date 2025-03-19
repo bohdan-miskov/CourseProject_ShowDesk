@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Constants;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +13,7 @@ using System.IO;
 using CourseProject_ShowDesk.Forms;
 using System.Reflection;
 
-namespace CourseProject_ShowDesk.Scripts
+namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     public partial class ManageEmployeesForm : MetroFramework.Forms.MetroForm
     {

@@ -1,4 +1,4 @@
-﻿namespace CourseProject_ShowDesk.Scripts
+﻿namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     partial class AddEditEmployeeForm
     {

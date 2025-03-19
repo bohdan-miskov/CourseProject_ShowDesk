@@ -1,11 +1,14 @@
 ﻿using CourseProject_ShowDesk.Scripts;
-using CourseProject_ShowDesk.Scripts.Enities.StageManager;
+using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class AddEditPerformanceForm : MetroFramework.Forms.MetroForm
     {
@@ -41,7 +44,7 @@ namespace CourseProject_ShowDesk
             }
             else
             {
-                this.currentPerformance = new Performance();
+                this.currentPerformance = new Performance(new PerformanceBaseService());
             }
         }
 
@@ -161,7 +164,7 @@ namespace CourseProject_ShowDesk
         }
         private Performance CreatePerformance()
         {
-            Performance newPerformance = new Performance();
+            Performance newPerformance = new Performance(new PerformanceBaseService());
             newPerformance.Name= textBoxPerformanceName.Text;
             newPerformance.PerformanceDateTime= dateTimePickerPerfomanceDate.Value;
             newPerformance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);

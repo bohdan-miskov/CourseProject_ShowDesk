@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CourseProject_ShowDesk.Scripts.Utilities.FileService;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
-namespace CourseProject_ShowDesk.Scripts
+namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public static class AppCostantsManager
     {

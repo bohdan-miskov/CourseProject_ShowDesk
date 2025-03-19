@@ -1,11 +1,14 @@
 ﻿using CourseProject_ShowDesk.Scripts;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceManager;
+using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-namespace CourseProject_ShowDesk
+namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class ManagePerformancesForm : MetroFramework.Forms.MetroForm
     {
