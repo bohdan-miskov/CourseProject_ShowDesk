@@ -54,7 +54,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             StageValidator validator = new StageValidator();
             if (validator.Validate(newStage,out string errorMessage))
             {
-                AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(null);
+                AddEditSeatingForm addSeatingForm = new AddEditSeatingForm();
                 this.Hide();
                 addSeatingForm.ShowDialog();
                 this.Show();

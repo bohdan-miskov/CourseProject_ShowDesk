@@ -18,7 +18,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             InitializeComponent();
 
-            stageManager = new StageManager();
+            stageManager = new StageManager(new StageBaseService());
 
             //stages = new List<Stage>();
 

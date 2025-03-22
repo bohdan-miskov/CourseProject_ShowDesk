@@ -132,7 +132,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void AddZone()
         {
-            AddEditZoneForm addZoneForm = new AddEditZoneForm(stage, null);
+            AddEditZoneForm addZoneForm = new AddEditZoneForm(stage);
             this.Hide();
             addZoneForm.ShowDialog();
             this.Show();

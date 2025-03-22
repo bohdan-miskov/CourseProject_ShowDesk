@@ -17,12 +17,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
     {
         private List<Employee> employees;
 
-        private Employee newEmployee;
+        //private Employee newEmployee;
         private Employee currentEmployee;
 
         private bool isValid;
 
-        public AddEditEmployeeForm(List<Employee> employees, int? index)
+        public AddEditEmployeeForm(List<Employee> employees, Employee currentEmployee=null)
         {
             InitializeComponent();
 
@@ -32,10 +32,14 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             PopulateProfessionsGroup();
 
-            if (index != null)
+            if (currentEmployee != null)
             {
-                this.currentEmployee = employees[Convert.ToInt32(index)];
+                this.currentEmployee = currentEmployee;
                 PopulateFields();
+            }
+            else
+            {
+                this.currentEmployee = new Employee();
             }
         }
 
@@ -106,7 +110,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             CreateEmployee();
             EmployeeValidator validator = new EmployeeValidator(employees);
-            if (validator.Validate(newEmployee, out string errorMessage))
+            if (validator.Validate(currentEmployee, out string errorMessage))
             {
                 isValid = true;
 
@@ -143,25 +147,23 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void CreateEmployee()
         {
-            string fullName = textBoxFullName.Text;
-            string login = textBoxLogin.Text;
-            string password = textBoxPassword.Text;
-
-            newEmployee = new Employee(fullName, login, password);
+            currentEmployee.FullName = textBoxFullName.Text;
+            currentEmployee.Login = textBoxLogin.Text;
+            currentEmployee.Password = textBoxPassword.Text;
 
             if (checkBoxDirector.Checked)
             {
-                newEmployee.AddProfession(AppConstants.ListOfProfessions[0]);
+                currentEmployee.AddProfession(AppConstants.ListOfProfessions[0]);
             }
 
             if (checkBoxAdministrator.Checked)
             {
-                newEmployee.AddProfession(AppConstants.ListOfProfessions[1]);
+                currentEmployee.AddProfession(AppConstants.ListOfProfessions[1]);
             }
 
             if (checkBoxCashier.Checked)
             {
-                newEmployee.AddProfession(AppConstants.ListOfProfessions[2]);
+                currentEmployee.AddProfession(AppConstants.ListOfProfessions[2]);
             }
         }
 
@@ -172,7 +174,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         public Employee GetEmployee()
         {
-            return newEmployee;
+            return currentEmployee;
         }
     }
 }

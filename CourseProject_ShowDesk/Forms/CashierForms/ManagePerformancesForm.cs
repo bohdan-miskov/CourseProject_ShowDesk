@@ -1,5 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts;
 using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
@@ -12,26 +13,28 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class ManagePerformancesForm : MetroFramework.Forms.MetroForm
     {
-        private List<Stage> stages;
+        //private List<Stage> stages;
 
         private PerformanceManager performanceManager;
+        private StageManager stageManager;
 
-        private int countOfPastPerformances;
+       // private int countOfPastPerformances;
 
         private bool isPastPerformances = false;
 
         public ManagePerformancesForm(string accountName)
         {
             InitializeComponent();
-            stages = new List<Stage>();
-            performanceManager = new PerformanceManager();
+            //stages = new List<Stage>();
+            performanceManager = new PerformanceManager(new PerformanceBaseService());
+            stageManager = new StageManager(new StageBaseService());
 
             labelAccountName.Text = accountName;
 
-            LoadPerformancesFromFile();
-            LoadStagesFromFile();
+            //LoadPerformancesFromFile();
+            //LoadStagesFromFile();
 
-            FliterPerformancesByDate();
+            //FliterPerformancesByDate();
 
             UpdateDataGridPerformances();
 
@@ -93,7 +96,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void ManagePerformancesFormClosing(object sender, FormClosingEventArgs e)
         {
-            SavePerformancesToFile();
+            //SavePerformancesToFile();
         }
 
         private void ManagePerformancesForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -117,20 +120,20 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             addPerformanceToolStripMenuItem1.Enabled = true;
             editPerformanceToolStripMenuItem1.Enabled = true;
             removePerformanceToolStripMenuItem1.Enabled = true;
-            countOfPastPerformances = 0;
+            //countOfPastPerformances = 0;
 
-            SortPerformancesByDate();
+            //SortPerformancesByDate();
 
             foreach (Performance performance in performanceManager.Performances)
             {
-                if (performance.PerformanceDateTime > DateTime.Now)
-                {
                     AddPerformanceToDataGrid(performance);
-                }
-                else
-                {
-                    countOfPastPerformances++;
-                }
+                //if (performance.PerformanceDateTime > DateTime.Now)
+                //{
+                //}
+                //else
+                //{
+                //    countOfPastPerformances++;
+                //}
             }
         }
 
@@ -160,8 +163,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 performance.Name,
                 performance.Price.ToString()+AppConstants.CurrencySymbol.ToString(),
                 performance.Duration.ToString(),
-                GetStageName(performance.StageIndex),
-                GetTotalPositions(performance.StageIndex),
+                GetStageName(performance.StageId),
+                GetTotalPositions(performance.StageId),
                 GetSoldTickets(performance.Tickets),
                 GetReservedTickets(performance.Tickets)
                 );
@@ -184,25 +187,25 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         //}
 
 
-        private string GetStageName(int stageIndex)
+        private string GetStageName(Guid stageId)
         {
-            for (int i = 0; i < stages.Count; i++)
+            for (int i = 0; i < stageManager.Stages.Count; i++)
             {
-                if (stages[i].Index == stageIndex)
+                if (stageManager.Stages[i].Id == stageId)
                 {
-                    return stages[i].Name;
+                    return stageManager.Stages[i].Name;
                 }
             }
             return "Not found";
         }
 
-        private int GetTotalPositions(int stageIndex)
+        private int GetTotalPositions(Guid stageId)
         {
-            for (int i = 0; i < stages.Count; i++)
+            for (int i = 0; i < stageManager.Stages.Count; i++)
             {
-                if (stages[i].Index == stageIndex)
+                if (stageManager.Stages[i].Id == stageId)
                 {
-                    return stages[i].GetTotalPositions();
+                    return stageManager.Stages[i].GetTotalPositions();
                 }
             }
             return 0;
@@ -255,21 +258,21 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         //    }
         //}
 
-        private void LoadStagesFromFile()
-        {
-            if (File.Exists(AppConstants.StagesFileName))
-            {
-                stages = FileHandler.LoadListFromJson<Stage>(AppConstants.StagesFileName);
-            }
-            else
-            {
-                MessageBox.Show(
-                                $"File {AppConstants.StagesFileName} not found",
-                                "Load stages error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
+        //private void LoadStagesFromFile()
+        //{
+        //    if (File.Exists(AppConstants.StagesFileName))
+        //    {
+        //        stages = FileHandler.LoadListFromJson<Stage>(AppConstants.StagesFileName);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show(
+        //                        $"File {AppConstants.StagesFileName} not found",
+        //                        "Load stages error",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //    }
+        //}
 
         //private void FliterPerformancesByDate()
         //{
@@ -307,7 +310,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void AddPerformance()
         {
-            AddEditPerformanceForm addPerformanceForm = new AddEditPerformanceForm(stages, performanceManager.Performances);
+            AddEditPerformanceForm addPerformanceForm = new AddEditPerformanceForm(stageManager.Stages, performanceManager.Performances);
             this.Hide();
             addPerformanceForm.ShowDialog();
             this.Show();
@@ -322,7 +325,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].Value.ToString());
 
-            AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(stages, performanceManager.Performances, performanceManager.GetById(id));
+            AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(stageManager.Stages, performanceManager.Performances, performanceManager.GetById(id));
             this.Hide();
             editPerformanceForm.ShowDialog();
             this.Show();

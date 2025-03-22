@@ -17,14 +17,17 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
             database = databaseService;
             LoadFromDatabase();
         }
-
+        public List<Employee> Employees 
+        { 
+            get 
+            { 
+                return employees; 
+            } 
+        }
         public void LoadFromDatabase()
         {
             employees = database.GetAllEmployees();
         }
-
-        public List<Employee> GetAll() => employees;
-
         public Employee GetById(Guid id)
         {
             return employees.FirstOrDefault(e => e.Id == id);

@@ -1,4 +1,4 @@
-﻿
+﻿using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Forms.AdministratorForms;
@@ -13,15 +13,15 @@ namespace CourseProject_ShowDesk.Forms
 {
     public partial class AuthenticateForm : MetroFramework.Forms.MetroForm
     {
-        private List<Employee> employees;
+        private EmployeeManager employeeManager;
 
         public AuthenticateForm()
         {
             InitializeComponent();
 
-            employees = new List<Employee>();
+            employeeManager = new EmployeeManager(new EmployeeBaseService());
 
-            LoadEmployeesFromFile();
+            //LoadEmployeesFromFile();
 
             PopulateComboBox();
 
@@ -67,21 +67,21 @@ namespace CourseProject_ShowDesk.Forms
             Application.Exit();
         }
 
-        private void LoadEmployeesFromFile()
-        {
-            if (File.Exists(AppConstants.EmployeesFileName))
-            {
-                employees = FileHandler.LoadListFromJson<Employee>(AppConstants.EmployeesFileName);
-            }
-            else
-            {
-                MessageBox.Show(
-                                $"File {AppConstants.EmployeesFileName} not found",
-                                "Load employees error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
+        //private void LoadEmployeesFromFile()
+        //{
+        //    if (File.Exists(AppConstants.EmployeesFileName))
+        //    {
+        //        employees = FileHandler.LoadListFromJson<Employee>(AppConstants.EmployeesFileName);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show(
+        //                        $"File {AppConstants.EmployeesFileName} not found",
+        //                        "Load employees error",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void PopulateComboBox()
         {
@@ -165,7 +165,7 @@ namespace CourseProject_ShowDesk.Forms
 
         private string CheckAccountAndGetName(string currentProfession)
         {
-            foreach (Employee employee in employees)
+            foreach (Employee employee in employeeManager.Employees)
             {
                 if (employee.Login == textBoxLogin.Text &&
                     employee.Password == textBoxPassword.Text &&

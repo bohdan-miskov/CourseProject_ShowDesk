@@ -13,17 +13,11 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
         private List<Performance> performances;
         private PerformanceBaseService database;
 
-        public PerformanceManager()
+        public PerformanceManager(PerformanceBaseService databaseService)
         {
-            database = new PerformanceBaseService();
+            database = databaseService;
             LoadFromDatabase();
         }
-
-        public void LoadFromDatabase()
-        {
-            performances = database.GetAllUpcomingPerformances();
-        }
-
         public List<Performance> Performances
         {
             get
@@ -31,7 +25,11 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
                 return performances;
             }
         }
-
+        public void LoadFromDatabase()
+        {
+            database.MovePastPerformances();
+            performances = database.GetAllUpcomingPerformances();
+        }
         public void AddPerformance(Performance perf)
         {
             performances.Add(perf);
@@ -64,11 +62,11 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             
 
         }
-        public void FilterPastPerformances()
-        {     
-            database.MovePastPerformances();
-            performances = database.GetAllUpcomingPerformances();
-        }
+        //public void FilterPastPerformances()
+        //{     
+        //    database.MovePastPerformances();
+        //    performances = database.GetAllUpcomingPerformances();
+        //}
 
         
     }

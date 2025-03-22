@@ -12,12 +12,14 @@ using System.Windows.Forms;
 using System.IO;
 using CourseProject_ShowDesk.Forms;
 using System.Reflection;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     public partial class ManageEmployeesForm : MetroFramework.Forms.MetroForm
     {
-        private List<Employee> employees;
+        //private List<Employee> employees;
+        private EmployeeManager employeeManager;
 
         private string cipher = new string('*', 12);
 
@@ -25,11 +27,11 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             InitializeComponent();
 
-            employees = new List<Employee>();
+            employeeManager = new EmployeeManager(new EmployeeBaseService());
 
             labelAccountName.Text = accountName;
 
-            LoadEmployeesFromFile();
+            //LoadEmployeesFromFile();
 
             UpdateDataGridEmployees();
 
@@ -68,9 +70,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void removeEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int index = dataGridViewEmployees.CurrentRow.Index;
+            Guid id = Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
 
-            employees.RemoveAt(index);
+            employeeManager.RemoveEmployee(id);
 
             UpdateDataGridEmployees();
 
@@ -104,7 +106,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void ManageEmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveEmployeesToFile();
+            //SaveEmployeesToFile();
         }
 
         private void ManageEmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -125,7 +127,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             dataGridViewEmployees.Rows.Clear();
 
-            foreach (Employee employee in employees)
+            foreach (Employee employee in employeeManager.Employees)
             {
                 AddEmployeeToDataGrid(employee);
             }
@@ -134,6 +136,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         private void AddEmployeeToDataGrid(Employee employee)
         {
             dataGridViewEmployees.Rows.Add(
+                    employee.Id,
                     employee.FullName,
                     employee.Login,
                     cipher,
@@ -141,26 +144,26 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                     );
         }
 
-        private void SaveEmployeesToFile()
-        {
-            FileHandler.SaveListToJson(AppConstants.EmployeesFileName, employees);
-        }
+        //private void SaveEmployeesToFile()
+        //{
+        //    FileHandler.SaveListToJson(AppConstants.EmployeesFileName, employees);
+        //}
 
-        private void LoadEmployeesFromFile()
-        {
-            if (File.Exists(AppConstants.EmployeesFileName))
-            {
-                employees = FileHandler.LoadListFromJson<Employee>(AppConstants.EmployeesFileName);
-            }
-            else
-            {
-                MessageBox.Show(
-                                $"File {AppConstants.EmployeesFileName} not found",
-                                "Load employees error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-            }
-        }
+        //private void LoadEmployeesFromFile()
+        //{
+        //    if (File.Exists(AppConstants.EmployeesFileName))
+        //    {
+        //        employees = FileHandler.LoadListFromJson<Employee>(AppConstants.EmployeesFileName);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show(
+        //                        $"File {AppConstants.EmployeesFileName} not found",
+        //                        "Load employees error",
+        //                        MessageBoxButtons.OK,
+        //                        MessageBoxIcon.Error);
+        //    }
+        //}
 
         private void DisableEditAndRemoveEmployees()
         {
@@ -182,29 +185,29 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void AddEmployee()
         {
-            AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(employees, null);
+            AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(employeeManager.Employees);
             this.Hide();
             addEmployeeForm.ShowDialog();
             this.Show();
 
             if (addEmployeeForm.GetIsValid())
             {
-                employees.Add(addEmployeeForm.GetEmployee());
+                employeeManager.AddEmployee(addEmployeeForm.GetEmployee());
             }
         }
 
         private void EditEmployee()
         {
-            int index = dataGridViewEmployees.CurrentRow.Index;
+            Guid id = Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
 
-            AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(employees, index);
+            AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(employeeManager.Employees, employeeManager.GetById(id));
             this.Hide();
             editEmployeeForm.ShowDialog();
             this.Show();
 
             if (editEmployeeForm.GetIsValid())
             {
-                employees[index] = editEmployeeForm.GetEmployee();
+                employeeManager.UpdateEmployee(editEmployeeForm.GetEmployee());
             }
 
         }
@@ -219,9 +222,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void ShowPassword()
         {
-            int index = dataGridViewEmployees.CurrentRow.Index;
+            Guid id = Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
 
-            dataGridViewEmployees.CurrentRow.Cells[2].Value=employees[index].Password;
+            dataGridViewEmployees.CurrentRow.Cells[2].Value=employeeManager.GetById(id).Password;
         }
 
         private void HidePassword()

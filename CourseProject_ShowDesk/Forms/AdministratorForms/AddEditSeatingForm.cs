@@ -29,7 +29,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private bool isValid = false;
 
-        public AddEditSeatingForm(Stage stage)
+        public AddEditSeatingForm(Stage stage=null)
         {
             InitializeComponent();
 
