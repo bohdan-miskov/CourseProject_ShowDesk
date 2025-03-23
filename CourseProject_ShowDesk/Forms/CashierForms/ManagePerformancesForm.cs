@@ -15,8 +15,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
     {
         //private List<Stage> stages;
 
-        private PerformanceManager performanceManager;
-        private StageManager stageManager;
+        private readonly PerformanceManager performanceManager;
+        private readonly StageManager stageManager;
 
        // private int countOfPastPerformances;
 
@@ -38,70 +38,89 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             UpdateDataGridPerformances();
 
-            DisableEditAndRemoveStage();
+            DisableEditAndRemovePerformance();
 
             ShowGreetings(accountName);
+
+            timerUpdate.Start();
         }
 
-        private void dataGridViewPerformances_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewPerformances_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            DisableEditAndRemoveStage();
+            DisableEditAndRemovePerformance();
         }
 
-        private void dataGridViewPerformances_RowLeave(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewPerformances_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            DisableEditAndRemoveStage();
+            DisableEditAndRemovePerformance();
         }
 
-        private void addPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddPerformance();
-
-            UpdateDataGridPerformances();
-            DisableEditAndRemoveStage();
+            UpdateDataFromDataBase();
+            //UpdateDataGridPerformances();
+            //DisableEditAndRemoveStage();
         }
 
-        private void editPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditPerformance();
-
-            UpdateDataGridPerformances();
-            DisableEditAndRemoveStage();
+            UpdateDataFromDataBase();
+            //UpdateDataGridPerformances();
+            //DisableEditAndRemoveStage();
         }
 
-        private void removePerformanceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RemovePerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].ToString());
 
             performanceManager.RemovePerformance(id);
-
-            UpdateDataGridPerformances();
-            DisableEditAndRemoveStage();
+            UpdateDataFromDataBase();
+            //UpdateDataGridPerformances();
+            //DisableEditAndRemoveStage();
         }
-
-        private void revenueReportToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewTickets();
+            UpdateDataFromDataBase();
+        }
+        private void RevenueReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenRevenue();
         }
 
-        private void buttonSwitch_Click(object sender, EventArgs e)
+        private void ButtonSwitch_Click(object sender, EventArgs e)
         {
             SwitchPerformances();
         }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ButtonUpdate_Click(object sender, EventArgs e)
         {
+            UpdateDataFromDataBase();
+        }
+        private void TimerUpdate_Tick(object sender, EventArgs e)
+        {
+            UpdateDataFromDataBase();
+        }
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AuthenticateForm().Show();
 
+            this.Close();
         }
 
         private void ManagePerformancesFormClosing(object sender, FormClosingEventArgs e)
         {
             //SavePerformancesToFile();
+            timerUpdate.Stop();
         }
 
         private void ManagePerformancesForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.Exit();
+            }
         }
 
         private void ShowGreetings(string name)
@@ -112,19 +131,24 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
-
-        private void UpdateDataGridPerformances()
+        private void UpdateDataFromDataBase()
+        {
+            stageManager.LoadFromDatabase();
+            performanceManager.LoadFromDatabase();
+            if (isPastPerformances) UpdateDataGridPerformances(performanceManager.PastPerformances);
+            else UpdateDataGridPerformances();
+            DisableEditAndRemovePerformance();
+        }
+        private void UpdateDataGridPerformances(List<Performance> performances)
         {
             dataGridViewPerformances.Rows.Clear();
-            performanceToolStripMenuItem.Enabled = true;
-            addPerformanceToolStripMenuItem1.Enabled = true;
-            editPerformanceToolStripMenuItem1.Enabled = true;
-            removePerformanceToolStripMenuItem1.Enabled = true;
+            //performanceToolStripMenuItem.Enabled = true;
+            //ticketsToolStripMenuItem.Enabled = true;
             //countOfPastPerformances = 0;
 
             //SortPerformancesByDate();
 
-            foreach (Performance performance in performanceManager.Performances)
+            foreach (Performance performance in performances)
             {
                     AddPerformanceToDataGrid(performance);
                 //if (performance.PerformanceDateTime > DateTime.Now)
@@ -136,23 +160,39 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 //}
             }
         }
-
-        private void UpdateDataGridPastPerformances()
+        private void UpdateDataGridPerformances()
         {
             dataGridViewPerformances.Rows.Clear();
-            performanceToolStripMenuItem.Enabled = false;
-            addPerformanceToolStripMenuItem1.Enabled = false;
-            editPerformanceToolStripMenuItem1.Enabled = false;
-            removePerformanceToolStripMenuItem1.Enabled = false;
+            //performanceToolStripMenuItem.Enabled = true;
+            //ticketsToolStripMenuItem.Enabled = true;
+            //countOfPastPerformances = 0;
+
+            //SortPerformancesByDate();
 
             foreach (Performance performance in performanceManager.Performances)
             {
-                if (performance.PerformanceDateTime < DateTime.Now)
-                {
-                    AddPerformanceToDataGrid(performance);
-                }
+                AddPerformanceToDataGrid(performance);
+                //if (performance.PerformanceDateTime > DateTime.Now)
+                //{
+                //}
+                //else
+                //{
+                //    countOfPastPerformances++;
+                //}
             }
         }
+        //private void UpdateDataGridPastPerformances()
+        //{
+        //    dataGridViewPerformances.Rows.Clear();
+            
+
+        //    foreach (Performance performance in performanceManager.PastPerformances)
+        //    {
+               
+        //            AddPerformanceToDataGrid(performance);
+                
+        //    }
+        //}
 
         private void AddPerformanceToDataGrid(Performance performance)
         {
@@ -289,14 +329,16 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         //    performances = filteredPerformances;
         //}
 
-        private void DisableEditAndRemoveStage()
+        private void DisableEditAndRemovePerformance()
         {
-            if (dataGridViewPerformances.CurrentRow != null)
+            if (dataGridViewPerformances.CurrentRow != null && !isPastPerformances)
             {
                 editPerformanceToolStripMenuItem.Enabled = true;
                 removePerformanceToolStripMenuItem.Enabled = true;
                 editPerformanceToolStripMenuItem1.Enabled = true;
                 removePerformanceToolStripMenuItem1.Enabled = true;
+                ticketsToolStripMenuItem.Enabled = true;
+                ticketsToolStripMenuItem1.Enabled = true;
             }
             else
             {
@@ -304,7 +346,18 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 removePerformanceToolStripMenuItem.Enabled = false;
                 editPerformanceToolStripMenuItem1.Enabled = false;
                 removePerformanceToolStripMenuItem1.Enabled = false;
+                ticketsToolStripMenuItem.Enabled = false;
+                ticketsToolStripMenuItem1.Enabled = false;
+
+                if (isPastPerformances)
+                {
+                    addPerformanceToolStripMenuItem.Enabled = false;
+                    addPerformanceToolStripMenuItem1.Enabled = false;
+                }
             }
+
+           
+            
         }
 
 
@@ -335,7 +388,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 performanceManager.UpdatePerformance(editPerformanceForm.GetPerformance());
             }
         }
+        private void ViewTickets()
+        {
+            Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].Value.ToString());
+            Performance currentPerformance=performanceManager.GetById(id);
+            Stage currentStage = stageManager.GetById(currentPerformance.StageId);
+            ManageTicketsForm manageTicketsForm = new ManageTicketsForm(currentStage, currentPerformance);
 
+            this.Hide();
+            manageTicketsForm.ShowDialog();
+            this.Show();
+        }
         private void OpenRevenue()
         {
             ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performanceManager.Performances);
@@ -353,7 +416,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
             else
             {
-                UpdateDataGridPastPerformances();
+                UpdateDataGridPerformances(performanceManager.PastPerformances);
                 isPastPerformances = !isPastPerformances;
             }
         }

@@ -52,6 +52,7 @@
             this.addPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removePerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonSwitch = new System.Windows.Forms.Button();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
@@ -59,7 +60,9 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
-            this.ticketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
+            this.ticketsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).BeginInit();
             this.contextMenuStripPerformance.SuspendLayout();
             this.menuStripManagePerformance.SuspendLayout();
@@ -73,7 +76,7 @@
             this.dataGridViewPerformances.AllowUserToAddRows = false;
             this.dataGridViewPerformances.AllowUserToDeleteRows = false;
             this.dataGridViewPerformances.AllowUserToResizeRows = false;
-            this.dataGridViewPerformances.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.dataGridViewPerformances.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewPerformances.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPerformances.BackgroundColor = System.Drawing.Color.LightGray;
@@ -114,8 +117,8 @@
             this.dataGridViewPerformances.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPerformances.Size = new System.Drawing.Size(886, 276);
             this.dataGridViewPerformances.TabIndex = 3;
-            this.dataGridViewPerformances.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPerformances_RowEnter);
-            this.dataGridViewPerformances.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPerformances_RowLeave);
+            this.dataGridViewPerformances.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPerformances_RowEnter);
+            this.dataGridViewPerformances.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPerformances_RowLeave);
             // 
             // columnPerformanceDate
             // 
@@ -178,9 +181,10 @@
             this.addPerformanceToolStripMenuItem1,
             this.editPerformanceToolStripMenuItem1,
             this.removePerformanceToolStripMenuItem1,
+            this.ticketsToolStripMenuItem1,
             this.revenueReportToolStripMenuItem1});
             this.contextMenuStripPerformance.Name = "contextMenuStripPerformance";
-            this.contextMenuStripPerformance.Size = new System.Drawing.Size(210, 92);
+            this.contextMenuStripPerformance.Size = new System.Drawing.Size(210, 114);
             // 
             // addPerformanceToolStripMenuItem1
             // 
@@ -188,7 +192,7 @@
             this.addPerformanceToolStripMenuItem1.Name = "addPerformanceToolStripMenuItem1";
             this.addPerformanceToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
             this.addPerformanceToolStripMenuItem1.Text = "Add performance";
-            this.addPerformanceToolStripMenuItem1.Click += new System.EventHandler(this.addPerformanceToolStripMenuItem_Click);
+            this.addPerformanceToolStripMenuItem1.Click += new System.EventHandler(this.AddPerformanceToolStripMenuItem_Click);
             // 
             // editPerformanceToolStripMenuItem1
             // 
@@ -196,7 +200,7 @@
             this.editPerformanceToolStripMenuItem1.Name = "editPerformanceToolStripMenuItem1";
             this.editPerformanceToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
             this.editPerformanceToolStripMenuItem1.Text = "Edit performance";
-            this.editPerformanceToolStripMenuItem1.Click += new System.EventHandler(this.editPerformanceToolStripMenuItem_Click);
+            this.editPerformanceToolStripMenuItem1.Click += new System.EventHandler(this.EditPerformanceToolStripMenuItem_Click);
             // 
             // removePerformanceToolStripMenuItem1
             // 
@@ -204,7 +208,7 @@
             this.removePerformanceToolStripMenuItem1.Name = "removePerformanceToolStripMenuItem1";
             this.removePerformanceToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
             this.removePerformanceToolStripMenuItem1.Text = "Remove performance";
-            this.removePerformanceToolStripMenuItem1.Click += new System.EventHandler(this.removePerformanceToolStripMenuItem_Click);
+            this.removePerformanceToolStripMenuItem1.Click += new System.EventHandler(this.RemovePerformanceToolStripMenuItem_Click);
             // 
             // revenueReportToolStripMenuItem1
             // 
@@ -212,7 +216,7 @@
             this.revenueReportToolStripMenuItem1.Name = "revenueReportToolStripMenuItem1";
             this.revenueReportToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
             this.revenueReportToolStripMenuItem1.Text = "Revenue report";
-            this.revenueReportToolStripMenuItem1.Click += new System.EventHandler(this.revenueReportToolStripMenuItem_Click);
+            this.revenueReportToolStripMenuItem1.Click += new System.EventHandler(this.RevenueReportToolStripMenuItem_Click);
             // 
             // menuStripManagePerformance
             // 
@@ -247,7 +251,7 @@
             this.addPerformanceToolStripMenuItem.Name = "addPerformanceToolStripMenuItem";
             this.addPerformanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addPerformanceToolStripMenuItem.Text = "Add";
-            this.addPerformanceToolStripMenuItem.Click += new System.EventHandler(this.addPerformanceToolStripMenuItem_Click);
+            this.addPerformanceToolStripMenuItem.Click += new System.EventHandler(this.AddPerformanceToolStripMenuItem_Click);
             // 
             // editPerformanceToolStripMenuItem
             // 
@@ -256,7 +260,7 @@
             this.editPerformanceToolStripMenuItem.Name = "editPerformanceToolStripMenuItem";
             this.editPerformanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editPerformanceToolStripMenuItem.Text = "Edit";
-            this.editPerformanceToolStripMenuItem.Click += new System.EventHandler(this.editPerformanceToolStripMenuItem_Click);
+            this.editPerformanceToolStripMenuItem.Click += new System.EventHandler(this.EditPerformanceToolStripMenuItem_Click);
             // 
             // removePerformanceToolStripMenuItem
             // 
@@ -265,7 +269,16 @@
             this.removePerformanceToolStripMenuItem.Name = "removePerformanceToolStripMenuItem";
             this.removePerformanceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removePerformanceToolStripMenuItem.Text = "Remove";
-            this.removePerformanceToolStripMenuItem.Click += new System.EventHandler(this.removePerformanceToolStripMenuItem_Click);
+            this.removePerformanceToolStripMenuItem.Click += new System.EventHandler(this.RemovePerformanceToolStripMenuItem_Click);
+            // 
+            // ticketsToolStripMenuItem
+            // 
+            this.ticketsToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ticketsToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.ticket_icon;
+            this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
+            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(82, 22);
+            this.ticketsToolStripMenuItem.Text = "Tickets";
+            this.ticketsToolStripMenuItem.Click += new System.EventHandler(this.TicketsToolStripMenuItem_Click);
             // 
             // revenueReportToolStripMenuItem
             // 
@@ -274,19 +287,19 @@
             this.revenueReportToolStripMenuItem.Name = "revenueReportToolStripMenuItem";
             this.revenueReportToolStripMenuItem.Size = new System.Drawing.Size(79, 22);
             this.revenueReportToolStripMenuItem.Text = "Report";
-            this.revenueReportToolStripMenuItem.Click += new System.EventHandler(this.revenueReportToolStripMenuItem_Click);
+            this.revenueReportToolStripMenuItem.Click += new System.EventHandler(this.RevenueReportToolStripMenuItem_Click);
             // 
             // buttonSwitch
             // 
             this.buttonSwitch.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonSwitch.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSwitch.Location = new System.Drawing.Point(592, 30);
+            this.buttonSwitch.Location = new System.Drawing.Point(522, 27);
             this.buttonSwitch.Name = "buttonSwitch";
             this.buttonSwitch.Size = new System.Drawing.Size(99, 31);
             this.buttonSwitch.TabIndex = 5;
             this.buttonSwitch.Text = "Switch";
             this.buttonSwitch.UseVisualStyleBackColor = false;
-            this.buttonSwitch.Click += new System.EventHandler(this.buttonSwitch_Click);
+            this.buttonSwitch.Click += new System.EventHandler(this.ButtonSwitch_Click);
             // 
             // groupBoxProfile
             // 
@@ -313,7 +326,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // pictureBoxAccountIcon
             // 
@@ -338,19 +351,34 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
-            // ticketsToolStripMenuItem
+            // buttonUpdate
             // 
-            this.ticketsToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ticketsToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.ticket_icon;
-            this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
-            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(82, 22);
-            this.ticketsToolStripMenuItem.Text = "Tickets";
+            this.buttonUpdate.Location = new System.Drawing.Point(676, 33);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(27, 25);
+            this.buttonUpdate.TabIndex = 18;
+            this.buttonUpdate.Text = "button1";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            // 
+            // timerUpdate
+            // 
+            this.timerUpdate.Interval = 300000;
+            this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
+            // 
+            // ticketsToolStripMenuItem1
+            // 
+            this.ticketsToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.ticket_icon;
+            this.ticketsToolStripMenuItem1.Name = "ticketsToolStripMenuItem1";
+            this.ticketsToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
+            this.ticketsToolStripMenuItem1.Text = "Tickets";
             // 
             // ManagePerformancesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 339);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.buttonSwitch);
             this.Controls.Add(this.dataGridViewPerformances);
@@ -402,5 +430,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ticketsToolStripMenuItem;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Timer timerUpdate;
+        private System.Windows.Forms.ToolStripMenuItem ticketsToolStripMenuItem1;
     }
 }

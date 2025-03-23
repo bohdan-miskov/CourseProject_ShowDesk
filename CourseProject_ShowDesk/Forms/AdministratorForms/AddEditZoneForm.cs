@@ -13,9 +13,9 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private bool isValid;
 
-        private Stage stage;
+        private readonly Stage stage;
 
-        private Zone currentZone;
+        private readonly Zone currentZone;
 
         private Color color = Color.LightBlue;
 
@@ -29,17 +29,21 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             numericUpDownStartPosition.Minimum = 1;
             numericUpDownEndPosition.Maximum = stage.SeatList.Count;
             textBoxColor.Text = color.Name;
-            this.currentZone = zone;
-
+            
             if (zone != null)
             {
+                this.currentZone = zone;
                 PopulateFields();
+            }
+            else
+            {
+                this.currentZone = new Zone();
             }
 
             PopulateSeating();
         }
 
-        private void textBoxName_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxZoneName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -47,7 +51,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void textBoxIncrease_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxIncrease_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -55,7 +59,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void numericUpDownStartPosition_KeyUp(object sender, KeyEventArgs e)
+        private void NumericUpDownStartPosition_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -63,7 +67,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void numericUpDownEndPosition_KeyUp(object sender, KeyEventArgs e)
+        private void NumericUpDownEndPosition_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -71,7 +75,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void numericUpDownStartPosition_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownStartPosition_ValueChanged(object sender, EventArgs e)
         {
             if(numericUpDownEndPosition.Value < numericUpDownStartPosition.Value)
             {
@@ -79,7 +83,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void numericUpDownEndPosition_ValueChanged(object sender, EventArgs e)
+        private void NumericUpDownEndPosition_ValueChanged(object sender, EventArgs e)
         {
             if (numericUpDownEndPosition.Value < numericUpDownStartPosition.Value)
             {
@@ -87,17 +91,17 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void textBoxIncrease_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxIncrease_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorDoubleDigit(sender, e);
         }
 
-        private void buttonChangeColor_Click(object sender, EventArgs e)
+        private void ButtonChangeColor_Click(object sender, EventArgs e)
         {
             ChangeColor();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
             CreateZone();
             ZoneValidator validator = new ZoneValidator(stage.Zones);
@@ -170,12 +174,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void CreateZone()
         {
             //AddZoneForSeats(startPosition-1, endPosition-1, newZone);
-
-            if (currentZone == null)
-            {
-                currentZone = new Zone();
-            }
-
             currentZone.StartPosition = Convert.ToInt32(numericUpDownStartPosition.Value);
             currentZone.EndPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
             currentZone.Name = textBoxZoneName.Text;

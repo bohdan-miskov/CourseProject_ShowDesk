@@ -57,7 +57,7 @@
             this.buttonSave.TabIndex = 17;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // labelStage
             // 
@@ -119,7 +119,7 @@
             this.comboBoxStage.Name = "comboBoxStage";
             this.comboBoxStage.Size = new System.Drawing.Size(222, 29);
             this.comboBoxStage.TabIndex = 12;
-            this.comboBoxStage.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxStage_KeyUp);
+            this.comboBoxStage.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxStage_KeyUp);
             // 
             // textBoxBaseTicketPrice
             // 
@@ -129,8 +129,8 @@
             this.textBoxBaseTicketPrice.Size = new System.Drawing.Size(222, 28);
             this.textBoxBaseTicketPrice.TabIndex = 11;
             this.toolTipPerformance.SetToolTip(this.textBoxBaseTicketPrice, "Base price, without increase");
-            this.textBoxBaseTicketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxBaseTicketPrice_KeyPress);
-            this.textBoxBaseTicketPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxBaseTicketPrice_KeyUp);
+            this.textBoxBaseTicketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxBaseTicketPrice_KeyPress);
+            this.textBoxBaseTicketPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxBaseTicketPrice_KeyUp);
             // 
             // textBoxPerformanceName
             // 
@@ -139,7 +139,7 @@
             this.textBoxPerformanceName.Name = "textBoxPerformanceName";
             this.textBoxPerformanceName.Size = new System.Drawing.Size(222, 28);
             this.textBoxPerformanceName.TabIndex = 10;
-            this.textBoxPerformanceName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
+            this.textBoxPerformanceName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPerformanceName_KeyUp);
             // 
             // dateTimePickerPerfomanceDate
             // 
@@ -151,7 +151,7 @@
             this.dateTimePickerPerfomanceDate.Name = "dateTimePickerPerfomanceDate";
             this.dateTimePickerPerfomanceDate.Size = new System.Drawing.Size(222, 28);
             this.dateTimePickerPerfomanceDate.TabIndex = 9;
-            this.dateTimePickerPerfomanceDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dateTimePickerPerfomanceDate_KeyUp);
+            this.dateTimePickerPerfomanceDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerPerfomanceDate_KeyUp);
             // 
             // groupBoxPerformance
             // 

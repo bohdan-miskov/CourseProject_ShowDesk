@@ -86,7 +86,7 @@
             this.checkBoxCashier.TabIndex = 2;
             this.checkBoxCashier.Text = "Cashier";
             this.checkBoxCashier.UseVisualStyleBackColor = true;
-            this.checkBoxCashier.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxCashier_KeyUp);
+            this.checkBoxCashier.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxCashier_KeyUp);
             // 
             // checkBoxDirector
             // 
@@ -97,7 +97,7 @@
             this.checkBoxDirector.TabIndex = 1;
             this.checkBoxDirector.Text = "Director";
             this.checkBoxDirector.UseVisualStyleBackColor = true;
-            this.checkBoxDirector.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxDirector_KeyUp);
+            this.checkBoxDirector.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxDirector_KeyUp);
             // 
             // checkBoxAdministrator
             // 
@@ -108,7 +108,7 @@
             this.checkBoxAdministrator.TabIndex = 0;
             this.checkBoxAdministrator.Text = "Administrator";
             this.checkBoxAdministrator.UseVisualStyleBackColor = true;
-            this.checkBoxAdministrator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxAdministrator_KeyUp);
+            this.checkBoxAdministrator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxAdministrator_KeyUp);
             // 
             // textBoxPassword
             // 
@@ -118,8 +118,8 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(168, 28);
             this.textBoxPassword.TabIndex = 23;
-            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPassword_KeyPress);
-            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPassword_KeyPress);
+            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPassword_KeyUp);
             // 
             // labelEmployeeFullName
             // 
@@ -139,8 +139,8 @@
             this.textBoxFullName.Name = "textBoxFullName";
             this.textBoxFullName.Size = new System.Drawing.Size(168, 28);
             this.textBoxFullName.TabIndex = 15;
-            this.textBoxFullName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxFullName_KeyPress);
-            this.textBoxFullName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxFullName_KeyUp);
+            this.textBoxFullName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxFullName_KeyPress);
+            this.textBoxFullName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxFullName_KeyUp);
             // 
             // labelPassword
             // 
@@ -163,7 +163,7 @@
             this.buttonAddEmployee.TabIndex = 16;
             this.buttonAddEmployee.Text = "Save";
             this.buttonAddEmployee.UseVisualStyleBackColor = false;
-            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
+            this.buttonAddEmployee.Click += new System.EventHandler(this.ButtonAddEmployee_Click);
             // 
             // labelLogin
             // 
@@ -183,8 +183,8 @@
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(168, 28);
             this.textBoxLogin.TabIndex = 18;
-            this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLogin_KeyPress);
-            this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLogin_KeyUp);
+            this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxLogin_KeyPress);
+            this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxLogin_KeyUp);
             // 
             // AddEditEmployeeForm
             // 

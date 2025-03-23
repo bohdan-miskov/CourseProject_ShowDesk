@@ -97,11 +97,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(professionList), "Profession list cannot be null.");
-                }
-                professionList = value;
+                professionList = value ?? throw new ArgumentNullException(nameof(professionList), "Profession list cannot be null.");
             }
         }
 

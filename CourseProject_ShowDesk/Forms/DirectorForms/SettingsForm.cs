@@ -16,7 +16,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     public partial class SettingsForm : MetroFramework.Forms.MetroForm
     {
-        private AppConstantsData appConstantsData;
+        private readonly AppConstantsData appConstantsData;
 
         private readonly string typeOfFile = ".json";
 
@@ -29,7 +29,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             PopulateAllField();
         }
 
-        private void textBoxEmployeesFileName_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxEmployeesFileName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -37,7 +37,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void textBoxStagesFileName_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxStagesFileName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -45,7 +45,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void textBoxPerformancesFileName_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxPerformancesFileName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -54,7 +54,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
 
 
-        private void numericUpDownStandardIncrease_KeyUp(object sender, KeyEventArgs e)
+        private void NumericUpDownStandardIncrease_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -62,7 +62,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void numericUpDownStandardPlusIncrease_KeyUp(object sender, KeyEventArgs e)
+        private void NumericUpDownStandardPlusIncrease_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -70,14 +70,14 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void numericUpDownPremiumIncrease_KeyUp(object sender, KeyEventArgs e)
+        private void NumericUpDownPremiumIncrease_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 dateTimePickerMinBreak.Focus();
             }
         }
-        private void dateTimePickerMinBreak_KeyUp(object sender, KeyEventArgs e)
+        private void DateTimePickerMinBreak_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -85,7 +85,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void dateTimePickerInitialDuration_KeyUp(object sender, KeyEventArgs e)
+        private void DateTimePickerInitialDuration_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -93,7 +93,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void dateTimePickerMaxDuration_KeyUp(object sender, KeyEventArgs e)
+        private void DateTimePickerMaxDuration_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -101,7 +101,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void comboBoxListName_KeyUp(object sender, KeyEventArgs e)
+        private void ComboBoxListName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -109,7 +109,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void listBoxViewNames_KeyUp(object sender, KeyEventArgs e)
+        private void ListBoxViewNames_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -117,7 +117,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void textBoxItemName_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxItemName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -125,7 +125,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void buttonSaveName_KeyUp(object sender, KeyEventArgs e)
+        private void ButtonSaveName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -133,7 +133,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void buttonCancelName_KeyUp(object sender, KeyEventArgs e)
+        private void ButtonCancelName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -141,7 +141,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void numericUpDownRangeDateOfPastPerformances_KeyUp(object sender, KeyEventArgs e)
+        private void NumericUpDownRangeDateOfPastPerformances_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -149,7 +149,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void textBoxCurrencySymbol_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxCurrencySymbol_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -157,44 +157,44 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void textBoxItemName_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxItemName_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorLetter(sender, e);
         }
 
-        private void textBoxEmployeesFileName_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxEmployeesFileName_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorFileName(sender, e);
         }
 
-        private void textBoxStagesFileName_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxStagesFileName_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorFileName(sender, e);
         }
 
-        private void textBoxPerformancesFileName_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxPerformancesFileName_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorFileName(sender, e);
         }
 
-        private void textBoxCurrencySymbol_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxCurrencySymbol_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorSymbol(sender, e);
         }
 
-        private void comboBoxListName_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxListName_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateListBoxName();
             listBoxViewNames.SelectedIndex = 0;
             PopulateTextBoxName();
         }
 
-        private void listBoxViewNames_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBoxViewNames_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateTextBoxName();
         }
 
-        private void buttonSaveName_Click(object sender, EventArgs e)
+        private void ButtonSaveName_Click(object sender, EventArgs e)
         {
             if (ValidateNamesGroup())
             {
@@ -207,12 +207,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void buttonCancelName_Click(object sender, EventArgs e)
+        private void ButtonCancelName_Click(object sender, EventArgs e)
         {
             PopulateTextBoxName();
         }
 
-        private void buttonSaveChanges_Click(object sender, EventArgs e)
+        private void ButtonSaveChanges_Click(object sender, EventArgs e)
         {
             if (ValidateSettings())
             {
@@ -224,14 +224,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void buttonCancelChanges_Click(object sender, EventArgs e)
+        private void ButtonCancelChanges_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void SettingsForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
         }
 
         private void PopulateAllField()

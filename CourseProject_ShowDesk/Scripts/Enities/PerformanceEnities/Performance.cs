@@ -150,11 +150,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(Tickets), "Tickets list cannot be null.");
-                }
-                tickets = value;
+                tickets = value ?? throw new ArgumentNullException(nameof(Tickets), "Tickets list cannot be null.");
             }
         }
 

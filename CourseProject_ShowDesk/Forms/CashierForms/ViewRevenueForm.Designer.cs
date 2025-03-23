@@ -68,8 +68,8 @@
             this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
             this.dateTimePickerStartDate.Size = new System.Drawing.Size(181, 28);
             this.dateTimePickerStartDate.TabIndex = 0;
-            this.dateTimePickerStartDate.ValueChanged += new System.EventHandler(this.dateTimePickerFrom_ValueChanged);
-            this.dateTimePickerStartDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dateTimePickerStartDate_KeyUp);
+            this.dateTimePickerStartDate.ValueChanged += new System.EventHandler(this.DateTimePickerFrom_ValueChanged);
+            this.dateTimePickerStartDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerStartDate_KeyUp);
             // 
             // dateTimePickerFinishDate
             // 
@@ -78,8 +78,8 @@
             this.dateTimePickerFinishDate.Name = "dateTimePickerFinishDate";
             this.dateTimePickerFinishDate.Size = new System.Drawing.Size(181, 28);
             this.dateTimePickerFinishDate.TabIndex = 1;
-            this.dateTimePickerFinishDate.ValueChanged += new System.EventHandler(this.dateTimePickerTo_ValueChanged);
-            this.dateTimePickerFinishDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dateTimePickerFinishDate_KeyUp);
+            this.dateTimePickerFinishDate.ValueChanged += new System.EventHandler(this.DateTimePickerTo_ValueChanged);
+            this.dateTimePickerFinishDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerFinishDate_KeyUp);
             // 
             // groupBoxPeriod
             // 
@@ -150,7 +150,7 @@
             this.buttonCalculate.TabIndex = 2;
             this.buttonCalculate.Text = "Calculate";
             this.buttonCalculate.UseVisualStyleBackColor = false;
-            this.buttonCalculate.Click += new System.EventHandler(this.buttonCalculate_Click);
+            this.buttonCalculate.Click += new System.EventHandler(this.ButtonCalculate_Click);
             // 
             // groupBoxRevenue
             // 
@@ -310,7 +310,7 @@
             // timerRevenue
             // 
             this.timerRevenue.Interval = 10;
-            this.timerRevenue.Tick += new System.EventHandler(this.timerRevenue_Tick);
+            this.timerRevenue.Tick += new System.EventHandler(this.TimerRevenue_Tick);
             // 
             // ViewRevenueForm
             // 

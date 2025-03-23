@@ -68,7 +68,7 @@
             this.buttonAdd.TabIndex = 36;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // textBoxPrice
             // 
@@ -79,7 +79,7 @@
             this.textBoxPrice.ReadOnly = true;
             this.textBoxPrice.Size = new System.Drawing.Size(213, 28);
             this.textBoxPrice.TabIndex = 35;
-            this.textBoxPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPrice_KeyUp);
+            this.textBoxPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPrice_KeyUp);
             // 
             // labelPrice
             // 
@@ -103,7 +103,7 @@
             this.checkBoxReserved.TabIndex = 33;
             this.checkBoxReserved.Text = "Reserved";
             this.checkBoxReserved.UseVisualStyleBackColor = true;
-            this.checkBoxReserved.KeyUp += new System.Windows.Forms.KeyEventHandler(this.checkBoxReserved_KeyUp);
+            this.checkBoxReserved.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxReserved_KeyUp);
             // 
             // textBoxIndex
             // 
@@ -113,7 +113,7 @@
             this.textBoxIndex.ReadOnly = true;
             this.textBoxIndex.Size = new System.Drawing.Size(213, 28);
             this.textBoxIndex.TabIndex = 32;
-            this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxIndex_KeyUp);
+            this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxIndex_KeyUp);
             // 
             // labelIndex
             // 
@@ -161,8 +161,8 @@
             this.comboBoxPositions.Name = "comboBoxPositions";
             this.comboBoxPositions.Size = new System.Drawing.Size(213, 29);
             this.comboBoxPositions.TabIndex = 28;
-            this.comboBoxPositions.SelectedIndexChanged += new System.EventHandler(this.comboBoxPositions_SelectedIndexChanged);
-            this.comboBoxPositions.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxPositions_KeyUp);
+            this.comboBoxPositions.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPositions_SelectedIndexChanged);
+            this.comboBoxPositions.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxPositions_KeyUp);
             // 
             // comboBoxTicketType
             // 
@@ -178,8 +178,8 @@
             this.comboBoxTicketType.Name = "comboBoxTicketType";
             this.comboBoxTicketType.Size = new System.Drawing.Size(213, 29);
             this.comboBoxTicketType.TabIndex = 27;
-            this.comboBoxTicketType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTicketType_SelectedIndexChanged);
-            this.comboBoxTicketType.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxTicketType_KeyUp);
+            this.comboBoxTicketType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTicketType_SelectedIndexChanged);
+            this.comboBoxTicketType.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxTicketType_KeyUp);
             // 
             // groupBoxTicket
             // 
@@ -227,7 +227,7 @@
             this.panelSeating.Name = "panelSeating";
             this.panelSeating.Size = new System.Drawing.Size(645, 411);
             this.panelSeating.TabIndex = 41;
-            this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelSeating_MouseDown);
+            this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseDown);
             // 
             // labelCurrency
             // 
@@ -330,7 +330,7 @@
             // timerScaleUp
             // 
             this.timerScaleUp.Interval = 3;
-            this.timerScaleUp.Tick += new System.EventHandler(this.timerScaleUp_Tick);
+            this.timerScaleUp.Tick += new System.EventHandler(this.TimerScaleUp_Tick);
             // 
             // BuyTicketForm
             // 

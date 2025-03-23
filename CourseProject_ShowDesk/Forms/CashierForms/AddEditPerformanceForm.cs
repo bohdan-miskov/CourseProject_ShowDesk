@@ -13,12 +13,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
     public partial class AddEditPerformanceForm : MetroFramework.Forms.MetroForm
     {
 
-        private List<Stage> stages;
-        private List<Performance> performances;
+        private readonly List<Stage> stages;
+        private readonly List<Performance> performances;
 
         private bool isValid;
 
-        private Performance currentPerformance;
+        private readonly Performance currentPerformance;
 
         public AddEditPerformanceForm(List<Stage> stages, List<Performance> performances, Performance currentPerformance=null)
         {
@@ -48,28 +48,28 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void dateTimePickerPerfomanceDate_KeyUp(object sender, KeyEventArgs e)
+        private void DateTimePickerPerfomanceDate_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 textBoxPerformanceName.Focus();
             }
         }
-        private void textBoxName_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxPerformanceName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 textBoxBaseTicketPrice.Focus();
             }
         }
-        private void textBoxBaseTicketPrice_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxBaseTicketPrice_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 comboBoxStage.Focus();
             }
         }
-        private void comboBoxStage_KeyUp(object sender, KeyEventArgs e)
+        private void ComboBoxStage_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -77,14 +77,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void textBoxBaseTicketPrice_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxBaseTicketPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorDoubleDigit(sender, e);
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
-            currentPerformance = CreatePerformance();
+            CreatePerformance();
             PerformanceValidator validator = new PerformanceValidator(performances);
             if (validator.Validate(currentPerformance,out string errorMessage))
             {
@@ -97,12 +97,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
         }
-
-        private void AddPerformanceForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
         private void PopulateComboBox()
         {
             comboBoxStage.Items.Clear();
@@ -162,25 +156,18 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
             return -1;
         }
-        private Performance CreatePerformance()
+        private void CreatePerformance()
         {
-            Performance newPerformance = new Performance(new PerformanceBaseService());
-            newPerformance.Name= textBoxPerformanceName.Text;
-            newPerformance.PerformanceDateTime= dateTimePickerPerfomanceDate.Value;
-            newPerformance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
-            newPerformance.Duration= new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
-            newPerformance.StageId = stages[comboBoxStage.SelectedIndex].Id;
-            if (newPerformance.StageId != currentPerformance.StageId)
+            //Performance currentPerformance = new Performance(new PerformanceBaseService());
+            currentPerformance.Name= textBoxPerformanceName.Text;
+            currentPerformance.PerformanceDateTime= dateTimePickerPerfomanceDate.Value;
+            currentPerformance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
+            currentPerformance.Duration= new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
+            currentPerformance.StageId = stages[comboBoxStage.SelectedIndex].Id;
+            if (currentPerformance.StageId != currentPerformance.StageId)
             {
-                newPerformance.AvailablePositions = stages[comboBoxStage.SelectedIndex].GetPositions();
+                currentPerformance.AvailablePositions = stages[comboBoxStage.SelectedIndex].GetPositions();
             }
-            else
-            {
-                newPerformance.AvailablePositions = currentPerformance.AvailablePositions;
-            }
-
-
-            return newPerformance;
         }
 
         //private bool ValidateOfPerformance()
@@ -280,51 +267,51 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         //}
 
-        private string FindIntersectionPerformance()
-        {
-            DateTime currentDate = dateTimePickerPerfomanceDate.Value;
+        //private string FindIntersectionPerformance()
+        //{
+        //    DateTime currentDate = dateTimePickerPerfomanceDate.Value;
 
-            foreach (Performance performance in performances)
-            {
-                if (performance.StageId == stages[comboBoxStage.SelectedIndex].Id)
-                {
-                    if ((currentDate - performance.PerformanceDateTime).Days < 1)
-                    {
-                        if(IsIntersectionOfPerformances(currentDate, performance))
-                        {
-                            return performance.Name;
-                        }
-                    }
-                }
-            }
+        //    foreach (Performance performance in performances)
+        //    {
+        //        if (performance.StageId == stages[comboBoxStage.SelectedIndex].Id)
+        //        {
+        //            if ((currentDate - performance.PerformanceDateTime).Days < 1)
+        //            {
+        //                if(IsIntersectionOfPerformances(currentDate, performance))
+        //                {
+        //                    return performance.Name;
+        //                }
+        //            }
+        //        }
+        //    }
 
-            return null;
-        }
+        //    return null;
+        //}
 
-        private bool IsIntersectionOfPerformances(DateTime currentDate, Performance performance)
-        {
-            double currentTimeDifference=0;
-            double minTimeDifference=0;
+        //private bool IsIntersectionOfPerformances(DateTime currentDate, Performance performance)
+        //{
+        //    double currentTimeDifference=0;
+        //    double minTimeDifference=0;
 
-            if (currentDate > performance.PerformanceDateTime)
-            {
-                currentTimeDifference = (currentDate - performance.PerformanceDateTime).TotalMinutes;
-                minTimeDifference = performance.Duration.TotalMinutes + AppConstants.MinBreakBetweenPerformance.TotalMinutes;
-            }
-            else
-            {
-                currentTimeDifference = (performance.PerformanceDateTime - currentDate).TotalMinutes;
-                TimeSpan currentDuration = new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
-                minTimeDifference = currentDuration.TotalMinutes + AppConstants.MinBreakBetweenPerformance.TotalMinutes;
-            }
+        //    if (currentDate > performance.PerformanceDateTime)
+        //    {
+        //        currentTimeDifference = (currentDate - performance.PerformanceDateTime).TotalMinutes;
+        //        minTimeDifference = performance.Duration.TotalMinutes + AppConstants.MinBreakBetweenPerformance.TotalMinutes;
+        //    }
+        //    else
+        //    {
+        //        currentTimeDifference = (performance.PerformanceDateTime - currentDate).TotalMinutes;
+        //        TimeSpan currentDuration = new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
+        //        minTimeDifference = currentDuration.TotalMinutes + AppConstants.MinBreakBetweenPerformance.TotalMinutes;
+        //    }
 
-            if (currentTimeDifference < minTimeDifference)
-            {
-                return true;
-            }
+        //    if (currentTimeDifference < minTimeDifference)
+        //    {
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         public Performance GetPerformance()
         {

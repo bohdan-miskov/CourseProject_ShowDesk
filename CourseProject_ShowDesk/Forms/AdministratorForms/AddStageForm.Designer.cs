@@ -47,7 +47,7 @@
             this.buttonAdd.TabIndex = 9;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // textBoxStageName
             // 
@@ -56,7 +56,7 @@
             this.textBoxStageName.Name = "textBoxStageName";
             this.textBoxStageName.Size = new System.Drawing.Size(168, 28);
             this.textBoxStageName.TabIndex = 8;
-            this.textBoxStageName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
+            this.textBoxStageName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStageName_KeyUp);
             // 
             // labelStageName
             // 
@@ -76,7 +76,7 @@
             this.textBoxIndex.Name = "textBoxIndex";
             this.textBoxIndex.Size = new System.Drawing.Size(168, 28);
             this.textBoxIndex.TabIndex = 6;
-            this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxIndex_KeyUp);
+            this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxIndex_KeyUp);
             // 
             // labelIndex
             // 

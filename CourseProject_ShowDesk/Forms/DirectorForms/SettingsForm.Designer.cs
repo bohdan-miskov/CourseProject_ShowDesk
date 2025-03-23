@@ -95,8 +95,8 @@
             this.textBoxPerformancesFileName.Name = "textBoxPerformancesFileName";
             this.textBoxPerformancesFileName.Size = new System.Drawing.Size(148, 28);
             this.textBoxPerformancesFileName.TabIndex = 1;
-            this.textBoxPerformancesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPerformancesFileName_KeyPress);
-            this.textBoxPerformancesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPerformancesFileName_KeyUp);
+            this.textBoxPerformancesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPerformancesFileName_KeyPress);
+            this.textBoxPerformancesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPerformancesFileName_KeyUp);
             // 
             // groupBoxSettings
             // 
@@ -142,8 +142,8 @@
             this.textBoxCurrencySymbol.Name = "textBoxCurrencySymbol";
             this.textBoxCurrencySymbol.Size = new System.Drawing.Size(120, 28);
             this.textBoxCurrencySymbol.TabIndex = 7;
-            this.textBoxCurrencySymbol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxCurrencySymbol_KeyPress);
-            this.textBoxCurrencySymbol.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxCurrencySymbol_KeyUp);
+            this.textBoxCurrencySymbol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxCurrencySymbol_KeyPress);
+            this.textBoxCurrencySymbol.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxCurrencySymbol_KeyUp);
             // 
             // label1
             // 
@@ -173,7 +173,7 @@
             this.numericUpDownRangeDateOfPastPerformances.Name = "numericUpDownRangeDateOfPastPerformances";
             this.numericUpDownRangeDateOfPastPerformances.Size = new System.Drawing.Size(120, 28);
             this.numericUpDownRangeDateOfPastPerformances.TabIndex = 8;
-            this.numericUpDownRangeDateOfPastPerformances.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownRangeDateOfPastPerformances_KeyUp);
+            this.numericUpDownRangeDateOfPastPerformances.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownRangeDateOfPastPerformances_KeyUp);
             // 
             // buttonCancelChanges
             // 
@@ -184,7 +184,7 @@
             this.buttonCancelChanges.TabIndex = 8;
             this.buttonCancelChanges.Text = "Cancel";
             this.buttonCancelChanges.UseVisualStyleBackColor = false;
-            this.buttonCancelChanges.Click += new System.EventHandler(this.buttonCancelChanges_Click);
+            this.buttonCancelChanges.Click += new System.EventHandler(this.ButtonCancelChanges_Click);
             // 
             // buttonSaveChanges
             // 
@@ -195,7 +195,7 @@
             this.buttonSaveChanges.TabIndex = 7;
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = false;
-            this.buttonSaveChanges.Click += new System.EventHandler(this.buttonSaveChanges_Click);
+            this.buttonSaveChanges.Click += new System.EventHandler(this.ButtonSaveChanges_Click);
             // 
             // groupBoxNames
             // 
@@ -223,8 +223,8 @@
             this.buttonCancelName.TabIndex = 6;
             this.buttonCancelName.Text = "Cancel";
             this.buttonCancelName.UseVisualStyleBackColor = false;
-            this.buttonCancelName.Click += new System.EventHandler(this.buttonCancelName_Click);
-            this.buttonCancelName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.buttonCancelName_KeyUp);
+            this.buttonCancelName.Click += new System.EventHandler(this.ButtonCancelName_Click);
+            this.buttonCancelName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonCancelName_KeyUp);
             // 
             // buttonSaveName
             // 
@@ -235,8 +235,8 @@
             this.buttonSaveName.TabIndex = 5;
             this.buttonSaveName.Text = "Save name";
             this.buttonSaveName.UseVisualStyleBackColor = false;
-            this.buttonSaveName.Click += new System.EventHandler(this.buttonSaveName_Click);
-            this.buttonSaveName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.buttonSaveName_KeyUp);
+            this.buttonSaveName.Click += new System.EventHandler(this.ButtonSaveName_Click);
+            this.buttonSaveName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonSaveName_KeyUp);
             // 
             // labelItemName
             // 
@@ -256,8 +256,8 @@
             this.textBoxItemName.Name = "textBoxItemName";
             this.textBoxItemName.Size = new System.Drawing.Size(154, 28);
             this.textBoxItemName.TabIndex = 4;
-            this.textBoxItemName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxItemName_KeyPress);
-            this.textBoxItemName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxItemName_KeyUp);
+            this.textBoxItemName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxItemName_KeyPress);
+            this.textBoxItemName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxItemName_KeyUp);
             // 
             // labelListName
             // 
@@ -277,8 +277,8 @@
             this.comboBoxListName.Name = "comboBoxListName";
             this.comboBoxListName.Size = new System.Drawing.Size(154, 29);
             this.comboBoxListName.TabIndex = 1;
-            this.comboBoxListName.SelectedIndexChanged += new System.EventHandler(this.comboBoxListName_SelectedIndexChanged);
-            this.comboBoxListName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxListName_KeyUp);
+            this.comboBoxListName.SelectedIndexChanged += new System.EventHandler(this.ComboBoxListName_SelectedIndexChanged);
+            this.comboBoxListName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxListName_KeyUp);
             // 
             // listBoxViewNames
             // 
@@ -288,8 +288,8 @@
             this.listBoxViewNames.Name = "listBoxViewNames";
             this.listBoxViewNames.Size = new System.Drawing.Size(244, 151);
             this.listBoxViewNames.TabIndex = 0;
-            this.listBoxViewNames.SelectedIndexChanged += new System.EventHandler(this.listBoxViewNames_SelectedIndexChanged);
-            this.listBoxViewNames.KeyUp += new System.Windows.Forms.KeyEventHandler(this.listBoxViewNames_KeyUp);
+            this.listBoxViewNames.SelectedIndexChanged += new System.EventHandler(this.ListBoxViewNames_SelectedIndexChanged);
+            this.listBoxViewNames.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ListBoxViewNames_KeyUp);
             // 
             // groupBoxPerformanceDuration
             // 
@@ -315,7 +315,7 @@
             this.dateTimePickerMaxDuration.ShowUpDown = true;
             this.dateTimePickerMaxDuration.Size = new System.Drawing.Size(141, 28);
             this.dateTimePickerMaxDuration.TabIndex = 7;
-            this.dateTimePickerMaxDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dateTimePickerMaxDuration_KeyUp);
+            this.dateTimePickerMaxDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerMaxDuration_KeyUp);
             // 
             // dateTimePickerMinBreak
             // 
@@ -325,7 +325,7 @@
             this.dateTimePickerMinBreak.ShowUpDown = true;
             this.dateTimePickerMinBreak.Size = new System.Drawing.Size(141, 28);
             this.dateTimePickerMinBreak.TabIndex = 6;
-            this.dateTimePickerMinBreak.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dateTimePickerMinBreak_KeyUp);
+            this.dateTimePickerMinBreak.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerMinBreak_KeyUp);
             // 
             // dateTimePickerInitialDuration
             // 
@@ -335,7 +335,7 @@
             this.dateTimePickerInitialDuration.ShowUpDown = true;
             this.dateTimePickerInitialDuration.Size = new System.Drawing.Size(141, 28);
             this.dateTimePickerInitialDuration.TabIndex = 5;
-            this.dateTimePickerInitialDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dateTimePickerInitialDuration_KeyUp);
+            this.dateTimePickerInitialDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerInitialDuration_KeyUp);
             // 
             // labelMinBreak
             // 
@@ -398,7 +398,7 @@
             this.numericUpDownPremiumIncrease.Name = "numericUpDownPremiumIncrease";
             this.numericUpDownPremiumIncrease.Size = new System.Drawing.Size(120, 28);
             this.numericUpDownPremiumIncrease.TabIndex = 8;
-            this.numericUpDownPremiumIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownPremiumIncrease_KeyUp);
+            this.numericUpDownPremiumIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownPremiumIncrease_KeyUp);
             // 
             // numericUpDownStandardPlusIncrease
             // 
@@ -412,7 +412,7 @@
             this.numericUpDownStandardPlusIncrease.Name = "numericUpDownStandardPlusIncrease";
             this.numericUpDownStandardPlusIncrease.Size = new System.Drawing.Size(120, 28);
             this.numericUpDownStandardPlusIncrease.TabIndex = 7;
-            this.numericUpDownStandardPlusIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownStandardPlusIncrease_KeyUp);
+            this.numericUpDownStandardPlusIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownStandardPlusIncrease_KeyUp);
             // 
             // numericUpDownStandardIncrease
             // 
@@ -426,7 +426,7 @@
             this.numericUpDownStandardIncrease.Name = "numericUpDownStandardIncrease";
             this.numericUpDownStandardIncrease.Size = new System.Drawing.Size(120, 28);
             this.numericUpDownStandardIncrease.TabIndex = 6;
-            this.numericUpDownStandardIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownStandardIncrease_KeyUp);
+            this.numericUpDownStandardIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownStandardIncrease_KeyUp);
             // 
             // labelStandardIncrease
             // 
@@ -495,8 +495,8 @@
             this.textBoxEmployeesFileName.Name = "textBoxEmployeesFileName";
             this.textBoxEmployeesFileName.Size = new System.Drawing.Size(148, 28);
             this.textBoxEmployeesFileName.TabIndex = 5;
-            this.textBoxEmployeesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxEmployeesFileName_KeyPress);
-            this.textBoxEmployeesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxEmployeesFileName_KeyUp);
+            this.textBoxEmployeesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxEmployeesFileName_KeyPress);
+            this.textBoxEmployeesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxEmployeesFileName_KeyUp);
             // 
             // labelStagesFileName
             // 
@@ -516,8 +516,8 @@
             this.textBoxStagesFileName.Name = "textBoxStagesFileName";
             this.textBoxStagesFileName.Size = new System.Drawing.Size(148, 28);
             this.textBoxStagesFileName.TabIndex = 3;
-            this.textBoxStagesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxStagesFileName_KeyPress);
-            this.textBoxStagesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxStagesFileName_KeyUp);
+            this.textBoxStagesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxStagesFileName_KeyPress);
+            this.textBoxStagesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStagesFileName_KeyUp);
             // 
             // SettingsForm
             // 

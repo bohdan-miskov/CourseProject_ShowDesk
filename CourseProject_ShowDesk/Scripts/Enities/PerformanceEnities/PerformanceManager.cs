@@ -11,7 +11,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
     public class PerformanceManager
     {
         private List<Performance> performances;
-        private PerformanceBaseService database;
+        private List<Performance> pastPerformances;
+        private readonly PerformanceBaseService database;
 
         public PerformanceManager(PerformanceBaseService databaseService)
         {
@@ -25,10 +26,18 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
                 return performances;
             }
         }
+        public List<Performance> PastPerformances
+        {
+            get
+            {
+                return pastPerformances;
+            }
+        }
         public void LoadFromDatabase()
         {
             database.MovePastPerformances();
             performances = database.GetAllUpcomingPerformances();
+            pastPerformances = database.GetAllPastPerformances();
         }
         public void AddPerformance(Performance perf)
         {

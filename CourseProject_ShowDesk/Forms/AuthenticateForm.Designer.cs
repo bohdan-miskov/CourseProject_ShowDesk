@@ -91,8 +91,8 @@
             this.comboBoxUser.Name = "comboBoxUser";
             this.comboBoxUser.Size = new System.Drawing.Size(173, 29);
             this.comboBoxUser.TabIndex = 1;
-            this.comboBoxUser.SelectedIndexChanged += new System.EventHandler(this.comboBoxUser_SelectedIndexChanged);
-            this.comboBoxUser.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBoxUser_KeyUp);
+            this.comboBoxUser.SelectedIndexChanged += new System.EventHandler(this.ComboBoxUser_SelectedIndexChanged);
+            this.comboBoxUser.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxUser_KeyUp);
             // 
             // buttonAuthentificate
             // 
@@ -104,7 +104,7 @@
             this.buttonAuthentificate.TabIndex = 0;
             this.buttonAuthentificate.Text = "Sign In";
             this.buttonAuthentificate.UseVisualStyleBackColor = false;
-            this.buttonAuthentificate.Click += new System.EventHandler(this.buttonAuthentificate_Click);
+            this.buttonAuthentificate.Click += new System.EventHandler(this.ButtonAuthentificate_Click);
             // 
             // groupBoxSignIn
             // 
@@ -130,7 +130,7 @@
             this.textBoxPassword.Size = new System.Drawing.Size(147, 28);
             this.textBoxPassword.TabIndex = 27;
             this.textBoxPassword.Text = "Administrator";
-            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyUp);
+            this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPassword_KeyUp);
             // 
             // labelPassword
             // 
@@ -162,7 +162,7 @@
             this.textBoxLogin.Size = new System.Drawing.Size(147, 28);
             this.textBoxLogin.TabIndex = 25;
             this.textBoxLogin.Text = "Admin";
-            this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxLogin_KeyUp);
+            this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxLogin_KeyUp);
             // 
             // AuthenticateForm
             // 

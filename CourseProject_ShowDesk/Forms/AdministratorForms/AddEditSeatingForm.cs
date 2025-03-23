@@ -42,58 +42,58 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void buttonDeleteSeat_Click(object sender, EventArgs e)
+        private void ButtonDeleteSeat_Click(object sender, EventArgs e)
         {
             DeleteSelectedSeat();
         }
 
-        private void buttonAddSeat_Click(object sender, EventArgs e)
+        private void ButtonAddSeat_Click(object sender, EventArgs e)
         {
             AddSeat();
         }
 
-        private void buttonInsertSeat_Click(object sender, EventArgs e)
+        private void ButtonInsertSeat_Click(object sender, EventArgs e)
         {
             InsertSeat();
         }
 
-        private void buttonSetUnavailable_Click(object sender, EventArgs e)
+        private void ButtonSetUnavailable_Click(object sender, EventArgs e)
         {
             SetUnavailable();
         }
 
-        private void buttonAddDecor_Click(object sender, EventArgs e)
+        private void ButtonAddDecor_Click(object sender, EventArgs e)
         {
             AddDecorativeElement();
         }
 
-        private void buttonDeleteDecor_Click(object sender, EventArgs e)
+        private void ButtonDeleteDecor_Click(object sender, EventArgs e)
         {
             DeleteSelectedDecor();
         }
 
-        private void buttonChangeColor_Click(object sender, EventArgs e)
+        private void ButtonChangeColor_Click(object sender, EventArgs e)
         {
             ChangeColor();
         }
 
-        private void panelSeating_MouseDown(object sender, MouseEventArgs e)
+        private void PanelSeating_MouseDown(object sender, MouseEventArgs e)
         {
             FormMouseDown(sender, e);
         }
 
-        private void panelSeating_MouseMove(object sender, MouseEventArgs e)
+        private void PanelSeating_MouseMove(object sender, MouseEventArgs e)
         {
             FormMouseMove(sender, e);
         }
 
-        private void panelSeating_MouseUp(object sender, MouseEventArgs e)
+        private void PanelSeating_MouseUp(object sender, MouseEventArgs e)
         {
             FormMouseUp(sender, e);
         }
 
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void ButtonSave_Click(object sender, EventArgs e)
         {
             if (ValidateOfSeating())
             {
@@ -398,7 +398,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private int GetCurrentSeatIndex(Control control)
         {
 
-            if (control is Label label)
+            if (control is Label)
             {
                 bool isInteger = int.TryParse(control.Text, out int result);
 
@@ -414,7 +414,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private int GetCurrentDecorIndex(Control control)
         {
-            if (control is Panel panel)
+            if (control is Panel)
             {
                 for (int i = 0; i < decorList.Count; i++)
                 {

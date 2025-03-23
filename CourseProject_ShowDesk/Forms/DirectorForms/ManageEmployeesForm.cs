@@ -19,9 +19,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
     public partial class ManageEmployeesForm : MetroFramework.Forms.MetroForm
     {
         //private List<Employee> employees;
-        private EmployeeManager employeeManager;
+        private readonly EmployeeManager employeeManager;
 
-        private string cipher = new string('*', 12);
+        private readonly string cipher = new string('*', 12);
 
         public ManageEmployeesForm(string accountName)
         {
@@ -32,86 +32,97 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             labelAccountName.Text = accountName;
 
             //LoadEmployeesFromFile();
-
             UpdateDataGridEmployees();
-
             DisableEditAndRemoveEmployees();
-
             ShowGreetings(accountName);
+
+            timerUpdate.Start();
         }
 
-        private void dataGridViewEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveEmployees();
         }
 
-        private void dataGridViewEmployees_RowLeave(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewEmployees_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveEmployees();
         }
 
-        private void addEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddEmployee();
 
-            UpdateDataGridEmployees();
-
-            DisableEditAndRemoveEmployees();
+            UpdateDataFromDataBase();
+            //UpdateDataGridEmployees();
+            //DisableEditAndRemoveEmployees();
         }
 
-        private void editEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditEmployee();
 
-            UpdateDataGridEmployees();
-
-            DisableEditAndRemoveEmployees();
+            UpdateDataFromDataBase();
+            //UpdateDataGridEmployees();
+            //DisableEditAndRemoveEmployees();
         }
 
-        private void removeEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RemoveEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Guid id = Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
 
             employeeManager.RemoveEmployee(id);
 
-            UpdateDataGridEmployees();
-
-            DisableEditAndRemoveEmployees();
+            UpdateDataFromDataBase();
+            //UpdateDataGridEmployees();
+            //DisableEditAndRemoveEmployees();
         }
 
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenSettings();
         }
 
-        private void toolStripMenuItemShowPassword_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemShowPassword_Click(object sender, EventArgs e)
         {
             ShowPassword();
         }
 
-        private void toolStripMenuItemHidePassword_Click(object sender, EventArgs e)
+        private void ToolStripMenuItemHidePassword_Click(object sender, EventArgs e)
         {
             HidePassword();
         }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ButtonUpdate_Click(object sender, EventArgs e)
         {
-            if (Owner != null)
-            {
-                Owner.Show();
-            }
+            UpdateDataFromDataBase();
+        }
 
+        private void TimerUpdate_Tick(object sender, EventArgs e)
+        {
+            UpdateDataFromDataBase();
+        }
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if (Owner != null)
+            //{
+            //    Owner.Show();
+            //}
+            new AuthenticateForm().Show();
             this.Close();
         }
 
         private void ManageEmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //SaveEmployeesToFile();
+            timerUpdate.Stop();
         }
 
         private void ManageEmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.Exit();
+            }
         }
 
         private void ShowGreetings(string name)
@@ -122,7 +133,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
-
+        private void UpdateDataFromDataBase()
+        {
+            employeeManager.LoadFromDatabase();
+            UpdateDataGridEmployees();
+            DisableEditAndRemoveEmployees();
+        }
         private void UpdateDataGridEmployees()
         {
             dataGridViewEmployees.Rows.Clear();

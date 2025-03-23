@@ -19,9 +19,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class ManageTicketsForm : MetroFramework.Forms.MetroForm
     {
-        private Stage currentStage;
+        private readonly Stage currentStage;
         private Performance currentPerformance;
-        private PerformanceBaseService dataBase;
+        private readonly PerformanceBaseService dataBase;
 
         public ManageTicketsForm(Stage currentStage, Performance currentPerformance)
         {
@@ -30,16 +30,18 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             this.currentStage = currentStage;
             this.currentPerformance = currentPerformance;
             dataBase=new PerformanceBaseService();
-            UpdateDataGridTickets();
 
+            UpdateDataGridTickets();
             DisableEditAndRemoveTicket();
+
+            timerUpdate.Start();
         }
-        private void dataGridViewTickets_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewTickets_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveTicket();
         }
 
-        private void dataGridViewTickets_RowLeave(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewTickets_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveTicket();
         }
@@ -49,24 +51,46 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             currentPerformance.ChangeTicketStatus(id);
 
-            UpdateDataGridTickets();
-            DisableEditAndRemoveTicket();
+            UpdateDataFromDataBase();
+            //UpdateDataGridTickets();
+            //DisableEditAndRemoveTicket();
         }
 
-        private void removeTicketToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RemoveTicketToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Guid id = Guid.Parse(dataGridViewTickets.CurrentRow.Cells[0].Value.ToString());
 
             currentPerformance.RemoveTicket(id);
             //SetAvailable(currentPerformance.Tickets[index].Position - 1);
 
-            UpdateDataGridTickets();
-            DisableEditAndRemoveTicket();
+            UpdateDataFromDataBase();
+            //UpdateDataGridTickets();
+            //DisableEditAndRemoveTicket();
         }
         private void BuyTicketFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BuyOfTicket();
 
+            UpdateDataFromDataBase();
+            //UpdateDataGridTickets();
+            //DisableEditAndRemoveTicket();
+        }
+        private void ButtonUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateDataFromDataBase();
+        }
+
+        private void TimerUpdate_Tick(object sender, EventArgs e)
+        {
+            UpdateDataFromDataBase();
+        }
+        private void ManageTicketsForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timerUpdate.Stop();
+        }
+        private void UpdateDataFromDataBase()
+        {
+            currentPerformance=dataBase.GetUpdatedPerformance(currentPerformance);
             UpdateDataGridTickets();
             DisableEditAndRemoveTicket();
         }

@@ -13,10 +13,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
     public partial class ViewRevenueForm : MetroFramework.Forms.MetroForm
     {
 
-        private List<Performance> performances;
+        private readonly List<Performance> performances;
 
-        private int formMinWidth = 333;
-        private int formMaxWidth = 955;
+        private readonly int formMinWidth = 333;
+        private readonly int formMaxWidth = 955;
 
         public ViewRevenueForm(List<Performance> performances)
         {
@@ -35,7 +35,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             SetDateLimit();
         }
 
-        private void dateTimePickerStartDate_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void DateTimePickerStartDate_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -43,7 +43,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void dateTimePickerFinishDate_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void DateTimePickerFinishDate_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -51,30 +51,25 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void dateTimePickerFrom_ValueChanged(object sender, EventArgs e)
+        private void DateTimePickerFrom_ValueChanged(object sender, EventArgs e)
         {
             dateTimePickerFinishDate.MinDate = dateTimePickerStartDate.Value;
         }
 
-        private void dateTimePickerTo_ValueChanged(object sender, EventArgs e)
+        private void DateTimePickerTo_ValueChanged(object sender, EventArgs e)
         {
             dateTimePickerStartDate.MaxDate = dateTimePickerFinishDate.Value;
         }
 
-        private void buttonCalculate_Click(object sender, EventArgs e)
+        private void ButtonCalculate_Click(object sender, EventArgs e)
         {
             CreateGraph();
             timerRevenue.Enabled = true;
         }
 
-        private void timerRevenue_Tick(object sender, EventArgs e)
+        private void TimerRevenue_Tick(object sender, EventArgs e)
         {
             GrowUpOfForm();
-        }
-
-        private void ViewRevenueForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
         }
 
         private void PopulateComboBoxChartType()

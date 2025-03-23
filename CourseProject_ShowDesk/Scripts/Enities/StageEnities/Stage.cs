@@ -77,11 +77,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
             set
             {
-                if (value == null)
-                {
-                    throw new ArgumentNullException(nameof(zones), "Zones list cannot be null.");
-                }
-                zones = value;
+                zones = value ?? throw new ArgumentNullException(nameof(zones), "Zones list cannot be null.");
             }
         }
 
@@ -145,26 +141,19 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
         public Zone GetZone(Guid zoneId)
         {
-            var zone = zones.FirstOrDefault(z => z.Id == zoneId);
-            if (zone == null)
-            {
-                throw new ArgumentException("Zone with the given id does not exist.", nameof(zoneId));
-            }
-
+            var zone = zones.FirstOrDefault(z => z.Id == zoneId)
+                ?? throw new ArgumentException("Zone with the given id does not exist.", nameof(zoneId));
+                
             return zone;
         }
 
 
         public void RemoveZone(Guid zoneId)
         {
-            var zoneToRemove = zones.FirstOrDefault(z => z.Id == zoneId);
-            if (zoneToRemove == null)
-            {
-                throw new ArgumentException("Zone with the given id does not exist.", nameof(zoneId));
-            }
+            var zoneToRemove = zones.FirstOrDefault(z => z.Id == zoneId)
+                ?? throw new ArgumentException("Zone with the given id does not exist.", nameof(zoneId));
 
             zones.Remove(zoneToRemove);
-            //new Stage
         }
 
         private void UpdateZoneSeats(Zone zone)
@@ -177,11 +166,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
         public void UpdateZone(Zone newZone)
         {
-            var zoneToUpdate = zones.FirstOrDefault(z => z.Id == newZone.Id);
-            if (zoneToUpdate == null)
-            {
-                throw new ArgumentException("Zone with the given id does not exist.", nameof(newZone.Id));
-            }
+            var zoneToUpdate = zones.FirstOrDefault(z => z.Id == newZone.Id)
+    ?? throw new ArgumentException("Zone with the given id does not exist.", nameof(newZone.Id));
 
             var index = zones.IndexOf(zoneToUpdate);
             zones[index] = newZone;

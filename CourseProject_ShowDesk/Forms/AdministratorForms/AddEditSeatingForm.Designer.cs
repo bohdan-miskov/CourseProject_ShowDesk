@@ -50,7 +50,7 @@
             this.buttonAddSeat.TabIndex = 0;
             this.buttonAddSeat.Text = "Add Seat";
             this.buttonAddSeat.UseVisualStyleBackColor = false;
-            this.buttonAddSeat.Click += new System.EventHandler(this.buttonAddSeat_Click);
+            this.buttonAddSeat.Click += new System.EventHandler(this.ButtonAddSeat_Click);
             // 
             // buttonAddDecor
             // 
@@ -62,7 +62,7 @@
             this.buttonAddDecor.TabIndex = 1;
             this.buttonAddDecor.Text = "Add Decor";
             this.buttonAddDecor.UseVisualStyleBackColor = false;
-            this.buttonAddDecor.Click += new System.EventHandler(this.buttonAddDecor_Click);
+            this.buttonAddDecor.Click += new System.EventHandler(this.ButtonAddDecor_Click);
             // 
             // buttonChangeColor
             // 
@@ -74,7 +74,7 @@
             this.buttonChangeColor.TabIndex = 2;
             this.buttonChangeColor.Text = "Change color";
             this.buttonChangeColor.UseVisualStyleBackColor = false;
-            this.buttonChangeColor.Click += new System.EventHandler(this.buttonChangeColor_Click);
+            this.buttonChangeColor.Click += new System.EventHandler(this.ButtonChangeColor_Click);
             // 
             // buttonSetUnavailable
             // 
@@ -86,7 +86,7 @@
             this.buttonSetUnavailable.TabIndex = 3;
             this.buttonSetUnavailable.Text = "Set Unavailable";
             this.buttonSetUnavailable.UseVisualStyleBackColor = false;
-            this.buttonSetUnavailable.Click += new System.EventHandler(this.buttonSetUnavailable_Click);
+            this.buttonSetUnavailable.Click += new System.EventHandler(this.ButtonSetUnavailable_Click);
             // 
             // buttonDeleteSeat
             // 
@@ -98,7 +98,7 @@
             this.buttonDeleteSeat.TabIndex = 4;
             this.buttonDeleteSeat.Text = "Delete Seat";
             this.buttonDeleteSeat.UseVisualStyleBackColor = false;
-            this.buttonDeleteSeat.Click += new System.EventHandler(this.buttonDeleteSeat_Click);
+            this.buttonDeleteSeat.Click += new System.EventHandler(this.ButtonDeleteSeat_Click);
             // 
             // buttonDeleteDecor
             // 
@@ -110,7 +110,7 @@
             this.buttonDeleteDecor.TabIndex = 6;
             this.buttonDeleteDecor.Text = "Delete Decor";
             this.buttonDeleteDecor.UseVisualStyleBackColor = false;
-            this.buttonDeleteDecor.Click += new System.EventHandler(this.buttonDeleteDecor_Click);
+            this.buttonDeleteDecor.Click += new System.EventHandler(this.ButtonDeleteDecor_Click);
             // 
             // buttonInsertSeat
             // 
@@ -122,7 +122,7 @@
             this.buttonInsertSeat.TabIndex = 5;
             this.buttonInsertSeat.Text = "Insert Seat";
             this.buttonInsertSeat.UseVisualStyleBackColor = false;
-            this.buttonInsertSeat.Click += new System.EventHandler(this.buttonInsertSeat_Click);
+            this.buttonInsertSeat.Click += new System.EventHandler(this.ButtonInsertSeat_Click);
             // 
             // panelSeating
             // 
@@ -132,9 +132,9 @@
             this.panelSeating.Name = "panelSeating";
             this.panelSeating.Size = new System.Drawing.Size(645, 427);
             this.panelSeating.TabIndex = 7;
-            this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelSeating_MouseDown);
-            this.panelSeating.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelSeating_MouseMove);
-            this.panelSeating.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelSeating_MouseUp);
+            this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseDown);
+            this.panelSeating.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseMove);
+            this.panelSeating.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseUp);
             // 
             // buttonSave
             // 
@@ -146,7 +146,7 @@
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // AddEditSeatingForm
             // 

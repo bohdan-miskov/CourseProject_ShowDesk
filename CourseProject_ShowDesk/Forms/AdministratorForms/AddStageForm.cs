@@ -28,7 +28,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             newStage = new Stage();
         }
 
-        private void textBoxIndex_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxIndex_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -36,7 +36,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void textBoxName_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxStageName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -44,7 +44,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
             SaveStage();
         }

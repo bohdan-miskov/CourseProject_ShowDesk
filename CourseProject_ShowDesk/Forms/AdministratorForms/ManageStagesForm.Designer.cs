@@ -33,6 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageStagesForm));
             this.dataGridViewStages = new System.Windows.Forms.DataGridView();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnZonesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripStages = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,10 +51,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnZonesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).BeginInit();
             this.contextMenuStripStages.SuspendLayout();
             this.menuStripManageStages.SuspendLayout();
@@ -100,8 +102,33 @@
             this.dataGridViewStages.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewStages.Size = new System.Drawing.Size(549, 196);
             this.dataGridViewStages.TabIndex = 2;
-            this.dataGridViewStages.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStages_RowEnter);
-            this.dataGridViewStages.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStages_RowLeave);
+            this.dataGridViewStages.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowEnter);
+            this.dataGridViewStages.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowLeave);
+            // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Visible = false;
+            // 
+            // columnNumber
+            // 
+            this.columnNumber.HeaderText = "Number";
+            this.columnNumber.Name = "columnNumber";
+            this.columnNumber.ReadOnly = true;
+            // 
+            // columnName
+            // 
+            this.columnName.HeaderText = "Name";
+            this.columnName.Name = "columnName";
+            this.columnName.ReadOnly = true;
+            // 
+            // columnZonesCount
+            // 
+            this.columnZonesCount.HeaderText = "Zones count";
+            this.columnZonesCount.Name = "columnZonesCount";
+            this.columnZonesCount.ReadOnly = true;
             // 
             // contextMenuStripStages
             // 
@@ -119,7 +146,7 @@
             this.addStageToolStripMenuItem1.Name = "addStageToolStripMenuItem1";
             this.addStageToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.addStageToolStripMenuItem1.Text = "Add stage";
-            this.addStageToolStripMenuItem1.Click += new System.EventHandler(this.addStageToolStripMenuItem_Click);
+            this.addStageToolStripMenuItem1.Click += new System.EventHandler(this.AddStageToolStripMenuItem_Click);
             // 
             // editStageToolStripMenuItem1
             // 
@@ -127,7 +154,7 @@
             this.editStageToolStripMenuItem1.Name = "editStageToolStripMenuItem1";
             this.editStageToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.editStageToolStripMenuItem1.Text = "Edit stage";
-            this.editStageToolStripMenuItem1.Click += new System.EventHandler(this.editStageToolStripMenuItem_Click);
+            this.editStageToolStripMenuItem1.Click += new System.EventHandler(this.EditStageToolStripMenuItem_Click);
             // 
             // removeStageToolStripMenuItem1
             // 
@@ -135,7 +162,7 @@
             this.removeStageToolStripMenuItem1.Name = "removeStageToolStripMenuItem1";
             this.removeStageToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.removeStageToolStripMenuItem1.Text = "Remove stage";
-            this.removeStageToolStripMenuItem1.Click += new System.EventHandler(this.removeStageToolStripMenuItem_Click);
+            this.removeStageToolStripMenuItem1.Click += new System.EventHandler(this.RemoveStageToolStripMenuItem_Click);
             // 
             // menuStripManageStages
             // 
@@ -166,7 +193,7 @@
             this.addStageToolStripMenuItem.Name = "addStageToolStripMenuItem";
             this.addStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.addStageToolStripMenuItem.Text = "Add";
-            this.addStageToolStripMenuItem.Click += new System.EventHandler(this.addStageToolStripMenuItem_Click);
+            this.addStageToolStripMenuItem.Click += new System.EventHandler(this.AddStageToolStripMenuItem_Click);
             // 
             // editStageToolStripMenuItem
             // 
@@ -174,7 +201,7 @@
             this.editStageToolStripMenuItem.Name = "editStageToolStripMenuItem";
             this.editStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.editStageToolStripMenuItem.Text = "Edit";
-            this.editStageToolStripMenuItem.Click += new System.EventHandler(this.editStageToolStripMenuItem_Click);
+            this.editStageToolStripMenuItem.Click += new System.EventHandler(this.EditStageToolStripMenuItem_Click);
             // 
             // removeStageToolStripMenuItem
             // 
@@ -182,7 +209,7 @@
             this.removeStageToolStripMenuItem.Name = "removeStageToolStripMenuItem";
             this.removeStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeStageToolStripMenuItem.Text = "Remove";
-            this.removeStageToolStripMenuItem.Click += new System.EventHandler(this.removeStageToolStripMenuItem_Click);
+            this.removeStageToolStripMenuItem.Click += new System.EventHandler(this.RemoveStageToolStripMenuItem_Click);
             // 
             // groupBoxProfile
             // 
@@ -209,7 +236,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // pictureBoxAccountIcon
             // 
@@ -234,36 +261,27 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
-            // idColumn
+            // buttonUpdate
             // 
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            this.idColumn.Visible = false;
+            this.buttonUpdate.Location = new System.Drawing.Point(340, 34);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(27, 25);
+            this.buttonUpdate.TabIndex = 17;
+            this.buttonUpdate.Text = "button1";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
-            // columnNumber
+            // timerUpdate
             // 
-            this.columnNumber.HeaderText = "Number";
-            this.columnNumber.Name = "columnNumber";
-            this.columnNumber.ReadOnly = true;
-            // 
-            // columnName
-            // 
-            this.columnName.HeaderText = "Name";
-            this.columnName.Name = "columnName";
-            this.columnName.ReadOnly = true;
-            // 
-            // columnZonesCount
-            // 
-            this.columnZonesCount.HeaderText = "Zones count";
-            this.columnZonesCount.Name = "columnZonesCount";
-            this.columnZonesCount.ReadOnly = true;
+            this.timerUpdate.Interval = 300000;
+            this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
             // 
             // ManageStagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 258);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.dataGridViewStages);
             this.Controls.Add(this.menuStripManageStages);
@@ -305,5 +323,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnZonesCount;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Timer timerUpdate;
     }
 }

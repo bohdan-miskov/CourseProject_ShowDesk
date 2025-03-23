@@ -73,8 +73,8 @@
             0,
             0,
             0});
-            this.numericUpDownStartPosition.ValueChanged += new System.EventHandler(this.numericUpDownStartPosition_ValueChanged);
-            this.numericUpDownStartPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownStartPosition_KeyUp);
+            this.numericUpDownStartPosition.ValueChanged += new System.EventHandler(this.NumericUpDownStartPosition_ValueChanged);
+            this.numericUpDownStartPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownStartPosition_KeyUp);
             // 
             // groupBoxZone
             // 
@@ -121,7 +121,7 @@
             this.buttonChangeColor.TabIndex = 25;
             this.buttonChangeColor.Text = "Change color";
             this.buttonChangeColor.UseVisualStyleBackColor = false;
-            this.buttonChangeColor.Click += new System.EventHandler(this.buttonChangeColor_Click);
+            this.buttonChangeColor.Click += new System.EventHandler(this.ButtonChangeColor_Click);
             // 
             // labelColor
             // 
@@ -156,6 +156,7 @@
             0,
             0,
             0});
+            this.numericUpDownIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxIncrease_KeyUp);
             // 
             // labelZoneName
             // 
@@ -187,7 +188,7 @@
             this.textBoxZoneName.Name = "textBoxZoneName";
             this.textBoxZoneName.Size = new System.Drawing.Size(168, 28);
             this.textBoxZoneName.TabIndex = 15;
-            this.textBoxZoneName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
+            this.textBoxZoneName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxZoneName_KeyUp);
             // 
             // labelStartPosition
             // 
@@ -210,7 +211,7 @@
             this.buttonAdd.TabIndex = 16;
             this.buttonAdd.Text = "Save";
             this.buttonAdd.UseVisualStyleBackColor = false;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // numericUpDownEndPosition
             // 
@@ -234,8 +235,8 @@
             0,
             0,
             0});
-            this.numericUpDownEndPosition.ValueChanged += new System.EventHandler(this.numericUpDownEndPosition_ValueChanged);
-            this.numericUpDownEndPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDownEndPosition_KeyUp);
+            this.numericUpDownEndPosition.ValueChanged += new System.EventHandler(this.NumericUpDownEndPosition_ValueChanged);
+            this.numericUpDownEndPosition.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownEndPosition_KeyUp);
             // 
             // labelIncrease
             // 

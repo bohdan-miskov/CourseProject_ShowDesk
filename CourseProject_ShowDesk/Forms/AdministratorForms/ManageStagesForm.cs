@@ -12,7 +12,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
     public partial class ManageStagesForm : MetroFramework.Forms.MetroForm
     {
         //private List<Stage> stages;
-        private StageManager stageManager;
+        private readonly StageManager stageManager;
 
         public ManageStagesForm(string accountName)
         {
@@ -31,57 +31,70 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             DisableEditAndRemoveStage();
 
             ShowGreetings(accountName);
+
+            timerUpdate.Start();
         }
 
-        private void dataGridViewStages_RowEnter(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewStages_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveStage();
         }
 
-        private void dataGridViewStages_RowLeave(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewStages_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveStage();
         }
 
-        private void addStageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddStage();
-
-            UpdateDataGridStages();
-            DisableEditAndRemoveStage();
+            UpdataDataFromDatabase();
+            //UpdateDataGridStages();
+            //DisableEditAndRemoveStage();
         }
 
-        private void editStageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditStage();
-
-            UpdateDataGridStages();
-            DisableEditAndRemoveStage();
+            UpdataDataFromDatabase();
+            //UpdateDataGridStages();
+            //DisableEditAndRemoveStage();
         }
 
-        private void removeStageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RemoveStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Guid stageId = Guid.Parse(dataGridViewStages.CurrentRow.Cells[0].Value.ToString());
-
             stageManager.RemoveStage(stageId);
-
-            UpdateDataGridStages();
-            DisableEditAndRemoveStage();
+            UpdataDataFromDatabase();
+            //UpdateDataGridStages();
+            //DisableEditAndRemoveStage();
         }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ButtonUpdate_Click(object sender, EventArgs e)
         {
-
+            UpdataDataFromDatabase();
+        }
+        private void TimerUpdate_Tick(object sender, EventArgs e)
+        {
+            UpdataDataFromDatabase();
+        }
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AuthenticateForm().Show();
+            this.Close();
         }
 
         private void ManageStagesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //SaveStagesToFile();
+            timerUpdate.Stop();
         }
 
         private void ManageStagesForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            if (Application.OpenForms.Count == 0)
+            {
+                Application.Exit();
+            }
         }
 
         private void ShowGreetings(string name)
@@ -111,6 +124,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 stage.Name,
                 stage.Zones.Count
                     );
+        }
+        private void UpdataDataFromDatabase()
+        {
+            stageManager.LoadFromDatabase();
+            UpdateDataGridStages();
+            DisableEditAndRemoveStage();
         }
 
         //private void SaveStagesToFile()

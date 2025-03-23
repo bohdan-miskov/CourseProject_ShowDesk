@@ -74,7 +74,7 @@
             this.buttonSave.TabIndex = 8;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // textBoxIndex
             // 
@@ -85,7 +85,7 @@
             this.textBoxIndex.Name = "textBoxIndex";
             this.textBoxIndex.Size = new System.Drawing.Size(232, 28);
             this.textBoxIndex.TabIndex = 5;
-            this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxIndex_KeyUp);
+            this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxIndex_KeyUp);
             // 
             // labelStageName
             // 
@@ -117,7 +117,7 @@
             this.textBoxStageName.Name = "textBoxStageName";
             this.textBoxStageName.Size = new System.Drawing.Size(232, 28);
             this.textBoxStageName.TabIndex = 7;
-            this.textBoxStageName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxName_KeyUp);
+            this.textBoxStageName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStageName_KeyUp);
             // 
             // menuStripStage
             // 
@@ -151,7 +151,7 @@
             this.addZoneToolStripMenuItem.Name = "addZoneToolStripMenuItem";
             this.addZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.addZoneToolStripMenuItem.Text = "Add";
-            this.addZoneToolStripMenuItem.Click += new System.EventHandler(this.addZoneToolStripMenuItem_Click);
+            this.addZoneToolStripMenuItem.Click += new System.EventHandler(this.AddZoneToolStripMenuItem_Click);
             // 
             // editZoneToolStripMenuItem
             // 
@@ -160,7 +160,7 @@
             this.editZoneToolStripMenuItem.Name = "editZoneToolStripMenuItem";
             this.editZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.editZoneToolStripMenuItem.Text = "Edit";
-            this.editZoneToolStripMenuItem.Click += new System.EventHandler(this.editZoneToolStripMenuItem_Click);
+            this.editZoneToolStripMenuItem.Click += new System.EventHandler(this.EditZoneToolStripMenuItem_Click);
             // 
             // removeZoneToolStripMenuItem
             // 
@@ -169,7 +169,7 @@
             this.removeZoneToolStripMenuItem.Name = "removeZoneToolStripMenuItem";
             this.removeZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.removeZoneToolStripMenuItem.Text = "Remove";
-            this.removeZoneToolStripMenuItem.Click += new System.EventHandler(this.removeZoneToolStripMenuItem_Click);
+            this.removeZoneToolStripMenuItem.Click += new System.EventHandler(this.RemoveZoneToolStripMenuItem_Click);
             // 
             // groupBoxStage
             // 
@@ -202,7 +202,7 @@
             this.buttonEditSeating.TabIndex = 9;
             this.buttonEditSeating.Text = "Edit Seating";
             this.buttonEditSeating.UseVisualStyleBackColor = false;
-            this.buttonEditSeating.Click += new System.EventHandler(this.buttonEditSeating_Click);
+            this.buttonEditSeating.Click += new System.EventHandler(this.ButtonEditSeating_Click);
             // 
             // dataGridViewZones
             // 
@@ -234,8 +234,8 @@
             this.dataGridViewZones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewZones.Size = new System.Drawing.Size(452, 237);
             this.dataGridViewZones.TabIndex = 12;
-            this.dataGridViewZones.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewZones_RowEnter);
-            this.dataGridViewZones.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewZones_RowLeave);
+            this.dataGridViewZones.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewZones_RowEnter);
+            this.dataGridViewZones.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewZones_RowLeave);
             // 
             // contextMenuStripStage
             // 
@@ -253,7 +253,7 @@
             this.addZoneToolStripMenuItem1.Name = "addZoneToolStripMenuItem1";
             this.addZoneToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
             this.addZoneToolStripMenuItem1.Text = "Add zone";
-            this.addZoneToolStripMenuItem1.Click += new System.EventHandler(this.addZoneToolStripMenuItem_Click);
+            this.addZoneToolStripMenuItem1.Click += new System.EventHandler(this.AddZoneToolStripMenuItem_Click);
             // 
             // editZoneToolStripMenuItem1
             // 
@@ -261,7 +261,7 @@
             this.editZoneToolStripMenuItem1.Name = "editZoneToolStripMenuItem1";
             this.editZoneToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
             this.editZoneToolStripMenuItem1.Text = "Edit zone";
-            this.editZoneToolStripMenuItem1.Click += new System.EventHandler(this.editZoneToolStripMenuItem_Click);
+            this.editZoneToolStripMenuItem1.Click += new System.EventHandler(this.EditZoneToolStripMenuItem_Click);
             // 
             // removeZoneToolStripMenuItem1
             // 
@@ -269,7 +269,7 @@
             this.removeZoneToolStripMenuItem1.Name = "removeZoneToolStripMenuItem1";
             this.removeZoneToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
             this.removeZoneToolStripMenuItem1.Text = "Remove zone";
-            this.removeZoneToolStripMenuItem1.Click += new System.EventHandler(this.removeZoneToolStripMenuItem_Click);
+            this.removeZoneToolStripMenuItem1.Click += new System.EventHandler(this.RemoveZoneToolStripMenuItem_Click);
             // 
             // groupBoxZones
             // 

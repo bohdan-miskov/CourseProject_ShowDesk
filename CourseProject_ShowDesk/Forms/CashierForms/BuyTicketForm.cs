@@ -18,7 +18,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class BuyTicketForm : MetroFramework.Forms.MetroForm
     {
-        private Stage stage;
+        private readonly Stage stage;
 
         private Performance performance;
 
@@ -27,15 +27,15 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private bool isValid;
 
         private StandardTicket ticket;
-        private StandardTicket newTicket;
+        //private StandardTicket newTicket;
 
         private int formHeight;
 
         private Control selectedControl;
-        private List<Control> selectedControls = new List<Control>();
-        private List<Seat> seatList = new List<Seat>();
-        private List<StandardTicket> newTickets = new List<StandardTicket>();
-        private PerformanceBaseService dataBase = new PerformanceBaseService();
+        private List<Control> selectedControls;
+        private readonly List<Seat> seatList;
+        private List<StandardTicket> newTickets;
+        private readonly PerformanceBaseService dataBase;
 
 
         public BuyTicketForm(Stage stage, Performance performance)
@@ -44,6 +44,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             this.stage = stage;
             this.performance = performance;
+            this.selectedControls = new List<Control>();
+            this.newTickets = new List<StandardTicket>();
+            this.dataBase = new PerformanceBaseService();
 
             labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
 
@@ -63,7 +66,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             groupBoxTicket.Height = 288;
         }
 
-        private void textBoxIndex_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxIndex_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -71,7 +74,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void comboBoxTicketType_KeyUp(object sender, KeyEventArgs e)
+        private void ComboBoxTicketType_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -79,7 +82,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void comboBoxPositions_KeyUp(object sender, KeyEventArgs e)
+        private void ComboBoxPositions_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -87,7 +90,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void checkBoxReserved_KeyUp(object sender, KeyEventArgs e)
+        private void CheckBoxReserved_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -95,7 +98,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void textBoxPrice_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxPrice_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -103,33 +106,37 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void comboBoxTicketType_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxTicketType_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeTicketInfo();
             ticket = CreateTicket();
             GetTicketPrice();
         }
 
-        private void comboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
         {
             ticket = CreateTicket();
             GetTicketPrice();
         }
+        private void PanelSeating_MouseDown(object sender, MouseEventArgs e)
+        {
+            SeatingMouseDown(sender, e);
+        }
 
-        private void timerScaleUp_Tick(object sender, EventArgs e)
+        private void TimerScaleUp_Tick(object sender, EventArgs e)
         {
             SlowlyScaleUp();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void ButtonAdd_Click(object sender, EventArgs e)
         {
             isValid = true;
-            newTicket = ticket;
+            //newTicket = ticket;
             List<int> canceledPosition = CheckPositions();
             if (canceledPosition.Count != 0)
             {
                 MessageBox.Show(
-                     $"Sorry, follow positions sold: {canceledPosition.ToString()}",
+                     $"Sorry, follow positions sold: {string.Join(", ", canceledPosition)}",
                      "Not available",
                      MessageBoxButtons.OK,
                      MessageBoxIcon.Error);
@@ -448,12 +455,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             return newTickets;
         }
-
-        private void panelSeating_MouseDown(object sender, MouseEventArgs e)
-        {
-            SeatingMouseDown(sender, e);
-        }
-
         private void SeatingMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -462,7 +463,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
                 foreach (Control control in panelSeating.Controls)
                 {
-                    if (control.Bounds.Contains(e.Location) && control is Label && isAvailable(GetCurrentSeatIndex(control)))
+                    if (control.Bounds.Contains(e.Location) && control is Label && IsAvailable(GetCurrentSeatIndex(control)))
                     {
                         selectedControl = control;
                         break;
@@ -531,7 +532,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private int GetCurrentSeatIndex(Control control)
         {
 
-            if (control is Label label)
+            if (control is Label)
             {
                 bool isInteger = int.TryParse(control.Text, out int result);
 
@@ -545,7 +546,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         }
 
-        private bool isAvailable(int position)
+        private bool IsAvailable(int position)
         {
             if (performance.AvailablePositions.Contains(position))
             {

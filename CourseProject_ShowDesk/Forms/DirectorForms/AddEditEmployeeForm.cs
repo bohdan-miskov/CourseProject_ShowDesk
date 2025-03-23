@@ -15,10 +15,10 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     public partial class AddEditEmployeeForm : MetroFramework.Forms.MetroForm
     {
-        private List<Employee> employees;
+        private readonly List<Employee> employees;
 
         //private Employee newEmployee;
-        private Employee currentEmployee;
+        private readonly Employee currentEmployee;
 
         private bool isValid;
 
@@ -43,7 +43,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void textBoxFullName_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxFullName_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -51,7 +51,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void textBoxLogin_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxLogin_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -59,7 +59,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void textBoxPassword_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxPassword_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -67,7 +67,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void checkBoxDirector_KeyUp(object sender, KeyEventArgs e)
+        private void CheckBoxDirector_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -75,7 +75,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void checkBoxAdministrator_KeyUp(object sender, KeyEventArgs e)
+        private void CheckBoxAdministrator_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -83,7 +83,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void checkBoxCashier_KeyUp(object sender, KeyEventArgs e)
+        private void CheckBoxCashier_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -91,22 +91,22 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-        private void textBoxFullName_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxFullName_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorLetter(sender, e);
         }
 
-        private void textBoxLogin_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorLoginAndPassword(sender, e);
         }
 
-        private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorLoginAndPassword(sender, e);
         }
 
-        private void buttonAddEmployee_Click(object sender, EventArgs e)
+        private void ButtonAddEmployee_Click(object sender, EventArgs e)
         {
             CreateEmployee();
             EmployeeValidator validator = new EmployeeValidator(employees);
@@ -122,12 +122,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
         }
-
-        private void AddEditEmployeeForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
-
         private void PopulateProfessionsGroup()
         {
             checkBoxDirector.Text = AppConstants.ListOfProfessions[0];

@@ -4,8 +4,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.Facto
 {
     public class CreatePremiumTicket : ICreateTicket
     {
-        private string drink;
-        private string souvenir;
+        private readonly string drink;
+        private readonly string souvenir;
 
         public CreatePremiumTicket(string drink, string souvenir)
         {

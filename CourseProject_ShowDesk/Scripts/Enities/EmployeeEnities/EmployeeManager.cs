@@ -10,7 +10,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
     public class EmployeeManager
     {
         private List<Employee> employees;
-        private EmployeeBaseService database;
+        private readonly EmployeeBaseService database;
 
         public EmployeeManager(EmployeeBaseService databaseService)
         {

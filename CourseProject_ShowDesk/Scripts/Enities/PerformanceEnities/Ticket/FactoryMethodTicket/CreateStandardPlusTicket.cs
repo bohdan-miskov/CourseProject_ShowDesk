@@ -4,7 +4,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.Facto
 {
     public class CreateStandardPlusTicket : ICreateTicket
     {
-        private string drink;
+        private readonly string drink;
         public CreateStandardPlusTicket(string drink)
         {
             this.drink = drink;

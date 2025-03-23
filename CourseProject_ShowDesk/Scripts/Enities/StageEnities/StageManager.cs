@@ -10,7 +10,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
     public class StageManager
     {
         private List<Stage> stages;
-        private StageBaseService database;
+        private readonly StageBaseService database;
 
         public StageManager(StageBaseService databaseService)
         {

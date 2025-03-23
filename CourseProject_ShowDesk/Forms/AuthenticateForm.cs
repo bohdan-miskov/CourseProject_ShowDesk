@@ -13,7 +13,7 @@ namespace CourseProject_ShowDesk.Forms
 {
     public partial class AuthenticateForm : MetroFramework.Forms.MetroForm
     {
-        private EmployeeManager employeeManager;
+        private readonly EmployeeManager employeeManager;
 
         public AuthenticateForm()
         {
@@ -28,7 +28,7 @@ namespace CourseProject_ShowDesk.Forms
             comboBoxUser.SelectedIndex = 2;
         }
 
-        private void textBoxLogin_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxLogin_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -36,7 +36,7 @@ namespace CourseProject_ShowDesk.Forms
             }
         }
 
-        private void textBoxPassword_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxPassword_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -44,7 +44,7 @@ namespace CourseProject_ShowDesk.Forms
             }
         }
 
-        private void comboBoxUser_KeyUp(object sender, KeyEventArgs e)
+        private void ComboBoxUser_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -52,12 +52,12 @@ namespace CourseProject_ShowDesk.Forms
             }
         }
 
-        private void comboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeOfImage();
         }
 
-        private void buttonAuthentificate_Click(object sender, EventArgs e)
+        private void ButtonAuthentificate_Click(object sender, EventArgs e)
         {
             Authenticate();
         }
@@ -121,7 +121,7 @@ namespace CourseProject_ShowDesk.Forms
                 {
                     ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(accountName);
                     manageEmployeesForm.Show();
-                    this.Hide();
+                    this.Close();
                     //ClearLogInField();
                 }
                 else
@@ -137,7 +137,7 @@ namespace CourseProject_ShowDesk.Forms
                 {
                     ManageStagesForm manageStagesForm = new ManageStagesForm(accountName);
                     manageStagesForm.Show();
-                    this.Hide();
+                    this.Close();
                     //ClearLogInField();
                 }
                 else
@@ -153,7 +153,7 @@ namespace CourseProject_ShowDesk.Forms
                 {
                     ManagePerformancesForm managePerformancesForm = new ManagePerformancesForm(accountName);
                     managePerformancesForm.Show();
-                    this.Hide();
+                    this.Close();
                     //ClearLogInField();
                 }
                 else

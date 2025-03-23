@@ -10,7 +10,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
 {
     public class PerformanceValidator
     {
-        List<Performance> performances;
+        private readonly List<Performance> performances;
         public PerformanceValidator(List<Performance> performances) 
         {
             this.performances = performances;
@@ -112,8 +112,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
         // Метод для перевірки перетину між двома сеансами
         private bool IsIntersectionOfPerformances(Performance newPerformance, Performance performance)
         {
-            double currentTimeDifference = 0;
-            double minTimeDifference = 0;
+            double currentTimeDifference;
+            double minTimeDifference;
 
             if (newPerformance.PerformanceDateTime > performance.PerformanceDateTime)
             {
