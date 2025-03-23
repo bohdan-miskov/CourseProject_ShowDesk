@@ -104,10 +104,10 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
             }
             set
             {
-                //if (string.IsNullOrWhiteSpace(value))
-                //{
-                //    throw new ArgumentException("Ticket type cannot be null, empty, or whitespace.", nameof(Type));
-                //}
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Ticket type cannot be null, empty, or whitespace.", nameof(Type));
+                }
                 type = value;
             }
         }

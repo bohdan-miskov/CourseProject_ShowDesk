@@ -12,9 +12,10 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
     [Serializable]
     public class Performance
     {
+        [BsonIgnore]
+        private PerformanceBaseService performanceBaseService;
         [BsonId]
         private Guid id = Guid.NewGuid();
-        private PerformanceBaseService performanceBaseService=new PerformanceBaseService();
         private string name;
         private double price;
         private DateTime performanceDateTime;
