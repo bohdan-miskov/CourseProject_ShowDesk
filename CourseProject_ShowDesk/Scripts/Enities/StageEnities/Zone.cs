@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Drawing;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
@@ -7,7 +8,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
     [Serializable]
     public class Zone
     {
-        private readonly Guid id=Guid.NewGuid();
+        [BsonId]
+        private Guid id=Guid.NewGuid();
         private string name;
         private double increase;
         private int startPosition;
@@ -45,10 +47,10 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Name of zone cannot be empty or whitespace.", nameof(Name));
-                }
+                //if (string.IsNullOrWhiteSpace(value))
+                //{
+                //    throw new ArgumentException("Name of zone cannot be empty or whitespace.", nameof(Name));
+                //}
                 name = value;
             }
         }

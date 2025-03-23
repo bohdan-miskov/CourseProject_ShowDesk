@@ -12,10 +12,9 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
     [Serializable]
     public class Performance
     {
-        [BsonIgnore]
-        private readonly PerformanceBaseService performanceBaseService;
         [BsonId]
-        private readonly Guid id = Guid.NewGuid();
+        private Guid id = Guid.NewGuid();
+        private PerformanceBaseService performanceBaseService=new PerformanceBaseService();
         private string name;
         private double price;
         private DateTime performanceDateTime;
@@ -55,6 +54,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
                 return id;
             }
         }
+        
         public string Name
         {
             get
@@ -166,7 +166,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
             availablePositions.Remove(newTicket.Position);
             tickets.Add(newTicket);
-
+            performanceBaseService = new PerformanceBaseService();
             performanceBaseService.RemovePosition(this.id, newTicket.Position);
             performanceBaseService.AddTicket(this.id, newTicket);
 

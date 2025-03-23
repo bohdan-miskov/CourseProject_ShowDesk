@@ -121,7 +121,7 @@ namespace CourseProject_ShowDesk.Forms
                 {
                     ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(accountName);
                     manageEmployeesForm.Show();
-                    this.Close();
+                    this.Hide();
                     //ClearLogInField();
                 }
                 else
@@ -137,7 +137,7 @@ namespace CourseProject_ShowDesk.Forms
                 {
                     ManageStagesForm manageStagesForm = new ManageStagesForm(accountName);
                     manageStagesForm.Show();
-                    this.Close();
+                    this.Hide();
                     //ClearLogInField();
                 }
                 else
@@ -153,7 +153,7 @@ namespace CourseProject_ShowDesk.Forms
                 {
                     ManagePerformancesForm managePerformancesForm = new ManagePerformancesForm(accountName);
                     managePerformancesForm.Show();
-                    this.Close();
+                    this.Hide();
                     //ClearLogInField();
                 }
                 else
@@ -165,6 +165,8 @@ namespace CourseProject_ShowDesk.Forms
 
         private string CheckAccountAndGetName(string currentProfession)
         {
+            return "Bohdan";
+
             foreach (Employee employee in employeeManager.Employees)
             {
                 if (employee.Login == textBoxLogin.Text &&

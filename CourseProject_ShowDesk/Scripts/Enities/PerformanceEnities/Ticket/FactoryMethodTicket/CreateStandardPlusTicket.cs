@@ -14,6 +14,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.Facto
         {
             return new StandardPlusTicket
             {
+                Type="StandardPlus",
                 Drink = drink
             };
         }

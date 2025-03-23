@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
@@ -127,7 +128,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         }
         public Performance GetUpdatedPerformance(Performance performance)
         {
-            var filter = Builders<Performance>.Filter.Eq(p => p.Id, performance.Id);
+            //var filter = Builders<Performance>.Filter.Eq(p => p.Id, performance.Id);
+            var filter = Builders<Performance>.Filter.Eq("Id", performance.Id);
             return upcomingCollection.Find(filter).FirstOrDefault();
         }
 

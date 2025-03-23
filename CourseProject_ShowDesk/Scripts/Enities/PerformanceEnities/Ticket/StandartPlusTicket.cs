@@ -1,9 +1,12 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
 {
+    [Serializable]
     public class StandardPlusTicket : StandardTicket
     {
+        [BsonId]
         protected string drink;
 
         public StandardPlusTicket()

@@ -17,6 +17,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.Facto
         {
             return new PremiumTicket
             {
+                Type="Premium",
                 Drink = drink,
                 Souvenir = souvenir
             };

@@ -1,4 +1,5 @@
 ﻿using CourseProject_ShowDesk.Scripts;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
@@ -7,7 +8,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
 
     public class StandardTicket
     {
-        protected readonly Guid id = Guid.NewGuid();
+        [BsonId]
+        protected Guid id = Guid.NewGuid();
         protected int index;
         protected int position;
         protected double calculatedPrice;
@@ -102,10 +104,10 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Ticket type cannot be null, empty, or whitespace.", nameof(Type));
-                }
+                //if (string.IsNullOrWhiteSpace(value))
+                //{
+                //    throw new ArgumentException("Ticket type cannot be null, empty, or whitespace.", nameof(Type));
+                //}
                 type = value;
             }
         }

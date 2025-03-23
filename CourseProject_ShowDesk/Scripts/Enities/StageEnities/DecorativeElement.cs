@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
     public class DecorativeElement
     {
+        [BsonId]
         private readonly Guid id = Guid.NewGuid();
         private Color color = Color.LightGray;
         public Point Location;

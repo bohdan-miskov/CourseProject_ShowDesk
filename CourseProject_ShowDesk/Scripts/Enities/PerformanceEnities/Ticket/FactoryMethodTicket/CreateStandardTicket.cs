@@ -4,7 +4,10 @@
     {
         public StandardTicket CreateTicket()
         {
-            return new StandardTicket();
+            return new StandardTicket()
+            {
+                Type = "Standard"
+            };
         }
     }
 }

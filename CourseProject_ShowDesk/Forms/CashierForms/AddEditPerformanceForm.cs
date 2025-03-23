@@ -163,11 +163,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             currentPerformance.PerformanceDateTime= dateTimePickerPerfomanceDate.Value;
             currentPerformance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
             currentPerformance.Duration= new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
-            currentPerformance.StageId = stages[comboBoxStage.SelectedIndex].Id;
-            if (currentPerformance.StageId != currentPerformance.StageId)
+            if (currentPerformance.StageId != stages[comboBoxStage.SelectedIndex].Id)
             {
                 currentPerformance.AvailablePositions = stages[comboBoxStage.SelectedIndex].GetPositions();
             }
+            currentPerformance.StageId = stages[comboBoxStage.SelectedIndex].Id;
         }
 
         //private bool ValidateOfPerformance()

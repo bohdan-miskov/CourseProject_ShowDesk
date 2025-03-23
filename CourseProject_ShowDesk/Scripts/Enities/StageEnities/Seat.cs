@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -11,10 +12,11 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
     public class Seat
     {
+        [BsonId]
         private readonly Guid id = Guid.NewGuid();
         private int seatNumber;
         private bool isAvailable = true;
-        private Zone currentZone;
+        private Zone currentZone=null;
         //private Color color = Color.LightBlue;
         public Point Location;
         public Size Size  = new Size(50, 50);

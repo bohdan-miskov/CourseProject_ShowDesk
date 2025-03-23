@@ -2,6 +2,8 @@
 using CourseProject_ShowDesk.Scripts.Constants;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         {
             var client = new MongoClient(AppConstants.ConnectionString);
             var db = client.GetDatabase(dbName);
+            //BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+
 
             employeeCollection = db.GetCollection<Employee>("Employees");
         }

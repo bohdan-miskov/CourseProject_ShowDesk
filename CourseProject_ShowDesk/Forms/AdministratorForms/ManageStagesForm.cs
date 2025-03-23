@@ -93,8 +93,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             if (Application.OpenForms.Count == 0)
             {
-                Application.Exit();
             }
+                Application.Exit();
         }
 
         private void ShowGreetings(string name)

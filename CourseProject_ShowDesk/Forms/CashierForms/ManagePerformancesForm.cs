@@ -73,7 +73,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void RemovePerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].ToString());
+            Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].Value.ToString());
 
             performanceManager.RemovePerformance(id);
             UpdateDataFromDataBase();
@@ -119,8 +119,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             if (Application.OpenForms.Count == 0)
             {
-                Application.Exit();
             }
+                Application.Exit();
         }
 
         private void ShowGreetings(string name)
@@ -198,6 +198,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             string timePerformance = $"{performance.PerformanceDateTime.Hour:D2}:{performance.PerformanceDateTime.Minute:D2}";
             dataGridViewPerformances.Rows.Add(
+                performance.Id,
                 performance.PerformanceDateTime.Date.ToShortDateString(),
                 timePerformance,
                 performance.Name,

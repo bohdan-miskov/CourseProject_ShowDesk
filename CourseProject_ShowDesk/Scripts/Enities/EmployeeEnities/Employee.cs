@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +8,10 @@ using System.Xml.Linq;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 {
+    [Serializable]
     public class Employee
     {
+        [BsonId]
         private readonly Guid id = Guid.NewGuid();
         private string fullName;
         private string login;

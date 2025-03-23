@@ -121,8 +121,8 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             if (Application.OpenForms.Count == 0)
             {
-                Application.Exit();
             }
+                Application.Exit();
         }
 
         private void ShowGreetings(string name)
@@ -240,12 +240,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             Guid id = Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
 
-            dataGridViewEmployees.CurrentRow.Cells[2].Value=employeeManager.GetById(id).Password;
+            dataGridViewEmployees.CurrentRow.Cells[3].Value=employeeManager.GetById(id).Password;
         }
 
         private void HidePassword()
         {
-            dataGridViewEmployees.CurrentRow.Cells[2].Value = cipher;
+            dataGridViewEmployees.CurrentRow.Cells[3].Value = cipher;
         }
     }
 }
