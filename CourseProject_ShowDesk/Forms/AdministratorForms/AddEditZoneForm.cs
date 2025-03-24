@@ -112,7 +112,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
                 this.Close();
             }
-            MessageBox.Show(
+            else MessageBox.Show(
                                  errorMessage,
                                  "Zone error",
                                  MessageBoxButtons.OK,

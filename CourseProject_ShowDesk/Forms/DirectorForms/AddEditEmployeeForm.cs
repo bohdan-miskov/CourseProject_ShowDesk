@@ -116,7 +116,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
                 this.Close();
             }
-            MessageBox.Show(
+            else MessageBox.Show(
                 errorMessage,
                 "Employee error",
                 MessageBoxButtons.OK,

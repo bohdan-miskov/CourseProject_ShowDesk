@@ -95,7 +95,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 isValid = true;
                 this.Close();
             }
-            MessageBox.Show(
+            else MessageBox.Show(
                                 errorMessage,
                                 "Stage error",
                                 MessageBoxButtons.OK,

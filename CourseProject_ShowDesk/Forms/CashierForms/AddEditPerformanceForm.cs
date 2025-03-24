@@ -91,7 +91,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 isValid = true;
                 this.Close();
             }
-            MessageBox.Show(
+            else MessageBox.Show(
                                 errorMessage,
                                 "Performance error",
                                 MessageBoxButtons.OK,
