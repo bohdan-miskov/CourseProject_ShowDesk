@@ -111,42 +111,13 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             UpdateZoneSeats(zone);
         }
 
-        public bool CheckZonePositions(int startPosition, int endPosition, Zone currentZone)
-        {
-
-            if (startPosition < 0 || endPosition < 0)
-            {
-                return false;
-            }
-
-            if (zones.Count > 0)
-            {
-                foreach(Zone zone in zones) 
-                {
-                    if (!(
-                        (startPosition < zone.StartPosition && endPosition < zone.StartPosition) ||
-                        (startPosition > zone.EndPosition && endPosition > zone.EndPosition))
-                        )
-                    {
-                        if (currentZone.Id!=zone.Id)
-                        {
-                            return false;
-                        }
-                    }
-                }
-            }
-
-            return true;
-        }
-
-        public Zone GetZone(Guid zoneId)
+        public Zone GetZoneById(Guid zoneId)
         {
             var zone = zones.FirstOrDefault(z => z.Id == zoneId)
                 ?? throw new ArgumentException("Zone with the given id does not exist.", nameof(zoneId));
                 
             return zone;
         }
-
 
         public void RemoveZone(Guid zoneId)
         {

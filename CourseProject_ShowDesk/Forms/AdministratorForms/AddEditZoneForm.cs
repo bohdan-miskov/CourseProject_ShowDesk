@@ -4,20 +4,18 @@ using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
     public partial class AddEditZoneForm : MetroFramework.Forms.MetroForm
     {
-
         private bool isValid;
 
         private readonly Stage stage;
 
         private readonly Zone currentZone;
-
-        //private Color color;
 
         public AddEditZoneForm(Stage stage, Zone zone=null)
         {
@@ -31,44 +29,29 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 this.currentZone = zone;
                 PopulateFields();
             }
-            else
-            {
-                this.currentZone = new Zone();
-            }
-
+            else this.currentZone = new Zone();
+            
             PopulateSeating();
         }
 
         private void TextBoxZoneName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                numericUpDownIncrease.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) numericUpDownIncrease.Focus();
         }
 
         private void TextBoxIncrease_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                numericUpDownStartPosition.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) numericUpDownStartPosition.Focus();
         }
 
         private void NumericUpDownStartPosition_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                numericUpDownEndPosition.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) numericUpDownEndPosition.Focus();
         }
 
         private void NumericUpDownEndPosition_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonAdd.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) buttonAdd.Focus();
         }
 
         private void NumericUpDownStartPosition_ValueChanged(object sender, EventArgs e)
@@ -99,20 +82,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
-            CreateZone();
-            ZoneValidator validator = new ZoneValidator(stage.Zones);
-
-            if (validator.Validate(currentZone,out string errorMessage))
-            {
-                isValid = true;
-
-                this.Close();
-            }
-            else MessageBox.Show(
-                                 errorMessage,
-                                 "Zone error",
-                                 MessageBoxButtons.OK,
-                                 MessageBoxIcon.Error);
+            SaveZone();
         }
 
         private void PopulateFields()
@@ -153,20 +123,15 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             int startIndex = Convert.ToInt32(numericUpDownStartPosition.Value);
             int endIndex = Convert.ToInt32(numericUpDownEndPosition.Value);
-            foreach (Control control in panelSeating.Controls)
+            foreach (Control control in panelSeating.Controls.OfType<Label>().ToList())
             {
-                if(control is Label)
+                int index = Convert.ToInt32(control.Text);
+                if (index >= startIndex && index <= endIndex)
                 {
-                    int index = Convert.ToInt32(control.Text);
-                    if (index>=startIndex && index<=endIndex)
-                    {
-                        control.BackColor = colorDialog.Color;
-                    }
-                    else
-                    {
-                        control.BackColor = new Zone().GetColor();
-                    }
+                    control.BackColor = colorDialog.Color;
+                    continue;
                 }
+                control.BackColor = stage.SeatList[index - 1].CurrentZone.GetColor();
             }
         }
         private void CreateZone()
@@ -175,6 +140,23 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             currentZone.EndPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
             currentZone.Name = textBoxZoneName.Text;
             currentZone.Increase = Convert.ToDouble(numericUpDownIncrease.Value);
+        }
+        private void SaveZone()
+        {
+            CreateZone();
+            ZoneValidator validator = new ZoneValidator(stage.Zones);
+
+            if (validator.Validate(currentZone, out string errorMessage))
+            {
+                isValid = true;
+
+                this.Close();
+            }
+            else MessageBox.Show(
+                                 errorMessage,
+                                 "Zone error",
+                                 MessageBoxButtons.OK,
+                                 MessageBoxIcon.Error);
         }
         public Zone GetZone()
         {

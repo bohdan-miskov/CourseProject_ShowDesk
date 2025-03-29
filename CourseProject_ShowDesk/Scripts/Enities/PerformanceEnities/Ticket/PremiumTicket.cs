@@ -41,7 +41,5 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
         {
             return base.GetAdditionalServices() + $"\nSouvenir: {souvenir}";
         }
-
-
     }
 }

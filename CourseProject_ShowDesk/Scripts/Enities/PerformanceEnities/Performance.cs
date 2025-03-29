@@ -201,10 +201,12 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
         //{
         //    tickets.Clear();
         //}
+
         public StandardTicket GetTicketById(Guid id)
         {
             return tickets.FirstOrDefault(s => s.Id == id);
         }
+
         public void UpdateTicket(StandardTicket updatedTicket)
         {
             var existingTicket = tickets.FirstOrDefault(s => s.Id == updatedTicket.Id);

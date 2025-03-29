@@ -20,8 +20,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         {
             var client = new MongoClient(AppConstants.ConnectionString);
             var db = client.GetDatabase(dbName);
-            //BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
-
 
             employeeCollection = db.GetCollection<Employee>("Employees");
         }
@@ -29,15 +27,18 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         {
             return employeeCollection.Find(_ => true).ToList();
         }
+
         public void AddEmployee(Employee employee)
         {
             employeeCollection.InsertOne(employee);
         }
+
         public void RemoveEmployee(Guid id)
         {
             var filter = Builders<Employee>.Filter.Eq("Id", id);
             employeeCollection.DeleteOne(filter);
         }
+
         public void UpdateEmployee(Employee updatedEmployee)
         {
             var filter = Builders<Employee>.Filter.Eq(p => p.Id, updatedEmployee.Id);

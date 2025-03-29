@@ -39,7 +39,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
             }
         }
 
-
         public override string GetAdditionalServices()
         {
             return $"Drink: {drink}";

@@ -25,23 +25,16 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             textBoxIndex.Text = Convert.ToString(index);
 
             isValid = false;
-            newStage = new Stage();
         }
 
         private void TextBoxIndex_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxStageName.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) textBoxStageName.Focus();
         }
 
         private void TextBoxStageName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonAdd.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) buttonAdd.Focus();
         }
 
         private void ButtonAdd_Click(object sender, EventArgs e)
@@ -50,7 +43,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         }
         private void SaveStage()
         {
-            newStage = CreateStage();
+            CreateStage();
             StageValidator validator = new StageValidator();
             if (validator.Validate(newStage,out string errorMessage))
             {
@@ -75,11 +68,10 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                                 MessageBoxIcon.Error);
         }
 
-        private Stage CreateStage()
+        private void CreateStage()
         {
             string stageName = textBoxStageName.Text;
-
-            return newStage = new Stage(index, stageName);    
+            newStage = new Stage(index, stageName);    
         }
 
         public bool GetIsValid()

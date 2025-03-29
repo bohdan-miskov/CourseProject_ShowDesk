@@ -21,8 +21,6 @@ namespace CourseProject_ShowDesk.Forms
 
             employeeManager = new EmployeeManager(new EmployeeBaseService());
 
-            //LoadEmployeesFromFile();
-
             PopulateComboBox();
 
             comboBoxUser.SelectedIndex = 2;
@@ -30,26 +28,18 @@ namespace CourseProject_ShowDesk.Forms
 
         private void TextBoxLogin_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxPassword.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) textBoxPassword.Focus();
+
         }
 
         private void TextBoxPassword_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                comboBoxUser.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) comboBoxUser.Focus();
         }
 
         private void ComboBoxUser_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonAuthentificate.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) buttonAuthentificate.Focus();
         }
 
         private void ComboBoxUser_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,22 +57,6 @@ namespace CourseProject_ShowDesk.Forms
             Application.Exit();
         }
 
-        //private void LoadEmployeesFromFile()
-        //{
-        //    if (File.Exists(AppConstants.EmployeesFileName))
-        //    {
-        //        employees = FileHandler.LoadListFromJson<Employee>(AppConstants.EmployeesFileName);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(
-        //                        $"File {AppConstants.EmployeesFileName} not found",
-        //                        "Load employees error",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //    }
-        //}
-
         private void PopulateComboBox()
         {
             comboBoxUser.Items.Clear();
@@ -96,87 +70,81 @@ namespace CourseProject_ShowDesk.Forms
         private void ChangeOfImage()
         {
             if (comboBoxUser.SelectedIndex == 0)
-            {
                 pictureBoxAvatar.Image = Properties.Resources.Director;
-            }
+
             else if (comboBoxUser.SelectedIndex == 1)
-            {
                 pictureBoxAvatar.Image = Properties.Resources.Administrator;
-            }
+
             else if (comboBoxUser.SelectedIndex == 2)
-            {
                 pictureBoxAvatar.Image = Properties.Resources.Cashier;
-            }
         }
 
         private void Authenticate()
         {
-            Employee account;
+            if (comboBoxUser.SelectedIndex == 0) AuthenticateDirector();
+            else if (comboBoxUser.SelectedIndex == 1) AuthenticateAdministrator();
+            else if (comboBoxUser.SelectedIndex == 2) AuthenticateCashier();
+        }
 
-            if (comboBoxUser.SelectedIndex == 0)
+        private void AuthenticateDirector()
+        {
+            Employee account = CheckAccountAndGetName(AppConstants.ListOfProfessions[0]);
+
+            if (account == null)
             {
-                account = CheckAccountAndGetName(AppConstants.ListOfProfessions[0]);
-
-                if (account!=null)
-                {
-                    ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(account);
-                    this.Hide();
-                    DialogResult result =manageEmployeesForm.ShowDialog();
-                    if (result != DialogResult.OK)
-                    {
-                        Application.Exit();
-                    }
-                    this.Show();
-                    //ClearLogInField();
-                }
-                else
-                {
-                    ShowErrorMessage();
-                }
+                ShowErrorMessage();
+                return;
             }
-            else if (comboBoxUser.SelectedIndex == 1)
-            {
-                account = CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
 
-                if (account!=null)
-                {
-                    ManageStagesForm manageStagesForm = new ManageStagesForm(account);
-                    this.Hide();
-                    DialogResult result=manageStagesForm.ShowDialog();
-                    if (result != DialogResult.OK)
-                    {
-                        Application.Exit();
-                    }
-                    this.Show();
-                    //ClearLogInField();
-                }
-                else
-                {
-                    ShowErrorMessage();
-                }
-            }
-            else if (comboBoxUser.SelectedIndex == 2)
+            ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(account);
+            this.Hide();
+            DialogResult result = manageEmployeesForm.ShowDialog();
+
+            if (result != DialogResult.OK) Application.Exit();
+
+            this.Show();
+            //ClearLogInField();
+        }
+
+        private void AuthenticateAdministrator()
+        {
+            Employee account = CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
+
+            if (account == null)
             {
-                account = CheckAccountAndGetName(AppConstants.ListOfProfessions[2]) ??
+                ShowErrorMessage();
+                return;  
+            }
+
+            ManageStagesForm manageStagesForm = new ManageStagesForm(account);
+            this.Hide();
+            DialogResult result = manageStagesForm.ShowDialog();
+
+            if (result != DialogResult.OK) Application.Exit();
+
+            this.Show();
+            //ClearLogInField();
+        }
+
+        private void AuthenticateCashier()
+        {
+            Employee account = CheckAccountAndGetName(AppConstants.ListOfProfessions[2]) ??
                     CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
 
-                if (account!=null)
-                {
-                    ManagePerformancesForm managePerformancesForm = new ManagePerformancesForm(account);
-                    this.Hide();
-                    DialogResult result=managePerformancesForm.ShowDialog();
-                    if (result != DialogResult.OK)
-                    {
-                        Application.Exit();
-                    }
-                    this.Show();
-                    //ClearLogInField();
-                }
-                else
-                {
-                    ShowErrorMessage();
-                }
+            if (account == null)
+            {
+                ShowErrorMessage();
+                return;
             }
+
+            ManagePerformancesForm managePerformancesForm = new ManagePerformancesForm(account);
+            this.Hide();
+            DialogResult result = managePerformancesForm.ShowDialog();
+
+            if (result != DialogResult.OK) Application.Exit();
+
+            this.Show();
+            //ClearLogInField();
         }
 
         private Employee CheckAccountAndGetName(string currentProfession)

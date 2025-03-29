@@ -18,16 +18,13 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private bool isResizing = false;
         private Point resizeStart;
         private Size originalSize;
-
+        private bool isDragging = false;
+        private Point dragStart;
+        private List<Control> selectedControls = new List<Control>();
+        private bool isValid = false;
         private List<Seat> seatList = new List<Seat>();
         private List<DecorativeElement> decorList = new List<DecorativeElement>();
 
-        private bool isDragging = false;
-        private Point dragStart;
-        private Control selectedControl;
-        private List<Control> selectedControls = new List<Control>();
-
-        private bool isValid = false;
 
         public AddEditSeatingForm(Stage stage=null)
         {
@@ -131,49 +128,24 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void ChangeColor()
         {
-            if (selectedControls.Any())
+            if (!selectedControls.Any()) return;
+            if (colorDialog.ShowDialog() != DialogResult.OK) return;
+
+            foreach (var control in selectedControls)
             {
-                if (colorDialog.ShowDialog() == DialogResult.OK)
-                {
-                    foreach (var control in selectedControls)
-                    {
-
-                        control.BackColor = colorDialog.Color;
-
-                        int decorIndex = GetCurrentDecorIndex(control);
-
-                        if (decorIndex != -1)
-                        {
-                            decorList[decorIndex].SetColor(colorDialog.Color);
-                        }
-                        
-                        //else
-                        //{
-                        //    int seatIndex = GetCurrentSeatIndex(control);
-
-                        //    if (seatIndex != -1)
-                        //    {
-                        //        seatList[seatIndex].Color = colorDialog.Color;
-                        //    }
-                        //}
-                    }
-
-                }
+                control.BackColor = colorDialog.Color;
+                int decorIndex = GetCurrentDecorIndex(control);
+                if (decorIndex != -1) decorList[decorIndex].SetColor(colorDialog.Color);
             }
         }
 
         private void SetUnavailable()
         {
-            foreach (Control control in selectedControls.OfType<Label>().ToList())
+            foreach (Control control in selectedControls.OfType<Label>())
             {
-                int seatIndex= GetCurrentSeatIndex(control);
-
-                if(seatIndex!=-1)
-                {
-                    seatList[seatIndex].IsAvailable = false;
-                }
+                int seatIndex = GetCurrentSeatIndex(control);
+                if (seatIndex != -1) seatList[seatIndex].IsAvailable = false;
             }
-
             UpdateSeatNumbers();
         }
 
@@ -183,31 +155,20 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             {
                 int seatIndex=GetCurrentSeatIndex(control);
 
-                if (seatIndex!=-1)
-                {
-                    seatList.RemoveAt(seatIndex);                
-                }
+                if (seatIndex!=-1) seatList.RemoveAt(seatIndex);                
             }
-
             UpdateSeatNumbers();
         }
 
         private void InsertSeat()
         {
-            if (selectedControls.Count == 1 && selectedControls[0] is Label selectedLabel)
-            {
-                int seatIndex = GetCurrentSeatIndex(selectedLabel);
+            if (selectedControls.Count != 1 || !(selectedControls[0] is Label selectedLabel)) return;
+            int seatIndex = GetCurrentSeatIndex(selectedLabel);
+            if (seatIndex == -1) return;
 
-                if (seatIndex != -1)
-                {
-                    Seat selectedSeat = seatList[seatIndex];
-                    Seat newSeat = new Seat(seatIndex + 2, new Point(selectedSeat.Location.X + 10, selectedSeat.Location.Y + 10));
-                    seatList.Insert(seatIndex + 1, newSeat); 
-
-                    UpdateSeatNumbers(); 
-                }
-            }
-
+            Seat newSeat = new Seat(seatIndex + 2, new Point(selectedLabel.Location.X + 10, selectedLabel.Location.Y + 10));
+            seatList.Insert(seatIndex + 1, newSeat);
+            UpdateSeatNumbers();
         }
 
         private void DeleteSelectedDecor()
@@ -215,12 +176,9 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             foreach (Control control in selectedControls.OfType<Panel>().ToList())
             {
                 int decorIndex = GetCurrentDecorIndex(control);
-
-                if (decorIndex != -1)
-                {
-                    decorList.RemoveAt(decorIndex);
-                    panelSeating.Controls.Remove(control);
-                }
+                if (decorIndex == -1) continue;
+                decorList.RemoveAt(decorIndex);
+                panelSeating.Controls.Remove(control);
             }
 
         }
@@ -238,214 +196,189 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void FormMouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button != MouseButtons.Left) return;
+
+            Control selectedControl = FindControlAtLocation(e.Location);
+
+            if (selectedControl != null && IsInResizeZone(selectedControl, e.Location))
             {
-                selectedControl = null;
-
-                foreach (Control control in panelSeating.Controls)
-                {
-                    if (control.Bounds.Contains(e.Location))
-                    {
-                        selectedControl = control;
-                        break;
-                    }
-                }
-
-                if (selectedControl != null && IsInResizeZone(selectedControl, e.Location))
-                {
-                    isResizing = true;
-                    resizeStart = e.Location;
-                    originalSize = selectedControl.Size;
-                    return;
-                }
-
-                if (ModifierKeys == Keys.Control)
-                {
-                    if (selectedControl != null && !selectedControls.Contains(selectedControl))
-                    {
-                        selectedControls.Add(selectedControl);
-                        selectedControl.BackColor = Color.Yellow; 
-                    }
-                }
-                else
-                {
-
-                    foreach (Control control in selectedControls)
-                    {
-                        int decorIndex = GetCurrentDecorIndex(control);
-
-                        if (decorIndex != -1)
-                        {
-                            control.BackColor = decorList[decorIndex].GetColor();
-                        }
-
-                        
-                        else
-                        {
-                            int seatIndex = GetCurrentSeatIndex(control);
-
-                            if (seatIndex != -1)
-                            {
-                                control.BackColor = (seatList[seatIndex].CurrentZone ?? new Zone()).GetColor();
-                            }
-                            else
-                            {
-                                control.BackColor = Color.LightGray;
-                            }
-                        }
-                    }
-
-                    selectedControls.Clear();
-
-                    if (selectedControl != null)
-                    {
-                        selectedControls.Add(selectedControl);
-                        selectedControl.BackColor = Color.Yellow; 
-                    }
-                }
-
-                if (selectedControl != null)
-                {
-                    isDragging = true;
-                    dragStart = new Point(e.X - selectedControl.Left, e.Y - selectedControl.Top);
-                }
+                isResizing = true;
+                resizeStart = e.Location;
+                originalSize = selectedControl.Size;
+                return;
             }
 
+            if (ModifierKeys == Keys.Control)
+            {
+                AddToSelection(selectedControl);
+            }
+            else
+            {
+                ClearSelection();
+                SetSelection(selectedControl);
+            }
+
+            if (selectedControl != null)
+            {
+                isDragging = true;
+                dragStart = new Point(e.Location.X - selectedControl.Left, e.Location.Y - selectedControl.Top);
+            }
         }
 
         private void FormMouseMove(object sender, MouseEventArgs e)
         {
-            if (isResizing && selectedControls.Any())
+            if (isResizing)
             {
-                int deltaX = e.X - resizeStart.X;
-                int deltaY = e.Y - resizeStart.Y;
-
-                foreach (Control control in selectedControls)
-                {
-                    control.Size = new Size(
-                        Math.Max(20, originalSize.Width + deltaX), 
-                        Math.Max(20, originalSize.Height + deltaY)
-                    );
-                   
-                    int seatIndex = GetCurrentSeatIndex(control);
-                    if (seatIndex != -1)
-                    {
-                        seatList[seatIndex].Scale(control.Size); 
-                    }
-                    else
-                    {
-                        int decorIndex = GetCurrentDecorIndex(control);
-
-                        if (decorIndex != -1)
-                        {
-                            decorList[decorIndex].Scale(control.Size); 
-                        }
-                    }
-                    
-                }
-
+                ResizeSelectedControls(e.Location);
             }
-            else if (isDragging && selectedControls.Any())
+            else if (isDragging)
             {
-                foreach (var control in selectedControls)
-                {
-                    int xMove = e.X - dragStart.X;
-                    int yMove = e.Y - dragStart.Y;
-
-                    if (xMove > 0 &&
-                        yMove > 0 &&
-                        xMove+control.Width  < panelSeating.Width &&
-                        yMove+control.Height < panelSeating.Height)
-                    {
-                        control.Left = xMove;
-                        control.Top = yMove;
-
-                        int seatIndex = GetCurrentSeatIndex(control);
-
-                        if(seatIndex!=-1)
-                        {
-                            seatList[seatIndex].Location = new Point(control.Left, control.Top);
-                        }
-                        else
-                        {
-                            int decorIndex = GetCurrentDecorIndex(control);
-
-                            if(decorIndex!=-1)
-                            {
-                                decorList[decorIndex].Location = new Point(control.Left, control.Top);
-                            }
-                        }
-                    }
-                }
+                MoveSelectedControls(e.Location);
             }
         }
 
         private void FormMouseUp(object sender, MouseEventArgs e)
         {
+            StopDraggingOrResizing();
+        }
+
+        private Control FindControlAtLocation(Point location)
+        {
+            return panelSeating.Controls.Cast<Control>().FirstOrDefault(c => c.Bounds.Contains(location));
+        }
+
+        private void AddToSelection(Control control)
+        {
+            if (control != null && !selectedControls.Contains(control))
+            {
+                selectedControls.Add(control);
+                control.BackColor = Color.Yellow;
+            }
+        }
+
+        private void ClearSelection()
+        {
+            foreach (var control in selectedControls)
+            {
+                control.BackColor = GetOriginalColor(control);
+            }
+            selectedControls.Clear();
+        }
+
+        private void SetSelection(Control control)
+        {
+            if (control == null) return;
+            selectedControls.Add(control);
+            control.BackColor = Color.Yellow;
+        }
+
+        private void StopDraggingOrResizing()
+        {
             isDragging = false;
             isResizing = false;
         }
 
+        private void ResizeSelectedControls(Point location)
+        {
+            int deltaX = location.X - resizeStart.X;
+            int deltaY = location.Y - resizeStart.Y;
+
+            foreach (var control in selectedControls)
+            {
+                control.Size = new Size(
+                    Math.Max(20, originalSize.Width + deltaX),
+                    Math.Max(20, originalSize.Height + deltaY)
+                );
+                ScaleControl(control);
+            }
+        }
+
+        private void MoveSelectedControls(Point location)
+        {
+            foreach (var control in selectedControls)
+            {
+                int xMove = location.X - dragStart.X;
+                int yMove = location.Y - dragStart.Y;
+
+                if (IsWithinBounds(xMove, yMove, control))
+                {
+                    control.Location = new Point(xMove, yMove);
+                    UpdateControlLocation(control);
+                }
+            }
+        }
+
+        private bool IsWithinBounds(int x, int y, Control control)
+        {
+            return x > 0 && y > 0 && x + control.Width < panelSeating.Width && y + control.Height < panelSeating.Height;
+        }
+
+        private void ScaleControl(Control control)
+        {
+            int seatIndex = GetCurrentSeatIndex(control);
+            if (seatIndex != -1) seatList[seatIndex].Scale(control.Size);
+            else ScaleDecor(control);
+        }
+
+        private void ScaleDecor(Control control)
+        {
+            int decorIndex = GetCurrentDecorIndex(control);
+            if (decorIndex != -1) decorList[decorIndex].Scale(control.Size);
+        }
+
+        private void UpdateControlLocation(Control control)
+        {
+            int seatIndex = GetCurrentSeatIndex(control);
+            if (seatIndex != -1) seatList[seatIndex].Location = control.Location;
+            else UpdateDecorLocation(control);
+        }
+
+        private void UpdateDecorLocation(Control control)
+        {
+            int decorIndex = GetCurrentDecorIndex(control);
+            if (decorIndex != -1) decorList[decorIndex].Location = control.Location;
+        }
+
+        private Color GetOriginalColor(Control control)
+        {
+            int decorIndex = GetCurrentDecorIndex(control);
+            if (decorIndex != -1) return decorList[decorIndex].GetColor();
+
+            int seatIndex = GetCurrentSeatIndex(control);
+            return seatIndex != -1 ? (seatList[seatIndex].CurrentZone ?? new Zone()).GetColor() : Color.LightGray;
+        }
         private bool IsInResizeZone(Control control, Point mouseLocation)
         {
             const int resizeMargin = 10;
-            var controlBounds = control.Bounds;
+            return IsPointInResizeMargin(control.Bounds, mouseLocation, resizeMargin);
+        }
 
-            return mouseLocation.X >= controlBounds.Right - resizeMargin &&
-                   mouseLocation.Y >= controlBounds.Bottom - resizeMargin;
+        private bool IsPointInResizeMargin(Rectangle bounds, Point point, int margin)
+        {
+            return point.X >= bounds.Right - margin && point.Y >= bounds.Bottom - margin;
         }
 
         private int GetCurrentSeatIndex(Control control)
         {
-
-            if (control is Label)
-            {
-                bool isInteger = int.TryParse(control.Text, out int result);
-
-                if (isInteger)
-                {
-                    return result - 1;
-                }
-            }
-
-            return -1;
-
+            return control is Label && int.TryParse(control.Text, out int result) ? result - 1 : -1;
         }
 
         private int GetCurrentDecorIndex(Control control)
         {
-            if (control is Panel)
+            if (control is Panel panel)
             {
-                for (int i = 0; i < decorList.Count; i++)
-                {
-                    if (control.Name == decorList[i].Id.ToString())
-                    {
-                        return i;
-                    }
-                }
-
+                return decorList.FindIndex(decor => panel.Name == decor.Id.ToString());
             }
-
             return -1;
         }
 
         private void RepopulateSeating()
         {
-            List<Control> labelsToRemove = new List<Control>();
-
-            foreach (Control control in panelSeating.Controls)
-            {
-                if (control is Label)
-                {
-                    labelsToRemove.Add(control);
-                }
-            }
-
-            foreach (Control label in labelsToRemove)
+            var labelsToRemove = panelSeating.Controls.OfType<Label>().ToList();
+            foreach (var label in labelsToRemove)
             {
                 panelSeating.Controls.Remove(label);
             }
-
 
             foreach (Seat seat in seatList)
             {
@@ -455,18 +388,11 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private bool ValidateOfSeating()
         {
-            if(seatList.Count==0)
-            {
-                MessageBox.Show(
-                                "There was an error in the seat of the stage: the stage must have at least one seat",
-                                "Stage seating error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                buttonAddSeat.Focus();
-                return false;
-            }
+            if (seatList.Count > 0) return true;
 
-            return true;
+            MessageBox.Show("The stage must have at least one seat", "Stage seating error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            buttonAddSeat.Focus();
+            return false;
         }
 
         public bool GetIsValid()
@@ -483,7 +409,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             return decorList;
         }
-
     }
 }
 

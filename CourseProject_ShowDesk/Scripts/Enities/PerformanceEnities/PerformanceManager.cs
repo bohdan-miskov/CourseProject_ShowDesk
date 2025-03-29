@@ -42,7 +42,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
         public void AddPerformance(Performance perf)
         {
             performances.Add(perf);
-            database.AddPerformance(perf); // збереження
+            database.AddPerformance(perf); 
         }
 
         public void RemovePerformance(Guid id)
@@ -59,6 +59,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
         {
             return performances.FirstOrDefault(s => s.Id == id);
         }
+
         public void UpdatePerformance(Performance updatedPerformance)
         {
             var existingPerformance = performances.FirstOrDefault(s => s.Id == updatedPerformance.Id);
@@ -68,16 +69,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
                 performances[index] = updatedPerformance;
                 database.UpdatePerformance(updatedPerformance);
             }
-            
-
-        }
-        //public void FilterPastPerformances()
-        //{     
-        //    database.MovePastPerformances();
-        //    performances = database.GetAllUpcomingPerformances();
-        //}
-
-        
+        } 
     }
 
 }

@@ -24,10 +24,12 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
                 return employees; 
             } 
         }
+
         public void LoadFromDatabase()
         {
             employees = database.GetAllEmployees();
         }
+
         public Employee GetById(Guid id)
         {
             return employees.FirstOrDefault(e => e.Id == id);

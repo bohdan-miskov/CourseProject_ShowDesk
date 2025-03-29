@@ -18,7 +18,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     public partial class ManageEmployeesForm : MetroFramework.Forms.MetroForm
     {
-        //private List<Employee> employees;
         private readonly EmployeeManager employeeManager;
 
         private readonly string cipher = new string('*', 12);
@@ -31,7 +30,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             labelAccountName.Text = account.FullName;
 
-            //LoadEmployeesFromFile();
             UpdateDataGridEmployees();
             DisableEditAndRemoveEmployees();
             ShowGreetings(account.FullName);
@@ -52,30 +50,19 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         private void AddEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddEmployee();
-
             UpdateDataFromDataBase();
-            //UpdateDataGridEmployees();
-            //DisableEditAndRemoveEmployees();
         }
 
         private void EditEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditEmployee();
-
             UpdateDataFromDataBase();
-            //UpdateDataGridEmployees();
-            //DisableEditAndRemoveEmployees();
         }
 
         private void RemoveEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Guid id = Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
-
-            employeeManager.RemoveEmployee(id);
-
+            RemoveEmployee();
             UpdateDataFromDataBase();
-            //UpdateDataGridEmployees();
-            //DisableEditAndRemoveEmployees();
         }
 
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,7 +96,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void ManageEmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //SaveEmployeesToFile();
             timerUpdate.Stop();
         }
         private void ShowGreetings(string name)
@@ -147,27 +133,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                     );
         }
 
-        //private void SaveEmployeesToFile()
-        //{
-        //    FileHandler.SaveListToJson(AppConstants.EmployeesFileName, employees);
-        //}
-
-        //private void LoadEmployeesFromFile()
-        //{
-        //    if (File.Exists(AppConstants.EmployeesFileName))
-        //    {
-        //        employees = FileHandler.LoadListFromJson<Employee>(AppConstants.EmployeesFileName);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(
-        //                        $"File {AppConstants.EmployeesFileName} not found",
-        //                        "Load employees error",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //    }
-        //}
-
         private void DisableEditAndRemoveEmployees()
         {
             if (dataGridViewEmployees.CurrentRow != null)
@@ -186,6 +151,11 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
+        private Guid GetCurrentRowId()
+        {
+            return Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
+        }
+
         private void AddEmployee()
         {
             AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(employeeManager.Employees);
@@ -194,14 +164,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             this.Show();
 
             if (addEmployeeForm.GetIsValid())
-            {
                 employeeManager.AddEmployee(addEmployeeForm.GetEmployee());
-            }
         }
 
         private void EditEmployee()
         {
-            Guid id = Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
+            Guid id = GetCurrentRowId();
 
             AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(employeeManager.Employees, employeeManager.GetById(id));
             this.Hide();
@@ -209,12 +177,14 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             this.Show();
 
             if (editEmployeeForm.GetIsValid())
-            {
-                employeeManager.UpdateEmployee(editEmployeeForm.GetEmployee());
-            }
-
+                 employeeManager.UpdateEmployee(editEmployeeForm.GetEmployee());
         }
 
+        private void RemoveEmployee()
+        {
+            Guid id = GetCurrentRowId();
+            employeeManager.RemoveEmployee(id);
+        }
         private void OpenSettings()
         {
             SettingsForm settingsForm = new SettingsForm();
@@ -225,7 +195,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void ShowPassword()
         {
-            Guid id = Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
+            Guid id = GetCurrentRowId();
 
             dataGridViewEmployees.CurrentRow.Cells[3].Value=employeeManager.GetById(id).Password;
         }

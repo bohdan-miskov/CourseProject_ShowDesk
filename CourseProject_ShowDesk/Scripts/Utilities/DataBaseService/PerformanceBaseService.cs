@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
@@ -26,6 +25,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             upcomingCollection = db.GetCollection<Performance>("UpcomingPerformances");
             pastCollection = db.GetCollection<Performance>("PastPerformances");
         }
+
         public List<Performance> GetAllUpcomingPerformances()
         {
             return upcomingCollection.Find(_ => true).ToList();
@@ -51,32 +51,38 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
                 upcomingCollection.DeleteMany(deleteFilter);
             }
         }
+
         public void AddPerformance(Performance performance)
         {
             upcomingCollection.InsertOne(performance);
         }
+
         public void RemovePerformance(Guid id)
         {
             var filter = Builders<Performance>.Filter.Eq("Id", id);
             upcomingCollection.DeleteOne(filter);
         }
+
         public void AddTicket(Guid performanceId, StandardTicket ticket)
         {
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
             var update = Builders<Performance>.Update.Push(p => p.Tickets, ticket);
             upcomingCollection.UpdateOne(filter, update);
         }
+
         public void RemoveTicket(Guid performanceId, Guid ticketId)
         {
             var filter = Builders<Performance>.Filter.Eq(s => s.Id, performanceId);
             var update = Builders<Performance>.Update.PullFilter(s => s.Tickets, z => z.Id == ticketId);
             upcomingCollection.UpdateOne(filter, update);
         }
+
         public void UpdatePerformance(Performance updatedPerformance)
         {
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, updatedPerformance.Id);
             upcomingCollection.ReplaceOne(filter, updatedPerformance);
         }
+
         public void UpdateTicket(Guid performanceId, StandardTicket updatedTicket)
         {
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
@@ -106,7 +112,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
             var update = Builders<Performance>.Update.Push(p => p.AvailablePositions, position);
 
-            // Виконуємо оновлення
             upcomingCollection.UpdateOne(filter, update);
         }
         public void RemovePosition(Guid performanceId, int position)
@@ -114,7 +119,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
             var update = Builders<Performance>.Update.Pull(p => p.AvailablePositions, position);
 
-            // Виконуємо оновлення
             upcomingCollection.UpdateOne(filter, update);
         }
         public bool IsPositionAvailable(Guid performanceId, int position)
@@ -128,13 +132,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         }
         public Performance GetUpdatedPerformance(Performance performance)
         {
-            //var filter = Builders<Performance>.Filter.Eq(p => p.Id, performance.Id);
             var filter = Builders<Performance>.Filter.Eq("Id", performance.Id);
             return upcomingCollection.Find(filter).FirstOrDefault();
         }
-
-
-
-
     }
 }

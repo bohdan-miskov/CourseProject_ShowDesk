@@ -17,7 +17,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
     {
         private readonly List<Employee> employees;
 
-        //private Employee newEmployee;
         private readonly Employee currentEmployee;
 
         private bool isValid;
@@ -37,58 +36,37 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 this.currentEmployee = currentEmployee;
                 PopulateFields();
             }
-            else
-            {
-                this.currentEmployee = new Employee();
-            }
+            else this.currentEmployee = new Employee();
         }
 
         private void TextBoxFullName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxLogin.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) textBoxLogin.Focus();
         }
 
         private void TextBoxLogin_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxPassword.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) textBoxPassword.Focus();
         }
 
         private void TextBoxPassword_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                checkBoxDirector.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) checkBoxDirector.Focus();
         }
 
         private void CheckBoxDirector_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                checkBoxAdministrator.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) checkBoxAdministrator.Focus();
         }
 
         private void CheckBoxAdministrator_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                checkBoxCashier.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) checkBoxCashier.Focus();
         }
 
         private void CheckBoxCashier_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonAddEmployee.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) buttonAddEmployee.Focus();
         }
 
         private void TextBoxFullName_KeyPress(object sender, KeyPressEventArgs e)
@@ -108,19 +86,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void ButtonAddEmployee_Click(object sender, EventArgs e)
         {
-            CreateEmployee();
-            EmployeeValidator validator = new EmployeeValidator(employees);
-            if (validator.Validate(currentEmployee, out string errorMessage))
-            {
-                isValid = true;
-
-                this.Close();
-            }
-            else MessageBox.Show(
-                errorMessage,
-                "Employee error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
+            SaveEmployee();
         }
         private void PopulateProfessionsGroup()
         {
@@ -146,19 +112,28 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             currentEmployee.Password = textBoxPassword.Text;
 
             if (checkBoxDirector.Checked)
-            {
-                currentEmployee.AddProfession(AppConstants.ListOfProfessions[0]);
-            }
+                  currentEmployee.AddProfession(AppConstants.ListOfProfessions[0]);
 
             if (checkBoxAdministrator.Checked)
-            {
-                currentEmployee.AddProfession(AppConstants.ListOfProfessions[1]);
-            }
+                  currentEmployee.AddProfession(AppConstants.ListOfProfessions[1]);
 
             if (checkBoxCashier.Checked)
+                  currentEmployee.AddProfession(AppConstants.ListOfProfessions[2]);
+        }
+        private void SaveEmployee()
+        {
+            CreateEmployee();
+            EmployeeValidator validator = new EmployeeValidator(employees);
+            if (validator.Validate(currentEmployee, out string errorMessage))
             {
-                currentEmployee.AddProfession(AppConstants.ListOfProfessions[2]);
+                isValid = true;
+                this.Close();
             }
+            else MessageBox.Show(
+                errorMessage,
+                "Employee error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
 
         public bool GetIsValid()

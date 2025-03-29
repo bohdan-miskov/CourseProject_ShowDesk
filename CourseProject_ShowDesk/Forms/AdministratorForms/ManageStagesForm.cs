@@ -12,7 +12,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
     public partial class ManageStagesForm : MetroFramework.Forms.MetroForm
     {
-        //private List<Stage> stages;
         private readonly StageManager stageManager;
 
         public ManageStagesForm(Employee account)
@@ -21,11 +20,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             stageManager = new StageManager(new StageBaseService());
 
-            //stages = new List<Stage>();
-
             labelAccountName.Text = account.FullName;
-
-            //LoadStagesFromFile();
 
             UpdateDataGridStages();
 
@@ -50,25 +45,18 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             AddStage();
             UpdataDataFromDatabase();
-            //UpdateDataGridStages();
-            //DisableEditAndRemoveStage();
         }
 
         private void EditStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditStage();
             UpdataDataFromDatabase();
-            //UpdateDataGridStages();
-            //DisableEditAndRemoveStage();
         }
 
         private void RemoveStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Guid stageId = Guid.Parse(dataGridViewStages.CurrentRow.Cells[0].Value.ToString());
-            stageManager.RemoveStage(stageId);
+            RemoveStage();
             UpdataDataFromDatabase();
-            //UpdateDataGridStages();
-            //DisableEditAndRemoveStage();
         }
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
@@ -86,12 +74,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void ManageStagesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //SaveStagesToFile();
             timerUpdate.Stop();
-            //if (e.CloseReason == CloseReason.UserClosing)
-            //{
-            //    Application.Exit();
-            //}
         }
 
         private void ShowGreetings(string name)
@@ -129,27 +112,10 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             DisableEditAndRemoveStage();
         }
 
-        //private void SaveStagesToFile()
-        //{
-        //    FileHandler.SaveListToJson(AppConstants.StagesFileName, stages);
-        //}
-
-        //private void LoadStagesFromFile()
-        //{
-        //    if (File.Exists(AppConstants.StagesFileName))
-        //    {
-        //        stages = FileHandler.LoadListFromJson<Stage>(AppConstants.StagesFileName);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(
-        //                        $"File {AppConstants.StagesFileName} not found",
-        //                        "Load stages error",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //    }
-        //}
-
+        private Guid GetCurrentRowId()
+        {
+            return Guid.Parse(dataGridViewStages.CurrentRow.Cells[0].Value.ToString());
+        }
 
         private void AddStage()
         {
@@ -166,7 +132,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void EditStage()
         {
-            Guid stageId = Guid.Parse(dataGridViewStages.CurrentRow.Cells[0].Value.ToString());
+            Guid stageId = GetCurrentRowId();
 
             EditStageForm editStageForm = new EditStageForm(stageManager.GetById(stageId));
             this.Hide();
@@ -177,6 +143,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             {
                 stageManager.UpdateStage(editStageForm.GetStage());
             }
+        }
+
+        private void RemoveStage()
+        {
+            Guid stageId = GetCurrentRowId();
+            stageManager.RemoveStage(stageId);
         }
 
         private void DisableEditAndRemoveStage()

@@ -31,18 +31,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void TextBoxIndex_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxStageName.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) textBoxStageName.Focus();
         }
 
         private void TextBoxStageName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonSave.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) buttonSave.Focus();
         }
 
         private void DataGridViewZones_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -73,9 +67,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void RemoveZoneToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Guid zoneId = Guid.Parse(dataGridViewZones.CurrentRow.Cells[0].Value.ToString());
-
-            stage.RemoveZone(zoneId);
+            RemoveZone();
 
             UpdateDataGridZones();
             DisableEditAndRemoveZone();
@@ -89,20 +81,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             SaveStage();
-            StageValidator validator=new StageValidator();
-            if (validator.Validate(stage, out string errorMessage))
-            {
-                isValid = true;
-                this.Close();
-            }
-            else MessageBox.Show(
-                                errorMessage,
-                                "Stage error",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
         }
-
-        
 
         private void ShowStage()
         {
@@ -145,12 +124,22 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 stage.AddZone(addZoneForm.GetZone());
             }
         }
+        private Guid GetCurrentRowId()
+        {
+            return Guid.Parse(dataGridViewZones.CurrentRow.Cells[0].Value.ToString());
+        }
+        private void RemoveZone()
+        {
+            Guid zoneId = GetCurrentRowId();
+
+            stage.RemoveZone(zoneId);
+        }
 
         private void EditZone()
         {
-            Guid zoneId = Guid.Parse(dataGridViewZones.CurrentRow.Cells[0].Value.ToString());
-            
-            AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, stage.GetZone(zoneId));
+            Guid zoneId = GetCurrentRowId();
+
+            AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, stage.GetZoneById(zoneId));
             this.Hide();
             editZoneForm.ShowDialog();
             this.Show();
@@ -175,9 +164,25 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             }
         }
 
-        private void SaveStage()
+        private void CreateStage()
         {
             stage.Name = textBoxStageName.Text;
+        }
+
+        private void SaveStage()
+        {
+            CreateStage();
+            StageValidator validator = new StageValidator();
+            if (validator.Validate(stage, out string errorMessage))
+            {
+                isValid = true;
+                this.Close();
+            }
+            else MessageBox.Show(
+                                errorMessage,
+                                "Stage error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
         }
 
         private void DisableEditAndRemoveZone()

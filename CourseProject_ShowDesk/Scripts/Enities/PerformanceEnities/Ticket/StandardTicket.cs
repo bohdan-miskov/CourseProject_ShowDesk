@@ -136,7 +136,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
         {
             return "None";
         }
-
     }
 }
 

@@ -31,130 +31,81 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void TextBoxEmployeesFileName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxStagesFileName.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) textBoxStagesFileName.Focus();
         }
 
         private void TextBoxStagesFileName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxPerformancesFileName.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) textBoxPerformancesFileName.Focus();
         }
 
         private void TextBoxPerformancesFileName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                numericUpDownStandardIncrease.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) numericUpDownStandardIncrease.Focus();
         }
-
 
         private void NumericUpDownStandardIncrease_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                numericUpDownStandardPlusIncrease.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) numericUpDownStandardPlusIncrease.Focus();
         }
 
         private void NumericUpDownStandardPlusIncrease_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                numericUpDownPremiumIncrease.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) numericUpDownPremiumIncrease.Focus();
         }
 
         private void NumericUpDownPremiumIncrease_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                dateTimePickerMinBreak.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) dateTimePickerMinBreak.Focus();
         }
         private void DateTimePickerMinBreak_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                dateTimePickerInitialDuration.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) dateTimePickerInitialDuration.Focus();
         }
 
         private void DateTimePickerInitialDuration_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                dateTimePickerMaxDuration.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) dateTimePickerMaxDuration.Focus();
         }
 
         private void DateTimePickerMaxDuration_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                comboBoxListName.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) comboBoxListName.Focus();
         }
 
         private void ComboBoxListName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                listBoxViewNames.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) listBoxViewNames.Focus();
         }
 
         private void ListBoxViewNames_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxItemName.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) textBoxItemName.Focus();
         }
 
         private void TextBoxItemName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonSaveName.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) buttonSaveName.Focus();
         }
 
         private void ButtonSaveName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                listBoxViewNames.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) listBoxViewNames.Focus();
         }
 
         private void ButtonCancelName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                listBoxViewNames.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) listBoxViewNames.Focus();
         }
 
         private void NumericUpDownRangeDateOfPastPerformances_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBoxCurrencySymbol.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) textBoxCurrencySymbol.Focus();
         }
 
         private void TextBoxCurrencySymbol_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonSaveChanges.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) buttonSaveChanges.Focus();
         }
 
         private void TextBoxItemName_KeyPress(object sender, KeyPressEventArgs e)
@@ -196,15 +147,14 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void ButtonSaveName_Click(object sender, EventArgs e)
         {
-            if (ValidateNamesGroup())
-            {
-                SaveItem();
+            if (!ValidateNamesGroup()) return;
 
-                PopulateListBoxName();
-                listBoxViewNames.SelectedIndex = 0;
+            SaveItem();
 
-                PopulateTextBoxName();
-            }
+            PopulateListBoxName();
+            listBoxViewNames.SelectedIndex = 0;
+
+            PopulateTextBoxName();
         }
 
         private void ButtonCancelName_Click(object sender, EventArgs e)
@@ -214,14 +164,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void ButtonSaveChanges_Click(object sender, EventArgs e)
         {
-            if (ValidateSettings())
-            {
-                SaveAllField();
-
-                AppCostantsManager.SaveAppConstantsToFile(appConstantsData);
-
-                this.Close();
-            }
+            SaveSettings();
         }
 
         private void ButtonCancelChanges_Click(object sender, EventArgs e)
@@ -309,7 +252,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             }
         }
 
-
         private void PopulateTextBoxName()
         {
             textBoxItemName.Text = listBoxViewNames.SelectedItem.ToString();
@@ -323,21 +265,16 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             string newName = textBoxItemName.Text;
 
             if (indexList == 0)
-            {
                 appConstantsData.ListOfProfessions[indexItem] = newName;
-            }
-            if (indexList == 1)
-            {
+
+            else if (indexList == 1)
                 appConstantsData.ListOfTicketTypes[indexItem] = newName;
-            }
-            if (indexList == 2)
-            {
+
+            else if (indexList == 2)
                 appConstantsData.ListOfSouvenirs[indexItem] = newName;
-            }
-            if (indexList == 3)
-            {
+
+            else if (indexList == 3)
                 appConstantsData.ListOfDrinks[indexItem] = newName;
-            }
         }
 
         private bool ValidateSettings()
@@ -470,6 +407,18 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             return true;
         }
+        private void SaveSettings()
+        {
+            if (ValidateSettings())
+            {
+                SaveAllField();
+
+                AppCostantsManager.SaveAppConstantsToFile(appConstantsData);
+
+                this.Close();
+            }
+        }
+
         private void SaveAllField()
         {
             SaveFileNameGroup();

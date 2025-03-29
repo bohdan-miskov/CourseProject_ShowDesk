@@ -27,7 +27,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         {
             SeatNumber = number;
             Location = location;
-            //CurrentZone = new Zone();
         }
         public Guid Id
         {
@@ -103,7 +102,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
             label.Paint += (s, e) =>
             {
-                //e.Graphics.DrawString(SeatNumber.ToString(), label.Font, Brushes.Black, new Point(15, 15));
                 if (!IsAvailable)
                 {
                     e.Graphics.DrawLine(Pens.Red, 0, 0, label.Width, label.Height);

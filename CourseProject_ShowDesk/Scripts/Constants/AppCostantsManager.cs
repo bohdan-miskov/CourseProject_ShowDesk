@@ -34,9 +34,6 @@ namespace CourseProject_ShowDesk.Scripts.Constants
 
             AppConstants.PopulateConstants(constantsData);
         }
-
-
-
     }
 }
 
