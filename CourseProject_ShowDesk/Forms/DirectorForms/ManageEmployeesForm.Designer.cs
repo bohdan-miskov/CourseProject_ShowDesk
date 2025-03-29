@@ -332,7 +332,6 @@
             this.Name = "ManageEmployeesForm";
             this.Text = "ManageEmployees";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageEmployeesForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManageEmployeesForm_FormClosed);
             this.menuStripManageEmployees.ResumeLayout(false);
             this.menuStripManageEmployees.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployees)).EndInit();

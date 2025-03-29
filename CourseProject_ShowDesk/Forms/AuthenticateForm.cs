@@ -121,7 +121,11 @@ namespace CourseProject_ShowDesk.Forms
                 {
                     ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(account);
                     this.Hide();
-                    manageEmployeesForm.ShowDialog();
+                    DialogResult result =manageEmployeesForm.ShowDialog();
+                    if (result != DialogResult.OK)
+                    {
+                        Application.Exit();
+                    }
                     this.Show();
                     //ClearLogInField();
                 }
@@ -139,10 +143,10 @@ namespace CourseProject_ShowDesk.Forms
                     ManageStagesForm manageStagesForm = new ManageStagesForm(account);
                     this.Hide();
                     DialogResult result=manageStagesForm.ShowDialog();
-                    //if (result != DialogResult.OK)
-                    //{
-                    //    Application.Exit();
-                    //}
+                    if (result != DialogResult.OK)
+                    {
+                        Application.Exit();
+                    }
                     this.Show();
                     //ClearLogInField();
                 }
@@ -160,7 +164,11 @@ namespace CourseProject_ShowDesk.Forms
                 {
                     ManagePerformancesForm managePerformancesForm = new ManagePerformancesForm(account);
                     this.Hide();
-                    managePerformancesForm.ShowDialog();
+                    DialogResult result=managePerformancesForm.ShowDialog();
+                    if (result != DialogResult.OK)
+                    {
+                        Application.Exit();
+                    }
                     this.Show();
                     //ClearLogInField();
                 }

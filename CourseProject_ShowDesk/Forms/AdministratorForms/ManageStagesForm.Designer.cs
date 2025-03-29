@@ -191,7 +191,7 @@
             // 
             this.addStageToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
             this.addStageToolStripMenuItem.Name = "addStageToolStripMenuItem";
-            this.addStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.addStageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addStageToolStripMenuItem.Text = "Add";
             this.addStageToolStripMenuItem.Click += new System.EventHandler(this.AddStageToolStripMenuItem_Click);
             // 
@@ -199,7 +199,7 @@
             // 
             this.editStageToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.edit_icon;
             this.editStageToolStripMenuItem.Name = "editStageToolStripMenuItem";
-            this.editStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.editStageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editStageToolStripMenuItem.Text = "Edit";
             this.editStageToolStripMenuItem.Click += new System.EventHandler(this.EditStageToolStripMenuItem_Click);
             // 
@@ -207,7 +207,7 @@
             // 
             this.removeStageToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
             this.removeStageToolStripMenuItem.Name = "removeStageToolStripMenuItem";
-            this.removeStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.removeStageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeStageToolStripMenuItem.Text = "Remove";
             this.removeStageToolStripMenuItem.Click += new System.EventHandler(this.RemoveStageToolStripMenuItem_Click);
             // 
@@ -288,7 +288,6 @@
             this.Name = "ManageStagesForm";
             this.Text = "ManageStages";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageStagesForm_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManageStagesForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).EndInit();
             this.contextMenuStripStages.ResumeLayout(false);
             this.menuStripManageStages.ResumeLayout(false);

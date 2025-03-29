@@ -119,8 +119,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AuthenticateForm().Show();
-
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -128,14 +127,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             //SavePerformancesToFile();
             timerUpdate.Stop();
-        }
-
-        private void ManagePerformancesForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Application.OpenForms.Count == 0)
-            {
-            }
-                Application.Exit();
         }
 
         private void ShowGreetings(string name)

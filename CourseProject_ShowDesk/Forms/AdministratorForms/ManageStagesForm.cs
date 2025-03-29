@@ -94,14 +94,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             //}
         }
 
-        private void ManageStagesForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //if (Application.OpenForms.Count == 0)
-            //{
-            //}
-            //    Application.Exit();
-        }
-
         private void ShowGreetings(string name)
         {
             MessageBox.Show(

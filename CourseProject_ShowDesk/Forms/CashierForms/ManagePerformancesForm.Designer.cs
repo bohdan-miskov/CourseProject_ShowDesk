@@ -33,6 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagePerformancesForm));
             this.dataGridViewPerformances = new System.Windows.Forms.DataGridView();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPerformanceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPerformanceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnStage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnTicketsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnSold = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripPerformance = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addPerformanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editPerformanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,16 +64,6 @@
             this.labelAccountName = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPerformanceDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPerformanceTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnStage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnTicketsCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnSold = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).BeginInit();
             this.contextMenuStripPerformance.SuspendLayout();
             this.menuStripManagePerformance.SuspendLayout();
@@ -121,6 +121,67 @@
             this.dataGridViewPerformances.TabIndex = 3;
             this.dataGridViewPerformances.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPerformances_RowEnter);
             this.dataGridViewPerformances.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPerformances_RowLeave);
+            // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Visible = false;
+            // 
+            // columnPerformanceDate
+            // 
+            this.columnPerformanceDate.HeaderText = "Date";
+            this.columnPerformanceDate.Name = "columnPerformanceDate";
+            this.columnPerformanceDate.ReadOnly = true;
+            // 
+            // ColumnPerformanceTime
+            // 
+            this.ColumnPerformanceTime.HeaderText = "Time";
+            this.ColumnPerformanceTime.Name = "ColumnPerformanceTime";
+            this.ColumnPerformanceTime.ReadOnly = true;
+            // 
+            // columnName
+            // 
+            this.columnName.HeaderText = "Name";
+            this.columnName.Name = "columnName";
+            this.columnName.ReadOnly = true;
+            // 
+            // columnPrice
+            // 
+            this.columnPrice.HeaderText = "Price";
+            this.columnPrice.Name = "columnPrice";
+            this.columnPrice.ReadOnly = true;
+            // 
+            // columnDuration
+            // 
+            this.columnDuration.HeaderText = "Duration";
+            this.columnDuration.Name = "columnDuration";
+            this.columnDuration.ReadOnly = true;
+            // 
+            // columnStage
+            // 
+            this.columnStage.HeaderText = "Stage";
+            this.columnStage.Name = "columnStage";
+            this.columnStage.ReadOnly = true;
+            // 
+            // columnTicketsCount
+            // 
+            this.columnTicketsCount.HeaderText = "Tickets count";
+            this.columnTicketsCount.Name = "columnTicketsCount";
+            this.columnTicketsCount.ReadOnly = true;
+            // 
+            // columnSold
+            // 
+            this.columnSold.HeaderText = "Sold";
+            this.columnSold.Name = "columnSold";
+            this.columnSold.ReadOnly = true;
+            // 
+            // columnReserved
+            // 
+            this.columnReserved.HeaderText = "Reserved";
+            this.columnReserved.Name = "columnReserved";
+            this.columnReserved.ReadOnly = true;
             // 
             // contextMenuStripPerformance
             // 
@@ -321,67 +382,6 @@
             this.timerUpdate.Interval = 300000;
             this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
             // 
-            // idColumn
-            // 
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            this.idColumn.Visible = false;
-            // 
-            // columnPerformanceDate
-            // 
-            this.columnPerformanceDate.HeaderText = "Date";
-            this.columnPerformanceDate.Name = "columnPerformanceDate";
-            this.columnPerformanceDate.ReadOnly = true;
-            // 
-            // ColumnPerformanceTime
-            // 
-            this.ColumnPerformanceTime.HeaderText = "Time";
-            this.ColumnPerformanceTime.Name = "ColumnPerformanceTime";
-            this.ColumnPerformanceTime.ReadOnly = true;
-            // 
-            // columnName
-            // 
-            this.columnName.HeaderText = "Name";
-            this.columnName.Name = "columnName";
-            this.columnName.ReadOnly = true;
-            // 
-            // columnPrice
-            // 
-            this.columnPrice.HeaderText = "Price";
-            this.columnPrice.Name = "columnPrice";
-            this.columnPrice.ReadOnly = true;
-            // 
-            // columnDuration
-            // 
-            this.columnDuration.HeaderText = "Duration";
-            this.columnDuration.Name = "columnDuration";
-            this.columnDuration.ReadOnly = true;
-            // 
-            // columnStage
-            // 
-            this.columnStage.HeaderText = "Stage";
-            this.columnStage.Name = "columnStage";
-            this.columnStage.ReadOnly = true;
-            // 
-            // columnTicketsCount
-            // 
-            this.columnTicketsCount.HeaderText = "Tickets count";
-            this.columnTicketsCount.Name = "columnTicketsCount";
-            this.columnTicketsCount.ReadOnly = true;
-            // 
-            // columnSold
-            // 
-            this.columnSold.HeaderText = "Sold";
-            this.columnSold.Name = "columnSold";
-            this.columnSold.ReadOnly = true;
-            // 
-            // columnReserved
-            // 
-            this.columnReserved.HeaderText = "Reserved";
-            this.columnReserved.Name = "columnReserved";
-            this.columnReserved.ReadOnly = true;
-            // 
             // ManagePerformancesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,7 +395,6 @@
             this.Name = "ManagePerformancesForm";
             this.Text = "ManagePerformance";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManagePerformancesFormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ManagePerformancesForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).EndInit();
             this.contextMenuStripPerformance.ResumeLayout(false);
             this.menuStripManagePerformance.ResumeLayout(false);

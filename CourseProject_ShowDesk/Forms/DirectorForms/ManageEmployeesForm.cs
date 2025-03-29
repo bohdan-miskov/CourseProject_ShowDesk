@@ -103,11 +103,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (Owner != null)
-            //{
-            //    Owner.Show();
-            //}
-            new AuthenticateForm().Show();
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -116,15 +112,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             //SaveEmployeesToFile();
             timerUpdate.Stop();
         }
-
-        private void ManageEmployeesForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (Application.OpenForms.Count == 0)
-            {
-            }
-                Application.Exit();
-        }
-
         private void ShowGreetings(string name)
         {
             MessageBox.Show(
