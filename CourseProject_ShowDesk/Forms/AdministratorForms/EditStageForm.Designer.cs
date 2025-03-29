@@ -52,6 +52,7 @@
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIncrease = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStartSeads = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnEndPositions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripStage.SuspendLayout();
@@ -67,7 +68,7 @@
             this.buttonSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonSave.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonSave.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonSave.Location = new System.Drawing.Point(169, 89);
+            this.buttonSave.Location = new System.Drawing.Point(197, 89);
             this.buttonSave.MinimumSize = new System.Drawing.Size(80, 0);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(111, 37);
@@ -83,7 +84,7 @@
             this.textBoxIndex.Enabled = false;
             this.textBoxIndex.Location = new System.Drawing.Point(169, 22);
             this.textBoxIndex.Name = "textBoxIndex";
-            this.textBoxIndex.Size = new System.Drawing.Size(232, 28);
+            this.textBoxIndex.Size = new System.Drawing.Size(288, 28);
             this.textBoxIndex.TabIndex = 5;
             this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxIndex_KeyUp);
             // 
@@ -115,7 +116,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxStageName.Location = new System.Drawing.Point(169, 52);
             this.textBoxStageName.Name = "textBoxStageName";
-            this.textBoxStageName.Size = new System.Drawing.Size(232, 28);
+            this.textBoxStageName.Size = new System.Drawing.Size(288, 28);
             this.textBoxStageName.TabIndex = 7;
             this.textBoxStageName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStageName_KeyUp);
             // 
@@ -185,7 +186,7 @@
             this.groupBoxStage.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxStage.Location = new System.Drawing.Point(6, 19);
             this.groupBoxStage.Name = "groupBoxStage";
-            this.groupBoxStage.Size = new System.Drawing.Size(427, 132);
+            this.groupBoxStage.Size = new System.Drawing.Size(483, 132);
             this.groupBoxStage.TabIndex = 13;
             this.groupBoxStage.TabStop = false;
             this.groupBoxStage.Text = "Stage";
@@ -195,7 +196,7 @@
             this.buttonEditSeating.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonEditSeating.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonEditSeating.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonEditSeating.Location = new System.Drawing.Point(286, 89);
+            this.buttonEditSeating.Location = new System.Drawing.Point(314, 89);
             this.buttonEditSeating.MinimumSize = new System.Drawing.Size(80, 0);
             this.buttonEditSeating.Name = "buttonEditSeating";
             this.buttonEditSeating.Size = new System.Drawing.Size(115, 37);
@@ -215,6 +216,7 @@
             this.idColumn,
             this.columnName,
             this.columnIncrease,
+            this.colorColumn,
             this.columnStartSeads,
             this.columnEndPositions});
             this.dataGridViewZones.ContextMenuStrip = this.contextMenuStripStage;
@@ -232,7 +234,7 @@
             this.dataGridViewZones.ReadOnly = true;
             this.dataGridViewZones.RowHeadersVisible = false;
             this.dataGridViewZones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewZones.Size = new System.Drawing.Size(452, 237);
+            this.dataGridViewZones.Size = new System.Drawing.Size(508, 237);
             this.dataGridViewZones.TabIndex = 12;
             this.dataGridViewZones.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewZones_RowEnter);
             this.dataGridViewZones.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewZones_RowLeave);
@@ -281,7 +283,7 @@
             this.groupBoxZones.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxZones.Location = new System.Drawing.Point(6, 157);
             this.groupBoxZones.Name = "groupBoxZones";
-            this.groupBoxZones.Size = new System.Drawing.Size(458, 264);
+            this.groupBoxZones.Size = new System.Drawing.Size(514, 264);
             this.groupBoxZones.TabIndex = 14;
             this.groupBoxZones.TabStop = false;
             this.groupBoxZones.Text = "Zones";
@@ -294,7 +296,7 @@
             this.groupBoxForm.Controls.Add(this.groupBoxZones);
             this.groupBoxForm.Location = new System.Drawing.Point(0, 66);
             this.groupBoxForm.Name = "groupBoxForm";
-            this.groupBoxForm.Size = new System.Drawing.Size(470, 427);
+            this.groupBoxForm.Size = new System.Drawing.Size(526, 427);
             this.groupBoxForm.TabIndex = 15;
             this.groupBoxForm.TabStop = false;
             // 
@@ -317,6 +319,12 @@
             this.columnIncrease.Name = "columnIncrease";
             this.columnIncrease.ReadOnly = true;
             // 
+            // colorColumn
+            // 
+            this.colorColumn.HeaderText = "Color";
+            this.colorColumn.Name = "colorColumn";
+            this.colorColumn.ReadOnly = true;
+            // 
             // columnStartSeads
             // 
             this.columnStartSeads.HeaderText = "Start position";
@@ -333,7 +341,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 490);
+            this.ClientSize = new System.Drawing.Size(528, 490);
             this.Controls.Add(this.groupBoxForm);
             this.Controls.Add(this.menuStripStage);
             this.Name = "EditStageForm";
@@ -375,6 +383,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnIncrease;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colorColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStartSeads;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnEndPositions;
     }

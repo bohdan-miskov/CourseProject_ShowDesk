@@ -32,7 +32,6 @@
             this.numericUpDownStartPosition = new System.Windows.Forms.NumericUpDown();
             this.groupBoxZone = new System.Windows.Forms.GroupBox();
             this.textBoxColor = new System.Windows.Forms.TextBox();
-            this.buttonChangeColor = new System.Windows.Forms.Button();
             this.labelColor = new System.Windows.Forms.Label();
             this.numericUpDownIncrease = new System.Windows.Forms.NumericUpDown();
             this.labelZoneName = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.toolTipZone = new System.Windows.Forms.ToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.panelSeating = new System.Windows.Forms.Panel();
+            this.buttonChangeColor = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).BeginInit();
             this.groupBoxZone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrease)).BeginInit();
@@ -80,8 +80,8 @@
             // 
             this.groupBoxZone.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxZone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBoxZone.Controls.Add(this.textBoxColor);
             this.groupBoxZone.Controls.Add(this.buttonChangeColor);
+            this.groupBoxZone.Controls.Add(this.textBoxColor);
             this.groupBoxZone.Controls.Add(this.labelColor);
             this.groupBoxZone.Controls.Add(this.numericUpDownIncrease);
             this.groupBoxZone.Controls.Add(this.labelZoneName);
@@ -105,23 +105,11 @@
             // 
             this.textBoxColor.BackColor = System.Drawing.Color.White;
             this.textBoxColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxColor.Location = new System.Drawing.Point(174, 104);
+            this.textBoxColor.Location = new System.Drawing.Point(209, 104);
             this.textBoxColor.Name = "textBoxColor";
             this.textBoxColor.ReadOnly = true;
-            this.textBoxColor.Size = new System.Drawing.Size(168, 28);
+            this.textBoxColor.Size = new System.Drawing.Size(133, 28);
             this.textBoxColor.TabIndex = 26;
-            // 
-            // buttonChangeColor
-            // 
-            this.buttonChangeColor.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonChangeColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonChangeColor.Location = new System.Drawing.Point(20, 208);
-            this.buttonChangeColor.Name = "buttonChangeColor";
-            this.buttonChangeColor.Size = new System.Drawing.Size(134, 42);
-            this.buttonChangeColor.TabIndex = 25;
-            this.buttonChangeColor.Text = "Change color";
-            this.buttonChangeColor.UseVisualStyleBackColor = false;
-            this.buttonChangeColor.Click += new System.EventHandler(this.ButtonChangeColor_Click);
             // 
             // labelColor
             // 
@@ -210,7 +198,7 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(218, 208);
+            this.buttonAdd.Location = new System.Drawing.Point(188, 206);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(124, 42);
             this.buttonAdd.TabIndex = 16;
@@ -263,6 +251,16 @@
             this.panelSeating.Size = new System.Drawing.Size(645, 257);
             this.panelSeating.TabIndex = 42;
             // 
+            // buttonChangeColor
+            // 
+            this.buttonChangeColor.Location = new System.Drawing.Point(175, 104);
+            this.buttonChangeColor.Name = "buttonChangeColor";
+            this.buttonChangeColor.Size = new System.Drawing.Size(28, 28);
+            this.buttonChangeColor.TabIndex = 27;
+            this.buttonChangeColor.Text = " ";
+            this.buttonChangeColor.UseVisualStyleBackColor = true;
+            this.buttonChangeColor.Click += new System.EventHandler(this.ButtonChangeColor_Click);
+            // 
             // AddEditZoneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,9 +292,9 @@
         private System.Windows.Forms.ToolTip toolTipZone;
         private System.Windows.Forms.NumericUpDown numericUpDownIncrease;
         private System.Windows.Forms.Label labelColor;
-        private System.Windows.Forms.Button buttonChangeColor;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.TextBox textBoxColor;
         private System.Windows.Forms.Panel panelSeating;
+        private System.Windows.Forms.Button buttonChangeColor;
     }
 }

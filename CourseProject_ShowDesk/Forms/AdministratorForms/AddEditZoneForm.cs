@@ -17,7 +17,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private readonly Zone currentZone;
 
-        private Color color;
+        //private Color color;
 
         public AddEditZoneForm(Stage stage, Zone zone=null)
         {
@@ -35,11 +35,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             {
                 this.currentZone = new Zone();
             }
-
-            color = currentZone.GetColor();
-            numericUpDownStartPosition.Minimum = 1;
-            numericUpDownEndPosition.Maximum = stage.SeatList.Count;
-            textBoxColor.Text = color.Name;
 
             PopulateSeating();
         }
@@ -123,10 +118,13 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void PopulateFields()
         {
             textBoxZoneName.Text = currentZone.Name;
+            numericUpDownStartPosition.Minimum = 1;
+            numericUpDownEndPosition.Maximum = stage.SeatList.Count;
             numericUpDownIncrease.Value = Convert.ToDecimal(currentZone.Increase);
             numericUpDownStartPosition.Value = currentZone.StartPosition;
             numericUpDownEndPosition.Value = currentZone.EndPosition;
             textBoxColor.Text = currentZone.GetColor().Name;
+            buttonChangeColor.BackColor = currentZone.GetColor();
         }
 
         private void PopulateSeating()
@@ -140,17 +138,17 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 panelSeating.Controls.Add(decor.ToPanel());
             }
         }
-
         private void ChangeColor()
         {
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                color = colorDialog.Color;
-                textBoxColor.Text = color.Name;
+                currentZone.SetColor(colorDialog.Color);
+                textBoxColor.Text = currentZone.GetColor().Name;
+                buttonChangeColor.BackColor = currentZone.GetColor();
+  
                 SeatingColorChange();
             }
         }
-
         private void SeatingColorChange()
         {
             int startIndex = Convert.ToInt32(numericUpDownStartPosition.Value);
@@ -170,86 +168,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                     }
                 }
             }
-
         }
-
         private void CreateZone()
         {
-            //AddZoneForSeats(startPosition-1, endPosition-1, newZone);
             currentZone.StartPosition = Convert.ToInt32(numericUpDownStartPosition.Value);
             currentZone.EndPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
             currentZone.Name = textBoxZoneName.Text;
             currentZone.Increase = Convert.ToDouble(numericUpDownIncrease.Value);
-            currentZone.SetColor(color);
         }
-        //private bool ValidateOfZone()
-        //{
-        //    if (!ValidateOfZoneName()) return false;
-        //    if (!ValidateOfZoneIncrease()) return false;
-        //    if (!ValidateOfZonePositions()) return false;
-
-        //    return true;
-        //}
-
-        //private bool ValidateOfZoneName()
-        //{
-        //    if (!ParametersValidator.NameValidator(textBoxZoneName.Text))
-        //    {
-        //        MessageBox.Show(
-        //                        "There was an error in the name of the zone: the name must be more than two characters long",
-        //                        "Name zone error",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //        textBoxZoneName.Focus();
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
-
-        //private bool ValidateOfZoneIncrease()
-        //{
-        //    if (!ParametersValidator.DoubleValidator(numericUpDownIncrease.Value.ToString()))
-        //    {
-        //        MessageBox.Show(
-        //                        "The surcharge must be entered in the format 0.000, cannot be negative or empty",
-        //                        "Increase zone error",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //        numericUpDownIncrease.Focus();
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
-
-        //private bool ValidateOfZonePositions()
-        //{
-        //    int startPosition = Convert.ToInt32(numericUpDownStartPosition.Value);
-        //    int endPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
-
-        //    if (!stage.CheckZonePositions(startPosition, endPosition, currentZone))
-        //    {
-        //        MessageBox.Show(
-        //        "The starting position cannot be larger than the final position and the range of positions in the new sector cannot intersect with any range of positions in another sector of the hall",
-        //        "Range of positions error",
-        //        MessageBoxButtons.OK,
-        //        MessageBoxIcon.Error);
-        //        numericUpDownStartPosition.Focus();
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
-
-        //private void AddZoneForSeats(int startIndex, int endIndex, Zone zone)
-        //{
-        //    for(int i=startIndex; i<=endIndex; i++)
-        //    {
-        //        stage.SeatList[i].CurrentZone = zone;
-        //    }
-        //}
-
         public Zone GetZone()
         {
             return currentZone;

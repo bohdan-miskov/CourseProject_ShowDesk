@@ -126,8 +126,11 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 zone.Id,
                 zone.Name, 
                 zone.Increase, 
+                zone.GetColor().Name,
                 zone.StartPosition, 
                 zone.EndPosition);
+
+            dataGridViewZones.Rows[dataGridViewZones.Rows.Count - 1].Cells[3].Style.BackColor = zone.GetColor();
         }
 
         private void AddZone()
