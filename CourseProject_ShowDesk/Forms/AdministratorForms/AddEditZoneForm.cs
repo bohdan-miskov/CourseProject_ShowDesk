@@ -17,7 +17,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private readonly Zone currentZone;
 
-        private Color color = Color.LightBlue;
+        private Color color;
 
         public AddEditZoneForm(Stage stage, Zone zone=null)
         {
@@ -25,10 +25,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             isValid = false;
             this.stage = stage;
-
-            numericUpDownStartPosition.Minimum = 1;
-            numericUpDownEndPosition.Maximum = stage.SeatList.Count;
-            textBoxColor.Text = color.Name;
             
             if (zone != null)
             {
@@ -39,6 +35,11 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             {
                 this.currentZone = new Zone();
             }
+
+            color = currentZone.GetColor();
+            numericUpDownStartPosition.Minimum = 1;
+            numericUpDownEndPosition.Maximum = stage.SeatList.Count;
+            textBoxColor.Text = color.Name;
 
             PopulateSeating();
         }
@@ -125,6 +126,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             numericUpDownIncrease.Value = Convert.ToDecimal(currentZone.Increase);
             numericUpDownStartPosition.Value = currentZone.StartPosition;
             numericUpDownEndPosition.Value = currentZone.EndPosition;
+            textBoxColor.Text = currentZone.GetColor().Name;
         }
 
         private void PopulateSeating()
@@ -164,7 +166,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                     }
                     else
                     {
-                        control.BackColor = new Zone().Color;
+                        control.BackColor = new Zone().GetColor();
                     }
                 }
             }
@@ -178,6 +180,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             currentZone.EndPosition = Convert.ToInt32(numericUpDownEndPosition.Value);
             currentZone.Name = textBoxZoneName.Text;
             currentZone.Increase = Convert.ToDouble(numericUpDownIncrease.Value);
+            currentZone.SetColor(color);
         }
         //private bool ValidateOfZone()
         //{

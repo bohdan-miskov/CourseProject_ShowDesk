@@ -12,7 +12,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
     public class Employee
     {
         [BsonId]
-        private readonly Guid id = Guid.NewGuid();
+        private Guid id = Guid.NewGuid();
         private string fullName;
         private string login;
         private string password;

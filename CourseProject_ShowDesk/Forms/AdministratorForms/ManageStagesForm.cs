@@ -1,5 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts;
 using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using System;
@@ -14,7 +15,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         //private List<Stage> stages;
         private readonly StageManager stageManager;
 
-        public ManageStagesForm(string accountName)
+        public ManageStagesForm(Employee account)
         {
             InitializeComponent();
 
@@ -22,7 +23,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             //stages = new List<Stage>();
 
-            labelAccountName.Text = accountName;
+            labelAccountName.Text = account.FullName;
 
             //LoadStagesFromFile();
 
@@ -30,7 +31,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             DisableEditAndRemoveStage();
 
-            ShowGreetings(accountName);
+            ShowGreetings(account.FullName);
 
             timerUpdate.Start();
         }
@@ -79,7 +80,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new AuthenticateForm().Show();
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -87,14 +88,18 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             //SaveStagesToFile();
             timerUpdate.Stop();
+            //if (e.CloseReason == CloseReason.UserClosing)
+            //{
+            //    Application.Exit();
+            //}
         }
 
         private void ManageStagesForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (Application.OpenForms.Count == 0)
-            {
-            }
-                Application.Exit();
+            //if (Application.OpenForms.Count == 0)
+            //{
+            //}
+            //    Application.Exit();
         }
 
         private void ShowGreetings(string name)

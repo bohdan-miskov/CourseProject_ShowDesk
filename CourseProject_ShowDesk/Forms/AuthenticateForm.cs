@@ -111,17 +111,18 @@ namespace CourseProject_ShowDesk.Forms
 
         private void Authenticate()
         {
-            string accountName;
+            Employee account;
 
             if (comboBoxUser.SelectedIndex == 0)
             {
-                accountName = CheckAccountAndGetName(AppConstants.ListOfProfessions[0]);
+                account = CheckAccountAndGetName(AppConstants.ListOfProfessions[0]);
 
-                if (accountName!=null)
+                if (account!=null)
                 {
-                    ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(accountName);
-                    manageEmployeesForm.Show();
+                    ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(account);
                     this.Hide();
+                    manageEmployeesForm.ShowDialog();
+                    this.Show();
                     //ClearLogInField();
                 }
                 else
@@ -131,13 +132,18 @@ namespace CourseProject_ShowDesk.Forms
             }
             else if (comboBoxUser.SelectedIndex == 1)
             {
-                accountName = CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
+                account = CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
 
-                if (accountName!=null)
+                if (account!=null)
                 {
-                    ManageStagesForm manageStagesForm = new ManageStagesForm(accountName);
-                    manageStagesForm.Show();
+                    ManageStagesForm manageStagesForm = new ManageStagesForm(account);
                     this.Hide();
+                    DialogResult result=manageStagesForm.ShowDialog();
+                    //if (result != DialogResult.OK)
+                    //{
+                    //    Application.Exit();
+                    //}
+                    this.Show();
                     //ClearLogInField();
                 }
                 else
@@ -147,13 +153,15 @@ namespace CourseProject_ShowDesk.Forms
             }
             else if (comboBoxUser.SelectedIndex == 2)
             {
-                accountName = CheckAccountAndGetName(AppConstants.ListOfProfessions[2]);
+                account = CheckAccountAndGetName(AppConstants.ListOfProfessions[2]) ??
+                    CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
 
-                if (accountName!=null)
+                if (account!=null)
                 {
-                    ManagePerformancesForm managePerformancesForm = new ManagePerformancesForm(accountName);
-                    managePerformancesForm.Show();
+                    ManagePerformancesForm managePerformancesForm = new ManagePerformancesForm(account);
                     this.Hide();
+                    managePerformancesForm.ShowDialog();
+                    this.Show();
                     //ClearLogInField();
                 }
                 else
@@ -163,17 +171,15 @@ namespace CourseProject_ShowDesk.Forms
             }
         }
 
-        private string CheckAccountAndGetName(string currentProfession)
+        private Employee CheckAccountAndGetName(string currentProfession)
         {
-            return "Bohdan";
-
             foreach (Employee employee in employeeManager.Employees)
             {
                 if (employee.Login == textBoxLogin.Text &&
                     employee.Password == textBoxPassword.Text &&
                     employee.ProfessionList.Contains(currentProfession))
                 {
-                    return employee.FullName;
+                    return employee;
                 }
             }
 

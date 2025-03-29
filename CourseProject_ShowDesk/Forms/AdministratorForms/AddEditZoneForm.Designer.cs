@@ -143,11 +143,16 @@
             0,
             65536});
             this.numericUpDownIncrease.Location = new System.Drawing.Point(174, 70);
+            this.numericUpDownIncrease.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.numericUpDownIncrease.Minimum = new decimal(new int[] {
             1,
             0,
             0,
-            65536});
+            0});
             this.numericUpDownIncrease.Name = "numericUpDownIncrease";
             this.numericUpDownIncrease.Size = new System.Drawing.Size(168, 28);
             this.numericUpDownIncrease.TabIndex = 23;

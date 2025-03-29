@@ -14,15 +14,15 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         private double increase;
         private int startPosition;
         private int endPosition;
-        private Color color;
+        private string hexColor;
 
         public Zone()
         {
-            name = "";
-            increase = 1.0;
-            startPosition = 0;
-            endPosition = 0;
-            color = Color.LightBlue;
+            Name = "";
+            Increase = 1.0;
+            StartPosition = 0;
+            EndPosition = 0;
+            SetColor(Color.LightBlue);
         }
         public Zone(string name, double increase, int startPosition, int endPosition, Color color)
         {
@@ -30,7 +30,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             Increase = increase;
             StartPosition = startPosition;
             EndPosition = endPosition;
-            Color = color;
+            SetColor(color);
         }
         public Guid Id
         {
@@ -106,16 +106,25 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
         }
 
-        public Color Color
+        public string HexColor
         {
             get
             {
-                return color;
+                return hexColor;
             }
             set
             {
-                color = value;
+                hexColor = value;
             }
+        }
+
+        public void SetColor(Color color)
+        {
+            HexColor= $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+        }
+        public Color GetColor()
+        {
+            return ColorTranslator.FromHtml(HexColor);
         }
     }
 

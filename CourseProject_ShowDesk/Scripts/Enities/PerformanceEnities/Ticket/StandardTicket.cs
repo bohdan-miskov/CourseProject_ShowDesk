@@ -1,11 +1,13 @@
 ﻿using CourseProject_ShowDesk.Scripts;
+using CourseProject_ShowDesk.Scripts.Constants;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
 {
     [Serializable]
-
+    [BsonDiscriminator(RootClass = true)]
+    [BsonKnownTypes(typeof(StandardPlusTicket))]
     public class StandardTicket
     {
         [BsonId]
@@ -23,8 +25,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
             position = 0;
             calculatedPrice = 0.0;
             reserved = false;
-            //type = AppConstants.ListOfTicketTypes[0];
-            //typeIncrease = AppConstants.StandardIncrease;
+            type = AppConstants.ListOfTicketTypes[0];
+            typeIncrease = AppConstants.StandardIncrease;
         }
         public StandardTicket(int index, int position, bool reserved)
         {
@@ -127,7 +129,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
             {
                 throw new ArgumentOutOfRangeException(nameof(increase), "Price increase factor must be greater than 0.");
             }
-            calculatedPrice = price + (price * increase / 100) + (price * (typeIncrease-1));
+            calculatedPrice = (price * increase) + (price * (typeIncrease-1));
         }
 
         public virtual string GetAdditionalServices()

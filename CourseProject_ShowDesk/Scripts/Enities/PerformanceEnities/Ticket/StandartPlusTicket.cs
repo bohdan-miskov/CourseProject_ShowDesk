@@ -1,19 +1,21 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using CourseProject_ShowDesk.Scripts.Constants;
 using System;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
 {
     [Serializable]
+    [BsonDiscriminator(RootClass = true)]
+    [BsonKnownTypes(typeof(PremiumTicket))]
     public class StandardPlusTicket : StandardTicket
     {
-        [BsonId]
         protected string drink;
 
         public StandardPlusTicket()
         {
-            //typeIncrease = AppConstants.StandardPlusIncrease;
-            //type = AppConstants.ListOfTicketTypes[1];
-            //drink = AppConstants.ListOfDrinks[0];
+            typeIncrease = AppConstants.StandardPlusIncrease;
+            type = AppConstants.ListOfTicketTypes[1];
+            drink = AppConstants.ListOfDrinks[0];
         }
 
         public StandardPlusTicket(int index, int position, bool reserved, string drink) : base(index, position, reserved)

@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using CourseProject_ShowDesk.Scripts.Constants;
 using System;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
@@ -6,15 +7,13 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
     [Serializable]
     public class PremiumTicket : StandardPlusTicket
     {
-        [BsonId]
         private string souvenir;
 
         public PremiumTicket()
         {
-            //souvenir = AppConstants.ListOfSouvenirs[0];
-            //typeIncrease = AppConstants.PremiumIncrease;
-            //type = AppConstants.ListOfTicketTypes[2];
-            //drink = AppConstants.ListOfDrinks[0];
+            typeIncrease = AppConstants.PremiumIncrease;
+            type = AppConstants.ListOfTicketTypes[2];
+            drink = AppConstants.ListOfDrinks[0];
         }
 
         public PremiumTicket(int index, int position, bool reserved, string drink, string souvenir) : base(index, position, reserved, drink)

@@ -26,7 +26,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private bool isValid;
 
-        private StandardTicket ticket;
+        //private StandardTicket ticket;
         //private StandardTicket newTicket;
 
         private int formHeight;
@@ -36,6 +36,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private readonly List<Seat> seatList;
         private List<StandardTicket> newTickets;
         private readonly PerformanceBaseService dataBase;
+
+        private int currentPosition=-1;
 
 
         public BuyTicketForm(Stage stage, Performance performance)
@@ -55,7 +57,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             textBoxIndex.Text = Convert.ToString(index);
 
             PopulateComboBoxTicketType();
-            PopulateComboBoxPositions();
+            //PopulateComboBoxPositions();
             PopulateSeating();
 
             seatList = stage.SeatList;
@@ -78,17 +80,18 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             if (e.KeyCode == Keys.Enter)
             {
-                comboBoxPositions.Focus();
-            }
-        }
-
-        private void ComboBoxPositions_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
+                //comboBoxPositions.Focus();
                 checkBoxReserved.Focus();
             }
         }
+
+        //private void ComboBoxPositions_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        checkBoxReserved.Focus();
+        //    }
+        //}
 
         private void CheckBoxReserved_KeyUp(object sender, KeyEventArgs e)
         {
@@ -109,15 +112,15 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void ComboBoxTicketType_SelectedIndexChanged(object sender, EventArgs e)
         {
             ChangeTicketInfo();
-            ticket = CreateTicket();
+            UpdateLastTicket();
             GetTicketPrice();
-        }
+         }
 
-        private void ComboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ticket = CreateTicket();
-            GetTicketPrice();
-        }
+        //private void ComboBoxPositions_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ticket = CreateTicket();
+        //    GetTicketPrice();
+        //}
         private void PanelSeating_MouseDown(object sender, MouseEventArgs e)
         {
             SeatingMouseDown(sender, e);
@@ -156,11 +159,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             if (newPerformance != performance)
             {
                 performance = newPerformance;
-                PopulateComboBoxPositions();
+                //PopulateComboBoxPositions();
                 PopulateSeating();
             }
         }
-
+        private void UpdateLastTicket()
+        {
+            if (newTickets.Count > 0)
+            {
+                newTickets[newTickets.Count-1]=CreateTicket();
+            }
+        }
         private void CreateTicketIndex()
         {
             Random rnd = new Random();
@@ -193,35 +202,35 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void PopulateComboBoxPositions()
-        {
-            comboBoxPositions.Items.Clear();
+        //private void PopulateComboBoxPositions()
+        //{
+        //    comboBoxPositions.Items.Clear();
 
-            List<int> positions = GetAllPositions();
+        //    List<int> positions = GetAllPositions();
 
-            positions = ToFindFreePositions(positions);
+        //    positions = ToFindFreePositions(positions);
 
 
-            foreach (int position in positions)
-            {
-                comboBoxPositions.Items.Add(Convert.ToString(position));
-            }
+        //    foreach (int position in positions)
+        //    {
+        //        comboBoxPositions.Items.Add(Convert.ToString(position));
+        //    }
 
-            if (positions.Count == 0)
-            {
-                comboBoxPositions.Enabled = false;
-                buttonAdd.Enabled = false;
-                MessageBox.Show(
-                    "All tickets are sold out",
-                    "Not available",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-            else
-            {
-                comboBoxPositions.SelectedIndex = 0;
-            }
-        }
+        //    if (positions.Count == 0)
+        //    {
+        //        comboBoxPositions.Enabled = false;
+        //        buttonAdd.Enabled = false;
+        //        MessageBox.Show(
+        //            "All tickets are sold out",
+        //            "Not available",
+        //            MessageBoxButtons.OK,
+        //            MessageBoxIcon.Information);
+        //    }
+        //    else
+        //    {
+        //        comboBoxPositions.SelectedIndex = 0;
+        //    }
+        //}
 
         private void PopulateComboBoxDrink()
         {
@@ -287,34 +296,34 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private List<int> GetAllPositions()
-        {
-            return performance.AvailablePositions;
-        }
+        //private List<int> GetAllPositions()
+        //{
+        //    return performance.AvailablePositions;
+        //}
 
-        private List<int> ToFindFreePositions(List<int> positions)
-        {
-            for (int i = 0; i < positions.Count; i++)
-            {
-                foreach (StandardTicket ticket in performance.Tickets)
-                {
-                    if (positions[i] == ticket.Position)
-                    {
-                        positions.RemoveAt(i);
-                        i--;
-                        break;
-                    }
-                }
-            }
-            return positions;
-        }
+        //private List<int> ToFindFreePositions(List<int> positions)
+        //{
+        //    for (int i = 0; i < positions.Count; i++)
+        //    {
+        //        foreach (StandardTicket ticket in performance.Tickets)
+        //        {
+        //            if (positions[i] == ticket.Position)
+        //            {
+        //                positions.RemoveAt(i);
+        //                i--;
+        //                break;
+        //            }
+        //        }
+        //    }
+        //    return positions;
+        //}
 
         private StandardTicket CreateTicket()
         {
-            if (comboBoxPositions.SelectedIndex != -1 && comboBoxTicketType.SelectedIndex != -1)
+            if (currentPosition!=-1 && comboBoxTicketType.SelectedIndex != -1)
             {
-                int position = Convert.ToInt32(comboBoxPositions.SelectedItem.ToString());
-                bool reserved = checkBoxReserved.Checked; ;
+                int position = currentPosition;
+                bool reserved = checkBoxReserved.Checked; 
 
                 double increase = GetIncrease(position);
 
@@ -350,18 +359,21 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             if (comboBoxTicketType.SelectedIndex == 0)
             {
-                return ticket = new CreateStandardTicket().CreateTicket();
+                var newTicket = new CreateStandardTicket().CreateTicket();
+                return newTicket;
             }
             else if (comboBoxTicketType.SelectedIndex == 1)
             {
                 string drink = comboBoxDrink.SelectedItem.ToString();
-                return ticket = new CreateStandardPlusTicket(drink).CreateTicket();
+                var newTicket = new CreateStandardPlusTicket(drink).CreateTicket();
+                return newTicket;
             }
             else
             {
                 string drink = comboBoxDrink.SelectedItem.ToString();
                 string souvenir = comboBoxSouvenir.SelectedItem.ToString();
-                return ticket = new CreatePremiumTicket(drink, souvenir).CreateTicket();
+                var newTicket = new CreatePremiumTicket(drink, souvenir).CreateTicket();
+                return newTicket;
             }
         }
 
@@ -475,6 +487,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                     newTickets = new List<StandardTicket>();
                     if(selectedControl!=null )
                     {
+                        for (int i = 0; i < performance.AvailablePositions.Count; i++)
+                        {
+                            if (performance.AvailablePositions[i].ToString() == selectedControl.Text)
+                            {
+                               currentPosition = performance.AvailablePositions[i];
+                                break;
+                            }
+                        }
                         newTickets.Add(CreateTicket());
                         GetTicketPrice();
                     }
@@ -486,7 +506,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                     {
                         selectedControls.Add(selectedControl);
                         selectedControl.BackColor = Color.Yellow;
-                        comboBoxPositions.SelectedItem = selectedControl.Text;
+                        for(int i=0; i<performance.AvailablePositions.Count; i++)
+                        {
+                            if (performance.AvailablePositions[i].ToString() == selectedControl.Text)
+                            {
+                                currentPosition = performance.AvailablePositions[i];
+                                break;
+                            }
+                        }
                         int seatIndex = GetCurrentSeatIndex(selectedControl);
                         labelSeatInfo.Text = seatList[seatIndex].GetInfo();
                         newTickets.Add(CreateTicket());
@@ -503,8 +530,16 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
                         if (seatIndex != -1)
                         {
-                            control.BackColor = seatList[seatIndex].CurrentZone.Color;
-                            newTickets.Remove(CreateTicket());
+                            control.BackColor = seatList[seatIndex].CurrentZone.GetColor();
+                            foreach(StandardTicket removeTicket in newTickets)
+                            {
+                                if (removeTicket.Position == seatIndex)
+                                {
+                                    newTickets.Remove(removeTicket);
+                                    break;
+                                }
+                            }
+                            
                             GetTicketPrice();
                         }
                         else
@@ -520,7 +555,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 {
                     selectedControls.Add(selectedControl);
                     selectedControl.BackColor = Color.Yellow;
-                    comboBoxPositions.SelectedItem = selectedControl.Text;
+                    currentPosition = Convert.ToInt32(selectedControl.Text);
                     int seatIndex = GetCurrentSeatIndex(selectedControl);
                     labelSeatInfo.Text = seatList[seatIndex].GetInfo();
                     //newTickets = new List<StandardTicket>();
@@ -532,15 +567,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private int GetCurrentSeatIndex(Control control)
         {
 
-            if (control is Label)
-            {
+            
                 bool isInteger = int.TryParse(control.Text, out int result);
 
                 if (isInteger)
                 {
-                    return result - 1;
+                    return result;
                 }
-            }
+            
 
             return -1;
 

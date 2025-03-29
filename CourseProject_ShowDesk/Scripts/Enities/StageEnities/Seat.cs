@@ -13,11 +13,11 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
     public class Seat
     {
         [BsonId]
-        private readonly Guid id = Guid.NewGuid();
+        private Guid id = Guid.NewGuid();
         private int seatNumber;
         private bool isAvailable = true;
         private Zone currentZone=null;
-        //private Color color = Color.LightBlue;
+        private Color color = Color.LightBlue;
         public Point Location;
         public Size Size  = new Size(50, 50);
         public bool Enabled = false;
@@ -27,7 +27,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         {
             SeatNumber = number;
             Location = location;
-            CurrentZone = new Zone();
+            //CurrentZone = new Zone();
         }
         public Guid Id
         {
@@ -61,18 +61,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
         }
 
-        //public Color Color
-        //{
-        //    get
-        //    {
-        //        return color;
-        //    }
-        //    set
-        //    {
-        //        color = value;
-        //    }
-        //}
-
         public Zone CurrentZone
         {
             get
@@ -102,7 +90,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 Name = this.SeatNumber.ToString(),
                 Size = this.Size,
                 Location = this.Location,
-                BackColor = this.CurrentZone.Color,
+                BackColor = (this.CurrentZone ?? new Zone()).GetColor(),
                 Enabled = this.Enabled,
                 Text = this.SeatNumber.ToString(),
                 ForeColor = Color.Black,

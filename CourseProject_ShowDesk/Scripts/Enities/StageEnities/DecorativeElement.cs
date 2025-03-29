@@ -12,14 +12,13 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
     public class DecorativeElement
     {
         [BsonId]
-        private readonly Guid id = Guid.NewGuid();
-        private Color color = Color.LightGray;
+        private Guid id = Guid.NewGuid();
+        private string hexColor = "#D3D3D3";
         public Point Location;
         public Size Size = new Size(50, 50);
         public BorderStyle BorderStyle = BorderStyle.FixedSingle;
         public bool Enabled = false;
 
-        // Конструктор
         public DecorativeElement(Point location)
         {
             Location = location;
@@ -33,25 +32,23 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
         }
 
-        public Color Color
+        public string HexColor
         {
             get
             {
-                return color;
+                return hexColor;
             }
             set
             {
-                color = value;
+                hexColor = value;
             }
         }
 
-        // Метод для масштабування
         public void Scale(Size newSize)
         {
             Size = newSize;
         }
 
-        // Метод для створення Panel з візуалізацією
         public Panel ToPanel()
         {
             Panel panel = new Panel
@@ -59,36 +56,20 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 Name = this.Id.ToString(),
                 Size = this.Size,
                 Location = this.Location,
-                BackColor = this.Color,
+                BackColor = GetColor(),
                 BorderStyle = this.BorderStyle,
                 Enabled = this.Enabled
             };
 
             return panel;
         }
-
-        //public string Serialize()
-        //{
-        //    return $"{Location.X},{Location.Y}|{Size.Width},{Size.Height}|{Color.ToArgb()}";
-        //}
-
-        //public static DecorativeElement Deserialize(string data)
-        //{
-        //    var parts = data.Split('|');
-        //    var locationParts = parts[0].Split(',');
-        //    var location = new Point(int.Parse(locationParts[0]), int.Parse(locationParts[1]));
-        //    var sizeParts = parts[1].Split(',');
-        //    var size = new Size(int.Parse(sizeParts[0]), int.Parse(sizeParts[1]));
-        //    var color = Color.FromArgb(int.Parse(parts[2]));
-
-        //    DecorativeElement decor = new DecorativeElement(location)
-        //    {
-        //        Size = size,
-        //        Color = color
-        //    };
-
-        //    decor.BackColor = color;
-        //    return decor;
-        //}
+        public void SetColor(Color color)
+        {
+            HexColor = $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+        }
+        public Color GetColor()
+        {
+            return ColorTranslator.FromHtml(HexColor);
+        }
     }
 }

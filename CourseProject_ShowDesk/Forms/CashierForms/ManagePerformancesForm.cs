@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -22,25 +23,39 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private bool isPastPerformances = false;
 
-        public ManagePerformancesForm(string accountName)
+        public ManagePerformancesForm(Employee account)
         {
             InitializeComponent();
             //stages = new List<Stage>();
             performanceManager = new PerformanceManager(new PerformanceBaseService());
             stageManager = new StageManager(new StageBaseService());
 
-            labelAccountName.Text = accountName;
+            labelAccountName.Text = account.FullName;
 
             //LoadPerformancesFromFile();
             //LoadStagesFromFile();
 
             //FliterPerformancesByDate();
+            if (account.ProfessionList.Contains(AppConstants.ListOfProfessions[1]))
+            {
+                performanceToolStripMenuItem.Visible = true;
+                addPerformanceToolStripMenuItem1.Visible = true;
+                editPerformanceToolStripMenuItem1.Visible = true;
+                removePerformanceToolStripMenuItem1.Visible = true;
+            }
+            else
+            {
+                performanceToolStripMenuItem.Visible = false;
+                addPerformanceToolStripMenuItem1.Visible = false;
+                editPerformanceToolStripMenuItem1.Visible = false;
+                removePerformanceToolStripMenuItem1.Visible = false;
+            }
 
             UpdateDataGridPerformances();
 
             DisableEditAndRemovePerformance();
 
-            ShowGreetings(accountName);
+            ShowGreetings(account.FullName);
 
             timerUpdate.Start();
         }

@@ -144,7 +144,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
                         if (decorIndex != -1)
                         {
-                            decorList[decorIndex].Color = colorDialog.Color;
+                            decorList[decorIndex].SetColor(colorDialog.Color);
                         }
                         
                         //else
@@ -276,7 +276,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
                         if (decorIndex != -1)
                         {
-                            control.BackColor = decorList[decorIndex].Color;
+                            control.BackColor = decorList[decorIndex].GetColor();
                         }
 
                         
@@ -286,7 +286,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
                             if (seatIndex != -1)
                             {
-                                control.BackColor = seatList[seatIndex].CurrentZone.Color;
+                                control.BackColor = (seatList[seatIndex].CurrentZone ?? new Zone()).GetColor();
                             }
                             else
                             {

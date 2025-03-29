@@ -37,7 +37,6 @@
             this.labelIndex = new System.Windows.Forms.Label();
             this.labelPosition = new System.Windows.Forms.Label();
             this.labelType = new System.Windows.Forms.Label();
-            this.comboBoxPositions = new System.Windows.Forms.ComboBox();
             this.comboBoxTicketType = new System.Windows.Forms.ComboBox();
             this.groupBoxTicket = new System.Windows.Forms.GroupBox();
             this.labelSeatInfo = new System.Windows.Forms.Label();
@@ -148,22 +147,6 @@
             this.labelType.TabIndex = 29;
             this.labelType.Text = "Type";
             // 
-            // comboBoxPositions
-            // 
-            this.comboBoxPositions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxPositions.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBoxPositions.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxPositions.BackColor = System.Drawing.Color.White;
-            this.comboBoxPositions.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxPositions.FormattingEnabled = true;
-            this.comboBoxPositions.Location = new System.Drawing.Point(148, 109);
-            this.comboBoxPositions.Name = "comboBoxPositions";
-            this.comboBoxPositions.Size = new System.Drawing.Size(213, 29);
-            this.comboBoxPositions.TabIndex = 28;
-            this.comboBoxPositions.SelectedIndexChanged += new System.EventHandler(this.ComboBoxPositions_SelectedIndexChanged);
-            this.comboBoxPositions.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxPositions_KeyUp);
-            // 
             // comboBoxTicketType
             // 
             this.comboBoxTicketType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -193,7 +176,6 @@
             this.groupBoxTicket.Controls.Add(this.labelInfo);
             this.groupBoxTicket.Controls.Add(this.textBoxPrice);
             this.groupBoxTicket.Controls.Add(this.comboBoxTicketType);
-            this.groupBoxTicket.Controls.Add(this.comboBoxPositions);
             this.groupBoxTicket.Controls.Add(this.labelType);
             this.groupBoxTicket.Controls.Add(this.buttonAdd);
             this.groupBoxTicket.Controls.Add(this.labelPosition);
@@ -359,7 +341,6 @@
         private System.Windows.Forms.Label labelIndex;
         private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.Label labelType;
-        private System.Windows.Forms.ComboBox comboBoxPositions;
         private System.Windows.Forms.ComboBox comboBoxTicketType;
         private System.Windows.Forms.GroupBox groupBoxTicket;
         private System.Windows.Forms.Label labelInfo;

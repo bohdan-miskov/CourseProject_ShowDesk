@@ -23,18 +23,18 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private readonly string cipher = new string('*', 12);
 
-        public ManageEmployeesForm(string accountName)
+        public ManageEmployeesForm(Employee account)
         {
             InitializeComponent();
 
             employeeManager = new EmployeeManager(new EmployeeBaseService());
 
-            labelAccountName.Text = accountName;
+            labelAccountName.Text = account.FullName;
 
             //LoadEmployeesFromFile();
             UpdateDataGridEmployees();
             DisableEditAndRemoveEmployees();
-            ShowGreetings(accountName);
+            ShowGreetings(account.FullName);
 
             timerUpdate.Start();
         }
