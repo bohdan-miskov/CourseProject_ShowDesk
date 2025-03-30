@@ -10,26 +10,15 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
     public partial class AddStageForm : MetroFramework.Forms.MetroForm
     {
-        private int index;
-
         private bool isValid;
 
         private Stage newStage;
 
-        public AddStageForm(int index)
+        public AddStageForm()
         {
             InitializeComponent();
 
-            this.index = index;
-
-            textBoxIndex.Text = Convert.ToString(index);
-
             isValid = false;
-        }
-
-        private void TextBoxIndex_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) textBoxStageName.Focus();
         }
 
         private void TextBoxStageName_KeyUp(object sender, KeyEventArgs e)
@@ -71,7 +60,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void CreateStage()
         {
             string stageName = textBoxStageName.Text;
-            newStage = new Stage(index, stageName);    
+            newStage = new Stage(stageName);    
         }
 
         public bool GetIsValid()

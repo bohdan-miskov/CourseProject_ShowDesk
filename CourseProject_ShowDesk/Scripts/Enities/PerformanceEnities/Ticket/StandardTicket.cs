@@ -12,7 +12,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
     {
         [BsonId]
         protected Guid id = Guid.NewGuid();
-        protected int index;
         protected int position;
         protected double calculatedPrice;
         protected bool reserved;
@@ -21,16 +20,12 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
 
         public StandardTicket()
         {
-            index = 0;
-            position = 0;
-            calculatedPrice = 0.0;
             reserved = false;
             type = AppConstants.ListOfTicketTypes[0];
             typeIncrease = AppConstants.StandardIncrease;
         }
-        public StandardTicket(int index, int position, bool reserved)
+        public StandardTicket(int position, bool reserved)
         {
-            Index = index;
             Position = position;
             Reserved = reserved;
         }
@@ -41,21 +36,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
                 return id;
             }
         }
-        public int Index
-        {
-            get
-            {
-                return index;
-            }
-            set
-            {
-                if (value < 0 || value > int.MaxValue)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Index), $"The Ticket ID must be between 0 and {int.MaxValue}.");
-                }
-                index = value;
-            }
-        }
+
         public int Position
         {
             get

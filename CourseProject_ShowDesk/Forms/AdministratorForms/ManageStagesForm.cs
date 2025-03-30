@@ -100,7 +100,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             dataGridViewStages.Rows.Add(
                 stage.Id,
-                stage.Index,
                 stage.Name,
                 stage.Zones.Count
                     );
@@ -119,7 +118,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void AddStage()
         {
-            AddStageForm addStageForm = new AddStageForm(stageManager.CreateIndex());
+            AddStageForm addStageForm = new AddStageForm();
             this.Hide();
             addStageForm.ShowDialog();
             this.Show();

@@ -16,7 +16,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
             drink = AppConstants.ListOfDrinks[0];
         }
 
-        public PremiumTicket(int index, int position, bool reserved, string drink, string souvenir) : base(index, position, reserved, drink)
+        public PremiumTicket(int position, bool reserved, string drink, string souvenir) : base(position, reserved, drink)
         {
             Souvenir = souvenir;
         }

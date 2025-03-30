@@ -90,7 +90,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             // Видалення квитка за його унікальним Id або Index
             var pull = Builders<Performance>.Update.PullFilter(
                 p => p.Tickets,
-                t => t.Index == updatedTicket.Index
+                t => t.Id == updatedTicket.Id
             );
 
             // Додати новий квиток (оновлений)

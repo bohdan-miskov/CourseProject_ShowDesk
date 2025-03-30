@@ -22,18 +22,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private Performance performance;
 
-        private int index;
-
         private bool isValid;
 
-        private Control selectedControl;
         private List<Control> selectedControls;
-        private readonly List<Seat> seatList;
         private List<StandardTicket> newTickets;
         private readonly PerformanceBaseService dataBase;
-
-        private int currentPosition=-1;
-
 
         public BuyTicketForm(Stage stage, Performance performance)
         {
@@ -45,9 +38,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             this.newTickets = new List<StandardTicket>();
             this.dataBase = new PerformanceBaseService();
 
-            CreateTicketIndex();
-
-            seatList = stage.SeatList;
+            //seatList = stage.SeatList;
 
             PopulateComponents();
 
@@ -94,8 +85,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void PopulateComponents()
         {
             labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
-
-            textBoxIndex.Text = Convert.ToString(index);
 
             PopulateComboBoxTicketType();
 
@@ -198,17 +187,13 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void UpdateLastTicket()
         {
             if (newTickets.Count > 0)
-                newTickets[newTickets.Count - 1] = CreateTicket();
+            {
+                int currentPosition = newTickets[newTickets.Count - 1].Position;
+                newTickets[newTickets.Count - 1] = CreateTicket(currentPosition);
+            }
         }
 
-        private void CreateTicketIndex()
-        {
-            Random rnd = new Random();
-            index = Convert.ToInt32(DateTime.Now.Second);
-            index = Convert.ToInt32(index * rnd.Next(30, 100));
-        }
-
-        private StandardTicket CreateTicket()
+        private StandardTicket CreateTicket(int currentPosition)
         {
             if (currentPosition == -1 && comboBoxTicketType.SelectedIndex == -1)
             {
@@ -222,11 +207,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             StandardTicket ticket = GetTicketType();
 
-            ticket.Index = index;
             ticket.Position = position;
             ticket.Reserved = reserved;
 
             ticket.CalculatePrice(performance.Price, increase);
+
+            textBoxId.Text = Convert.ToString(ticket.Id);
 
             return ticket;
         }
@@ -307,17 +293,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             if (e.Button != MouseButtons.Left) return;
 
-            selectedControl = GetSelectedControl(e.Location);
+            Control selectedControl = GetSelectedControl(e.Location);
 
-            if (selectedControls.Count == 0) HandleSingleSelection();
+            if (selectedControls.Count == 0) HandleSingleSelection(selectedControl);
 
-            if (ModifierKeys == Keys.Control) HandleMultiSelection();
+            if (ModifierKeys == Keys.Control) HandleMultiSelection(selectedControl);
             else ResetSelection();
 
             selectedControls.Clear();
 
             if (selectedControl != null && selectedControl is Label)
-                HighlightSelectedControl();
+                HighlightSelectedControl(selectedControl);
         }
 
         private Control GetSelectedControl(Point location)
@@ -332,31 +318,31 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             return null;
         }
 
-        private void HandleSingleSelection()
+        private void HandleSingleSelection(Control selectedControl)
         {
             newTickets = new List<StandardTicket>();
 
             if (selectedControl != null)
             {
-                currentPosition = GetSeatPosition(selectedControl.Text);
-                newTickets.Add(CreateTicket());
+                int currentPosition = GetSeatPosition(selectedControl.Text);
+                newTickets.Add(CreateTicket(currentPosition));
                 GetTicketPrice();
             }
         }
 
-        private void HandleMultiSelection()
+        private void HandleMultiSelection(Control selectedControl)
         {
             if (selectedControl == null || selectedControls.Contains(selectedControl))
                 return;
 
             selectedControls.Add(selectedControl);
             selectedControl.BackColor = Color.Yellow;
-            currentPosition = GetSeatPosition(selectedControl.Text);
+            int currentPosition = GetSeatPosition(selectedControl.Text);
 
             int seatIndex = GetCurrentSeatIndex(selectedControl);
-            labelSeatInfo.Text = seatList[seatIndex].GetInfo();
+            labelSeatInfo.Text = stage.SeatList[seatIndex].GetInfo();
 
-            newTickets.Add(CreateTicket());
+            newTickets.Add(CreateTicket(currentPosition));
             GetTicketPrice();
         }
 
@@ -368,7 +354,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
                 if (seatIndex != -1)
                 {
-                    control.BackColor = seatList[seatIndex].CurrentZone.GetColor();
+                    control.BackColor = stage.SeatList[seatIndex].CurrentZone.GetColor();
                     RemoveTicket(seatIndex);
                 }
                 else
@@ -392,14 +378,13 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void HighlightSelectedControl()
+        private void HighlightSelectedControl(Control selectedControl)
         {
             selectedControls.Add(selectedControl);
             selectedControl.BackColor = Color.Yellow;
-            currentPosition = Convert.ToInt32(selectedControl.Text);
 
             int seatIndex = GetCurrentSeatIndex(selectedControl);
-            labelSeatInfo.Text = seatList[seatIndex].GetInfo();
+            labelSeatInfo.Text = stage.SeatList[seatIndex].GetInfo();
         }
 
         private int GetSeatPosition(string text)

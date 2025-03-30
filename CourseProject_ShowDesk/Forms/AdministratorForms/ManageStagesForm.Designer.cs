@@ -33,10 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageStagesForm));
             this.dataGridViewStages = new System.Windows.Forms.DataGridView();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnZonesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripStages = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +49,9 @@
             this.labelAccountName = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnZonesCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).BeginInit();
             this.contextMenuStripStages.SuspendLayout();
             this.menuStripManageStages.SuspendLayout();
@@ -81,7 +80,6 @@
             this.dataGridViewStages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewStages.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idColumn,
-            this.columnNumber,
             this.columnName,
             this.columnZonesCount});
             this.dataGridViewStages.ContextMenuStrip = this.contextMenuStripStages;
@@ -104,31 +102,6 @@
             this.dataGridViewStages.TabIndex = 2;
             this.dataGridViewStages.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowEnter);
             this.dataGridViewStages.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowLeave);
-            // 
-            // idColumn
-            // 
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            this.idColumn.Visible = false;
-            // 
-            // columnNumber
-            // 
-            this.columnNumber.HeaderText = "Number";
-            this.columnNumber.Name = "columnNumber";
-            this.columnNumber.ReadOnly = true;
-            // 
-            // columnName
-            // 
-            this.columnName.HeaderText = "Name";
-            this.columnName.Name = "columnName";
-            this.columnName.ReadOnly = true;
-            // 
-            // columnZonesCount
-            // 
-            this.columnZonesCount.HeaderText = "Zones count";
-            this.columnZonesCount.Name = "columnZonesCount";
-            this.columnZonesCount.ReadOnly = true;
             // 
             // contextMenuStripStages
             // 
@@ -191,7 +164,7 @@
             // 
             this.addStageToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
             this.addStageToolStripMenuItem.Name = "addStageToolStripMenuItem";
-            this.addStageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.addStageToolStripMenuItem.Text = "Add";
             this.addStageToolStripMenuItem.Click += new System.EventHandler(this.AddStageToolStripMenuItem_Click);
             // 
@@ -199,7 +172,7 @@
             // 
             this.editStageToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.edit_icon;
             this.editStageToolStripMenuItem.Name = "editStageToolStripMenuItem";
-            this.editStageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.editStageToolStripMenuItem.Text = "Edit";
             this.editStageToolStripMenuItem.Click += new System.EventHandler(this.EditStageToolStripMenuItem_Click);
             // 
@@ -207,7 +180,7 @@
             // 
             this.removeStageToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
             this.removeStageToolStripMenuItem.Name = "removeStageToolStripMenuItem";
-            this.removeStageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.removeStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeStageToolStripMenuItem.Text = "Remove";
             this.removeStageToolStripMenuItem.Click += new System.EventHandler(this.RemoveStageToolStripMenuItem_Click);
             // 
@@ -276,6 +249,25 @@
             this.timerUpdate.Interval = 300000;
             this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
             // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Visible = false;
+            // 
+            // columnName
+            // 
+            this.columnName.HeaderText = "Name";
+            this.columnName.Name = "columnName";
+            this.columnName.ReadOnly = true;
+            // 
+            // columnZonesCount
+            // 
+            this.columnZonesCount.HeaderText = "Zones count";
+            this.columnZonesCount.Name = "columnZonesCount";
+            this.columnZonesCount.ReadOnly = true;
+            // 
             // ManageStagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -318,11 +310,10 @@
         private System.Windows.Forms.ToolStripMenuItem removeStageToolStripMenuItem1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnZonesCount;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Timer timerUpdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnZonesCount;
     }
 }

@@ -18,7 +18,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
             drink = AppConstants.ListOfDrinks[0];
         }
 
-        public StandardPlusTicket(int index, int position, bool reserved, string drink) : base(index, position, reserved)
+        public StandardPlusTicket(int position, bool reserved, string drink) : base(position, reserved)
         {
             Drink = drink;
         }
@@ -43,6 +43,5 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
         {
             return $"Drink: {drink}";
         }
-
     }
 }

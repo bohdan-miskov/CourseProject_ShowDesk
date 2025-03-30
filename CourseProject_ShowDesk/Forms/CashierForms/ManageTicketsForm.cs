@@ -99,7 +99,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             dataGridViewTickets.Rows.Add(
                 ticket.Id,
-                ticket.Index,
                 ticket.Type,
                 ticket.Position,
                 ticket.CalculatedPrice.ToString() + AppConstants.CurrencySymbol.ToString(),

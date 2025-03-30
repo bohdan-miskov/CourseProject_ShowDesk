@@ -62,34 +62,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 database.UpdateStage(updatedStage);
             }    
         }
-        public int CreateIndex()
-        {
-            if (stages.Count == 0)
-            {
-                return 1;
-            }
-
-            bool isRepeat;
-            for (int i = 1; i < int.MaxValue; i++)
-            {
-                isRepeat = false;
-                for (int j = 0; j < stages.Count; j++)
-                {
-                    if (i == stages[j].Index)
-                    {
-                        isRepeat = true;
-                        break;
-                    }
-                }
-                if (!isRepeat)
-                {
-                    
-                    return i; 
-                }
-            }
-
-            return 0;
-        }
     }
 
 }

@@ -32,8 +32,8 @@
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
             this.checkBoxReserved = new System.Windows.Forms.CheckBox();
-            this.textBoxIndex = new System.Windows.Forms.TextBox();
-            this.labelIndex = new System.Windows.Forms.Label();
+            this.textBoxId = new System.Windows.Forms.TextBox();
+            this.labelId = new System.Windows.Forms.Label();
             this.labelPosition = new System.Windows.Forms.Label();
             this.labelType = new System.Windows.Forms.Label();
             this.comboBoxTicketType = new System.Windows.Forms.ComboBox();
@@ -102,26 +102,26 @@
             this.checkBoxReserved.UseVisualStyleBackColor = true;
             this.checkBoxReserved.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxReserved_KeyUp);
             // 
-            // textBoxIndex
+            // textBoxId
             // 
-            this.textBoxIndex.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxIndex.Location = new System.Drawing.Point(148, 40);
-            this.textBoxIndex.Name = "textBoxIndex";
-            this.textBoxIndex.ReadOnly = true;
-            this.textBoxIndex.Size = new System.Drawing.Size(213, 28);
-            this.textBoxIndex.TabIndex = 32;
-            this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxIndex_KeyUp);
+            this.textBoxId.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxId.Location = new System.Drawing.Point(148, 40);
+            this.textBoxId.Name = "textBoxId";
+            this.textBoxId.ReadOnly = true;
+            this.textBoxId.Size = new System.Drawing.Size(213, 28);
+            this.textBoxId.TabIndex = 32;
+            this.textBoxId.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxIndex_KeyUp);
             // 
-            // labelIndex
+            // labelId
             // 
-            this.labelIndex.AutoSize = true;
-            this.labelIndex.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIndex.Location = new System.Drawing.Point(34, 47);
-            this.labelIndex.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            this.labelIndex.Name = "labelIndex";
-            this.labelIndex.Size = new System.Drawing.Size(54, 21);
-            this.labelIndex.TabIndex = 31;
-            this.labelIndex.Text = "Index";
+            this.labelId.AutoSize = true;
+            this.labelId.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelId.Location = new System.Drawing.Point(34, 47);
+            this.labelId.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
+            this.labelId.Name = "labelId";
+            this.labelId.Size = new System.Drawing.Size(27, 21);
+            this.labelId.TabIndex = 31;
+            this.labelId.Text = "Id";
             // 
             // labelPosition
             // 
@@ -177,9 +177,9 @@
             this.groupBoxTicket.Controls.Add(this.labelType);
             this.groupBoxTicket.Controls.Add(this.buttonAdd);
             this.groupBoxTicket.Controls.Add(this.labelPosition);
-            this.groupBoxTicket.Controls.Add(this.labelIndex);
+            this.groupBoxTicket.Controls.Add(this.labelId);
             this.groupBoxTicket.Controls.Add(this.labelPrice);
-            this.groupBoxTicket.Controls.Add(this.textBoxIndex);
+            this.groupBoxTicket.Controls.Add(this.textBoxId);
             this.groupBoxTicket.Controls.Add(this.checkBoxReserved);
             this.groupBoxTicket.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxTicket.Location = new System.Drawing.Point(1, 65);
@@ -330,8 +330,8 @@
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.Label labelPrice;
         private System.Windows.Forms.CheckBox checkBoxReserved;
-        private System.Windows.Forms.TextBox textBoxIndex;
-        private System.Windows.Forms.Label labelIndex;
+        private System.Windows.Forms.TextBox textBoxId;
+        private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.Label labelType;
         private System.Windows.Forms.ComboBox comboBoxTicketType;

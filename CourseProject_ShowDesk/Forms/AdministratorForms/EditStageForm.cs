@@ -85,7 +85,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void ShowStage()
         {
-            textBoxIndex.Text = Convert.ToString(stage.Index);
             textBoxStageName.Text = stage.Name;
         }
 

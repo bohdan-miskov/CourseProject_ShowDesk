@@ -36,7 +36,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         }
         public void UpdateStage(Stage updatedStage)
         {
-            var filter = Builders<Stage>.Filter.Eq(p => p.Index, updatedStage.Index);
+            var filter = Builders<Stage>.Filter.Eq(p => p.Id, updatedStage.Id);
             stageCollection.ReplaceOne(filter, updatedStage);
         }
     }

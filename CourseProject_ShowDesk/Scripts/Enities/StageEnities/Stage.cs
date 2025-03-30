@@ -14,7 +14,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
     {
         [BsonId]
         private Guid id = Guid.NewGuid();
-        private int index;
         private string name;
         private List<Zone> zones;
         private List<Seat> seatList;
@@ -22,13 +21,10 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
         public Stage()
         {
-            index = 0;
-            name = "";
             zones = new List<Zone>();
         }
-        public Stage(int index, string name)
+        public Stage(string name)
         {
-            Index = index;
             Name = name;
             zones = new List<Zone>();
         }
@@ -39,21 +35,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 return id;
             }
         }
-        public int Index
-        {
-            get
-            {
-                return index;
-            }
-            set
-            {
-                if (value < 0 || value > int.MaxValue)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(Index), $"The Stage ID value must be between 0 and {int.MaxValue}.");
-                }
-                index = value;
-            }
-        }
+  
         public string Name
         {
             get

@@ -37,19 +37,18 @@
             this.changeStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnAdditionalServices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripPerformance = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addTicketToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.changeStatusToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.removeTicketToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnAdditionalServices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripPerformance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             this.contextMenuStripPerformance.SuspendLayout();
@@ -118,7 +117,6 @@
             this.dataGridViewTickets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTickets.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idColumn,
-            this.columnName,
             this.columnType,
             this.columnPosition,
             this.columnPrice,
@@ -146,49 +144,6 @@
             this.dataGridViewTickets.TabIndex = 12;
             this.dataGridViewTickets.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTickets_RowEnter);
             this.dataGridViewTickets.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTickets_RowLeave);
-            // 
-            // idColumn
-            // 
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            this.idColumn.Visible = false;
-            // 
-            // columnName
-            // 
-            this.columnName.HeaderText = "Name";
-            this.columnName.Name = "columnName";
-            this.columnName.ReadOnly = true;
-            // 
-            // columnType
-            // 
-            this.columnType.HeaderText = "Type";
-            this.columnType.Name = "columnType";
-            this.columnType.ReadOnly = true;
-            // 
-            // columnPosition
-            // 
-            this.columnPosition.HeaderText = "Position";
-            this.columnPosition.Name = "columnPosition";
-            this.columnPosition.ReadOnly = true;
-            // 
-            // columnPrice
-            // 
-            this.columnPrice.HeaderText = "Price";
-            this.columnPrice.Name = "columnPrice";
-            this.columnPrice.ReadOnly = true;
-            // 
-            // columnReserved
-            // 
-            this.columnReserved.HeaderText = "Reserved";
-            this.columnReserved.Name = "columnReserved";
-            this.columnReserved.ReadOnly = true;
-            // 
-            // columnAdditionalServices
-            // 
-            this.columnAdditionalServices.HeaderText = "Additional services";
-            this.columnAdditionalServices.Name = "columnAdditionalServices";
-            this.columnAdditionalServices.ReadOnly = true;
             // 
             // contextMenuStripPerformance
             // 
@@ -236,6 +191,42 @@
             this.timerUpdate.Interval = 60000;
             this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
             // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            // 
+            // columnType
+            // 
+            this.columnType.HeaderText = "Type";
+            this.columnType.Name = "columnType";
+            this.columnType.ReadOnly = true;
+            // 
+            // columnPosition
+            // 
+            this.columnPosition.HeaderText = "Position";
+            this.columnPosition.Name = "columnPosition";
+            this.columnPosition.ReadOnly = true;
+            // 
+            // columnPrice
+            // 
+            this.columnPrice.HeaderText = "Price";
+            this.columnPrice.Name = "columnPrice";
+            this.columnPrice.ReadOnly = true;
+            // 
+            // columnReserved
+            // 
+            this.columnReserved.HeaderText = "Reserved";
+            this.columnReserved.Name = "columnReserved";
+            this.columnReserved.ReadOnly = true;
+            // 
+            // columnAdditionalServices
+            // 
+            this.columnAdditionalServices.HeaderText = "Additional services";
+            this.columnAdditionalServices.Name = "columnAdditionalServices";
+            this.columnAdditionalServices.ReadOnly = true;
+            // 
             // ManageTicketsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
@@ -271,14 +262,13 @@
         private System.Windows.Forms.ToolStripMenuItem addTicketToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem changeStatusToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem removeTicketToolStripMenuItem1;
+        private System.Windows.Forms.Button buttonUpdate;
+        private System.Windows.Forms.Timer timerUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnType;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPosition;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnReserved;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnAdditionalServices;
-        private System.Windows.Forms.Button buttonUpdate;
-        private System.Windows.Forms.Timer timerUpdate;
     }
 }
