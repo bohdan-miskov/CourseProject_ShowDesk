@@ -1,4 +1,5 @@
 ﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
@@ -13,10 +14,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private bool isValid;
 
         private Stage newStage;
+        private readonly Employee userAccount;
 
-        public AddStageForm()
+        public AddStageForm(Employee userAccount)
         {
             InitializeComponent();
+
+            this.userAccount = userAccount;
+            labelAccountName.Text = userAccount.FullName;
 
             isValid = false;
         }
@@ -36,7 +41,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             StageValidator validator = new StageValidator();
             if (validator.Validate(newStage,out string errorMessage))
             {
-                AddEditSeatingForm addSeatingForm = new AddEditSeatingForm();
+                AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(userAccount);
                 this.Hide();
                 addSeatingForm.ShowDialog();
                 this.Show();

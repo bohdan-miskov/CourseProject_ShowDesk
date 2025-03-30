@@ -21,13 +21,15 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private bool isValid;
 
-        public AddEditEmployeeForm(List<Employee> employees, Employee currentEmployee=null)
+        public AddEditEmployeeForm(Employee userAccount,List<Employee> employees, Employee currentEmployee=null)
         {
             InitializeComponent();
 
             this.employees = employees;
 
             isValid = false;
+
+            labelAccountName.Text = userAccount.FullName;
 
             PopulateProfessionsGroup();
 

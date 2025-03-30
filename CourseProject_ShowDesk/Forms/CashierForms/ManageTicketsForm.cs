@@ -3,6 +3,7 @@ using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using System;
@@ -22,15 +23,18 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private readonly Stage currentStage;
         private Performance currentPerformance;
         private readonly PerformanceBaseService dataBase;
+        private readonly Employee userAccount;
 
-        public ManageTicketsForm(Stage currentStage, Performance currentPerformance)
+        public ManageTicketsForm(Employee userAccount,Stage currentStage, Performance currentPerformance)
         {
             InitializeComponent();
 
             this.currentStage = currentStage;
             this.currentPerformance = currentPerformance;
-
+            this.userAccount = userAccount;
             dataBase=new PerformanceBaseService();
+
+            labelAccountName.Text = userAccount.FullName;
 
             UpdateDataGridTickets();
             DisableEditAndRemoveTicket();
@@ -144,7 +148,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void BuyOfTicket()
         {
             currentPerformance = dataBase.GetUpdatedPerformance(currentPerformance);
-            BuyTicketForm buyTicketForm = new BuyTicketForm(currentStage, currentPerformance);
+            BuyTicketForm buyTicketForm = new BuyTicketForm(userAccount,currentStage, currentPerformance);
             
             this.Hide();
             buyTicketForm.ShowDialog();

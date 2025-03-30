@@ -1,6 +1,7 @@
 ﻿using CourseProject_ShowDesk.Scripts;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,11 +15,13 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
     {
         private List<Performance> performances;
 
-        public ViewRevenueForm(List<Performance> performances)
+        public ViewRevenueForm(Employee userAccount, List<Performance> performances)
         {
             InitializeComponent();
 
             this.performances = performances;
+
+            labelAccountName.Text = userAccount.FullName;
 
             SortPerformancesByDate();
 
@@ -58,9 +61,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 {
                     if (performances[j].PerformanceDateTime > performances[j + 1].PerformanceDateTime)
                     {
-                        Performance tempPerformance = performances[j];
-                        performances[j] = performances[j + 1];
-                        performances[j + 1] = tempPerformance;
+                        (performances[j], performances[j + 1]) = (performances[j + 1], performances[j]);
                     }
                 }
             }

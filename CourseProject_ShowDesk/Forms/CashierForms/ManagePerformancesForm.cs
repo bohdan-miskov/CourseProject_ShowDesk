@@ -16,23 +16,26 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
     {
         private readonly PerformanceManager performanceManager;
         private readonly StageManager stageManager;
+        private readonly Employee userAccount;
 
         private bool isPastPerformances = false;
 
-        public ManagePerformancesForm(Employee account)
+        public ManagePerformancesForm(Employee userAccount)
         {
             InitializeComponent();
 
             performanceManager = new PerformanceManager(new PerformanceBaseService());
             stageManager = new StageManager(new StageBaseService());
+            this.userAccount = userAccount;
+            labelAccountName.Text = userAccount.FullName;
 
-            PopulateComponents(account);
+            PopulateComponents();
 
             UpdateDataGridPerformances();
 
             DisableEditAndRemovePerformance();
 
-            ShowGreetings(account.FullName);
+            ShowGreetings(userAccount.FullName);
 
             timerUpdate.Start();
         }
@@ -106,11 +109,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 MessageBoxIcon.Information);
         }
 
-        private void PopulateComponents(Employee account)
+        private void PopulateComponents()
         {
-            labelAccountName.Text = account.FullName;
-            
-            if (account.ProfessionList.Contains(AppConstants.ListOfProfessions[1]))
+            if (userAccount.ProfessionList.Contains(AppConstants.ListOfProfessions[1]))
             {
                 performanceToolStripMenuItem.Visible = true;
                 addPerformanceToolStripMenuItem1.Visible = true;
@@ -227,7 +228,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void AddPerformance()
         {
-            AddEditPerformanceForm addPerformanceForm = new AddEditPerformanceForm(stageManager.Stages, performanceManager.Performances);
+            AddEditPerformanceForm addPerformanceForm = new AddEditPerformanceForm(userAccount,stageManager.Stages, performanceManager.Performances);
             this.Hide();
             addPerformanceForm.ShowDialog();
             this.Show();
@@ -242,7 +243,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             Guid id = GetCurrentRowId();
 
-            AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(stageManager.Stages, performanceManager.Performances, performanceManager.GetById(id));
+            AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(userAccount,stageManager.Stages, performanceManager.Performances, performanceManager.GetById(id));
             this.Hide();
             editPerformanceForm.ShowDialog();
             this.Show();
@@ -265,7 +266,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             Performance currentPerformance=performanceManager.GetById(id);
             Stage currentStage = stageManager.GetById(currentPerformance.StageId);
 
-            ManageTicketsForm manageTicketsForm = new ManageTicketsForm(currentStage, currentPerformance);
+            ManageTicketsForm manageTicketsForm = new ManageTicketsForm(userAccount, currentStage, currentPerformance);
 
             this.Hide();
             manageTicketsForm.ShowDialog();
@@ -273,7 +274,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void OpenRevenue()
         {
-            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performanceManager.PastPerformances);
+            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(userAccount,performanceManager.PastPerformances);
             
             this.Hide();
             viewRevenueForm.ShowDialog();

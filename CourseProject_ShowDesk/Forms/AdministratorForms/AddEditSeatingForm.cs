@@ -1,4 +1,4 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities;
+﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using System;
 using System.Collections.Generic;
@@ -26,11 +26,13 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private List<DecorativeElement> decorList = new List<DecorativeElement>();
 
 
-        public AddEditSeatingForm(Stage stage=null)
+        public AddEditSeatingForm(Employee userAccount,Stage stage=null)
         {
             InitializeComponent();
 
-            if(stage!=null)
+            labelAccountName.Text = userAccount.FullName;
+
+            if (stage!=null)
             {
                 seatList = stage.SeatList;
                 decorList = stage.DecorList;

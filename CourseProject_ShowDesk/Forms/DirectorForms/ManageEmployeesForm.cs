@@ -22,17 +22,20 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private readonly string cipher = new string('*', 12);
 
-        public ManageEmployeesForm(Employee account)
+        private readonly Employee userAccount;
+
+        public ManageEmployeesForm(Employee userAccount)
         {
             InitializeComponent();
 
             employeeManager = new EmployeeManager(new EmployeeBaseService());
 
-            labelAccountName.Text = account.FullName;
+            labelAccountName.Text = userAccount.FullName;
+            this.userAccount = userAccount;
 
             UpdateDataGridEmployees();
             DisableEditAndRemoveEmployees();
-            ShowGreetings(account.FullName);
+            ShowGreetings(userAccount.FullName);
 
             timerUpdate.Start();
         }
@@ -158,7 +161,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void AddEmployee()
         {
-            AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(employeeManager.Employees);
+            AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(userAccount,employeeManager.Employees);
             this.Hide();
             addEmployeeForm.ShowDialog();
             this.Show();
@@ -171,7 +174,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             Guid id = GetCurrentRowId();
 
-            AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(employeeManager.Employees, employeeManager.GetById(id));
+            AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(userAccount,employeeManager.Employees, employeeManager.GetById(id));
             this.Hide();
             editEmployeeForm.ShowDialog();
             this.Show();
@@ -187,7 +190,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
         private void OpenSettings()
         {
-            SettingsForm settingsForm = new SettingsForm();
+            SettingsForm settingsForm = new SettingsForm(userAccount);
             this.Hide();
             settingsForm.ShowDialog();
             this.Show();

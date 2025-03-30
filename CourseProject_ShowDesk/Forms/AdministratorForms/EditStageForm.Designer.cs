@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditStageForm));
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxIndex = new System.Windows.Forms.TextBox();
             this.labelStageName = new System.Windows.Forms.Label();
@@ -43,24 +44,29 @@
             this.groupBoxStage = new System.Windows.Forms.GroupBox();
             this.buttonEditSeating = new System.Windows.Forms.Button();
             this.dataGridViewZones = new System.Windows.Forms.DataGridView();
-            this.contextMenuStripStage = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addZoneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editZoneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeZoneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBoxZones = new System.Windows.Forms.GroupBox();
-            this.groupBoxForm = new System.Windows.Forms.GroupBox();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnIncrease = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnStartSeads = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnEndPositions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStripStage = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addZoneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editZoneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeZoneToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBoxZones = new System.Windows.Forms.GroupBox();
+            this.groupBoxForm = new System.Windows.Forms.GroupBox();
+            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
             this.menuStripStage.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZones)).BeginInit();
             this.contextMenuStripStage.SuspendLayout();
             this.groupBoxZones.SuspendLayout();
             this.groupBoxForm.SuspendLayout();
+            this.groupBoxProfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSave
@@ -239,6 +245,43 @@
             this.dataGridViewZones.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewZones_RowEnter);
             this.dataGridViewZones.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewZones_RowLeave);
             // 
+            // idColumn
+            // 
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Visible = false;
+            // 
+            // columnName
+            // 
+            this.columnName.HeaderText = "Name";
+            this.columnName.Name = "columnName";
+            this.columnName.ReadOnly = true;
+            // 
+            // columnIncrease
+            // 
+            this.columnIncrease.HeaderText = "Increase";
+            this.columnIncrease.Name = "columnIncrease";
+            this.columnIncrease.ReadOnly = true;
+            // 
+            // colorColumn
+            // 
+            this.colorColumn.HeaderText = "Color";
+            this.colorColumn.Name = "colorColumn";
+            this.colorColumn.ReadOnly = true;
+            // 
+            // columnStartSeads
+            // 
+            this.columnStartSeads.HeaderText = "Start position";
+            this.columnStartSeads.Name = "columnStartSeads";
+            this.columnStartSeads.ReadOnly = true;
+            // 
+            // columnEndPositions
+            // 
+            this.columnEndPositions.HeaderText = "End position";
+            this.columnEndPositions.Name = "columnEndPositions";
+            this.columnEndPositions.ReadOnly = true;
+            // 
             // contextMenuStripStage
             // 
             this.contextMenuStripStage.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -300,48 +343,45 @@
             this.groupBoxForm.TabIndex = 15;
             this.groupBoxForm.TabStop = false;
             // 
-            // idColumn
+            // groupBoxProfile
             // 
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            this.idColumn.Visible = false;
+            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
+            this.groupBoxProfile.Controls.Add(this.labelAccountName);
+            this.groupBoxProfile.Location = new System.Drawing.Point(353, 29);
+            this.groupBoxProfile.Name = "groupBoxProfile";
+            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
+            this.groupBoxProfile.TabIndex = 17;
+            this.groupBoxProfile.TabStop = false;
             // 
-            // columnName
+            // pictureBoxAccountIcon
             // 
-            this.columnName.HeaderText = "Name";
-            this.columnName.Name = "columnName";
-            this.columnName.ReadOnly = true;
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
             // 
-            // columnIncrease
+            // labelAccountName
             // 
-            this.columnIncrease.HeaderText = "Increase";
-            this.columnIncrease.Name = "columnIncrease";
-            this.columnIncrease.ReadOnly = true;
-            // 
-            // colorColumn
-            // 
-            this.colorColumn.HeaderText = "Color";
-            this.colorColumn.Name = "colorColumn";
-            this.colorColumn.ReadOnly = true;
-            // 
-            // columnStartSeads
-            // 
-            this.columnStartSeads.HeaderText = "Start position";
-            this.columnStartSeads.Name = "columnStartSeads";
-            this.columnStartSeads.ReadOnly = true;
-            // 
-            // columnEndPositions
-            // 
-            this.columnEndPositions.HeaderText = "End position";
-            this.columnEndPositions.Name = "columnEndPositions";
-            this.columnEndPositions.ReadOnly = true;
+            this.labelAccountName.AutoSize = true;
+            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
+            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelAccountName.Name = "labelAccountName";
+            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
+            this.labelAccountName.TabIndex = 0;
+            this.labelAccountName.Text = "AccountName";
             // 
             // EditStageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(528, 490);
+            this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.groupBoxForm);
             this.Controls.Add(this.menuStripStage);
             this.Name = "EditStageForm";
@@ -354,6 +394,9 @@
             this.contextMenuStripStage.ResumeLayout(false);
             this.groupBoxZones.ResumeLayout(false);
             this.groupBoxForm.ResumeLayout(false);
+            this.groupBoxProfile.ResumeLayout(false);
+            this.groupBoxProfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,5 +429,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colorColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnStartSeads;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnEndPositions;
+        private System.Windows.Forms.GroupBox groupBoxProfile;
+        private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
+        private System.Windows.Forms.Label labelAccountName;
     }
 }

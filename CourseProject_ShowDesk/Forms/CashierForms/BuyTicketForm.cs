@@ -3,6 +3,7 @@ using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMe
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities;
@@ -28,7 +29,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private List<StandardTicket> newTickets;
         private readonly PerformanceBaseService dataBase;
 
-        public BuyTicketForm(Stage stage, Performance performance)
+        public BuyTicketForm(Employee userAccount,Stage stage, Performance performance)
         {
             InitializeComponent();
 
@@ -38,6 +39,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             this.newTickets = new List<StandardTicket>();
             this.dataBase = new PerformanceBaseService();
 
+            labelAccountName.Text = userAccount.FullName;
             //seatList = stage.SeatList;
 
             PopulateComponents();

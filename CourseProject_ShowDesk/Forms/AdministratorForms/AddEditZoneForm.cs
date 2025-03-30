@@ -1,4 +1,4 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities;
+﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
@@ -17,13 +17,15 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private readonly Zone currentZone;
 
-        public AddEditZoneForm(Stage stage, Zone zone=null)
+        public AddEditZoneForm(Employee userAccount,Stage stage, Zone zone=null)
         {
             InitializeComponent();
 
             isValid = false;
             this.stage = stage;
-            
+
+            labelAccountName.Text = userAccount.FullName;
+
             if (zone != null)
             {
                 this.currentZone = zone;

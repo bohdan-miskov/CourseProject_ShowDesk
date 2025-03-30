@@ -13,20 +13,22 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
     public partial class ManageStagesForm : MetroFramework.Forms.MetroForm
     {
         private readonly StageManager stageManager;
+        private readonly Employee userAccount;
 
-        public ManageStagesForm(Employee account)
+        public ManageStagesForm(Employee userAccount)
         {
             InitializeComponent();
 
             stageManager = new StageManager(new StageBaseService());
 
-            labelAccountName.Text = account.FullName;
+            this.userAccount=userAccount;
+            labelAccountName.Text = userAccount.FullName;
 
             UpdateDataGridStages();
 
             DisableEditAndRemoveStage();
 
-            ShowGreetings(account.FullName);
+            ShowGreetings(userAccount.FullName);
 
             timerUpdate.Start();
         }
@@ -101,7 +103,9 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             dataGridViewStages.Rows.Add(
                 stage.Id,
                 stage.Name,
-                stage.Zones.Count
+                stage.Zones.Count,
+                stage.SeatList.Count,
+                stage.GetTotalPositions()
                     );
         }
         private void UpdataDataFromDatabase()
@@ -118,7 +122,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void AddStage()
         {
-            AddStageForm addStageForm = new AddStageForm();
+            AddStageForm addStageForm = new AddStageForm(userAccount);
             this.Hide();
             addStageForm.ShowDialog();
             this.Show();
@@ -133,7 +137,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             Guid stageId = GetCurrentRowId();
 
-            EditStageForm editStageForm = new EditStageForm(stageManager.GetById(stageId));
+            EditStageForm editStageForm = new EditStageForm(userAccount,stageManager.GetById(stageId));
             this.Hide();
             editStageForm.ShowDialog();
             this.Show();

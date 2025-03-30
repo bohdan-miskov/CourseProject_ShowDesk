@@ -1,4 +1,4 @@
-﻿using CourseProject_ShowDesk.Scripts;
+﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
@@ -20,11 +20,13 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private readonly string typeOfFile = ".json";
 
-        public SettingsForm()
+        public SettingsForm(Employee userAccount)
         {
             InitializeComponent();
 
             appConstantsData = AppConstants.CloneConstants();
+
+            labelAccountName.Text = userAccount.FullName;
 
             PopulateAllField();
         }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuyTicketForm));
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
@@ -48,9 +49,14 @@
             this.comboBoxDrink = new System.Windows.Forms.ComboBox();
             this.labelDrink = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
+            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
             this.groupBoxTicket.SuspendLayout();
             this.groupBoxPremium.SuspendLayout();
             this.groupBoxStandardPlus.SuspendLayout();
+            this.groupBoxProfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -307,11 +313,45 @@
             this.labelInfo.TabIndex = 37;
             this.labelInfo.Text = "Only position";
             // 
+            // groupBoxProfile
+            // 
+            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
+            this.groupBoxProfile.Controls.Add(this.labelAccountName);
+            this.groupBoxProfile.Location = new System.Drawing.Point(1008, 28);
+            this.groupBoxProfile.Name = "groupBoxProfile";
+            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
+            this.groupBoxProfile.TabIndex = 41;
+            this.groupBoxProfile.TabStop = false;
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
+            // 
+            // labelAccountName
+            // 
+            this.labelAccountName.AutoSize = true;
+            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
+            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelAccountName.Name = "labelAccountName";
+            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
+            this.labelAccountName.TabIndex = 0;
+            this.labelAccountName.Text = "AccountName";
+            // 
             // BuyTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1178, 505);
+            this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.groupBoxTicket);
             this.Name = "BuyTicketForm";
             this.Text = "BuyTicket";
@@ -321,6 +361,9 @@
             this.groupBoxPremium.PerformLayout();
             this.groupBoxStandardPlus.ResumeLayout(false);
             this.groupBoxStandardPlus.PerformLayout();
+            this.groupBoxProfile.ResumeLayout(false);
+            this.groupBoxProfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -346,5 +389,8 @@
         private System.Windows.Forms.Label labelCurrency;
         private System.Windows.Forms.Panel panelSeating;
         private System.Windows.Forms.Label labelSeatInfo;
+        private System.Windows.Forms.GroupBox groupBoxProfile;
+        private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
+        private System.Windows.Forms.Label labelAccountName;
     }
 }

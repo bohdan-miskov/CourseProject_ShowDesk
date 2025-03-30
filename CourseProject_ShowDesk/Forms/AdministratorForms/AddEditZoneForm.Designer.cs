@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditZoneForm));
             this.numericUpDownStartPosition = new System.Windows.Forms.NumericUpDown();
             this.groupBoxZone = new System.Windows.Forms.GroupBox();
+            this.buttonChangeColor = new System.Windows.Forms.Button();
             this.textBoxColor = new System.Windows.Forms.TextBox();
             this.labelColor = new System.Windows.Forms.Label();
             this.numericUpDownIncrease = new System.Windows.Forms.NumericUpDown();
@@ -44,11 +46,15 @@
             this.toolTipZone = new System.Windows.Forms.ToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.panelSeating = new System.Windows.Forms.Panel();
-            this.buttonChangeColor = new System.Windows.Forms.Button();
+            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).BeginInit();
             this.groupBoxZone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).BeginInit();
+            this.groupBoxProfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // numericUpDownStartPosition
@@ -100,6 +106,16 @@
             this.groupBoxZone.TabIndex = 23;
             this.groupBoxZone.TabStop = false;
             this.groupBoxZone.Text = "Zone";
+            // 
+            // buttonChangeColor
+            // 
+            this.buttonChangeColor.Location = new System.Drawing.Point(175, 104);
+            this.buttonChangeColor.Name = "buttonChangeColor";
+            this.buttonChangeColor.Size = new System.Drawing.Size(28, 28);
+            this.buttonChangeColor.TabIndex = 27;
+            this.buttonChangeColor.Text = " ";
+            this.buttonChangeColor.UseVisualStyleBackColor = true;
+            this.buttonChangeColor.Click += new System.EventHandler(this.ButtonChangeColor_Click);
             // 
             // textBoxColor
             // 
@@ -251,21 +267,45 @@
             this.panelSeating.Size = new System.Drawing.Size(645, 257);
             this.panelSeating.TabIndex = 42;
             // 
-            // buttonChangeColor
+            // groupBoxProfile
             // 
-            this.buttonChangeColor.Location = new System.Drawing.Point(175, 104);
-            this.buttonChangeColor.Name = "buttonChangeColor";
-            this.buttonChangeColor.Size = new System.Drawing.Size(28, 28);
-            this.buttonChangeColor.TabIndex = 27;
-            this.buttonChangeColor.Text = " ";
-            this.buttonChangeColor.UseVisualStyleBackColor = true;
-            this.buttonChangeColor.Click += new System.EventHandler(this.ButtonChangeColor_Click);
+            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
+            this.groupBoxProfile.Controls.Add(this.labelAccountName);
+            this.groupBoxProfile.Location = new System.Drawing.Point(867, 23);
+            this.groupBoxProfile.Name = "groupBoxProfile";
+            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
+            this.groupBoxProfile.TabIndex = 43;
+            this.groupBoxProfile.TabStop = false;
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
+            // 
+            // labelAccountName
+            // 
+            this.labelAccountName.AutoSize = true;
+            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
+            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelAccountName.Name = "labelAccountName";
+            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
+            this.labelAccountName.TabIndex = 0;
+            this.labelAccountName.Text = "AccountName";
             // 
             // AddEditZoneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 337);
+            this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.panelSeating);
             this.Controls.Add(this.groupBoxZone);
             this.Name = "AddEditZoneForm";
@@ -275,6 +315,9 @@
             this.groupBoxZone.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrease)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).EndInit();
+            this.groupBoxProfile.ResumeLayout(false);
+            this.groupBoxProfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -296,5 +339,8 @@
         private System.Windows.Forms.TextBox textBoxColor;
         private System.Windows.Forms.Panel panelSeating;
         private System.Windows.Forms.Button buttonChangeColor;
+        private System.Windows.Forms.GroupBox groupBoxProfile;
+        private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
+        private System.Windows.Forms.Label labelAccountName;
     }
 }

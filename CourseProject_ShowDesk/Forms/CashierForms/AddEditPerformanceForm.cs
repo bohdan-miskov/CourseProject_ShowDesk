@@ -1,5 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts;
 using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
@@ -15,17 +16,18 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private readonly List<Stage> stages;
         private readonly List<Performance> performances;
+        private readonly Performance currentPerformance;
 
         private bool isValid;
 
-        private readonly Performance currentPerformance;
-
-        public AddEditPerformanceForm(List<Stage> stages, List<Performance> performances, Performance currentPerformance = null)
+        public AddEditPerformanceForm(Employee userAccount,List<Stage> stages, List<Performance> performances, Performance currentPerformance = null)
         {
             InitializeComponent();
 
             this.stages = stages;
             this.performances = performances;
+
+            labelAccountName.Text = userAccount.FullName;
 
             PopulateComponents();
 
@@ -133,14 +135,23 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             currentPerformance.PerformanceDateTime= dateTimePickerPerfomanceDate.Value;
             currentPerformance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
             currentPerformance.Duration= new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
-           
+
             if (currentPerformance.StageId != stages[comboBoxStage.SelectedIndex].Id)
             {
+                DialogResult result =
+                                    MessageBox.Show(
+                                                "If you change the stage, all tickets will be cancelled.\n" +
+                                                "Are you sure you want to do this?",
+                                                "Stage warning!",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Warning);
+                if (result == DialogResult.No) return;
+                
                 currentPerformance.AvailablePositions = stages[comboBoxStage.SelectedIndex].GetPositions();
                 currentPerformance.RemoveAllTickets();
+                currentPerformance.StageId = stages[comboBoxStage.SelectedIndex].Id;
             }
 
-            currentPerformance.StageId = stages[comboBoxStage.SelectedIndex].Id;
         }
 
         public Performance GetPerformance()

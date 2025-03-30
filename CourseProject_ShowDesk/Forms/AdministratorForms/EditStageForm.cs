@@ -1,5 +1,6 @@
 ﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Windows.Forms;
@@ -11,16 +12,19 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private bool isValid;
 
-        private readonly Stage stage;
+        private Stage stage;
+        private readonly Employee userAccount;
 
 
-        public EditStageForm(Stage stage)
+        public EditStageForm(Employee userAccount,Stage stage)
         {
             InitializeComponent();
 
             this.stage = stage;
+            this.userAccount = userAccount;
+            labelAccountName.Text = userAccount.FullName;
 
-            ShowStage();
+            PopulateStage();
 
             UpdateDataGridZones();
 
@@ -83,7 +87,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             SaveStage();
         }
 
-        private void ShowStage()
+        private void PopulateStage()
         {
             textBoxStageName.Text = stage.Name;
         }
@@ -113,7 +117,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void AddZone()
         {
-            AddEditZoneForm addZoneForm = new AddEditZoneForm(stage);
+            AddEditZoneForm addZoneForm = new AddEditZoneForm(userAccount,stage);
             this.Hide();
             addZoneForm.ShowDialog();
             this.Show();
@@ -138,7 +142,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             Guid zoneId = GetCurrentRowId();
 
-            AddEditZoneForm editZoneForm = new AddEditZoneForm(stage, stage.GetZoneById(zoneId));
+            AddEditZoneForm editZoneForm = new AddEditZoneForm(userAccount,stage, stage.GetZoneById(zoneId));
             this.Hide();
             editZoneForm.ShowDialog();
             this.Show();
@@ -151,7 +155,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         
         private void EditSeating()
         {
-            AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(stage);
+            AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(userAccount,stage);
             this.Hide();
             addSeatingForm.ShowDialog();
             this.Show();
