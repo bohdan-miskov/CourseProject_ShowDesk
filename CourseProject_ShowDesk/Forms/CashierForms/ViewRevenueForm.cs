@@ -12,11 +12,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class ViewRevenueForm : MetroFramework.Forms.MetroForm
     {
-
-        private readonly List<Performance> performances;
-
-        private readonly int formMinWidth = 333;
-        private readonly int formMaxWidth = 955;
+        private List<Performance> performances;
 
         public ViewRevenueForm(List<Performance> performances)
         {
@@ -24,31 +20,19 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             this.performances = performances;
 
-            this.Width = formMinWidth;
-            groupBoxForm.Width = formMinWidth;
+            SortPerformancesByDate();
 
-            labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
-            labelCurrency2.Text = AppConstants.CurrencySymbol.ToString();
-
-            PopulateComboBoxChartType();
-
-            SetDateLimit();
+            PopulateComponents();
         }
 
         private void DateTimePickerStartDate_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                dateTimePickerFinishDate.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) dateTimePickerFinishDate.Focus();
         }
 
         private void DateTimePickerFinishDate_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonCalculate.Focus();
-            }
+            if (e.KeyCode == Keys.Enter) buttonCalculate.Focus();
         }
 
         private void DateTimePickerFrom_ValueChanged(object sender, EventArgs e)
@@ -64,12 +48,32 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void ButtonCalculate_Click(object sender, EventArgs e)
         {
             CreateGraph();
-            timerRevenue.Enabled = true;
         }
 
-        private void TimerRevenue_Tick(object sender, EventArgs e)
+        private void SortPerformancesByDate()
         {
-            GrowUpOfForm();
+            for (int i = 0; i < performances.Count - 1; i++)
+            {
+                for (int j = 0; j < performances.Count - i - 1; j++)
+                {
+                    if (performances[j].PerformanceDateTime > performances[j + 1].PerformanceDateTime)
+                    {
+                        Performance tempPerformance = performances[j];
+                        performances[j] = performances[j + 1];
+                        performances[j + 1] = tempPerformance;
+                    }
+                }
+            }
+        }
+
+        private void PopulateComponents()
+        {
+            labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
+            labelCurrency2.Text = AppConstants.CurrencySymbol.ToString();
+
+            PopulateComboBoxChartType();
+
+            SetDateLimit();
         }
 
         private void PopulateComboBoxChartType()
@@ -108,28 +112,27 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             DateTime minDate = performances[0].PerformanceDateTime;
 
-            foreach (Performance performance in performances)
-            {
-                if (minDate > performance.PerformanceDateTime)
-                {
-                    minDate = performance.PerformanceDateTime;
-                }
-            }
+            //foreach (Performance performance in performances)
+            //{
+            //    if (minDate > performance.PerformanceDateTime)
+            //         minDate = performance.PerformanceDateTime;
+                
+            //}
 
             return minDate;
         }
 
         private DateTime GetMaxDate(List<Performance> performances)
         {
-            DateTime maxDate = performances[0].PerformanceDateTime;
+            DateTime maxDate = performances[performances.Count-1].PerformanceDateTime;
 
-            foreach (Performance performance in performances)
-            {
-                if (maxDate < performance.PerformanceDateTime)
-                {
-                    maxDate = performance.PerformanceDateTime;
-                }
-            }
+            //foreach (Performance performance in performances)
+            //{
+            //    if (maxDate < performance.PerformanceDateTime)
+            //    {
+            //        maxDate = performance.PerformanceDateTime;
+            //    }
+            //}
 
             return maxDate;
         }
@@ -176,11 +179,22 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 }
             }
 
-            return performances;
+            return filteredPerformances;
         }
 
         private void Calculate(List<Performance> performances)
         {
+            if (performances == null || performances.Count == 0)
+            {
+                MessageBox.Show(
+                    "No performances have taken place yet",
+                    "No performances",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
+                return;
+            }
+                
             double dayRevenue= performances[0].GetRevenue();
             double sumRevenue = 0;
             int dayCount = 1;
@@ -232,19 +246,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             series.Points.AddXY(thisDate.ToShortDateString(), dayRevenue);
             series.Points[series.Points.Count - 1].ToolTip = $"Date: {thisDate.ToShortDateString()}\nRevenue: {dayRevenue.ToString("0.00")+AppConstants.CurrencySymbol}";
-        }
-
-        private void GrowUpOfForm()
-        {
-            if(this.Width<formMaxWidth)
-            {
-                this.Width +=5;
-                groupBoxForm.Width += 5;
-            }
-            else
-            {
-                timerRevenue.Enabled = false;
-            }
         }
     }
 }

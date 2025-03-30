@@ -14,42 +14,19 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class ManagePerformancesForm : MetroFramework.Forms.MetroForm
     {
-        //private List<Stage> stages;
-
         private readonly PerformanceManager performanceManager;
         private readonly StageManager stageManager;
-
-       // private int countOfPastPerformances;
 
         private bool isPastPerformances = false;
 
         public ManagePerformancesForm(Employee account)
         {
             InitializeComponent();
-            //stages = new List<Stage>();
+
             performanceManager = new PerformanceManager(new PerformanceBaseService());
             stageManager = new StageManager(new StageBaseService());
 
-            labelAccountName.Text = account.FullName;
-
-            //LoadPerformancesFromFile();
-            //LoadStagesFromFile();
-
-            //FliterPerformancesByDate();
-            if (account.ProfessionList.Contains(AppConstants.ListOfProfessions[1]))
-            {
-                performanceToolStripMenuItem.Visible = true;
-                addPerformanceToolStripMenuItem1.Visible = true;
-                editPerformanceToolStripMenuItem1.Visible = true;
-                removePerformanceToolStripMenuItem1.Visible = true;
-            }
-            else
-            {
-                performanceToolStripMenuItem.Visible = false;
-                addPerformanceToolStripMenuItem1.Visible = false;
-                editPerformanceToolStripMenuItem1.Visible = false;
-                removePerformanceToolStripMenuItem1.Visible = false;
-            }
+            PopulateComponents(account);
 
             UpdateDataGridPerformances();
 
@@ -74,26 +51,18 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             AddPerformance();
             UpdateDataFromDataBase();
-            //UpdateDataGridPerformances();
-            //DisableEditAndRemoveStage();
         }
 
         private void EditPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditPerformance();
             UpdateDataFromDataBase();
-            //UpdateDataGridPerformances();
-            //DisableEditAndRemoveStage();
         }
 
         private void RemovePerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].Value.ToString());
-
-            performanceManager.RemovePerformance(id);
+            RemovePerformance();
             UpdateDataFromDataBase();
-            //UpdateDataGridPerformances();
-            //DisableEditAndRemoveStage();
         }
         private void TicketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -125,7 +94,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void ManagePerformancesFormClosing(object sender, FormClosingEventArgs e)
         {
-            //SavePerformancesToFile();
             timerUpdate.Stop();
         }
 
@@ -137,68 +105,55 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
+
+        private void PopulateComponents(Employee account)
+        {
+            labelAccountName.Text = account.FullName;
+            
+            if (account.ProfessionList.Contains(AppConstants.ListOfProfessions[1]))
+            {
+                performanceToolStripMenuItem.Visible = true;
+                addPerformanceToolStripMenuItem1.Visible = true;
+                editPerformanceToolStripMenuItem1.Visible = true;
+                removePerformanceToolStripMenuItem1.Visible = true;
+            }
+            else
+            {
+                performanceToolStripMenuItem.Visible = false;
+                addPerformanceToolStripMenuItem1.Visible = false;
+                editPerformanceToolStripMenuItem1.Visible = false;
+                removePerformanceToolStripMenuItem1.Visible = false;
+            }
+        }
+
         private void UpdateDataFromDataBase()
         {
             stageManager.LoadFromDatabase();
             performanceManager.LoadFromDatabase();
+
             if (isPastPerformances) UpdateDataGridPerformances(performanceManager.PastPerformances);
             else UpdateDataGridPerformances();
+
             DisableEditAndRemovePerformance();
         }
         private void UpdateDataGridPerformances(List<Performance> performances)
         {
             dataGridViewPerformances.Rows.Clear();
-            //performanceToolStripMenuItem.Enabled = true;
-            //ticketsToolStripMenuItem.Enabled = true;
-            //countOfPastPerformances = 0;
-
-            //SortPerformancesByDate();
 
             foreach (Performance performance in performances)
             {
                     AddPerformanceToDataGrid(performance);
-                //if (performance.PerformanceDateTime > DateTime.Now)
-                //{
-                //}
-                //else
-                //{
-                //    countOfPastPerformances++;
-                //}
             }
         }
         private void UpdateDataGridPerformances()
         {
             dataGridViewPerformances.Rows.Clear();
-            //performanceToolStripMenuItem.Enabled = true;
-            //ticketsToolStripMenuItem.Enabled = true;
-            //countOfPastPerformances = 0;
-
-            //SortPerformancesByDate();
 
             foreach (Performance performance in performanceManager.Performances)
             {
                 AddPerformanceToDataGrid(performance);
-                //if (performance.PerformanceDateTime > DateTime.Now)
-                //{
-                //}
-                //else
-                //{
-                //    countOfPastPerformances++;
-                //}
             }
         }
-        //private void UpdateDataGridPastPerformances()
-        //{
-        //    dataGridViewPerformances.Rows.Clear();
-            
-
-        //    foreach (Performance performance in performanceManager.PastPerformances)
-        //    {
-               
-        //            AddPerformanceToDataGrid(performance);
-                
-        //    }
-        //}
 
         private void AddPerformanceToDataGrid(Performance performance)
         {
@@ -212,36 +167,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 performance.Duration.ToString(),
                 GetStageName(performance.StageId),
                 GetTotalPositions(performance.StageId),
-                GetSoldTickets(performance.Tickets),
-                GetReservedTickets(performance.Tickets)
+                performance.GetCountSoldTickets(),
+                performance.GetCountReservedTickets()
                 );
         }
-
-        //private void SortPerformancesByDate()
-        //{
-        //    for(int i=0; i<performanceManager.Performances.Count-1; i++)
-        //    {
-        //        for(int j=0; j< performanceManager.Performances.Count-i-1;  j++)
-        //        {
-        //            if (performances[j].PerformanceDateTime > performances[j+1].PerformanceDateTime)
-        //            {
-        //                Performance tempPerformance=performances[j];
-        //                performances[j] = performances[j + 1];
-        //                performances[j + 1] = tempPerformance;
-        //            }
-        //        }
-        //    }
-        //}
-
 
         private string GetStageName(Guid stageId)
         {
             for (int i = 0; i < stageManager.Stages.Count; i++)
             {
                 if (stageManager.Stages[i].Id == stageId)
-                {
                     return stageManager.Stages[i].Name;
-                }
             }
             return "Not found";
         }
@@ -251,90 +187,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             for (int i = 0; i < stageManager.Stages.Count; i++)
             {
                 if (stageManager.Stages[i].Id == stageId)
-                {
                     return stageManager.Stages[i].GetTotalPositions();
-                }
             }
             return 0;
         }
-
-        private int GetSoldTickets(List<StandardTicket> tickets)
-        {
-            int counter = 0;
-            foreach (StandardTicket ticket in tickets)
-            {
-                if (!ticket.Reserved)
-                {
-                    counter++;
-                }
-            }
-            return counter;
-        }
-
-        private int GetReservedTickets(List<StandardTicket> tickets)
-        {
-            int counter = 0;
-            foreach (StandardTicket ticket in tickets)
-            {
-                if (ticket.Reserved)
-                {
-                    counter++;
-                }
-            }
-            return counter;
-        }
-
-        //private void SavePerformancesToFile()
-        //{
-        //    FileHandler.SaveListToJson(AppConstants.PerformancesFileName, performances);
-        //}
-
-        //private void LoadPerformancesFromFile()
-        //{
-        //    if (File.Exists(AppConstants.PerformancesFileName))
-        //    {
-        //        performances = FileHandler.LoadListFromJson<Performance>(AppConstants.PerformancesFileName);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(
-        //                        $"File {AppConstants.PerformancesFileName} not found",
-        //                        "Load performances error",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //    }
-        //}
-
-        //private void LoadStagesFromFile()
-        //{
-        //    if (File.Exists(AppConstants.StagesFileName))
-        //    {
-        //        stages = FileHandler.LoadListFromJson<Stage>(AppConstants.StagesFileName);
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show(
-        //                        $"File {AppConstants.StagesFileName} not found",
-        //                        "Load stages error",
-        //                        MessageBoxButtons.OK,
-        //                        MessageBoxIcon.Error);
-        //    }
-        //}
-
-        //private void FliterPerformancesByDate()
-        //{
-        //    List<Performance> filteredPerformances = new List<Performance>();
-
-        //    foreach(Performance performance in performances)
-        //    {
-        //        if((DateTime.Now - performance.PerformanceDateTime).Days < AppConstants.RangeDateOfPastPerformances)
-        //        {
-        //            filteredPerformances.Add(performance);
-        //        }
-        //    }
-
-        //    performances = filteredPerformances;
-        //}
 
         private void DisableEditAndRemovePerformance()
         {
@@ -362,11 +218,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                     addPerformanceToolStripMenuItem1.Enabled = false;
                 }
             }
-
-           
-            
         }
 
+        private Guid GetCurrentRowId()
+        {
+            return Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].Value.ToString());
+        }
 
         private void AddPerformance()
         {
@@ -383,7 +240,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void EditPerformance()
         {
-            Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].Value.ToString());
+            Guid id = GetCurrentRowId();
 
             AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(stageManager.Stages, performanceManager.Performances, performanceManager.GetById(id));
             this.Hide();
@@ -395,11 +252,19 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 performanceManager.UpdatePerformance(editPerformanceForm.GetPerformance());
             }
         }
+
+        private void RemovePerformance()
+        {
+            Guid id = GetCurrentRowId();
+            performanceManager.RemovePerformance(id);
+        }
+
         private void ViewTickets()
         {
-            Guid id = Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].Value.ToString());
+            Guid id = GetCurrentRowId();
             Performance currentPerformance=performanceManager.GetById(id);
             Stage currentStage = stageManager.GetById(currentPerformance.StageId);
+
             ManageTicketsForm manageTicketsForm = new ManageTicketsForm(currentStage, currentPerformance);
 
             this.Hide();
@@ -408,7 +273,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void OpenRevenue()
         {
-            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performanceManager.Performances);
+            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(performanceManager.PastPerformances);
+            
             this.Hide();
             viewRevenueForm.ShowDialog();
             this.Show();
@@ -419,12 +285,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             if (isPastPerformances)
             {
                 UpdateDataGridPerformances();
-                isPastPerformances = !isPastPerformances;
+                isPastPerformances = false;
             }
             else
             {
                 UpdateDataGridPerformances(performanceManager.PastPerformances);
-                isPastPerformances = !isPastPerformances;
+                isPastPerformances = true;
             }
         }
     }

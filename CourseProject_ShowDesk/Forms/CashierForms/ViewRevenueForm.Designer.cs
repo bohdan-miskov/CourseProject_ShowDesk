@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFinishDate = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPeriod = new System.Windows.Forms.GroupBox();
@@ -53,7 +52,6 @@
             this.labelAverage = new System.Windows.Forms.Label();
             this.textBoxSum = new System.Windows.Forms.TextBox();
             this.labelSum = new System.Windows.Forms.Label();
-            this.timerRevenue = new System.Windows.Forms.Timer(this.components);
             this.groupBoxPeriod.SuspendLayout();
             this.groupBoxRevenue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).BeginInit();
@@ -171,13 +169,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartRevenue.BackColor = System.Drawing.Color.Transparent;
             this.chartRevenue.BorderlineColor = System.Drawing.Color.DimGray;
-            chartArea2.Name = "ChartArea1";
-            this.chartRevenue.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            legend2.Title = "Revenue";
-            legend2.TitleFont = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chartRevenue.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartRevenue.ChartAreas.Add(chartArea1);
+            legend1.Enabled = false;
+            legend1.Name = "Legend1";
+            legend1.Title = "Revenue";
+            legend1.TitleFont = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chartRevenue.Legends.Add(legend1);
             this.chartRevenue.Location = new System.Drawing.Point(9, 30);
             this.chartRevenue.Name = "chartRevenue";
             this.chartRevenue.Size = new System.Drawing.Size(591, 388);
@@ -307,17 +305,12 @@
             this.labelSum.TabIndex = 0;
             this.labelSum.Text = "Summary";
             // 
-            // timerRevenue
-            // 
-            this.timerRevenue.Interval = 10;
-            this.timerRevenue.Tick += new System.EventHandler(this.TimerRevenue_Tick);
-            // 
             // ViewRevenueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(954, 517);
+            this.ClientSize = new System.Drawing.Size(954, 515);
             this.Controls.Add(this.groupBoxForm);
             this.Name = "ViewRevenueForm";
             this.Text = "ViewRevenue";
@@ -343,7 +336,6 @@
         private System.Windows.Forms.GroupBox groupBoxRevenue;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartRevenue;
         private System.Windows.Forms.GroupBox groupBoxForm;
-        private System.Windows.Forms.Timer timerRevenue;
         private System.Windows.Forms.GroupBox groupBoxAdditionalParameter;
         private System.Windows.Forms.TextBox textBoxWorstPerformance;
         private System.Windows.Forms.Label labelWorstPerformance;

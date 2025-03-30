@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.labelPrice = new System.Windows.Forms.Label();
@@ -49,7 +48,6 @@
             this.comboBoxDrink = new System.Windows.Forms.ComboBox();
             this.labelDrink = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
-            this.timerScaleUp = new System.Windows.Forms.Timer(this.components);
             this.groupBoxTicket.SuspendLayout();
             this.groupBoxPremium.SuspendLayout();
             this.groupBoxStandardPlus.SuspendLayout();
@@ -309,11 +307,6 @@
             this.labelInfo.TabIndex = 37;
             this.labelInfo.Text = "Only position";
             // 
-            // timerScaleUp
-            // 
-            this.timerScaleUp.Interval = 3;
-            this.timerScaleUp.Tick += new System.EventHandler(this.TimerScaleUp_Tick);
-            // 
             // BuyTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -350,7 +343,6 @@
         private System.Windows.Forms.GroupBox groupBoxPremium;
         private System.Windows.Forms.ComboBox comboBoxSouvenir;
         private System.Windows.Forms.Label labelSouvenir;
-        private System.Windows.Forms.Timer timerScaleUp;
         private System.Windows.Forms.Label labelCurrency;
         private System.Windows.Forms.Panel panelSeating;
         private System.Windows.Forms.Label labelSeatInfo;

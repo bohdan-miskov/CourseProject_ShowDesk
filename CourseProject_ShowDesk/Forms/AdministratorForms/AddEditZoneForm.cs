@@ -30,8 +30,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 PopulateFields();
             }
             else this.currentZone = new Zone();
-            
-            PopulateSeating();
+
+            PopulateComponents();
         }
 
         private void TextBoxZoneName_KeyUp(object sender, KeyEventArgs e)
@@ -88,13 +88,19 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void PopulateFields()
         {
             textBoxZoneName.Text = currentZone.Name;
-            numericUpDownStartPosition.Minimum = 1;
-            numericUpDownEndPosition.Maximum = stage.SeatList.Count;
             numericUpDownIncrease.Value = Convert.ToDecimal(currentZone.Increase);
             numericUpDownStartPosition.Value = currentZone.StartPosition;
             numericUpDownEndPosition.Value = currentZone.EndPosition;
             textBoxColor.Text = currentZone.GetColor().Name;
             buttonChangeColor.BackColor = currentZone.GetColor();
+        }
+
+        private void PopulateComponents()
+        {
+            numericUpDownStartPosition.Minimum = 1;
+            numericUpDownEndPosition.Maximum = stage.SeatList.Count;
+
+            PopulateSeating();
         }
 
         private void PopulateSeating()

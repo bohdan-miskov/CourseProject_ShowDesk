@@ -197,10 +197,10 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
         }
 
-        //public void RemoveAllTickets()
-        //{
-        //    tickets.Clear();
-        //}
+        public void RemoveAllTickets()
+        {
+            tickets.Clear();
+        }
 
         public StandardTicket GetTicketById(Guid id)
         {
@@ -216,6 +216,29 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
                 tickets[index] = updatedTicket;
                 performanceBaseService.UpdateTicket(this.id, updatedTicket);
             }
+        }
+
+        public int GetCountSoldTickets()
+        {
+            int counter = 0;
+            foreach (StandardTicket ticket in tickets)
+            {
+                if (!ticket.Reserved) counter++;
+            }
+            return counter;
+        }
+
+        public int GetCountReservedTickets()
+        {
+            int counter = 0;
+            foreach (StandardTicket ticket in tickets)
+            {
+                if (ticket.Reserved)
+                {
+                    counter++;
+                }
+            }
+            return counter;
         }
 
         public double GetRevenue()
