@@ -33,12 +33,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void TextBoxEmployeesFileName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) textBoxStagesFileName.Focus();
+            if (e.KeyCode == Keys.Enter) textBoxStagesCollectionName.Focus();
         }
 
         private void TextBoxStagesFileName_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) textBoxPerformancesFileName.Focus();
+            if (e.KeyCode == Keys.Enter) textBoxPerformancesCollectionName.Focus();
         }
 
         private void TextBoxPerformancesFileName_KeyUp(object sender, KeyEventArgs e)
@@ -185,9 +185,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void PopulateFileNameGroup()
         {
-            textBoxEmployeesFileName.Text = appConstantsData.EmployeesFileName.Split('.')[0];
-            textBoxStagesFileName.Text = appConstantsData.StagesFileName.Split('.')[0];
-            textBoxPerformancesFileName.Text = appConstantsData.PerformancesFileName.Split('.')[0];
+            textBoxEmployeesCollectionName.Text = appConstantsData.EmployeesFileName.Split('.')[0];
+            textBoxStagesCollectionName.Text = appConstantsData.StagesFileName.Split('.')[0];
+            textBoxPerformancesCollectionName.Text = appConstantsData.PerformancesFileName.Split('.')[0];
         }
 
         private void PopulateIncreaseGroup()
@@ -291,9 +291,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private bool ValidateFileNameGroup()
         {
-            if (!ParametersValidator.FileNameValidator(textBoxEmployeesFileName.Text) ||
-                !ParametersValidator.FileNameValidator(textBoxStagesFileName.Text) ||
-                !ParametersValidator.FileNameValidator(textBoxPerformancesFileName.Text))
+            if (!ParametersValidator.FileNameValidator(textBoxEmployeesCollectionName.Text) ||
+                !ParametersValidator.FileNameValidator(textBoxStagesCollectionName.Text) ||
+                !ParametersValidator.FileNameValidator(textBoxPerformancesCollectionName.Text))
             {
                 MessageBox.Show(
                     "There was an error in the name of the file: the file name must be more than four characters long",
@@ -301,7 +301,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
 
-                groupBoxFileName.Focus();
+                groupBoxCollectionName.Focus();
 
                 return false;
             }
@@ -431,9 +431,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void SaveFileNameGroup()
         {
-            appConstantsData.EmployeesFileName = textBoxEmployeesFileName.Text+typeOfFile;
-            appConstantsData.StagesFileName = textBoxStagesFileName.Text+typeOfFile;
-            appConstantsData.PerformancesFileName = textBoxPerformancesFileName.Text + typeOfFile;
+            appConstantsData.EmployeesFileName = textBoxEmployeesCollectionName.Text+typeOfFile;
+            appConstantsData.StagesFileName = textBoxStagesCollectionName.Text+typeOfFile;
+            appConstantsData.PerformancesFileName = textBoxPerformancesCollectionName.Text + typeOfFile;
         }
 
         private void SaveIncreaseGroup()

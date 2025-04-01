@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            this.labelPerformancesFileName = new System.Windows.Forms.Label();
-            this.textBoxPerformancesFileName = new System.Windows.Forms.TextBox();
-            this.groupBoxSettings = new System.Windows.Forms.GroupBox();
+            this.labelPerformancesCollectionName = new System.Windows.Forms.Label();
+            this.textBoxPerformancesCollectionName = new System.Windows.Forms.TextBox();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
             this.textBoxCurrencySymbol = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,15 +60,20 @@
             this.labelStandardIncrease = new System.Windows.Forms.Label();
             this.labelStandardPlusIncrease = new System.Windows.Forms.Label();
             this.labelPremiumIncrease = new System.Windows.Forms.Label();
-            this.groupBoxFileName = new System.Windows.Forms.GroupBox();
-            this.labelEmployeesFileName = new System.Windows.Forms.Label();
-            this.textBoxEmployeesFileName = new System.Windows.Forms.TextBox();
-            this.labelStagesFileName = new System.Windows.Forms.Label();
-            this.textBoxStagesFileName = new System.Windows.Forms.TextBox();
+            this.groupBoxCollectionName = new System.Windows.Forms.GroupBox();
+            this.labelEmployeesCollectionName = new System.Windows.Forms.Label();
+            this.textBoxEmployeesCollectionName = new System.Windows.Forms.TextBox();
+            this.labelStagesCollectionName = new System.Windows.Forms.Label();
+            this.textBoxStagesCollectionName = new System.Windows.Forms.TextBox();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
-            this.groupBoxSettings.SuspendLayout();
+            this.tabControlSetting = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBoxDataBaseOther = new System.Windows.Forms.GroupBox();
+            this.textBoxDataBaseLink = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBoxOther.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRangeDateOfPastPerformances)).BeginInit();
             this.groupBoxNames.SuspendLayout();
@@ -78,53 +82,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPremiumIncrease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStandardPlusIncrease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStandardIncrease)).BeginInit();
-            this.groupBoxFileName.SuspendLayout();
+            this.groupBoxCollectionName.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            this.tabControlSetting.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBoxDataBaseOther.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelPerformancesFileName
+            // labelPerformancesCollectionName
             // 
-            this.labelPerformancesFileName.AutoSize = true;
-            this.labelPerformancesFileName.BackColor = System.Drawing.Color.Transparent;
-            this.labelPerformancesFileName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPerformancesFileName.Location = new System.Drawing.Point(6, 104);
-            this.labelPerformancesFileName.Name = "labelPerformancesFileName";
-            this.labelPerformancesFileName.Size = new System.Drawing.Size(116, 21);
-            this.labelPerformancesFileName.TabIndex = 0;
-            this.labelPerformancesFileName.Text = "Performances";
+            this.labelPerformancesCollectionName.AutoSize = true;
+            this.labelPerformancesCollectionName.BackColor = System.Drawing.Color.Transparent;
+            this.labelPerformancesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPerformancesCollectionName.Location = new System.Drawing.Point(6, 104);
+            this.labelPerformancesCollectionName.Name = "labelPerformancesCollectionName";
+            this.labelPerformancesCollectionName.Size = new System.Drawing.Size(116, 21);
+            this.labelPerformancesCollectionName.TabIndex = 0;
+            this.labelPerformancesCollectionName.Text = "Performances";
             // 
-            // textBoxPerformancesFileName
+            // textBoxPerformancesCollectionName
             // 
-            this.textBoxPerformancesFileName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPerformancesFileName.Location = new System.Drawing.Point(137, 101);
-            this.textBoxPerformancesFileName.Name = "textBoxPerformancesFileName";
-            this.textBoxPerformancesFileName.Size = new System.Drawing.Size(148, 28);
-            this.textBoxPerformancesFileName.TabIndex = 1;
-            this.textBoxPerformancesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPerformancesFileName_KeyPress);
-            this.textBoxPerformancesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPerformancesFileName_KeyUp);
-            // 
-            // groupBoxSettings
-            // 
-            this.groupBoxSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxSettings.BackColor = System.Drawing.Color.LightGray;
-            this.groupBoxSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.groupBoxSettings.Controls.Add(this.groupBoxOther);
-            this.groupBoxSettings.Controls.Add(this.buttonCancelChanges);
-            this.groupBoxSettings.Controls.Add(this.buttonSaveChanges);
-            this.groupBoxSettings.Controls.Add(this.groupBoxNames);
-            this.groupBoxSettings.Controls.Add(this.groupBoxPerformanceDuration);
-            this.groupBoxSettings.Controls.Add(this.groupBoxTicketIncrease);
-            this.groupBoxSettings.Controls.Add(this.groupBoxFileName);
-            this.groupBoxSettings.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxSettings.Location = new System.Drawing.Point(2, 64);
-            this.groupBoxSettings.Name = "groupBoxSettings";
-            this.groupBoxSettings.Size = new System.Drawing.Size(625, 530);
-            this.groupBoxSettings.TabIndex = 2;
-            this.groupBoxSettings.TabStop = false;
-            this.groupBoxSettings.Text = "App settings";
+            this.textBoxPerformancesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPerformancesCollectionName.Location = new System.Drawing.Point(137, 101);
+            this.textBoxPerformancesCollectionName.Name = "textBoxPerformancesCollectionName";
+            this.textBoxPerformancesCollectionName.Size = new System.Drawing.Size(148, 28);
+            this.textBoxPerformancesCollectionName.TabIndex = 1;
+            this.textBoxPerformancesCollectionName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPerformancesFileName_KeyPress);
+            this.textBoxPerformancesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPerformancesFileName_KeyUp);
             // 
             // groupBoxOther
             // 
@@ -133,7 +119,7 @@
             this.groupBoxOther.Controls.Add(this.label1);
             this.groupBoxOther.Controls.Add(this.labelRangeDateOfPastPerformances);
             this.groupBoxOther.Controls.Add(this.numericUpDownRangeDateOfPastPerformances);
-            this.groupBoxOther.Location = new System.Drawing.Point(21, 352);
+            this.groupBoxOther.Location = new System.Drawing.Point(6, 326);
             this.groupBoxOther.Name = "groupBoxOther";
             this.groupBoxOther.Size = new System.Drawing.Size(308, 110);
             this.groupBoxOther.TabIndex = 9;
@@ -184,7 +170,7 @@
             // buttonCancelChanges
             // 
             this.buttonCancelChanges.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonCancelChanges.Location = new System.Drawing.Point(181, 468);
+            this.buttonCancelChanges.Location = new System.Drawing.Point(166, 442);
             this.buttonCancelChanges.Name = "buttonCancelChanges";
             this.buttonCancelChanges.Size = new System.Drawing.Size(125, 45);
             this.buttonCancelChanges.TabIndex = 8;
@@ -195,7 +181,7 @@
             // buttonSaveChanges
             // 
             this.buttonSaveChanges.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonSaveChanges.Location = new System.Drawing.Point(21, 468);
+            this.buttonSaveChanges.Location = new System.Drawing.Point(6, 442);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
             this.buttonSaveChanges.Size = new System.Drawing.Size(125, 45);
             this.buttonSaveChanges.TabIndex = 7;
@@ -213,7 +199,7 @@
             this.groupBoxNames.Controls.Add(this.labelListName);
             this.groupBoxNames.Controls.Add(this.comboBoxListName);
             this.groupBoxNames.Controls.Add(this.listBoxViewNames);
-            this.groupBoxNames.Location = new System.Drawing.Point(336, 197);
+            this.groupBoxNames.Location = new System.Drawing.Point(321, 171);
             this.groupBoxNames.Name = "groupBoxNames";
             this.groupBoxNames.Size = new System.Drawing.Size(275, 316);
             this.groupBoxNames.TabIndex = 5;
@@ -306,7 +292,7 @@
             this.groupBoxPerformanceDuration.Controls.Add(this.labelMinBreak);
             this.groupBoxPerformanceDuration.Controls.Add(this.labelInitialDuration);
             this.groupBoxPerformanceDuration.Controls.Add(this.labelMaxDuration);
-            this.groupBoxPerformanceDuration.Location = new System.Drawing.Point(21, 197);
+            this.groupBoxPerformanceDuration.Location = new System.Drawing.Point(6, 171);
             this.groupBoxPerformanceDuration.Name = "groupBoxPerformanceDuration";
             this.groupBoxPerformanceDuration.Size = new System.Drawing.Size(308, 149);
             this.groupBoxPerformanceDuration.TabIndex = 4;
@@ -385,7 +371,7 @@
             this.groupBoxTicketIncrease.Controls.Add(this.labelStandardIncrease);
             this.groupBoxTicketIncrease.Controls.Add(this.labelStandardPlusIncrease);
             this.groupBoxTicketIncrease.Controls.Add(this.labelPremiumIncrease);
-            this.groupBoxTicketIncrease.Location = new System.Drawing.Point(335, 42);
+            this.groupBoxTicketIncrease.Location = new System.Drawing.Point(320, 16);
             this.groupBoxTicketIncrease.Name = "groupBoxTicketIncrease";
             this.groupBoxTicketIncrease.Size = new System.Drawing.Size(276, 149);
             this.groupBoxTicketIncrease.TabIndex = 3;
@@ -467,63 +453,63 @@
             this.labelPremiumIncrease.TabIndex = 0;
             this.labelPremiumIncrease.Text = "Premium";
             // 
-            // groupBoxFileName
+            // groupBoxCollectionName
             // 
-            this.groupBoxFileName.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBoxFileName.Controls.Add(this.labelEmployeesFileName);
-            this.groupBoxFileName.Controls.Add(this.textBoxEmployeesFileName);
-            this.groupBoxFileName.Controls.Add(this.labelStagesFileName);
-            this.groupBoxFileName.Controls.Add(this.textBoxStagesFileName);
-            this.groupBoxFileName.Controls.Add(this.labelPerformancesFileName);
-            this.groupBoxFileName.Controls.Add(this.textBoxPerformancesFileName);
-            this.groupBoxFileName.Location = new System.Drawing.Point(21, 42);
-            this.groupBoxFileName.Name = "groupBoxFileName";
-            this.groupBoxFileName.Size = new System.Drawing.Size(308, 149);
-            this.groupBoxFileName.TabIndex = 2;
-            this.groupBoxFileName.TabStop = false;
-            this.groupBoxFileName.Text = "FileName";
+            this.groupBoxCollectionName.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxCollectionName.Controls.Add(this.labelEmployeesCollectionName);
+            this.groupBoxCollectionName.Controls.Add(this.textBoxEmployeesCollectionName);
+            this.groupBoxCollectionName.Controls.Add(this.labelStagesCollectionName);
+            this.groupBoxCollectionName.Controls.Add(this.textBoxStagesCollectionName);
+            this.groupBoxCollectionName.Controls.Add(this.labelPerformancesCollectionName);
+            this.groupBoxCollectionName.Controls.Add(this.textBoxPerformancesCollectionName);
+            this.groupBoxCollectionName.Location = new System.Drawing.Point(6, 6);
+            this.groupBoxCollectionName.Name = "groupBoxCollectionName";
+            this.groupBoxCollectionName.Size = new System.Drawing.Size(308, 159);
+            this.groupBoxCollectionName.TabIndex = 2;
+            this.groupBoxCollectionName.TabStop = false;
+            this.groupBoxCollectionName.Text = "ColectionName";
             // 
-            // labelEmployeesFileName
+            // labelEmployeesCollectionName
             // 
-            this.labelEmployeesFileName.AutoSize = true;
-            this.labelEmployeesFileName.BackColor = System.Drawing.Color.Transparent;
-            this.labelEmployeesFileName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmployeesFileName.Location = new System.Drawing.Point(6, 36);
-            this.labelEmployeesFileName.Name = "labelEmployeesFileName";
-            this.labelEmployeesFileName.Size = new System.Drawing.Size(93, 21);
-            this.labelEmployeesFileName.TabIndex = 4;
-            this.labelEmployeesFileName.Text = "Employees";
+            this.labelEmployeesCollectionName.AutoSize = true;
+            this.labelEmployeesCollectionName.BackColor = System.Drawing.Color.Transparent;
+            this.labelEmployeesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmployeesCollectionName.Location = new System.Drawing.Point(6, 36);
+            this.labelEmployeesCollectionName.Name = "labelEmployeesCollectionName";
+            this.labelEmployeesCollectionName.Size = new System.Drawing.Size(93, 21);
+            this.labelEmployeesCollectionName.TabIndex = 4;
+            this.labelEmployeesCollectionName.Text = "Employees";
             // 
-            // textBoxEmployeesFileName
+            // textBoxEmployeesCollectionName
             // 
-            this.textBoxEmployeesFileName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmployeesFileName.Location = new System.Drawing.Point(137, 33);
-            this.textBoxEmployeesFileName.Name = "textBoxEmployeesFileName";
-            this.textBoxEmployeesFileName.Size = new System.Drawing.Size(148, 28);
-            this.textBoxEmployeesFileName.TabIndex = 5;
-            this.textBoxEmployeesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxEmployeesFileName_KeyPress);
-            this.textBoxEmployeesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxEmployeesFileName_KeyUp);
+            this.textBoxEmployeesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxEmployeesCollectionName.Location = new System.Drawing.Point(137, 33);
+            this.textBoxEmployeesCollectionName.Name = "textBoxEmployeesCollectionName";
+            this.textBoxEmployeesCollectionName.Size = new System.Drawing.Size(148, 28);
+            this.textBoxEmployeesCollectionName.TabIndex = 5;
+            this.textBoxEmployeesCollectionName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxEmployeesFileName_KeyPress);
+            this.textBoxEmployeesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxEmployeesFileName_KeyUp);
             // 
-            // labelStagesFileName
+            // labelStagesCollectionName
             // 
-            this.labelStagesFileName.AutoSize = true;
-            this.labelStagesFileName.BackColor = System.Drawing.Color.Transparent;
-            this.labelStagesFileName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStagesFileName.Location = new System.Drawing.Point(6, 70);
-            this.labelStagesFileName.Name = "labelStagesFileName";
-            this.labelStagesFileName.Size = new System.Drawing.Size(58, 21);
-            this.labelStagesFileName.TabIndex = 2;
-            this.labelStagesFileName.Text = "Stages";
+            this.labelStagesCollectionName.AutoSize = true;
+            this.labelStagesCollectionName.BackColor = System.Drawing.Color.Transparent;
+            this.labelStagesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStagesCollectionName.Location = new System.Drawing.Point(6, 70);
+            this.labelStagesCollectionName.Name = "labelStagesCollectionName";
+            this.labelStagesCollectionName.Size = new System.Drawing.Size(58, 21);
+            this.labelStagesCollectionName.TabIndex = 2;
+            this.labelStagesCollectionName.Text = "Stages";
             // 
-            // textBoxStagesFileName
+            // textBoxStagesCollectionName
             // 
-            this.textBoxStagesFileName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxStagesFileName.Location = new System.Drawing.Point(137, 67);
-            this.textBoxStagesFileName.Name = "textBoxStagesFileName";
-            this.textBoxStagesFileName.Size = new System.Drawing.Size(148, 28);
-            this.textBoxStagesFileName.TabIndex = 3;
-            this.textBoxStagesFileName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxStagesFileName_KeyPress);
-            this.textBoxStagesFileName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStagesFileName_KeyUp);
+            this.textBoxStagesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxStagesCollectionName.Location = new System.Drawing.Point(137, 67);
+            this.textBoxStagesCollectionName.Name = "textBoxStagesCollectionName";
+            this.textBoxStagesCollectionName.Size = new System.Drawing.Size(148, 28);
+            this.textBoxStagesCollectionName.TabIndex = 3;
+            this.textBoxStagesCollectionName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxStagesFileName_KeyPress);
+            this.textBoxStagesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStagesFileName_KeyUp);
             // 
             // groupBoxProfile
             // 
@@ -558,16 +544,87 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
+            // tabControlSetting
+            // 
+            this.tabControlSetting.Controls.Add(this.tabPage1);
+            this.tabControlSetting.Controls.Add(this.tabPage2);
+            this.tabControlSetting.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControlSetting.Location = new System.Drawing.Point(0, 63);
+            this.tabControlSetting.Name = "tabControlSetting";
+            this.tabControlSetting.SelectedIndex = 0;
+            this.tabControlSetting.Size = new System.Drawing.Size(632, 530);
+            this.tabControlSetting.TabIndex = 10;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.LightGray;
+            this.tabPage1.Controls.Add(this.groupBoxOther);
+            this.tabPage1.Controls.Add(this.buttonCancelChanges);
+            this.tabPage1.Controls.Add(this.groupBoxTicketIncrease);
+            this.tabPage1.Controls.Add(this.buttonSaveChanges);
+            this.tabPage1.Controls.Add(this.groupBoxPerformanceDuration);
+            this.tabPage1.Controls.Add(this.groupBoxNames);
+            this.tabPage1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(624, 496);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.LightGray;
+            this.tabPage2.Controls.Add(this.groupBoxDataBaseOther);
+            this.tabPage2.Controls.Add(this.groupBoxCollectionName);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(624, 496);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Database";
+            // 
+            // groupBoxDataBaseOther
+            // 
+            this.groupBoxDataBaseOther.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxDataBaseOther.Controls.Add(this.textBoxDataBaseLink);
+            this.groupBoxDataBaseOther.Controls.Add(this.label3);
+            this.groupBoxDataBaseOther.Location = new System.Drawing.Point(6, 171);
+            this.groupBoxDataBaseOther.Name = "groupBoxDataBaseOther";
+            this.groupBoxDataBaseOther.Size = new System.Drawing.Size(298, 100);
+            this.groupBoxDataBaseOther.TabIndex = 10;
+            this.groupBoxDataBaseOther.TabStop = false;
+            this.groupBoxDataBaseOther.Text = "Other";
+            // 
+            // textBoxDataBaseLink
+            // 
+            this.textBoxDataBaseLink.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxDataBaseLink.Location = new System.Drawing.Point(10, 52);
+            this.textBoxDataBaseLink.MaxLength = 1;
+            this.textBoxDataBaseLink.Name = "textBoxDataBaseLink";
+            this.textBoxDataBaseLink.Size = new System.Drawing.Size(279, 28);
+            this.textBoxDataBaseLink.TabIndex = 7;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(118, 21);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Database link";
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 590);
+            this.Controls.Add(this.tabControlSetting);
             this.Controls.Add(this.groupBoxProfile);
-            this.Controls.Add(this.groupBoxSettings);
             this.Name = "SettingsForm";
             this.Text = "Settings";
-            this.groupBoxSettings.ResumeLayout(false);
             this.groupBoxOther.ResumeLayout(false);
             this.groupBoxOther.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRangeDateOfPastPerformances)).EndInit();
@@ -580,29 +637,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPremiumIncrease)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStandardPlusIncrease)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStandardIncrease)).EndInit();
-            this.groupBoxFileName.ResumeLayout(false);
-            this.groupBoxFileName.PerformLayout();
+            this.groupBoxCollectionName.ResumeLayout(false);
+            this.groupBoxCollectionName.PerformLayout();
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            this.tabControlSetting.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.groupBoxDataBaseOther.ResumeLayout(false);
+            this.groupBoxDataBaseOther.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label labelPerformancesFileName;
-        private System.Windows.Forms.TextBox textBoxPerformancesFileName;
-        private System.Windows.Forms.GroupBox groupBoxSettings;
-        private System.Windows.Forms.GroupBox groupBoxFileName;
+        private System.Windows.Forms.Label labelPerformancesCollectionName;
+        private System.Windows.Forms.TextBox textBoxPerformancesCollectionName;
+        private System.Windows.Forms.GroupBox groupBoxCollectionName;
         private System.Windows.Forms.GroupBox groupBoxTicketIncrease;
         private System.Windows.Forms.Label labelStandardIncrease;
         private System.Windows.Forms.Label labelStandardPlusIncrease;
         private System.Windows.Forms.Label labelPremiumIncrease;
-        private System.Windows.Forms.Label labelEmployeesFileName;
-        private System.Windows.Forms.TextBox textBoxEmployeesFileName;
-        private System.Windows.Forms.Label labelStagesFileName;
-        private System.Windows.Forms.TextBox textBoxStagesFileName;
+        private System.Windows.Forms.Label labelEmployeesCollectionName;
+        private System.Windows.Forms.TextBox textBoxEmployeesCollectionName;
+        private System.Windows.Forms.Label labelStagesCollectionName;
+        private System.Windows.Forms.TextBox textBoxStagesCollectionName;
         private System.Windows.Forms.GroupBox groupBoxPerformanceDuration;
         private System.Windows.Forms.Label labelMinBreak;
         private System.Windows.Forms.Label labelInitialDuration;
@@ -631,5 +692,11 @@
         private System.Windows.Forms.GroupBox groupBoxProfile;
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.Label labelAccountName;
+        private System.Windows.Forms.TabControl tabControlSetting;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBoxDataBaseOther;
+        private System.Windows.Forms.TextBox textBoxDataBaseLink;
+        private System.Windows.Forms.Label label3;
     }
 }

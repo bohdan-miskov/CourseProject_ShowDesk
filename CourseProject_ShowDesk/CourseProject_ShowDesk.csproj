@@ -264,6 +264,7 @@
     <Compile Include="Forms\DirectorForms\ManageEmployeesForm.Designer.cs">
       <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Scripts\Utilities\DataBaseService\DataBaseServiceInterface\IPerformanceBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\EmployeeBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\PerformanceBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\StageBaseService.cs" />

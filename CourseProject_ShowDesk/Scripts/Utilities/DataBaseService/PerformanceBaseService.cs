@@ -1,6 +1,7 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService.DataBaseServiceInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ using MongoDB.Driver;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
-    public class PerformanceBaseService
+    public class PerformanceBaseService:IPerformanceBaseService
     {
         private readonly IMongoCollection<Performance> upcomingCollection;
         private readonly IMongoCollection<Performance> pastCollection;
@@ -28,12 +29,19 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 
         public List<Performance> GetAllUpcomingPerformances()
         {
-            return upcomingCollection.Find(_ => true).ToList();
+            var performances = upcomingCollection.Find(performance => true).ToList();
+
+            foreach (var performance in performances)
+            {
+                performance.InitializeService(new PerformanceBaseService());
+            }
+
+            return performances;
         }
 
         public List<Performance> GetAllPastPerformances()
         {
-            return pastCollection.Find(_ => true).ToList();
+            return pastCollection.Find(performance => true).ToList();
         }
 
         public void MovePastPerformances()
@@ -133,7 +141,14 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         public Performance GetUpdatedPerformance(Performance performance)
         {
             var filter = Builders<Performance>.Filter.Eq("Id", performance.Id);
-            return upcomingCollection.Find(filter).FirstOrDefault();
+            Performance updatedPerformance = upcomingCollection.Find(filter).FirstOrDefault();
+
+            if (updatedPerformance != null)
+            {
+                updatedPerformance.InitializeService(new PerformanceBaseService());
+            }
+
+            return updatedPerformance;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService.DataBaseServiceInterface;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
     public class Performance
     {
         [BsonIgnore]
-        private PerformanceBaseService performanceBaseService;
+        private IPerformanceBaseService performanceBaseService;
         [BsonId]
         private Guid id = Guid.NewGuid();
         private string name;
@@ -33,7 +34,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
         //    stageIndex = -1;
         //    tickets = new List<StandardTicket>();
         //}
-        public Performance(PerformanceBaseService performanceBaseService)
+        public Performance(IPerformanceBaseService performanceBaseService)
         {
             this.performanceBaseService = performanceBaseService;
             tickets = new List<StandardTicket>();
@@ -155,6 +156,11 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
         }
 
+        public void InitializeService(IPerformanceBaseService performanceBaseService)
+        {
+            this.performanceBaseService = performanceBaseService ?? throw new ArgumentNullException(nameof(performanceBaseService));
+        }
+
         public void BuyTicket(StandardTicket newTicket)
         {
             if (newTicket == null)
@@ -167,7 +173,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
             availablePositions.Remove(newTicket.Position);
             tickets.Add(newTicket);
-            performanceBaseService = new PerformanceBaseService();
             performanceBaseService.RemovePosition(this.id, newTicket.Position);
             performanceBaseService.AddTicket(this.id, newTicket);
 
