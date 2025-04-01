@@ -20,7 +20,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
     {
         private readonly EmployeeManager employeeManager;
 
-        private readonly string cipher = new string('*', 12);
+        //private readonly string cipher = new string('*', 12);
 
         private readonly Employee userAccount;
 
@@ -32,6 +32,8 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             labelAccountName.Text = userAccount.FullName;
             this.userAccount = userAccount;
+
+            timerUpdate.Interval = AppConstants.UpdateEmployeesInterval;
 
             UpdateDataGridEmployees();
             DisableEditAndRemoveEmployees();
@@ -131,7 +133,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                     employee.Id,
                     employee.FullName,
                     employee.Login,
-                    cipher,
+                    AppConstants.PasswordCypher,
                     employee.GetStringOfProfessionList()
                     );
         }
@@ -205,7 +207,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void HidePassword()
         {
-            dataGridViewEmployees.CurrentRow.Cells[3].Value = cipher;
+            dataGridViewEmployees.CurrentRow.Cells[3].Value = AppConstants.PasswordCypher;
         }
     }
 }

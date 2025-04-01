@@ -107,7 +107,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void TextBoxCurrencySymbol_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) buttonSaveChanges.Focus();
+            if (e.KeyCode == Keys.Enter) buttonSaveOtherSettings.Focus();
         }
 
         private void TextBoxItemName_KeyPress(object sender, KeyPressEventArgs e)
@@ -164,7 +164,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             PopulateTextBoxName();
         }
 
-        private void ButtonSaveChanges_Click(object sender, EventArgs e)
+        private void ButtonSaveOtherSettings_Click(object sender, EventArgs e)
         {
             SaveSettings();
         }

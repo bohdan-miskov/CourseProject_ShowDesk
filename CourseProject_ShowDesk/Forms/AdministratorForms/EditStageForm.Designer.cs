@@ -216,6 +216,7 @@
             this.dataGridViewZones.AllowUserToAddRows = false;
             this.dataGridViewZones.AllowUserToDeleteRows = false;
             this.dataGridViewZones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewZones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewZones.BackgroundColor = System.Drawing.Color.LightGray;
             this.dataGridViewZones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewZones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -226,7 +227,7 @@
             this.columnStartSeads,
             this.columnEndPositions});
             this.dataGridViewZones.ContextMenuStrip = this.contextMenuStripStage;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;

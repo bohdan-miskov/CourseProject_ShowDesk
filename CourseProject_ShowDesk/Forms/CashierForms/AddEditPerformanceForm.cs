@@ -138,14 +138,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             if (currentPerformance.StageId != stages[comboBoxStage.SelectedIndex].Id)
             {
-                DialogResult result =
-                                    MessageBox.Show(
-                                                "If you change the stage, all tickets will be cancelled.\n" +
-                                                "Are you sure you want to do this?",
-                                                "Stage warning!",
-                                                MessageBoxButtons.YesNo,
-                                                MessageBoxIcon.Warning);
-                if (result == DialogResult.No) return;
+                if (currentPerformance.StageId != null)
+                {
+                    DialogResult result =
+                                        MessageBox.Show(
+                                                    "If you change the stage, all tickets will be cancelled.\n" +
+                                                    "Are you sure you want to do this?",
+                                                    "Stage warning!",
+                                                    MessageBoxButtons.YesNo,
+                                                    MessageBoxIcon.Warning);
+                    if (result == DialogResult.No) return;
+                }
                 
                 currentPerformance.AvailablePositions = stages[comboBoxStage.SelectedIndex].GetPositions();
                 currentPerformance.RemoveAllTickets();

@@ -26,6 +26,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             performanceManager = new PerformanceManager(new PerformanceBaseService());
             stageManager = new StageManager(new StageBaseService());
+
+            timerUpdate.Interval = AppConstants.UpdatePerformancesInterval;
+
             this.userAccount = userAccount;
             labelAccountName.Text = userAccount.FullName;
 

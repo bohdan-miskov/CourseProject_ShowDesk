@@ -142,11 +142,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         {
             var filter = Builders<Performance>.Filter.Eq("Id", performance.Id);
             Performance updatedPerformance = upcomingCollection.Find(filter).FirstOrDefault();
-
-            if (updatedPerformance != null)
-            {
-                updatedPerformance.InitializeService(new PerformanceBaseService());
-            }
+            updatedPerformance?.InitializeService(new PerformanceBaseService());
 
             return updatedPerformance;
         }

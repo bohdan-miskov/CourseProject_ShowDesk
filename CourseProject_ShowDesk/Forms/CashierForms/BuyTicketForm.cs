@@ -312,7 +312,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             foreach (Control control in panelSeating.Controls)
             {
-                if (control.Bounds.Contains(location) && control is Label && IsAvailable(GetCurrentSeatIndex(control)))
+                if (control.Bounds.Contains(location) && control is Label && IsAvailable(GetCurrentSeatIndex(control)+1))
                 {
                     return control;
                 }
@@ -372,7 +372,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             foreach (StandardTicket removeTicket in newTickets.ToList())
             {
-                if (removeTicket.Position == seatIndex)
+                if (removeTicket.Position == seatIndex+1)
                 {
                     newTickets.Remove(removeTicket);
                     break;
@@ -403,7 +403,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             bool isInteger = int.TryParse(control.Text, out int result);
 
-            if (isInteger) return result;
+            if (isInteger) return result-1;
             return -1;
         }
 

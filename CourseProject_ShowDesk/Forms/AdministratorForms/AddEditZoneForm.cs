@@ -139,7 +139,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                     control.BackColor = colorDialog.Color;
                     continue;
                 }
-                control.BackColor = stage.SeatList[index - 1].CurrentZone.GetColor();
+                control.BackColor = stage.SeatList[index - 1].GetColor();
             }
         }
         private void CreateZone()

@@ -39,21 +39,21 @@
             this.allPositionsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.positionsAddedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripStages = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuStripManageStages = new System.Windows.Forms.MenuStrip();
-            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
-            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.labelAccountName = new System.Windows.Forms.Label();
-            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
-            this.buttonUpdate = new System.Windows.Forms.Button();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.addStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.removeStageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripManageStages = new System.Windows.Forms.MenuStrip();
             this.stageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addStageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editStageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeStageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
+            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
+            this.buttonUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).BeginInit();
             this.contextMenuStripStages.SuspendLayout();
             this.menuStripManageStages.SuspendLayout();
@@ -87,7 +87,7 @@
             this.allPositionsColumn,
             this.positionsAddedColumn});
             this.dataGridViewStages.ContextMenuStrip = this.contextMenuStripStages;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -148,89 +148,6 @@
             this.contextMenuStripStages.Name = "contextMenuStripStages";
             this.contextMenuStripStages.Size = new System.Drawing.Size(162, 70);
             // 
-            // menuStripManageStages
-            // 
-            this.menuStripManageStages.BackColor = System.Drawing.Color.Azure;
-            this.menuStripManageStages.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStripManageStages.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stageToolStripMenuItem});
-            this.menuStripManageStages.Location = new System.Drawing.Point(0, 0);
-            this.menuStripManageStages.Name = "menuStripManageStages";
-            this.menuStripManageStages.Size = new System.Drawing.Size(72, 24);
-            this.menuStripManageStages.TabIndex = 3;
-            this.menuStripManageStages.Text = "menuStrip1";
-            // 
-            // groupBoxProfile
-            // 
-            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
-            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
-            this.groupBoxProfile.Controls.Add(this.labelAccountName);
-            this.groupBoxProfile.Location = new System.Drawing.Point(446, 27);
-            this.groupBoxProfile.Name = "groupBoxProfile";
-            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
-            this.groupBoxProfile.TabIndex = 16;
-            this.groupBoxProfile.TabStop = false;
-            // 
-            // contextMenuStripAccount
-            // 
-            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
-            // 
-            // labelAccountName
-            // 
-            this.labelAccountName.AutoSize = true;
-            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
-            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
-            this.labelAccountName.Name = "labelAccountName";
-            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
-            this.labelAccountName.TabIndex = 0;
-            this.labelAccountName.Text = "AccountName";
-            // 
-            // timerUpdate
-            // 
-            this.timerUpdate.Interval = 300000;
-            this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
-            // 
-            // buttonUpdate
-            // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.buttonUpdate.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
-            this.buttonUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonUpdate.Cursor = System.Windows.Forms.Cursors.SizeNESW;
-            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonUpdate.Image = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
-            this.buttonUpdate.Location = new System.Drawing.Point(419, 34);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(25, 25);
-            this.buttonUpdate.TabIndex = 17;
-            this.buttonUpdate.UseVisualStyleBackColor = false;
-            this.buttonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            // 
-            // pictureBoxAccountIcon
-            // 
-            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
-            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
-            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
-            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
-            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAccountIcon.TabIndex = 1;
-            this.pictureBoxAccountIcon.TabStop = false;
-            // 
             // addStageToolStripMenuItem1
             // 
             this.addStageToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
@@ -254,6 +171,18 @@
             this.removeStageToolStripMenuItem1.Size = new System.Drawing.Size(161, 22);
             this.removeStageToolStripMenuItem1.Text = "Remove stage";
             this.removeStageToolStripMenuItem1.Click += new System.EventHandler(this.RemoveStageToolStripMenuItem_Click);
+            // 
+            // menuStripManageStages
+            // 
+            this.menuStripManageStages.BackColor = System.Drawing.Color.Azure;
+            this.menuStripManageStages.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStripManageStages.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stageToolStripMenuItem});
+            this.menuStripManageStages.Location = new System.Drawing.Point(0, 0);
+            this.menuStripManageStages.Name = "menuStripManageStages";
+            this.menuStripManageStages.Size = new System.Drawing.Size(72, 24);
+            this.menuStripManageStages.TabIndex = 3;
+            this.menuStripManageStages.Text = "menuStrip1";
             // 
             // stageToolStripMenuItem
             // 
@@ -289,6 +218,77 @@
             this.removeStageToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.removeStageToolStripMenuItem.Text = "Remove";
             this.removeStageToolStripMenuItem.Click += new System.EventHandler(this.RemoveStageToolStripMenuItem_Click);
+            // 
+            // groupBoxProfile
+            // 
+            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
+            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
+            this.groupBoxProfile.Controls.Add(this.labelAccountName);
+            this.groupBoxProfile.Location = new System.Drawing.Point(446, 27);
+            this.groupBoxProfile.Name = "groupBoxProfile";
+            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
+            this.groupBoxProfile.TabIndex = 16;
+            this.groupBoxProfile.TabStop = false;
+            // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
+            // 
+            // labelAccountName
+            // 
+            this.labelAccountName.AutoSize = true;
+            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
+            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelAccountName.Name = "labelAccountName";
+            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
+            this.labelAccountName.TabIndex = 0;
+            this.labelAccountName.Text = "AccountName";
+            // 
+            // timerUpdate
+            // 
+            this.timerUpdate.Interval = 300000;
+            this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.BackColor = System.Drawing.Color.Transparent;
+            this.buttonUpdate.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
+            this.buttonUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonUpdate.Cursor = System.Windows.Forms.Cursors.SizeNESW;
+            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdate.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonUpdate.Image = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
+            this.buttonUpdate.Location = new System.Drawing.Point(419, 34);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(25, 25);
+            this.buttonUpdate.TabIndex = 17;
+            this.buttonUpdate.UseVisualStyleBackColor = false;
+            this.buttonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // ManageStagesForm
             // 

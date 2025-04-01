@@ -24,6 +24,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             this.userAccount=userAccount;
             labelAccountName.Text = userAccount.FullName;
 
+            timerUpdate.Interval = AppConstants.UpdateStagesInterval;
+
             UpdateDataGridStages();
 
             DisableEditAndRemoveStage();

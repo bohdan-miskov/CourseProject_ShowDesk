@@ -29,9 +29,18 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         public static List<string> ListOfTicketTypes { get; private set; } 
         public static List<string> ListOfSouvenirs { get; private set; } 
         public static List<string> ListOfDrinks { get; private set; }
-        public static readonly string ConnectionString =  "mongodb+srv://bohdanmiskov07:7XRSvDHvZt2rL6gr@showdesk.tqctr.mongodb.net/?retryWrites=true&w=majority&appName=ShowDesk";
+
+        public static string PasswordCypher { get; private set; } = "********";
+
+        public static bool IsPrintReceipt { get; private set; }=true;
+        public static string SavePathReceipt { get; private set; } = "";
 
 
+        public static string ConnectionString { get; private set; } =  "mongodb+srv://bohdanmiskov07:7XRSvDHvZt2rL6gr@showdesk.tqctr.mongodb.net/?retryWrites=true&w=majority&appName=ShowDesk";
+        public static int UpdateEmployeesInterval { get; private set; } = 300000;
+        public static int UpdateStagesInterval { get; private set; } = 300000;
+        public static int UpdatePerformancesInterval { get; private set; } = 300000;
+        public static int UpdateTicketsInterval { get; private set; } = 60000;
 
         public static void PopulateConstants(AppConstantsData constantsData)
         {
@@ -77,6 +86,4 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         }
 
     }
-
-
 }

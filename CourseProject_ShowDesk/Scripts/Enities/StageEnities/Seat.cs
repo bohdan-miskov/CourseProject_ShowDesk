@@ -89,7 +89,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 Name = this.SeatNumber.ToString(),
                 Size = this.Size,
                 Location = this.Location,
-                BackColor = (this.CurrentZone ?? new Zone()).GetColor(),
+                BackColor = GetColor(),
                 Enabled = this.Enabled,
                 Text = this.SeatNumber.ToString(),
                 ForeColor = Color.Black,
@@ -119,6 +119,11 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 $"Increase: {currentZone.Increase}\n" +
                 $"Location: {Location.X} : {Location.Y}\n" +
                 $"Size: {Size.Width} ; {Size.Height}";
+        }
+
+        public Color GetColor()
+        {
+            return (this.CurrentZone ?? new Zone()).GetColor();
         }
     }
 }
