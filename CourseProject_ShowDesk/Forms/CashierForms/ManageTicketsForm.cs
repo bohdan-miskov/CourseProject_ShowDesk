@@ -202,23 +202,25 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             Document receipt = new Document();
             string divider = new string('-', 70);
 
-            //try
-            //{
+            try
+            {
                 PdfWriter.GetInstance(receipt, new FileStream(filePath, FileMode.Create));
                 receipt.Open();
                 AddReceiptHeader(receipt);
+                receipt.Add(new Paragraph(divider));
+                AddReceiptBoughtInfo(receipt);
                 receipt.Add(new Paragraph(divider));
                 AddReceiptMain(receipt, ticket);
                 receipt.Add(new Paragraph(divider));
                 AddReceiptFooter(receipt);
                 receipt.Close();
 
-                if(AppConstants.IsPrintReceipt) PrintPdf(filePath);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error: " + ex.Message, "Receipt error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+                if (AppConstants.IsPrintReceipt) PrintPdf(filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Receipt error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void AddReceiptHeader(Document doc)
         {
@@ -226,6 +228,15 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             Paragraph title = new Paragraph("«ShowDesk»\n", titleFont);
             title.Alignment = Element.ALIGN_LEFT;
             doc.Add(title);
+        }
+        private void AddReceiptBoughtInfo(Document doc)
+        {
+            doc.Add(new Paragraph(
+                $"Bought: {DateTime.Now}"
+                ));
+            doc.Add(new Paragraph(
+                $"Cashier: {userAccount.FullName}"
+                ));
         }
         private void AddReceiptMain(Document doc, StandardTicket ticket)
         {
