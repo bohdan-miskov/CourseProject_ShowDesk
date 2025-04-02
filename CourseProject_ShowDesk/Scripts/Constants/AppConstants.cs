@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -41,6 +42,9 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         public static int UpdateStagesInterval { get; private set; } = 300000;
         public static int UpdatePerformancesInterval { get; private set; } = 300000;
         public static int UpdateTicketsInterval { get; private set; } = 60000;
+
+        public static Color SeatBaseColor { get; private set; } = Color.LightGray;
+        public static Color SeatHoverColor { get; private set; } = Color.LightGray;
 
         public static void PopulateConstants(AppConstantsData constantsData)
         {

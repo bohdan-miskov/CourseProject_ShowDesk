@@ -42,8 +42,10 @@
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
+            this.panelViewport = new System.Windows.Forms.Panel();
             this.groupBoxProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            this.panelViewport.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAddSeat
@@ -133,10 +135,9 @@
             // panelSeating
             // 
             this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelSeating.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSeating.Location = new System.Drawing.Point(135, 60);
+            this.panelSeating.Location = new System.Drawing.Point(-1000, -1000);
             this.panelSeating.Name = "panelSeating";
-            this.panelSeating.Size = new System.Drawing.Size(645, 427);
+            this.panelSeating.Size = new System.Drawing.Size(3000, 3000);
             this.panelSeating.TabIndex = 7;
             this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseDown);
             this.panelSeating.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseMove);
@@ -187,15 +188,28 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
+            // panelViewport
+            // 
+            this.panelViewport.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelViewport.Controls.Add(this.panelSeating);
+            this.panelViewport.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelViewport.Location = new System.Drawing.Point(135, 60);
+            this.panelViewport.Name = "panelViewport";
+            this.panelViewport.Size = new System.Drawing.Size(645, 427);
+            this.panelViewport.TabIndex = 8;
+            this.panelViewport.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelViewport_MouseDown);
+            this.panelViewport.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelViewport_MouseMove);
+            this.panelViewport.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelViewport_MouseUp);
+            // 
             // AddEditSeatingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 507);
+            this.Controls.Add(this.panelViewport);
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonDeleteDecor);
-            this.Controls.Add(this.panelSeating);
             this.Controls.Add(this.buttonInsertSeat);
             this.Controls.Add(this.buttonDeleteSeat);
             this.Controls.Add(this.buttonChangeColor);
@@ -207,6 +221,7 @@
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            this.panelViewport.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -225,5 +240,6 @@
         private System.Windows.Forms.GroupBox groupBoxProfile;
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.Label labelAccountName;
+        private System.Windows.Forms.Panel panelViewport;
     }
 }

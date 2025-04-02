@@ -303,7 +303,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 WindowStyle = ProcessWindowStyle.Hidden // Сховане вікно
             };
             Process.Start(processStartInfo);
-
         }
     }
 }

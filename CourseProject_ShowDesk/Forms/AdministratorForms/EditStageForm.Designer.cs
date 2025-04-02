@@ -32,9 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditStageForm));
             this.buttonSave = new System.Windows.Forms.Button();
-            this.textBoxIndex = new System.Windows.Forms.TextBox();
             this.labelStageName = new System.Windows.Forms.Label();
-            this.labelIndex = new System.Windows.Forms.Label();
             this.textBoxStageName = new System.Windows.Forms.TextBox();
             this.menuStripStage = new System.Windows.Forms.MenuStrip();
             this.zoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,44 +81,22 @@
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
-            // textBoxIndex
-            // 
-            this.textBoxIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxIndex.Enabled = false;
-            this.textBoxIndex.Location = new System.Drawing.Point(169, 22);
-            this.textBoxIndex.Name = "textBoxIndex";
-            this.textBoxIndex.Size = new System.Drawing.Size(288, 28);
-            this.textBoxIndex.TabIndex = 5;
-            this.textBoxIndex.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxIndex_KeyUp);
-            // 
             // labelStageName
             // 
             this.labelStageName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStageName.AutoSize = true;
-            this.labelStageName.Location = new System.Drawing.Point(50, 59);
+            this.labelStageName.Location = new System.Drawing.Point(49, 45);
             this.labelStageName.Name = "labelStageName";
             this.labelStageName.Size = new System.Drawing.Size(97, 21);
             this.labelStageName.TabIndex = 6;
             this.labelStageName.Text = "Stage name";
             // 
-            // labelIndex
-            // 
-            this.labelIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelIndex.AutoSize = true;
-            this.labelIndex.Location = new System.Drawing.Point(50, 29);
-            this.labelIndex.Name = "labelIndex";
-            this.labelIndex.Size = new System.Drawing.Size(98, 21);
-            this.labelIndex.TabIndex = 4;
-            this.labelIndex.Text = "Stage index";
-            // 
             // textBoxStageName
             // 
             this.textBoxStageName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxStageName.Location = new System.Drawing.Point(169, 52);
+            this.textBoxStageName.Location = new System.Drawing.Point(168, 38);
             this.textBoxStageName.Name = "textBoxStageName";
             this.textBoxStageName.Size = new System.Drawing.Size(288, 28);
             this.textBoxStageName.TabIndex = 7;
@@ -185,9 +161,7 @@
             this.groupBoxStage.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxStage.Controls.Add(this.buttonEditSeating);
             this.groupBoxStage.Controls.Add(this.buttonSave);
-            this.groupBoxStage.Controls.Add(this.textBoxIndex);
             this.groupBoxStage.Controls.Add(this.labelStageName);
-            this.groupBoxStage.Controls.Add(this.labelIndex);
             this.groupBoxStage.Controls.Add(this.textBoxStageName);
             this.groupBoxStage.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxStage.Location = new System.Drawing.Point(6, 19);
@@ -406,9 +380,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TextBox textBoxIndex;
         private System.Windows.Forms.Label labelStageName;
-        private System.Windows.Forms.Label labelIndex;
         private System.Windows.Forms.TextBox textBoxStageName;
         private System.Windows.Forms.MenuStrip menuStripStage;
         private System.Windows.Forms.ToolStripMenuItem zoneToolStripMenuItem;
