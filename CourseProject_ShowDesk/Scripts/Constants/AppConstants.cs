@@ -6,6 +6,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public static class AppConstants
     {
+        public static string CompanyName { get; private set; } = "«ShowDesk»";
         public static string GeneralCollectionName { get; private set; } = "Event";
         public static string PerformancesCollectionName { get; private set; } = "UpcomingPerformances";
         public static string PastPerformancesCollectionName { get; private set; } = "PastPerformances";
@@ -45,6 +46,8 @@ namespace CourseProject_ShowDesk.Scripts.Constants
 
         public static void PopulateConstants(AppConstantsData constantsData)
         {
+            CompanyName = constantsData.CompanyName;
+
             GeneralCollectionName = constantsData.GeneralCollectionName;
             PastPerformancesCollectionName = constantsData.PastPerformancesCollectionName;
             PerformancesCollectionName = constantsData.PerformancesCollectionName;
@@ -85,6 +88,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         {
             return new AppConstantsData
             {
+                CompanyName = CompanyName,
                 GeneralCollectionName = GeneralCollectionName,
                 PastPerformancesCollectionName = PastPerformancesCollectionName,
                 PerformancesCollectionName = PerformancesCollectionName,

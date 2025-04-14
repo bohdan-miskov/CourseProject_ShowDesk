@@ -29,9 +29,14 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             }
 
         }
-        public List<Employee> GetAllEmployees()
+        public List<Employee> GetAllEmployees(bool sortByName=true)
         {
-            return employeeCollection.Find(_ => true).ToList();
+            List<Employee> employees = employeeCollection.Find(employee => true).ToList();
+            if (sortByName)
+            {
+                employees.Sort((p1, p2) => p1.FullName.CompareTo(p2.FullName));
+            }
+            return employees;
         }
 
         public void AddEmployee(Employee employee)

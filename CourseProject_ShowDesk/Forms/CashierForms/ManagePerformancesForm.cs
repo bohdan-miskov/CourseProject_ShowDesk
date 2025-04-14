@@ -18,6 +18,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private readonly Employee userAccount;
 
         private bool isPastPerformances = false;
+        private DateTime pastPerformanceStartDate=DateTime.MinValue;
+        private DateTime pastPerformanceEndDate=DateTime.MinValue;
 
         public ManagePerformancesForm(Employee userAccount)
         {
@@ -26,12 +28,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             try
             {
                 performanceManager = new PerformanceManager(new PerformanceBaseService());
+                performanceManager.LoadUpcomingPerformancesFromDatabase();
                 stageManager = new StageManager(new StageBaseService());
             }
             catch (DatabaseConnectionException ex)
             {
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
+                settingsForm.ShowDialog();
             }
 
             timerUpdate.Interval = AppConstants.UpdatePerformancesInterval;
@@ -95,6 +99,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             UpdateDataFromDataBase();
         }
+        private void ButtonLoadPastPerformance_Click(object sender, EventArgs e)
+        {
+            SavePastPerformanceRange();
+        }
+        private void ButtonCancelPastPerformance_Click(object sender, EventArgs e)
+        {
+            CancelPastPerformanceRange();
+        }
         private void TimerUpdate_Tick(object sender, EventArgs e)
         {
             UpdateDataFromDataBase();
@@ -121,6 +133,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void PopulateComponents()
         {
+            HidePastPerformanceRangeGroupBox();
+
             if (userAccount.ProfessionList.Contains(AppConstants.ListOfProfessions[1]))
             {
                 performanceToolStripMenuItem.Visible = true;
@@ -136,14 +150,32 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 removePerformanceToolStripMenuItem1.Visible = false;
             }
         }
-
+        private void HidePastPerformanceRangeGroupBox()
+        {
+            groupBoxPastPerformanceRange.Enabled = false;
+            groupBoxPastPerformanceRange.Visible = false;
+        }
         private void UpdateDataFromDataBase()
         {
             stageManager.LoadFromDatabase();
-            performanceManager.LoadFromDatabase();
 
-            if (isPastPerformances) UpdateDataGridPerformances(performanceManager.PastPerformances);
-            else UpdateDataGridPerformances();
+            if (isPastPerformances)
+            {
+                if (pastPerformanceStartDate == DateTime.MinValue || pastPerformanceEndDate == DateTime.MinValue) 
+                    SelectPastPerformancesRange();
+                else
+                {
+                    performanceManager.LoadPastPerformancesFromDatabase(pastPerformanceStartDate, pastPerformanceEndDate); ;
+                    UpdateDataGridPerformances(performanceManager.PastPerformances);
+                }
+            }
+            else
+            {
+                pastPerformanceStartDate = DateTime.MinValue;
+                pastPerformanceEndDate = DateTime.MinValue;
+                performanceManager.LoadUpcomingPerformancesFromDatabase();
+                UpdateDataGridPerformances();
+            }
 
             DisableEditAndRemovePerformance();
         }
@@ -164,6 +196,18 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             {
                 AddPerformanceToDataGrid(performance);
             }
+        }
+        private void SelectPastPerformancesRange()
+        {
+            groupBoxPastPerformanceRange.Enabled = true;
+            groupBoxPastPerformanceRange.Visible = true;
+
+            dateTimePickerPastPerformancesEndDate.MaxDate = DateTime.Today;
+            dateTimePickerPastPerformancesEndDate.Value= DateTime.Today;
+
+            DateTime startDay = DateTime.Today;
+            startDay.AddMonths(DateTime.Today.Month - 1);
+            dateTimePickerPastPerformancesStartDate.Value=startDay;
         }
 
         private void AddPerformanceToDataGrid(Performance performance)
@@ -284,7 +328,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void OpenRevenue()
         {
-            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(userAccount, performanceManager.PastPerformances);
+            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(userAccount, performanceManager);
 
             this.Hide();
             viewRevenueForm.ShowDialog();
@@ -293,16 +337,26 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void SwitchPerformances()
         {
-            if (isPastPerformances)
-            {
-                UpdateDataGridPerformances();
-                isPastPerformances = false;
-            }
-            else
-            {
-                UpdateDataGridPerformances(performanceManager.PastPerformances);
-                isPastPerformances = true;
-            }
+            if (isPastPerformances) isPastPerformances = false;
+            else isPastPerformances = true;
+
+            UpdateDataFromDataBase();
+        }
+
+        private void SavePastPerformanceRange()
+        {
+            DateTime startDate = dateTimePickerPastPerformancesStartDate.Value;
+            pastPerformanceStartDate = new DateTime(startDate.Year, startDate.Month, startDate.Day);
+            DateTime endDate = dateTimePickerPastPerformancesEndDate.Value;
+            pastPerformanceEndDate = new DateTime(endDate.Year, endDate.Month, endDate.Day+1);
+            HidePastPerformanceRangeGroupBox();
+            UpdateDataFromDataBase();
+        }
+        private void CancelPastPerformanceRange()
+        {
+            isPastPerformances = false;
+            HidePastPerformanceRangeGroupBox();
+            UpdateDataFromDataBase();
         }
     }
 }

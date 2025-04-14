@@ -6,6 +6,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public class AppConstantsData
     {
+        private string companyName;
         private string generalCollectionName;
         private string performancesCollectionName;
         private string pastPerformancesCollectionName;
@@ -34,6 +35,21 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         private Color seatBaseColor;
         public static Color seatHoverColor;
 
+        public string CompanyName
+        {
+            get
+            {
+                return companyName;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Company name cannot be null or empty.");
+                }
+                companyName = value;
+            }
+        }
         public string GeneralCollectionName
         {
             get

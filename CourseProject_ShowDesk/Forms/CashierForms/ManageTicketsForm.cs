@@ -212,7 +212,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void AddReceiptHeader(Document doc)
         {
             iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16);
-            Paragraph title = new Paragraph("«ShowDesk»\n", titleFont);
+            Paragraph title = new Paragraph($"{AppConstants.CompanyName}\n", titleFont);
             title.Alignment = Element.ALIGN_LEFT;
             doc.Add(title);
         }

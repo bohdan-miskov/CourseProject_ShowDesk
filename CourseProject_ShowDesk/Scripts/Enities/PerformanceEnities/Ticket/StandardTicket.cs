@@ -35,7 +35,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
                 return id;
             }
         }
-
         public int Position
         {
             get

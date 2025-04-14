@@ -103,6 +103,16 @@ namespace CourseProject_ShowDesk.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap color_change_icon {
+            get {
+                object obj = ResourceManager.GetObject("color-change-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Director {
             get {
                 object obj = ResourceManager.GetObject("Director", resourceCulture);
@@ -136,6 +146,16 @@ namespace CourseProject_ShowDesk.Properties {
         internal static System.Drawing.Bitmap exit_icon {
             get {
                 object obj = ResourceManager.GetObject("exit-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_manager_icon {
+            get {
+                object obj = ResourceManager.GetObject("file-manager-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

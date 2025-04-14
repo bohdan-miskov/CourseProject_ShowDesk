@@ -158,6 +158,10 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void ButtonChangeSeatHoverColor_KeyUp(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter) textBoxCompanyName.Focus();
+        }
+        private void TextBoxCompanyName_KeyUp(object sender, KeyEventArgs e)
+        {
             if (e.KeyCode == Keys.Enter) textBoxCurrencySymbol.Focus();
         }
         private void TextBoxCurrencySymbol_KeyUp(object sender, KeyEventArgs e)
@@ -189,7 +193,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             ParametersValidator.ValidatorFileName(sender, e);
         }
-
         private void TextBoxCurrencySymbol_KeyPress(object sender, KeyPressEventArgs e)
         {
             ParametersValidator.ValidatorSymbol(sender, e);
@@ -338,6 +341,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void PopulateOtherGroup()
         {
+            textBoxCompanyName.Text = appConstantsData.CompanyName;
             textBoxCurrencySymbol.Text = appConstantsData.CurrencySymbol.ToString();
             textBoxPasswordChar.Text = appConstantsData.PasswordChar.ToString();
         }
@@ -626,6 +630,19 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
         private bool ValidateOtherGroup()
         {
+            if (string.IsNullOrWhiteSpace(textBoxCompanyName.Text))
+            {
+                MessageBox.Show(
+                    "Company name cannot be null or empty.",
+                    "Company name Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                textBoxCompanyName.Focus();
+
+                return false;
+            }
+
             if (string.IsNullOrWhiteSpace(textBoxCurrencySymbol.Text))
             {
                 MessageBox.Show(
@@ -785,6 +802,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
         private void SaveOtherGroup()
         {
+            appConstantsData.CompanyName = textBoxCompanyName.Text;
             appConstantsData.PasswordChar = Convert.ToChar(textBoxPasswordChar.Text);
             appConstantsData.CurrencySymbol = Convert.ToChar(textBoxCurrencySymbol.Text);
         }

@@ -84,9 +84,13 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
         }
 
-        public void AddZone(Zone zone)
+        public void AddZone(Zone zone,bool sortByName=true)
         {
             zones.Add(zone);
+            if (sortByName)
+            {
+                zones.Sort((p1, p2) => p1.Name.CompareTo(p2.Name));
+            }
             UpdateZoneSeats(zone);
         }
 

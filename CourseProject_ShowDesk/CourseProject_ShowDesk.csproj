@@ -392,6 +392,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\file-manager-icon.png" />
+    <None Include="Resources\color-change-icon.png" />
     <None Include="Resources\restart-icon.png" />
     <None Include="Resources\exit-icon.png" />
     <None Include="Resources\change-icon.png" />

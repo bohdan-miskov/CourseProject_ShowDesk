@@ -10,22 +10,20 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class ViewRevenueForm : MetroFramework.Forms.MetroForm
     {
-        private List<Performance> performances;
+        private readonly PerformanceManager performanceManager;
 
-        public ViewRevenueForm(Employee userAccount, List<Performance> performances)
+        public ViewRevenueForm(Employee userAccount, PerformanceManager performanceManager)
         {
             InitializeComponent();
 
-            this.performances = performances;
+            this.performanceManager = performanceManager;
 
             labelAccountName.Text = userAccount.FullName;
-
-            SortPerformancesByDate();
 
             PopulateComponents();
         }
 
-        private void DateTimePickerStartDate_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void DateTimePickerStartDate_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) dateTimePickerFinishDate.Focus();
         }
@@ -48,20 +46,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void ButtonCalculate_Click(object sender, EventArgs e)
         {
             CreateGraph();
-        }
-
-        private void SortPerformancesByDate()
-        {
-            for (int i = 0; i < performances.Count - 1; i++)
-            {
-                for (int j = 0; j < performances.Count - i - 1; j++)
-                {
-                    if (performances[j].PerformanceDateTime > performances[j + 1].PerformanceDateTime)
-                    {
-                        (performances[j], performances[j + 1]) = (performances[j + 1], performances[j]);
-                    }
-                }
-            }
         }
 
         private void PopulateComponents()
@@ -87,15 +71,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void SetDateLimit()
         {
-            if (performances.Count == 0)
+            Performance oldestPerformance = performanceManager.GetOldestPerformance();
+
+            if (oldestPerformance== null)
             {
                 groupBoxPeriod.Enabled = false;
                 groupBoxRevenue.Enabled = false;
             }
             else
             {
-                DateTime minDate = GetMinDate(performances);
-                DateTime maxDate = GetMaxDate(performances);
+                DateTime minDate = oldestPerformance.PerformanceDateTime;
+                DateTime maxDate = DateTime.Now;
 
                 dateTimePickerStartDate.MinDate = minDate;
                 dateTimePickerStartDate.MaxDate = maxDate;
@@ -106,42 +92,13 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private DateTime GetMinDate(List<Performance> performances)
-        {
-            DateTime minDate = performances[0].PerformanceDateTime;
-
-            //foreach (Performance performance in performances)
-            //{
-            //    if (minDate > performance.PerformanceDateTime)
-            //         minDate = performance.PerformanceDateTime;
-
-            //}
-
-            return minDate;
-        }
-
-        private DateTime GetMaxDate(List<Performance> performances)
-        {
-            DateTime maxDate = performances[performances.Count - 1].PerformanceDateTime;
-
-            //foreach (Performance performance in performances)
-            //{
-            //    if (maxDate < performance.PerformanceDateTime)
-            //    {
-            //        maxDate = performance.PerformanceDateTime;
-            //    }
-            //}
-
-            return maxDate;
-        }
-
         private void CreateGraph()
         {
             chartRevenue.Series.Clear();
 
             chartRevenue.Series.Add(CreateSeries());
 
-            Calculate(FilterPerformanceByDate(performances));
+            Calculate(LoadPerformanceByDate());
         }
 
         private Series CreateSeries()
@@ -161,23 +118,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             return series;
         }
 
-        private List<Performance> FilterPerformanceByDate(List<Performance> performances)
+        private List<Performance> LoadPerformanceByDate()
         {
-            List<Performance> filteredPerformances = new List<Performance>();
-
             DateTime dateStart = dateTimePickerStartDate.Value.Date;
             DateTime dateFinish = dateTimePickerFinishDate.Value.Date;
-
-            foreach (Performance performance in performances)
-            {
-                if (performance.PerformanceDateTime > dateStart &&
-                    performance.PerformanceDateTime < dateFinish)
-                {
-                    filteredPerformances.Add(performance);
-                }
-            }
-
-            return filteredPerformances;
+            performanceManager.LoadPastPerformancesFromDatabase(dateStart, dateFinish);
+            return performanceManager.PastPerformances;
         }
 
         private void Calculate(List<Performance> performances)

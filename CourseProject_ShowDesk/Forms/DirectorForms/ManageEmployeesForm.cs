@@ -25,6 +25,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             {
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
+                settingsForm.ShowDialog();
             }
 
             labelAccountName.Text = userAccount.FullName;

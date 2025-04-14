@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagePerformancesForm));
             this.dataGridViewPerformances = new System.Windows.Forms.DataGridView();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,12 +64,20 @@
             this.labelAccountName = new System.Windows.Forms.Label();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
+            this.groupBoxPastPerformanceRange = new System.Windows.Forms.GroupBox();
+            this.labelStartDate = new System.Windows.Forms.Label();
+            this.dateTimePickerPastPerformancesStartDate = new System.Windows.Forms.DateTimePicker();
+            this.labelEndDate = new System.Windows.Forms.Label();
+            this.dateTimePickerPastPerformancesEndDate = new System.Windows.Forms.DateTimePicker();
+            this.buttonLoadPastPerformance = new System.Windows.Forms.Button();
+            this.buttonCancelPastPerformance = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).BeginInit();
             this.contextMenuStripPerformance.SuspendLayout();
             this.menuStripManagePerformance.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
             this.contextMenuStripAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            this.groupBoxPastPerformanceRange.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewPerformances
@@ -82,14 +90,14 @@
             this.dataGridViewPerformances.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewPerformances.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewPerformances.BackgroundColor = System.Drawing.Color.LightGray;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPerformances.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPerformances.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPerformances.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPerformances.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idColumn,
@@ -103,14 +111,14 @@
             this.columnSold,
             this.columnReserved});
             this.dataGridViewPerformances.ContextMenuStrip = this.contextMenuStripPerformance;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPerformances.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPerformances.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPerformances.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridViewPerformances.Location = new System.Drawing.Point(0, 64);
             this.dataGridViewPerformances.MultiSelect = false;
@@ -387,11 +395,101 @@
             this.timerUpdate.Interval = 300000;
             this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
             // 
+            // groupBoxPastPerformanceRange
+            // 
+            this.groupBoxPastPerformanceRange.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxPastPerformanceRange.Controls.Add(this.buttonCancelPastPerformance);
+            this.groupBoxPastPerformanceRange.Controls.Add(this.buttonLoadPastPerformance);
+            this.groupBoxPastPerformanceRange.Controls.Add(this.labelEndDate);
+            this.groupBoxPastPerformanceRange.Controls.Add(this.dateTimePickerPastPerformancesEndDate);
+            this.groupBoxPastPerformanceRange.Controls.Add(this.labelStartDate);
+            this.groupBoxPastPerformanceRange.Controls.Add(this.dateTimePickerPastPerformancesStartDate);
+            this.groupBoxPastPerformanceRange.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxPastPerformanceRange.Location = new System.Drawing.Point(269, 130);
+            this.groupBoxPastPerformanceRange.Name = "groupBoxPastPerformanceRange";
+            this.groupBoxPastPerformanceRange.Size = new System.Drawing.Size(304, 186);
+            this.groupBoxPastPerformanceRange.TabIndex = 19;
+            this.groupBoxPastPerformanceRange.TabStop = false;
+            this.groupBoxPastPerformanceRange.Text = "Past performances range";
+            // 
+            // labelStartDate
+            // 
+            this.labelStartDate.AutoSize = true;
+            this.labelStartDate.BackColor = System.Drawing.Color.Transparent;
+            this.labelStartDate.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStartDate.Location = new System.Drawing.Point(12, 57);
+            this.labelStartDate.Name = "labelStartDate";
+            this.labelStartDate.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.labelStartDate.Size = new System.Drawing.Size(85, 25);
+            this.labelStartDate.TabIndex = 15;
+            this.labelStartDate.Text = "Start date";
+            // 
+            // dateTimePickerPastPerformancesStartDate
+            // 
+            this.dateTimePickerPastPerformancesStartDate.CustomFormat = "dd.MM.yyyy HH:mm";
+            this.dateTimePickerPastPerformancesStartDate.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerPastPerformancesStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerPastPerformancesStartDate.Location = new System.Drawing.Point(123, 57);
+            this.dateTimePickerPastPerformancesStartDate.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
+            this.dateTimePickerPastPerformancesStartDate.Name = "dateTimePickerPastPerformancesStartDate";
+            this.dateTimePickerPastPerformancesStartDate.Size = new System.Drawing.Size(165, 28);
+            this.dateTimePickerPastPerformancesStartDate.TabIndex = 14;
+            // 
+            // labelEndDate
+            // 
+            this.labelEndDate.AutoSize = true;
+            this.labelEndDate.BackColor = System.Drawing.Color.Transparent;
+            this.labelEndDate.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEndDate.Location = new System.Drawing.Point(12, 91);
+            this.labelEndDate.Name = "labelEndDate";
+            this.labelEndDate.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
+            this.labelEndDate.Size = new System.Drawing.Size(79, 25);
+            this.labelEndDate.TabIndex = 17;
+            this.labelEndDate.Text = "End date";
+            // 
+            // dateTimePickerPastPerformancesEndDate
+            // 
+            this.dateTimePickerPastPerformancesEndDate.CustomFormat = "dd.MM.yyyy HH:mm";
+            this.dateTimePickerPastPerformancesEndDate.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerPastPerformancesEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerPastPerformancesEndDate.Location = new System.Drawing.Point(123, 91);
+            this.dateTimePickerPastPerformancesEndDate.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
+            this.dateTimePickerPastPerformancesEndDate.Name = "dateTimePickerPastPerformancesEndDate";
+            this.dateTimePickerPastPerformancesEndDate.Size = new System.Drawing.Size(165, 28);
+            this.dateTimePickerPastPerformancesEndDate.TabIndex = 16;
+            // 
+            // buttonLoadPastPerformance
+            // 
+            this.buttonLoadPastPerformance.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonLoadPastPerformance.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLoadPastPerformance.Location = new System.Drawing.Point(27, 132);
+            this.buttonLoadPastPerformance.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.buttonLoadPastPerformance.Name = "buttonLoadPastPerformance";
+            this.buttonLoadPastPerformance.Size = new System.Drawing.Size(108, 40);
+            this.buttonLoadPastPerformance.TabIndex = 18;
+            this.buttonLoadPastPerformance.Text = "Save";
+            this.buttonLoadPastPerformance.UseVisualStyleBackColor = false;
+            this.buttonLoadPastPerformance.Click += new System.EventHandler(this.ButtonLoadPastPerformance_Click);
+            // 
+            // buttonCancelPastPerformance
+            // 
+            this.buttonCancelPastPerformance.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonCancelPastPerformance.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancelPastPerformance.Location = new System.Drawing.Point(170, 132);
+            this.buttonCancelPastPerformance.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.buttonCancelPastPerformance.Name = "buttonCancelPastPerformance";
+            this.buttonCancelPastPerformance.Size = new System.Drawing.Size(108, 40);
+            this.buttonCancelPastPerformance.TabIndex = 19;
+            this.buttonCancelPastPerformance.Text = "Cancel";
+            this.buttonCancelPastPerformance.UseVisualStyleBackColor = false;
+            this.buttonCancelPastPerformance.Click += new System.EventHandler(this.ButtonCancelPastPerformance_Click);
+            // 
             // ManagePerformancesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(886, 339);
+            this.Controls.Add(this.groupBoxPastPerformanceRange);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.buttonSwitch);
@@ -408,6 +506,8 @@
             this.groupBoxProfile.PerformLayout();
             this.contextMenuStripAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            this.groupBoxPastPerformanceRange.ResumeLayout(false);
+            this.groupBoxPastPerformanceRange.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,5 +547,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnTicketsCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnSold;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnReserved;
+        private System.Windows.Forms.GroupBox groupBoxPastPerformanceRange;
+        private System.Windows.Forms.Label labelEndDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPastPerformancesEndDate;
+        private System.Windows.Forms.Label labelStartDate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPastPerformancesStartDate;
+        private System.Windows.Forms.Button buttonLoadPastPerformance;
+        private System.Windows.Forms.Button buttonCancelPastPerformance;
     }
 }

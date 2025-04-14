@@ -26,7 +26,7 @@ namespace CourseProject_ShowDesk.Forms
             {
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
-
+                settingsForm.ShowDialog();
             }
             PopulateComboBox();
 
@@ -102,8 +102,10 @@ namespace CourseProject_ShowDesk.Forms
                 if (directorExist) ShowErrorMessage();
                 else
                 {
-                    account = new Employee();
-                    account.FullName = "Visitor";
+                    account = new Employee
+                    {
+                        FullName = "Visitor"
+                    };
                 }
                 return;
             }

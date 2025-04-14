@@ -8,6 +8,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
@@ -34,23 +35,45 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             }
         }
 
-        public List<Performance> GetAllUpcomingPerformances()
+        public List<Performance> GetAllUpcomingPerformances(bool sortByDate=true)
         {
-            var performances = upcomingCollection.Find(performance => true).ToList();
+            List<Performance> performances = upcomingCollection.Find(performance => true).ToList();
 
             foreach (var performance in performances)
             {
                 performance.InitializeService(new PerformanceBaseService());
             }
 
+            if (sortByDate)
+            {
+                performances.Sort((p1, p2) => p1.PerformanceDateTime.CompareTo(p2.PerformanceDateTime));
+            }
+
             return performances;
         }
 
-        public List<Performance> GetAllPastPerformances()
+        public List<Performance> GetPastPerformances(DateTime startDate, DateTime endDate, bool sortByDate=true)
         {
-            return pastCollection.Find(performance => true).ToList();
-        }
+            List<Performance> allPerformances = pastCollection.Find(performance => true).ToList();
+            List<Performance> filterPerformances=allPerformances.Where(performance => (DateTime.Compare(performance.PerformanceDateTime, startDate) >= 0) &&
+                DateTime.Compare(performance.PerformanceDateTime, endDate) <= 0).ToList();
 
+            if (sortByDate)
+            {
+                filterPerformances.Sort((p1, p2) => p1.PerformanceDateTime.CompareTo(p2.PerformanceDateTime)); 
+            }
+            
+
+            return allPerformances;
+        }
+        public Performance GetOldestPerformance()
+        {
+            List<Performance> allPerformances = pastCollection.Find(performance => true).ToList();
+
+            allPerformances.Sort((p1, p2) => p1.PerformanceDateTime.CompareTo(p2.PerformanceDateTime));
+
+            return allPerformances[0];
+        }
         public void MovePastPerformances()
         {
             var now = DateTime.Now;
