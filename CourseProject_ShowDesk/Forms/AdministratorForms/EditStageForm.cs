@@ -1,6 +1,5 @@
-﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
+﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Windows.Forms;
@@ -16,7 +15,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private readonly Employee userAccount;
 
 
-        public EditStageForm(Employee userAccount,Stage stage)
+        public EditStageForm(Employee userAccount, Stage stage)
         {
             InitializeComponent();
 
@@ -106,10 +105,10 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             dataGridViewZones.Rows.Add(
                 zone.Id,
-                zone.Name, 
-                zone.Increase, 
+                zone.Name,
+                zone.Increase,
                 zone.GetColor().Name,
-                zone.StartPosition, 
+                zone.StartPosition,
                 zone.EndPosition);
 
             dataGridViewZones.Rows[dataGridViewZones.Rows.Count - 1].Cells[3].Style.BackColor = zone.GetColor();
@@ -117,7 +116,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void AddZone()
         {
-            AddEditZoneForm addZoneForm = new AddEditZoneForm(userAccount,stage);
+            AddEditZoneForm addZoneForm = new AddEditZoneForm(userAccount, stage);
             this.Hide();
             addZoneForm.ShowDialog();
             this.Show();
@@ -142,7 +141,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             Guid zoneId = GetCurrentRowId();
 
-            AddEditZoneForm editZoneForm = new AddEditZoneForm(userAccount,stage, stage.GetZoneById(zoneId));
+            AddEditZoneForm editZoneForm = new AddEditZoneForm(userAccount, stage, stage.GetZoneById(zoneId));
             this.Hide();
             editZoneForm.ShowDialog();
             this.Show();
@@ -152,10 +151,10 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 stage.UpdateZone(editZoneForm.GetZone());
             }
         }
-        
+
         private void EditSeating()
         {
-            AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(userAccount,stage);
+            AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(userAccount, stage);
             this.Hide();
             addSeatingForm.ShowDialog();
             this.Show();

@@ -1,10 +1,7 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using CourseProject_ShowDesk.Scripts.Enities;
-using CourseProject_ShowDesk.Scripts.Utilities;
-using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
@@ -35,7 +32,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 return id;
             }
         }
-  
+
         public string Name
         {
             get
@@ -88,7 +85,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         }
 
         public void AddZone(Zone zone)
-        { 
+        {
             zones.Add(zone);
             UpdateZoneSeats(zone);
         }
@@ -97,7 +94,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         {
             var zone = zones.FirstOrDefault(z => z.Id == zoneId)
                 ?? throw new ArgumentException("Zone with the given id does not exist.", nameof(zoneId));
-                
+
             return zone;
         }
 
@@ -111,7 +108,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
         private void UpdateZoneSeats(Zone zone)
         {
-            for (int i = zone.StartPosition-1; i <= zone.EndPosition-1; i++)
+            for (int i = zone.StartPosition - 1; i <= zone.EndPosition - 1; i++)
             {
                 seatList[i].CurrentZone = zone;
             }

@@ -1,14 +1,11 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using CourseProject_ShowDesk.Scripts.Constants;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson.Serialization.Serializers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
@@ -16,12 +13,21 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
     {
         private readonly IMongoCollection<Employee> employeeCollection;
 
-        public EmployeeBaseService(string dbName = "Event")
+        public EmployeeBaseService()
         {
-            var client = new MongoClient(AppConstants.ConnectionString);
-            var db = client.GetDatabase(dbName);
+            try
+            {
+                var client = new MongoClient(AppConstants.ConnectionString);
+                var db = client.GetDatabase(AppConstants.GeneralCollectionName);
+                var test = db.RunCommandAsync((Command<BsonDocument>)"{ping:1}").Result;
 
-            employeeCollection = db.GetCollection<Employee>("Employees");
+                employeeCollection = db.GetCollection<Employee>(AppConstants.EmployeesCollectionName);
+            }
+            catch
+            {
+                throw new DatabaseConnectionException("Could not connect to the database.");
+            }
+
         }
         public List<Employee> GetAllEmployees()
         {

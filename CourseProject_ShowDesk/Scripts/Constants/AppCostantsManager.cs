@@ -1,11 +1,4 @@
 ﻿using CourseProject_ShowDesk.Scripts.Utilities.FileService;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
 
 namespace CourseProject_ShowDesk.Scripts.Constants
@@ -18,9 +11,16 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         {
             if (File.Exists(appConstantsFileName))
             {
-                AppConstantsData appConstantsData = FileHandler.LoadElementFromJson<AppConstantsData>(appConstantsFileName);
+                try
+                {
+                    AppConstantsData appConstantsData = FileHandler.LoadElementFromJson<AppConstantsData>(appConstantsFileName);
 
-                AppConstants.PopulateConstants(appConstantsData);
+                    AppConstants.PopulateConstants(appConstantsData);
+                }
+                catch
+                {
+                    throw new InvalidDataException($"Error in work with fields of {appConstantsFileName}");
+                }
             }
             else
             {

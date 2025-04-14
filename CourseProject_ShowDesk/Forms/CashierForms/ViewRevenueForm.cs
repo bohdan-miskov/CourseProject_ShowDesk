@@ -1,11 +1,8 @@
-﻿using CourseProject_ShowDesk.Scripts;
-using CourseProject_ShowDesk.Scripts.Constants;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Web.UI;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -117,7 +114,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             //{
             //    if (minDate > performance.PerformanceDateTime)
             //         minDate = performance.PerformanceDateTime;
-                
+
             //}
 
             return minDate;
@@ -125,7 +122,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private DateTime GetMaxDate(List<Performance> performances)
         {
-            DateTime maxDate = performances[performances.Count-1].PerformanceDateTime;
+            DateTime maxDate = performances[performances.Count - 1].PerformanceDateTime;
 
             //foreach (Performance performance in performances)
             //{
@@ -195,11 +192,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
                 return;
             }
-                
-            double dayRevenue= performances[0].GetRevenue();
+
+            double dayRevenue = performances[0].GetRevenue();
             double sumRevenue = 0;
             int dayCount = 1;
-            DateTime thisDate= performances[0].PerformanceDateTime.Date;
+            DateTime thisDate = performances[0].PerformanceDateTime.Date;
             KeyValuePair<string, double> maxRevenuePerformance = new KeyValuePair<string, double>(performances[0].Name, performances[0].GetRevenue());
             KeyValuePair<string, double> minRevenuePerformance = new KeyValuePair<string, double>(performances[0].Name, performances[0].GetRevenue());
 
@@ -246,7 +243,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             Series series = chartRevenue.Series[0];
 
             series.Points.AddXY(thisDate.ToShortDateString(), dayRevenue);
-            series.Points[series.Points.Count - 1].ToolTip = $"Date: {thisDate.ToShortDateString()}\nRevenue: {dayRevenue.ToString("0.00")+AppConstants.CurrencySymbol}";
+            series.Points[series.Points.Count - 1].ToolTip = $"Date: {thisDate.ToShortDateString()}\nRevenue: {dayRevenue.ToString("0.00") + AppConstants.CurrencySymbol}";
         }
     }
 }

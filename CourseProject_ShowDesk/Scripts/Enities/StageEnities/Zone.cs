@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Drawing;
 
@@ -9,7 +10,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
     public class Zone
     {
         [BsonId]
-        private Guid id=Guid.NewGuid();
+        private Guid id = Guid.NewGuid();
         private string name;
         private double increase;
         private int startPosition;
@@ -22,7 +23,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             Increase = 1.0;
             StartPosition = 0;
             EndPosition = 0;
-            SetColor(Color.LightBlue);
+            SetColor(AppConstants.SeatBaseColor);
         }
         public Zone(string name, double increase, int startPosition, int endPosition, Color color)
         {
@@ -47,10 +48,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
             set
             {
-                //if (string.IsNullOrWhiteSpace(value))
-                //{
-                //    throw new ArgumentException("Name of zone cannot be empty or whitespace.", nameof(Name));
-                //}
                 name = value;
             }
         }
@@ -120,7 +117,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
         public void SetColor(Color color)
         {
-            HexColor= $"#{color.R:X2}{color.G:X2}{color.B:X2}";
+            HexColor = $"#{color.R:X2}{color.G:X2}{color.B:X2}";
         }
         public Color GetColor()
         {

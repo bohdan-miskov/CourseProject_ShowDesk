@@ -1,10 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 {
@@ -18,9 +14,9 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
         private string password;
         private List<string> professionList;
 
-        public Employee() 
+        public Employee()
         {
-            professionList =new List<string>();
+            professionList = new List<string>();
         }
 
         public Employee(string fullName, string login, string password)
@@ -127,9 +123,9 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
         {
             string result = "";
 
-            for(int i=0; i<professionList.Count; i++)
+            for (int i = 0; i < professionList.Count; i++)
             {
-                if(i!=0)
+                if (i != 0)
                 {
                     result += " ,";
                 }

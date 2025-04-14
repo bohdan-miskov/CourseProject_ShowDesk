@@ -1,10 +1,7 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
@@ -13,7 +10,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
     {
         [BsonId]
         private Guid id = Guid.NewGuid();
-        private string hexColor = "#D3D3D3";
+        private string hexColor;
         public Point Location;
         public Size Size = new Size(50, 50);
         public BorderStyle BorderStyle = BorderStyle.FixedSingle;
@@ -44,11 +41,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
         }
 
-        public void Scale(Size newSize)
-        {
-            Size = newSize;
-        }
-
         public Panel ToPanel()
         {
             Panel panel = new Panel
@@ -69,6 +61,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         }
         public Color GetColor()
         {
+            if (HexColor == null) SetColor(AppConstants.SeatBaseColor);
             return ColorTranslator.FromHtml(HexColor);
         }
     }

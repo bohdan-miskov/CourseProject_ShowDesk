@@ -1,9 +1,9 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,16 +13,23 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
     {
         private bool isValid;
 
-        private readonly Stage stage;
+        private List<Zone> zones;
 
         private readonly Zone currentZone;
 
-        public AddEditZoneForm(Employee userAccount,Stage stage, Zone zone=null)
+        private SeatingManager seatingManager;
+        private CanvasController canvasController;
+
+        public AddEditZoneForm(Employee userAccount, Stage stage, Zone zone = null)
         {
             InitializeComponent();
 
+            this.MouseWheel += PanelSeating_MouseWheel;
+
             isValid = false;
-            this.stage = stage;
+            this.zones = stage.Zones;
+            this.seatingManager = new SeatingManager(panelSeating, stage?.SeatList, stage?.DecorList);
+            this.canvasController = new CanvasController(panelSeating, panelViewport);
 
             labelAccountName.Text = userAccount.FullName;
 
@@ -58,7 +65,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void NumericUpDownStartPosition_ValueChanged(object sender, EventArgs e)
         {
-            if(numericUpDownEndPosition.Value < numericUpDownStartPosition.Value)
+            if (numericUpDownEndPosition.Value < numericUpDownStartPosition.Value)
             {
                 numericUpDownEndPosition.Value = numericUpDownStartPosition.Value;
             }
@@ -71,12 +78,11 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 numericUpDownStartPosition.Value = numericUpDownEndPosition.Value;
             }
         }
-
-        private void TextBoxIncrease_KeyPress(object sender, KeyPressEventArgs e)
+        private void PanelSeating_MouseWheel(object sender, MouseEventArgs e)
         {
-            ParametersValidator.ValidatorDoubleDigit(sender, e);
+            bool useControl = ModifierKeys == Keys.Control;
+            canvasController.StartScaleCanvas(e, useControl);
         }
-
         private void ButtonChangeColor_Click(object sender, EventArgs e)
         {
             ChangeColor();
@@ -100,21 +106,9 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void PopulateComponents()
         {
             numericUpDownStartPosition.Minimum = 1;
-            numericUpDownEndPosition.Maximum = stage.SeatList.Count;
+            numericUpDownEndPosition.Maximum = seatingManager.SeatList.Count;
 
-            PopulateSeating();
-        }
-
-        private void PopulateSeating()
-        {
-            foreach (Seat seat in stage.SeatList)
-            {
-                panelSeating.Controls.Add(seat.ToLabel());
-            }
-            foreach (DecorativeElement decor in stage.DecorList)
-            {
-                panelSeating.Controls.Add(decor.ToPanel());
-            }
+            seatingManager.PopulateSeating();
         }
         private void ChangeColor()
         {
@@ -123,7 +117,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 currentZone.SetColor(colorDialog.Color);
                 textBoxColor.Text = currentZone.GetColor().Name;
                 buttonChangeColor.BackColor = currentZone.GetColor();
-  
+
                 SeatingColorChange();
             }
         }
@@ -133,13 +127,10 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             int endIndex = Convert.ToInt32(numericUpDownEndPosition.Value);
             foreach (Control control in panelSeating.Controls.OfType<Label>().ToList())
             {
-                int index = Convert.ToInt32(control.Text);
-                if (index >= startIndex && index <= endIndex)
-                {
+                int position = seatingManager.GetCurrentSeatPosition(control);
+                if (position >= startIndex && position <= endIndex)
                     control.BackColor = colorDialog.Color;
-                    continue;
-                }
-                control.BackColor = stage.SeatList[index - 1].GetColor();
+                else control.BackColor = seatingManager.GetSeatColorByControl(control);
             }
         }
         private void CreateZone()
@@ -152,7 +143,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void SaveZone()
         {
             CreateZone();
-            ZoneValidator validator = new ZoneValidator(stage.Zones);
+            ZoneValidator validator = new ZoneValidator(zones);
 
             if (validator.Validate(currentZone, out string errorMessage))
             {

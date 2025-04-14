@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
@@ -13,7 +9,13 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         private List<Control> selectedControls = new List<Control>();
 
         //public IReadOnlyList<Control> SelectedControls => selectedControls.AsReadOnly();
-
+        public List<Control> SelectedControls
+        {
+            get
+            {
+                return selectedControls;
+            }
+        }
         public void AddToSelection(Control control)
         {
             if (control != null && !selectedControls.Contains(control))
@@ -23,21 +25,10 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             }
         }
 
-        public void ClearSelection()
+        public void RemoveSelection(Control control, Color color)
         {
-            foreach (var control in selectedControls)
-            {
-                control.BackColor = Color.LightGray;
-            }
-            selectedControls.Clear();
-        }
-
-        public void SetSelection(Control control)
-        {
-            if (control == null) return;
-            ClearSelection();
-            selectedControls.Add(control);
-            control.BackColor = Color.Yellow;
+            control.BackColor = color;
+            selectedControls.Remove(control);
         }
     }
 

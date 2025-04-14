@@ -1,29 +1,15 @@
-﻿using CourseProject_ShowDesk.Scripts;
-using CourseProject_ShowDesk.Scripts.Utilities;
-using CourseProject_ShowDesk.Scripts.Constants;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
-using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PdfiumViewer;
-using System.Drawing.Printing;
-using System.Windows.Forms;
-using iTextSharp.text.pdf;
 using iTextSharp.text;
-using System.IO;
-using SharpCompress.Common;
-using System.Net.Sockets;
-using PdfiumPrinter;
+using iTextSharp.text.pdf;
+using System;
 using System.Diagnostics;
+using System.IO;
+using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -34,14 +20,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private readonly PerformanceBaseService dataBase;
         private readonly Employee userAccount;
 
-        public ManageTicketsForm(Employee userAccount,Stage currentStage, Performance currentPerformance)
+        public ManageTicketsForm(Employee userAccount, Stage currentStage, Performance currentPerformance)
         {
             InitializeComponent();
 
             this.currentStage = currentStage;
             this.currentPerformance = currentPerformance;
             this.userAccount = userAccount;
-            dataBase=new PerformanceBaseService();
+            dataBase = new PerformanceBaseService();
 
             labelAccountName.Text = userAccount.FullName;
 
@@ -95,7 +81,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void UpdateDataFromDataBase()
         {
-            currentPerformance=dataBase.GetUpdatedPerformance(currentPerformance);
+            currentPerformance = dataBase.GetUpdatedPerformance(currentPerformance);
 
             UpdateDataGridTickets();
             DisableEditAndRemoveTicket();
@@ -141,7 +127,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private Guid GetCurrentRowId()
         {
-            return Guid.Parse(dataGridViewTickets.CurrentRow.Cells[0].Value.ToString()); 
+            return Guid.Parse(dataGridViewTickets.CurrentRow.Cells[0].Value.ToString());
         }
 
         private void ChangeTicketStatus()
@@ -159,8 +145,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void BuyOfTicket()
         {
             currentPerformance = dataBase.GetUpdatedPerformance(currentPerformance);
-            BuyTicketForm buyTicketForm = new BuyTicketForm(userAccount,currentStage, currentPerformance);
-            
+            BuyTicketForm buyTicketForm = new BuyTicketForm(userAccount, currentStage, currentPerformance);
+
             this.Hide();
             buyTicketForm.ShowDialog();
             this.Show();
@@ -198,6 +184,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 }
                 filePath = saveFileDialog.FileName;
             }
+            else filePath = Path.Combine(filePath, $"Ticket_{ticket.Id.ToString()}.pdf");
 
             Document receipt = new Document();
             string divider = new string('-', 70);
@@ -251,7 +238,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 $"Stage: {currentStage.Name}"
                 ));
             doc.Add(new Paragraph(
-                $"Zone: {currentStage.SeatList[ticket.Position-1].CurrentZone.Name}"
+                $"Zone: {currentStage.SeatList[ticket.Position - 1].CurrentZone.Name}"
                 ));
             doc.Add(new Paragraph(
                 $"Seat: {ticket.Position}"
@@ -260,10 +247,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 $"Ticket type: {ticket.Type}"
                 ));
             doc.Add(new Paragraph(
-                $"Price: {ticket.CalculatedPrice} "+AppConstants.CurrencySymbol
+                $"Price: {ticket.CalculatedPrice} " + AppConstants.CurrencySymbol
                 ));
             doc.Add(new Paragraph(
-                $"\nTicket id: {ticket.Id}", 
+                $"\nTicket id: {ticket.Id}",
                 FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12)
                 ));
         }
@@ -271,7 +258,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             doc.Add(new Paragraph(
                 "\nThank you for your purchase! " +
-                "We wish you a pleasant viewing experience!", 
+                "We wish you a pleasant viewing experience!",
                 FontFactory.GetFont(FontFactory.HELVETICA_OBLIQUE, 10)
                 ));
         }

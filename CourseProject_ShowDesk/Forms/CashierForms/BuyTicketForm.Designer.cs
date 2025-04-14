@@ -40,7 +40,6 @@
             this.comboBoxTicketType = new System.Windows.Forms.ComboBox();
             this.groupBoxTicket = new System.Windows.Forms.GroupBox();
             this.labelSeatInfo = new System.Windows.Forms.Label();
-            this.panelSeating = new System.Windows.Forms.Panel();
             this.labelCurrency = new System.Windows.Forms.Label();
             this.groupBoxPremium = new System.Windows.Forms.GroupBox();
             this.comboBoxSouvenir = new System.Windows.Forms.ComboBox();
@@ -52,11 +51,14 @@
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
+            this.panelViewport = new System.Windows.Forms.Panel();
+            this.panelSeating = new System.Windows.Forms.Panel();
             this.groupBoxTicket.SuspendLayout();
             this.groupBoxPremium.SuspendLayout();
             this.groupBoxStandardPlus.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            this.panelViewport.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -173,7 +175,6 @@
             this.groupBoxTicket.BackColor = System.Drawing.Color.LightGray;
             this.groupBoxTicket.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBoxTicket.Controls.Add(this.labelSeatInfo);
-            this.groupBoxTicket.Controls.Add(this.panelSeating);
             this.groupBoxTicket.Controls.Add(this.labelCurrency);
             this.groupBoxTicket.Controls.Add(this.groupBoxPremium);
             this.groupBoxTicket.Controls.Add(this.groupBoxStandardPlus);
@@ -204,16 +205,6 @@
             this.labelSeatInfo.Size = new System.Drawing.Size(139, 124);
             this.labelSeatInfo.TabIndex = 42;
             this.labelSeatInfo.Text = "Seat info";
-            // 
-            // panelSeating
-            // 
-            this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelSeating.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSeating.Location = new System.Drawing.Point(529, 24);
-            this.panelSeating.Name = "panelSeating";
-            this.panelSeating.Size = new System.Drawing.Size(645, 411);
-            this.panelSeating.TabIndex = 41;
-            this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseDown);
             // 
             // labelCurrency
             // 
@@ -346,11 +337,31 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
+            // panelViewport
+            // 
+            this.panelViewport.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelViewport.Controls.Add(this.panelSeating);
+            this.panelViewport.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelViewport.Location = new System.Drawing.Point(513, 60);
+            this.panelViewport.Name = "panelViewport";
+            this.panelViewport.Size = new System.Drawing.Size(645, 425);
+            this.panelViewport.TabIndex = 42;
+            // 
+            // panelSeating
+            // 
+            this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelSeating.Location = new System.Drawing.Point(-1000, -1000);
+            this.panelSeating.Name = "panelSeating";
+            this.panelSeating.Size = new System.Drawing.Size(3000, 3000);
+            this.panelSeating.TabIndex = 7;
+            this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseDown);
+            // 
             // BuyTicketForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1178, 505);
+            this.Controls.Add(this.panelViewport);
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.groupBoxTicket);
             this.Name = "BuyTicketForm";
@@ -364,6 +375,7 @@
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            this.panelViewport.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -387,10 +399,11 @@
         private System.Windows.Forms.ComboBox comboBoxSouvenir;
         private System.Windows.Forms.Label labelSouvenir;
         private System.Windows.Forms.Label labelCurrency;
-        private System.Windows.Forms.Panel panelSeating;
         private System.Windows.Forms.Label labelSeatInfo;
         private System.Windows.Forms.GroupBox groupBoxProfile;
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.Label labelAccountName;
+        private System.Windows.Forms.Panel panelViewport;
+        private System.Windows.Forms.Panel panelSeating;
     }
 }

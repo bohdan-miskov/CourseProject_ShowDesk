@@ -1,18 +1,9 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using CourseProject_ShowDesk.Scripts.Constants;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using CourseProject_ShowDesk.Forms;
-using System.Reflection;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
+using System;
+using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
@@ -20,15 +11,21 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
     {
         private readonly EmployeeManager employeeManager;
 
-        //private readonly string cipher = new string('*', 12);
-
         private readonly Employee userAccount;
 
         public ManageEmployeesForm(Employee userAccount)
         {
             InitializeComponent();
 
-            employeeManager = new EmployeeManager(new EmployeeBaseService());
+            try
+            {
+                employeeManager = new EmployeeManager(new EmployeeBaseService());
+            }
+            catch (DatabaseConnectionException ex)
+            {
+                MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
+            }
 
             labelAccountName.Text = userAccount.FullName;
             this.userAccount = userAccount;
@@ -133,7 +130,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                     employee.Id,
                     employee.FullName,
                     employee.Login,
-                    AppConstants.PasswordCypher,
+                    new String(AppConstants.PasswordChar, employee.Password.Length),
                     employee.GetStringOfProfessionList()
                     );
         }
@@ -163,7 +160,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void AddEmployee()
         {
-            AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(userAccount,employeeManager.Employees);
+            AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(userAccount, employeeManager.Employees);
             this.Hide();
             addEmployeeForm.ShowDialog();
             this.Show();
@@ -176,13 +173,13 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             Guid id = GetCurrentRowId();
 
-            AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(userAccount,employeeManager.Employees, employeeManager.GetById(id));
+            AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(userAccount, employeeManager.Employees, employeeManager.GetById(id));
             this.Hide();
             editEmployeeForm.ShowDialog();
             this.Show();
 
             if (editEmployeeForm.GetIsValid())
-                 employeeManager.UpdateEmployee(editEmployeeForm.GetEmployee());
+                employeeManager.UpdateEmployee(editEmployeeForm.GetEmployee());
         }
 
         private void RemoveEmployee()
@@ -202,12 +199,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             Guid id = GetCurrentRowId();
 
-            dataGridViewEmployees.CurrentRow.Cells[3].Value=employeeManager.GetById(id).Password;
+            dataGridViewEmployees.CurrentRow.Cells[3].Value = employeeManager.GetById(id).Password;
         }
-
         private void HidePassword()
         {
-            dataGridViewEmployees.CurrentRow.Cells[3].Value = AppConstants.PasswordCypher;
+            string currentPassword = dataGridViewEmployees.CurrentRow.Cells[3].Value.ToString();
+            dataGridViewEmployees.CurrentRow.Cells[3].Value = new String(AppConstants.PasswordChar, currentPassword.Length); ;
         }
     }
 }

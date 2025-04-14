@@ -1,10 +1,7 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CourseProject_ShowDesk.Scripts.Utilities;
-using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 {
@@ -42,7 +39,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
         public void AddPerformance(Performance perf)
         {
             performances.Add(perf);
-            database.AddPerformance(perf); 
+            database.AddPerformance(perf);
         }
 
         public void RemovePerformance(Guid id)
@@ -69,7 +66,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
                 performances[index] = updatedPerformance;
                 database.UpdatePerformance(updatedPerformance);
             }
-        } 
+        }
     }
 
 }

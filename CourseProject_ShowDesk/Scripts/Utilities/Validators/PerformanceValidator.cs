@@ -1,17 +1,14 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
-using CourseProject_ShowDesk.Scripts.Constants;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
 {
     public class PerformanceValidator
     {
         private readonly List<Performance> performances;
-        public PerformanceValidator(List<Performance> performances) 
+        public PerformanceValidator(List<Performance> performances)
         {
             this.performances = performances;
         }

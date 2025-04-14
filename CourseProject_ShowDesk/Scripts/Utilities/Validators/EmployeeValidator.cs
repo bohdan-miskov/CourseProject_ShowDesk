@@ -1,9 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
 {
@@ -78,7 +75,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
 
         private bool ValidateProfessions(Employee employee, out string errorMessage)
         {
-            if (employee.ProfessionList.Count==0)
+            if (employee.ProfessionList.Count == 0)
             {
                 errorMessage = "At least one profession must be selected.";
                 return false;

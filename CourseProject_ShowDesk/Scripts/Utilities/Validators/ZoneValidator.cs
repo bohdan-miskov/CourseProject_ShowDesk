@@ -1,9 +1,5 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
 {
@@ -24,7 +20,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             if (!ValidateIncrease(zone.Increase, out errorMessage))
                 return false;
 
-            if (!ValidatePositionRange(zone.StartPosition, zone.EndPosition, zone,  out errorMessage))
+            if (!ValidatePositionRange(zone.StartPosition, zone.EndPosition, zone, out errorMessage))
                 return false;
 
             errorMessage = null;

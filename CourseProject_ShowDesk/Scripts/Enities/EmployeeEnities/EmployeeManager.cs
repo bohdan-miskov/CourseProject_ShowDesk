@@ -1,9 +1,7 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 {
@@ -17,12 +15,12 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
             database = databaseService;
             LoadFromDatabase();
         }
-        public List<Employee> Employees 
-        { 
-            get 
-            { 
-                return employees; 
-            } 
+        public List<Employee> Employees
+        {
+            get
+            {
+                return employees;
+            }
         }
 
         public void LoadFromDatabase()

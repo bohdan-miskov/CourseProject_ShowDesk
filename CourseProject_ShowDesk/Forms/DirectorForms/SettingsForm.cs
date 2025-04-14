@@ -1,15 +1,12 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using CourseProject_ShowDesk.Scripts.Constants;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
@@ -18,47 +15,14 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
     {
         private readonly AppConstantsData appConstantsData;
 
-        private readonly string typeOfFile = ".json";
-
         public SettingsForm(Employee userAccount)
         {
             InitializeComponent();
 
             appConstantsData = AppConstants.CloneConstants();
-
             labelAccountName.Text = userAccount.FullName;
 
             PopulateAllField();
-        }
-
-        private void TextBoxEmployeesFileName_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) textBoxStagesCollectionName.Focus();
-        }
-
-        private void TextBoxStagesFileName_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) textBoxPerformancesCollectionName.Focus();
-        }
-
-        private void TextBoxPerformancesFileName_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) numericUpDownStandardIncrease.Focus();
-        }
-
-        private void NumericUpDownStandardIncrease_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) numericUpDownStandardPlusIncrease.Focus();
-        }
-
-        private void NumericUpDownStandardPlusIncrease_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) numericUpDownPremiumIncrease.Focus();
-        }
-
-        private void NumericUpDownPremiumIncrease_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) dateTimePickerMinBreak.Focus();
         }
         private void DateTimePickerMinBreak_KeyUp(object sender, KeyEventArgs e)
         {
@@ -72,7 +36,84 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void DateTimePickerMaxDuration_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter) comboBoxListName.Focus();
+            if (e.KeyCode == Keys.Enter) numericUpDownStandardIncrease.Focus();
+        }
+        private void NumericUpDownStandardIncrease_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) numericUpDownStandardPlusIncrease.Focus();
+        }
+
+        private void NumericUpDownStandardPlusIncrease_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) numericUpDownPremiumIncrease.Focus();
+        }
+
+        private void NumericUpDownPremiumIncrease_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) checkBoxReceiptPrint.Focus();
+        }
+        private void CheckBoxReceiptPrint_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) textBoxReceiptSavePath.Focus();
+        }
+
+        private void TextBoxReceiptSavePath_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) numericUpDownRangeDateOfPastPerformances.Focus();
+        }
+
+        private void NumericUpDownRangeDateOfPastPerformances_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) buttonSavePerformanceSettings.Focus();
+        }
+
+        private void TextBoxGeneralCollectionName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) textBoxEmployeesCollectionName.Focus();
+        }
+        private void TextBoxEmployeesCollectionName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) textBoxStagesCollectionName.Focus();
+        }
+
+        private void TextBoxStagesCollectionName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) textBoxPerformancesCollectionName.Focus();
+        }
+
+        private void TextBoxPerformancesCollectionName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) textBoxPastPerformancesCollectionName.Focus();
+        }
+
+        private void TextBoxPastPerformancesCollectionName_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) dateTimePickerIntervalEmployees.Focus();
+        }
+
+        private void DateTimePickerIntervalEmployees_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) dateTimePickerIntervalStages.Focus();
+        }
+
+        private void DateTimePickerIntervalStages_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) dateTimePickerIntervalPerformances.Focus();
+        }
+
+        private void DateTimePickerIntervalPerformances_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) dateTimePickerIntervalTickets.Focus();
+        }
+
+        private void DateTimePickerIntervalTickets_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) textBoxDataBaseLink.Focus();
+        }
+
+        private void TextBoxDataBaseLink_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) buttonSaveDatabaseSettings.Focus();
         }
 
         private void ComboBoxListName_KeyUp(object sender, KeyEventArgs e)
@@ -100,12 +141,31 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             if (e.KeyCode == Keys.Enter) listBoxViewNames.Focus();
         }
 
-        private void NumericUpDownRangeDateOfPastPerformances_KeyUp(object sender, KeyEventArgs e)
+        private void TextBoxSeatColor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) dateTimePickerIntervalPerformances.Focus();
+        }
+
+        private void ButtonChangeSeatColor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) buttonChangeSeatHoverColor.Focus();
+        }
+
+        private void TextBoxSeatHoverColor_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) buttonChangeSeatHoverColor.Focus();
+        }
+
+        private void ButtonChangeSeatHoverColor_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) textBoxCurrencySymbol.Focus();
         }
-
         private void TextBoxCurrencySymbol_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) textBoxPasswordChar.Focus();
+        }
+
+        private void TextBoxPasswordChar_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) buttonSaveOtherSettings.Focus();
         }
@@ -149,66 +209,126 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void ButtonSaveName_Click(object sender, EventArgs e)
         {
-            if (!ValidateNamesGroup()) return;
-
-            SaveItem();
-
-            PopulateListBoxName();
-            listBoxViewNames.SelectedIndex = 0;
-
-            PopulateTextBoxName();
+            SaveNamesSettings();
         }
 
         private void ButtonCancelName_Click(object sender, EventArgs e)
         {
             PopulateTextBoxName();
         }
-
+        private void ButtonSelectReceiptFolder_Click(object sender, EventArgs e)
+        {
+            SelectFolder();
+        }
+        private void ButtonChangeSeatColor_Click(object sender, EventArgs e)
+        {
+            SetSeatBaseColor();
+        }
+        private void ButtonChangeSeatHoverColor_Click(object sender, EventArgs e)
+        {
+            SetSeatHoverColor();
+        }
+        private void ButtonSavePerformanceSettings_Click(object sender, EventArgs e)
+        {
+            SavePerformanceSettings();
+        }
+        private void ButtonCancelPerformanceSettings_Click(object sender, EventArgs e)
+        {
+            PopulatePerformancePage();
+        }
+        private void ButtonSaveDatabaseSettings_Click(object sender, EventArgs e)
+        {
+            SaveDatabaseSettings();
+        }
+        private void ButtonCancelDatabaseSettings_Click(object sender, EventArgs e)
+        {
+            PopulateDatabasePage();
+        }
         private void ButtonSaveOtherSettings_Click(object sender, EventArgs e)
         {
-            SaveSettings();
+            SaveOtherSettings();
         }
-
-        private void ButtonCancelChanges_Click(object sender, EventArgs e)
+        private void ButtonCancelOtherChanges_Click(object sender, EventArgs e)
         {
-            this.Close();
+            PopulateOtherPage();
         }
-
         private void PopulateAllField()
         {
-            PopulateFileNameGroup();
-            PopulateIncreaseGroup();
+            PopulatePerformancePage();
+            PopulateDatabasePage();
+            PopulateOtherPage();
+        }
+        private void PopulatePerformancePage()
+        {
             PopuLateDurationGroup();
+            PopulateIncreaseGroup();
+            PopulateReceiptGroup();
+            PopulatePastPerformancesGroup();
+        }
+        private void PopulateDatabasePage()
+        {
+            PopulateCollectionNameGroup();
+            PopulateUpdateIntervalGroup();
+            PopulateDatabaseLinksGroup();
+        }
+        private void PopulateOtherPage()
+        {
             PopulateNamesGroup();
+            PopulateStageGroup();
             PopulateOtherGroup();
         }
-
-        private void PopulateFileNameGroup()
-        {
-            textBoxEmployeesCollectionName.Text = appConstantsData.EmployeesFileName.Split('.')[0];
-            textBoxStagesCollectionName.Text = appConstantsData.StagesFileName.Split('.')[0];
-            textBoxPerformancesCollectionName.Text = appConstantsData.PerformancesFileName.Split('.')[0];
-        }
-
         private void PopulateIncreaseGroup()
         {
-            numericUpDownStandardIncrease.Value =Convert.ToDecimal(appConstantsData.StandardIncrease);
+            numericUpDownStandardIncrease.Value = Convert.ToDecimal(appConstantsData.StandardIncrease);
             numericUpDownStandardPlusIncrease.Value = Convert.ToDecimal(appConstantsData.StandardPlusIncrease);
             numericUpDownPremiumIncrease.Value = Convert.ToDecimal(appConstantsData.PremiumIncrease);
         }
-
         private void PopuLateDurationGroup()
         {
             dateTimePickerMinBreak.Value = DateTime.Today + appConstantsData.MinBreakBetweenPerformance;
             dateTimePickerInitialDuration.Value = DateTime.Today + appConstantsData.InitialPerformanceDuration;
             dateTimePickerMaxDuration.Value = DateTime.Today + appConstantsData.MaxDuration;
         }
-
+        private void PopulateReceiptGroup()
+        {
+            checkBoxReceiptPrint.Checked = appConstantsData.IsPrintReceipt;
+            textBoxReceiptSavePath.Text = appConstantsData.SavePathReceipt;
+        }
+        private void PopulatePastPerformancesGroup()
+        {
+            numericUpDownRangeDateOfPastPerformances.Value = appConstantsData.RangeDateOfPastPerformances;
+        }
+        private void PopulateCollectionNameGroup()
+        {
+            textBoxGeneralCollectionName.Text = appConstantsData.GeneralCollectionName;
+            textBoxEmployeesCollectionName.Text = appConstantsData.EmployeesCollectionName;
+            textBoxStagesCollectionName.Text = appConstantsData.StagesCollectionName;
+            textBoxPerformancesCollectionName.Text = appConstantsData.PerformancesCollectionName;
+            textBoxPastPerformancesCollectionName.Text = appConstantsData.PastPerformancesCollectionName;
+        }
+        private void PopulateUpdateIntervalGroup()
+        {
+            dateTimePickerIntervalEmployees.Value = DateTime.Today + TimeSpan.FromMilliseconds(appConstantsData.UpdateEmployeesInterval);
+            dateTimePickerIntervalStages.Value = DateTime.Today + TimeSpan.FromMilliseconds(appConstantsData.UpdateStagesInterval);
+            dateTimePickerIntervalPerformances.Value = DateTime.Today + TimeSpan.FromMilliseconds(appConstantsData.UpdatePerformancesInterval);
+            dateTimePickerIntervalTickets.Value = DateTime.Today + TimeSpan.FromMilliseconds(appConstantsData.UpdateTicketsInterval);
+        }
+        private void PopulateDatabaseLinksGroup()
+        {
+            textBoxDataBaseLink.Text = appConstantsData.ConnectionString;
+        }
+        private void PopulateStageGroup()
+        {
+            textBoxSeatColor.Text = appConstantsData.SeatBaseColor.Name;
+            buttonChangeSeatHoverColor.BackColor = appConstantsData.SeatBaseColor;
+            textBoxSeatHoverColor.Text = appConstantsData.SeatHoverColor.Name;
+            buttonChangeSeatHoverColor.BackColor = appConstantsData.SeatHoverColor;
+        }
         private void PopulateNamesGroup()
         {
             PopulateComboBoxName();
             comboBoxListName.SelectedIndex = 0;
-            
+
             PopulateListBoxName();
             listBoxViewNames.SelectedIndex = 0;
 
@@ -218,8 +338,8 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void PopulateOtherGroup()
         {
-            numericUpDownRangeDateOfPastPerformances.Value = Convert.ToDecimal(appConstantsData.RangeDateOfPastPerformances);
             textBoxCurrencySymbol.Text = appConstantsData.CurrencySymbol.ToString();
+            textBoxPasswordChar.Text = appConstantsData.PasswordChar.ToString();
         }
 
         private void PopulateComboBoxName()
@@ -278,36 +398,66 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             else if (indexList == 3)
                 appConstantsData.ListOfDrinks[indexItem] = newName;
         }
-
-        private bool ValidateSettings()
+        private void SelectFolder()
         {
-            if (!ValidateFileNameGroup()) return false;
+            using (var folderDialog = new FolderBrowserDialog())
+            {
+                folderDialog.Description = "Select folder for save";
+                folderDialog.ShowNewFolderButton = true;
+
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    textBoxReceiptSavePath.Text = folderDialog.SelectedPath;
+                }
+            }
+        }
+        private Color SelectColor()
+        {
+            if (colorDialogSettings.ShowDialog() == DialogResult.OK)
+            {
+                return colorDialogSettings.Color;
+            }
+            return Color.Empty;
+        }
+        private void SetSeatBaseColor()
+        {
+            Color newColor = SelectColor();
+            if (newColor != Color.Empty)
+            {
+                buttonChangeSeatColor.BackColor = newColor;
+                textBoxSeatColor.Text = newColor.Name;
+            }
+        }
+        private void SetSeatHoverColor()
+        {
+            Color newColor = SelectColor();
+            if (newColor != Color.Empty)
+            {
+                buttonChangeSeatHoverColor.BackColor = newColor;
+                textBoxSeatHoverColor.Text = newColor.Name;
+            }
+        }
+        private bool ValidatePerformanceSettings()
+        {
             if (!ValidateIncreaseGroup()) return false;
             if (!ValidateDurationGroup()) return false;
-            if (!ValidateOtherGroup()) return false;
-
+            if (!ValidateReceiptGroup()) return false;
+            if (!ValidatePastPerformancesGroup()) return false;
             return true;
         }
-
-        private bool ValidateFileNameGroup()
+        private bool ValidateDatabaseSettings()
         {
-            if (!ParametersValidator.FileNameValidator(textBoxEmployeesCollectionName.Text) ||
-                !ParametersValidator.FileNameValidator(textBoxStagesCollectionName.Text) ||
-                !ParametersValidator.FileNameValidator(textBoxPerformancesCollectionName.Text))
-            {
-                MessageBox.Show(
-                    "There was an error in the name of the file: the file name must be more than four characters long",
-                    "File Name Validation Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                groupBoxCollectionName.Focus();
-
-                return false;
-            }
+            if (!ValidateCollectionNameGroup()) return false;
+            if (!ValidateUpdateIntervalGroup()) return false;
+            if (!ValidateDatabaseLinksGroup()) return false;
             return true;
         }
-
+        private bool ValidateOtherSettings()
+        {
+            if (!ValidateStageGroup()) return false;
+            if (!ValidateOtherGroup()) return false;
+            return true;
+        }
         private bool ValidateIncreaseGroup()
         {
             if (numericUpDownStandardIncrease.Value < 1 ||
@@ -345,7 +495,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
                 return false;
             }
-
             if (initialDuration > maxDuration)
             {
                 MessageBox.Show(
@@ -355,14 +504,27 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                     MessageBoxIcon.Error);
 
                 dateTimePickerInitialDuration.Focus();
+                return false;
+            }
+            return true;
+        }
+        private bool ValidateReceiptGroup()
+        {
+            if (!Directory.Exists(textBoxReceiptSavePath.Text) && !string.IsNullOrWhiteSpace(textBoxReceiptSavePath.Text))
+            {
+                MessageBox.Show(
+                   "This directory not found",
+                   "Receipt directory Error",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+
+                textBoxReceiptSavePath.Focus();
 
                 return false;
             }
-
             return true;
         }
-
-        private bool ValidateOtherGroup()
+        private bool ValidatePastPerformancesGroup()
         {
             if (numericUpDownRangeDateOfPastPerformances.Value < 0)
             {
@@ -377,7 +539,94 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 return false;
             }
 
-            if (textBoxCurrencySymbol.Text.Length == 0)
+            return true;
+        }
+        private bool ValidateCollectionNameGroup()
+        {
+            if (!ParametersValidator.FileNameValidator(textBoxGeneralCollectionName.Text) ||
+                !ParametersValidator.FileNameValidator(textBoxEmployeesCollectionName.Text) ||
+                !ParametersValidator.FileNameValidator(textBoxStagesCollectionName.Text) ||
+                !ParametersValidator.FileNameValidator(textBoxPerformancesCollectionName.Text) ||
+                !ParametersValidator.FileNameValidator(textBoxPastPerformancesCollectionName.Text))
+            {
+                MessageBox.Show(
+                    "There was an error in the name of the file: the file name must be more than four characters long",
+                    "File Name Validation Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                groupBoxCollectionName.Focus();
+
+                return false;
+            }
+            return true;
+        }
+        private bool ValidateUpdateIntervalGroup()
+        {
+            TimeSpan updateEmployees = new TimeSpan(0, dateTimePickerIntervalEmployees.Value.Minute, dateTimePickerIntervalEmployees.Value.Second);
+            TimeSpan updateStages = new TimeSpan(0, dateTimePickerIntervalStages.Value.Minute, dateTimePickerIntervalStages.Value.Second);
+            TimeSpan updatePerformaces = new TimeSpan(0, dateTimePickerIntervalPerformances.Value.Minute, dateTimePickerIntervalPerformances.Value.Second);
+            TimeSpan updateTickets = new TimeSpan(0, dateTimePickerIntervalTickets.Value.Minute, dateTimePickerIntervalTickets.Value.Second);
+
+
+            if (updateEmployees <= TimeSpan.Zero || updateStages <= TimeSpan.Zero || updatePerformaces <= TimeSpan.Zero || updateTickets <= TimeSpan.Zero)
+            {
+                MessageBox.Show(
+                    "Update intervals must be greater than zero.",
+                    "Update intervals validation Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                groupBoxUpdateInterval.Focus();
+
+                return false;
+            }
+
+            return true;
+        }
+        private bool ValidateDatabaseLinksGroup()
+        {
+            string connectionString = textBoxDataBaseLink.Text;
+            try
+            {
+                var client = new MongoClient(connectionString);
+                var databases = client.ListDatabaseNames().ToList();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"MongoDB connection failed: {ex.Message}",
+                    "Database link error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                textBoxDataBaseLink.Focus();
+                return false;
+            }
+        }
+        private bool ValidateStageGroup()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxSeatColor.Text) ||
+                string.IsNullOrWhiteSpace(textBoxSeatHoverColor.Text))
+            {
+                MessageBox.Show(
+                    "Seat colors cannot be null or empty.",
+                    "Seat colors Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                groupBoxStage.Focus();
+
+                return false;
+            }
+
+            return true;
+        }
+        private bool ValidateOtherGroup()
+        {
+            if (string.IsNullOrWhiteSpace(textBoxCurrencySymbol.Text))
             {
                 MessageBox.Show(
                     "Currency symbol must have 1 symbol",
@@ -390,12 +639,24 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 return false;
             }
 
+            if (string.IsNullOrWhiteSpace(textBoxPasswordChar.Text))
+            {
+                MessageBox.Show(
+                    "Password char cannot be null or empty.",
+                    "Password char Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                textBoxPasswordChar.Focus();
+
+                return false;
+            }
+
             return true;
         }
-
         private bool ValidateNamesGroup()
         {
-            if(!ParametersValidator.NameValidator(textBoxItemName.Text))
+            if (!ParametersValidator.NameValidator(textBoxItemName.Text))
             {
                 MessageBox.Show(
                     "There was an error in the name: the name must be more than two characters long",
@@ -409,33 +670,62 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             return true;
         }
-        private void SaveSettings()
+        private void SavePerformanceSettings()
         {
-            if (ValidateSettings())
+            if (ValidatePerformanceSettings())
             {
-                SaveAllField();
+                SavePerformanceFields();
 
                 AppCostantsManager.SaveAppConstantsToFile(appConstantsData);
-
-                this.Close();
             }
         }
-
-        private void SaveAllField()
+        private void SaveDatabaseSettings()
         {
-            SaveFileNameGroup();
+            if (ValidateDatabaseSettings())
+            {
+                SaveDatabaseFields();
+
+                AppCostantsManager.SaveAppConstantsToFile(appConstantsData);
+            }
+        }
+        private void SaveNamesSettings()
+        {
+            if (!ValidateNamesGroup()) return;
+
+            SaveItem();
+
+            PopulateListBoxName();
+            listBoxViewNames.SelectedIndex = 0;
+
+            PopulateTextBoxName();
+        }
+        private void SaveOtherSettings()
+        {
+            if (ValidateOtherSettings())
+            {
+                SaveOtherFields();
+
+                AppCostantsManager.SaveAppConstantsToFile(appConstantsData);
+            }
+        }
+        private void SavePerformanceFields()
+        {
             SaveIncreaseGroup();
             SaveDurationGroup();
+            SaveReceiptGroup();
+            SavePastPerformancesGroup();
+        }
+        private void SaveDatabaseFields()
+        {
+            SaveCollectionNamesGroup();
+            SaveUpdateIntervalGroup();
+            SaveDatabaseLinksGroup();
+        }
+        private void SaveOtherFields()
+        {
+            SaveStageGroup();
             SaveOtherGroup();
         }
-
-        private void SaveFileNameGroup()
-        {
-            appConstantsData.EmployeesFileName = textBoxEmployeesCollectionName.Text+typeOfFile;
-            appConstantsData.StagesFileName = textBoxStagesCollectionName.Text+typeOfFile;
-            appConstantsData.PerformancesFileName = textBoxPerformancesCollectionName.Text + typeOfFile;
-        }
-
         private void SaveIncreaseGroup()
         {
             appConstantsData.StandardIncrease = Convert.ToDouble(numericUpDownStandardIncrease.Value);
@@ -449,10 +739,53 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             appConstantsData.InitialPerformanceDuration = new TimeSpan(dateTimePickerInitialDuration.Value.Hour, dateTimePickerInitialDuration.Value.Minute, 0);
             appConstantsData.MaxDuration = new TimeSpan(dateTimePickerMaxDuration.Value.Hour, dateTimePickerMaxDuration.Value.Minute, 0);
         }
+        private void SaveReceiptGroup()
+        {
+            appConstantsData.IsPrintReceipt = checkBoxReceiptPrint.Checked;
+            appConstantsData.SavePathReceipt = textBoxReceiptSavePath.Text;
+        }
+        private void SavePastPerformancesGroup()
+        {
+            appConstantsData.RangeDateOfPastPerformances = (int)numericUpDownRangeDateOfPastPerformances.Value;
+        }
+        private void SaveCollectionNamesGroup()
+        {
+            appConstantsData.GeneralCollectionName = textBoxGeneralCollectionName.Text;
+            appConstantsData.EmployeesCollectionName = textBoxEmployeesCollectionName.Text;
+            appConstantsData.StagesCollectionName = textBoxStagesCollectionName.Text;
+            appConstantsData.PerformancesCollectionName = textBoxPerformancesCollectionName.Text;
+            appConstantsData.PastPerformancesCollectionName = textBoxPastPerformancesCollectionName.Text;
+        }
+        private void SaveUpdateIntervalGroup()
+        {
+            DateTime performanceValue = dateTimePickerIntervalPerformances.Value;
+            TimeSpan performanceInterval = new TimeSpan(0, performanceValue.Minute, performanceValue.Second);
+            appConstantsData.UpdatePerformancesInterval = (int)performanceInterval.TotalMilliseconds;
 
+            DateTime employeeValue = dateTimePickerIntervalEmployees.Value;
+            TimeSpan employeeInterval = new TimeSpan(0, employeeValue.Minute, employeeValue.Second);
+            appConstantsData.UpdateEmployeesInterval = (int)employeeInterval.TotalMilliseconds;
+
+            DateTime stageValue = dateTimePickerIntervalStages.Value;
+            TimeSpan stageInterval = new TimeSpan(0, stageValue.Minute, stageValue.Second);
+            appConstantsData.UpdateStagesInterval = (int)stageInterval.TotalMilliseconds;
+
+            DateTime ticketValue = dateTimePickerIntervalTickets.Value;
+            TimeSpan ticketInterval = new TimeSpan(0, ticketValue.Minute, ticketValue.Second);
+            appConstantsData.UpdateTicketsInterval = (int)ticketInterval.TotalMilliseconds;
+        }
+        private void SaveDatabaseLinksGroup()
+        {
+            appConstantsData.ConnectionString = textBoxDataBaseLink.Text;
+        }
+        private void SaveStageGroup()
+        {
+            appConstantsData.SeatBaseColor = Color.FromName(textBoxSeatColor.Text);
+            appConstantsData.SeatHoverColor = Color.FromName(textBoxSeatHoverColor.Text);
+        }
         private void SaveOtherGroup()
         {
-            appConstantsData.RangeDateOfPastPerformances = Convert.ToInt32(numericUpDownRangeDateOfPastPerformances.Value);
+            appConstantsData.PasswordChar = Convert.ToChar(textBoxPasswordChar.Text);
             appConstantsData.CurrencySymbol = Convert.ToChar(textBoxCurrencySymbol.Text);
         }
     }

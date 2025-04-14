@@ -1,10 +1,9 @@
-﻿using CourseProject_ShowDesk.Scripts;
-using CourseProject_ShowDesk.Scripts.Constants;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
-using CourseProject_ShowDesk.Scripts.Utilities.Validators;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -20,7 +19,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private bool isValid;
 
-        public AddEditPerformanceForm(Employee userAccount,List<Stage> stages, List<Performance> performances, Performance currentPerformance = null)
+        public AddEditPerformanceForm(Employee userAccount, List<Stage> stages, List<Performance> performances, Performance currentPerformance = null)
         {
             InitializeComponent();
 
@@ -131,10 +130,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void CreatePerformance()
         {
-            currentPerformance.Name= textBoxPerformanceName.Text;
-            currentPerformance.PerformanceDateTime= dateTimePickerPerfomanceDate.Value;
+            currentPerformance.Name = textBoxPerformanceName.Text;
+            currentPerformance.PerformanceDateTime = dateTimePickerPerfomanceDate.Value;
             currentPerformance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
-            currentPerformance.Duration= new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
+            currentPerformance.Duration = new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
 
             if (currentPerformance.StageId != stages[comboBoxStage.SelectedIndex].Id)
             {
@@ -149,7 +148,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                                                     MessageBoxIcon.Warning);
                     if (result == DialogResult.No) return;
                 }
-                
+
                 currentPerformance.AvailablePositions = stages[comboBoxStage.SelectedIndex].GetPositions();
                 currentPerformance.RemoveAllTickets();
                 currentPerformance.StageId = stages[comboBoxStage.SelectedIndex].Id;

@@ -1,6 +1,4 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket;
-
-namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket
+﻿namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket
 {
     public class CreatePremiumTicket : ICreateTicket
     {
@@ -17,7 +15,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.Facto
         {
             return new PremiumTicket
             {
-                Type="Premium",
+                Type = "Premium",
                 Drink = drink,
                 Souvenir = souvenir
             };

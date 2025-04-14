@@ -1,12 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
-using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
@@ -16,10 +10,10 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         private Guid id = Guid.NewGuid();
         private int seatNumber;
         private bool isAvailable = true;
-        private Zone currentZone=null;
+        private Zone currentZone = null;
         private Color color = Color.LightBlue;
         public Point Location;
-        public Size Size  = new Size(50, 50);
+        public Size Size = new Size(50, 50);
         public bool Enabled = false;
 
 
@@ -72,16 +66,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
         }
 
-        //public void Move(Point newLocation)
-        //{
-        //    this.Location = newLocation;
-        //}
-
-        public void Scale(Size newSize)
-        {
-            Size = newSize;
-        }
-
         public System.Windows.Forms.Label ToLabel()
         {
             System.Windows.Forms.Label label = new System.Windows.Forms.Label
@@ -98,7 +82,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
             };
 
-            
+
 
             label.Paint += (s, e) =>
             {

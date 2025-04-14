@@ -1,11 +1,10 @@
-﻿using CourseProject_ShowDesk.Scripts;
+﻿using CourseProject_ShowDesk.Forms;
 using CourseProject_ShowDesk.Scripts.Constants;
-using CourseProject_ShowDesk.Forms;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 using System;
 using System.Windows.Forms;
-using MongoDB.Bson.Serialization.Serializers;
-using MongoDB.Bson.Serialization;
-using MongoDB.Bson;
 
 namespace CourseProject_ShowDesk
 {
@@ -20,7 +19,14 @@ namespace CourseProject_ShowDesk
             BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            AppCostantsManager.LoadAppConstantsFromFile();
+            try
+            {
+                AppCostantsManager.LoadAppConstantsFromFile();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "\nSo program was loaded default values", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             Application.Run(new AuthenticateForm());
         }
     }

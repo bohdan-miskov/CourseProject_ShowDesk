@@ -1,14 +1,8 @@
-﻿using CourseProject_ShowDesk.Scripts.Utilities.Validators;
-using CourseProject_ShowDesk.Scripts.Constants;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
@@ -21,7 +15,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private bool isValid;
 
-        public AddEditEmployeeForm(Employee userAccount,List<Employee> employees, Employee currentEmployee=null)
+        public AddEditEmployeeForm(Employee userAccount, List<Employee> employees, Employee currentEmployee = null)
         {
             InitializeComponent();
 
@@ -114,13 +108,13 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             currentEmployee.Password = textBoxPassword.Text;
 
             if (checkBoxDirector.Checked)
-                  currentEmployee.AddProfession(AppConstants.ListOfProfessions[0]);
+                currentEmployee.AddProfession(AppConstants.ListOfProfessions[0]);
 
             if (checkBoxAdministrator.Checked)
-                  currentEmployee.AddProfession(AppConstants.ListOfProfessions[1]);
+                currentEmployee.AddProfession(AppConstants.ListOfProfessions[1]);
 
             if (checkBoxCashier.Checked)
-                  currentEmployee.AddProfession(AppConstants.ListOfProfessions[2]);
+                currentEmployee.AddProfession(AppConstants.ListOfProfessions[2]);
         }
         private void SaveEmployee()
         {

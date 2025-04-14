@@ -32,21 +32,25 @@
             this.labelPerformancesCollectionName = new System.Windows.Forms.Label();
             this.textBoxPerformancesCollectionName = new System.Windows.Forms.TextBox();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
-            this.textBoxPasswordCypher = new System.Windows.Forms.TextBox();
-            this.labelPasswordCypher = new System.Windows.Forms.Label();
+            this.textBoxPasswordChar = new System.Windows.Forms.TextBox();
+            this.labelPasswordChar = new System.Windows.Forms.Label();
             this.textBoxCurrencySymbol = new System.Windows.Forms.TextBox();
             this.labelCurrencyChar = new System.Windows.Forms.Label();
             this.buttonCancelOtherSettings = new System.Windows.Forms.Button();
             this.buttonSaveOtherSettings = new System.Windows.Forms.Button();
             this.groupBoxNames = new System.Windows.Forms.GroupBox();
-            this.buttonCancelName = new System.Windows.Forms.Button();
-            this.buttonSaveName = new System.Windows.Forms.Button();
             this.labelItemName = new System.Windows.Forms.Label();
             this.textBoxItemName = new System.Windows.Forms.TextBox();
             this.labelListName = new System.Windows.Forms.Label();
             this.comboBoxListName = new System.Windows.Forms.ComboBox();
             this.listBoxViewNames = new System.Windows.Forms.ListBox();
+            this.buttonCancelName = new System.Windows.Forms.Button();
+            this.buttonSaveName = new System.Windows.Forms.Button();
             this.groupBoxCollectionName = new System.Windows.Forms.GroupBox();
+            this.labelGeneralCollectionName = new System.Windows.Forms.Label();
+            this.textBoxGeneralCollectionName = new System.Windows.Forms.TextBox();
+            this.labelPastPerformancesCollectionName = new System.Windows.Forms.Label();
+            this.textBoxPastPerformancesCollectionName = new System.Windows.Forms.TextBox();
             this.labelEmployeesCollectionName = new System.Windows.Forms.Label();
             this.textBoxEmployeesCollectionName = new System.Windows.Forms.TextBox();
             this.labelStagesCollectionName = new System.Windows.Forms.Label();
@@ -62,6 +66,7 @@
             this.labelRangeDateOfPastPerformances = new System.Windows.Forms.Label();
             this.numericUpDownRangeDateOfPastPerformances = new System.Windows.Forms.NumericUpDown();
             this.groupBoxReceipt = new System.Windows.Forms.GroupBox();
+            this.buttonSelectReceiptFolder = new System.Windows.Forms.Button();
             this.checkBoxReceiptPrint = new System.Windows.Forms.CheckBox();
             this.textBoxReceiptSavePath = new System.Windows.Forms.TextBox();
             this.labelReceiptSavePath = new System.Windows.Forms.Label();
@@ -82,10 +87,6 @@
             this.tabPageDatabaseSettings = new System.Windows.Forms.TabPage();
             this.buttonCancelDatabaseSettings = new System.Windows.Forms.Button();
             this.buttonSaveDatabaseSettings = new System.Windows.Forms.Button();
-            this.numericUpDownIntervalTickets = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownIntervalEmloyees = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownIntervalStages = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownIntervalPerformances = new System.Windows.Forms.NumericUpDown();
             this.groupBoxUpdateInterval = new System.Windows.Forms.GroupBox();
             this.dateTimePickerIntervalTickets = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerIntervalPerformances = new System.Windows.Forms.DateTimePicker();
@@ -106,6 +107,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSeatColor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.colorDialogSettings = new System.Windows.Forms.ColorDialog();
             this.groupBoxOther.SuspendLayout();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxCollectionName.SuspendLayout();
@@ -122,10 +124,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStandardIncrease)).BeginInit();
             this.groupBoxPerformanceDuration.SuspendLayout();
             this.tabPageDatabaseSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalTickets)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalEmloyees)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalStages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalPerformances)).BeginInit();
             this.groupBoxUpdateInterval.SuspendLayout();
             this.groupBoxDataBaseLinks.SuspendLayout();
             this.tabPageOtherSettings.SuspendLayout();
@@ -137,7 +135,7 @@
             this.labelPerformancesCollectionName.AutoSize = true;
             this.labelPerformancesCollectionName.BackColor = System.Drawing.Color.Transparent;
             this.labelPerformancesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPerformancesCollectionName.Location = new System.Drawing.Point(6, 104);
+            this.labelPerformancesCollectionName.Location = new System.Drawing.Point(11, 127);
             this.labelPerformancesCollectionName.Name = "labelPerformancesCollectionName";
             this.labelPerformancesCollectionName.Size = new System.Drawing.Size(116, 21);
             this.labelPerformancesCollectionName.TabIndex = 0;
@@ -146,18 +144,18 @@
             // textBoxPerformancesCollectionName
             // 
             this.textBoxPerformancesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPerformancesCollectionName.Location = new System.Drawing.Point(137, 101);
+            this.textBoxPerformancesCollectionName.Location = new System.Drawing.Point(137, 124);
             this.textBoxPerformancesCollectionName.Name = "textBoxPerformancesCollectionName";
             this.textBoxPerformancesCollectionName.Size = new System.Drawing.Size(148, 28);
             this.textBoxPerformancesCollectionName.TabIndex = 1;
             this.textBoxPerformancesCollectionName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPerformancesFileName_KeyPress);
-            this.textBoxPerformancesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPerformancesFileName_KeyUp);
+            this.textBoxPerformancesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPerformancesCollectionName_KeyUp);
             // 
             // groupBoxOther
             // 
             this.groupBoxOther.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBoxOther.Controls.Add(this.textBoxPasswordCypher);
-            this.groupBoxOther.Controls.Add(this.labelPasswordCypher);
+            this.groupBoxOther.Controls.Add(this.textBoxPasswordChar);
+            this.groupBoxOther.Controls.Add(this.labelPasswordChar);
             this.groupBoxOther.Controls.Add(this.textBoxCurrencySymbol);
             this.groupBoxOther.Controls.Add(this.labelCurrencyChar);
             this.groupBoxOther.Location = new System.Drawing.Point(309, 182);
@@ -167,25 +165,26 @@
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "Other";
             // 
-            // textBoxPasswordCypher
+            // textBoxPasswordChar
             // 
-            this.textBoxPasswordCypher.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPasswordCypher.Location = new System.Drawing.Point(182, 82);
-            this.textBoxPasswordCypher.MaxLength = 1;
-            this.textBoxPasswordCypher.Name = "textBoxPasswordCypher";
-            this.textBoxPasswordCypher.Size = new System.Drawing.Size(120, 28);
-            this.textBoxPasswordCypher.TabIndex = 10;
+            this.textBoxPasswordChar.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPasswordChar.Location = new System.Drawing.Point(182, 82);
+            this.textBoxPasswordChar.MaxLength = 1;
+            this.textBoxPasswordChar.Name = "textBoxPasswordChar";
+            this.textBoxPasswordChar.Size = new System.Drawing.Size(120, 28);
+            this.textBoxPasswordChar.TabIndex = 10;
+            this.textBoxPasswordChar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPasswordChar_KeyUp);
             // 
-            // labelPasswordCypher
+            // labelPasswordChar
             // 
-            this.labelPasswordCypher.AutoSize = true;
-            this.labelPasswordCypher.BackColor = System.Drawing.Color.Transparent;
-            this.labelPasswordCypher.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPasswordCypher.Location = new System.Drawing.Point(6, 85);
-            this.labelPasswordCypher.Name = "labelPasswordCypher";
-            this.labelPasswordCypher.Size = new System.Drawing.Size(139, 21);
-            this.labelPasswordCypher.TabIndex = 11;
-            this.labelPasswordCypher.Text = "Password cypher";
+            this.labelPasswordChar.AutoSize = true;
+            this.labelPasswordChar.BackColor = System.Drawing.Color.Transparent;
+            this.labelPasswordChar.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPasswordChar.Location = new System.Drawing.Point(6, 85);
+            this.labelPasswordChar.Name = "labelPasswordChar";
+            this.labelPasswordChar.Size = new System.Drawing.Size(122, 21);
+            this.labelPasswordChar.TabIndex = 11;
+            this.labelPasswordChar.Text = "Password char";
             // 
             // textBoxCurrencySymbol
             // 
@@ -212,18 +211,18 @@
             // buttonCancelOtherSettings
             // 
             this.buttonCancelOtherSettings.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonCancelOtherSettings.Location = new System.Drawing.Point(318, 328);
+            this.buttonCancelOtherSettings.Location = new System.Drawing.Point(485, 328);
             this.buttonCancelOtherSettings.Name = "buttonCancelOtherSettings";
             this.buttonCancelOtherSettings.Size = new System.Drawing.Size(125, 45);
             this.buttonCancelOtherSettings.TabIndex = 8;
             this.buttonCancelOtherSettings.Text = "Cancel";
             this.buttonCancelOtherSettings.UseVisualStyleBackColor = false;
-            this.buttonCancelOtherSettings.Click += new System.EventHandler(this.ButtonCancelChanges_Click);
+            this.buttonCancelOtherSettings.Click += new System.EventHandler(this.ButtonCancelOtherChanges_Click);
             // 
             // buttonSaveOtherSettings
             // 
             this.buttonSaveOtherSettings.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonSaveOtherSettings.Location = new System.Drawing.Point(158, 328);
+            this.buttonSaveOtherSettings.Location = new System.Drawing.Point(319, 328);
             this.buttonSaveOtherSettings.Name = "buttonSaveOtherSettings";
             this.buttonSaveOtherSettings.Size = new System.Drawing.Size(125, 45);
             this.buttonSaveOtherSettings.TabIndex = 7;
@@ -234,8 +233,6 @@
             // groupBoxNames
             // 
             this.groupBoxNames.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBoxNames.Controls.Add(this.buttonCancelName);
-            this.groupBoxNames.Controls.Add(this.buttonSaveName);
             this.groupBoxNames.Controls.Add(this.labelItemName);
             this.groupBoxNames.Controls.Add(this.textBoxItemName);
             this.groupBoxNames.Controls.Add(this.labelListName);
@@ -248,36 +245,12 @@
             this.groupBoxNames.TabStop = false;
             this.groupBoxNames.Text = "Names";
             // 
-            // buttonCancelName
-            // 
-            this.buttonCancelName.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonCancelName.Location = new System.Drawing.Point(145, 269);
-            this.buttonCancelName.Name = "buttonCancelName";
-            this.buttonCancelName.Size = new System.Drawing.Size(108, 32);
-            this.buttonCancelName.TabIndex = 6;
-            this.buttonCancelName.Text = "Cancel";
-            this.buttonCancelName.UseVisualStyleBackColor = false;
-            this.buttonCancelName.Click += new System.EventHandler(this.ButtonCancelName_Click);
-            this.buttonCancelName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonCancelName_KeyUp);
-            // 
-            // buttonSaveName
-            // 
-            this.buttonSaveName.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonSaveName.Location = new System.Drawing.Point(9, 269);
-            this.buttonSaveName.Name = "buttonSaveName";
-            this.buttonSaveName.Size = new System.Drawing.Size(108, 32);
-            this.buttonSaveName.TabIndex = 5;
-            this.buttonSaveName.Text = "Save name";
-            this.buttonSaveName.UseVisualStyleBackColor = false;
-            this.buttonSaveName.Click += new System.EventHandler(this.ButtonSaveName_Click);
-            this.buttonSaveName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonSaveName_KeyUp);
-            // 
             // labelItemName
             // 
             this.labelItemName.AutoSize = true;
             this.labelItemName.BackColor = System.Drawing.Color.Transparent;
             this.labelItemName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelItemName.Location = new System.Drawing.Point(5, 230);
+            this.labelItemName.Location = new System.Drawing.Point(5, 274);
             this.labelItemName.Name = "labelItemName";
             this.labelItemName.Size = new System.Drawing.Size(92, 21);
             this.labelItemName.TabIndex = 3;
@@ -286,7 +259,7 @@
             // textBoxItemName
             // 
             this.textBoxItemName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxItemName.Location = new System.Drawing.Point(99, 227);
+            this.textBoxItemName.Location = new System.Drawing.Point(99, 271);
             this.textBoxItemName.Name = "textBoxItemName";
             this.textBoxItemName.Size = new System.Drawing.Size(154, 28);
             this.textBoxItemName.TabIndex = 4;
@@ -318,16 +291,44 @@
             // 
             this.listBoxViewNames.FormattingEnabled = true;
             this.listBoxViewNames.ItemHeight = 21;
-            this.listBoxViewNames.Location = new System.Drawing.Point(9, 70);
+            this.listBoxViewNames.Location = new System.Drawing.Point(9, 80);
             this.listBoxViewNames.Name = "listBoxViewNames";
-            this.listBoxViewNames.Size = new System.Drawing.Size(244, 151);
+            this.listBoxViewNames.Size = new System.Drawing.Size(244, 172);
             this.listBoxViewNames.TabIndex = 0;
             this.listBoxViewNames.SelectedIndexChanged += new System.EventHandler(this.ListBoxViewNames_SelectedIndexChanged);
             this.listBoxViewNames.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ListBoxViewNames_KeyUp);
             // 
+            // buttonCancelName
+            // 
+            this.buttonCancelName.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonCancelName.Location = new System.Drawing.Point(160, 328);
+            this.buttonCancelName.Name = "buttonCancelName";
+            this.buttonCancelName.Size = new System.Drawing.Size(125, 45);
+            this.buttonCancelName.TabIndex = 6;
+            this.buttonCancelName.Text = "Cancel";
+            this.buttonCancelName.UseVisualStyleBackColor = false;
+            this.buttonCancelName.Click += new System.EventHandler(this.ButtonCancelName_Click);
+            this.buttonCancelName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonCancelName_KeyUp);
+            // 
+            // buttonSaveName
+            // 
+            this.buttonSaveName.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonSaveName.Location = new System.Drawing.Point(15, 328);
+            this.buttonSaveName.Name = "buttonSaveName";
+            this.buttonSaveName.Size = new System.Drawing.Size(125, 45);
+            this.buttonSaveName.TabIndex = 5;
+            this.buttonSaveName.Text = "Save name";
+            this.buttonSaveName.UseVisualStyleBackColor = false;
+            this.buttonSaveName.Click += new System.EventHandler(this.ButtonSaveName_Click);
+            this.buttonSaveName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonSaveName_KeyUp);
+            // 
             // groupBoxCollectionName
             // 
             this.groupBoxCollectionName.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxCollectionName.Controls.Add(this.labelGeneralCollectionName);
+            this.groupBoxCollectionName.Controls.Add(this.textBoxGeneralCollectionName);
+            this.groupBoxCollectionName.Controls.Add(this.labelPastPerformancesCollectionName);
+            this.groupBoxCollectionName.Controls.Add(this.textBoxPastPerformancesCollectionName);
             this.groupBoxCollectionName.Controls.Add(this.labelEmployeesCollectionName);
             this.groupBoxCollectionName.Controls.Add(this.textBoxEmployeesCollectionName);
             this.groupBoxCollectionName.Controls.Add(this.labelStagesCollectionName);
@@ -336,17 +337,57 @@
             this.groupBoxCollectionName.Controls.Add(this.textBoxPerformancesCollectionName);
             this.groupBoxCollectionName.Location = new System.Drawing.Point(6, 6);
             this.groupBoxCollectionName.Name = "groupBoxCollectionName";
-            this.groupBoxCollectionName.Size = new System.Drawing.Size(308, 159);
+            this.groupBoxCollectionName.Size = new System.Drawing.Size(308, 203);
             this.groupBoxCollectionName.TabIndex = 2;
             this.groupBoxCollectionName.TabStop = false;
             this.groupBoxCollectionName.Text = "Colections names";
+            // 
+            // labelGeneralCollectionName
+            // 
+            this.labelGeneralCollectionName.AutoSize = true;
+            this.labelGeneralCollectionName.BackColor = System.Drawing.Color.Transparent;
+            this.labelGeneralCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGeneralCollectionName.Location = new System.Drawing.Point(14, 31);
+            this.labelGeneralCollectionName.Name = "labelGeneralCollectionName";
+            this.labelGeneralCollectionName.Size = new System.Drawing.Size(71, 21);
+            this.labelGeneralCollectionName.TabIndex = 8;
+            this.labelGeneralCollectionName.Text = "General";
+            // 
+            // textBoxGeneralCollectionName
+            // 
+            this.textBoxGeneralCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxGeneralCollectionName.Location = new System.Drawing.Point(137, 24);
+            this.textBoxGeneralCollectionName.Name = "textBoxGeneralCollectionName";
+            this.textBoxGeneralCollectionName.Size = new System.Drawing.Size(148, 28);
+            this.textBoxGeneralCollectionName.TabIndex = 9;
+            this.textBoxGeneralCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxGeneralCollectionName_KeyUp);
+            // 
+            // labelPastPerformancesCollectionName
+            // 
+            this.labelPastPerformancesCollectionName.AutoSize = true;
+            this.labelPastPerformancesCollectionName.BackColor = System.Drawing.Color.Transparent;
+            this.labelPastPerformancesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPastPerformancesCollectionName.Location = new System.Drawing.Point(11, 155);
+            this.labelPastPerformancesCollectionName.Name = "labelPastPerformancesCollectionName";
+            this.labelPastPerformancesCollectionName.Size = new System.Drawing.Size(113, 42);
+            this.labelPastPerformancesCollectionName.TabIndex = 6;
+            this.labelPastPerformancesCollectionName.Text = "Past\r\nperformances";
+            // 
+            // textBoxPastPerformancesCollectionName
+            // 
+            this.textBoxPastPerformancesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPastPerformancesCollectionName.Location = new System.Drawing.Point(137, 158);
+            this.textBoxPastPerformancesCollectionName.Name = "textBoxPastPerformancesCollectionName";
+            this.textBoxPastPerformancesCollectionName.Size = new System.Drawing.Size(148, 28);
+            this.textBoxPastPerformancesCollectionName.TabIndex = 7;
+            this.textBoxPastPerformancesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPastPerformancesCollectionName_KeyUp);
             // 
             // labelEmployeesCollectionName
             // 
             this.labelEmployeesCollectionName.AutoSize = true;
             this.labelEmployeesCollectionName.BackColor = System.Drawing.Color.Transparent;
             this.labelEmployeesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEmployeesCollectionName.Location = new System.Drawing.Point(6, 36);
+            this.labelEmployeesCollectionName.Location = new System.Drawing.Point(11, 63);
             this.labelEmployeesCollectionName.Name = "labelEmployeesCollectionName";
             this.labelEmployeesCollectionName.Size = new System.Drawing.Size(93, 21);
             this.labelEmployeesCollectionName.TabIndex = 4;
@@ -355,19 +396,19 @@
             // textBoxEmployeesCollectionName
             // 
             this.textBoxEmployeesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxEmployeesCollectionName.Location = new System.Drawing.Point(137, 33);
+            this.textBoxEmployeesCollectionName.Location = new System.Drawing.Point(137, 56);
             this.textBoxEmployeesCollectionName.Name = "textBoxEmployeesCollectionName";
             this.textBoxEmployeesCollectionName.Size = new System.Drawing.Size(148, 28);
             this.textBoxEmployeesCollectionName.TabIndex = 5;
             this.textBoxEmployeesCollectionName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxEmployeesFileName_KeyPress);
-            this.textBoxEmployeesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxEmployeesFileName_KeyUp);
+            this.textBoxEmployeesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxEmployeesCollectionName_KeyUp);
             // 
             // labelStagesCollectionName
             // 
             this.labelStagesCollectionName.AutoSize = true;
             this.labelStagesCollectionName.BackColor = System.Drawing.Color.Transparent;
             this.labelStagesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStagesCollectionName.Location = new System.Drawing.Point(6, 70);
+            this.labelStagesCollectionName.Location = new System.Drawing.Point(11, 93);
             this.labelStagesCollectionName.Name = "labelStagesCollectionName";
             this.labelStagesCollectionName.Size = new System.Drawing.Size(58, 21);
             this.labelStagesCollectionName.TabIndex = 2;
@@ -376,12 +417,12 @@
             // textBoxStagesCollectionName
             // 
             this.textBoxStagesCollectionName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxStagesCollectionName.Location = new System.Drawing.Point(137, 67);
+            this.textBoxStagesCollectionName.Location = new System.Drawing.Point(137, 90);
             this.textBoxStagesCollectionName.Name = "textBoxStagesCollectionName";
             this.textBoxStagesCollectionName.Size = new System.Drawing.Size(148, 28);
             this.textBoxStagesCollectionName.TabIndex = 3;
             this.textBoxStagesCollectionName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxStagesFileName_KeyPress);
-            this.textBoxStagesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStagesFileName_KeyUp);
+            this.textBoxStagesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStagesCollectionName_KeyUp);
             // 
             // groupBoxProfile
             // 
@@ -425,7 +466,7 @@
             this.tabControlSetting.Location = new System.Drawing.Point(-1, 63);
             this.tabControlSetting.Name = "tabControlSetting";
             this.tabControlSetting.SelectedIndex = 0;
-            this.tabControlSetting.Size = new System.Drawing.Size(631, 530);
+            this.tabControlSetting.Size = new System.Drawing.Size(631, 415);
             this.tabControlSetting.TabIndex = 10;
             // 
             // tabPagePerformanceSettings
@@ -440,29 +481,31 @@
             this.tabPagePerformanceSettings.Location = new System.Drawing.Point(4, 30);
             this.tabPagePerformanceSettings.Name = "tabPagePerformanceSettings";
             this.tabPagePerformanceSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePerformanceSettings.Size = new System.Drawing.Size(623, 496);
+            this.tabPagePerformanceSettings.Size = new System.Drawing.Size(623, 381);
             this.tabPagePerformanceSettings.TabIndex = 2;
             this.tabPagePerformanceSettings.Text = "Performance";
             // 
             // buttonCancelPerformanceSettings
             // 
             this.buttonCancelPerformanceSettings.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonCancelPerformanceSettings.Location = new System.Drawing.Point(336, 284);
+            this.buttonCancelPerformanceSettings.Location = new System.Drawing.Point(336, 296);
             this.buttonCancelPerformanceSettings.Name = "buttonCancelPerformanceSettings";
             this.buttonCancelPerformanceSettings.Size = new System.Drawing.Size(125, 45);
             this.buttonCancelPerformanceSettings.TabIndex = 16;
             this.buttonCancelPerformanceSettings.Text = "Cancel";
             this.buttonCancelPerformanceSettings.UseVisualStyleBackColor = false;
+            this.buttonCancelPerformanceSettings.Click += new System.EventHandler(this.ButtonCancelPerformanceSettings_Click);
             // 
             // buttonSavePerformanceSettings
             // 
             this.buttonSavePerformanceSettings.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonSavePerformanceSettings.Location = new System.Drawing.Point(176, 284);
+            this.buttonSavePerformanceSettings.Location = new System.Drawing.Point(176, 296);
             this.buttonSavePerformanceSettings.Name = "buttonSavePerformanceSettings";
             this.buttonSavePerformanceSettings.Size = new System.Drawing.Size(125, 45);
             this.buttonSavePerformanceSettings.TabIndex = 15;
             this.buttonSavePerformanceSettings.Text = "Save";
             this.buttonSavePerformanceSettings.UseVisualStyleBackColor = false;
+            this.buttonSavePerformanceSettings.Click += new System.EventHandler(this.ButtonSavePerformanceSettings_Click);
             // 
             // groupBoxPastPerformances
             // 
@@ -493,10 +536,12 @@
             this.numericUpDownRangeDateOfPastPerformances.Name = "numericUpDownRangeDateOfPastPerformances";
             this.numericUpDownRangeDateOfPastPerformances.Size = new System.Drawing.Size(108, 28);
             this.numericUpDownRangeDateOfPastPerformances.TabIndex = 10;
+            this.numericUpDownRangeDateOfPastPerformances.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownRangeDateOfPastPerformances_KeyUp);
             // 
             // groupBoxReceipt
             // 
             this.groupBoxReceipt.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxReceipt.Controls.Add(this.buttonSelectReceiptFolder);
             this.groupBoxReceipt.Controls.Add(this.checkBoxReceiptPrint);
             this.groupBoxReceipt.Controls.Add(this.textBoxReceiptSavePath);
             this.groupBoxReceipt.Controls.Add(this.labelReceiptSavePath);
@@ -507,6 +552,16 @@
             this.groupBoxReceipt.TabStop = false;
             this.groupBoxReceipt.Text = "Receipt";
             // 
+            // buttonSelectReceiptFolder
+            // 
+            this.buttonSelectReceiptFolder.Location = new System.Drawing.Point(274, 59);
+            this.buttonSelectReceiptFolder.Name = "buttonSelectReceiptFolder";
+            this.buttonSelectReceiptFolder.Size = new System.Drawing.Size(28, 28);
+            this.buttonSelectReceiptFolder.TabIndex = 29;
+            this.buttonSelectReceiptFolder.Text = " ";
+            this.buttonSelectReceiptFolder.UseVisualStyleBackColor = true;
+            this.buttonSelectReceiptFolder.Click += new System.EventHandler(this.ButtonSelectReceiptFolder_Click);
+            // 
             // checkBoxReceiptPrint
             // 
             this.checkBoxReceiptPrint.AutoSize = true;
@@ -516,6 +571,7 @@
             this.checkBoxReceiptPrint.TabIndex = 11;
             this.checkBoxReceiptPrint.Text = "Print receipt";
             this.checkBoxReceiptPrint.UseVisualStyleBackColor = true;
+            this.checkBoxReceiptPrint.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxReceiptPrint_KeyUp);
             // 
             // textBoxReceiptSavePath
             // 
@@ -523,8 +579,9 @@
             this.textBoxReceiptSavePath.Location = new System.Drawing.Point(110, 59);
             this.textBoxReceiptSavePath.MaxLength = 1;
             this.textBoxReceiptSavePath.Name = "textBoxReceiptSavePath";
-            this.textBoxReceiptSavePath.Size = new System.Drawing.Size(192, 28);
+            this.textBoxReceiptSavePath.Size = new System.Drawing.Size(158, 28);
             this.textBoxReceiptSavePath.TabIndex = 7;
+            this.textBoxReceiptSavePath.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxReceiptSavePath_KeyUp);
             // 
             // labelReceiptSavePath
             // 
@@ -565,6 +622,7 @@
             this.numericUpDownPremiumIncrease.Name = "numericUpDownPremiumIncrease";
             this.numericUpDownPremiumIncrease.Size = new System.Drawing.Size(134, 28);
             this.numericUpDownPremiumIncrease.TabIndex = 8;
+            this.numericUpDownPremiumIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownPremiumIncrease_KeyUp);
             // 
             // numericUpDownStandardPlusIncrease
             // 
@@ -578,6 +636,7 @@
             this.numericUpDownStandardPlusIncrease.Name = "numericUpDownStandardPlusIncrease";
             this.numericUpDownStandardPlusIncrease.Size = new System.Drawing.Size(134, 28);
             this.numericUpDownStandardPlusIncrease.TabIndex = 7;
+            this.numericUpDownStandardPlusIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownStandardPlusIncrease_KeyUp);
             // 
             // numericUpDownStandardIncrease
             // 
@@ -591,6 +650,7 @@
             this.numericUpDownStandardIncrease.Name = "numericUpDownStandardIncrease";
             this.numericUpDownStandardIncrease.Size = new System.Drawing.Size(134, 28);
             this.numericUpDownStandardIncrease.TabIndex = 6;
+            this.numericUpDownStandardIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownStandardIncrease_KeyUp);
             // 
             // labelStandardIncrease
             // 
@@ -649,6 +709,7 @@
             this.dateTimePickerMaxDuration.ShowUpDown = true;
             this.dateTimePickerMaxDuration.Size = new System.Drawing.Size(141, 28);
             this.dateTimePickerMaxDuration.TabIndex = 7;
+            this.dateTimePickerMaxDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerMaxDuration_KeyUp);
             // 
             // dateTimePickerMinBreak
             // 
@@ -658,6 +719,7 @@
             this.dateTimePickerMinBreak.ShowUpDown = true;
             this.dateTimePickerMinBreak.Size = new System.Drawing.Size(141, 28);
             this.dateTimePickerMinBreak.TabIndex = 6;
+            this.dateTimePickerMinBreak.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerMinBreak_KeyUp);
             // 
             // dateTimePickerInitialDuration
             // 
@@ -667,6 +729,7 @@
             this.dateTimePickerInitialDuration.ShowUpDown = true;
             this.dateTimePickerInitialDuration.Size = new System.Drawing.Size(141, 28);
             this.dateTimePickerInitialDuration.TabIndex = 5;
+            this.dateTimePickerInitialDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerInitialDuration_KeyUp);
             // 
             // labelMinBreak
             // 
@@ -706,91 +769,37 @@
             this.tabPageDatabaseSettings.BackColor = System.Drawing.Color.LightGray;
             this.tabPageDatabaseSettings.Controls.Add(this.buttonCancelDatabaseSettings);
             this.tabPageDatabaseSettings.Controls.Add(this.buttonSaveDatabaseSettings);
-            this.tabPageDatabaseSettings.Controls.Add(this.numericUpDownIntervalTickets);
-            this.tabPageDatabaseSettings.Controls.Add(this.numericUpDownIntervalEmloyees);
-            this.tabPageDatabaseSettings.Controls.Add(this.numericUpDownIntervalStages);
-            this.tabPageDatabaseSettings.Controls.Add(this.numericUpDownIntervalPerformances);
             this.tabPageDatabaseSettings.Controls.Add(this.groupBoxUpdateInterval);
             this.tabPageDatabaseSettings.Controls.Add(this.groupBoxDataBaseLinks);
             this.tabPageDatabaseSettings.Controls.Add(this.groupBoxCollectionName);
             this.tabPageDatabaseSettings.Location = new System.Drawing.Point(4, 30);
             this.tabPageDatabaseSettings.Name = "tabPageDatabaseSettings";
             this.tabPageDatabaseSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDatabaseSettings.Size = new System.Drawing.Size(623, 496);
+            this.tabPageDatabaseSettings.Size = new System.Drawing.Size(623, 381);
             this.tabPageDatabaseSettings.TabIndex = 1;
             this.tabPageDatabaseSettings.Text = "Database";
             // 
             // buttonCancelDatabaseSettings
             // 
             this.buttonCancelDatabaseSettings.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonCancelDatabaseSettings.Location = new System.Drawing.Point(326, 284);
+            this.buttonCancelDatabaseSettings.Location = new System.Drawing.Point(334, 314);
             this.buttonCancelDatabaseSettings.Name = "buttonCancelDatabaseSettings";
             this.buttonCancelDatabaseSettings.Size = new System.Drawing.Size(125, 45);
             this.buttonCancelDatabaseSettings.TabIndex = 13;
             this.buttonCancelDatabaseSettings.Text = "Cancel";
             this.buttonCancelDatabaseSettings.UseVisualStyleBackColor = false;
+            this.buttonCancelDatabaseSettings.Click += new System.EventHandler(this.ButtonCancelDatabaseSettings_Click);
             // 
             // buttonSaveDatabaseSettings
             // 
             this.buttonSaveDatabaseSettings.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonSaveDatabaseSettings.Location = new System.Drawing.Point(166, 284);
+            this.buttonSaveDatabaseSettings.Location = new System.Drawing.Point(174, 314);
             this.buttonSaveDatabaseSettings.Name = "buttonSaveDatabaseSettings";
             this.buttonSaveDatabaseSettings.Size = new System.Drawing.Size(125, 45);
             this.buttonSaveDatabaseSettings.TabIndex = 12;
             this.buttonSaveDatabaseSettings.Text = "Save";
             this.buttonSaveDatabaseSettings.UseVisualStyleBackColor = false;
-            // 
-            // numericUpDownIntervalTickets
-            // 
-            this.numericUpDownIntervalTickets.DecimalPlaces = 2;
-            this.numericUpDownIntervalTickets.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownIntervalTickets.Location = new System.Drawing.Point(474, 199);
-            this.numericUpDownIntervalTickets.Name = "numericUpDownIntervalTickets";
-            this.numericUpDownIntervalTickets.Size = new System.Drawing.Size(143, 28);
-            this.numericUpDownIntervalTickets.TabIndex = 10;
-            // 
-            // numericUpDownIntervalEmloyees
-            // 
-            this.numericUpDownIntervalEmloyees.DecimalPlaces = 2;
-            this.numericUpDownIntervalEmloyees.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownIntervalEmloyees.Location = new System.Drawing.Point(474, 301);
-            this.numericUpDownIntervalEmloyees.Name = "numericUpDownIntervalEmloyees";
-            this.numericUpDownIntervalEmloyees.Size = new System.Drawing.Size(143, 28);
-            this.numericUpDownIntervalEmloyees.TabIndex = 6;
-            // 
-            // numericUpDownIntervalStages
-            // 
-            this.numericUpDownIntervalStages.DecimalPlaces = 2;
-            this.numericUpDownIntervalStages.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownIntervalStages.Location = new System.Drawing.Point(474, 267);
-            this.numericUpDownIntervalStages.Name = "numericUpDownIntervalStages";
-            this.numericUpDownIntervalStages.Size = new System.Drawing.Size(143, 28);
-            this.numericUpDownIntervalStages.TabIndex = 7;
-            // 
-            // numericUpDownIntervalPerformances
-            // 
-            this.numericUpDownIntervalPerformances.DecimalPlaces = 2;
-            this.numericUpDownIntervalPerformances.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownIntervalPerformances.Location = new System.Drawing.Point(474, 233);
-            this.numericUpDownIntervalPerformances.Name = "numericUpDownIntervalPerformances";
-            this.numericUpDownIntervalPerformances.Size = new System.Drawing.Size(143, 28);
-            this.numericUpDownIntervalPerformances.TabIndex = 8;
+            this.buttonSaveDatabaseSettings.Click += new System.EventHandler(this.ButtonSaveDatabaseSettings_Click);
             // 
             // groupBoxUpdateInterval
             // 
@@ -805,7 +814,7 @@
             this.groupBoxUpdateInterval.Controls.Add(this.labelIntervalPerformances);
             this.groupBoxUpdateInterval.Location = new System.Drawing.Point(320, 6);
             this.groupBoxUpdateInterval.Name = "groupBoxUpdateInterval";
-            this.groupBoxUpdateInterval.Size = new System.Drawing.Size(298, 180);
+            this.groupBoxUpdateInterval.Size = new System.Drawing.Size(298, 203);
             this.groupBoxUpdateInterval.TabIndex = 11;
             this.groupBoxUpdateInterval.TabStop = false;
             this.groupBoxUpdateInterval.Text = "Update interval (minutes)";
@@ -815,55 +824,60 @@
             this.dateTimePickerIntervalTickets.CustomFormat = "mm:ss";
             this.dateTimePickerIntervalTickets.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerIntervalTickets.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerIntervalTickets.Location = new System.Drawing.Point(141, 131);
+            this.dateTimePickerIntervalTickets.Location = new System.Drawing.Point(142, 145);
             this.dateTimePickerIntervalTickets.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
             this.dateTimePickerIntervalTickets.Name = "dateTimePickerIntervalTickets";
             this.dateTimePickerIntervalTickets.ShowUpDown = true;
             this.dateTimePickerIntervalTickets.Size = new System.Drawing.Size(140, 28);
             this.dateTimePickerIntervalTickets.TabIndex = 24;
+            this.dateTimePickerIntervalTickets.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerIntervalTickets_KeyUp);
             // 
             // dateTimePickerIntervalPerformances
             // 
             this.dateTimePickerIntervalPerformances.CustomFormat = "mm:ss";
             this.dateTimePickerIntervalPerformances.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerIntervalPerformances.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerIntervalPerformances.Location = new System.Drawing.Point(141, 99);
+            this.dateTimePickerIntervalPerformances.Location = new System.Drawing.Point(142, 113);
             this.dateTimePickerIntervalPerformances.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
             this.dateTimePickerIntervalPerformances.Name = "dateTimePickerIntervalPerformances";
             this.dateTimePickerIntervalPerformances.ShowUpDown = true;
             this.dateTimePickerIntervalPerformances.Size = new System.Drawing.Size(140, 28);
             this.dateTimePickerIntervalPerformances.TabIndex = 23;
+            this.dateTimePickerIntervalPerformances.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerIntervalPerformances_KeyUp);
             // 
             // dateTimePickerIntervalStages
             // 
             this.dateTimePickerIntervalStages.CustomFormat = "mm:ss";
             this.dateTimePickerIntervalStages.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerIntervalStages.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerIntervalStages.Location = new System.Drawing.Point(141, 66);
+            this.dateTimePickerIntervalStages.Location = new System.Drawing.Point(142, 80);
             this.dateTimePickerIntervalStages.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
             this.dateTimePickerIntervalStages.Name = "dateTimePickerIntervalStages";
             this.dateTimePickerIntervalStages.ShowUpDown = true;
             this.dateTimePickerIntervalStages.Size = new System.Drawing.Size(140, 28);
             this.dateTimePickerIntervalStages.TabIndex = 22;
+            this.dateTimePickerIntervalStages.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerIntervalStages_KeyUp);
             // 
             // dateTimePickerIntervalEmployees
             // 
             this.dateTimePickerIntervalEmployees.CustomFormat = "mm:ss";
             this.dateTimePickerIntervalEmployees.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerIntervalEmployees.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerIntervalEmployees.Location = new System.Drawing.Point(141, 33);
+            this.dateTimePickerIntervalEmployees.Location = new System.Drawing.Point(142, 47);
             this.dateTimePickerIntervalEmployees.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
             this.dateTimePickerIntervalEmployees.Name = "dateTimePickerIntervalEmployees";
             this.dateTimePickerIntervalEmployees.ShowUpDown = true;
             this.dateTimePickerIntervalEmployees.Size = new System.Drawing.Size(140, 28);
             this.dateTimePickerIntervalEmployees.TabIndex = 21;
+            this.dateTimePickerIntervalEmployees.Value = new System.DateTime(2025, 4, 13, 7, 45, 28, 0);
+            this.dateTimePickerIntervalEmployees.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerIntervalEmployees_KeyUp);
             // 
             // labelIntervalTickets
             // 
             this.labelIntervalTickets.AutoSize = true;
             this.labelIntervalTickets.BackColor = System.Drawing.Color.Transparent;
             this.labelIntervalTickets.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIntervalTickets.Location = new System.Drawing.Point(10, 140);
+            this.labelIntervalTickets.Location = new System.Drawing.Point(11, 154);
             this.labelIntervalTickets.Name = "labelIntervalTickets";
             this.labelIntervalTickets.Size = new System.Drawing.Size(67, 21);
             this.labelIntervalTickets.TabIndex = 9;
@@ -874,7 +888,7 @@
             this.labelStageInterval.AutoSize = true;
             this.labelStageInterval.BackColor = System.Drawing.Color.Transparent;
             this.labelStageInterval.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStageInterval.Location = new System.Drawing.Point(10, 72);
+            this.labelStageInterval.Location = new System.Drawing.Point(11, 86);
             this.labelStageInterval.Name = "labelStageInterval";
             this.labelStageInterval.Size = new System.Drawing.Size(58, 21);
             this.labelStageInterval.TabIndex = 4;
@@ -885,7 +899,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(10, 38);
+            this.label4.Location = new System.Drawing.Point(11, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 21);
             this.label4.TabIndex = 2;
@@ -896,7 +910,7 @@
             this.labelIntervalPerformances.AutoSize = true;
             this.labelIntervalPerformances.BackColor = System.Drawing.Color.Transparent;
             this.labelIntervalPerformances.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIntervalPerformances.Location = new System.Drawing.Point(10, 106);
+            this.labelIntervalPerformances.Location = new System.Drawing.Point(11, 120);
             this.labelIntervalPerformances.Name = "labelIntervalPerformances";
             this.labelIntervalPerformances.Size = new System.Drawing.Size(116, 21);
             this.labelIntervalPerformances.TabIndex = 0;
@@ -907,9 +921,9 @@
             this.groupBoxDataBaseLinks.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxDataBaseLinks.Controls.Add(this.textBoxDataBaseLink);
             this.groupBoxDataBaseLinks.Controls.Add(this.label3);
-            this.groupBoxDataBaseLinks.Location = new System.Drawing.Point(6, 171);
+            this.groupBoxDataBaseLinks.Location = new System.Drawing.Point(6, 215);
             this.groupBoxDataBaseLinks.Name = "groupBoxDataBaseLinks";
-            this.groupBoxDataBaseLinks.Size = new System.Drawing.Size(308, 100);
+            this.groupBoxDataBaseLinks.Size = new System.Drawing.Size(604, 74);
             this.groupBoxDataBaseLinks.TabIndex = 10;
             this.groupBoxDataBaseLinks.TabStop = false;
             this.groupBoxDataBaseLinks.Text = "Links";
@@ -917,11 +931,12 @@
             // textBoxDataBaseLink
             // 
             this.textBoxDataBaseLink.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxDataBaseLink.Location = new System.Drawing.Point(10, 52);
+            this.textBoxDataBaseLink.Location = new System.Drawing.Point(137, 28);
             this.textBoxDataBaseLink.MaxLength = 1;
             this.textBoxDataBaseLink.Name = "textBoxDataBaseLink";
-            this.textBoxDataBaseLink.Size = new System.Drawing.Size(279, 28);
+            this.textBoxDataBaseLink.Size = new System.Drawing.Size(456, 28);
             this.textBoxDataBaseLink.TabIndex = 7;
+            this.textBoxDataBaseLink.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxDataBaseLink_KeyUp);
             // 
             // label3
             // 
@@ -937,7 +952,9 @@
             // tabPageOtherSettings
             // 
             this.tabPageOtherSettings.BackColor = System.Drawing.Color.LightGray;
+            this.tabPageOtherSettings.Controls.Add(this.buttonCancelName);
             this.tabPageOtherSettings.Controls.Add(this.groupBoxStage);
+            this.tabPageOtherSettings.Controls.Add(this.buttonSaveName);
             this.tabPageOtherSettings.Controls.Add(this.groupBoxOther);
             this.tabPageOtherSettings.Controls.Add(this.buttonCancelOtherSettings);
             this.tabPageOtherSettings.Controls.Add(this.buttonSaveOtherSettings);
@@ -946,7 +963,7 @@
             this.tabPageOtherSettings.Location = new System.Drawing.Point(4, 30);
             this.tabPageOtherSettings.Name = "tabPageOtherSettings";
             this.tabPageOtherSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOtherSettings.Size = new System.Drawing.Size(623, 496);
+            this.tabPageOtherSettings.Size = new System.Drawing.Size(623, 381);
             this.tabPageOtherSettings.TabIndex = 0;
             this.tabPageOtherSettings.Text = "Other";
             // 
@@ -974,6 +991,8 @@
             this.buttonChangeSeatHoverColor.TabIndex = 29;
             this.buttonChangeSeatHoverColor.Text = " ";
             this.buttonChangeSeatHoverColor.UseVisualStyleBackColor = true;
+            this.buttonChangeSeatHoverColor.Click += new System.EventHandler(this.ButtonChangeSeatHoverColor_Click);
+            this.buttonChangeSeatHoverColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatHoverColor_KeyUp);
             // 
             // buttonChangeSeatColor
             // 
@@ -983,6 +1002,8 @@
             this.buttonChangeSeatColor.TabIndex = 28;
             this.buttonChangeSeatColor.Text = " ";
             this.buttonChangeSeatColor.UseVisualStyleBackColor = true;
+            this.buttonChangeSeatColor.Click += new System.EventHandler(this.ButtonChangeSeatColor_Click);
+            this.buttonChangeSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatColor_KeyUp);
             // 
             // textBoxSeatHoverColor
             // 
@@ -990,8 +1011,10 @@
             this.textBoxSeatHoverColor.Location = new System.Drawing.Point(77, 120);
             this.textBoxSeatHoverColor.MaxLength = 1;
             this.textBoxSeatHoverColor.Name = "textBoxSeatHoverColor";
+            this.textBoxSeatHoverColor.ReadOnly = true;
             this.textBoxSeatHoverColor.Size = new System.Drawing.Size(159, 28);
             this.textBoxSeatHoverColor.TabIndex = 10;
+            this.textBoxSeatHoverColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSeatHoverColor_KeyUp);
             // 
             // label1
             // 
@@ -1010,8 +1033,10 @@
             this.textBoxSeatColor.Location = new System.Drawing.Point(77, 65);
             this.textBoxSeatColor.MaxLength = 1;
             this.textBoxSeatColor.Name = "textBoxSeatColor";
+            this.textBoxSeatColor.ReadOnly = true;
             this.textBoxSeatColor.Size = new System.Drawing.Size(159, 28);
             this.textBoxSeatColor.TabIndex = 7;
+            this.textBoxSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSeatColor_KeyUp);
             // 
             // label2
             // 
@@ -1028,7 +1053,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 590);
+            this.ClientSize = new System.Drawing.Size(628, 475);
             this.Controls.Add(this.tabControlSetting);
             this.Controls.Add(this.groupBoxProfile);
             this.Name = "SettingsForm";
@@ -1057,10 +1082,6 @@
             this.groupBoxPerformanceDuration.ResumeLayout(false);
             this.groupBoxPerformanceDuration.PerformLayout();
             this.tabPageDatabaseSettings.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalTickets)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalEmloyees)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalStages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalPerformances)).EndInit();
             this.groupBoxUpdateInterval.ResumeLayout(false);
             this.groupBoxUpdateInterval.PerformLayout();
             this.groupBoxDataBaseLinks.ResumeLayout(false);
@@ -1104,16 +1125,12 @@
         private System.Windows.Forms.TextBox textBoxDataBaseLink;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBoxUpdateInterval;
-        private System.Windows.Forms.NumericUpDown numericUpDownIntervalPerformances;
-        private System.Windows.Forms.NumericUpDown numericUpDownIntervalStages;
-        private System.Windows.Forms.NumericUpDown numericUpDownIntervalEmloyees;
         private System.Windows.Forms.Label labelStageInterval;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelIntervalPerformances;
-        private System.Windows.Forms.NumericUpDown numericUpDownIntervalTickets;
         private System.Windows.Forms.Label labelIntervalTickets;
-        private System.Windows.Forms.TextBox textBoxPasswordCypher;
-        private System.Windows.Forms.Label labelPasswordCypher;
+        private System.Windows.Forms.TextBox textBoxPasswordChar;
+        private System.Windows.Forms.Label labelPasswordChar;
         private System.Windows.Forms.DateTimePicker dateTimePickerIntervalEmployees;
         private System.Windows.Forms.DateTimePicker dateTimePickerIntervalTickets;
         private System.Windows.Forms.DateTimePicker dateTimePickerIntervalPerformances;
@@ -1151,5 +1168,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonChangeSeatHoverColor;
         private System.Windows.Forms.Button buttonChangeSeatColor;
+        private System.Windows.Forms.Button buttonSelectReceiptFolder;
+        private System.Windows.Forms.ColorDialog colorDialogSettings;
+        private System.Windows.Forms.Label labelGeneralCollectionName;
+        private System.Windows.Forms.TextBox textBoxGeneralCollectionName;
+        private System.Windows.Forms.Label labelPastPerformancesCollectionName;
+        private System.Windows.Forms.TextBox textBoxPastPerformancesCollectionName;
     }
 }

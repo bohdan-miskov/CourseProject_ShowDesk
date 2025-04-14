@@ -1,30 +1,37 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
-using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService.DataBaseServiceInterface;
+using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MongoDB.Bson;
-using MongoDB.Driver;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
-    public class PerformanceBaseService:IPerformanceBaseService
+    public class PerformanceBaseService : IPerformanceBaseService
     {
         private readonly IMongoCollection<Performance> upcomingCollection;
         private readonly IMongoCollection<Performance> pastCollection;
         private readonly MongoClient client;
 
-        public PerformanceBaseService( string dbName = "Event")
+        public PerformanceBaseService()
         {
-            client = new MongoClient(AppConstants.ConnectionString);
-            var db = client.GetDatabase(dbName);
+            try
+            {
+                client = new MongoClient(AppConstants.ConnectionString);
+                var db = client.GetDatabase(AppConstants.GeneralCollectionName);
+                var test = db.RunCommandAsync((Command<BsonDocument>)"{ping:1}").Result;
 
-            upcomingCollection = db.GetCollection<Performance>("UpcomingPerformances");
-            pastCollection = db.GetCollection<Performance>("PastPerformances");
+                upcomingCollection = db.GetCollection<Performance>(AppConstants.PerformancesCollectionName);
+                pastCollection = db.GetCollection<Performance>(AppConstants.PastPerformancesCollectionName);
+            }
+            catch
+            {
+                throw new DatabaseConnectionException("Could not connect to the database.");
+            }
         }
 
         public List<Performance> GetAllUpcomingPerformances()

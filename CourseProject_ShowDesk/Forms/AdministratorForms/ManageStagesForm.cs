@@ -1,11 +1,10 @@
-﻿using CourseProject_ShowDesk.Scripts;
+﻿using CourseProject_ShowDesk.Forms.DirectorForms;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
@@ -19,9 +18,17 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             InitializeComponent();
 
-            stageManager = new StageManager(new StageBaseService());
+            try
+            {
+                stageManager = new StageManager(new StageBaseService());
+            }
+            catch (DatabaseConnectionException ex)
+            {
+                MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
+            }
 
-            this.userAccount=userAccount;
+            this.userAccount = userAccount;
             labelAccountName.Text = userAccount.FullName;
 
             timerUpdate.Interval = AppConstants.UpdateStagesInterval;
@@ -139,7 +146,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             Guid stageId = GetCurrentRowId();
 
-            EditStageForm editStageForm = new EditStageForm(userAccount,stageManager.GetById(stageId));
+            EditStageForm editStageForm = new EditStageForm(userAccount, stageManager.GetById(stageId));
             this.Hide();
             editStageForm.ShowDialog();
             this.Show();

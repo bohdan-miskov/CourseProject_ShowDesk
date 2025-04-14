@@ -1,46 +1,44 @@
-﻿using CourseProject_ShowDesk.Scripts;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
-using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
-using CourseProject_ShowDesk.Scripts.Constants;
-using CourseProject_ShowDesk.Scripts.Enities;
-using CourseProject_ShowDesk.Scripts.Utilities;
+using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class BuyTicketForm : MetroFramework.Forms.MetroForm
     {
-        private readonly Stage stage;
-
         private Performance performance;
 
         private bool isValid;
 
-        private List<Control> selectedControls;
         private List<StandardTicket> newTickets;
         private readonly PerformanceBaseService dataBase;
+        private SelectionManager selectionManager;
+        private SeatingManager seatingManager;
+        private CanvasController canvasController;
 
-        public BuyTicketForm(Employee userAccount,Stage stage, Performance performance)
+        public BuyTicketForm(Employee userAccount, Stage stage, Performance performance)
         {
             InitializeComponent();
+            this.MouseWheel += PanelSeating_MouseWheel;
 
-            this.stage = stage;
             this.performance = performance;
-            this.selectedControls = new List<Control>();
             this.newTickets = new List<StandardTicket>();
             this.dataBase = new PerformanceBaseService();
 
+            this.selectionManager = new SelectionManager();
+            this.seatingManager = new SeatingManager(panelSeating, stage?.SeatList, stage?.DecorList);
+            this.canvasController = new CanvasController(panelSeating, panelViewport);
             labelAccountName.Text = userAccount.FullName;
-            //seatList = stage.SeatList;
 
             PopulateComponents();
 
@@ -78,6 +76,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             SeatingMouseDown(sender, e);
         }
+        private void PanelSeating_MouseWheel(object sender, MouseEventArgs e)
+        {
+            bool useControl = ModifierKeys == Keys.Control;
+            canvasController.StartScaleCanvas(e, useControl);
+        }
 
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
@@ -90,6 +93,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             PopulateComboBoxTicketType();
 
+            seatingManager.PopulateSeating();
             PopulateSeating();
         }
 
@@ -157,12 +161,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                     MessageBoxIcon.Information);
                 return;
             }
-            comboBoxSouvenir.SelectedIndex = 0;  
+            comboBoxSouvenir.SelectedIndex = 0;
         }
 
         private void PopulateSeating()
         {
-            foreach (Seat seat in stage.SeatList)
+            foreach (Seat seat in seatingManager.SeatList)
             {
                 if (!performance.AvailablePositions.Contains(seat.SeatNumber))
                 {
@@ -170,7 +174,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 }
                 panelSeating.Controls.Add(seat.ToLabel());
             }
-            foreach (DecorativeElement decor in stage.DecorList)
+            foreach (DecorativeElement decor in seatingManager.DecorList)
             {
                 panelSeating.Controls.Add(decor.ToPanel());
             }
@@ -195,17 +199,16 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private StandardTicket CreateTicket(int currentPosition)
+        private StandardTicket CreateTicket(int position)
         {
-            if (currentPosition == -1 && comboBoxTicketType.SelectedIndex == -1)
+            if (position == -1 && comboBoxTicketType.SelectedIndex == -1)
             {
                 return null;
             }
 
-            int position = currentPosition;
             bool reserved = checkBoxReserved.Checked;
 
-            double increase = GetIncrease(position);
+            double increase = seatingManager.SeatList[position - 1].CurrentZone.Increase;
 
             StandardTicket ticket = GetTicketType();
 
@@ -217,17 +220,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             textBoxId.Text = Convert.ToString(ticket.Id);
 
             return ticket;
-        }
-
-        private double GetIncrease(int position)
-        {
-            foreach (Zone zone in stage.Zones)
-            {
-                if ((zone.StartPosition <= position) && (zone.EndPosition >= position))
-                    return zone.Increase;
-
-            }
-            return 0;
         }
 
         private StandardTicket GetTicketType()
@@ -295,24 +287,41 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             if (e.Button != MouseButtons.Left) return;
 
-            Control selectedControl = GetSelectedControl(e.Location);
+            bool useControl = ModifierKeys == Keys.Control;
+            canvasController.StartPanning(e, useControl);
+            HandleSelection(e, useControl);
+            //Control selectedControl = GetSelectedControl(e.Location);
 
-            if (selectedControls.Count == 0) HandleSingleSelection(selectedControl);
+            //if (selectedControls.Count == 0) HandleSingleSelection(selectedControl);
 
-            if (ModifierKeys == Keys.Control) HandleMultiSelection(selectedControl);
-            else ResetSelection();
+            //if (ModifierKeys == Keys.Control) HandleMultiSelection(selectedControl);
+            //else ResetSelection();
 
-            selectedControls.Clear();
-
-            if (selectedControl != null && selectedControl is Label)
-                HighlightSelectedControl(selectedControl);
+            //selectedControls.Clear();
         }
-
+        public void HandleSelection(MouseEventArgs e, bool useControl)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Control selectedControl = GetSelectedControl(e.Location);
+                if (selectedControl != null)
+                {
+                    if (useControl) HandleMultiSelection(selectedControl);
+                    else
+                    {
+                        ResetSelection();
+                        HandleSingleSelection(selectedControl);
+                    }
+                }
+            }
+        }
         private Control GetSelectedControl(Point location)
         {
             foreach (Control control in panelSeating.Controls)
             {
-                if (control.Bounds.Contains(location) && control is Label && IsAvailable(GetCurrentSeatIndex(control)+1))
+                if (control.Bounds.Contains(location) &&
+                    control is Label &&
+                    performance.IsAvailable(seatingManager.GetCurrentSeatPosition(control)))
                 {
                     return control;
                 }
@@ -326,91 +335,50 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             if (selectedControl != null)
             {
-                int currentPosition = GetSeatPosition(selectedControl.Text);
-                newTickets.Add(CreateTicket(currentPosition));
+                selectionManager.AddToSelection(selectedControl);
+                int currentSeatPosition = seatingManager.GetCurrentSeatPosition(selectedControl);
+                newTickets.Add(CreateTicket(currentSeatPosition));
                 GetTicketPrice();
             }
         }
 
         private void HandleMultiSelection(Control selectedControl)
         {
-            if (selectedControl == null || selectedControls.Contains(selectedControl))
+            if (selectedControl == null || selectionManager.SelectedControls.Contains(selectedControl))
                 return;
 
-            selectedControls.Add(selectedControl);
-            selectedControl.BackColor = Color.Yellow;
-            int currentPosition = GetSeatPosition(selectedControl.Text);
+            selectionManager.AddToSelection(selectedControl);
 
-            int seatIndex = GetCurrentSeatIndex(selectedControl);
-            labelSeatInfo.Text = stage.SeatList[seatIndex].GetInfo();
+            int seatIndex = seatingManager.GetCurrentSeatIndex(selectedControl);
+            labelSeatInfo.Text = seatingManager.SeatList[seatIndex].GetInfo();
+            int seatPosition = seatingManager.GetCurrentSeatPosition(selectedControl);
 
-            newTickets.Add(CreateTicket(currentPosition));
+            newTickets.Add(CreateTicket(seatPosition));
             GetTicketPrice();
         }
 
         private void ResetSelection()
         {
-            foreach (Control control in selectedControls.OfType<Label>().ToList())
+            foreach (Control control in selectionManager.SelectedControls)
             {
-                int seatIndex = GetCurrentSeatIndex(control);
-
-                if (seatIndex != -1)
-                {
-                    control.BackColor = stage.SeatList[seatIndex].CurrentZone.GetColor();
-                    RemoveTicket(seatIndex);
-                }
-                else
-                {
-                    control.BackColor = Color.LightGray;
-                }
+                Color initColor = seatingManager.GetSeatColorByControl(control);
+                selectionManager.RemoveSelection(control, initColor);
+                RemoveTicket(seatingManager.GetCurrentSeatPosition(control));
             }
 
             GetTicketPrice();
         }
 
-        private void RemoveTicket(int seatIndex)
+        private void RemoveTicket(int seatPosition)
         {
             foreach (StandardTicket removeTicket in newTickets.ToList())
             {
-                if (removeTicket.Position == seatIndex+1)
+                if (removeTicket.Position == seatPosition)
                 {
                     newTickets.Remove(removeTicket);
                     break;
                 }
             }
-        }
-
-        private void HighlightSelectedControl(Control selectedControl)
-        {
-            selectedControls.Add(selectedControl);
-            selectedControl.BackColor = Color.Yellow;
-
-            int seatIndex = GetCurrentSeatIndex(selectedControl);
-            labelSeatInfo.Text = stage.SeatList[seatIndex].GetInfo();
-        }
-
-        private int GetSeatPosition(string text)
-        {
-            foreach (var position in performance.AvailablePositions)
-            {
-                if (position.ToString() == text)
-                    return position;
-            }
-            return -1;
-        }
-
-        private int GetCurrentSeatIndex(Control control)
-        {
-            bool isInteger = int.TryParse(control.Text, out int result);
-
-            if (isInteger) return result-1;
-            return -1;
-        }
-
-        private bool IsAvailable(int position)
-        {
-            if (performance.AvailablePositions.Contains(position)) return true;
-            return false;
         }
 
         private void SaveTickets()
@@ -433,7 +401,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             this.Close();
         }
 
-         private List<int> CheckPositions()
+        private List<int> CheckPositions()
         {
             List<int> canceledPositions = new List<int>();
             foreach (StandardTicket ticket in newTickets)

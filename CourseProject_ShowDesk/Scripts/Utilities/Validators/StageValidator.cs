@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+﻿using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
 {

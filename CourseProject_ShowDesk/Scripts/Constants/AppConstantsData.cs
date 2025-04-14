@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public class AppConstantsData
     {
-        private string performancesFileName;
-        private string stagesFileName;
-        private string employeesFileName;
+        private string generalCollectionName;
+        private string performancesCollectionName;
+        private string pastPerformancesCollectionName;
+        private string stagesCollectionName;
+        private string employeesCollectionName;
         private double standardIncrease;
         private double standardPlusIncrease;
         private double premiumIncrease;
@@ -23,12 +23,37 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         private List<string> listOfTicketTypes;
         private List<string> listOfSouvenirs;
         private List<string> listOfDrinks;
+        private char passwordChar;
+        private bool isPrintReceipt;
+        private string savePathReceipt;
+        private string connectionString;
+        private int updateEmployeesInterval;
+        private int updateStagesInterval;
+        private int updatePerformancesInterval;
+        private int updateTicketsInterval;
+        private Color seatBaseColor;
+        public static Color seatHoverColor;
 
-        public string PerformancesFileName
+        public string GeneralCollectionName
         {
             get
             {
-                return performancesFileName;
+                return generalCollectionName;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("General file name cannot be null or empty.");
+                }
+                generalCollectionName = value;
+            }
+        }
+        public string PerformancesCollectionName
+        {
+            get
+            {
+                return performancesCollectionName;
             }
             set
             {
@@ -36,15 +61,30 @@ namespace CourseProject_ShowDesk.Scripts.Constants
                 {
                     throw new ArgumentException("Performances file name cannot be null or empty.");
                 }
-                performancesFileName = value;
+                performancesCollectionName = value;
             }
         }
-
-        public string StagesFileName
+        public string PastPerformancesCollectionName
         {
             get
             {
-                return stagesFileName;
+                return pastPerformancesCollectionName;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Performances file name cannot be null or empty.");
+                }
+                pastPerformancesCollectionName = value;
+            }
+        }
+
+        public string StagesCollectionName
+        {
+            get
+            {
+                return stagesCollectionName;
             }
             set
             {
@@ -52,15 +92,15 @@ namespace CourseProject_ShowDesk.Scripts.Constants
                 {
                     throw new ArgumentException("Stages file name cannot be null or empty.");
                 }
-                stagesFileName = value;
+                stagesCollectionName = value;
             }
         }
 
-        public string EmployeesFileName
+        public string EmployeesCollectionName
         {
             get
             {
-                return employeesFileName;
+                return employeesCollectionName;
             }
             set
             {
@@ -68,7 +108,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
                 {
                     throw new ArgumentException("Employees file name cannot be null or empty.");
                 }
-                employeesFileName = value;
+                employeesCollectionName = value;
             }
         }
 
@@ -264,6 +304,150 @@ namespace CourseProject_ShowDesk.Scripts.Constants
                 listOfDrinks = value;
             }
         }
+        public char PasswordChar
+        {
+            get
+            {
+                return passwordChar;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value.ToString()))
+                {
+                    throw new ArgumentException("PasswordCypher cannot be null or empty.");
+                }
+                passwordChar = value;
+            }
+        }
+
+        public bool IsPrintReceipt
+        {
+            get
+            {
+                return isPrintReceipt;
+            }
+            set
+            {
+                isPrintReceipt = value;
+            }
+        }
+
+        public string SavePathReceipt
+        {
+            get
+            {
+                return savePathReceipt;
+            }
+            set
+            {
+                savePathReceipt = value;
+            }
+        }
+
+        public string ConnectionString
+        {
+            get
+            {
+                return connectionString;
+            }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("ConnectionString cannot be null or empty.");
+                }
+                connectionString = value;
+            }
+        }
+
+        public int UpdateEmployeesInterval
+        {
+            get
+            {
+                return updateEmployeesInterval;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("UpdateEmployeesInterval cannot be negative.");
+                }
+                updateEmployeesInterval = value;
+            }
+        }
+
+        public int UpdateStagesInterval
+        {
+            get
+            {
+                return updateStagesInterval;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("UpdateStagesInterval cannot be negative.");
+                }
+                updateStagesInterval = value;
+            }
+        }
+
+        public int UpdatePerformancesInterval
+        {
+            get
+            {
+                return updatePerformancesInterval;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("UpdatePerformancesInterval cannot be negative.");
+                }
+                updatePerformancesInterval = value;
+            }
+        }
+
+        public int UpdateTicketsInterval
+        {
+            get
+            {
+                return updateTicketsInterval;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("UpdateTicketsInterval cannot be negative.");
+                }
+                updateTicketsInterval = value;
+            }
+        }
+
+        public Color SeatBaseColor
+        {
+            get
+            {
+                return seatBaseColor;
+            }
+            set
+            {
+                seatBaseColor = value;
+            }
+        }
+
+        public Color SeatHoverColor
+        {
+            get
+            {
+                return seatHoverColor;
+            }
+            set
+            {
+                seatHoverColor = value;
+            }
+        }
+
 
     }
 }

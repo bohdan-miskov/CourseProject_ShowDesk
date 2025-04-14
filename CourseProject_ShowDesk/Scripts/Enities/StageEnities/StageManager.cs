@@ -1,9 +1,7 @@
-﻿using System;
+﻿using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
@@ -60,7 +58,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 int index = stages.IndexOf(existingStage);
                 stages[index] = updatedStage;
                 database.UpdateStage(updatedStage);
-            }    
+            }
         }
     }
 

@@ -1,5 +1,4 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using CourseProject_ShowDesk.Scripts.Constants;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
 using System;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket

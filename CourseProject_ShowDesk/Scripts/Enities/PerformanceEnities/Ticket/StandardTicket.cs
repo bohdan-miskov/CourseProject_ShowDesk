@@ -1,5 +1,4 @@
-﻿using CourseProject_ShowDesk.Scripts;
-using CourseProject_ShowDesk.Scripts.Constants;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 
@@ -110,7 +109,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
             {
                 throw new ArgumentOutOfRangeException(nameof(increase), "Price increase factor must be greater than 0.");
             }
-            calculatedPrice = (price * increase) + (price * (typeIncrease-1));
+            calculatedPrice = (price * increase) + (price * (typeIncrease - 1));
         }
 
         public virtual string GetAdditionalServices()

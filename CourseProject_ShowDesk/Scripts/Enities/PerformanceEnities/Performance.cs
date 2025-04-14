@@ -1,12 +1,9 @@
-﻿using CourseProject_ShowDesk.Scripts.Utilities;
-using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
+﻿using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService.DataBaseServiceInterface;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
-using System.Linq;
 using System.Collections.Generic;
-using System.Web.UI;
+using System.Linq;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 {
@@ -39,7 +36,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             this.performanceBaseService = performanceBaseService;
             tickets = new List<StandardTicket>();
         }
-        public Performance(string name, double price, DateTime performanceDateTime,TimeSpan duration, Guid stageId, List<int> availablePositions)
+        public Performance(string name, double price, DateTime performanceDateTime, TimeSpan duration, Guid stageId, List<int> availablePositions)
         {
             Name = name;
             Price = price;
@@ -56,7 +53,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
                 return id;
             }
         }
-        
+
         public string Name
         {
             get
@@ -96,11 +93,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
             set
             {
-                if (value < DateTime.Now.AddYears(-1) && value > DateTime.Now.AddYears(1))
-                {
-                    throw new ArgumentException("The date of the performance cannot be later or erlier than a year later.");
-                }
-
                 performanceDateTime = value;
             }
         }
@@ -256,6 +248,12 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
 
             return revenue;
+        }
+
+        public bool IsAvailable(int position)
+        {
+            if (availablePositions.Contains(position)) return true;
+            return false;
         }
     }
 }

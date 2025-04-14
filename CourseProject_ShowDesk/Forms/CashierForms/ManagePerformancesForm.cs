@@ -1,14 +1,13 @@
-﻿using CourseProject_ShowDesk.Scripts;
+﻿using CourseProject_ShowDesk.Forms.DirectorForms;
 using CourseProject_ShowDesk.Scripts.Constants;
-using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
-using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Forms;
-using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -24,8 +23,16 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             InitializeComponent();
 
-            performanceManager = new PerformanceManager(new PerformanceBaseService());
-            stageManager = new StageManager(new StageBaseService());
+            try
+            {
+                performanceManager = new PerformanceManager(new PerformanceBaseService());
+                stageManager = new StageManager(new StageBaseService());
+            }
+            catch (DatabaseConnectionException ex)
+            {
+                MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
+            }
 
             timerUpdate.Interval = AppConstants.UpdatePerformancesInterval;
 
@@ -146,7 +153,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             foreach (Performance performance in performances)
             {
-                    AddPerformanceToDataGrid(performance);
+                AddPerformanceToDataGrid(performance);
             }
         }
         private void UpdateDataGridPerformances()
@@ -167,7 +174,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 performance.PerformanceDateTime.Date.ToShortDateString(),
                 timePerformance,
                 performance.Name,
-                performance.Price.ToString()+AppConstants.CurrencySymbol.ToString(),
+                performance.Price.ToString() + AppConstants.CurrencySymbol.ToString(),
                 performance.Duration.ToString(),
                 GetStageName(performance.StageId),
                 GetTotalPositions(performance.StageId),
@@ -231,7 +238,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void AddPerformance()
         {
-            AddEditPerformanceForm addPerformanceForm = new AddEditPerformanceForm(userAccount,stageManager.Stages, performanceManager.Performances);
+            AddEditPerformanceForm addPerformanceForm = new AddEditPerformanceForm(userAccount, stageManager.Stages, performanceManager.Performances);
             this.Hide();
             addPerformanceForm.ShowDialog();
             this.Show();
@@ -246,7 +253,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             Guid id = GetCurrentRowId();
 
-            AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(userAccount,stageManager.Stages, performanceManager.Performances, performanceManager.GetById(id));
+            AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(userAccount, stageManager.Stages, performanceManager.Performances, performanceManager.GetById(id));
             this.Hide();
             editPerformanceForm.ShowDialog();
             this.Show();
@@ -266,7 +273,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void ViewTickets()
         {
             Guid id = GetCurrentRowId();
-            Performance currentPerformance=performanceManager.GetById(id);
+            Performance currentPerformance = performanceManager.GetById(id);
             Stage currentStage = stageManager.GetById(currentPerformance.StageId);
 
             ManageTicketsForm manageTicketsForm = new ManageTicketsForm(userAccount, currentStage, currentPerformance);
@@ -277,8 +284,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void OpenRevenue()
         {
-            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(userAccount,performanceManager.PastPerformances);
-            
+            ViewRevenueForm viewRevenueForm = new ViewRevenueForm(userAccount, performanceManager.PastPerformances);
+
             this.Hide();
             viewRevenueForm.ShowDialog();
             this.Show();

@@ -45,16 +45,18 @@
             this.labelIncrease = new System.Windows.Forms.Label();
             this.toolTipZone = new System.Windows.Forms.ToolTip(this.components);
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.panelSeating = new System.Windows.Forms.Panel();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
+            this.panelViewport = new System.Windows.Forms.Panel();
+            this.panelSeating = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownStartPosition)).BeginInit();
             this.groupBoxZone.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncrease)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEndPosition)).BeginInit();
             this.groupBoxProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            this.panelViewport.SuspendLayout();
             this.SuspendLayout();
             // 
             // numericUpDownStartPosition
@@ -258,15 +260,6 @@
             this.labelIncrease.TabIndex = 17;
             this.labelIncrease.Text = "Increase";
             // 
-            // panelSeating
-            // 
-            this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelSeating.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSeating.Location = new System.Drawing.Point(389, 60);
-            this.panelSeating.Name = "panelSeating";
-            this.panelSeating.Size = new System.Drawing.Size(645, 257);
-            this.panelSeating.TabIndex = 42;
-            // 
             // groupBoxProfile
             // 
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
@@ -300,13 +293,31 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
+            // panelViewport
+            // 
+            this.panelViewport.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelViewport.Controls.Add(this.panelSeating);
+            this.panelViewport.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelViewport.Location = new System.Drawing.Point(389, 60);
+            this.panelViewport.Name = "panelViewport";
+            this.panelViewport.Size = new System.Drawing.Size(645, 257);
+            this.panelViewport.TabIndex = 44;
+            // 
+            // panelSeating
+            // 
+            this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelSeating.Location = new System.Drawing.Point(-1000, -1000);
+            this.panelSeating.Name = "panelSeating";
+            this.panelSeating.Size = new System.Drawing.Size(3000, 3000);
+            this.panelSeating.TabIndex = 7;
+            // 
             // AddEditZoneForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 337);
+            this.Controls.Add(this.panelViewport);
             this.Controls.Add(this.groupBoxProfile);
-            this.Controls.Add(this.panelSeating);
             this.Controls.Add(this.groupBoxZone);
             this.Name = "AddEditZoneForm";
             this.Text = "AddEditZone";
@@ -318,6 +329,7 @@
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            this.panelViewport.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -337,10 +349,11 @@
         private System.Windows.Forms.Label labelColor;
         private System.Windows.Forms.ColorDialog colorDialog;
         private System.Windows.Forms.TextBox textBoxColor;
-        private System.Windows.Forms.Panel panelSeating;
         private System.Windows.Forms.Button buttonChangeColor;
         private System.Windows.Forms.GroupBox groupBoxProfile;
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.Label labelAccountName;
+        private System.Windows.Forms.Panel panelViewport;
+        private System.Windows.Forms.Panel panelSeating;
     }
 }

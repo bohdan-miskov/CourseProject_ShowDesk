@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
@@ -16,13 +13,28 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         private List<Control> selectedControls;
         private ColorDialog colorDialog;
 
-        public SeatingManager(Panel seatingPanel, ColorDialog colorDialog, List<Seat> seatList=null, List<DecorativeElement> decorList=null)
+        public SeatingManager(Panel seatingPanel, List<Seat> seatList = null, List<DecorativeElement> decorList = null, ColorDialog colorDialog = null)
         {
             this.panelSeating = seatingPanel;
             this.colorDialog = colorDialog;
             this.seatList = seatList ?? new List<Seat>();
-            this.decorList =decorList ?? new List<DecorativeElement>();
+            this.decorList = decorList ?? new List<DecorativeElement>();
             this.selectedControls = new List<Control>();
+        }
+
+        public List<Seat> SeatList
+        {
+            get
+            {
+                return seatList;
+            }
+        }
+        public List<DecorativeElement> DecorList
+        {
+            get
+            {
+                return decorList;
+            }
         }
 
         public void PopulateSeating()
@@ -94,8 +106,11 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
             PopulateSeating();
         }
-
-        private int GetCurrentSeatIndex(Control control)
+        public int GetCurrentSeatPosition(Control control)
+        {
+            return control is Label && int.TryParse(control.Text, out int result) ? result : -1;
+        }
+        public int GetCurrentSeatIndex(Control control)
         {
             return control is Label && int.TryParse(control.Text, out int result) ? result - 1 : -1;
         }
@@ -109,6 +124,32 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             return -1;
         }
 
+        public void InsertSeat()
+        {
+            if (selectedControls.Count != 1 || !(selectedControls[0] is Label selectedLabel)) return;
+            int seatIndex = GetCurrentSeatIndex(selectedLabel);
+            if (seatIndex == -1) return;
+
+            Seat newSeat = new Seat(seatIndex + 2, new Point(selectedLabel.Location.X + 10, selectedLabel.Location.Y + 10));
+            seatList.Insert(seatIndex + 1, newSeat);
+            UpdateSeatNumbers();
+        }
+
+        public void SetUnavailable()
+        {
+            foreach (Control control in selectedControls.OfType<Label>())
+            {
+                int seatIndex = GetCurrentSeatIndex(control);
+                if (seatIndex != -1) seatList[seatIndex].IsAvailable = false;
+            }
+            UpdateSeatNumbers();
+        }
+        public Color GetSeatColorByControl(Control control)
+        {
+            int seatIndex = GetCurrentSeatIndex(control);
+            if (seatIndex != -1) return seatList[seatIndex].CurrentZone.GetColor();
+            return Color.LightGray;
+        }
         public List<Seat> GetSeats() => seatList;
         public List<DecorativeElement> GetDecorations() => decorList;
     }

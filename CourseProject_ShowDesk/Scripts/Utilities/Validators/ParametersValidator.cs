@@ -29,7 +29,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
         {
             char symbol = e.KeyChar;
 
-            if (!(IsLetterOrBackspace(symbol) || symbol==' '))
+            if (!(IsLetterOrBackspace(symbol) || symbol == ' '))
             {
                 e.Handled = true;
             }
@@ -72,7 +72,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
 
         public static bool PasswordValidator(string password)
         {
-            return password.Length>=8 && !string.IsNullOrWhiteSpace(password);
+            return password.Length >= 8 && !string.IsNullOrWhiteSpace(password);
         }
 
         public static bool DoubleValidator(string value)

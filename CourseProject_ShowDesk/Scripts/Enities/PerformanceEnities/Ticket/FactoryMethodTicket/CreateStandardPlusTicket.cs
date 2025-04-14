@@ -1,6 +1,4 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket;
-
-namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket
+﻿namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket
 {
     public class CreateStandardPlusTicket : ICreateTicket
     {
@@ -14,7 +12,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.Facto
         {
             return new StandardPlusTicket
             {
-                Type="StandardPlus",
+                Type = "StandardPlus",
                 Drink = drink
             };
         }

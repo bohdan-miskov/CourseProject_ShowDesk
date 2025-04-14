@@ -1,13 +1,13 @@
-﻿using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
-using CourseProject_ShowDesk.Scripts.Constants;
-using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using CourseProject_ShowDesk.Forms.AdministratorForms;
+﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
 using CourseProject_ShowDesk.Forms.CashierForms;
 using CourseProject_ShowDesk.Forms.DirectorForms;
+using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-using System.IO;
 
 namespace CourseProject_ShowDesk.Forms
 {
@@ -18,9 +18,16 @@ namespace CourseProject_ShowDesk.Forms
         public AuthenticateForm()
         {
             InitializeComponent();
+            try
+            {
+                employeeManager = new EmployeeManager(new EmployeeBaseService());
+            }
+            catch (DatabaseConnectionException ex)
+            {
+                MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
 
-            employeeManager = new EmployeeManager(new EmployeeBaseService());
-
+            }
             PopulateComboBox();
 
             comboBoxUser.SelectedIndex = 2;
@@ -29,7 +36,6 @@ namespace CourseProject_ShowDesk.Forms
         private void TextBoxLogin_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) textBoxPassword.Focus();
-
         }
 
         private void TextBoxPassword_KeyUp(object sender, KeyEventArgs e)
@@ -92,9 +98,16 @@ namespace CourseProject_ShowDesk.Forms
 
             if (account == null)
             {
-                ShowErrorMessage();
+                bool directorExist = employeeManager.Employees.Any((employee) => employee.ProfessionList.Contains(AppConstants.ListOfProfessions[0]));
+                if (directorExist) ShowErrorMessage();
+                else
+                {
+                    account = new Employee();
+                    account.FullName = "Visitor";
+                }
                 return;
             }
+
 
             ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(account);
             this.Hide();
@@ -113,7 +126,7 @@ namespace CourseProject_ShowDesk.Forms
             if (account == null)
             {
                 ShowErrorMessage();
-                return;  
+                return;
             }
 
             ManageStagesForm manageStagesForm = new ManageStagesForm(account);
