@@ -8,12 +8,14 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
     public partial class SettingsForm : MetroFramework.Forms.MetroForm
     {
         private readonly AppConstantsData appConstantsData;
+        private bool logOut;
 
         public SettingsForm(Employee userAccount)
         {
@@ -21,6 +23,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             appConstantsData = AppConstants.CloneConstants();
             labelAccountName.Text = userAccount.FullName;
+            logOut = false;
 
             PopulateAllField();
         }
@@ -254,6 +257,10 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         private void ButtonCancelOtherChanges_Click(object sender, EventArgs e)
         {
             PopulateOtherPage();
+        }
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogOut();
         }
         private void PopulateAllField()
         {
@@ -805,6 +812,17 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             appConstantsData.CompanyName = textBoxCompanyName.Text;
             appConstantsData.PasswordChar = Convert.ToChar(textBoxPasswordChar.Text);
             appConstantsData.CurrencySymbol = Convert.ToChar(textBoxCurrencySymbol.Text);
+        }
+
+        private void LogOut()
+        {
+            logOut = true;
+            this.Close();
+        }
+
+        public bool GetLogOut()
+        {
+            return logOut;
         }
     }
 }

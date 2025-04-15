@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditSeatingForm));
             this.buttonAddSeat = new System.Windows.Forms.Button();
             this.buttonAddDecor = new System.Windows.Forms.Button();
@@ -43,9 +44,12 @@
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
             this.panelViewport = new System.Windows.Forms.Panel();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.panelViewport.SuspendLayout();
+            this.contextMenuStripAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAddSeat
@@ -157,6 +161,7 @@
             // 
             // groupBoxProfile
             // 
+            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
             this.groupBoxProfile.Location = new System.Drawing.Point(613, 23);
@@ -201,6 +206,22 @@
             this.panelViewport.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelViewport_MouseMove);
             this.panelViewport.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelViewport_MouseUp);
             // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // AddEditSeatingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,6 +243,7 @@
             this.groupBoxProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.panelViewport.ResumeLayout(false);
+            this.contextMenuStripAccount.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -241,5 +263,7 @@
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.Label labelAccountName;
         private System.Windows.Forms.Panel panelViewport;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

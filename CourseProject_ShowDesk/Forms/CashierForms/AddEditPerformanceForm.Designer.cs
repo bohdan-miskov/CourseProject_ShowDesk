@@ -47,9 +47,12 @@
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxPerformance.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            this.contextMenuStripAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonSave
@@ -220,6 +223,7 @@
             // 
             // groupBoxProfile
             // 
+            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
             this.groupBoxProfile.Location = new System.Drawing.Point(279, 26);
@@ -251,6 +255,22 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // AddEditPerformanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -265,6 +285,7 @@
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            this.contextMenuStripAccount.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -288,5 +309,7 @@
         private System.Windows.Forms.GroupBox groupBoxProfile;
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.Label labelAccountName;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

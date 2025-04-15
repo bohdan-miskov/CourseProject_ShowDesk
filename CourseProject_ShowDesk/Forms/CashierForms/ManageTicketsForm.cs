@@ -10,6 +10,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -19,6 +20,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private Performance currentPerformance;
         private readonly PerformanceBaseService dataBase;
         private readonly Employee userAccount;
+
+        private bool logOut;
 
         public ManageTicketsForm(Employee userAccount, Stage currentStage, Performance currentPerformance)
         {
@@ -32,6 +35,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             labelAccountName.Text = userAccount.FullName;
 
             timerUpdate.Interval = AppConstants.UpdateTicketsInterval;
+
+            logOut = false;
 
             UpdateDataGridTickets();
             DisableEditAndRemoveTicket();
@@ -75,6 +80,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             UpdateDataFromDataBase();
         }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogOut();
+        }
+
         private void ManageTicketsForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             timerUpdate.Stop();
@@ -150,6 +161,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             this.Hide();
             buyTicketForm.ShowDialog();
             this.Show();
+
+            if (buyTicketForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
 
             if (buyTicketForm.GetIsValid())
             {
@@ -291,5 +308,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             };
             Process.Start(processStartInfo);
         }
+
+        private void LogOut()
+        {
+            logOut = true;
+            this.Close();
+        }
+
+        public bool GetLogOut()
+        {
+            return logOut;
+        }
+
     }
 }

@@ -4,6 +4,8 @@ using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Web.UI.WebControls;
+
 //using System.Web.UI;
 
 //using System.Web.UI;
@@ -21,7 +23,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         //private Point startLocation;
         //private Point dragStart;
         //private List<Control> selectedControls = new List<Control>();
-        private bool isValid = false;
+        private bool logOut;
+        private bool isValid;
         //private List<Seat> seatList = new List<Seat>();
         //private List<DecorativeElement> decorList = new List<DecorativeElement>();
         //private bool isPanning = false;
@@ -65,6 +68,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 panelViewport.AutoScrollPosition = new Point(lastSeat.Location.X, lastSeat.Location.Y);
             }
 
+            isValid = false;
+            logOut = false;
 
         }
 
@@ -102,8 +107,32 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             seatingManager.ChangeColor();
         }
-
         private void PanelSeating_MouseDown(object sender, MouseEventArgs e)
+        {
+            CanvasMouseDown(e);
+        }
+        
+
+        private void PanelSeating_MouseMove(object sender, MouseEventArgs e)
+        {
+            CanvasMouseMove(e);
+        }
+
+        private void PanelSeating_MouseUp(object sender, MouseEventArgs e)
+        {
+            CanvasMouseUp();
+        }
+
+
+        private void ButtonSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogOut();
+        }
+        private void CanvasMouseDown(MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
             else lastMousePos = e.Location;
@@ -117,6 +146,19 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             //FormMouseDown(sender, e);
             //ViewportMouseDown(sender, e);
+        }
+        private void CanvasMouseUp()
+        {
+            canvasController.MoveStop();
+            canvasController.ResizeStop();
+            //ViewportMouseUp(sender, e);
+        }
+        private void CanvasMouseMove(MouseEventArgs e)
+        {
+            canvasController.ElementMove(e);
+            canvasController.ElementResize(e);
+            //FormMouseMove(sender, e);
+            //ViewportMouseMove(sender, e);
         }
         public void HandleSelection(MouseEventArgs e, bool useControl)
         {
@@ -138,24 +180,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 }
             }
         }
-
-        private void PanelSeating_MouseMove(object sender, MouseEventArgs e)
-        {
-            canvasController.ElementMove(e);
-            canvasController.ElementResize(e);
-            //FormMouseMove(sender, e);
-            //ViewportMouseMove(sender, e);
-        }
-
-        private void PanelSeating_MouseUp(object sender, MouseEventArgs e)
-        {
-            canvasController.MoveStop();
-            canvasController.ResizeStop();
-            //ViewportMouseUp(sender, e);
-        }
-
-
-        private void ButtonSave_Click(object sender, EventArgs e)
+        private void Save()
         {
             if (ValidateOfSeating())
             {
@@ -164,7 +189,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 this.Close();
             }
         }
-
         private bool ValidateOfSeating()
         {
             if (seatingManager.SeatList.Count > 0) return true;
@@ -173,10 +197,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             buttonAddSeat.Focus();
             return false;
         }
-
-
-
-
         //private void ScaleControl(Control control)
         //{
         //    int seatIndex = GetCurrentSeatIndex(control);
@@ -250,8 +270,16 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         //    }
         //}
 
+        private void LogOut()
+        {
+            logOut = true;
+            this.Close();
+        }
 
-
+        public bool GetLogOut()
+        {
+            return logOut;
+        }
         public bool GetIsValid()
         {
             return isValid;
@@ -333,8 +361,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             //ViewportMouseUp(sender, e);
         }
-
-
     }
 }
 

@@ -67,8 +67,6 @@
             this.dataGridViewStages.AllowUserToAddRows = false;
             this.dataGridViewStages.AllowUserToDeleteRows = false;
             this.dataGridViewStages.AllowUserToResizeRows = false;
-            this.dataGridViewStages.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewStages.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewStages.BackgroundColor = System.Drawing.Color.LightGray;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -95,14 +93,15 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewStages.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewStages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewStages.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewStages.Location = new System.Drawing.Point(0, 64);
+            this.dataGridViewStages.Location = new System.Drawing.Point(20, 60);
             this.dataGridViewStages.MultiSelect = false;
             this.dataGridViewStages.Name = "dataGridViewStages";
             this.dataGridViewStages.ReadOnly = true;
             this.dataGridViewStages.RowHeadersVisible = false;
             this.dataGridViewStages.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStages.Size = new System.Drawing.Size(622, 196);
+            this.dataGridViewStages.Size = new System.Drawing.Size(582, 178);
             this.dataGridViewStages.TabIndex = 2;
             this.dataGridViewStages.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowEnter);
             this.dataGridViewStages.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowLeave);

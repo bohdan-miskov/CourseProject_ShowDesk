@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -18,13 +19,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
     {
         private Performance performance;
 
-        private bool isValid;
-
         private List<StandardTicket> newTickets;
         private readonly PerformanceBaseService dataBase;
         private SelectionManager selectionManager;
         private SeatingManager seatingManager;
         private CanvasController canvasController;
+
+        private bool isValid;
+        private bool logOut; 
 
         public BuyTicketForm(Employee userAccount, Stage stage, Performance performance)
         {
@@ -43,6 +45,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             PopulateComponents();
 
             isValid = false;
+            logOut = false;
         }
 
         private void TextBoxIndex_KeyUp(object sender, KeyEventArgs e)
@@ -85,6 +88,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void ButtonAdd_Click(object sender, EventArgs e)
         {
             SaveTickets();
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogOut();
         }
 
         private void PopulateComponents()
@@ -412,6 +420,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 }
             }
             return canceledPositions;
+        }
+
+        private void LogOut()
+        {
+            logOut = true;
+            this.Close();
+        }
+
+        public bool GetLogOut()
+        {
+            return logOut;
         }
 
         public bool GetIsValid()

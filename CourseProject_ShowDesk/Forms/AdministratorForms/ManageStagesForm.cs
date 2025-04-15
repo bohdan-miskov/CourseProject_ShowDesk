@@ -5,6 +5,7 @@ using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using System;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
@@ -80,8 +81,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            LogOut();
         }
 
         private void ManageStagesForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -137,6 +137,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             addStageForm.ShowDialog();
             this.Show();
 
+            if (addStageForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
+
             if (addStageForm.GetIsValid())
             {
                 stageManager.AddStage(addStageForm.GetNewStage());
@@ -151,6 +157,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             this.Hide();
             editStageForm.ShowDialog();
             this.Show();
+
+            if (editStageForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
 
             if (editStageForm.GetIsValid())
             {
@@ -180,6 +192,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 editStageToolStripMenuItem1.Enabled = false;
                 removeStageToolStripMenuItem1.Enabled = false;
             }
+        }
+
+        private void LogOut()
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

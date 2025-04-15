@@ -160,8 +160,9 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewEmployees.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewEmployees.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewEmployees.Location = new System.Drawing.Point(0, 64);
+            this.dataGridViewEmployees.Location = new System.Drawing.Point(20, 60);
             this.dataGridViewEmployees.MultiSelect = false;
             this.dataGridViewEmployees.Name = "dataGridViewEmployees";
             this.dataGridViewEmployees.ReadOnly = true;
@@ -169,7 +170,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewEmployees.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewEmployees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewEmployees.Size = new System.Drawing.Size(552, 196);
+            this.dataGridViewEmployees.Size = new System.Drawing.Size(510, 180);
             this.dataGridViewEmployees.TabIndex = 14;
             this.dataGridViewEmployees.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewEmployees_RowEnter);
             this.dataGridViewEmployees.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewEmployees_RowLeave);

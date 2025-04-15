@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageTicketsForm));
             this.menuStripPerformance = new System.Windows.Forms.MenuStrip();
             this.ticketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,6 +38,12 @@
             this.changeStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columnAdditionalServices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripPerformance = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addTicketToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.changeStatusToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,17 +53,14 @@
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
-            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPosition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.columnAdditionalServices = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripPerformance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             this.contextMenuStripPerformance.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            this.contextMenuStripAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripPerformance
@@ -129,28 +132,73 @@
             this.columnReserved,
             this.columnAdditionalServices});
             this.dataGridViewTickets.ContextMenuStrip = this.contextMenuStripPerformance;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTickets.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTickets.Location = new System.Drawing.Point(2, 63);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTickets.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTickets.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewTickets.Location = new System.Drawing.Point(37, 97);
             this.dataGridViewTickets.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.dataGridViewTickets.Name = "dataGridViewTickets";
             this.dataGridViewTickets.ReadOnly = true;
             this.dataGridViewTickets.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTickets.Size = new System.Drawing.Size(830, 303);
+            this.dataGridViewTickets.Size = new System.Drawing.Size(758, 238);
             this.dataGridViewTickets.TabIndex = 12;
             this.dataGridViewTickets.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTickets_RowEnter);
             this.dataGridViewTickets.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTickets_RowLeave);
+            // 
+            // idColumn
+            // 
+            this.idColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idColumn.FillWeight = 153.7891F;
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
+            this.idColumn.Width = 56;
+            // 
+            // columnType
+            // 
+            this.columnType.FillWeight = 4.470613F;
+            this.columnType.HeaderText = "Type";
+            this.columnType.Name = "columnType";
+            this.columnType.ReadOnly = true;
+            // 
+            // columnPosition
+            // 
+            this.columnPosition.FillWeight = 4.470613F;
+            this.columnPosition.HeaderText = "Position";
+            this.columnPosition.Name = "columnPosition";
+            this.columnPosition.ReadOnly = true;
+            // 
+            // columnPrice
+            // 
+            this.columnPrice.FillWeight = 4.470613F;
+            this.columnPrice.HeaderText = "Price";
+            this.columnPrice.Name = "columnPrice";
+            this.columnPrice.ReadOnly = true;
+            // 
+            // columnReserved
+            // 
+            this.columnReserved.FillWeight = 4.470613F;
+            this.columnReserved.HeaderText = "Reserved";
+            this.columnReserved.Name = "columnReserved";
+            this.columnReserved.ReadOnly = true;
+            // 
+            // columnAdditionalServices
+            // 
+            this.columnAdditionalServices.FillWeight = 4.470613F;
+            this.columnAdditionalServices.HeaderText = "Additional services";
+            this.columnAdditionalServices.Name = "columnAdditionalServices";
+            this.columnAdditionalServices.ReadOnly = true;
             // 
             // contextMenuStripPerformance
             // 
@@ -204,6 +252,7 @@
             // 
             // groupBoxProfile
             // 
+            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
             this.groupBoxProfile.Location = new System.Drawing.Point(654, 23);
@@ -235,49 +284,21 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
-            // idColumn
+            // contextMenuStripAccount
             // 
-            this.idColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.idColumn.FillWeight = 153.7891F;
-            this.idColumn.HeaderText = "Id";
-            this.idColumn.Name = "idColumn";
-            this.idColumn.ReadOnly = true;
-            this.idColumn.Width = 56;
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
             // 
-            // columnType
+            // exitToolStripMenuItem
             // 
-            this.columnType.FillWeight = 4.470613F;
-            this.columnType.HeaderText = "Type";
-            this.columnType.Name = "columnType";
-            this.columnType.ReadOnly = true;
-            // 
-            // columnPosition
-            // 
-            this.columnPosition.FillWeight = 4.470613F;
-            this.columnPosition.HeaderText = "Position";
-            this.columnPosition.Name = "columnPosition";
-            this.columnPosition.ReadOnly = true;
-            // 
-            // columnPrice
-            // 
-            this.columnPrice.FillWeight = 4.470613F;
-            this.columnPrice.HeaderText = "Price";
-            this.columnPrice.Name = "columnPrice";
-            this.columnPrice.ReadOnly = true;
-            // 
-            // columnReserved
-            // 
-            this.columnReserved.FillWeight = 4.470613F;
-            this.columnReserved.HeaderText = "Reserved";
-            this.columnReserved.Name = "columnReserved";
-            this.columnReserved.ReadOnly = true;
-            // 
-            // columnAdditionalServices
-            // 
-            this.columnAdditionalServices.FillWeight = 4.470613F;
-            this.columnAdditionalServices.HeaderText = "Additional services";
-            this.columnAdditionalServices.Name = "columnAdditionalServices";
-            this.columnAdditionalServices.ReadOnly = true;
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // ManageTicketsForm
             // 
@@ -301,6 +322,7 @@
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            this.contextMenuStripAccount.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,5 +351,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnReserved;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnAdditionalServices;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

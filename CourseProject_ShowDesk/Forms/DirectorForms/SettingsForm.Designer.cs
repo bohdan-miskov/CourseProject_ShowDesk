@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.labelPerformancesCollectionName = new System.Windows.Forms.Label();
             this.textBoxPerformancesCollectionName = new System.Windows.Forms.TextBox();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
+            this.textBoxCompanyName = new System.Windows.Forms.TextBox();
+            this.labelCompanyName = new System.Windows.Forms.Label();
             this.textBoxPasswordChar = new System.Windows.Forms.TextBox();
             this.labelPasswordChar = new System.Windows.Forms.Label();
             this.textBoxCurrencySymbol = new System.Windows.Forms.TextBox();
@@ -56,6 +59,7 @@
             this.labelStagesCollectionName = new System.Windows.Forms.Label();
             this.textBoxStagesCollectionName = new System.Windows.Forms.TextBox();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
             this.tabControlSetting = new System.Windows.Forms.TabControl();
             this.tabPagePerformanceSettings = new System.Windows.Forms.TabPage();
@@ -101,19 +105,19 @@
             this.tabPageOtherSettings = new System.Windows.Forms.TabPage();
             this.groupBoxStage = new System.Windows.Forms.GroupBox();
             this.buttonChangeSeatHoverColor = new System.Windows.Forms.Button();
+            this.buttonChangeSeatColor = new System.Windows.Forms.Button();
             this.textBoxSeatHoverColor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSeatColor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialogSettings = new System.Windows.Forms.ColorDialog();
-            this.buttonChangeSeatColor = new System.Windows.Forms.Button();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
-            this.textBoxCompanyName = new System.Windows.Forms.TextBox();
-            this.labelCompanyName = new System.Windows.Forms.Label();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxOther.SuspendLayout();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxCollectionName.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.tabControlSetting.SuspendLayout();
             this.tabPagePerformanceSettings.SuspendLayout();
             this.groupBoxPastPerformances.SuspendLayout();
@@ -129,7 +133,7 @@
             this.groupBoxDataBaseLinks.SuspendLayout();
             this.tabPageOtherSettings.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            this.contextMenuStripAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelPerformancesCollectionName
@@ -168,6 +172,27 @@
             this.groupBoxOther.TabIndex = 9;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "Other";
+            // 
+            // textBoxCompanyName
+            // 
+            this.textBoxCompanyName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCompanyName.Location = new System.Drawing.Point(181, 23);
+            this.textBoxCompanyName.MaxLength = 1;
+            this.textBoxCompanyName.Name = "textBoxCompanyName";
+            this.textBoxCompanyName.Size = new System.Drawing.Size(120, 28);
+            this.textBoxCompanyName.TabIndex = 12;
+            this.textBoxCompanyName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxCompanyName_KeyUp);
+            // 
+            // labelCompanyName
+            // 
+            this.labelCompanyName.AutoSize = true;
+            this.labelCompanyName.BackColor = System.Drawing.Color.Transparent;
+            this.labelCompanyName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCompanyName.Location = new System.Drawing.Point(5, 26);
+            this.labelCompanyName.Name = "labelCompanyName";
+            this.labelCompanyName.Size = new System.Drawing.Size(126, 21);
+            this.labelCompanyName.TabIndex = 13;
+            this.labelCompanyName.Text = "Company name";
             // 
             // textBoxPasswordChar
             // 
@@ -430,6 +455,7 @@
             // 
             // groupBoxProfile
             // 
+            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
             this.groupBoxProfile.Location = new System.Drawing.Point(446, 27);
@@ -437,6 +463,18 @@
             this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
             this.groupBoxProfile.TabIndex = 26;
             this.groupBoxProfile.TabStop = false;
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
             // 
             // labelAccountName
             // 
@@ -990,6 +1028,21 @@
             this.buttonChangeSeatHoverColor.Click += new System.EventHandler(this.ButtonChangeSeatHoverColor_Click);
             this.buttonChangeSeatHoverColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatHoverColor_KeyUp);
             // 
+            // buttonChangeSeatColor
+            // 
+            this.buttonChangeSeatColor.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
+            this.buttonChangeSeatColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonChangeSeatColor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttonChangeSeatColor.Image = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
+            this.buttonChangeSeatColor.Location = new System.Drawing.Point(43, 64);
+            this.buttonChangeSeatColor.Name = "buttonChangeSeatColor";
+            this.buttonChangeSeatColor.Size = new System.Drawing.Size(28, 28);
+            this.buttonChangeSeatColor.TabIndex = 28;
+            this.buttonChangeSeatColor.Text = " ";
+            this.buttonChangeSeatColor.UseVisualStyleBackColor = true;
+            this.buttonChangeSeatColor.Click += new System.EventHandler(this.ButtonChangeSeatColor_Click);
+            this.buttonChangeSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatColor_KeyUp);
+            // 
             // textBoxSeatHoverColor
             // 
             this.textBoxSeatHoverColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1034,53 +1087,21 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Seat base color";
             // 
-            // buttonChangeSeatColor
+            // contextMenuStripAccount
             // 
-            this.buttonChangeSeatColor.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
-            this.buttonChangeSeatColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonChangeSeatColor.Cursor = System.Windows.Forms.Cursors.Default;
-            this.buttonChangeSeatColor.Image = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
-            this.buttonChangeSeatColor.Location = new System.Drawing.Point(43, 64);
-            this.buttonChangeSeatColor.Name = "buttonChangeSeatColor";
-            this.buttonChangeSeatColor.Size = new System.Drawing.Size(28, 28);
-            this.buttonChangeSeatColor.TabIndex = 28;
-            this.buttonChangeSeatColor.Text = " ";
-            this.buttonChangeSeatColor.UseVisualStyleBackColor = true;
-            this.buttonChangeSeatColor.Click += new System.EventHandler(this.ButtonChangeSeatColor_Click);
-            this.buttonChangeSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatColor_KeyUp);
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
             // 
-            // pictureBoxAccountIcon
+            // exitToolStripMenuItem
             // 
-            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
-            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
-            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
-            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
-            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAccountIcon.TabIndex = 1;
-            this.pictureBoxAccountIcon.TabStop = false;
-            // 
-            // textBoxCompanyName
-            // 
-            this.textBoxCompanyName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCompanyName.Location = new System.Drawing.Point(181, 23);
-            this.textBoxCompanyName.MaxLength = 1;
-            this.textBoxCompanyName.Name = "textBoxCompanyName";
-            this.textBoxCompanyName.Size = new System.Drawing.Size(120, 28);
-            this.textBoxCompanyName.TabIndex = 12;
-            this.textBoxCompanyName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxCompanyName_KeyUp);
-            // 
-            // labelCompanyName
-            // 
-            this.labelCompanyName.AutoSize = true;
-            this.labelCompanyName.BackColor = System.Drawing.Color.Transparent;
-            this.labelCompanyName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCompanyName.Location = new System.Drawing.Point(5, 26);
-            this.labelCompanyName.Name = "labelCompanyName";
-            this.labelCompanyName.Size = new System.Drawing.Size(126, 21);
-            this.labelCompanyName.TabIndex = 13;
-            this.labelCompanyName.Text = "Company name";
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // SettingsForm
             // 
@@ -1099,6 +1120,7 @@
             this.groupBoxCollectionName.PerformLayout();
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.tabControlSetting.ResumeLayout(false);
             this.tabPagePerformanceSettings.ResumeLayout(false);
             this.groupBoxPastPerformances.ResumeLayout(false);
@@ -1121,7 +1143,7 @@
             this.tabPageOtherSettings.ResumeLayout(false);
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            this.contextMenuStripAccount.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1209,5 +1231,7 @@
         private System.Windows.Forms.TextBox textBoxPastPerformancesCollectionName;
         private System.Windows.Forms.TextBox textBoxCompanyName;
         private System.Windows.Forms.Label labelCompanyName;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

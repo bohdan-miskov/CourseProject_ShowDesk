@@ -4,6 +4,7 @@ using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
@@ -14,6 +15,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         private readonly Employee currentEmployee;
 
         private bool isValid;
+        private bool logOut;
 
         public AddEditEmployeeForm(Employee userAccount, List<Employee> employees, Employee currentEmployee = null)
         {
@@ -22,6 +24,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             this.employees = employees;
 
             isValid = false;
+            logOut = false;
 
             labelAccountName.Text = userAccount.FullName;
 
@@ -84,6 +87,10 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             SaveEmployee();
         }
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogOut();
+        }
         private void PopulateProfessionsGroup()
         {
             checkBoxDirector.Text = AppConstants.ListOfProfessions[0];
@@ -130,6 +137,16 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 "Employee error",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
+        }
+        private void LogOut()
+        {
+            logOut = true;
+            this.Close();
+        }
+
+        public bool GetLogOut()
+        {
+            return logOut;
         }
 
         public bool GetIsValid()

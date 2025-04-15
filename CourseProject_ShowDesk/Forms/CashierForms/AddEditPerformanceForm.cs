@@ -7,6 +7,7 @@ using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -18,6 +19,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private readonly Performance currentPerformance;
 
         private bool isValid;
+        private bool logOut;
 
         public AddEditPerformanceForm(Employee userAccount, List<Stage> stages, List<Performance> performances, Performance currentPerformance = null)
         {
@@ -31,6 +33,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             PopulateComponents();
 
             isValid = false;
+            logOut = false;
 
             if (currentPerformance != null)
             {
@@ -66,6 +69,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             SavePerformance();
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogOut();
         }
 
         private void PopulateComponents()
@@ -159,6 +167,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public Performance GetPerformance()
         {
             return currentPerformance;
+        }
+
+        private void LogOut()
+        {
+            logOut = true;
+            this.Close();
+        }
+
+        public bool GetLogOut()
+        {
+            return logOut;
         }
 
         public bool GetIsValid()

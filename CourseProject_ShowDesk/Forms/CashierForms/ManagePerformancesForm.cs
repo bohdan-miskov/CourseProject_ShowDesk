@@ -287,6 +287,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             addPerformanceForm.ShowDialog();
             this.Show();
 
+            if (addPerformanceForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
+
             if (addPerformanceForm.GetIsValid())
             {
                 performanceManager.AddPerformance(addPerformanceForm.GetPerformance());
@@ -301,6 +307,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             this.Hide();
             editPerformanceForm.ShowDialog();
             this.Show();
+
+            if (editPerformanceForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
 
             if (editPerformanceForm.GetIsValid())
             {
@@ -357,6 +369,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             isPastPerformances = false;
             HidePastPerformanceRangeGroupBox();
             UpdateDataFromDataBase();
+        }
+
+        private void LogOut()
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

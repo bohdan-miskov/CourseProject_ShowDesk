@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewRevenueForm));
@@ -54,6 +55,8 @@
             this.textBoxSum = new System.Windows.Forms.TextBox();
             this.labelSum = new System.Windows.Forms.Label();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
             this.groupBoxPeriod.SuspendLayout();
@@ -62,6 +65,7 @@
             this.groupBoxForm.SuspendLayout();
             this.groupBoxAdditionalParameter.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
+            this.contextMenuStripAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -313,6 +317,7 @@
             // 
             // groupBoxProfile
             // 
+            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
             this.groupBoxProfile.Location = new System.Drawing.Point(764, 28);
@@ -320,6 +325,22 @@
             this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
             this.groupBoxProfile.TabIndex = 17;
             this.groupBoxProfile.TabStop = false;
+            // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // pictureBoxAccountIcon
             // 
@@ -363,6 +384,7 @@
             this.groupBoxAdditionalParameter.PerformLayout();
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
+            this.contextMenuStripAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
 
@@ -395,5 +417,7 @@
         private System.Windows.Forms.GroupBox groupBoxProfile;
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
         private System.Windows.Forms.Label labelAccountName;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }

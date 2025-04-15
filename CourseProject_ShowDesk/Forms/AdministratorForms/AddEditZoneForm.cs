@@ -6,11 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
     public partial class AddEditZoneForm : MetroFramework.Forms.MetroForm
     {
+        private bool logOut;
         private bool isValid;
 
         private List<Zone> zones;
@@ -27,6 +29,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             this.MouseWheel += PanelSeating_MouseWheel;
 
             isValid = false;
+            logOut = false;
             this.zones = stage.Zones;
             this.seatingManager = new SeatingManager(panelSeating, stage?.SeatList, stage?.DecorList);
             this.canvasController = new CanvasController(panelSeating, panelViewport);
@@ -86,6 +89,10 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void ButtonChangeColor_Click(object sender, EventArgs e)
         {
             ChangeColor();
+        }
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogOut();
         }
 
         private void ButtonAdd_Click(object sender, EventArgs e)
@@ -160,6 +167,16 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public Zone GetZone()
         {
             return currentZone;
+        }
+        private void LogOut()
+        {
+            logOut = true;
+            this.Close();
+        }
+
+        public bool GetLogOut()
+        {
+            return logOut;
         }
 
         public bool GetIsValid()

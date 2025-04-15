@@ -5,12 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
     public partial class ViewRevenueForm : MetroFramework.Forms.MetroForm
     {
         private readonly PerformanceManager performanceManager;
+        private bool logOut;
 
         public ViewRevenueForm(Employee userAccount, PerformanceManager performanceManager)
         {
@@ -19,6 +21,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             this.performanceManager = performanceManager;
 
             labelAccountName.Text = userAccount.FullName;
+            logOut = false;
 
             PopulateComponents();
         }
@@ -46,6 +49,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void ButtonCalculate_Click(object sender, EventArgs e)
         {
             CreateGraph();
+        }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogOut();
         }
 
         private void PopulateComponents()
@@ -190,6 +198,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             series.Points.AddXY(thisDate.ToShortDateString(), dayRevenue);
             series.Points[series.Points.Count - 1].ToolTip = $"Date: {thisDate.ToShortDateString()}\nRevenue: {dayRevenue.ToString("0.00") + AppConstants.CurrencySymbol}";
+        }
+
+        private void LogOut()
+        {
+            logOut = true;
+            this.Close();
+        }
+
+        public bool GetLogOut()
+        {
+            return logOut;
         }
     }
 }

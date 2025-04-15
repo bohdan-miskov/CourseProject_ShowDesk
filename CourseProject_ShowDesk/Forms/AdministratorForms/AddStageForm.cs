@@ -3,11 +3,13 @@ using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
     public partial class AddStageForm : MetroFramework.Forms.MetroForm
     {
+        private bool logOut;
         private bool isValid;
 
         private Stage newStage;
@@ -21,6 +23,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             labelAccountName.Text = userAccount.FullName;
 
             isValid = false;
+            logOut = false;
         }
 
         private void TextBoxStageName_KeyUp(object sender, KeyEventArgs e)
@@ -32,6 +35,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             SaveStage();
         }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LogOut();
+        }
+
         private void SaveStage()
         {
             CreateStage();
@@ -42,6 +51,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 this.Hide();
                 addSeatingForm.ShowDialog();
                 this.Show();
+
+                if (addSeatingForm.GetLogOut())
+                {
+                    LogOut();
+                    return;
+                }
 
                 if (addSeatingForm.GetIsValid())
                 {
@@ -65,6 +80,16 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             newStage = new Stage(stageName);
         }
 
+        private void LogOut()
+        {
+            logOut = true;
+            this.Close();
+        }
+
+        public bool GetLogOut()
+        {
+            return logOut;
+        }
         public bool GetIsValid()
         {
             return isValid;

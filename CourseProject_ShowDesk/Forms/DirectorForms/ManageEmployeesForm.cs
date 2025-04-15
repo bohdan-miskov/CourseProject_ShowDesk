@@ -1,4 +1,5 @@
-﻿using CourseProject_ShowDesk.Scripts.Constants;
+﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
+using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
@@ -93,8 +94,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            LogOut();
         }
 
         private void ManageEmployeesForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -166,6 +166,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             addEmployeeForm.ShowDialog();
             this.Show();
 
+            if (addEmployeeForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
+
             if (addEmployeeForm.GetIsValid())
                 employeeManager.AddEmployee(addEmployeeForm.GetEmployee());
         }
@@ -178,6 +184,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             this.Hide();
             editEmployeeForm.ShowDialog();
             this.Show();
+
+            if (editEmployeeForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
 
             if (editEmployeeForm.GetIsValid())
                 employeeManager.UpdateEmployee(editEmployeeForm.GetEmployee());
@@ -194,6 +206,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             this.Hide();
             settingsForm.ShowDialog();
             this.Show();
+
+            if (settingsForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
         }
 
         private void ShowPassword()
@@ -206,6 +224,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             string currentPassword = dataGridViewEmployees.CurrentRow.Cells[3].Value.ToString();
             dataGridViewEmployees.CurrentRow.Cells[3].Value = new String(AppConstants.PasswordChar, currentPassword.Length); ;
+        }
+
+        private void LogOut()
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }
