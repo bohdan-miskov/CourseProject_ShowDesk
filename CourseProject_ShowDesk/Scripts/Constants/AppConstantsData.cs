@@ -15,7 +15,6 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         private double standardIncrease;
         private double standardPlusIncrease;
         private double premiumIncrease;
-        private int rangeDateOfPastPerformances;
         private char currencySymbol;
         private TimeSpan minBreakBetweenPerformance;
         private TimeSpan initialPerformanceDuration;
@@ -173,22 +172,6 @@ namespace CourseProject_ShowDesk.Scripts.Constants
                     throw new ArgumentOutOfRangeException("Premium increase cannot be negative.");
                 }
                 premiumIncrease = value;
-            }
-        }
-
-        public int RangeDateOfPastPerformances
-        {
-            get
-            {
-                return rangeDateOfPastPerformances;
-            }
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException("Range date of past performances cannot be negative.");
-                }
-                rangeDateOfPastPerformances = value;
             }
         }
 

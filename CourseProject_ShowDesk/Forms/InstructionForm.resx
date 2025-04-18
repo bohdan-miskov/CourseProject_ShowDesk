@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="richTextBoxEntry.Text" xml:space="preserve">
+    <value>ВСТУП
+
+Ця програма створена для автоматизації процесів, пов’язаних із керуванням концертними, театральними або подібними майданчиками. Вона дозволяє створювати структуру залу (сцени, зони, місця), здійснювати продаж квитків, контролювати заповнюваність, а також вести аналіз статистики продажів.
+
+Основна мета програми — надати інструмент для ефективного адміністрування подій, зменшити ризик помилок під час продажу квитків, забезпечити гнучке управління персоналом через систему ролей, та зібрати повну аналітику про діяльність закладу.
+
+Кожен користувач має свою роль (Адміністратор, Касир або Директор), яка визначає доступний функціонал. Детальніше про функції кожної ролі читайте у відповідних вкладках.
+
+Увага!
+Якщо в системі ще не зареєстровано жодного користувача, доступ до програми можливий лише в ролі Директора. 
+Рекомендується після налаштування системи перевірити її роботу, увійшовши під кожною з ролей, щоб переконатися у правильному розмежуванні функціоналу.</value>
+  </data>
+  <data name="richTextBoxStartSettings.Text" xml:space="preserve">
+    <value>НАЛАШТУВАННЯ ПРОГРАМИ
+
+1. Підключення до бази даних MongoDB
+
+Програма використовує MongoDB як основне сховище даних. Перед початком роботи потрібно вказати рядок підключення до MongoDB у налаштуваннях. Наприклад:
+mongodb://localhost:27017
+
+Якщо сервер вимагає авторизацію — потрібно вказати логін і пароль у цьому рядку.
+
+При першому запуску програма автоматично створить базу та колекції, якщо вони відсутні.
+
+Стандартні назви колекцій:
+- Event – батьківська колекція
+- Employees – список робітників
+- Stages – список залів
+- UpcomingPerformances – список майбутніх сеансів
+- PastPerformances – список минулих сеансів
+
+Ці назви можна змінити у налаштуваннях (вкладка-DataBase).
+
+2. Назва компанії
+
+У налаштуваннях потрібно вказати назву компанії, яка буде друкуватися у верхній частині квитка. Назва зберігається локально у даних програми. Якщо її не вказати — квитки будуть надруковані з назвою програми у заголовку «ShowDesk».
+
+3. Початковий доступ до програми
+
+Якщо в базі даних ще не зареєстровано жодного користувача:
+- Вхід у систему можливий тільки в ролі "Директор" без логіну й пароля.
+- У цьому режимі директор повинен додати хоча б одного користувача і призначити йому ролі (наприклад, Касир, Адміністратор, Директор).
+
+Після створення хоча б одного користувача з роллю "Директор", надалі увійти в програму можливо буде лише за зареєстрованими обліковими даними.
+
+*Увага доступ до налаштувань має лише обліковий запис з роллю директора!*
+5. Рекомендаційні налаштування
+
+- Оберіть папку для зберігання чеків у налаштуваннях, тоді ця функція буде виконуватися автоматично.
+- Введіть знак валюти вашої країни.</value>
+  </data>
+  <data name="richTextBoxRoles.Text" xml:space="preserve">
+    <value>РОЛІ КОРИСТУВАЧІВ
+--------------------------------
+ДИРЕКТОР
+--------------------------------
+
+Директор може:
+
+- Змінювати налаштування програми.
+- Створювати та змінювати облікові записи робітників.
+
+--------------------------------
+АДМІНІСТРАТОР
+--------------------------------
+
+Адміністратор має можливість:
+
+- Додавання, редагування та видалення сцен.
+- Робота з зонами кожної сцени (додавання, редагування).
+- Налаштування місць для кожної зони (кількість, ціна тощо).
+- Додавати, редагувати та видаляти події.
+- Також має усі можливості що й касир.
+
+--------------------------------
+КАСИР
+--------------------------------
+
+Касир має можливість:
+
+- Переглядати список доступних подій та сцен.
+- Продавати квитки.
+- Перевіряти наявність місць у відповідних зонах.
+- Створювати та переглядати статистику продаж.
+</value>
+  </data>
+</root>

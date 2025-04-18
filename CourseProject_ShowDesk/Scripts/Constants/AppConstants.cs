@@ -6,6 +6,8 @@ namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public static class AppConstants
     {
+        public static DateTime FirstLog { get; private set; } = DateTime.MinValue; 
+
         public static string CompanyName { get; private set; } = "«ShowDesk»";
         public static string GeneralCollectionName { get; private set; } = "Event";
         public static string PerformancesCollectionName { get; private set; } = "UpcomingPerformances";
@@ -16,8 +18,6 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         public static double StandardIncrease { get; private set; } = 1;
         public static double StandardPlusIncrease { get; private set; } = 1.5;
         public static double PremiumIncrease { get; private set; } = 3;
-
-        public static int RangeDateOfPastPerformances { get; private set; } = 100;
 
         public static char CurrencySymbol { get; private set; } = '$';
 
@@ -44,6 +44,11 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         public static Color SeatBaseColor { get; private set; } = Color.LightGray;
         public static Color SeatHoverColor { get; private set; } = Color.GreenYellow;
 
+        public static void SetFirstLog()
+        {
+            FirstLog = DateTime.Now;
+        }
+
         public static void PopulateConstants(AppConstantsData constantsData)
         {
             CompanyName = constantsData.CompanyName;
@@ -58,7 +63,6 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             StandardPlusIncrease = constantsData.StandardPlusIncrease;
             PremiumIncrease = constantsData.PremiumIncrease;
 
-            RangeDateOfPastPerformances = constantsData.RangeDateOfPastPerformances;
             CurrencySymbol = constantsData.CurrencySymbol;
 
             MinBreakBetweenPerformance = constantsData.MinBreakBetweenPerformance;
@@ -99,7 +103,6 @@ namespace CourseProject_ShowDesk.Scripts.Constants
                 StandardPlusIncrease = StandardPlusIncrease,
                 PremiumIncrease = PremiumIncrease,
 
-                RangeDateOfPastPerformances = RangeDateOfPastPerformances,
                 CurrencySymbol = CurrencySymbol,
 
                 MinBreakBetweenPerformance = MinBreakBetweenPerformance,

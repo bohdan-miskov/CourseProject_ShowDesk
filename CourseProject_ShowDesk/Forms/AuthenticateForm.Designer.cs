@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBoxAuthenticate = new System.Windows.Forms.GroupBox();
-            this.pictureBoxAvatar = new System.Windows.Forms.PictureBox();
             this.groupBoxChoice = new System.Windows.Forms.GroupBox();
             this.comboBoxUser = new System.Windows.Forms.ComboBox();
             this.buttonAuthentificate = new System.Windows.Forms.Button();
@@ -38,16 +38,20 @@
             this.labelPassword = new System.Windows.Forms.Label();
             this.labelLogin = new System.Windows.Forms.Label();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.toolTipAuthentificate = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonInstruction = new System.Windows.Forms.Button();
+            this.pictureBoxAvatar = new System.Windows.Forms.PictureBox();
             this.groupBoxAuthenticate.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).BeginInit();
             this.groupBoxChoice.SuspendLayout();
             this.groupBoxSignIn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxAuthenticate
             // 
-            this.groupBoxAuthenticate.BackColor = System.Drawing.Color.LightGray;
+            this.groupBoxAuthenticate.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxAuthenticate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.groupBoxAuthenticate.Controls.Add(this.buttonInstruction);
             this.groupBoxAuthenticate.Controls.Add(this.pictureBoxAvatar);
             this.groupBoxAuthenticate.Controls.Add(this.groupBoxChoice);
             this.groupBoxAuthenticate.Controls.Add(this.groupBoxSignIn);
@@ -58,17 +62,6 @@
             this.groupBoxAuthenticate.TabIndex = 8;
             this.groupBoxAuthenticate.TabStop = false;
             this.groupBoxAuthenticate.Text = "Authenticate";
-            // 
-            // pictureBoxAvatar
-            // 
-            this.pictureBoxAvatar.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBoxAvatar.Location = new System.Drawing.Point(30, 27);
-            this.pictureBoxAvatar.Name = "pictureBoxAvatar";
-            this.pictureBoxAvatar.Size = new System.Drawing.Size(193, 236);
-            this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAvatar.TabIndex = 8;
-            this.pictureBoxAvatar.TabStop = false;
             // 
             // groupBoxChoice
             // 
@@ -165,6 +158,32 @@
             this.textBoxLogin.Text = "Admin";
             this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxLogin_KeyUp);
             // 
+            // buttonInstruction
+            // 
+            this.buttonInstruction.BackColor = System.Drawing.Color.Transparent;
+            this.buttonInstruction.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.question_icon;
+            this.buttonInstruction.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonInstruction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonInstruction.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonInstruction.Location = new System.Drawing.Point(468, 19);
+            this.buttonInstruction.Name = "buttonInstruction";
+            this.buttonInstruction.Size = new System.Drawing.Size(25, 25);
+            this.buttonInstruction.TabIndex = 11;
+            this.toolTipAuthentificate.SetToolTip(this.buttonInstruction, "Open instruction");
+            this.buttonInstruction.UseVisualStyleBackColor = false;
+            this.buttonInstruction.Click += new System.EventHandler(this.ButtonInstruction_Click);
+            // 
+            // pictureBoxAvatar
+            // 
+            this.pictureBoxAvatar.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAvatar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxAvatar.Location = new System.Drawing.Point(30, 27);
+            this.pictureBoxAvatar.Name = "pictureBoxAvatar";
+            this.pictureBoxAvatar.Size = new System.Drawing.Size(193, 236);
+            this.pictureBoxAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAvatar.TabIndex = 8;
+            this.pictureBoxAvatar.TabStop = false;
+            // 
             // AuthenticateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,10 +195,10 @@
             this.Text = "Authenticate";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AuthenticateForm_FormClosed);
             this.groupBoxAuthenticate.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).EndInit();
             this.groupBoxChoice.ResumeLayout(false);
             this.groupBoxSignIn.ResumeLayout(false);
             this.groupBoxSignIn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,5 +215,7 @@
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.Label labelLogin;
         private System.Windows.Forms.TextBox textBoxLogin;
+        private System.Windows.Forms.Button buttonInstruction;
+        private System.Windows.Forms.ToolTip toolTipAuthentificate;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,8 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 PopulateFields();
             }
             else this.currentEmployee = new Employee();
+
+            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxFullName_KeyUp(object sender, KeyEventArgs e)

@@ -173,9 +173,29 @@ namespace CourseProject_ShowDesk.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logotype {
+            get {
+                object obj = ResourceManager.GetObject("Logotype", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap performance_icon {
             get {
                 object obj = ResourceManager.GetObject("performance-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap question_icon {
+            get {
+                object obj = ResourceManager.GetObject("question-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,5 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Windows.Forms;
@@ -24,6 +25,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             isValid = false;
             logOut = false;
+
+            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxStageName_KeyUp(object sender, KeyEventArgs e)

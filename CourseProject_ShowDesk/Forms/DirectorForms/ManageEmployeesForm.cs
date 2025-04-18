@@ -1,6 +1,7 @@
 ﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using System;
@@ -39,6 +40,8 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             ShowGreetings(userAccount.FullName);
 
             timerUpdate.Start();
+
+            FormConfigurator.ConfigureForm(this);
         }
 
         private void DataGridViewEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)

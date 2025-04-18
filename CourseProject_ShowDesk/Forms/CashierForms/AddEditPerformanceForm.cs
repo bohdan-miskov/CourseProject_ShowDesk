@@ -2,6 +2,7 @@
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
@@ -42,6 +43,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
             else
                 this.currentPerformance = new Performance(new PerformanceBaseService());
+
+            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void DateTimePickerPerfomanceDate_KeyUp(object sender, KeyEventArgs e)

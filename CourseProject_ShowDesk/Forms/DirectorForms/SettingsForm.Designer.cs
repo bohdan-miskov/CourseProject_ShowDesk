@@ -42,13 +42,15 @@
             this.buttonCancelOtherSettings = new System.Windows.Forms.Button();
             this.buttonSaveOtherSettings = new System.Windows.Forms.Button();
             this.groupBoxNames = new System.Windows.Forms.GroupBox();
+            this.buttonCancelName = new System.Windows.Forms.Button();
+            this.buttonRemoveName = new System.Windows.Forms.Button();
+            this.buttonAddName = new System.Windows.Forms.Button();
+            this.buttonSaveName = new System.Windows.Forms.Button();
             this.labelItemName = new System.Windows.Forms.Label();
             this.textBoxItemName = new System.Windows.Forms.TextBox();
             this.labelListName = new System.Windows.Forms.Label();
             this.comboBoxListName = new System.Windows.Forms.ComboBox();
             this.listBoxViewNames = new System.Windows.Forms.ListBox();
-            this.buttonCancelName = new System.Windows.Forms.Button();
-            this.buttonSaveName = new System.Windows.Forms.Button();
             this.groupBoxCollectionName = new System.Windows.Forms.GroupBox();
             this.labelGeneralCollectionName = new System.Windows.Forms.Label();
             this.textBoxGeneralCollectionName = new System.Windows.Forms.TextBox();
@@ -59,17 +61,13 @@
             this.labelStagesCollectionName = new System.Windows.Forms.Label();
             this.textBoxStagesCollectionName = new System.Windows.Forms.TextBox();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.labelAccountName = new System.Windows.Forms.Label();
             this.tabControlSetting = new System.Windows.Forms.TabControl();
             this.tabPagePerformanceSettings = new System.Windows.Forms.TabPage();
             this.buttonCancelPerformanceSettings = new System.Windows.Forms.Button();
             this.buttonSavePerformanceSettings = new System.Windows.Forms.Button();
-            this.groupBoxPastPerformances = new System.Windows.Forms.GroupBox();
-            this.labelRangeDateOfPastPerformances = new System.Windows.Forms.Label();
-            this.numericUpDownRangeDateOfPastPerformances = new System.Windows.Forms.NumericUpDown();
             this.groupBoxReceipt = new System.Windows.Forms.GroupBox();
-            this.buttonSelectReceiptFolder = new System.Windows.Forms.Button();
             this.checkBoxReceiptPrint = new System.Windows.Forms.CheckBox();
             this.textBoxReceiptSavePath = new System.Windows.Forms.TextBox();
             this.labelReceiptSavePath = new System.Windows.Forms.Label();
@@ -104,24 +102,23 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageOtherSettings = new System.Windows.Forms.TabPage();
             this.groupBoxStage = new System.Windows.Forms.GroupBox();
-            this.buttonChangeSeatHoverColor = new System.Windows.Forms.Button();
-            this.buttonChangeSeatColor = new System.Windows.Forms.Button();
             this.textBoxSeatHoverColor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSeatColor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialogSettings = new System.Windows.Forms.ColorDialog();
-            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.buttonSelectReceiptFolder = new System.Windows.Forms.Button();
+            this.buttonChangeSeatHoverColor = new System.Windows.Forms.Button();
+            this.buttonChangeSeatColor = new System.Windows.Forms.Button();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.groupBoxOther.SuspendLayout();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxCollectionName.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            this.contextMenuStripAccount.SuspendLayout();
             this.tabControlSetting.SuspendLayout();
             this.tabPagePerformanceSettings.SuspendLayout();
-            this.groupBoxPastPerformances.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRangeDateOfPastPerformances)).BeginInit();
             this.groupBoxReceipt.SuspendLayout();
             this.groupBoxTicketIncrease.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPremiumIncrease)).BeginInit();
@@ -133,7 +130,7 @@
             this.groupBoxDataBaseLinks.SuspendLayout();
             this.tabPageOtherSettings.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
-            this.contextMenuStripAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // labelPerformancesCollectionName
@@ -262,6 +259,10 @@
             // groupBoxNames
             // 
             this.groupBoxNames.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxNames.Controls.Add(this.buttonCancelName);
+            this.groupBoxNames.Controls.Add(this.buttonRemoveName);
+            this.groupBoxNames.Controls.Add(this.buttonAddName);
+            this.groupBoxNames.Controls.Add(this.buttonSaveName);
             this.groupBoxNames.Controls.Add(this.labelItemName);
             this.groupBoxNames.Controls.Add(this.textBoxItemName);
             this.groupBoxNames.Controls.Add(this.labelListName);
@@ -269,17 +270,63 @@
             this.groupBoxNames.Controls.Add(this.listBoxViewNames);
             this.groupBoxNames.Location = new System.Drawing.Point(6, 6);
             this.groupBoxNames.Name = "groupBoxNames";
-            this.groupBoxNames.Size = new System.Drawing.Size(297, 316);
+            this.groupBoxNames.Size = new System.Drawing.Size(297, 367);
             this.groupBoxNames.TabIndex = 5;
             this.groupBoxNames.TabStop = false;
             this.groupBoxNames.Text = "Names";
+            // 
+            // buttonCancelName
+            // 
+            this.buttonCancelName.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonCancelName.Location = new System.Drawing.Point(145, 316);
+            this.buttonCancelName.Name = "buttonCancelName";
+            this.buttonCancelName.Size = new System.Drawing.Size(100, 31);
+            this.buttonCancelName.TabIndex = 6;
+            this.buttonCancelName.Text = "Cancel";
+            this.buttonCancelName.UseVisualStyleBackColor = false;
+            this.buttonCancelName.Click += new System.EventHandler(this.ButtonCancelName_Click);
+            this.buttonCancelName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonCancelName_KeyUp);
+            // 
+            // buttonRemoveName
+            // 
+            this.buttonRemoveName.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonRemoveName.Location = new System.Drawing.Point(145, 280);
+            this.buttonRemoveName.Name = "buttonRemoveName";
+            this.buttonRemoveName.Size = new System.Drawing.Size(125, 30);
+            this.buttonRemoveName.TabIndex = 14;
+            this.buttonRemoveName.Text = "Remove name";
+            this.buttonRemoveName.UseVisualStyleBackColor = false;
+            this.buttonRemoveName.Click += new System.EventHandler(this.ButtonRemoveName_Click);
+            // 
+            // buttonAddName
+            // 
+            this.buttonAddName.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonAddName.Location = new System.Drawing.Point(9, 280);
+            this.buttonAddName.Name = "buttonAddName";
+            this.buttonAddName.Size = new System.Drawing.Size(125, 30);
+            this.buttonAddName.TabIndex = 13;
+            this.buttonAddName.Text = "Add name";
+            this.buttonAddName.UseVisualStyleBackColor = false;
+            this.buttonAddName.Click += new System.EventHandler(this.ButtonAddName_Click);
+            // 
+            // buttonSaveName
+            // 
+            this.buttonSaveName.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonSaveName.Location = new System.Drawing.Point(14, 316);
+            this.buttonSaveName.Name = "buttonSaveName";
+            this.buttonSaveName.Size = new System.Drawing.Size(100, 31);
+            this.buttonSaveName.TabIndex = 5;
+            this.buttonSaveName.Text = "Save name";
+            this.buttonSaveName.UseVisualStyleBackColor = false;
+            this.buttonSaveName.Click += new System.EventHandler(this.ButtonSaveName_Click);
+            this.buttonSaveName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonSaveName_KeyUp);
             // 
             // labelItemName
             // 
             this.labelItemName.AutoSize = true;
             this.labelItemName.BackColor = System.Drawing.Color.Transparent;
             this.labelItemName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelItemName.Location = new System.Drawing.Point(5, 274);
+            this.labelItemName.Location = new System.Drawing.Point(5, 246);
             this.labelItemName.Name = "labelItemName";
             this.labelItemName.Size = new System.Drawing.Size(92, 21);
             this.labelItemName.TabIndex = 3;
@@ -288,7 +335,7 @@
             // textBoxItemName
             // 
             this.textBoxItemName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxItemName.Location = new System.Drawing.Point(99, 271);
+            this.textBoxItemName.Location = new System.Drawing.Point(99, 243);
             this.textBoxItemName.Name = "textBoxItemName";
             this.textBoxItemName.Size = new System.Drawing.Size(154, 28);
             this.textBoxItemName.TabIndex = 4;
@@ -300,7 +347,7 @@
             this.labelListName.AutoSize = true;
             this.labelListName.BackColor = System.Drawing.Color.Transparent;
             this.labelListName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelListName.Location = new System.Drawing.Point(5, 41);
+            this.labelListName.Location = new System.Drawing.Point(5, 35);
             this.labelListName.Name = "labelListName";
             this.labelListName.Size = new System.Drawing.Size(88, 21);
             this.labelListName.TabIndex = 2;
@@ -309,7 +356,7 @@
             // comboBoxListName
             // 
             this.comboBoxListName.FormattingEnabled = true;
-            this.comboBoxListName.Location = new System.Drawing.Point(99, 33);
+            this.comboBoxListName.Location = new System.Drawing.Point(99, 27);
             this.comboBoxListName.Name = "comboBoxListName";
             this.comboBoxListName.Size = new System.Drawing.Size(154, 29);
             this.comboBoxListName.TabIndex = 1;
@@ -320,36 +367,12 @@
             // 
             this.listBoxViewNames.FormattingEnabled = true;
             this.listBoxViewNames.ItemHeight = 21;
-            this.listBoxViewNames.Location = new System.Drawing.Point(9, 80);
+            this.listBoxViewNames.Location = new System.Drawing.Point(9, 65);
             this.listBoxViewNames.Name = "listBoxViewNames";
             this.listBoxViewNames.Size = new System.Drawing.Size(244, 172);
             this.listBoxViewNames.TabIndex = 0;
             this.listBoxViewNames.SelectedIndexChanged += new System.EventHandler(this.ListBoxViewNames_SelectedIndexChanged);
             this.listBoxViewNames.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ListBoxViewNames_KeyUp);
-            // 
-            // buttonCancelName
-            // 
-            this.buttonCancelName.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonCancelName.Location = new System.Drawing.Point(160, 328);
-            this.buttonCancelName.Name = "buttonCancelName";
-            this.buttonCancelName.Size = new System.Drawing.Size(125, 45);
-            this.buttonCancelName.TabIndex = 6;
-            this.buttonCancelName.Text = "Cancel";
-            this.buttonCancelName.UseVisualStyleBackColor = false;
-            this.buttonCancelName.Click += new System.EventHandler(this.ButtonCancelName_Click);
-            this.buttonCancelName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonCancelName_KeyUp);
-            // 
-            // buttonSaveName
-            // 
-            this.buttonSaveName.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonSaveName.Location = new System.Drawing.Point(15, 328);
-            this.buttonSaveName.Name = "buttonSaveName";
-            this.buttonSaveName.Size = new System.Drawing.Size(125, 45);
-            this.buttonSaveName.TabIndex = 5;
-            this.buttonSaveName.Text = "Save name";
-            this.buttonSaveName.UseVisualStyleBackColor = false;
-            this.buttonSaveName.Click += new System.EventHandler(this.ButtonSaveName_Click);
-            this.buttonSaveName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonSaveName_KeyUp);
             // 
             // groupBoxCollectionName
             // 
@@ -464,17 +487,13 @@
             this.groupBoxProfile.TabIndex = 26;
             this.groupBoxProfile.TabStop = false;
             // 
-            // pictureBoxAccountIcon
+            // contextMenuStripAccount
             // 
-            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
-            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
-            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
-            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
-            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAccountIcon.TabIndex = 1;
-            this.pictureBoxAccountIcon.TabStop = false;
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
             // 
             // labelAccountName
             // 
@@ -504,7 +523,6 @@
             this.tabPagePerformanceSettings.BackColor = System.Drawing.Color.LightGray;
             this.tabPagePerformanceSettings.Controls.Add(this.buttonCancelPerformanceSettings);
             this.tabPagePerformanceSettings.Controls.Add(this.buttonSavePerformanceSettings);
-            this.tabPagePerformanceSettings.Controls.Add(this.groupBoxPastPerformances);
             this.tabPagePerformanceSettings.Controls.Add(this.groupBoxReceipt);
             this.tabPagePerformanceSettings.Controls.Add(this.groupBoxTicketIncrease);
             this.tabPagePerformanceSettings.Controls.Add(this.groupBoxPerformanceDuration);
@@ -537,37 +555,6 @@
             this.buttonSavePerformanceSettings.UseVisualStyleBackColor = false;
             this.buttonSavePerformanceSettings.Click += new System.EventHandler(this.ButtonSavePerformanceSettings_Click);
             // 
-            // groupBoxPastPerformances
-            // 
-            this.groupBoxPastPerformances.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBoxPastPerformances.Controls.Add(this.labelRangeDateOfPastPerformances);
-            this.groupBoxPastPerformances.Controls.Add(this.numericUpDownRangeDateOfPastPerformances);
-            this.groupBoxPastPerformances.Location = new System.Drawing.Point(326, 161);
-            this.groupBoxPastPerformances.Name = "groupBoxPastPerformances";
-            this.groupBoxPastPerformances.Size = new System.Drawing.Size(284, 104);
-            this.groupBoxPastPerformances.TabIndex = 14;
-            this.groupBoxPastPerformances.TabStop = false;
-            this.groupBoxPastPerformances.Text = "Past performances";
-            // 
-            // labelRangeDateOfPastPerformances
-            // 
-            this.labelRangeDateOfPastPerformances.AutoSize = true;
-            this.labelRangeDateOfPastPerformances.BackColor = System.Drawing.Color.Transparent;
-            this.labelRangeDateOfPastPerformances.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRangeDateOfPastPerformances.Location = new System.Drawing.Point(6, 28);
-            this.labelRangeDateOfPastPerformances.Name = "labelRangeDateOfPastPerformances";
-            this.labelRangeDateOfPastPerformances.Size = new System.Drawing.Size(154, 63);
-            this.labelRangeDateOfPastPerformances.TabIndex = 9;
-            this.labelRangeDateOfPastPerformances.Text = "Range of view \r\npast performances \r\n(days)";
-            // 
-            // numericUpDownRangeDateOfPastPerformances
-            // 
-            this.numericUpDownRangeDateOfPastPerformances.Location = new System.Drawing.Point(160, 42);
-            this.numericUpDownRangeDateOfPastPerformances.Name = "numericUpDownRangeDateOfPastPerformances";
-            this.numericUpDownRangeDateOfPastPerformances.Size = new System.Drawing.Size(108, 28);
-            this.numericUpDownRangeDateOfPastPerformances.TabIndex = 10;
-            this.numericUpDownRangeDateOfPastPerformances.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownRangeDateOfPastPerformances_KeyUp);
-            // 
             // groupBoxReceipt
             // 
             this.groupBoxReceipt.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -577,22 +564,10 @@
             this.groupBoxReceipt.Controls.Add(this.labelReceiptSavePath);
             this.groupBoxReceipt.Location = new System.Drawing.Point(12, 161);
             this.groupBoxReceipt.Name = "groupBoxReceipt";
-            this.groupBoxReceipt.Size = new System.Drawing.Size(308, 104);
+            this.groupBoxReceipt.Size = new System.Drawing.Size(598, 104);
             this.groupBoxReceipt.TabIndex = 13;
             this.groupBoxReceipt.TabStop = false;
             this.groupBoxReceipt.Text = "Receipt";
-            // 
-            // buttonSelectReceiptFolder
-            // 
-            this.buttonSelectReceiptFolder.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.file_manager_icon;
-            this.buttonSelectReceiptFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonSelectReceiptFolder.Location = new System.Drawing.Point(274, 59);
-            this.buttonSelectReceiptFolder.Name = "buttonSelectReceiptFolder";
-            this.buttonSelectReceiptFolder.Size = new System.Drawing.Size(28, 28);
-            this.buttonSelectReceiptFolder.TabIndex = 29;
-            this.buttonSelectReceiptFolder.Text = " ";
-            this.buttonSelectReceiptFolder.UseVisualStyleBackColor = true;
-            this.buttonSelectReceiptFolder.Click += new System.EventHandler(this.ButtonSelectReceiptFolder_Click);
             // 
             // checkBoxReceiptPrint
             // 
@@ -611,7 +586,7 @@
             this.textBoxReceiptSavePath.Location = new System.Drawing.Point(110, 59);
             this.textBoxReceiptSavePath.MaxLength = 1;
             this.textBoxReceiptSavePath.Name = "textBoxReceiptSavePath";
-            this.textBoxReceiptSavePath.Size = new System.Drawing.Size(158, 28);
+            this.textBoxReceiptSavePath.Size = new System.Drawing.Size(438, 28);
             this.textBoxReceiptSavePath.TabIndex = 7;
             this.textBoxReceiptSavePath.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxReceiptSavePath_KeyUp);
             // 
@@ -984,9 +959,7 @@
             // tabPageOtherSettings
             // 
             this.tabPageOtherSettings.BackColor = System.Drawing.Color.LightGray;
-            this.tabPageOtherSettings.Controls.Add(this.buttonCancelName);
             this.tabPageOtherSettings.Controls.Add(this.groupBoxStage);
-            this.tabPageOtherSettings.Controls.Add(this.buttonSaveName);
             this.tabPageOtherSettings.Controls.Add(this.groupBoxOther);
             this.tabPageOtherSettings.Controls.Add(this.buttonCancelOtherSettings);
             this.tabPageOtherSettings.Controls.Add(this.buttonSaveOtherSettings);
@@ -1014,34 +987,6 @@
             this.groupBoxStage.TabIndex = 12;
             this.groupBoxStage.TabStop = false;
             this.groupBoxStage.Text = "Stage";
-            // 
-            // buttonChangeSeatHoverColor
-            // 
-            this.buttonChangeSeatHoverColor.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
-            this.buttonChangeSeatHoverColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonChangeSeatHoverColor.Location = new System.Drawing.Point(43, 120);
-            this.buttonChangeSeatHoverColor.Name = "buttonChangeSeatHoverColor";
-            this.buttonChangeSeatHoverColor.Size = new System.Drawing.Size(28, 28);
-            this.buttonChangeSeatHoverColor.TabIndex = 29;
-            this.buttonChangeSeatHoverColor.Text = " ";
-            this.buttonChangeSeatHoverColor.UseVisualStyleBackColor = true;
-            this.buttonChangeSeatHoverColor.Click += new System.EventHandler(this.ButtonChangeSeatHoverColor_Click);
-            this.buttonChangeSeatHoverColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatHoverColor_KeyUp);
-            // 
-            // buttonChangeSeatColor
-            // 
-            this.buttonChangeSeatColor.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
-            this.buttonChangeSeatColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonChangeSeatColor.Cursor = System.Windows.Forms.Cursors.Default;
-            this.buttonChangeSeatColor.Image = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
-            this.buttonChangeSeatColor.Location = new System.Drawing.Point(43, 64);
-            this.buttonChangeSeatColor.Name = "buttonChangeSeatColor";
-            this.buttonChangeSeatColor.Size = new System.Drawing.Size(28, 28);
-            this.buttonChangeSeatColor.TabIndex = 28;
-            this.buttonChangeSeatColor.Text = " ";
-            this.buttonChangeSeatColor.UseVisualStyleBackColor = true;
-            this.buttonChangeSeatColor.Click += new System.EventHandler(this.ButtonChangeSeatColor_Click);
-            this.buttonChangeSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatColor_KeyUp);
             // 
             // textBoxSeatHoverColor
             // 
@@ -1087,21 +1032,73 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Seat base color";
             // 
-            // contextMenuStripAccount
+            // buttonSelectReceiptFolder
             // 
-            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
+            this.buttonSelectReceiptFolder.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSelectReceiptFolder.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.file_manager_icon;
+            this.buttonSelectReceiptFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonSelectReceiptFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSelectReceiptFolder.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonSelectReceiptFolder.Location = new System.Drawing.Point(554, 59);
+            this.buttonSelectReceiptFolder.Name = "buttonSelectReceiptFolder";
+            this.buttonSelectReceiptFolder.Size = new System.Drawing.Size(28, 28);
+            this.buttonSelectReceiptFolder.TabIndex = 29;
+            this.buttonSelectReceiptFolder.Text = " ";
+            this.buttonSelectReceiptFolder.UseVisualStyleBackColor = false;
+            this.buttonSelectReceiptFolder.Click += new System.EventHandler(this.ButtonSelectReceiptFolder_Click);
+            // 
+            // buttonChangeSeatHoverColor
+            // 
+            this.buttonChangeSeatHoverColor.BackColor = System.Drawing.Color.Transparent;
+            this.buttonChangeSeatHoverColor.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
+            this.buttonChangeSeatHoverColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonChangeSeatHoverColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangeSeatHoverColor.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonChangeSeatHoverColor.Location = new System.Drawing.Point(43, 120);
+            this.buttonChangeSeatHoverColor.Name = "buttonChangeSeatHoverColor";
+            this.buttonChangeSeatHoverColor.Size = new System.Drawing.Size(28, 28);
+            this.buttonChangeSeatHoverColor.TabIndex = 29;
+            this.buttonChangeSeatHoverColor.Text = " ";
+            this.buttonChangeSeatHoverColor.UseVisualStyleBackColor = false;
+            this.buttonChangeSeatHoverColor.Click += new System.EventHandler(this.ButtonChangeSeatHoverColor_Click);
+            this.buttonChangeSeatHoverColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatHoverColor_KeyUp);
+            // 
+            // buttonChangeSeatColor
+            // 
+            this.buttonChangeSeatColor.BackColor = System.Drawing.Color.Transparent;
+            this.buttonChangeSeatColor.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
+            this.buttonChangeSeatColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonChangeSeatColor.Cursor = System.Windows.Forms.Cursors.Default;
+            this.buttonChangeSeatColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangeSeatColor.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonChangeSeatColor.Location = new System.Drawing.Point(43, 64);
+            this.buttonChangeSeatColor.Name = "buttonChangeSeatColor";
+            this.buttonChangeSeatColor.Size = new System.Drawing.Size(28, 28);
+            this.buttonChangeSeatColor.TabIndex = 28;
+            this.buttonChangeSeatColor.Text = " ";
+            this.buttonChangeSeatColor.UseVisualStyleBackColor = false;
+            this.buttonChangeSeatColor.Click += new System.EventHandler(this.ButtonChangeSeatColor_Click);
+            this.buttonChangeSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatColor_KeyUp);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
             // 
             // SettingsForm
             // 
@@ -1112,6 +1109,7 @@
             this.Controls.Add(this.groupBoxProfile);
             this.Name = "SettingsForm";
             this.Text = "Settings";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SettingsForm_KeyDown);
             this.groupBoxOther.ResumeLayout(false);
             this.groupBoxOther.PerformLayout();
             this.groupBoxNames.ResumeLayout(false);
@@ -1120,12 +1118,9 @@
             this.groupBoxCollectionName.PerformLayout();
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            this.contextMenuStripAccount.ResumeLayout(false);
             this.tabControlSetting.ResumeLayout(false);
             this.tabPagePerformanceSettings.ResumeLayout(false);
-            this.groupBoxPastPerformances.ResumeLayout(false);
-            this.groupBoxPastPerformances.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRangeDateOfPastPerformances)).EndInit();
             this.groupBoxReceipt.ResumeLayout(false);
             this.groupBoxReceipt.PerformLayout();
             this.groupBoxTicketIncrease.ResumeLayout(false);
@@ -1143,7 +1138,7 @@
             this.tabPageOtherSettings.ResumeLayout(false);
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
-            this.contextMenuStripAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1211,9 +1206,6 @@
         private System.Windows.Forms.Label labelMaxDuration;
         private System.Windows.Forms.Button buttonCancelPerformanceSettings;
         private System.Windows.Forms.Button buttonSavePerformanceSettings;
-        private System.Windows.Forms.GroupBox groupBoxPastPerformances;
-        private System.Windows.Forms.Label labelRangeDateOfPastPerformances;
-        private System.Windows.Forms.NumericUpDown numericUpDownRangeDateOfPastPerformances;
         private System.Windows.Forms.Button buttonCancelDatabaseSettings;
         private System.Windows.Forms.Button buttonSaveDatabaseSettings;
         private System.Windows.Forms.GroupBox groupBoxStage;
@@ -1233,5 +1225,7 @@
         private System.Windows.Forms.Label labelCompanyName;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Button buttonAddName;
+        private System.Windows.Forms.Button buttonRemoveName;
     }
 }

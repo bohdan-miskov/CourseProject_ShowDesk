@@ -27,6 +27,14 @@ namespace CourseProject_ShowDesk
             {
                 MessageBox.Show(ex.Message + "\nSo program was loaded default values", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+            if (AppConstants.FirstLog == DateTime.MinValue)
+            {
+                InstructionForm instructionForm = new InstructionForm();
+                instructionForm.ShowDialog();
+                AppConstants.SetFirstLog();
+            }
+
             Application.Run(new AuthenticateForm());
         }
     }

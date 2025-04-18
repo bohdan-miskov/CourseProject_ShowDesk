@@ -1,5 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             isValid = false;
             logOut = false;
 
+            FormConfigurator.ConfigureForm(this,true);
         }
 
         private void ButtonDeleteSeat_Click(object sender, EventArgs e)

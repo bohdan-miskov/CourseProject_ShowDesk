@@ -1,5 +1,7 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
+using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using MongoDB.Driver;
 using System;
@@ -15,6 +17,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
     public partial class SettingsForm : MetroFramework.Forms.MetroForm
     {
         private readonly AppConstantsData appConstantsData;
+        TabControlController tabControlController;
         private bool logOut;
 
         public SettingsForm(Employee userAccount)
@@ -23,9 +26,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             appConstantsData = AppConstants.CloneConstants();
             labelAccountName.Text = userAccount.FullName;
+            tabControlController = new TabControlController(tabControlSetting);
             logOut = false;
 
             PopulateAllField();
+
+            FormConfigurator.ConfigureForm(this, true);
         }
         private void DateTimePickerMinBreak_KeyUp(object sender, KeyEventArgs e)
         {
@@ -61,11 +67,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
 
         private void TextBoxReceiptSavePath_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) numericUpDownRangeDateOfPastPerformances.Focus();
-        }
-
-        private void NumericUpDownRangeDateOfPastPerformances_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) buttonSavePerformanceSettings.Focus();
         }
@@ -200,12 +201,17 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             ParametersValidator.ValidatorSymbol(sender, e);
         }
+        private void SettingsForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            tabControlController.TabControlNavigation(e);
+        }
 
         private void ComboBoxListName_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateListBoxName();
             listBoxViewNames.SelectedIndex = 0;
             PopulateTextBoxName();
+            DisableAddRemoveListItem();
         }
 
         private void ListBoxViewNames_SelectedIndexChanged(object sender, EventArgs e)
@@ -213,15 +219,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             PopulateTextBoxName();
         }
 
-        private void ButtonSaveName_Click(object sender, EventArgs e)
-        {
-            SaveNamesSettings();
-        }
-
-        private void ButtonCancelName_Click(object sender, EventArgs e)
-        {
-            PopulateTextBoxName();
-        }
         private void ButtonSelectReceiptFolder_Click(object sender, EventArgs e)
         {
             SelectFolder();
@@ -254,6 +251,25 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             SaveOtherSettings();
         }
+        private void ButtonSaveName_Click(object sender, EventArgs e)
+        {
+            SaveNamesSettings();
+        }
+
+        private void ButtonCancelName_Click(object sender, EventArgs e)
+        {
+            PopulateTextBoxName();
+        }
+
+        private void ButtonAddName_Click(object sender, EventArgs e)
+        {
+            AddNamesSettings();
+        }
+
+        private void ButtonRemoveName_Click(object sender, EventArgs e)
+        {
+            RemoveNamesSettings();
+        }
         private void ButtonCancelOtherChanges_Click(object sender, EventArgs e)
         {
             PopulateOtherPage();
@@ -273,7 +289,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             PopuLateDurationGroup();
             PopulateIncreaseGroup();
             PopulateReceiptGroup();
-            PopulatePastPerformancesGroup();
         }
         private void PopulateDatabasePage()
         {
@@ -303,10 +318,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             checkBoxReceiptPrint.Checked = appConstantsData.IsPrintReceipt;
             textBoxReceiptSavePath.Text = appConstantsData.SavePathReceipt;
-        }
-        private void PopulatePastPerformancesGroup()
-        {
-            numericUpDownRangeDateOfPastPerformances.Value = appConstantsData.RangeDateOfPastPerformances;
         }
         private void PopulateCollectionNameGroup()
         {
@@ -371,7 +382,27 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             return null;
         }
+        private void DisableAddRemoveListItem()
+        {
+            int indexList = comboBoxListName.SelectedIndex;
 
+            if (indexList == 2 || indexList==2)
+            {
+                buttonAddName.Enabled = true;
+                buttonRemoveName.Enabled = true;
+            }
+            else
+            {
+                buttonAddName.Enabled = false;
+                buttonRemoveName.Enabled = false;
+            }
+            if (listBoxViewNames.Items.Count == 0)
+            {
+                buttonRemoveName.Enabled = false;
+                buttonSaveName.Enabled = false;
+            }
+            else buttonSaveName.Enabled = true;
+        }
         private void PopulateListBoxName()
         {
             listBoxViewNames.Items.Clear();
@@ -408,6 +439,31 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             else if (indexList == 3)
                 appConstantsData.ListOfDrinks[indexItem] = newName;
+        }
+        private void AddItem()
+        {
+            int indexList = comboBoxListName.SelectedIndex;
+
+            string newName = textBoxItemName.Text;
+
+            if (indexList == 2)
+                appConstantsData.ListOfSouvenirs.Add(newName);
+
+            else if (indexList == 3)
+                appConstantsData.ListOfDrinks.Add(newName);
+        }
+        private void RemoveItem()
+        {
+            int indexList = comboBoxListName.SelectedIndex;
+            int indexItem = listBoxViewNames.SelectedIndex;
+
+            string newName = textBoxItemName.Text;
+
+            if (indexList == 2)
+                appConstantsData.ListOfSouvenirs.RemoveAt(indexItem);
+
+            else if (indexList == 3)
+                appConstantsData.ListOfDrinks.RemoveAt(indexItem);
         }
         private void SelectFolder()
         {
@@ -453,7 +509,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             if (!ValidateIncreaseGroup()) return false;
             if (!ValidateDurationGroup()) return false;
             if (!ValidateReceiptGroup()) return false;
-            if (!ValidatePastPerformancesGroup()) return false;
             return true;
         }
         private bool ValidateDatabaseSettings()
@@ -533,23 +588,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
                 return false;
             }
-            return true;
-        }
-        private bool ValidatePastPerformancesGroup()
-        {
-            if (numericUpDownRangeDateOfPastPerformances.Value < 0)
-            {
-                MessageBox.Show(
-                    "Range date of past performances must be non-negative.",
-                    "Other Group Validation Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-
-                numericUpDownRangeDateOfPastPerformances.Focus();
-
-                return false;
-            }
-
             return true;
         }
         private bool ValidateCollectionNameGroup()
@@ -723,6 +761,23 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             PopulateTextBoxName();
         }
+        private void AddNamesSettings()
+        {
+            if (!ValidateNamesGroup()) return;
+
+            AddItem();
+
+            PopulateListBoxName();
+            PopulateTextBoxName();
+        }
+        private void RemoveNamesSettings()
+        {
+            RemoveItem();
+
+            PopulateListBoxName();
+            PopulateTextBoxName();
+            DisableAddRemoveListItem();
+        }
         private void SaveOtherSettings()
         {
             if (ValidateOtherSettings())
@@ -737,7 +792,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             SaveIncreaseGroup();
             SaveDurationGroup();
             SaveReceiptGroup();
-            SavePastPerformancesGroup();
         }
         private void SaveDatabaseFields()
         {
@@ -767,10 +821,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             appConstantsData.IsPrintReceipt = checkBoxReceiptPrint.Checked;
             appConstantsData.SavePathReceipt = textBoxReceiptSavePath.Text;
-        }
-        private void SavePastPerformancesGroup()
-        {
-            appConstantsData.RangeDateOfPastPerformances = (int)numericUpDownRangeDateOfPastPerformances.Value;
         }
         private void SaveCollectionNamesGroup()
         {

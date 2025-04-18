@@ -1,6 +1,7 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -24,6 +25,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             logOut = false;
 
             PopulateComponents();
+
+            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void DateTimePickerStartDate_KeyUp(object sender, KeyEventArgs e)

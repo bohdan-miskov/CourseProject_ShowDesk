@@ -3,6 +3,7 @@ using CourseProject_ShowDesk.Forms.CashierForms;
 using CourseProject_ShowDesk.Forms.DirectorForms;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using System;
@@ -31,6 +32,8 @@ namespace CourseProject_ShowDesk.Forms
             PopulateComboBox();
 
             comboBoxUser.SelectedIndex = 2;
+
+            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxLogin_KeyUp(object sender, KeyEventArgs e)
@@ -57,6 +60,12 @@ namespace CourseProject_ShowDesk.Forms
         {
             Authenticate();
         }
+
+        private void ButtonInstruction_Click(object sender, EventArgs e)
+        {
+            OpenInstruction();
+        }
+
 
         private void AuthenticateForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -191,6 +200,12 @@ namespace CourseProject_ShowDesk.Forms
                             "Authenticate error",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Error);
+        }
+
+        private void OpenInstruction()
+        {
+            InstructionForm instructionForm = new InstructionForm();
+            instructionForm.Show();
         }
     }
 }

@@ -219,6 +219,12 @@
     <Compile Include="Forms\DirectorForms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\InstructionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\InstructionForm.Designer.cs">
+      <DependentUpon>InstructionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -285,8 +291,11 @@
     <Compile Include="Scripts\Utilities\DataBaseService\EmployeeBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\PerformanceBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\StageBaseService.cs" />
+    <Compile Include="Scripts\Utilities\FormConfigurator.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\CanvasController.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\SelectionManager.cs" />
+    <Compile Include="Scripts\Utilities\FormInteraction\TabControlController.cs" />
+    <Compile Include="Scripts\Utilities\Helpers\ReceiptService.cs" />
     <Compile Include="Scripts\Utilities\Validators\EmployeeValidator.cs" />
     <Compile Include="Scripts\Utilities\Validators\ParametersValidator.cs" />
     <Compile Include="Scripts\Utilities\FileService\FileHandler.cs" />
@@ -356,6 +365,9 @@
     <EmbeddedResource Include="Forms\DirectorForms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\InstructionForm.resx">
+      <DependentUpon>InstructionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -392,6 +404,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\question-icon.png" />
+    <None Include="Resources\Logotype.jpg" />
     <None Include="Resources\file-manager-icon.png" />
     <None Include="Resources\color-change-icon.png" />
     <None Include="Resources\restart-icon.png" />

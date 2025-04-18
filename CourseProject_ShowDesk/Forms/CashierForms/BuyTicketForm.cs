@@ -4,6 +4,7 @@ using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
@@ -46,6 +47,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             isValid = false;
             logOut = false;
+
+            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxIndex_KeyUp(object sender, KeyEventArgs e)
@@ -209,22 +212,16 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private StandardTicket CreateTicket(int position)
         {
-            if (position == -1 && comboBoxTicketType.SelectedIndex == -1)
-            {
-                return null;
-            }
+            if (position == -1 && comboBoxTicketType.SelectedIndex == -1) return null;
 
             bool reserved = checkBoxReserved.Checked;
-
             double increase = seatingManager.SeatList[position - 1].CurrentZone.Increase;
 
             StandardTicket ticket = GetTicketType();
 
             ticket.Position = position;
             ticket.Reserved = reserved;
-
             ticket.CalculatePrice(performance.Price, increase);
-
             textBoxId.Text = Convert.ToString(ticket.Id);
 
             return ticket;
@@ -243,7 +240,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 var newTicket = new CreateStandardPlusTicket(drink).CreateTicket();
                 return newTicket;
             }
-            else
+            else 
             {
                 string drink = comboBoxDrink.SelectedItem.ToString();
                 string souvenir = comboBoxSouvenir.SelectedItem.ToString();
@@ -309,18 +306,16 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         public void HandleSelection(MouseEventArgs e, bool useControl)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button != MouseButtons.Left) return;
+
+            Control selectedControl = GetSelectedControl(e.Location);
+            if (selectedControl == null) return;
+
+            if (useControl) HandleMultiSelection(selectedControl);
+            else
             {
-                Control selectedControl = GetSelectedControl(e.Location);
-                if (selectedControl != null)
-                {
-                    if (useControl) HandleMultiSelection(selectedControl);
-                    else
-                    {
-                        ResetSelection();
-                        HandleSingleSelection(selectedControl);
-                    }
-                }
+                ResetSelection();
+                HandleSingleSelection(selectedControl);
             }
         }
         private Control GetSelectedControl(Point location)

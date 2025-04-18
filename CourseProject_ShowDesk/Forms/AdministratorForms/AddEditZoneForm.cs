@@ -1,5 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
@@ -44,6 +45,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             else this.currentZone = new Zone();
 
             PopulateComponents();
+
+            FormConfigurator.ConfigureForm(this,true);
         }
 
         private void TextBoxZoneName_KeyUp(object sender, KeyEventArgs e)
