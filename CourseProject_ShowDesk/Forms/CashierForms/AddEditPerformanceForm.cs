@@ -2,13 +2,13 @@
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -19,15 +19,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private readonly List<Performance> performances;
         private readonly Performance currentPerformance;
 
+        private readonly bool isFilterFunction;
         private bool isValid;
         private bool logOut;
 
-        public AddEditPerformanceForm(Employee userAccount, List<Stage> stages, List<Performance> performances, Performance currentPerformance = null)
+        public AddEditPerformanceForm(Employee userAccount, List<Stage> stages, List<Performance> performances, Performance currentPerformance = null, bool isFilterFunction = false)
         {
             InitializeComponent();
 
             this.stages = stages;
             this.performances = performances;
+            this.isFilterFunction = isFilterFunction;
 
             labelAccountName.Text = userAccount.FullName;
 
@@ -87,6 +89,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
 
             PopulateComboBox();
+
+            if (isFilterFunction) SetFilterParameters();
         }
 
         private void PopulateComboBox()
@@ -104,6 +108,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 buttonSave.Enabled = false;
             }
             else comboBoxStage.SelectedIndex = 0;
+        }
+        private void SetFilterParameters()
+        {
+            dateTimePickerPerfomanceDate.MinDate = DateTime.MinValue;
+            dateTimePickerPerfomanceDate.Value = DateTime.MinValue;
+            dateTimePickerDuration.Value = DateTime.MinValue;
+            comboBoxStage.Items.Add("Undefined");
+            comboBoxStage.SelectedIndex = comboBoxStage.Items.Count - 1;
+
+            FormConfigurator.SetAutoCompleteForTextBox(textBoxPerformanceName, performances.Select(performance => performance.Name).Distinct().ToArray());
+            FormConfigurator.SetAutoCompleteForTextBox(textBoxBaseTicketPrice, performances.Select(performance => performance.Price.ToString()).Distinct().ToArray());
         }
         private void PopulateFields()
         {
@@ -127,7 +142,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             CreatePerformance();
             PerformanceValidator validator = new PerformanceValidator(performances);
-            if (validator.Validate(currentPerformance, out string errorMessage))
+            if (isFilterFunction || validator.Validate(currentPerformance, out string errorMessage))
             {
                 isValid = true;
                 this.Close();
@@ -143,10 +158,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             currentPerformance.Name = textBoxPerformanceName.Text;
             currentPerformance.PerformanceDateTime = dateTimePickerPerfomanceDate.Value;
-            currentPerformance.Price = Convert.ToDouble(textBoxBaseTicketPrice.Text);
-            currentPerformance.Duration = new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
+            currentPerformance.Price = string.IsNullOrWhiteSpace(textBoxBaseTicketPrice.Text) ? double.NaN : Convert.ToDouble(textBoxBaseTicketPrice.Text);
+            currentPerformance.Duration = dateTimePickerDuration.Value == DateTime.MinValue ? TimeSpan.Zero : new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
 
-            if (currentPerformance.StageId != stages[comboBoxStage.SelectedIndex].Id)
+            if (comboBoxStage.SelectedIndex < stages.Count && currentPerformance.StageId != stages[comboBoxStage.SelectedIndex].Id)
             {
                 if (currentPerformance.StageId != null)
                 {
@@ -164,7 +179,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 currentPerformance.RemoveAllTickets();
                 currentPerformance.StageId = stages[comboBoxStage.SelectedIndex].Id;
             }
-
         }
 
         public Performance GetPerformance()

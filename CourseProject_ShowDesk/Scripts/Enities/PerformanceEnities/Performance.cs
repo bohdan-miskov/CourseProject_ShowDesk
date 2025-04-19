@@ -62,10 +62,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Performance name cannot be empty or whitespace.", nameof(Name));
-                }
                 name = value;
             }
         }
@@ -77,7 +73,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
             set
             {
-                if (value < 0)
+                if (value < 0 && value != double.NaN)
                 {
                     throw new ArgumentOutOfRangeException(nameof(Price), "Price cannot be negative.");
                 }

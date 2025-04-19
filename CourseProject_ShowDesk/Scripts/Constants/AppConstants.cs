@@ -6,7 +6,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public static class AppConstants
     {
-        public static DateTime FirstLog { get; private set; } = DateTime.MinValue; 
+        public static DateTime FirstLog { get; private set; } = DateTime.MinValue;
 
         public static string CompanyName { get; private set; } = "«ShowDesk»";
         public static string GeneralCollectionName { get; private set; } = "Event";

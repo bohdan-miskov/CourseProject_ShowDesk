@@ -1,5 +1,4 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using MongoDB.Bson;
@@ -29,9 +28,9 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
                 throw new DatabaseConnectionException("Could not connect to the database.");
             }
         }
-        public List<Stage> GetAllStages(bool sortByName=true)
+        public List<Stage> GetAllStages(bool sortByName = true)
         {
-            List<Stage> stages=stageCollection.Find(_ => true).ToList();
+            List<Stage> stages = stageCollection.Find(_ => true).ToList();
             if (sortByName)
             {
                 stages.Sort((p1, p2) => p1.Name.CompareTo(p2.Name));

@@ -1,6 +1,5 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using MongoDB.Driver;
@@ -10,7 +9,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
@@ -386,7 +384,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             int indexList = comboBoxListName.SelectedIndex;
 
-            if (indexList == 2 || indexList==2)
+            if (indexList == 2 || indexList == 2)
             {
                 buttonAddName.Enabled = true;
                 buttonRemoveName.Enabled = true;

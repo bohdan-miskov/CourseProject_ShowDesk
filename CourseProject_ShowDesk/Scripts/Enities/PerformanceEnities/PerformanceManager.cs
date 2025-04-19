@@ -37,7 +37,16 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
         public void LoadPastPerformancesFromDatabase(DateTime startDate, DateTime endDate)
         {
             database.MovePastPerformances();
-            pastPerformances = database.GetPastPerformances(startDate,endDate);
+            pastPerformances = database.GetPastPerformances(startDate, endDate);
+        }
+        public void LoadAllPastPerformancesFromDatabase()
+        {
+            database.MovePastPerformances();
+            pastPerformances = database.GetAllPastPerformances();
+        }
+        public void ResetPastPerformancesList()
+        {
+            pastPerformances = null;
         }
         public Performance GetOldestPerformance()
         {

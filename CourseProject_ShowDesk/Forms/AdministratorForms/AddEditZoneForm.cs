@@ -1,13 +1,11 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {
@@ -16,12 +14,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private bool logOut;
         private bool isValid;
 
-        private List<Zone> zones;
+        private readonly List<Zone> zones;
 
         private readonly Zone currentZone;
 
-        private SeatingManager seatingManager;
-        private CanvasController canvasController;
+        private readonly SeatingManager seatingManager;
+        private readonly CanvasController canvasController;
 
         public AddEditZoneForm(Employee userAccount, Stage stage, Zone zone = null)
         {
@@ -46,7 +44,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             PopulateComponents();
 
-            FormConfigurator.ConfigureForm(this,true);
+            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxZoneName_KeyUp(object sender, KeyEventArgs e)

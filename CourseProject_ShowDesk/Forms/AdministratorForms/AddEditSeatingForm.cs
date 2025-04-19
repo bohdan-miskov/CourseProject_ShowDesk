@@ -1,11 +1,9 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Web.UI.WebControls;
 
 //using System.Web.UI;
 
@@ -36,8 +34,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         //private Point panStartPointLast;
 
 
-        private SeatingManager seatingManager;
-        private CanvasController canvasController;
+        private readonly SeatingManager seatingManager;
+        private readonly CanvasController canvasController;
         private readonly SelectionManager selectionManager;
 
 
@@ -72,7 +70,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             isValid = false;
             logOut = false;
 
-            FormConfigurator.ConfigureForm(this,true);
+            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void ButtonDeleteSeat_Click(object sender, EventArgs e)
@@ -113,7 +111,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             CanvasMouseDown(e);
         }
-        
+
 
         private void PanelSeating_MouseMove(object sender, MouseEventArgs e)
         {

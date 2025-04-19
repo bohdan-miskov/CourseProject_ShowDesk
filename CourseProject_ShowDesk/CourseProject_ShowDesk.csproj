@@ -291,7 +291,8 @@
     <Compile Include="Scripts\Utilities\DataBaseService\EmployeeBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\PerformanceBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\StageBaseService.cs" />
-    <Compile Include="Scripts\Utilities\FormConfigurator.cs" />
+    <Compile Include="Scripts\Utilities\FormInteraction\SearchDataGrid.cs" />
+    <Compile Include="Scripts\Utilities\FormInteraction\FormConfigurator.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\CanvasController.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\SelectionManager.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\TabControlController.cs" />
@@ -404,6 +405,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\search-icon.png" />
+    <None Include="Resources\filter-icon.png" />
+    <None Include="Resources\loading-gif.gif" />
     <None Include="Resources\question-icon.png" />
     <None Include="Resources\Logotype.jpg" />
     <None Include="Resources\file-manager-icon.png" />

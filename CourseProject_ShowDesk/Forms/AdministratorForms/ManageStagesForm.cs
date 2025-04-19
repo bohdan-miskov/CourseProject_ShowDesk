@@ -4,9 +4,8 @@ using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
-using CourseProject_ShowDesk.Scripts.Utilities;
+using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
@@ -15,6 +14,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
     {
         private readonly StageManager stageManager;
         private readonly Employee userAccount;
+
+        private readonly SearchDataGrid searchData;
 
         public ManageStagesForm(Employee userAccount)
         {
@@ -45,6 +46,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             timerUpdate.Start();
 
             FormConfigurator.ConfigureForm(this);
+
+            searchData = new SearchDataGrid(dataGridViewStages);
         }
 
         private void DataGridViewStages_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -73,6 +76,15 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             RemoveStage();
             UpdataDataFromDatabase();
+        }
+        private void ButtonSearch_Click(object sender, EventArgs e)
+        {
+            SearchByFragment();
+        }
+
+        private void ManageStagesForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            searchData.SearchNavigation(e);
         }
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
@@ -123,9 +135,11 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         }
         private void UpdataDataFromDatabase()
         {
+            FormConfigurator.SetActivePictureBoxUpdate(pictureBoxUpdate);
             stageManager.LoadFromDatabase();
             UpdateDataGridStages();
             DisableEditAndRemoveStage();
+            FormConfigurator.RemoveActivePictureBoxUpdate(pictureBoxUpdate);
         }
 
         private Guid GetCurrentRowId()
@@ -195,6 +209,20 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 editStageToolStripMenuItem1.Enabled = false;
                 removeStageToolStripMenuItem1.Enabled = false;
             }
+        }
+
+        private void SearchByFragment()
+        {
+            string searchField = textBoxSearchField.Text.Trim();
+
+            searchData.Search(searchField);
+
+            if (searchData.HasResults()) searchData.HighlightCurrentResult();
+            else MessageBox.Show(
+                                "No results found",
+                                "Not found",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
         }
 
         private void LogOut()

@@ -5,14 +5,9 @@ using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using SharpCompress.Common;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.Helpers
 {

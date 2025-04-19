@@ -4,7 +4,6 @@ using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket.FactoryMethodTicket;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
@@ -12,7 +11,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -22,12 +20,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private List<StandardTicket> newTickets;
         private readonly PerformanceBaseService dataBase;
-        private SelectionManager selectionManager;
-        private SeatingManager seatingManager;
-        private CanvasController canvasController;
+        private readonly SelectionManager selectionManager;
+        private readonly SeatingManager seatingManager;
+        private readonly CanvasController canvasController;
 
         private bool isValid;
-        private bool logOut; 
+        private bool logOut;
 
         public BuyTicketForm(Employee userAccount, Stage stage, Performance performance)
         {
@@ -240,7 +238,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 var newTicket = new CreateStandardPlusTicket(drink).CreateTicket();
                 return newTicket;
             }
-            else 
+            else
             {
                 string drink = comboBoxDrink.SelectedItem.ToString();
                 string souvenir = comboBoxSouvenir.SelectedItem.ToString();

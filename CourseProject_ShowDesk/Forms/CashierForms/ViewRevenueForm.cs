@@ -1,12 +1,11 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
-using CourseProject_ShowDesk.Scripts.Utilities;
+using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -84,7 +83,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             Performance oldestPerformance = performanceManager.GetOldestPerformance();
 
-            if (oldestPerformance== null)
+            if (oldestPerformance == null)
             {
                 groupBoxPeriod.Enabled = false;
                 groupBoxRevenue.Enabled = false;
@@ -110,6 +109,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             chartRevenue.Series.Add(CreateSeries());
 
             Calculate(LoadPerformanceByDate());
+
+            performanceManager.ResetPastPerformancesList();
         }
 
         private Series CreateSeries()

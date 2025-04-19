@@ -1,16 +1,8 @@
-﻿using CourseProject_ShowDesk.Scripts.Utilities;
-using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
+﻿using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms
 {
@@ -26,7 +18,7 @@ namespace CourseProject_ShowDesk.Forms
             FormConfigurator.ConfigureForm(this, true);
         }
 
-        
+
         private void InstructionForm_KeyDown(object sender, KeyEventArgs e)
         {
             tabControlController.TabControlNavigation(e);

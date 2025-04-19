@@ -33,10 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageTicketsForm));
             this.menuStripPerformance = new System.Windows.Forms.MenuStrip();
-            this.ticketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.changeStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewTickets = new System.Windows.Forms.DataGridView();
             this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,22 +41,29 @@
             this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnAdditionalServices = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripPerformance = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
+            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.labelAccountName = new System.Windows.Forms.Label();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.textBoxSearchField = new System.Windows.Forms.TextBox();
+            this.pictureBoxUpdate = new System.Windows.Forms.PictureBox();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.addTicketToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.changeStatusToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.removeTicketToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonUpdate = new System.Windows.Forms.Button();
-            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
-            this.groupBoxProfile = new System.Windows.Forms.GroupBox();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
-            this.labelAccountName = new System.Windows.Forms.Label();
-            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripPerformance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).BeginInit();
             this.contextMenuStripPerformance.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.contextMenuStripAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripPerformance
@@ -75,45 +78,6 @@
             this.menuStripPerformance.Size = new System.Drawing.Size(89, 28);
             this.menuStripPerformance.TabIndex = 18;
             this.menuStripPerformance.Text = "menuStrip1";
-            // 
-            // ticketToolStripMenuItem
-            // 
-            this.ticketToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addTicketToolStripMenuItem,
-            this.changeStatusToolStripMenuItem,
-            this.removeTicketToolStripMenuItem});
-            this.ticketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ticketToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.ticket_icon;
-            this.ticketToolStripMenuItem.Name = "ticketToolStripMenuItem";
-            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(76, 22);
-            this.ticketToolStripMenuItem.Text = "Ticket";
-            // 
-            // addTicketToolStripMenuItem
-            // 
-            this.addTicketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addTicketToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
-            this.addTicketToolStripMenuItem.Name = "addTicketToolStripMenuItem";
-            this.addTicketToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.addTicketToolStripMenuItem.Text = "Add";
-            this.addTicketToolStripMenuItem.Click += new System.EventHandler(this.BuyTicketFormToolStripMenuItem_Click);
-            // 
-            // changeStatusToolStripMenuItem
-            // 
-            this.changeStatusToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changeStatusToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.change_icon;
-            this.changeStatusToolStripMenuItem.Name = "changeStatusToolStripMenuItem";
-            this.changeStatusToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.changeStatusToolStripMenuItem.Text = "Change status";
-            this.changeStatusToolStripMenuItem.Click += new System.EventHandler(this.ChangeStatusToolStripMenuItem_Click);
-            // 
-            // removeTicketToolStripMenuItem
-            // 
-            this.removeTicketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removeTicketToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
-            this.removeTicketToolStripMenuItem.Name = "removeTicketToolStripMenuItem";
-            this.removeTicketToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.removeTicketToolStripMenuItem.Text = "Remove";
-            this.removeTicketToolStripMenuItem.Click += new System.EventHandler(this.RemoveTicketToolStripMenuItem_Click);
             // 
             // dataGridViewTickets
             // 
@@ -151,7 +115,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTickets.Size = new System.Drawing.Size(758, 238);
+            this.dataGridViewTickets.Size = new System.Drawing.Size(758, 285);
             this.dataGridViewTickets.TabIndex = 12;
             this.dataGridViewTickets.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTickets_RowEnter);
             this.dataGridViewTickets.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTickets_RowLeave);
@@ -210,6 +174,94 @@
             this.contextMenuStripPerformance.Name = "contextMenuStripPerformance";
             this.contextMenuStripPerformance.Size = new System.Drawing.Size(206, 70);
             // 
+            // timerUpdate
+            // 
+            this.timerUpdate.Interval = 60000;
+            this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
+            // 
+            // groupBoxProfile
+            // 
+            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
+            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
+            this.groupBoxProfile.Controls.Add(this.labelAccountName);
+            this.groupBoxProfile.Location = new System.Drawing.Point(654, 23);
+            this.groupBoxProfile.Name = "groupBoxProfile";
+            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
+            this.groupBoxProfile.TabIndex = 20;
+            this.groupBoxProfile.TabStop = false;
+            // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
+            // 
+            // labelAccountName
+            // 
+            this.labelAccountName.AutoSize = true;
+            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
+            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
+            this.labelAccountName.Name = "labelAccountName";
+            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
+            this.labelAccountName.TabIndex = 0;
+            this.labelAccountName.Text = "AccountName";
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.search_icon;
+            this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonSearch.Location = new System.Drawing.Point(488, 27);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(26, 26);
+            this.buttonSearch.TabIndex = 24;
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.ButtonSearch_Click);
+            // 
+            // textBoxSearchField
+            // 
+            this.textBoxSearchField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSearchField.Location = new System.Drawing.Point(343, 27);
+            this.textBoxSearchField.Name = "textBoxSearchField";
+            this.textBoxSearchField.Size = new System.Drawing.Size(139, 26);
+            this.textBoxSearchField.TabIndex = 23;
+            // 
+            // pictureBoxUpdate
+            // 
+            this.pictureBoxUpdate.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBoxUpdate.Image = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
+            this.pictureBoxUpdate.Location = new System.Drawing.Point(623, 30);
+            this.pictureBoxUpdate.Name = "pictureBoxUpdate";
+            this.pictureBoxUpdate.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxUpdate.TabIndex = 21;
+            this.pictureBoxUpdate.TabStop = false;
+            this.pictureBoxUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
+            // 
             // addTicketToolStripMenuItem1
             // 
             this.addTicketToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
@@ -231,82 +283,54 @@
             this.removeTicketToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
             this.removeTicketToolStripMenuItem1.Text = "Remove ticket";
             // 
-            // buttonUpdate
+            // ticketToolStripMenuItem
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.buttonUpdate.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
-            this.buttonUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonUpdate.Location = new System.Drawing.Point(623, 30);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(25, 25);
-            this.buttonUpdate.TabIndex = 19;
-            this.buttonUpdate.UseVisualStyleBackColor = false;
-            this.buttonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            this.ticketToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addTicketToolStripMenuItem,
+            this.changeStatusToolStripMenuItem,
+            this.removeTicketToolStripMenuItem});
+            this.ticketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ticketToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.ticket_icon;
+            this.ticketToolStripMenuItem.Name = "ticketToolStripMenuItem";
+            this.ticketToolStripMenuItem.Size = new System.Drawing.Size(76, 22);
+            this.ticketToolStripMenuItem.Text = "Ticket";
             // 
-            // timerUpdate
+            // addTicketToolStripMenuItem
             // 
-            this.timerUpdate.Interval = 60000;
-            this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
+            this.addTicketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addTicketToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
+            this.addTicketToolStripMenuItem.Name = "addTicketToolStripMenuItem";
+            this.addTicketToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.addTicketToolStripMenuItem.Text = "Add";
+            this.addTicketToolStripMenuItem.Click += new System.EventHandler(this.BuyTicketFormToolStripMenuItem_Click);
             // 
-            // groupBoxProfile
+            // changeStatusToolStripMenuItem
             // 
-            this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
-            this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
-            this.groupBoxProfile.Controls.Add(this.labelAccountName);
-            this.groupBoxProfile.Location = new System.Drawing.Point(654, 23);
-            this.groupBoxProfile.Name = "groupBoxProfile";
-            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
-            this.groupBoxProfile.TabIndex = 20;
-            this.groupBoxProfile.TabStop = false;
+            this.changeStatusToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeStatusToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.change_icon;
+            this.changeStatusToolStripMenuItem.Name = "changeStatusToolStripMenuItem";
+            this.changeStatusToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.changeStatusToolStripMenuItem.Text = "Change status";
+            this.changeStatusToolStripMenuItem.Click += new System.EventHandler(this.ChangeStatusToolStripMenuItem_Click);
             // 
-            // pictureBoxAccountIcon
+            // removeTicketToolStripMenuItem
             // 
-            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
-            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
-            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
-            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
-            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAccountIcon.TabIndex = 1;
-            this.pictureBoxAccountIcon.TabStop = false;
-            // 
-            // labelAccountName
-            // 
-            this.labelAccountName.AutoSize = true;
-            this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
-            this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
-            this.labelAccountName.Name = "labelAccountName";
-            this.labelAccountName.Size = new System.Drawing.Size(92, 17);
-            this.labelAccountName.TabIndex = 0;
-            this.labelAccountName.Text = "AccountName";
-            // 
-            // contextMenuStripAccount
-            // 
-            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.removeTicketToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removeTicketToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
+            this.removeTicketToolStripMenuItem.Name = "removeTicketToolStripMenuItem";
+            this.removeTicketToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.removeTicketToolStripMenuItem.Text = "Remove";
+            this.removeTicketToolStripMenuItem.Click += new System.EventHandler(this.RemoveTicketToolStripMenuItem_Click);
             // 
             // ManageTicketsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(832, 367);
+            this.ClientSize = new System.Drawing.Size(832, 414);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.textBoxSearchField);
+            this.Controls.Add(this.pictureBoxUpdate);
             this.Controls.Add(this.groupBoxProfile);
-            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.dataGridViewTickets);
             this.Controls.Add(this.menuStripPerformance);
             this.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,14 +339,16 @@
             this.Padding = new System.Windows.Forms.Padding(37, 97, 37, 32);
             this.Text = "ManageTicketsForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageTicketsForm_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ManageTicketsForm_KeyDown);
             this.menuStripPerformance.ResumeLayout(false);
             this.menuStripPerformance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).EndInit();
             this.contextMenuStripPerformance.ResumeLayout(false);
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.contextMenuStripAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,7 +366,6 @@
         private System.Windows.Forms.ToolStripMenuItem addTicketToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem changeStatusToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem removeTicketToolStripMenuItem1;
-        private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Timer timerUpdate;
         private System.Windows.Forms.GroupBox groupBoxProfile;
         private System.Windows.Forms.PictureBox pictureBoxAccountIcon;
@@ -353,5 +378,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnAdditionalServices;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBoxUpdate;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.TextBox textBoxSearchField;
     }
 }

@@ -1,10 +1,9 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using CourseProject_ShowDesk.Scripts.Utilities;
+using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
 {

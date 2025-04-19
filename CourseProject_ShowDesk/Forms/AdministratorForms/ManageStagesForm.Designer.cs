@@ -53,13 +53,16 @@
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
-            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.pictureBoxUpdate = new System.Windows.Forms.PictureBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.textBoxSearchField = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).BeginInit();
             this.contextMenuStripStages.SuspendLayout();
             this.menuStripManageStages.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
             this.contextMenuStripAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdate)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewStages
@@ -223,7 +226,7 @@
             this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
-            this.groupBoxProfile.Location = new System.Drawing.Point(446, 27);
+            this.groupBoxProfile.Location = new System.Drawing.Point(446, 23);
             this.groupBoxProfile.Name = "groupBoxProfile";
             this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
             this.groupBoxProfile.TabIndex = 16;
@@ -273,34 +276,54 @@
             this.timerUpdate.Interval = 300000;
             this.timerUpdate.Tick += new System.EventHandler(this.TimerUpdate_Tick);
             // 
-            // buttonUpdate
+            // pictureBoxUpdate
             // 
-            this.buttonUpdate.BackColor = System.Drawing.Color.Transparent;
-            this.buttonUpdate.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
-            this.buttonUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonUpdate.Cursor = System.Windows.Forms.Cursors.SizeNESW;
-            this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonUpdate.Image = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
-            this.buttonUpdate.Location = new System.Drawing.Point(419, 34);
-            this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(25, 25);
-            this.buttonUpdate.TabIndex = 17;
-            this.buttonUpdate.UseVisualStyleBackColor = false;
-            this.buttonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            this.pictureBoxUpdate.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBoxUpdate.Image = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
+            this.pictureBoxUpdate.Location = new System.Drawing.Point(415, 30);
+            this.pictureBoxUpdate.Name = "pictureBoxUpdate";
+            this.pictureBoxUpdate.Size = new System.Drawing.Size(25, 25);
+            this.pictureBoxUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxUpdate.TabIndex = 23;
+            this.pictureBoxUpdate.TabStop = false;
+            this.pictureBoxUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.search_icon;
+            this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearch.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonSearch.Location = new System.Drawing.Point(363, 30);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(26, 26);
+            this.buttonSearch.TabIndex = 26;
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.ButtonSearch_Click);
+            // 
+            // textBoxSearchField
+            // 
+            this.textBoxSearchField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSearchField.Location = new System.Drawing.Point(218, 30);
+            this.textBoxSearchField.Name = "textBoxSearchField";
+            this.textBoxSearchField.Size = new System.Drawing.Size(139, 26);
+            this.textBoxSearchField.TabIndex = 25;
             // 
             // ManageStagesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(622, 258);
-            this.Controls.Add(this.buttonUpdate);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.textBoxSearchField);
+            this.Controls.Add(this.pictureBoxUpdate);
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.dataGridViewStages);
             this.Controls.Add(this.menuStripManageStages);
             this.Name = "ManageStagesForm";
             this.Text = "ManageStages";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageStagesForm_FormClosing);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ManageStagesForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).EndInit();
             this.contextMenuStripStages.ResumeLayout(false);
             this.menuStripManageStages.ResumeLayout(false);
@@ -309,6 +332,7 @@
             this.groupBoxProfile.PerformLayout();
             this.contextMenuStripAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,12 +355,14 @@
         private System.Windows.Forms.ToolStripMenuItem removeStageToolStripMenuItem1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Timer timerUpdate;
         private System.Windows.Forms.DataGridViewTextBoxColumn idColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnZonesCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn allPositionsColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn positionsAddedColumn;
+        private System.Windows.Forms.PictureBox pictureBoxUpdate;
+        private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.TextBox textBoxSearchField;
     }
 }

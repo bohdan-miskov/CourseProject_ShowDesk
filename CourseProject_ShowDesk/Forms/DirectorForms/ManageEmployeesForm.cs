@@ -1,9 +1,8 @@
-﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
-using CourseProject_ShowDesk.Scripts.Constants;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
+using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
 using System.Windows.Forms;
 
@@ -12,8 +11,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
     public partial class ManageEmployeesForm : MetroFramework.Forms.MetroForm
     {
         private readonly EmployeeManager employeeManager;
-
         private readonly Employee userAccount;
+
+        private readonly SearchDataGrid searchData;
 
         public ManageEmployeesForm(Employee userAccount)
         {
@@ -42,6 +42,8 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             timerUpdate.Start();
 
             FormConfigurator.ConfigureForm(this);
+
+            searchData = new SearchDataGrid(dataGridViewEmployees);
         }
 
         private void DataGridViewEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -86,6 +88,15 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             HidePassword();
         }
+        private void ButtonSearch_Click(object sender, EventArgs e)
+        {
+            SearchByFragment();
+        }
+
+        private void ManageEmployeesForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            searchData.SearchNavigation(e);
+        }
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
             UpdateDataFromDataBase();
@@ -114,9 +125,11 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
         private void UpdateDataFromDataBase()
         {
+            FormConfigurator.SetActivePictureBoxUpdate(pictureBoxUpdate);
             employeeManager.LoadFromDatabase();
             UpdateDataGridEmployees();
             DisableEditAndRemoveEmployees();
+            FormConfigurator.RemoveActivePictureBoxUpdate(pictureBoxUpdate);
         }
         private void UpdateDataGridEmployees()
         {
@@ -227,6 +240,19 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             string currentPassword = dataGridViewEmployees.CurrentRow.Cells[3].Value.ToString();
             dataGridViewEmployees.CurrentRow.Cells[3].Value = new String(AppConstants.PasswordChar, currentPassword.Length); ;
+        }
+        private void SearchByFragment()
+        {
+            string searchField = textBoxSearchField.Text.Trim();
+
+            searchData.Search(searchField);
+
+            if (searchData.HasResults()) searchData.HighlightCurrentResult();
+            else MessageBox.Show(
+                                "No results found",
+                                "Not found",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
         }
 
         private void LogOut()

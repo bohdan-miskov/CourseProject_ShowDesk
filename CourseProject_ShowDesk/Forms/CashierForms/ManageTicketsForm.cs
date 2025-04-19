@@ -3,16 +3,12 @@ using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using CourseProject_ShowDesk.Scripts.Utilities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
+using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -22,6 +18,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private Performance currentPerformance;
         private readonly PerformanceBaseService dataBase;
         private readonly Employee userAccount;
+
+        private readonly SearchDataGrid searchData;
 
         private bool logOut;
 
@@ -46,6 +44,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             timerUpdate.Start();
 
             FormConfigurator.ConfigureForm(this);
+
+            searchData = new SearchDataGrid(dataGridViewTickets);
         }
         private void DataGridViewTickets_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -75,6 +75,15 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             UpdateDataFromDataBase();
         }
+        private void ButtonSearch_Click(object sender, EventArgs e)
+        {
+            SearchByFragment();
+        }
+
+        private void ManageTicketsForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            searchData.SearchNavigation(e);
+        }
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
             UpdateDataFromDataBase();
@@ -96,10 +105,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void UpdateDataFromDataBase()
         {
+            FormConfigurator.SetActivePictureBoxUpdate(pictureBoxUpdate);
             currentPerformance = dataBase.GetUpdatedPerformance(currentPerformance);
 
             UpdateDataGridTickets();
             DisableEditAndRemoveTicket();
+            FormConfigurator.RemoveActivePictureBoxUpdate(pictureBoxUpdate);
         }
         private void UpdateDataGridTickets()
         {
@@ -184,34 +195,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void GenerateReceiptPdf(StandardTicket ticket)
         {
-            string filePath = AppConstants.SavePathReceipt.Trim();
-
-            if (filePath.Length == 0)
-            {
-                SaveFileDialog saveFileDialog = new SaveFileDialog
-                {
-                    Filter = "PDF файли (*.pdf)|*.pdf",
-                    Title = "Save receipt",
-                    FileName = $"Ticket_{ticket.Id}.pdf"
-                };
-
-                if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
-                {
-                    MessageBox.Show("File path is empty",
-                        "Save receipt error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return;
-                }
-                filePath = saveFileDialog.FileName;
-            }
-            else filePath = Path.Combine(filePath, $"Ticket_{ticket.Id}.pdf");
+            string filePath = ChooseReceiptFilePath(ticket.Id);
+            if (string.IsNullOrEmpty(filePath)) return;
 
             ReceiptService receiptService = new ReceiptService(currentPerformance, currentStage, userAccount);
 
             try
             {
-                receiptService.CreateStandardReceipt(ticket,filePath);
+                receiptService.CreateStandardReceipt(ticket, filePath);
 
                 if (AppConstants.IsPrintReceipt) receiptService.PrintReceipt(filePath);
             }
@@ -220,7 +211,46 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 MessageBox.Show("Error: " + ex.Message, "Receipt error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private string ChooseReceiptFilePath(Guid ticketId)
+        {
+            string filePath = AppConstants.SavePathReceipt.Trim();
 
+            if (filePath.Length == 0)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "PDF файли (*.pdf)|*.pdf",
+                    Title = "Save receipt",
+                    FileName = $"Ticket_{ticketId}.pdf"
+                };
+
+                if (saveFileDialog.ShowDialog() == DialogResult.Cancel)
+                {
+                    MessageBox.Show("File path is empty",
+                        "Save receipt error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return "";
+                }
+                filePath = saveFileDialog.FileName;
+            }
+            else filePath = Path.Combine(filePath, $"Ticket_{ticketId}.pdf");
+
+            return filePath;
+        }
+        private void SearchByFragment()
+        {
+            string searchField = textBoxSearchField.Text.Trim();
+
+            searchData.Search(searchField);
+
+            if (searchData.HasResults()) searchData.HighlightCurrentResult();
+            else MessageBox.Show(
+                                "No results found",
+                                "Not found",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+        }
         private void LogOut()
         {
             logOut = true;
@@ -231,6 +261,5 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             return logOut;
         }
-
     }
 }
