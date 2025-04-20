@@ -13,9 +13,9 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Helpers
 {
     public class ReceiptService
     {
-        private Performance currentPerformance;
-        private Stage currentStage;
-        private Employee userAccount;
+        private readonly Performance currentPerformance;
+        private readonly Stage currentStage;
+        private readonly Employee userAccount;
 
         public ReceiptService(Performance currentPerformance, Stage currentStage, Employee userAccount)
         {
@@ -63,8 +63,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Helpers
                 $"Name: {currentPerformance.Name}"
                 ));
             doc.Add(new Paragraph(
-                $"Date: {currentPerformance.PerformanceDateTime.ToShortDateString()}  " +
-                $"Time: {currentPerformance.PerformanceDateTime.TimeOfDay}"
+                $"Date: {currentPerformance.LocalPerformanceDateTime.ToShortDateString()}  " +
+                $"Time: {currentPerformance.LocalPerformanceDateTime.TimeOfDay}"
                 ));
             doc.Add(new Paragraph(
                 $"Stage: {currentStage.Name}"

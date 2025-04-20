@@ -32,6 +32,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         {
             ClearResults();
 
+            dataGridView.Focus();
+
             if (string.IsNullOrWhiteSpace(searchValue)) return;
 
             for (int i = 0; i < dataGridView.Rows.Count; i++)
@@ -80,12 +82,12 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             if (e.KeyCode == Keys.Right)
             {
                 MoveNext();
-                e.Handled = true;
+                //e.Handled = true;
             }
             else if (e.KeyCode == Keys.Left)
             {
                 MovePrevious();
-                e.Handled = true;
+                //e.Handled = true;
             }
         }
     }

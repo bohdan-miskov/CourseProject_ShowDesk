@@ -44,10 +44,24 @@
             this.columnSold = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnReserved = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStripPerformance = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addPerformanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.editPerformanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePerformanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.revenueReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripManagePerformance = new System.Windows.Forms.MenuStrip();
+            this.performanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removePerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ticketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonSwitch = new System.Windows.Forms.Button();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
             this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             this.groupBoxPastPerformanceRange = new System.Windows.Forms.GroupBox();
@@ -60,28 +74,14 @@
             this.textBoxSearchField = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.pictureBoxUpdate = new System.Windows.Forms.PictureBox();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
-            this.addPerformanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editPerformanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.removePerformanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ticketsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.revenueReportToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.performanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editPerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removePerformanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.filterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ticketsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.revenueReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).BeginInit();
             this.contextMenuStripPerformance.SuspendLayout();
             this.menuStripManagePerformance.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
             this.contextMenuStripAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.groupBoxPastPerformanceRange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewPerformances
@@ -133,6 +133,7 @@
             this.dataGridViewPerformances.TabIndex = 3;
             this.dataGridViewPerformances.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPerformances_RowEnter);
             this.dataGridViewPerformances.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewPerformances_RowLeave);
+            this.dataGridViewPerformances.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridViewPerformances_KeyDown);
             // 
             // idColumn
             // 
@@ -207,6 +208,45 @@
             this.contextMenuStripPerformance.Name = "contextMenuStripPerformance";
             this.contextMenuStripPerformance.Size = new System.Drawing.Size(210, 114);
             // 
+            // addPerformanceToolStripMenuItem1
+            // 
+            this.addPerformanceToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
+            this.addPerformanceToolStripMenuItem1.Name = "addPerformanceToolStripMenuItem1";
+            this.addPerformanceToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
+            this.addPerformanceToolStripMenuItem1.Text = "Add performance";
+            this.addPerformanceToolStripMenuItem1.Click += new System.EventHandler(this.AddPerformanceToolStripMenuItem_Click);
+            // 
+            // editPerformanceToolStripMenuItem1
+            // 
+            this.editPerformanceToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.edit_icon;
+            this.editPerformanceToolStripMenuItem1.Name = "editPerformanceToolStripMenuItem1";
+            this.editPerformanceToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
+            this.editPerformanceToolStripMenuItem1.Text = "Edit performance";
+            this.editPerformanceToolStripMenuItem1.Click += new System.EventHandler(this.EditPerformanceToolStripMenuItem_Click);
+            // 
+            // removePerformanceToolStripMenuItem1
+            // 
+            this.removePerformanceToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
+            this.removePerformanceToolStripMenuItem1.Name = "removePerformanceToolStripMenuItem1";
+            this.removePerformanceToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
+            this.removePerformanceToolStripMenuItem1.Text = "Remove performance";
+            this.removePerformanceToolStripMenuItem1.Click += new System.EventHandler(this.RemovePerformanceToolStripMenuItem_Click);
+            // 
+            // ticketsToolStripMenuItem1
+            // 
+            this.ticketsToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.ticket_icon;
+            this.ticketsToolStripMenuItem1.Name = "ticketsToolStripMenuItem1";
+            this.ticketsToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
+            this.ticketsToolStripMenuItem1.Text = "Tickets";
+            // 
+            // revenueReportToolStripMenuItem1
+            // 
+            this.revenueReportToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.report_icon;
+            this.revenueReportToolStripMenuItem1.Name = "revenueReportToolStripMenuItem1";
+            this.revenueReportToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
+            this.revenueReportToolStripMenuItem1.Text = "Revenue report";
+            this.revenueReportToolStripMenuItem1.Click += new System.EventHandler(this.RevenueReportToolStripMenuItem_Click);
+            // 
             // menuStripManagePerformance
             // 
             this.menuStripManagePerformance.BackColor = System.Drawing.Color.Azure;
@@ -221,13 +261,79 @@
             this.menuStripManagePerformance.TabIndex = 4;
             this.menuStripManagePerformance.Text = "menuStripManagePerformance";
             // 
+            // performanceToolStripMenuItem
+            // 
+            this.performanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addPerformanceToolStripMenuItem,
+            this.editPerformanceToolStripMenuItem,
+            this.removePerformanceToolStripMenuItem,
+            this.filterToolStripMenuItem});
+            this.performanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.performanceToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.performance_icon;
+            this.performanceToolStripMenuItem.Name = "performanceToolStripMenuItem";
+            this.performanceToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.performanceToolStripMenuItem.Text = "Performance";
+            // 
+            // addPerformanceToolStripMenuItem
+            // 
+            this.addPerformanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addPerformanceToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
+            this.addPerformanceToolStripMenuItem.Name = "addPerformanceToolStripMenuItem";
+            this.addPerformanceToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.addPerformanceToolStripMenuItem.Text = "Add";
+            this.addPerformanceToolStripMenuItem.Click += new System.EventHandler(this.AddPerformanceToolStripMenuItem_Click);
+            // 
+            // editPerformanceToolStripMenuItem
+            // 
+            this.editPerformanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editPerformanceToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.edit_icon;
+            this.editPerformanceToolStripMenuItem.Name = "editPerformanceToolStripMenuItem";
+            this.editPerformanceToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.editPerformanceToolStripMenuItem.Text = "Edit";
+            this.editPerformanceToolStripMenuItem.Click += new System.EventHandler(this.EditPerformanceToolStripMenuItem_Click);
+            // 
+            // removePerformanceToolStripMenuItem
+            // 
+            this.removePerformanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.removePerformanceToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
+            this.removePerformanceToolStripMenuItem.Name = "removePerformanceToolStripMenuItem";
+            this.removePerformanceToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.removePerformanceToolStripMenuItem.Text = "Remove";
+            this.removePerformanceToolStripMenuItem.Click += new System.EventHandler(this.RemovePerformanceToolStripMenuItem_Click);
+            // 
+            // filterToolStripMenuItem
+            // 
+            this.filterToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.filter_icon;
+            this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
+            this.filterToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.filterToolStripMenuItem.Text = "Filter";
+            this.filterToolStripMenuItem.Click += new System.EventHandler(this.FilterToolStripMenuItem_Click);
+            // 
+            // ticketsToolStripMenuItem
+            // 
+            this.ticketsToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ticketsToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.ticket_icon;
+            this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
+            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(82, 22);
+            this.ticketsToolStripMenuItem.Text = "Tickets";
+            this.ticketsToolStripMenuItem.Click += new System.EventHandler(this.TicketsToolStripMenuItem_Click);
+            // 
+            // revenueReportToolStripMenuItem
+            // 
+            this.revenueReportToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.revenueReportToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.report_icon;
+            this.revenueReportToolStripMenuItem.Name = "revenueReportToolStripMenuItem";
+            this.revenueReportToolStripMenuItem.Size = new System.Drawing.Size(79, 22);
+            this.revenueReportToolStripMenuItem.Text = "Report";
+            this.revenueReportToolStripMenuItem.Click += new System.EventHandler(this.RevenueReportToolStripMenuItem_Click);
+            // 
             // buttonSwitch
             // 
             this.buttonSwitch.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonSwitch.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSwitch.Location = new System.Drawing.Point(522, 27);
+            this.buttonSwitch.Location = new System.Drawing.Point(513, 26);
             this.buttonSwitch.Name = "buttonSwitch";
-            this.buttonSwitch.Size = new System.Drawing.Size(99, 31);
+            this.buttonSwitch.Size = new System.Drawing.Size(126, 31);
             this.buttonSwitch.TabIndex = 5;
             this.buttonSwitch.Text = "Switch";
             this.buttonSwitch.UseVisualStyleBackColor = false;
@@ -235,10 +341,11 @@
             // 
             // groupBoxProfile
             // 
+            this.groupBoxProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
-            this.groupBoxProfile.Location = new System.Drawing.Point(709, 27);
+            this.groupBoxProfile.Location = new System.Drawing.Point(699, 26);
             this.groupBoxProfile.Name = "groupBoxProfile";
             this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
             this.groupBoxProfile.TabIndex = 16;
@@ -251,6 +358,26 @@
             this.exitToolStripMenuItem});
             this.contextMenuStripAccount.Name = "contextMenuStripAccount";
             this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
             // 
             // labelAccountName
             // 
@@ -333,6 +460,7 @@
             this.dateTimePickerPastPerformancesEndDate.Name = "dateTimePickerPastPerformancesEndDate";
             this.dateTimePickerPastPerformancesEndDate.Size = new System.Drawing.Size(165, 28);
             this.dateTimePickerPastPerformancesEndDate.TabIndex = 16;
+            this.dateTimePickerPastPerformancesEndDate.ValueChanged += new System.EventHandler(this.DateTimePickerPastPerformancesEndDate_ValueChanged);
             // 
             // labelStartDate
             // 
@@ -356,6 +484,7 @@
             this.dateTimePickerPastPerformancesStartDate.Name = "dateTimePickerPastPerformancesStartDate";
             this.dateTimePickerPastPerformancesStartDate.Size = new System.Drawing.Size(165, 28);
             this.dateTimePickerPastPerformancesStartDate.TabIndex = 14;
+            this.dateTimePickerPastPerformancesStartDate.ValueChanged += new System.EventHandler(this.DateTimePickerPastPerformancesStartDate_ValueChanged);
             // 
             // textBoxSearchField
             // 
@@ -364,6 +493,7 @@
             this.textBoxSearchField.Name = "textBoxSearchField";
             this.textBoxSearchField.Size = new System.Drawing.Size(139, 26);
             this.textBoxSearchField.TabIndex = 21;
+            this.textBoxSearchField.Enter += new System.EventHandler(this.TextBoxSearchField_Enter);
             // 
             // buttonSearch
             // 
@@ -372,6 +502,7 @@
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.ForeColor = System.Drawing.Color.Transparent;
             this.buttonSearch.Location = new System.Drawing.Point(430, 31);
+            this.buttonSearch.MaximumSize = new System.Drawing.Size(26, 26);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(26, 26);
             this.buttonSearch.TabIndex = 22;
@@ -380,140 +511,16 @@
             // 
             // pictureBoxUpdate
             // 
+            this.pictureBoxUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxUpdate.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBoxUpdate.Image = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
-            this.pictureBoxUpdate.Location = new System.Drawing.Point(682, 33);
+            this.pictureBoxUpdate.Location = new System.Drawing.Point(672, 32);
             this.pictureBoxUpdate.Name = "pictureBoxUpdate";
             this.pictureBoxUpdate.Size = new System.Drawing.Size(25, 25);
             this.pictureBoxUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxUpdate.TabIndex = 20;
             this.pictureBoxUpdate.TabStop = false;
             this.pictureBoxUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            // 
-            // pictureBoxAccountIcon
-            // 
-            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
-            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
-            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
-            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
-            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAccountIcon.TabIndex = 1;
-            this.pictureBoxAccountIcon.TabStop = false;
-            // 
-            // addPerformanceToolStripMenuItem1
-            // 
-            this.addPerformanceToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
-            this.addPerformanceToolStripMenuItem1.Name = "addPerformanceToolStripMenuItem1";
-            this.addPerformanceToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
-            this.addPerformanceToolStripMenuItem1.Text = "Add performance";
-            this.addPerformanceToolStripMenuItem1.Click += new System.EventHandler(this.AddPerformanceToolStripMenuItem_Click);
-            // 
-            // editPerformanceToolStripMenuItem1
-            // 
-            this.editPerformanceToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.edit_icon;
-            this.editPerformanceToolStripMenuItem1.Name = "editPerformanceToolStripMenuItem1";
-            this.editPerformanceToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
-            this.editPerformanceToolStripMenuItem1.Text = "Edit performance";
-            this.editPerformanceToolStripMenuItem1.Click += new System.EventHandler(this.EditPerformanceToolStripMenuItem_Click);
-            // 
-            // removePerformanceToolStripMenuItem1
-            // 
-            this.removePerformanceToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
-            this.removePerformanceToolStripMenuItem1.Name = "removePerformanceToolStripMenuItem1";
-            this.removePerformanceToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
-            this.removePerformanceToolStripMenuItem1.Text = "Remove performance";
-            this.removePerformanceToolStripMenuItem1.Click += new System.EventHandler(this.RemovePerformanceToolStripMenuItem_Click);
-            // 
-            // ticketsToolStripMenuItem1
-            // 
-            this.ticketsToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.ticket_icon;
-            this.ticketsToolStripMenuItem1.Name = "ticketsToolStripMenuItem1";
-            this.ticketsToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
-            this.ticketsToolStripMenuItem1.Text = "Tickets";
-            // 
-            // revenueReportToolStripMenuItem1
-            // 
-            this.revenueReportToolStripMenuItem1.Image = global::CourseProject_ShowDesk.Properties.Resources.report_icon;
-            this.revenueReportToolStripMenuItem1.Name = "revenueReportToolStripMenuItem1";
-            this.revenueReportToolStripMenuItem1.Size = new System.Drawing.Size(209, 22);
-            this.revenueReportToolStripMenuItem1.Text = "Revenue report";
-            this.revenueReportToolStripMenuItem1.Click += new System.EventHandler(this.RevenueReportToolStripMenuItem_Click);
-            // 
-            // performanceToolStripMenuItem
-            // 
-            this.performanceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addPerformanceToolStripMenuItem,
-            this.editPerformanceToolStripMenuItem,
-            this.removePerformanceToolStripMenuItem,
-            this.filterToolStripMenuItem});
-            this.performanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.performanceToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.performance_icon;
-            this.performanceToolStripMenuItem.Name = "performanceToolStripMenuItem";
-            this.performanceToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
-            this.performanceToolStripMenuItem.Text = "Performance";
-            // 
-            // addPerformanceToolStripMenuItem
-            // 
-            this.addPerformanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addPerformanceToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
-            this.addPerformanceToolStripMenuItem.Name = "addPerformanceToolStripMenuItem";
-            this.addPerformanceToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.addPerformanceToolStripMenuItem.Text = "Add";
-            this.addPerformanceToolStripMenuItem.Click += new System.EventHandler(this.AddPerformanceToolStripMenuItem_Click);
-            // 
-            // editPerformanceToolStripMenuItem
-            // 
-            this.editPerformanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editPerformanceToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.edit_icon;
-            this.editPerformanceToolStripMenuItem.Name = "editPerformanceToolStripMenuItem";
-            this.editPerformanceToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.editPerformanceToolStripMenuItem.Text = "Edit";
-            this.editPerformanceToolStripMenuItem.Click += new System.EventHandler(this.EditPerformanceToolStripMenuItem_Click);
-            // 
-            // removePerformanceToolStripMenuItem
-            // 
-            this.removePerformanceToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.removePerformanceToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
-            this.removePerformanceToolStripMenuItem.Name = "removePerformanceToolStripMenuItem";
-            this.removePerformanceToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.removePerformanceToolStripMenuItem.Text = "Remove";
-            this.removePerformanceToolStripMenuItem.Click += new System.EventHandler(this.RemovePerformanceToolStripMenuItem_Click);
-            // 
-            // filterToolStripMenuItem
-            // 
-            this.filterToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.filter_icon;
-            this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
-            this.filterToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.filterToolStripMenuItem.Text = "Filter";
-            this.filterToolStripMenuItem.Click += new System.EventHandler(this.FilterToolStripMenuItem_Click);
-            // 
-            // ticketsToolStripMenuItem
-            // 
-            this.ticketsToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ticketsToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.ticket_icon;
-            this.ticketsToolStripMenuItem.Name = "ticketsToolStripMenuItem";
-            this.ticketsToolStripMenuItem.Size = new System.Drawing.Size(82, 22);
-            this.ticketsToolStripMenuItem.Text = "Tickets";
-            this.ticketsToolStripMenuItem.Click += new System.EventHandler(this.TicketsToolStripMenuItem_Click);
-            // 
-            // revenueReportToolStripMenuItem
-            // 
-            this.revenueReportToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.revenueReportToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.report_icon;
-            this.revenueReportToolStripMenuItem.Name = "revenueReportToolStripMenuItem";
-            this.revenueReportToolStripMenuItem.Size = new System.Drawing.Size(79, 22);
-            this.revenueReportToolStripMenuItem.Text = "Report";
-            this.revenueReportToolStripMenuItem.Click += new System.EventHandler(this.RevenueReportToolStripMenuItem_Click);
             // 
             // ManagePerformancesForm
             // 
@@ -531,7 +538,6 @@
             this.Name = "ManagePerformancesForm";
             this.Text = "ManagePerformance";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManagePerformancesFormClosing);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ManagePerformancesForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerformances)).EndInit();
             this.contextMenuStripPerformance.ResumeLayout(false);
             this.menuStripManagePerformance.ResumeLayout(false);
@@ -539,10 +545,10 @@
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
             this.contextMenuStripAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.groupBoxPastPerformanceRange.ResumeLayout(false);
             this.groupBoxPastPerformanceRange.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUpdate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

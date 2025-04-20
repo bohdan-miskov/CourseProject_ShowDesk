@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
@@ -11,9 +12,11 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         private readonly Panel panelSeating;
         private readonly Panel panelViewport;
         private float zoomFactor = 1.0f;
+        private bool isPanning;
+        private Point startLocation;
+
         private readonly ElementMover mover;
         private readonly ElementResizer resizer;
-        //private readonly SelectionManager selectionManager;
 
         public CanvasController(Panel panelSeating, Panel panelViewport)
         {
@@ -21,7 +24,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             this.panelViewport = panelViewport;
             mover = new ElementMover(panelSeating, panelViewport);
             resizer = new ElementResizer(panelSeating);
-            //selectionManager = new SelectionManager();
         }
         public ElementResizer Resizer
         {
@@ -33,7 +35,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         public void StartScaleCanvas(MouseEventArgs e, bool useControl)
         {
             if (!useControl) return;
-            float scaleFactor = e.Delta > 0 ? 1.1f : 0.9f;
+            float scaleFactor = e.Delta > 0 ? 1.05f : 0.95f;
             zoomFactor *= scaleFactor;
             ScaleCanvas(scaleFactor);
         }
@@ -41,13 +43,18 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         private void ScaleCanvas(float scaleFactor)
         {
             panelSeating.Scale(new SizeF(scaleFactor, scaleFactor));
+
             foreach (Control control in panelSeating.Controls)
             {
-                control.Scale(new SizeF(scaleFactor, scaleFactor));
-                control.Location = new Point((int)(control.Location.X * scaleFactor), (int)(control.Location.Y * scaleFactor));
+                control.Width = (int)(control.Width * scaleFactor);
+                control.Height = (int)(control.Height * scaleFactor);
+
+                control.Left = (int)(control.Left * scaleFactor);
+                control.Top = (int)(control.Top * scaleFactor);
             }
-            panelSeating.Location = new Point((int)(panelSeating.Location.X / scaleFactor),
-                (int)(panelSeating.Location.Y / scaleFactor));
+
+            panelSeating.Left = (int)(panelSeating.Left * scaleFactor);
+            panelSeating.Top = (int)(panelSeating.Top * scaleFactor);
         }
 
         //public void HandleMouseDown(object sender, MouseEventArgs e)
@@ -82,7 +89,34 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         {
             if (e.Button == MouseButtons.Middle || (e.Button == MouseButtons.Left && useControl))
             {
-                mover.StartPanning(e.Location, panelViewport);
+                isPanning = true;
+                startLocation = e.Location;
+                panelViewport.Cursor = Cursors.Hand;
+            }
+        }
+
+        public void StopPanning()
+        {
+            isPanning = false;
+            if (panelViewport != null) panelViewport.Cursor = Cursors.Default;
+        }
+
+
+        public void CanvasMove(Point location)
+        {
+            if (isPanning)
+            {
+                Point newLocation = new Point(panelSeating.Left + (location.X - startLocation.X), panelSeating.Top + (location.Y - startLocation.Y));
+                if (newLocation.X <= 0 && newLocation.X + panelSeating.Width >= panelViewport.Width)
+                {
+                    panelSeating.Left = newLocation.X;
+                }
+                if (newLocation.Y <= 0 && newLocation.Y + panelSeating.Height >= panelViewport.Height)
+                {
+                    panelSeating.Top = newLocation.Y;
+                }
+                //panelSeating.Left += location.X - startLocation.X;
+                //panelSeating.Top += location.Y - startLocation.Y;
             }
         }
 
@@ -131,8 +165,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         //    }
         //}
 
-
-
         public void ElementMove(MouseEventArgs e)
         {
             mover.Move(e.Location);
@@ -148,7 +180,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         }
         public void ResizeStop()
         {
-            mover.Stop();
+            resizer.Stop();
         }
 
         public Control FindControlAtLocation(Point location)
@@ -162,10 +194,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         private readonly Panel panelSeating;
         private readonly Panel panelViewport;
         private Control selectedControl;
-        private Point startLocation;
         private Point dragOffset;
         private bool isDragging;
-        private bool isPanning;
 
         public ElementMover(Panel panelSeating, Panel panelViewport)
         {
@@ -181,12 +211,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             dragOffset = new Point(location.X - control.Left, location.Y - control.Top);
         }
 
-        public void StartPanning(Point location, Panel viewport)
-        {
-            startLocation = location;
-            isPanning = true;
-            panelViewport.Cursor = Cursors.Hand;
-        }
+        
 
         public void Move(Point location)
         {
@@ -194,26 +219,11 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             {
                 selectedControl.Location = new Point(location.X - dragOffset.X, location.Y - dragOffset.Y);
             }
-            else if (isPanning)
-            {
-                Point newLocation = new Point(panelSeating.Left + (location.X - startLocation.X), panelSeating.Top + (location.Y - startLocation.Y));
-                if (newLocation.X <= 0 && newLocation.X + panelSeating.Width >= panelViewport.Width)
-                {
-                    panelSeating.Left = newLocation.X;
-                }
-                if (newLocation.Y <= 0 && newLocation.Y + panelSeating.Height >= panelViewport.Height)
-                {
-                    panelSeating.Top = newLocation.Y;
-                }
-                //panelSeating.Left += location.X - startLocation.X;
-                //panelSeating.Top += location.Y - startLocation.Y;
-            }
         }
 
         public void Stop()
         {
             isDragging = false;
-            isPanning = false;
             if (panelViewport != null) panelViewport.Cursor = Cursors.Default;
         }
     }

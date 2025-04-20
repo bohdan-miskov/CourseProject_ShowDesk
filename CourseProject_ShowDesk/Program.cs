@@ -33,6 +33,8 @@ namespace CourseProject_ShowDesk
                 InstructionForm instructionForm = new InstructionForm();
                 instructionForm.ShowDialog();
                 AppConstants.SetFirstLog();
+                AppConstantsData appConstantsData = AppConstants.CloneConstants();
+                AppCostantsManager.SaveAppConstantsToFile(appConstantsData);
             }
 
             Application.Run(new AuthenticateForm());

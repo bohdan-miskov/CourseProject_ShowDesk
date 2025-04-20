@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 {
@@ -31,16 +32,15 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
         //    stageIndex = -1;
         //    tickets = new List<StandardTicket>();
         //}
-        public Performance(IPerformanceBaseService performanceBaseService)
+        public Performance()
         {
-            this.performanceBaseService = performanceBaseService;
             tickets = new List<StandardTicket>();
         }
         public Performance(string name, double price, DateTime performanceDateTime, TimeSpan duration, Guid stageId, List<int> availablePositions)
         {
             Name = name;
             Price = price;
-            PerformanceDateTime = performanceDateTime;
+            LocalPerformanceDateTime = performanceDateTime;
             Duration = duration;
             StageId = stageId;
             tickets = new List<StandardTicket>();
@@ -83,13 +83,26 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 
         public DateTime PerformanceDateTime
         {
+            set
+            {
+                performanceDateTime = value.ToLocalTime();
+            }
+            get
+            {
+                return performanceDateTime;
+            }
+        }
+
+        [BsonIgnore]
+        public DateTime LocalPerformanceDateTime
+        {
             get
             {
                 return performanceDateTime;
             }
             set
             {
-                performanceDateTime = value;
+                performanceDateTime = value; 
             }
         }
 

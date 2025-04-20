@@ -18,14 +18,13 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public AddStageForm(Employee userAccount)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
 
             this.userAccount = userAccount;
             labelAccountName.Text = userAccount.FullName;
 
             isValid = false;
             logOut = false;
-
-            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxStageName_KeyUp(object sender, KeyEventArgs e)

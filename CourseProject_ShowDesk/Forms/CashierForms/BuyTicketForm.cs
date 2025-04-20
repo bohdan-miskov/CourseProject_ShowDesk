@@ -30,6 +30,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public BuyTicketForm(Employee userAccount, Stage stage, Performance performance)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
+
             this.MouseWheel += PanelSeating_MouseWheel;
 
             this.performance = performance;
@@ -45,8 +47,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             isValid = false;
             logOut = false;
-
-            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxIndex_KeyUp(object sender, KeyEventArgs e)
@@ -75,10 +75,19 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             UpdateLastTicket();
             GetTicketPrice();
         }
-
+        private void PanelSeating_MouseUp(object sender, MouseEventArgs e)
+        {
+            canvasController.StopPanning();
+        }
         private void PanelSeating_MouseDown(object sender, MouseEventArgs e)
         {
+            bool useControl = ModifierKeys == Keys.Control;
+            canvasController.StartPanning(e, useControl);
             SeatingMouseDown(sender, e);
+        }
+        private void PanelSeating_MouseMove(object sender, MouseEventArgs e)
+        {
+            canvasController.CanvasMove(e.Location);
         }
         private void PanelSeating_MouseWheel(object sender, MouseEventArgs e)
         {

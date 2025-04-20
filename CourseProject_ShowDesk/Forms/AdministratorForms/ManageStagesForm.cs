@@ -1,4 +1,5 @@
-﻿using CourseProject_ShowDesk.Forms.DirectorForms;
+﻿using CourseProject_ShowDesk.Forms.CashierForms;
+using CourseProject_ShowDesk.Forms.DirectorForms;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
@@ -20,6 +21,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public ManageStagesForm(Employee userAccount)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this);
 
             try
             {
@@ -30,6 +32,9 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
                 settingsForm.ShowDialog();
+
+                //FormConfigurator.RestartForm<ManageStagesForm>(this, userAccount);
+                FormConfigurator.RestartApp();
             }
 
             this.userAccount = userAccount;
@@ -44,8 +49,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             ShowGreetings(userAccount.FullName);
 
             timerUpdate.Start();
-
-            FormConfigurator.ConfigureForm(this);
 
             searchData = new SearchDataGrid(dataGridViewStages);
         }
@@ -82,10 +85,16 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             SearchByFragment();
         }
 
-        private void ManageStagesForm_KeyDown(object sender, KeyEventArgs e)
+        private void TextBoxSearchField_Enter(object sender, EventArgs e)
+        {
+            SearchByFragment();
+        }
+
+        private void DataGridViewStages_KeyDown(object sender, KeyEventArgs e)
         {
             searchData.SearchNavigation(e);
         }
+
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
             UpdataDataFromDatabase();

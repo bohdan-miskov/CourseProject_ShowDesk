@@ -24,14 +24,15 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public AddEditZoneForm(Employee userAccount, Stage stage, Zone zone = null)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
 
             this.MouseWheel += PanelSeating_MouseWheel;
 
             isValid = false;
             logOut = false;
-            this.zones = stage.Zones;
-            this.seatingManager = new SeatingManager(panelSeating, stage?.SeatList, stage?.DecorList);
-            this.canvasController = new CanvasController(panelSeating, panelViewport);
+            zones = stage.Zones;
+            seatingManager = new SeatingManager(panelSeating, stage?.SeatList, stage?.DecorList);
+            canvasController = new CanvasController(panelSeating, panelViewport);
 
             labelAccountName.Text = userAccount.FullName;
 
@@ -43,8 +44,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             else this.currentZone = new Zone();
 
             PopulateComponents();
-
-            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxZoneName_KeyUp(object sender, KeyEventArgs e)
@@ -81,6 +80,20 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             {
                 numericUpDownStartPosition.Value = numericUpDownEndPosition.Value;
             }
+        }
+        private void PanelSeating_MouseUp(object sender, MouseEventArgs e)
+        {
+            canvasController.StopPanning();
+        }
+
+        private void PanelSeating_MouseDown(object sender, MouseEventArgs e)
+        {
+            bool useControl = ModifierKeys == Keys.Control;
+            canvasController.StartPanning(e, useControl);
+        }
+        private void PanelSeating_MouseMove(object sender, MouseEventArgs e)
+        {
+            canvasController.CanvasMove(e.Location);
         }
         private void PanelSeating_MouseWheel(object sender, MouseEventArgs e)
         {

@@ -74,8 +74,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
                 filterPerformances.Sort((p1, p2) => p1.PerformanceDateTime.CompareTo(p2.PerformanceDateTime));
             }
 
-
-            return allPerformances;
+            return filterPerformances;
         }
         public Performance GetOldestPerformance()
         {

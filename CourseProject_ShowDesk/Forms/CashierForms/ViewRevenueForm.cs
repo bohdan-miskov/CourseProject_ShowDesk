@@ -17,6 +17,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public ViewRevenueForm(Employee userAccount, PerformanceManager performanceManager)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
 
             this.performanceManager = performanceManager;
 
@@ -24,8 +25,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             logOut = false;
 
             PopulateComponents();
-
-            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void DateTimePickerStartDate_KeyUp(object sender, KeyEventArgs e)
@@ -90,7 +89,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
             else
             {
-                DateTime minDate = oldestPerformance.PerformanceDateTime;
+                DateTime minDate = oldestPerformance.LocalPerformanceDateTime;
                 DateTime maxDate = DateTime.Now;
 
                 dateTimePickerStartDate.MinDate = minDate;
@@ -154,7 +153,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             double dayRevenue = performances[0].GetRevenue();
             double sumRevenue = 0;
             int dayCount = 1;
-            DateTime thisDate = performances[0].PerformanceDateTime.Date;
+            DateTime thisDate = performances[0].LocalPerformanceDateTime.Date;
             KeyValuePair<string, double> maxRevenuePerformance = new KeyValuePair<string, double>(performances[0].Name, performances[0].GetRevenue());
             KeyValuePair<string, double> minRevenuePerformance = new KeyValuePair<string, double>(performances[0].Name, performances[0].GetRevenue());
 
@@ -172,7 +171,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                     minRevenuePerformance = new KeyValuePair<string, double>(performance.Name, performance.GetRevenue());
                 }
 
-                if (thisDate == performance.PerformanceDateTime.Date)
+                if (thisDate == performance.LocalPerformanceDateTime.Date)
                 {
                     dayRevenue += performance.GetRevenue();
                 }
@@ -182,7 +181,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
                     dayCount++;
                     dayRevenue = performance.GetRevenue();
-                    thisDate = performance.PerformanceDateTime.Date;
+                    thisDate = performance.LocalPerformanceDateTime.Date;
                 }
 
                 sumRevenue += performance.GetRevenue();

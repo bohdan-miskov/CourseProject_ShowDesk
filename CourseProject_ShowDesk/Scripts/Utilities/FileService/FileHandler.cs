@@ -20,7 +20,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FileService
             string jsonData = File.ReadAllText(fileName);
             return JsonConvert.DeserializeObject<List<T>>(jsonData, new JsonSerializerSettings
             {
-                TypeNameHandling = TypeNameHandling.All
+                TypeNameHandling = TypeNameHandling.All,
+                ObjectCreationHandling = ObjectCreationHandling.Replace
             });
         }
 
@@ -38,7 +39,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FileService
             string jsonData = File.ReadAllText(fileName);
             return JsonConvert.DeserializeObject<T>(jsonData, new JsonSerializerSettings
             {
-                TypeNameHandling = TypeNameHandling.All
+                TypeNameHandling = TypeNameHandling.All,
+                ObjectCreationHandling = ObjectCreationHandling.Replace
             });
         }
 

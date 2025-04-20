@@ -19,6 +19,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private readonly List<Performance> performances;
         private readonly Performance currentPerformance;
 
+        private readonly DateTime defaultDate= new DateTime(1900, 1, 1);
         private readonly bool isFilterFunction;
         private bool isValid;
         private bool logOut;
@@ -26,6 +27,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public AddEditPerformanceForm(Employee userAccount, List<Stage> stages, List<Performance> performances, Performance currentPerformance = null, bool isFilterFunction = false)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
 
             this.stages = stages;
             this.performances = performances;
@@ -43,10 +45,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 this.currentPerformance = currentPerformance;
                 PopulateFields();
             }
-            else
-                this.currentPerformance = new Performance(new PerformanceBaseService());
-
-            FormConfigurator.ConfigureForm(this, true);
+            else this.currentPerformance = new Performance();
         }
 
         private void DateTimePickerPerfomanceDate_KeyUp(object sender, KeyEventArgs e)
@@ -111,9 +110,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void SetFilterParameters()
         {
-            dateTimePickerPerfomanceDate.MinDate = DateTime.MinValue;
-            dateTimePickerPerfomanceDate.Value = DateTime.MinValue;
-            dateTimePickerDuration.Value = DateTime.MinValue;
+            dateTimePickerPerfomanceDate.MinDate = defaultDate;
+            dateTimePickerPerfomanceDate.Value = defaultDate;
+            dateTimePickerDuration.MinDate = defaultDate;
+            dateTimePickerDuration.Value = defaultDate;
             comboBoxStage.Items.Add("Undefined");
             comboBoxStage.SelectedIndex = comboBoxStage.Items.Count - 1;
 
@@ -122,7 +122,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void PopulateFields()
         {
-            dateTimePickerPerfomanceDate.Value = currentPerformance.PerformanceDateTime;
+            dateTimePickerPerfomanceDate.Value = currentPerformance.LocalPerformanceDateTime;
             textBoxPerformanceName.Text = currentPerformance.Name;
             textBoxBaseTicketPrice.Text = Convert.ToString(currentPerformance.Price);
             dateTimePickerDuration.Value = DateTime.Today + currentPerformance.Duration;
@@ -157,13 +157,13 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private void CreatePerformance()
         {
             currentPerformance.Name = textBoxPerformanceName.Text;
-            currentPerformance.PerformanceDateTime = dateTimePickerPerfomanceDate.Value;
+            currentPerformance.LocalPerformanceDateTime = dateTimePickerPerfomanceDate.Value == defaultDate ? DateTime.MinValue : dateTimePickerPerfomanceDate.Value;
             currentPerformance.Price = string.IsNullOrWhiteSpace(textBoxBaseTicketPrice.Text) ? double.NaN : Convert.ToDouble(textBoxBaseTicketPrice.Text);
-            currentPerformance.Duration = dateTimePickerDuration.Value == DateTime.MinValue ? TimeSpan.Zero : new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
+            currentPerformance.Duration = dateTimePickerDuration.Value == defaultDate ? TimeSpan.Zero : new TimeSpan(dateTimePickerDuration.Value.Hour, dateTimePickerDuration.Value.Minute, 0);
 
             if (comboBoxStage.SelectedIndex < stages.Count && currentPerformance.StageId != stages[comboBoxStage.SelectedIndex].Id)
             {
-                if (currentPerformance.StageId != null)
+                if (currentPerformance.StageId != Guid.Empty)
                 {
                     DialogResult result =
                                         MessageBox.Show(

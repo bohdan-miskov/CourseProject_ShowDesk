@@ -21,7 +21,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
                 return false;
 
             // Перевірка дати
-            if (!ValidateDate(performance.PerformanceDateTime, out errorMessage))
+            if (!ValidateDate(performance.LocalPerformanceDateTime, out errorMessage))
                 return false;
 
             // Перевірка на перетини
@@ -94,7 +94,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             {
                 if (performance.StageId == newPerformance.StageId)
                 {
-                    if ((newPerformance.PerformanceDateTime - performance.PerformanceDateTime).Days < 1 && performance.Id != newPerformance.Id)
+                    if ((newPerformance.LocalPerformanceDateTime - performance.LocalPerformanceDateTime).Days < 1 && performance.Id != newPerformance.Id)
                     {
                         if (IsIntersectionOfPerformances(newPerformance, performance))
                         {
@@ -112,14 +112,14 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             double currentTimeDifference;
             double minTimeDifference;
 
-            if (newPerformance.PerformanceDateTime > performance.PerformanceDateTime)
+            if (newPerformance.LocalPerformanceDateTime > performance.LocalPerformanceDateTime)
             {
-                currentTimeDifference = (newPerformance.PerformanceDateTime - performance.PerformanceDateTime).TotalMinutes;
+                currentTimeDifference = (newPerformance.LocalPerformanceDateTime - performance.LocalPerformanceDateTime).TotalMinutes;
                 minTimeDifference = performance.Duration.TotalMinutes + AppConstants.MinBreakBetweenPerformance.TotalMinutes;
             }
             else
             {
-                currentTimeDifference = (performance.PerformanceDateTime - newPerformance.PerformanceDateTime).TotalMinutes;
+                currentTimeDifference = (performance.LocalPerformanceDateTime - newPerformance.LocalPerformanceDateTime).TotalMinutes;
                 minTimeDifference = newPerformance.Duration.TotalMinutes + AppConstants.MinBreakBetweenPerformance.TotalMinutes;
             }
 

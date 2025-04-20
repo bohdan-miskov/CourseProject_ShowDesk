@@ -314,7 +314,7 @@
     </Compile>
     <Compile Include="Scripts\Enities\PerformanceEnities\Performance.cs" />
     <Compile Include="Scripts\Enities\PerformanceEnities\Ticket\PremiumTicket.cs" />
-    <Compile Include="Scripts\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Enities\StageEnities\Stage.cs" />
     <Compile Include="Scripts\Enities\PerformanceEnities\Ticket\StandartPlusTicket.cs" />

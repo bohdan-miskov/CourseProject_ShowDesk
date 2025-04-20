@@ -26,6 +26,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public ManageTicketsForm(Employee userAccount, Stage currentStage, Performance currentPerformance)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this);
 
             this.currentStage = currentStage;
             this.currentPerformance = currentPerformance;
@@ -42,8 +43,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             DisableEditAndRemoveTicket();
 
             timerUpdate.Start();
-
-            FormConfigurator.ConfigureForm(this);
 
             searchData = new SearchDataGrid(dataGridViewTickets);
         }
@@ -79,8 +78,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             SearchByFragment();
         }
+        private void TextBoxSearchField_Enter(object sender, EventArgs e)
+        {
+            SearchByFragment();
+        }
 
-        private void ManageTicketsForm_KeyDown(object sender, KeyEventArgs e)
+        private void DataGridViewTickets_KeyDown(object sender, KeyEventArgs e)
         {
             searchData.SearchNavigation(e);
         }

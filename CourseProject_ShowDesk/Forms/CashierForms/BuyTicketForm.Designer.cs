@@ -50,19 +50,19 @@
             this.labelDrink = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
             this.panelViewport = new System.Windows.Forms.Panel();
             this.panelSeating = new System.Windows.Forms.Panel();
-            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxTicket.SuspendLayout();
             this.groupBoxPremium.SuspendLayout();
             this.groupBoxStandardPlus.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
+            this.contextMenuStripAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.panelViewport.SuspendLayout();
-            this.contextMenuStripAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -319,6 +319,22 @@
             this.groupBoxProfile.TabIndex = 41;
             this.groupBoxProfile.TabStop = false;
             // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // pictureBoxAccountIcon
             // 
             this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
@@ -344,9 +360,9 @@
             // 
             // panelViewport
             // 
+            this.panelViewport.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelViewport.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelViewport.Controls.Add(this.panelSeating);
-            this.panelViewport.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelViewport.Location = new System.Drawing.Point(513, 60);
             this.panelViewport.Name = "panelViewport";
             this.panelViewport.Size = new System.Drawing.Size(645, 425);
@@ -354,28 +370,15 @@
             // 
             // panelSeating
             // 
+            this.panelSeating.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelSeating.Location = new System.Drawing.Point(-1000, -1000);
             this.panelSeating.Name = "panelSeating";
             this.panelSeating.Size = new System.Drawing.Size(3000, 3000);
             this.panelSeating.TabIndex = 7;
             this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseDown);
-            // 
-            // contextMenuStripAccount
-            // 
-            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.panelSeating.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseMove);
+            this.panelSeating.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseUp);
             // 
             // BuyTicketForm
             // 
@@ -386,6 +389,7 @@
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.groupBoxTicket);
             this.Name = "BuyTicketForm";
+            this.Resizable = false;
             this.Text = "BuyTicket";
             this.groupBoxTicket.ResumeLayout(false);
             this.groupBoxTicket.PerformLayout();
@@ -395,9 +399,9 @@
             this.groupBoxStandardPlus.PerformLayout();
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
+            this.contextMenuStripAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.panelViewport.ResumeLayout(false);
-            this.contextMenuStripAccount.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

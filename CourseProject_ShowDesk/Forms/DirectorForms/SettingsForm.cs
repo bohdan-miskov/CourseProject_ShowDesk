@@ -15,12 +15,13 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
     public partial class SettingsForm : MetroFramework.Forms.MetroForm
     {
         private readonly AppConstantsData appConstantsData;
-        TabControlController tabControlController;
+        private readonly TabControlController tabControlController;
         private bool logOut;
 
         public SettingsForm(Employee userAccount)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
 
             appConstantsData = AppConstants.CloneConstants();
             labelAccountName.Text = userAccount.FullName;
@@ -28,8 +29,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             logOut = false;
 
             PopulateAllField();
-
-            FormConfigurator.ConfigureForm(this, true);
         }
         private void DateTimePickerMinBreak_KeyUp(object sender, KeyEventArgs e)
         {
@@ -454,8 +453,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             int indexList = comboBoxListName.SelectedIndex;
             int indexItem = listBoxViewNames.SelectedIndex;
-
-            string newName = textBoxItemName.Text;
 
             if (indexList == 2)
                 appConstantsData.ListOfSouvenirs.RemoveAt(indexItem);

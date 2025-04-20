@@ -108,6 +108,7 @@
             this.dataGridViewStages.TabIndex = 2;
             this.dataGridViewStages.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowEnter);
             this.dataGridViewStages.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowLeave);
+            this.dataGridViewStages.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DataGridViewStages_KeyDown);
             // 
             // idColumn
             // 
@@ -308,6 +309,7 @@
             this.textBoxSearchField.Name = "textBoxSearchField";
             this.textBoxSearchField.Size = new System.Drawing.Size(139, 26);
             this.textBoxSearchField.TabIndex = 25;
+            this.textBoxSearchField.Enter += new System.EventHandler(this.TextBoxSearchField_Enter);
             // 
             // ManageStagesForm
             // 
@@ -323,7 +325,6 @@
             this.Name = "ManageStagesForm";
             this.Text = "ManageStages";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageStagesForm_FormClosing);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ManageStagesForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).EndInit();
             this.contextMenuStripStages.ResumeLayout(false);
             this.menuStripManageStages.ResumeLayout(false);

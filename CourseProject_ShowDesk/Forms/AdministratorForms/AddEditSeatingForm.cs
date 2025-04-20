@@ -42,6 +42,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public AddEditSeatingForm(Employee userAccount, Stage stage = null)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
 
             this.MouseWheel += PanelSeating_MouseWheel;
 
@@ -69,8 +70,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             isValid = false;
             logOut = false;
-
-            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void ButtonDeleteSeat_Click(object sender, EventArgs e)
@@ -149,12 +148,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         }
         private void CanvasMouseUp()
         {
+            canvasController.StopPanning();
             canvasController.MoveStop();
             canvasController.ResizeStop();
             //ViewportMouseUp(sender, e);
         }
         private void CanvasMouseMove(MouseEventArgs e)
         {
+            canvasController.CanvasMove(e.Location);
             canvasController.ElementMove(e);
             canvasController.ElementResize(e);
             //FormMouseMove(sender, e);

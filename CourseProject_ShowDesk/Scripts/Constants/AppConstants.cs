@@ -6,43 +6,44 @@ namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public static class AppConstants
     {
-        public static DateTime FirstLog { get; private set; } = DateTime.MinValue;
+        public static DateTime FirstLog { get; private set; }
 
-        public static string CompanyName { get; private set; } = "«ShowDesk»";
-        public static string GeneralCollectionName { get; private set; } = "Event";
-        public static string PerformancesCollectionName { get; private set; } = "UpcomingPerformances";
-        public static string PastPerformancesCollectionName { get; private set; } = "PastPerformances";
-        public static string StagesCollectionName { get; private set; } = "Stages";
-        public static string EmployeesCollectionName { get; private set; } = "Employees";
+        public static string CompanyName { get; private set; }
+        public static string GeneralCollectionName { get; private set; }
+        public static string PerformancesCollectionName { get; private set; }
+        public static string PastPerformancesCollectionName { get; private set; }
+        public static string StagesCollectionName { get; private set; }
+        public static string EmployeesCollectionName { get; private set; }
 
-        public static double StandardIncrease { get; private set; } = 1;
-        public static double StandardPlusIncrease { get; private set; } = 1.5;
-        public static double PremiumIncrease { get; private set; } = 3;
+        public static double StandardIncrease { get; private set; }
+        public static double StandardPlusIncrease { get; private set; }
+        public static double PremiumIncrease { get; private set; }
 
-        public static char CurrencySymbol { get; private set; } = '$';
+        public static char CurrencySymbol { get; private set; }
 
-        public static TimeSpan MinBreakBetweenPerformance { get; private set; } = new TimeSpan(0, 15, 0);
-        public static TimeSpan InitialPerformanceDuration { get; private set; } = new TimeSpan(1, 30, 0);
-        public static TimeSpan MaxDuration { get; private set; } = new TimeSpan(5, 0, 0);
+        public static TimeSpan MinBreakBetweenPerformance { get; private set; }
+        public static TimeSpan InitialPerformanceDuration { get; private set; }
+        public static TimeSpan MaxDuration { get; private set; }
 
-        public static List<string> ListOfProfessions { get; private set; } = new List<string> { "Director", "Administrator", "Cashier" };
-        public static List<string> ListOfTicketTypes { get; private set; } = new List<string> { "Standard", "StandardPlus", "Premium" };
-        public static List<string> ListOfSouvenirs { get; private set; } = new List<string> { "Poster", "Mask", "Book", "Coulomb" };
-        public static List<string> ListOfDrinks { get; private set; } = new List<string> { "Water", "Coffee", "Tea", "Juice" };
+        public static List<string> ListOfProfessions { get; private set; }
+        public static List<string> ListOfTicketTypes { get; private set; }
+        public static List<string> ListOfSouvenirs { get; private set; }
+        public static List<string> ListOfDrinks { get; private set; }
 
-        public static char PasswordChar { get; private set; } = '*';
+        public static char PasswordChar { get; private set; }
 
-        public static bool IsPrintReceipt { get; private set; } = true;
-        public static string SavePathReceipt { get; private set; } = "C:\\Users\\Fujitsu\\Documents\\Tickets";
+        public static bool IsPrintReceipt { get; private set; }
+        public static string SavePathReceipt { get; private set; }
 
-        public static string ConnectionString { get; private set; } = "mongodb+srv://bohdanmiskov07:7XRSvDHvZt2rL6gr@showdesk.tqctr.mongodb.net/?retryWrites=true&w=majority&appName=ShowDesk";
-        public static int UpdateEmployeesInterval { get; private set; } = 300000;
-        public static int UpdateStagesInterval { get; private set; } = 300000;
-        public static int UpdatePerformancesInterval { get; private set; } = 300000;
-        public static int UpdateTicketsInterval { get; private set; } = 60000;
+        public static string ConnectionString { get; private set; }
+        public static int UpdateEmployeesInterval { get; private set; }
+        public static int UpdateStagesInterval { get; private set; }
+        public static int UpdatePerformancesInterval { get; private set; }
+        public static int UpdateTicketsInterval { get; private set; }
 
-        public static Color SeatBaseColor { get; private set; } = Color.LightGray;
-        public static Color SeatHoverColor { get; private set; } = Color.GreenYellow;
+        public static Color SeatBaseColor { get; private set; }
+        public static Color SeatHoverColor { get; private set; }
+
 
         public static void SetFirstLog()
         {
@@ -51,8 +52,9 @@ namespace CourseProject_ShowDesk.Scripts.Constants
 
         public static void PopulateConstants(AppConstantsData constantsData)
         {
-            CompanyName = constantsData.CompanyName;
+            FirstLog = constantsData.FirstLog;
 
+            CompanyName = constantsData.CompanyName;
             GeneralCollectionName = constantsData.GeneralCollectionName;
             PastPerformancesCollectionName = constantsData.PastPerformancesCollectionName;
             PerformancesCollectionName = constantsData.PerformancesCollectionName;
@@ -92,6 +94,8 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         {
             return new AppConstantsData
             {
+                FirstLog=FirstLog,
+
                 CompanyName = CompanyName,
                 GeneralCollectionName = GeneralCollectionName,
                 PastPerformancesCollectionName = PastPerformancesCollectionName,

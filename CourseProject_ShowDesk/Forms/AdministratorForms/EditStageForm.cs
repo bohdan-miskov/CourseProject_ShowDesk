@@ -19,6 +19,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public EditStageForm(Employee userAccount, Stage stage)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
 
             this.stage = stage;
             this.userAccount = userAccount;
@@ -32,8 +33,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             isValid = false;
             logOut = false;
-
-            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxStageName_KeyUp(object sender, KeyEventArgs e)
@@ -122,6 +121,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             this.Hide();
             addZoneForm.ShowDialog();
             this.Show();
+
+            if (addZoneForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
 
             if (addZoneForm.GetIsValid())
             {

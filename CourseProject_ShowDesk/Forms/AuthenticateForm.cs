@@ -19,6 +19,8 @@ namespace CourseProject_ShowDesk.Forms
         public AuthenticateForm()
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
+
             try
             {
                 employeeManager = new EmployeeManager(new EmployeeBaseService());
@@ -28,12 +30,12 @@ namespace CourseProject_ShowDesk.Forms
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
                 settingsForm.ShowDialog();
+                //FormConfigurator.RestartForm<AuthenticateForm>(this);
+                FormConfigurator.RestartApp();
             }
             PopulateComboBox();
 
             comboBoxUser.SelectedIndex = 2;
-
-            FormConfigurator.ConfigureForm(this, true);
         }
 
         private void TextBoxLogin_KeyUp(object sender, KeyEventArgs e)

@@ -8,29 +8,42 @@ namespace CourseProject_ShowDesk.Forms
 {
     public partial class InstructionForm : MetroFramework.Forms.MetroForm
     {
-        TabControlController tabControlController;
+        private readonly TabControlController tabControlController;
 
         public InstructionForm()
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this, true);
 
             tabControlController = new TabControlController(tabControlInstruction);
-            FormConfigurator.ConfigureForm(this, true);
+            comboBoxLanguage.SelectedIndex = 1;
         }
 
+        private void ComboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChangeHelpText();
+        }
 
         private void InstructionForm_KeyDown(object sender, KeyEventArgs e)
         {
             tabControlController.TabControlNavigation(e);
         }
 
+        private void ChangeHelpText()
+        {
+            string selectedLanguage = comboBoxLanguage.SelectedItem.ToString();
+
+            if (selectedLanguage == "UA") LoadHelpText("ua");
+            else if (selectedLanguage == "EN") LoadHelpText("en");
+        }
+
         private void LoadHelpText(string languageCode)
         {
-            string filePath = Path.Combine(Application.StartupPath, "Help", $"help_{languageCode}.txt");
+            string filePath = $"help_{languageCode}.txt";
 
             if (!File.Exists(filePath))
             {
-                MessageBox.Show($"Instruction file '{languageCode}' not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Instruction file 'help_{languageCode}.txt' not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -61,14 +74,6 @@ namespace CourseProject_ShowDesk.Forms
             richTextBoxEntry.Text = entry;
             richTextBoxStartSettings.Text = startSettings;
             richTextBoxRoles.Text = roles;
-        }
-
-        private void ComboBoxLanguage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedLanguage = comboBoxLanguage.SelectedItem.ToString();
-
-            if (selectedLanguage == "UA") LoadHelpText("ua");
-            else if (selectedLanguage == "EN") LoadHelpText("en");
         }
     }
 }

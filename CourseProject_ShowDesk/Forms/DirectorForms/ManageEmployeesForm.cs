@@ -18,6 +18,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         public ManageEmployeesForm(Employee userAccount)
         {
             InitializeComponent();
+            FormConfigurator.ConfigureForm(this);
 
             try
             {
@@ -28,6 +29,8 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
                 settingsForm.ShowDialog();
+                //FormConfigurator.RestartForm<ManageEmployeesForm>(this, userAccount);
+                FormConfigurator.RestartApp();
             }
 
             labelAccountName.Text = userAccount.FullName;
@@ -40,8 +43,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             ShowGreetings(userAccount.FullName);
 
             timerUpdate.Start();
-
-            FormConfigurator.ConfigureForm(this);
 
             searchData = new SearchDataGrid(dataGridViewEmployees);
         }
@@ -93,7 +94,16 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             SearchByFragment();
         }
 
+        private void TextBoxSearchField_Enter(object sender, EventArgs e)
+        {
+            SearchByFragment();
+        }
+
         private void ManageEmployeesForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            searchData.SearchNavigation(e);
+        }
+        private void DataGridViewEmployees_KeyDown(object sender, KeyEventArgs e)
         {
             searchData.SearchNavigation(e);
         }

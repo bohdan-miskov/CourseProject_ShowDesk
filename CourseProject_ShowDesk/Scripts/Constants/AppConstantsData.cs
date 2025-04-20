@@ -6,33 +6,59 @@ namespace CourseProject_ShowDesk.Scripts.Constants
 {
     public class AppConstantsData
     {
-        private string companyName;
-        private string generalCollectionName;
-        private string performancesCollectionName;
-        private string pastPerformancesCollectionName;
-        private string stagesCollectionName;
-        private string employeesCollectionName;
-        private double standardIncrease;
-        private double standardPlusIncrease;
-        private double premiumIncrease;
-        private char currencySymbol;
-        private TimeSpan minBreakBetweenPerformance;
-        private TimeSpan initialPerformanceDuration;
-        private TimeSpan maxDuration;
-        private List<string> listOfProfessions;
-        private List<string> listOfTicketTypes;
-        private List<string> listOfSouvenirs;
-        private List<string> listOfDrinks;
-        private char passwordChar;
-        private bool isPrintReceipt;
-        private string savePathReceipt;
-        private string connectionString;
-        private int updateEmployeesInterval;
-        private int updateStagesInterval;
-        private int updatePerformancesInterval;
-        private int updateTicketsInterval;
-        private Color seatBaseColor;
-        public static Color seatHoverColor;
+        private static DateTime firstLog = DateTime.MinValue;
+
+        private string companyName = "«ShowDesk»";
+        private string generalCollectionName = "Event";
+        private string performancesCollectionName = "UpcomingPerformances";
+        private string pastPerformancesCollectionName = "PastPerformances";
+        private string stagesCollectionName = "Stages";
+        private string employeesCollectionName = "Employees";
+
+        private double standardIncrease = 1;
+        private double standardPlusIncrease = 1.5;
+        private double premiumIncrease = 3;
+
+        private char currencySymbol = '$';
+
+        private TimeSpan minBreakBetweenPerformance = new TimeSpan(0, 15, 0);
+        private TimeSpan initialPerformanceDuration = new TimeSpan(1, 30, 0);
+        private TimeSpan maxDuration = new TimeSpan(5, 0, 0);
+
+        private List<string> listOfProfessions = new List<string> { "Director", "Administrator", "Cashier" };
+        private List<string> listOfTicketTypes = new List<string> { "Standard", "StandardPlus", "Premium" };
+        private List<string> listOfSouvenirs = new List<string> { "Poster", "Mask", "Book", "Coulomb" };
+        private List<string> listOfDrinks = new List<string> { "Water", "Coffee", "Tea", "Juice" };
+
+        private char passwordChar = '*';
+
+        private bool isPrintReceipt = true;
+        private string savePathReceipt = "C:\\Users\\Fujitsu\\Documents\\Tickets";
+
+        private string connectionString = "mongodb+srv://bohdanmiskov07:7XRSvDHtr.mongodb.net/?retryWrites=true&w=majority&appName=ShowDes";
+
+        private int updateEmployeesInterval = 300000;
+        private int updateStagesInterval = 300000;
+        private int updatePerformancesInterval = 300000;
+        private int updateTicketsInterval = 60000;
+
+        private Color seatBaseColor = Color.LightGray;
+        public static Color seatHoverColor = Color.GreenYellow;
+
+        public DateTime FirstLog
+        {
+            get
+            {
+                return firstLog;
+            }
+            set
+            {
+                if (value!=null)
+                {
+                    firstLog=value;
+                }
+            }
+        }
 
         public string CompanyName
         {
@@ -42,11 +68,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Company name cannot be null or empty.");
-                }
                 companyName = value;
+                }
             }
         }
         public string GeneralCollectionName
@@ -57,11 +82,11 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("General file name cannot be null or empty.");
+                    generalCollectionName = value;
                 }
-                generalCollectionName = value;
+                
             }
         }
         public string PerformancesCollectionName
@@ -72,11 +97,11 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Performances file name cannot be null or empty.");
+                    performancesCollectionName = value;
                 }
-                performancesCollectionName = value;
+                
             }
         }
         public string PastPerformancesCollectionName
@@ -87,11 +112,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Performances file name cannot be null or empty.");
+                    pastPerformancesCollectionName = value;
                 }
-                pastPerformancesCollectionName = value;
             }
         }
 
@@ -103,11 +127,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Stages file name cannot be null or empty.");
+                     stagesCollectionName = value;
                 }
-                stagesCollectionName = value;
             }
         }
 
@@ -119,11 +142,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Employees file name cannot be null or empty.");
+                    employeesCollectionName = value;
                 }
-                employeesCollectionName = value;
             }
         }
 
@@ -135,11 +157,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value < 0)
+                if (value >= 0)
                 {
-                    throw new ArgumentOutOfRangeException("Standard increase cannot be negative.");
+                    standardIncrease = value;
                 }
-                standardIncrease = value;
             }
         }
 
@@ -151,11 +172,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value < 0)
+                if (value >= 0)
                 {
-                    throw new ArgumentOutOfRangeException("Standard plus increase cannot be negative.");
+                    standardPlusIncrease = value;
                 }
-                standardPlusIncrease = value;
             }
         }
 
@@ -167,11 +187,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value < 0)
+                if (value >= 0)
                 {
-                    throw new ArgumentOutOfRangeException("Premium increase cannot be negative.");
+                    premiumIncrease = value;
                 }
-                premiumIncrease = value;
             }
         }
 
@@ -183,12 +202,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (!char.IsSymbol(value))
+                if (char.IsSymbol(value))
                 {
-                    throw new ArgumentException("Currency symbol must be a symbol");
+                    currencySymbol = value;
                 }
-
-                currencySymbol = value;
             }
         }
 
@@ -200,11 +217,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value < TimeSpan.Zero)
+                if (value >= TimeSpan.Zero)
                 {
-                    throw new ArgumentOutOfRangeException("Minimum break between performances cannot be negative.");
+                    minBreakBetweenPerformance = value;
                 }
-                minBreakBetweenPerformance = value;
             }
         }
 
@@ -216,11 +232,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value <= TimeSpan.Zero)
+                if (value > TimeSpan.Zero)
                 {
-                    throw new ArgumentOutOfRangeException("Initial performance duration must be greater than zero.");
+                    initialPerformanceDuration = value;
                 }
-                initialPerformanceDuration = value;
             }
         }
 
@@ -232,11 +247,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value <= TimeSpan.Zero)
+                if (value > TimeSpan.Zero)
                 {
-                    throw new ArgumentOutOfRangeException("Maximum duration must be greater than zero.");
+                    maxDuration = value;
                 }
-                maxDuration = value;
             }
         }
 
@@ -248,11 +262,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value == null || value.Count == 0)
+                if (value != null && value.Count > 0)
                 {
-                    throw new ArgumentException("List of professions cannot be null or empty.");
+                    listOfProfessions = new List<string>(value);
                 }
-                listOfProfessions = value;
             }
         }
 
@@ -264,11 +277,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value == null || value.Count == 0)
+                if (value != null && value.Count > 0)
                 {
-                    throw new ArgumentException("List of ticket types cannot be null or empty.");
+                    listOfTicketTypes = new List<string>(value);
                 }
-                listOfTicketTypes = value;
             }
         }
 
@@ -280,11 +292,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value == null || value.Count == 0)
+                if (value != null && value.Count > 0)
                 {
-                    throw new ArgumentException("List of souvenirs cannot be null or empty.");
+                    listOfSouvenirs = new List<string>(value);
                 }
-                listOfSouvenirs = value;
             }
         }
 
@@ -296,13 +307,13 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value == null || value.Count == 0)
+                if (value != null && value.Count > 0)
                 {
-                    throw new ArgumentException("List of drinks cannot be null or empty.");
+                    listOfDrinks = new List<string>(value);
                 }
-                listOfDrinks = value;
             }
         }
+
         public char PasswordChar
         {
             get
@@ -311,11 +322,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value.ToString()))
+                if (!string.IsNullOrWhiteSpace(value.ToString()))
                 {
-                    throw new ArgumentException("PasswordCypher cannot be null or empty.");
+                    passwordChar = value;
                 }
-                passwordChar = value;
             }
         }
 
@@ -339,7 +349,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                savePathReceipt = value;
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    savePathReceipt = value;
+                }
             }
         }
 
@@ -351,11 +364,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
+                if (!string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("ConnectionString cannot be null or empty.");
+                    connectionString = value;
                 }
-                connectionString = value;
             }
         }
 
@@ -367,11 +379,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value < 0)
+                if (value >= 0)
                 {
-                    throw new ArgumentException("UpdateEmployeesInterval cannot be negative.");
+                    updateEmployeesInterval = value;
                 }
-                updateEmployeesInterval = value;
             }
         }
 
@@ -383,11 +394,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value < 0)
+                if (value >= 0)
                 {
-                    throw new ArgumentException("UpdateStagesInterval cannot be negative.");
+                    updateStagesInterval = value;
                 }
-                updateStagesInterval = value;
             }
         }
 
@@ -399,11 +409,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value < 0)
+                if (value >= 0)
                 {
-                    throw new ArgumentException("UpdatePerformancesInterval cannot be negative.");
+                    updatePerformancesInterval = value;
                 }
-                updatePerformancesInterval = value;
             }
         }
 
@@ -415,11 +424,10 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value < 0)
+                if (value >= 0)
                 {
-                    throw new ArgumentException("UpdateTicketsInterval cannot be negative.");
+                    updateTicketsInterval = value;
                 }
-                updateTicketsInterval = value;
             }
         }
 
@@ -446,7 +454,5 @@ namespace CourseProject_ShowDesk.Scripts.Constants
                 seatHoverColor = value;
             }
         }
-
-
     }
 }

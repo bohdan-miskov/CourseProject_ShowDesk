@@ -62,12 +62,15 @@
             this.textBoxStagesCollectionName = new System.Windows.Forms.TextBox();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
             this.tabControlSetting = new System.Windows.Forms.TabControl();
             this.tabPagePerformanceSettings = new System.Windows.Forms.TabPage();
             this.buttonCancelPerformanceSettings = new System.Windows.Forms.Button();
             this.buttonSavePerformanceSettings = new System.Windows.Forms.Button();
             this.groupBoxReceipt = new System.Windows.Forms.GroupBox();
+            this.buttonSelectReceiptFolder = new System.Windows.Forms.Button();
             this.checkBoxReceiptPrint = new System.Windows.Forms.CheckBox();
             this.textBoxReceiptSavePath = new System.Windows.Forms.TextBox();
             this.labelReceiptSavePath = new System.Windows.Forms.Label();
@@ -102,21 +105,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageOtherSettings = new System.Windows.Forms.TabPage();
             this.groupBoxStage = new System.Windows.Forms.GroupBox();
+            this.buttonChangeSeatHoverColor = new System.Windows.Forms.Button();
+            this.buttonChangeSeatColor = new System.Windows.Forms.Button();
             this.textBoxSeatHoverColor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSeatColor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.colorDialogSettings = new System.Windows.Forms.ColorDialog();
-            this.buttonSelectReceiptFolder = new System.Windows.Forms.Button();
-            this.buttonChangeSeatHoverColor = new System.Windows.Forms.Button();
-            this.buttonChangeSeatColor = new System.Windows.Forms.Button();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.groupBoxOther.SuspendLayout();
             this.groupBoxNames.SuspendLayout();
             this.groupBoxCollectionName.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
             this.contextMenuStripAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.tabControlSetting.SuspendLayout();
             this.tabPagePerformanceSettings.SuspendLayout();
             this.groupBoxReceipt.SuspendLayout();
@@ -130,7 +131,6 @@
             this.groupBoxDataBaseLinks.SuspendLayout();
             this.tabPageOtherSettings.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // labelPerformancesCollectionName
@@ -174,7 +174,6 @@
             // 
             this.textBoxCompanyName.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCompanyName.Location = new System.Drawing.Point(181, 23);
-            this.textBoxCompanyName.MaxLength = 1;
             this.textBoxCompanyName.Name = "textBoxCompanyName";
             this.textBoxCompanyName.Size = new System.Drawing.Size(120, 28);
             this.textBoxCompanyName.TabIndex = 12;
@@ -495,6 +494,26 @@
             this.contextMenuStripAccount.Name = "contextMenuStripAccount";
             this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // pictureBoxAccountIcon
+            // 
+            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
+            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
+            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxAccountIcon.TabIndex = 1;
+            this.pictureBoxAccountIcon.TabStop = false;
+            // 
             // labelAccountName
             // 
             this.labelAccountName.AutoSize = true;
@@ -569,6 +588,21 @@
             this.groupBoxReceipt.TabStop = false;
             this.groupBoxReceipt.Text = "Receipt";
             // 
+            // buttonSelectReceiptFolder
+            // 
+            this.buttonSelectReceiptFolder.BackColor = System.Drawing.Color.Transparent;
+            this.buttonSelectReceiptFolder.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.file_manager_icon;
+            this.buttonSelectReceiptFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonSelectReceiptFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSelectReceiptFolder.ForeColor = System.Drawing.Color.Transparent;
+            this.buttonSelectReceiptFolder.Location = new System.Drawing.Point(554, 59);
+            this.buttonSelectReceiptFolder.Name = "buttonSelectReceiptFolder";
+            this.buttonSelectReceiptFolder.Size = new System.Drawing.Size(28, 28);
+            this.buttonSelectReceiptFolder.TabIndex = 29;
+            this.buttonSelectReceiptFolder.Text = " ";
+            this.buttonSelectReceiptFolder.UseVisualStyleBackColor = false;
+            this.buttonSelectReceiptFolder.Click += new System.EventHandler(this.ButtonSelectReceiptFolder_Click);
+            // 
             // checkBoxReceiptPrint
             // 
             this.checkBoxReceiptPrint.AutoSize = true;
@@ -584,7 +618,6 @@
             // 
             this.textBoxReceiptSavePath.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxReceiptSavePath.Location = new System.Drawing.Point(110, 59);
-            this.textBoxReceiptSavePath.MaxLength = 1;
             this.textBoxReceiptSavePath.Name = "textBoxReceiptSavePath";
             this.textBoxReceiptSavePath.Size = new System.Drawing.Size(438, 28);
             this.textBoxReceiptSavePath.TabIndex = 7;
@@ -939,7 +972,6 @@
             // 
             this.textBoxDataBaseLink.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxDataBaseLink.Location = new System.Drawing.Point(137, 28);
-            this.textBoxDataBaseLink.MaxLength = 1;
             this.textBoxDataBaseLink.Name = "textBoxDataBaseLink";
             this.textBoxDataBaseLink.Size = new System.Drawing.Size(456, 28);
             this.textBoxDataBaseLink.TabIndex = 7;
@@ -988,65 +1020,6 @@
             this.groupBoxStage.TabStop = false;
             this.groupBoxStage.Text = "Stage";
             // 
-            // textBoxSeatHoverColor
-            // 
-            this.textBoxSeatHoverColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSeatHoverColor.Location = new System.Drawing.Point(77, 120);
-            this.textBoxSeatHoverColor.MaxLength = 1;
-            this.textBoxSeatHoverColor.Name = "textBoxSeatHoverColor";
-            this.textBoxSeatHoverColor.ReadOnly = true;
-            this.textBoxSeatHoverColor.Size = new System.Drawing.Size(159, 28);
-            this.textBoxSeatHoverColor.TabIndex = 10;
-            this.textBoxSeatHoverColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSeatHoverColor_KeyUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 21);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Seat hover color";
-            // 
-            // textBoxSeatColor
-            // 
-            this.textBoxSeatColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxSeatColor.Location = new System.Drawing.Point(77, 65);
-            this.textBoxSeatColor.MaxLength = 1;
-            this.textBoxSeatColor.Name = "textBoxSeatColor";
-            this.textBoxSeatColor.ReadOnly = true;
-            this.textBoxSeatColor.Size = new System.Drawing.Size(159, 28);
-            this.textBoxSeatColor.TabIndex = 7;
-            this.textBoxSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSeatColor_KeyUp);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 21);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Seat base color";
-            // 
-            // buttonSelectReceiptFolder
-            // 
-            this.buttonSelectReceiptFolder.BackColor = System.Drawing.Color.Transparent;
-            this.buttonSelectReceiptFolder.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.file_manager_icon;
-            this.buttonSelectReceiptFolder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonSelectReceiptFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSelectReceiptFolder.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonSelectReceiptFolder.Location = new System.Drawing.Point(554, 59);
-            this.buttonSelectReceiptFolder.Name = "buttonSelectReceiptFolder";
-            this.buttonSelectReceiptFolder.Size = new System.Drawing.Size(28, 28);
-            this.buttonSelectReceiptFolder.TabIndex = 29;
-            this.buttonSelectReceiptFolder.Text = " ";
-            this.buttonSelectReceiptFolder.UseVisualStyleBackColor = false;
-            this.buttonSelectReceiptFolder.Click += new System.EventHandler(this.ButtonSelectReceiptFolder_Click);
-            // 
             // buttonChangeSeatHoverColor
             // 
             this.buttonChangeSeatHoverColor.BackColor = System.Drawing.Color.Transparent;
@@ -1080,25 +1053,47 @@
             this.buttonChangeSeatColor.Click += new System.EventHandler(this.ButtonChangeSeatColor_Click);
             this.buttonChangeSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ButtonChangeSeatColor_KeyUp);
             // 
-            // exitToolStripMenuItem
+            // textBoxSeatHoverColor
             // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            this.textBoxSeatHoverColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSeatHoverColor.Location = new System.Drawing.Point(77, 120);
+            this.textBoxSeatHoverColor.Name = "textBoxSeatHoverColor";
+            this.textBoxSeatHoverColor.ReadOnly = true;
+            this.textBoxSeatHoverColor.Size = new System.Drawing.Size(159, 28);
+            this.textBoxSeatHoverColor.TabIndex = 10;
+            this.textBoxSeatHoverColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSeatHoverColor_KeyUp);
             // 
-            // pictureBoxAccountIcon
+            // label1
             // 
-            this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
-            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
-            this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
-            this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
-            this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxAccountIcon.TabIndex = 1;
-            this.pictureBoxAccountIcon.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(18, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 21);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Seat hover color";
+            // 
+            // textBoxSeatColor
+            // 
+            this.textBoxSeatColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSeatColor.Location = new System.Drawing.Point(77, 65);
+            this.textBoxSeatColor.Name = "textBoxSeatColor";
+            this.textBoxSeatColor.ReadOnly = true;
+            this.textBoxSeatColor.Size = new System.Drawing.Size(159, 28);
+            this.textBoxSeatColor.TabIndex = 7;
+            this.textBoxSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSeatColor_KeyUp);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(18, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 21);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Seat base color";
             // 
             // SettingsForm
             // 
@@ -1119,6 +1114,7 @@
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
             this.contextMenuStripAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.tabControlSetting.ResumeLayout(false);
             this.tabPagePerformanceSettings.ResumeLayout(false);
             this.groupBoxReceipt.ResumeLayout(false);
@@ -1138,7 +1134,6 @@
             this.tabPageOtherSettings.ResumeLayout(false);
             this.groupBoxStage.ResumeLayout(false);
             this.groupBoxStage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
 
         }
