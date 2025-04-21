@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Drawing;
 
@@ -11,10 +12,10 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         private int seatNumber;
         private bool isAvailable = true;
         private Zone currentZone = null;
-        private Color color = Color.LightBlue;
+        //private Color color = Color.LightBlue;
         public Point Location;
         public Size Size = new Size(50, 50);
-        public bool Enabled = false;
+        //public bool Enabled = false;
 
 
         public Seat(int number, Point location)
@@ -74,14 +75,13 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 Size = this.Size,
                 Location = this.Location,
                 BackColor = GetColor(),
-                Enabled = this.Enabled,
+                Enabled = false,
                 Text = this.SeatNumber.ToString(),
                 ForeColor = Color.Black,
                 Font = new Font("Modern No. 20", 16, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleCenter
 
             };
-
 
 
             label.Paint += (s, e) =>
@@ -101,13 +101,12 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             return $"Seat: {seatNumber}\n" +
                 $"Zone: {currentZone.Name} \n" +
                 $"Increase: {currentZone.Increase}\n" +
-                $"Location: {Location.X} : {Location.Y}\n" +
-                $"Size: {Size.Width} ; {Size.Height}";
+                $"Available: {isAvailable}";
         }
 
         public Color GetColor()
         {
-            return (this.CurrentZone ?? new Zone()).GetColor();
+            return CurrentZone?.GetColor() ?? AppConstants.SeatBaseColor;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 
         public Employee()
         {
+            this.FullName = "Guest";
             professionList = new List<string>();
         }
 

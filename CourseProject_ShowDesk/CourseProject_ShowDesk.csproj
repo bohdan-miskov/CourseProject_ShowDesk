@@ -291,6 +291,8 @@
     <Compile Include="Scripts\Utilities\DataBaseService\EmployeeBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\PerformanceBaseService.cs" />
     <Compile Include="Scripts\Utilities\DataBaseService\StageBaseService.cs" />
+    <Compile Include="Scripts\Utilities\FormInteraction\ElementMover.cs" />
+    <Compile Include="Scripts\Utilities\FormInteraction\ElementResizer.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\SearchDataGrid.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\FormConfigurator.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\CanvasController.cs" />

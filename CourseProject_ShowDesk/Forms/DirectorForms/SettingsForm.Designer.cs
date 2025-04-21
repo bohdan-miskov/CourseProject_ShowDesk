@@ -480,7 +480,7 @@
             this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
-            this.groupBoxProfile.Location = new System.Drawing.Point(446, 27);
+            this.groupBoxProfile.Location = new System.Drawing.Point(478, 23);
             this.groupBoxProfile.Name = "groupBoxProfile";
             this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
             this.groupBoxProfile.TabIndex = 26;
@@ -530,11 +530,12 @@
             this.tabControlSetting.Controls.Add(this.tabPagePerformanceSettings);
             this.tabControlSetting.Controls.Add(this.tabPageDatabaseSettings);
             this.tabControlSetting.Controls.Add(this.tabPageOtherSettings);
+            this.tabControlSetting.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlSetting.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControlSetting.Location = new System.Drawing.Point(-1, 63);
+            this.tabControlSetting.Location = new System.Drawing.Point(20, 60);
             this.tabControlSetting.Name = "tabControlSetting";
             this.tabControlSetting.SelectedIndex = 0;
-            this.tabControlSetting.Size = new System.Drawing.Size(631, 415);
+            this.tabControlSetting.Size = new System.Drawing.Size(629, 395);
             this.tabControlSetting.TabIndex = 10;
             // 
             // tabPagePerformanceSettings
@@ -548,7 +549,7 @@
             this.tabPagePerformanceSettings.Location = new System.Drawing.Point(4, 30);
             this.tabPagePerformanceSettings.Name = "tabPagePerformanceSettings";
             this.tabPagePerformanceSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePerformanceSettings.Size = new System.Drawing.Size(623, 381);
+            this.tabPagePerformanceSettings.Size = new System.Drawing.Size(621, 361);
             this.tabPagePerformanceSettings.TabIndex = 2;
             this.tabPagePerformanceSettings.Text = "Performance";
             // 
@@ -1099,7 +1100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 475);
+            this.ClientSize = new System.Drawing.Size(669, 475);
             this.Controls.Add(this.tabControlSetting);
             this.Controls.Add(this.groupBoxProfile);
             this.Name = "SettingsForm";

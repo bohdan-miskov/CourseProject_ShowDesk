@@ -26,7 +26,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public ManageTicketsForm(Employee userAccount, Stage currentStage, Performance currentPerformance)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this);
+            FormConfigurator.ConfigureForm(this,true);
 
             this.currentStage = currentStage;
             this.currentPerformance = currentPerformance;
@@ -178,13 +178,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             this.Hide();
             buyTicketForm.ShowDialog();
-            this.Show();
 
             if (buyTicketForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (buyTicketForm.GetIsValid())
             {

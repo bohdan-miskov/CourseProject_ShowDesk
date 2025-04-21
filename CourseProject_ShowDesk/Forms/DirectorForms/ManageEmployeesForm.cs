@@ -18,7 +18,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         public ManageEmployeesForm(Employee userAccount)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this);
+            FormConfigurator.ConfigureForm(this,true);
 
             try
             {
@@ -27,7 +27,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             catch (DatabaseConnectionException ex)
             {
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
+                SettingsForm settingsForm = new SettingsForm(new Employee());
                 settingsForm.ShowDialog();
                 //FormConfigurator.RestartForm<ManageEmployeesForm>(this, userAccount);
                 FormConfigurator.RestartApp();
@@ -190,13 +190,14 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(userAccount, employeeManager.Employees);
             this.Hide();
             addEmployeeForm.ShowDialog();
-            this.Show();
 
             if (addEmployeeForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (addEmployeeForm.GetIsValid())
                 employeeManager.AddEmployee(addEmployeeForm.GetEmployee());
@@ -209,13 +210,14 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             AddEditEmployeeForm editEmployeeForm = new AddEditEmployeeForm(userAccount, employeeManager.Employees, employeeManager.GetById(id));
             this.Hide();
             editEmployeeForm.ShowDialog();
-            this.Show();
 
             if (editEmployeeForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (editEmployeeForm.GetIsValid())
                 employeeManager.UpdateEmployee(editEmployeeForm.GetEmployee());

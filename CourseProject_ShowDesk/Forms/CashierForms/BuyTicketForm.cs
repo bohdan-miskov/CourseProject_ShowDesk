@@ -30,7 +30,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public BuyTicketForm(Employee userAccount, Stage stage, Performance performance)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             this.MouseWheel += PanelSeating_MouseWheel;
 
@@ -83,7 +83,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             bool useControl = ModifierKeys == Keys.Control;
             canvasController.StartPanning(e, useControl);
-            SeatingMouseDown(sender, e);
+            SeatingMouseDown(e);
         }
         private void PanelSeating_MouseMove(object sender, MouseEventArgs e)
         {
@@ -295,21 +295,13 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             buttonAdd.Enabled = true;
         }
 
-        private void SeatingMouseDown(object sender, MouseEventArgs e)
+        private void SeatingMouseDown(MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
 
             bool useControl = ModifierKeys == Keys.Control;
             canvasController.StartPanning(e, useControl);
             HandleSelection(e, useControl);
-            //Control selectedControl = GetSelectedControl(e.Location);
-
-            //if (selectedControls.Count == 0) HandleSingleSelection(selectedControl);
-
-            //if (ModifierKeys == Keys.Control) HandleMultiSelection(selectedControl);
-            //else ResetSelection();
-
-            //selectedControls.Clear();
         }
         public void HandleSelection(MouseEventArgs e, bool useControl)
         {
@@ -369,8 +361,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
         private void ResetSelection()
         {
-            foreach (Control control in selectionManager.SelectedControls)
+            for (int i = selectionManager.SelectedControls.Count - 1; i >= 0; i--)
             {
+                Control control = selectionManager.SelectedControls[i];
                 Color initColor = seatingManager.GetSeatColorByControl(control);
                 selectionManager.RemoveSelection(control, initColor);
                 RemoveTicket(seatingManager.GetCurrentSeatPosition(control));

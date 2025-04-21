@@ -19,7 +19,7 @@ namespace CourseProject_ShowDesk.Forms
         public AuthenticateForm()
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             try
             {
@@ -28,7 +28,7 @@ namespace CourseProject_ShowDesk.Forms
             catch (DatabaseConnectionException ex)
             {
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
+                SettingsForm settingsForm = new SettingsForm(new Employee());
                 settingsForm.ShowDialog();
                 //FormConfigurator.RestartForm<AuthenticateForm>(this);
                 FormConfigurator.RestartApp();

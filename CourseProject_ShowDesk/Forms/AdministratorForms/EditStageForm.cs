@@ -19,7 +19,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public EditStageForm(Employee userAccount, Stage stage)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             this.stage = stage;
             this.userAccount = userAccount;
@@ -120,13 +120,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             AddEditZoneForm addZoneForm = new AddEditZoneForm(userAccount, stage);
             this.Hide();
             addZoneForm.ShowDialog();
-            this.Show();
 
             if (addZoneForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (addZoneForm.GetIsValid())
             {
@@ -151,13 +152,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             AddEditZoneForm editZoneForm = new AddEditZoneForm(userAccount, stage, stage.GetZoneById(zoneId));
             this.Hide();
             editZoneForm.ShowDialog();
-            this.Show();
 
             if (editZoneForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (editZoneForm.GetIsValid())
             {
@@ -170,13 +172,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(userAccount, stage);
             this.Hide();
             addSeatingForm.ShowDialog();
-            this.Show();
 
             if (addSeatingForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (addSeatingForm.GetIsValid())
             {

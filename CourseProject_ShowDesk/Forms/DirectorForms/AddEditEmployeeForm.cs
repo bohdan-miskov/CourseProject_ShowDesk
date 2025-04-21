@@ -20,7 +20,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         public AddEditEmployeeForm(Employee userAccount, List<Employee> employees, Employee currentEmployee = null)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             this.employees = employees;
 

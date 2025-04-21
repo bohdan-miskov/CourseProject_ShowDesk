@@ -104,7 +104,7 @@
             this.dataGridViewStages.ReadOnly = true;
             this.dataGridViewStages.RowHeadersVisible = false;
             this.dataGridViewStages.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStages.Size = new System.Drawing.Size(582, 178);
+            this.dataGridViewStages.Size = new System.Drawing.Size(710, 270);
             this.dataGridViewStages.TabIndex = 2;
             this.dataGridViewStages.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowEnter);
             this.dataGridViewStages.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewStages_RowLeave);
@@ -224,10 +224,11 @@
             // 
             // groupBoxProfile
             // 
+            this.groupBoxProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
-            this.groupBoxProfile.Location = new System.Drawing.Point(446, 23);
+            this.groupBoxProfile.Location = new System.Drawing.Point(563, 23);
             this.groupBoxProfile.Name = "groupBoxProfile";
             this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
             this.groupBoxProfile.TabIndex = 16;
@@ -263,6 +264,7 @@
             // 
             // labelAccountName
             // 
+            this.labelAccountName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelAccountName.AutoSize = true;
             this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAccountName.Location = new System.Drawing.Point(33, 10);
@@ -279,9 +281,10 @@
             // 
             // pictureBoxUpdate
             // 
+            this.pictureBoxUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxUpdate.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBoxUpdate.Image = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
-            this.pictureBoxUpdate.Location = new System.Drawing.Point(415, 30);
+            this.pictureBoxUpdate.Location = new System.Drawing.Point(532, 30);
             this.pictureBoxUpdate.Name = "pictureBoxUpdate";
             this.pictureBoxUpdate.Size = new System.Drawing.Size(25, 25);
             this.pictureBoxUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -291,11 +294,12 @@
             // 
             // buttonSearch
             // 
+            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSearch.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.search_icon;
             this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonSearch.Location = new System.Drawing.Point(363, 30);
+            this.buttonSearch.Location = new System.Drawing.Point(422, 29);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(26, 26);
             this.buttonSearch.TabIndex = 26;
@@ -304,10 +308,11 @@
             // 
             // textBoxSearchField
             // 
+            this.textBoxSearchField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearchField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSearchField.Location = new System.Drawing.Point(218, 30);
+            this.textBoxSearchField.Location = new System.Drawing.Point(277, 29);
             this.textBoxSearchField.Name = "textBoxSearchField";
-            this.textBoxSearchField.Size = new System.Drawing.Size(139, 26);
+            this.textBoxSearchField.Size = new System.Drawing.Size(144, 26);
             this.textBoxSearchField.TabIndex = 25;
             this.textBoxSearchField.Enter += new System.EventHandler(this.TextBoxSearchField_Enter);
             // 
@@ -315,7 +320,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(622, 258);
+            this.ClientSize = new System.Drawing.Size(750, 350);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBoxSearchField);
             this.Controls.Add(this.pictureBoxUpdate);

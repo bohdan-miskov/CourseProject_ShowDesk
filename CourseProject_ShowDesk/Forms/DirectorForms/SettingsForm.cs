@@ -21,7 +21,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         public SettingsForm(Employee userAccount)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             appConstantsData = AppConstants.CloneConstants();
             labelAccountName.Text = userAccount.FullName;
@@ -415,6 +415,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
         private void PopulateTextBoxName()
         {
+            if (listBoxViewNames.SelectedItem == null) listBoxViewNames.SelectedIndex = 0;
             textBoxItemName.Text = listBoxViewNames.SelectedItem.ToString();
         }
 

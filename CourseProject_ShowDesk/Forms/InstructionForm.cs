@@ -13,7 +13,7 @@ namespace CourseProject_ShowDesk.Forms
         public InstructionForm()
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             tabControlController = new TabControlController(tabControlInstruction);
             comboBoxLanguage.SelectedIndex = 1;

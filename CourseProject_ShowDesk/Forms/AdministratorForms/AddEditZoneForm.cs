@@ -24,7 +24,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public AddEditZoneForm(Employee userAccount, Stage stage, Zone zone = null)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             this.MouseWheel += PanelSeating_MouseWheel;
 

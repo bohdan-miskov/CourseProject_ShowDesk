@@ -21,7 +21,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public ManageStagesForm(Employee userAccount)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this);
+            FormConfigurator.ConfigureForm(this, true);
 
             try
             {
@@ -30,7 +30,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             catch (DatabaseConnectionException ex)
             {
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
+                SettingsForm settingsForm = new SettingsForm(new Employee());
                 settingsForm.ShowDialog();
 
                 //FormConfigurator.RestartForm<ManageStagesForm>(this, userAccount);
@@ -161,13 +161,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             AddStageForm addStageForm = new AddStageForm(userAccount);
             this.Hide();
             addStageForm.ShowDialog();
-            this.Show();
 
             if (addStageForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (addStageForm.GetIsValid())
             {
@@ -182,13 +183,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             EditStageForm editStageForm = new EditStageForm(userAccount, stageManager.GetById(stageId));
             this.Hide();
             editStageForm.ShowDialog();
-            this.Show();
 
             if (editStageForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (editStageForm.GetIsValid())
             {

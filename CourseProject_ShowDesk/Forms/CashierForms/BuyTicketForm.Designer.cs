@@ -204,7 +204,7 @@
             // 
             this.labelSeatInfo.BackColor = System.Drawing.Color.Gainsboro;
             this.labelSeatInfo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSeatInfo.Location = new System.Drawing.Point(376, 24);
+            this.labelSeatInfo.Location = new System.Drawing.Point(367, 24);
             this.labelSeatInfo.Name = "labelSeatInfo";
             this.labelSeatInfo.Size = new System.Drawing.Size(139, 124);
             this.labelSeatInfo.TabIndex = 42;

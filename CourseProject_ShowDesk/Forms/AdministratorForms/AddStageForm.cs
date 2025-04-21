@@ -18,7 +18,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public AddStageForm(Employee userAccount)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             this.userAccount = userAccount;
             labelAccountName.Text = userAccount.FullName;
@@ -51,13 +51,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(userAccount);
                 this.Hide();
                 addSeatingForm.ShowDialog();
-                this.Show();
 
                 if (addSeatingForm.GetLogOut())
                 {
                     LogOut();
                     return;
                 }
+
+                this.Show();
 
                 if (addSeatingForm.GetIsValid())
                 {

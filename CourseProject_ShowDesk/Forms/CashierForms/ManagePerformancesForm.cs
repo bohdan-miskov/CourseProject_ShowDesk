@@ -28,7 +28,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public ManagePerformancesForm(Employee userAccount)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this);
+            FormConfigurator.ConfigureForm(this,true);
 
             try
             {
@@ -39,7 +39,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             catch (DatabaseConnectionException ex)
             {
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SettingsForm settingsForm = new SettingsForm(new Employee("Guest", "", ""));
+                SettingsForm settingsForm = new SettingsForm(new Employee());
                 settingsForm.ShowDialog();
 
                 //FormConfigurator.RestartForm<ManagePerformancesForm>(this,userAccount);
@@ -126,6 +126,15 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             UpdateDataFromDataBase();
             searchData.ClearResults();
+        }
+        private void DateTimePickerPastPerformancesStartDate_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) dateTimePickerPastPerformancesEndDate.Focus();
+        }
+
+        private void DateTimePickerPastPerformancesEndDate_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) buttonLoadPastPerformance.Focus();
         }
         private void DateTimePickerPastPerformancesEndDate_ValueChanged(object sender, EventArgs e)
         {
@@ -249,6 +258,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             dateTimePickerPastPerformancesStartDate.MaxDate = DateTime.Today;
             DateTime startDay = DateTime.Today.AddMonths(- 1);
             dateTimePickerPastPerformancesStartDate.Value = startDay;
+
+            dateTimePickerPastPerformancesStartDate.Focus();
         }
 
         private void AddPerformanceToDataGrid(Performance performance)
@@ -331,13 +342,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             AddEditPerformanceForm addPerformanceForm = new AddEditPerformanceForm(userAccount, stageManager.Stages, performanceManager.Performances);
             this.Hide();
             addPerformanceForm.ShowDialog();
-            this.Show();
 
             if (addPerformanceForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (addPerformanceForm.GetIsValid())
             {
@@ -353,13 +365,15 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(userAccount, stageManager.Stages, performanceManager.Performances, performanceManager.GetById(id));
             this.Hide();
             editPerformanceForm.ShowDialog();
-            this.Show();
-
+            
             if (editPerformanceForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
+
 
             if (editPerformanceForm.GetIsValid())
             {
@@ -378,13 +392,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             AddEditPerformanceForm filterPerformanceForm = new AddEditPerformanceForm(userAccount, stageManager.Stages, performanceManager.Performances, null, true);
             this.Hide();
             filterPerformanceForm.ShowDialog();
-            this.Show();
 
             if (filterPerformanceForm.GetLogOut())
             {
                 LogOut();
                 return;
             }
+
+            this.Show();
 
             if (!filterPerformanceForm.GetIsValid()) return;
 
@@ -430,6 +445,13 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             this.Hide();
             manageTicketsForm.ShowDialog();
+
+            if (manageTicketsForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
+
             this.Show();
         }
         private void OpenRevenue()

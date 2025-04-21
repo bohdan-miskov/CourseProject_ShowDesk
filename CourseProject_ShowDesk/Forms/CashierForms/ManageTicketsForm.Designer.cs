@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageTicketsForm));
             this.menuStripPerformance = new System.Windows.Forms.MenuStrip();
             this.ticketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,7 +72,7 @@
             this.menuStripPerformance.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStripPerformance.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ticketToolStripMenuItem});
-            this.menuStripPerformance.Location = new System.Drawing.Point(2, 0);
+            this.menuStripPerformance.Location = new System.Drawing.Point(-15, -37);
             this.menuStripPerformance.Name = "menuStripPerformance";
             this.menuStripPerformance.Padding = new System.Windows.Forms.Padding(11, 3, 0, 3);
             this.menuStripPerformance.Size = new System.Drawing.Size(89, 28);
@@ -135,26 +135,25 @@
             this.columnReserved,
             this.columnAdditionalServices});
             this.dataGridViewTickets.ContextMenuStrip = this.contextMenuStripPerformance;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(2);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTickets.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(2);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTickets.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTickets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewTickets.Location = new System.Drawing.Point(37, 97);
-            this.dataGridViewTickets.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
+            this.dataGridViewTickets.Location = new System.Drawing.Point(20, 60);
             this.dataGridViewTickets.Name = "dataGridViewTickets";
             this.dataGridViewTickets.ReadOnly = true;
             this.dataGridViewTickets.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTickets.Size = new System.Drawing.Size(758, 285);
+            this.dataGridViewTickets.Size = new System.Drawing.Size(792, 334);
             this.dataGridViewTickets.TabIndex = 12;
             this.dataGridViewTickets.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTickets_RowEnter);
             this.dataGridViewTickets.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTickets_RowLeave);
@@ -242,12 +241,13 @@
             // 
             // groupBoxProfile
             // 
+            this.groupBoxProfile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxProfile.ContextMenuStrip = this.contextMenuStripAccount;
             this.groupBoxProfile.Controls.Add(this.pictureBoxAccountIcon);
             this.groupBoxProfile.Controls.Add(this.labelAccountName);
-            this.groupBoxProfile.Location = new System.Drawing.Point(654, 23);
+            this.groupBoxProfile.Location = new System.Drawing.Point(645, 20);
             this.groupBoxProfile.Name = "groupBoxProfile";
-            this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
+            this.groupBoxProfile.Size = new System.Drawing.Size(167, 34);
             this.groupBoxProfile.TabIndex = 20;
             this.groupBoxProfile.TabStop = false;
             // 
@@ -272,7 +272,7 @@
             this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxAccountIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBoxAccountIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAccountIcon.Image")));
-            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 7);
+            this.pictureBoxAccountIcon.Location = new System.Drawing.Point(4, 11);
             this.pictureBoxAccountIcon.Name = "pictureBoxAccountIcon";
             this.pictureBoxAccountIcon.Size = new System.Drawing.Size(23, 23);
             this.pictureBoxAccountIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -283,7 +283,7 @@
             // 
             this.labelAccountName.AutoSize = true;
             this.labelAccountName.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAccountName.Location = new System.Drawing.Point(33, 10);
+            this.labelAccountName.Location = new System.Drawing.Point(33, 13);
             this.labelAccountName.MaximumSize = new System.Drawing.Size(110, 0);
             this.labelAccountName.Name = "labelAccountName";
             this.labelAccountName.Size = new System.Drawing.Size(92, 17);
@@ -292,11 +292,12 @@
             // 
             // buttonSearch
             // 
+            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSearch.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.search_icon;
             this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.ForeColor = System.Drawing.Color.Transparent;
-            this.buttonSearch.Location = new System.Drawing.Point(488, 27);
+            this.buttonSearch.Location = new System.Drawing.Point(507, 28);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(26, 26);
             this.buttonSearch.TabIndex = 24;
@@ -305,18 +306,20 @@
             // 
             // textBoxSearchField
             // 
+            this.textBoxSearchField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearchField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxSearchField.Location = new System.Drawing.Point(343, 27);
+            this.textBoxSearchField.Location = new System.Drawing.Point(338, 28);
             this.textBoxSearchField.Name = "textBoxSearchField";
-            this.textBoxSearchField.Size = new System.Drawing.Size(139, 26);
+            this.textBoxSearchField.Size = new System.Drawing.Size(163, 26);
             this.textBoxSearchField.TabIndex = 23;
             this.textBoxSearchField.Enter += new System.EventHandler(this.TextBoxSearchField_Enter);
             // 
             // pictureBoxUpdate
             // 
+            this.pictureBoxUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxUpdate.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBoxUpdate.Image = global::CourseProject_ShowDesk.Properties.Resources.restart_icon;
-            this.pictureBoxUpdate.Location = new System.Drawing.Point(623, 30);
+            this.pictureBoxUpdate.Location = new System.Drawing.Point(614, 29);
             this.pictureBoxUpdate.Name = "pictureBoxUpdate";
             this.pictureBoxUpdate.Size = new System.Drawing.Size(25, 25);
             this.pictureBoxUpdate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -338,7 +341,6 @@
             this.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "ManageTicketsForm";
-            this.Padding = new System.Windows.Forms.Padding(37, 97, 37, 32);
             this.Text = "ManageTicketsForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageTicketsForm_FormClosing);
             this.menuStripPerformance.ResumeLayout(false);

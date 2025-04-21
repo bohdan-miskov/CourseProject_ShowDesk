@@ -135,16 +135,13 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         {
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
 
-            // Видалення квитка за його унікальним Id або Index
             var pull = Builders<Performance>.Update.PullFilter(
                 p => p.Tickets,
                 t => t.Id == updatedTicket.Id
             );
 
-            // Додати новий квиток (оновлений)
             var push = Builders<Performance>.Update.Push(p => p.Tickets, updatedTicket);
 
-            // ⚠ Дві окремі операції — потенційно не атомарно. Рішення: ТРАНЗАКЦІЯ
             using (var session = client.StartSession())
             {
                 session.StartTransaction();
@@ -185,6 +182,14 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             updatedPerformance?.InitializeService(new PerformanceBaseService());
 
             return updatedPerformance;
+        }
+        public void RemoveFieldFromDataBase(string fieldName)
+        {
+            var update = Builders<Performance>.Update.Unset(fieldName);
+
+            upcomingCollection.UpdateMany(Builders<Performance>.Filter.Empty, update);
+
+            pastCollection.UpdateMany(Builders<Performance>.Filter.Empty, update);
         }
     }
 }

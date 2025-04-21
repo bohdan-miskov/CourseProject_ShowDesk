@@ -42,7 +42,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         public AddEditSeatingForm(Employee userAccount, Stage stage = null)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             this.MouseWheel += PanelSeating_MouseWheel;
 
@@ -101,7 +101,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             seatingManager.DeleteSelectedDecor();
         }
-
         private void ButtonChangeColor_Click(object sender, EventArgs e)
         {
             seatingManager.ChangeColor();
@@ -163,22 +162,23 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         }
         public void HandleSelection(MouseEventArgs e, bool useControl)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button != MouseButtons.Left)
+                return;
+
+            Control selectedControl = canvasController.FindControlAtLocation(e.Location);
+            if (selectedControl == null || canvasController.Resizer.IsInResizeZone(selectedControl, e.Location))
+                return;
+
+            if (useControl) selectionManager.AddToSelection(selectedControl);
+            else
             {
-                Control selectedControl = canvasController.FindControlAtLocation(e.Location);
-                if (selectedControl != null && !canvasController.Resizer.IsInResizeZone(selectedControl, e.Location))
+                for (int i = selectionManager.SelectedControls.Count - 1; i >= 0; i--)
                 {
-                    if (useControl) selectionManager.AddToSelection(selectedControl);
-                    else
-                    {
-                        foreach (Control control in selectionManager.SelectedControls)
-                        {
-                            Color initColor = seatingManager.GetSeatColorByControl(control);
-                            selectionManager.RemoveSelection(control, initColor);
-                        }
-                        selectionManager.AddToSelection(selectedControl);
-                    }
+                    Control control = selectionManager.SelectedControls[i];
+                    Color initColor = seatingManager.GetSeatColorByControl(control);
+                    selectionManager.RemoveSelection(control, initColor);
                 }
+                selectionManager.AddToSelection(selectedControl);
             }
         }
         private void Save()

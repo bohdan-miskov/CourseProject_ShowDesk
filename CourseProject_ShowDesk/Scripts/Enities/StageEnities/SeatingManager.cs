@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CourseProject_ShowDesk.Scripts.Constants;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -147,11 +148,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         public Color GetSeatColorByControl(Control control)
         {
             int seatIndex = GetCurrentSeatIndex(control);
-            if (seatIndex != -1) return seatList[seatIndex].CurrentZone.GetColor();
-            return Color.LightGray;
+            if (seatIndex != -1) return seatList[seatIndex].CurrentZone?.GetColor() ?? AppConstants.SeatBaseColor;
+            return AppConstants.SeatBaseColor;
         }
-        public List<Seat> GetSeats() => seatList;
-        public List<DecorativeElement> GetDecorations() => decorList;
     }
-
 }

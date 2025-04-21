@@ -329,9 +329,10 @@
             // 
             // buttonSwitch
             // 
+            this.buttonSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSwitch.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonSwitch.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSwitch.Location = new System.Drawing.Point(513, 26);
+            this.buttonSwitch.Location = new System.Drawing.Point(491, 26);
             this.buttonSwitch.Name = "buttonSwitch";
             this.buttonSwitch.Size = new System.Drawing.Size(126, 31);
             this.buttonSwitch.TabIndex = 5;
@@ -461,6 +462,7 @@
             this.dateTimePickerPastPerformancesEndDate.Size = new System.Drawing.Size(165, 28);
             this.dateTimePickerPastPerformancesEndDate.TabIndex = 16;
             this.dateTimePickerPastPerformancesEndDate.ValueChanged += new System.EventHandler(this.DateTimePickerPastPerformancesEndDate_ValueChanged);
+            this.dateTimePickerPastPerformancesEndDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerPastPerformancesEndDate_KeyUp);
             // 
             // labelStartDate
             // 
@@ -485,9 +487,11 @@
             this.dateTimePickerPastPerformancesStartDate.Size = new System.Drawing.Size(165, 28);
             this.dateTimePickerPastPerformancesStartDate.TabIndex = 14;
             this.dateTimePickerPastPerformancesStartDate.ValueChanged += new System.EventHandler(this.DateTimePickerPastPerformancesStartDate_ValueChanged);
+            this.dateTimePickerPastPerformancesStartDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerPastPerformancesStartDate_KeyUp);
             // 
             // textBoxSearchField
             // 
+            this.textBoxSearchField.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxSearchField.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxSearchField.Location = new System.Drawing.Point(285, 31);
             this.textBoxSearchField.Name = "textBoxSearchField";
@@ -497,6 +501,7 @@
             // 
             // buttonSearch
             // 
+            this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonSearch.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.search_icon;
             this.buttonSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

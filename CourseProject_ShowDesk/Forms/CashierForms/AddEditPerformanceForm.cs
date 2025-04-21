@@ -27,7 +27,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public AddEditPerformanceForm(Employee userAccount, List<Stage> stages, List<Performance> performances, Performance currentPerformance = null, bool isFilterFunction = false)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             this.stages = stages;
             this.performances = performances;

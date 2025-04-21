@@ -7,17 +7,20 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
 {
     public static class FormConfigurator
     {
-        public static void ConfigureForm(Form form, bool isFixedForm = true)
+        public static void ConfigureForm(Form form, bool isFullScreenForm = false)
         {
-            //form.StartPosition = FormStartPosition.CenterScreen;
+            form.StartPosition = FormStartPosition.CenterScreen;
 
-            if (isFixedForm)
+            if (isFullScreenForm)
             {
-                //form.FormBorderStyle = FormBorderStyle.FixedDialog;
-                form.MaximizeBox = false;
-                //form.MinimizeBox = false;
+                
+                form.WindowState = FormWindowState.Maximized;
+                
             }
-            else form.WindowState = FormWindowState.Maximized;
+            else form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            
         }
 
         public static void SetActivePictureBoxUpdate(PictureBox pictureBox)

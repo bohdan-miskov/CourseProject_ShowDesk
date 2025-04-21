@@ -1,4 +1,5 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using MongoDB.Bson;
@@ -6,6 +7,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
@@ -22,6 +24,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
                 var test = db.RunCommandAsync((Command<BsonDocument>)"{ping:1}").Result;
 
                 stageCollection = db.GetCollection<Stage>(AppConstants.StagesCollectionName);
+
+                RemoveFieldFromDataBase("Enabled");
             }
             catch
             {
@@ -50,6 +54,29 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
         {
             var filter = Builders<Stage>.Filter.Eq(p => p.Id, updatedStage.Id);
             stageCollection.ReplaceOne(filter, updatedStage);
+        }
+
+        public void RemoveFieldFromDataBase(string fieldName)
+        {
+            var update = Builders<Stage>.Update.Unset("SeatList.$[].Enabled");
+            stageCollection.UpdateMany(Builders<Stage>.Filter.Empty, update);
+            //List<Stage> stages = stageCollection.Find(_ => true).ToList();
+
+            //foreach (var stage in stages)
+            //{
+
+            //    var cleanedSeats = new List<BsonDocument>();
+            //    foreach (var seat in stage.SeatList)
+            //    {
+            //        var bsonSeat = seat.ToBsonDocument();
+            //        bsonSeat.Remove(fieldName);
+            //        cleanedSeats.Add(bsonSeat);
+            //    }
+
+
+            //    var update = Builders<Stage>.Update.Set("SeatList", cleanedSeats);
+            //    stageCollection.UpdateOne(s => s.Id == stage.Id, update);
+            //}
         }
     }
 }

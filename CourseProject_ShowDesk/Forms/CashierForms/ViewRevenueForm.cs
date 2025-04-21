@@ -17,7 +17,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public ViewRevenueForm(Employee userAccount, PerformanceManager performanceManager)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this, true);
+            FormConfigurator.ConfigureForm(this);
 
             this.performanceManager = performanceManager;
 
