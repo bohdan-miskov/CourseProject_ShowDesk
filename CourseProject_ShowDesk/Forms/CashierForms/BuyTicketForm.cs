@@ -40,7 +40,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             this.selectionManager = new SelectionManager();
             this.seatingManager = new SeatingManager(panelSeating, stage?.SeatList, stage?.DecorList);
-            this.canvasController = new CanvasController(panelSeating, panelViewport);
+            canvasController = new CanvasController(panelSeating, panelViewport, stage.StageLocation, stage.StageSize);
             labelAccountName.Text = userAccount.FullName;
 
             PopulateComponents();

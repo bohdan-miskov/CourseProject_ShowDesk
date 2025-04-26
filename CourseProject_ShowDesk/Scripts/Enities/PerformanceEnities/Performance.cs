@@ -23,15 +23,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
         private Guid stageId;
         private List<StandardTicket> tickets;
 
-        //public Performance()
-        //{
-        //    name = "";
-        //    price = 0.0;
-        //    performanceDateTime = DateTime.Now;
-        //    duration=TimeSpan.MinValue;
-        //    stageIndex = -1;
-        //    tickets = new List<StandardTicket>();
-        //}
         public Performance()
         {
             tickets = new List<StandardTicket>();

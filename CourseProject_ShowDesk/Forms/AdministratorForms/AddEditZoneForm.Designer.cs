@@ -65,7 +65,7 @@
             // numericUpDownStartPosition
             // 
             this.numericUpDownStartPosition.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownStartPosition.Location = new System.Drawing.Point(174, 138);
+            this.numericUpDownStartPosition.Location = new System.Drawing.Point(174, 170);
             this.numericUpDownStartPosition.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -107,7 +107,7 @@
             this.groupBoxZone.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxZone.Location = new System.Drawing.Point(20, 60);
             this.groupBoxZone.Name = "groupBoxZone";
-            this.groupBoxZone.Size = new System.Drawing.Size(368, 257);
+            this.groupBoxZone.Size = new System.Drawing.Size(368, 357);
             this.groupBoxZone.TabIndex = 23;
             this.groupBoxZone.TabStop = false;
             this.groupBoxZone.Text = "Zone";
@@ -116,7 +116,7 @@
             // 
             this.buttonChangeColor.BackgroundImage = global::CourseProject_ShowDesk.Properties.Resources.color_change_icon;
             this.buttonChangeColor.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonChangeColor.Location = new System.Drawing.Point(175, 104);
+            this.buttonChangeColor.Location = new System.Drawing.Point(175, 124);
             this.buttonChangeColor.Name = "buttonChangeColor";
             this.buttonChangeColor.Size = new System.Drawing.Size(28, 28);
             this.buttonChangeColor.TabIndex = 27;
@@ -128,7 +128,7 @@
             // 
             this.textBoxColor.BackColor = System.Drawing.Color.White;
             this.textBoxColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxColor.Location = new System.Drawing.Point(209, 104);
+            this.textBoxColor.Location = new System.Drawing.Point(209, 124);
             this.textBoxColor.Name = "textBoxColor";
             this.textBoxColor.ReadOnly = true;
             this.textBoxColor.Size = new System.Drawing.Size(133, 28);
@@ -139,7 +139,7 @@
             this.labelColor.AutoSize = true;
             this.labelColor.BackColor = System.Drawing.Color.Transparent;
             this.labelColor.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelColor.Location = new System.Drawing.Point(16, 111);
+            this.labelColor.Location = new System.Drawing.Point(16, 131);
             this.labelColor.Name = "labelColor";
             this.labelColor.Size = new System.Drawing.Size(92, 21);
             this.labelColor.TabIndex = 24;
@@ -153,7 +153,7 @@
             0,
             0,
             65536});
-            this.numericUpDownIncrease.Location = new System.Drawing.Point(174, 70);
+            this.numericUpDownIncrease.Location = new System.Drawing.Point(174, 80);
             this.numericUpDownIncrease.Maximum = new decimal(new int[] {
             20,
             0,
@@ -190,7 +190,7 @@
             this.labelEndPosition.AutoSize = true;
             this.labelEndPosition.BackColor = System.Drawing.Color.Transparent;
             this.labelEndPosition.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEndPosition.Location = new System.Drawing.Point(16, 179);
+            this.labelEndPosition.Location = new System.Drawing.Point(16, 222);
             this.labelEndPosition.Name = "labelEndPosition";
             this.labelEndPosition.Size = new System.Drawing.Size(109, 21);
             this.labelEndPosition.TabIndex = 22;
@@ -211,7 +211,7 @@
             this.labelStartPosition.AutoSize = true;
             this.labelStartPosition.BackColor = System.Drawing.Color.Transparent;
             this.labelStartPosition.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStartPosition.Location = new System.Drawing.Point(16, 145);
+            this.labelStartPosition.Location = new System.Drawing.Point(16, 177);
             this.labelStartPosition.Name = "labelStartPosition";
             this.labelStartPosition.Size = new System.Drawing.Size(115, 21);
             this.labelStartPosition.TabIndex = 21;
@@ -221,7 +221,7 @@
             // 
             this.buttonAdd.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(188, 206);
+            this.buttonAdd.Location = new System.Drawing.Point(105, 274);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(124, 42);
             this.buttonAdd.TabIndex = 16;
@@ -232,7 +232,7 @@
             // numericUpDownEndPosition
             // 
             this.numericUpDownEndPosition.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownEndPosition.Location = new System.Drawing.Point(174, 172);
+            this.numericUpDownEndPosition.Location = new System.Drawing.Point(174, 215);
             this.numericUpDownEndPosition.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -259,7 +259,7 @@
             this.labelIncrease.AutoSize = true;
             this.labelIncrease.BackColor = System.Drawing.Color.Transparent;
             this.labelIncrease.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelIncrease.Location = new System.Drawing.Point(16, 75);
+            this.labelIncrease.Location = new System.Drawing.Point(16, 85);
             this.labelIncrease.Name = "labelIncrease";
             this.labelIncrease.Size = new System.Drawing.Size(75, 21);
             this.labelIncrease.TabIndex = 17;
@@ -322,7 +322,7 @@
             this.panelViewport.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelViewport.Location = new System.Drawing.Point(389, 60);
             this.panelViewport.Name = "panelViewport";
-            this.panelViewport.Size = new System.Drawing.Size(645, 257);
+            this.panelViewport.Size = new System.Drawing.Size(645, 357);
             this.panelViewport.TabIndex = 44;
             // 
             // panelSeating
@@ -340,7 +340,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1054, 337);
+            this.ClientSize = new System.Drawing.Size(1054, 437);
             this.Controls.Add(this.panelViewport);
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.groupBoxZone);

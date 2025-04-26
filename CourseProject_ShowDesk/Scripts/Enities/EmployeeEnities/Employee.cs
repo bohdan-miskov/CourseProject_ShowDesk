@@ -43,10 +43,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Name of employee cannot be empty or whitespace.", nameof(fullName));
-                }
                 fullName = value;
             }
 
@@ -61,11 +57,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Login of employee cannot be empty or whitespace.", nameof(login));
-                }
-
                 login = value;
             }
         }
@@ -79,11 +70,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Password of employee cannot be empty or whitespace.", nameof(password));
-                }
-
                 password = value;
             }
         }
@@ -97,7 +83,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 
             set
             {
-                professionList = value ?? throw new ArgumentNullException(nameof(professionList), "Profession list cannot be null.");
+                professionList = value;
             }
         }
 

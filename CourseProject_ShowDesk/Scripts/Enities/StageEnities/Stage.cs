@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
@@ -12,6 +13,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         [BsonId]
         private Guid id = Guid.NewGuid();
         private string name;
+        private Point stageLocation=new Point(-1000,-1000);
+        private Size stageSize;
         private List<Zone> zones;
         private List<Seat> seatList;
         private List<DecorativeElement> decorList;
@@ -41,11 +44,33 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                {
-                    throw new ArgumentException("Name of stage cannot be empty or whitespace.", nameof(Name));
-                }
                 name = value;
+            }
+        }
+        public Point StageLocation
+        {
+            get
+            {
+                return stageLocation;
+            }
+            set
+            {
+                if (value == null) 
+                    throw new ArgumentNullException(nameof(stageLocation), "Stage location cannot be null.");
+                stageLocation = value;
+            }
+        }
+        public Size StageSize
+        {
+            get
+            {
+                return stageSize;
+            }
+            set
+            {
+                if (value.Height <= 0 || value.Width<=0)
+                    throw new ArgumentOutOfRangeException(nameof(stageSize), "Stage size must be greater than 0.");
+                stageSize = value;
             }
         }
         public List<Zone> Zones

@@ -36,7 +36,6 @@
             this.checkBoxReserved = new System.Windows.Forms.CheckBox();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.labelId = new System.Windows.Forms.Label();
-            this.labelPosition = new System.Windows.Forms.Label();
             this.labelType = new System.Windows.Forms.Label();
             this.comboBoxTicketType = new System.Windows.Forms.ComboBox();
             this.groupBoxTicket = new System.Windows.Forms.GroupBox();
@@ -70,7 +69,7 @@
             this.buttonAdd.BackColor = System.Drawing.Color.LightSteelBlue;
             this.buttonAdd.Enabled = false;
             this.buttonAdd.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(221, 217);
+            this.buttonAdd.Location = new System.Drawing.Point(215, 188);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(140, 36);
@@ -83,7 +82,7 @@
             // 
             this.textBoxPrice.Enabled = false;
             this.textBoxPrice.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPrice.Location = new System.Drawing.Point(148, 179);
+            this.textBoxPrice.Location = new System.Drawing.Point(142, 150);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.ReadOnly = true;
             this.textBoxPrice.Size = new System.Drawing.Size(213, 28);
@@ -94,7 +93,7 @@
             // 
             this.labelPrice.AutoSize = true;
             this.labelPrice.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrice.Location = new System.Drawing.Point(34, 186);
+            this.labelPrice.Location = new System.Drawing.Point(28, 157);
             this.labelPrice.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(51, 21);
@@ -105,7 +104,7 @@
             // 
             this.checkBoxReserved.AutoSize = true;
             this.checkBoxReserved.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxReserved.Location = new System.Drawing.Point(38, 152);
+            this.checkBoxReserved.Location = new System.Drawing.Point(32, 123);
             this.checkBoxReserved.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.checkBoxReserved.Name = "checkBoxReserved";
             this.checkBoxReserved.Size = new System.Drawing.Size(97, 25);
@@ -134,17 +133,6 @@
             this.labelId.Size = new System.Drawing.Size(27, 21);
             this.labelId.TabIndex = 31;
             this.labelId.Text = "Id";
-            // 
-            // labelPosition
-            // 
-            this.labelPosition.AutoSize = true;
-            this.labelPosition.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPosition.Location = new System.Drawing.Point(34, 117);
-            this.labelPosition.Margin = new System.Windows.Forms.Padding(3, 6, 3, 0);
-            this.labelPosition.Name = "labelPosition";
-            this.labelPosition.Size = new System.Drawing.Size(75, 21);
-            this.labelPosition.TabIndex = 30;
-            this.labelPosition.Text = "Position";
             // 
             // labelType
             // 
@@ -187,7 +175,6 @@
             this.groupBoxTicket.Controls.Add(this.comboBoxTicketType);
             this.groupBoxTicket.Controls.Add(this.labelType);
             this.groupBoxTicket.Controls.Add(this.buttonAdd);
-            this.groupBoxTicket.Controls.Add(this.labelPosition);
             this.groupBoxTicket.Controls.Add(this.labelId);
             this.groupBoxTicket.Controls.Add(this.labelPrice);
             this.groupBoxTicket.Controls.Add(this.textBoxId);
@@ -195,7 +182,7 @@
             this.groupBoxTicket.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxTicket.Location = new System.Drawing.Point(1, 65);
             this.groupBoxTicket.Name = "groupBoxTicket";
-            this.groupBoxTicket.Size = new System.Drawing.Size(1177, 438);
+            this.groupBoxTicket.Size = new System.Drawing.Size(1177, 443);
             this.groupBoxTicket.TabIndex = 40;
             this.groupBoxTicket.TabStop = false;
             this.groupBoxTicket.Text = "Ticket";
@@ -215,7 +202,8 @@
             this.labelCurrency.AutoSize = true;
             this.labelCurrency.BackColor = System.Drawing.Color.Transparent;
             this.labelCurrency.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCurrency.Location = new System.Drawing.Point(337, 181);
+            this.labelCurrency.Location = new System.Drawing.Point(331, 152);
+            this.labelCurrency.MinimumSize = new System.Drawing.Size(22, 24);
             this.labelCurrency.Name = "labelCurrency";
             this.labelCurrency.Size = new System.Drawing.Size(22, 24);
             this.labelCurrency.TabIndex = 40;
@@ -301,7 +289,7 @@
             this.labelInfo.BackColor = System.Drawing.Color.Silver;
             this.labelInfo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInfo.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.labelInfo.Location = new System.Drawing.Point(35, 217);
+            this.labelInfo.Location = new System.Drawing.Point(29, 188);
             this.labelInfo.MaximumSize = new System.Drawing.Size(180, 0);
             this.labelInfo.Name = "labelInfo";
             this.labelInfo.Size = new System.Drawing.Size(96, 18);
@@ -360,19 +348,19 @@
             // 
             // panelViewport
             // 
-            this.panelViewport.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelViewport.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelViewport.Controls.Add(this.panelSeating);
+            this.panelViewport.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelViewport.Location = new System.Drawing.Point(513, 60);
             this.panelViewport.Name = "panelViewport";
-            this.panelViewport.Size = new System.Drawing.Size(645, 425);
+            this.panelViewport.Size = new System.Drawing.Size(645, 430);
             this.panelViewport.TabIndex = 42;
             // 
             // panelSeating
             // 
             this.panelSeating.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panelSeating.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelSeating.Location = new System.Drawing.Point(-1000, -1000);
+            this.panelSeating.Location = new System.Drawing.Point(-1000, -997);
             this.panelSeating.Name = "panelSeating";
             this.panelSeating.Size = new System.Drawing.Size(3000, 3000);
             this.panelSeating.TabIndex = 7;
@@ -384,7 +372,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 505);
+            this.ClientSize = new System.Drawing.Size(1178, 510);
             this.Controls.Add(this.panelViewport);
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.groupBoxTicket);
@@ -413,7 +401,6 @@
         private System.Windows.Forms.CheckBox checkBoxReserved;
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.Label labelId;
-        private System.Windows.Forms.Label labelPosition;
         private System.Windows.Forms.Label labelType;
         private System.Windows.Forms.ComboBox comboBoxTicketType;
         private System.Windows.Forms.GroupBox groupBoxTicket;

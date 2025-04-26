@@ -20,11 +20,9 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             if (!ValidatePrice(performance.Price, out errorMessage))
                 return false;
 
-            // Перевірка дати
             if (!ValidateDate(performance.LocalPerformanceDateTime, out errorMessage))
                 return false;
 
-            // Перевірка на перетини
             if (!ValidatePerformanceIntersection(performance, out errorMessage))
                 return false;
 
@@ -32,7 +30,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             return true;
         }
 
-        // Перевірка імені
         private bool ValidateName(string name, out string errorMessage)
         {
             if (string.IsNullOrWhiteSpace(name) || name.Length < 3)
@@ -45,10 +42,9 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             return true;
         }
 
-        // Перевірка ціни
         private bool ValidatePrice(double price, out string errorMessage)
         {
-            if (price <= 0)
+            if (price <= 0 || double.IsNaN(price))
             {
                 errorMessage = "Base price must be positive.";
                 return false;
@@ -58,7 +54,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             return true;
         }
 
-        // Перевірка дати
         private bool ValidateDate(DateTime dateTime, out string errorMessage)
         {
             if (dateTime < DateTime.Now)
@@ -71,7 +66,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             return true;
         }
 
-        // Перевірка перетину сеансів
         private bool ValidatePerformanceIntersection(Performance perf, out string errorMessage)
         {
             string intersectsPerformanceName = FindIntersectionPerformance(perf);
@@ -85,11 +79,8 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             return true;
         }
 
-        // Метод для пошуку перетину сеансів
         private string FindIntersectionPerformance(Performance newPerformance)
         {
-            // Логіка для перевірки перетину сеансів, яка раніше була в методі
-            // Примерний код для перевірки перетину, можливо, потрібно буде адаптувати під вашу ситуацію
             foreach (var performance in performances)
             {
                 if (performance.StageId == newPerformance.StageId)
@@ -106,7 +97,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
             return null;
         }
 
-        // Метод для перевірки перетину між двома сеансами
         private bool IsIntersectionOfPerformances(Performance newPerformance, Performance performance)
         {
             double currentTimeDifference;

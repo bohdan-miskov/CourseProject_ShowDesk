@@ -64,6 +64,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 {
                     newStage.SeatList = addSeatingForm.GetSeatList();
                     newStage.DecorList = addSeatingForm.GetDecorList();
+                    newStage.StageLocation = addSeatingForm.GetCanvasLocation();
+                    newStage.StageSize = addSeatingForm.GetCanvasSize();
 
                     isValid = true;
                     this.Close();

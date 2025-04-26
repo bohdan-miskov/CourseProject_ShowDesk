@@ -58,8 +58,10 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 
         public void RemoveFieldFromDataBase(string fieldName)
         {
-            var update = Builders<Stage>.Update.Unset("SeatList.$[].Enabled");
+            var update = Builders<Stage>.Update.Unset("ScaleFactor");
             stageCollection.UpdateMany(Builders<Stage>.Filter.Empty, update);
+            //var update2 = Builders<Stage>.Update.Unset("DecorList.$[].BorderStyle");
+            //stageCollection.UpdateMany(Builders<Stage>.Filter.Empty, update2);
             //List<Stage> stages = stageCollection.Find(_ => true).ToList();
 
             //foreach (var stage in stages)

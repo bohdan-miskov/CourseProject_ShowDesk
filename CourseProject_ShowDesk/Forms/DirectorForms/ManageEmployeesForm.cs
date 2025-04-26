@@ -40,13 +40,15 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             UpdateDataGridEmployees();
             DisableEditAndRemoveEmployees();
-            ShowGreetings(userAccount.FullName);
-
-            timerUpdate.Start();
 
             searchData = new SearchDataGrid(dataGridViewEmployees);
         }
+        private void ManageEmployeesForm_Shown(object sender, EventArgs e)
+        {
+            ShowGreetings(userAccount.FullName);
 
+            timerUpdate.Start();
+        }
         private void DataGridViewEmployees_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveEmployees();
@@ -93,15 +95,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             SearchByFragment();
         }
-
-        private void TextBoxSearchField_Enter(object sender, EventArgs e)
+        private void TextBoxSearchField_KeyUp(object sender, KeyEventArgs e)
         {
-            SearchByFragment();
-        }
-
-        private void ManageEmployeesForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            searchData.SearchNavigation(e);
+            if (e.KeyCode == Keys.Enter) SearchByFragment();
         }
         private void DataGridViewEmployees_KeyDown(object sender, KeyEventArgs e)
         {
@@ -271,6 +267,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
+        }       
     }
 }

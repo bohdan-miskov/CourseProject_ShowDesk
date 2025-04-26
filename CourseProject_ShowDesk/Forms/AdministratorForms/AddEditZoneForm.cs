@@ -32,7 +32,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             logOut = false;
             zones = stage.Zones;
             seatingManager = new SeatingManager(panelSeating, stage?.SeatList, stage?.DecorList);
-            canvasController = new CanvasController(panelSeating, panelViewport);
+            canvasController = new CanvasController(panelSeating, panelViewport, stage.StageLocation, stage.StageSize);
 
             labelAccountName.Text = userAccount.FullName;
 

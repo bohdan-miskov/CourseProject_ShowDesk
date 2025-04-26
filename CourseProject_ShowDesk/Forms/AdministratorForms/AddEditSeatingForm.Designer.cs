@@ -41,15 +41,15 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
+            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
             this.panelViewport = new System.Windows.Forms.Panel();
-            this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxProfile.SuspendLayout();
+            this.contextMenuStripAccount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.panelViewport.SuspendLayout();
-            this.contextMenuStripAccount.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAddSeat
@@ -170,6 +170,22 @@
             this.groupBoxProfile.TabIndex = 17;
             this.groupBoxProfile.TabStop = false;
             // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // pictureBoxAccountIcon
             // 
             this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
@@ -200,33 +216,14 @@
             this.panelViewport.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelViewport.Location = new System.Drawing.Point(135, 60);
             this.panelViewport.Name = "panelViewport";
-            this.panelViewport.Size = new System.Drawing.Size(645, 427);
+            this.panelViewport.Size = new System.Drawing.Size(645, 430);
             this.panelViewport.TabIndex = 8;
-            this.panelViewport.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelViewport_MouseDown);
-            this.panelViewport.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelViewport_MouseMove);
-            this.panelViewport.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelViewport_MouseUp);
-            // 
-            // contextMenuStripAccount
-            // 
-            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // AddEditSeatingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 507);
+            this.ClientSize = new System.Drawing.Size(800, 510);
             this.Controls.Add(this.panelViewport);
             this.Controls.Add(this.groupBoxProfile);
             this.Controls.Add(this.buttonSave);
@@ -241,9 +238,9 @@
             this.Text = "AddEditSeatingForm";
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
+            this.contextMenuStripAccount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.panelViewport.ResumeLayout(false);
-            this.contextMenuStripAccount.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

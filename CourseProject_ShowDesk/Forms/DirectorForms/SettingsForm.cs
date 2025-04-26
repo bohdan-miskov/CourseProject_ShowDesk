@@ -488,7 +488,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             if (newColor != Color.Empty)
             {
                 buttonChangeSeatColor.BackColor = newColor;
-                textBoxSeatColor.Text = newColor.Name;
+                textBoxSeatColor.Text = ColorTranslator.ToHtml(newColor);
             }
         }
         private void SetSeatHoverColor()
@@ -497,7 +497,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             if (newColor != Color.Empty)
             {
                 buttonChangeSeatHoverColor.BackColor = newColor;
-                textBoxSeatHoverColor.Text = newColor.Name;
+                textBoxSeatHoverColor.Text = ColorTranslator.ToHtml(newColor);
             }
         }
         private bool ValidatePerformanceSettings()
@@ -850,8 +850,8 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
         private void SaveStageGroup()
         {
-            appConstantsData.SeatBaseColor = Color.FromName(textBoxSeatColor.Text);
-            appConstantsData.SeatHoverColor = Color.FromName(textBoxSeatHoverColor.Text);
+            appConstantsData.SeatBaseColor = ColorTranslator.FromHtml(textBoxSeatColor.Text);
+            appConstantsData.SeatHoverColor = ColorTranslator.FromHtml(textBoxSeatHoverColor.Text);
         }
         private void SaveOtherGroup()
         {

@@ -8,6 +8,7 @@ using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -57,13 +58,15 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             DisableEditAndRemovePerformance();
 
-            ShowGreetings(userAccount.FullName);
-
-            timerUpdate.Start();
-
             searchData = new SearchDataGrid(dataGridViewPerformances);
         }
 
+        private void ManagePerformancesForm_Shown(object sender, EventArgs e)
+        {
+            ShowGreetings(userAccount.FullName);
+
+            timerUpdate.Start();
+        }
         private void DataGridViewPerformances_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemovePerformance();
@@ -110,9 +113,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             SearchByFragment();
         }
-        private void TextBoxSearchField_Enter(object sender, EventArgs e)
+        private void TextBoxSearchField_KeyUp(object sender, KeyEventArgs e)
         {
-            SearchByFragment();
+            if (e.KeyCode == Keys.Enter) SearchByFragment();
         }
         private void DataGridViewPerformances_KeyDown(object sender, KeyEventArgs e)
         {
@@ -248,6 +251,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
         private void SelectPastPerformancesRange()
         {
+            Point center = GetFormCenter();
+            groupBoxPastPerformanceRange.Location = new Point(
+                center.X - groupBoxPastPerformanceRange.Width / 2,
+                center.Y - groupBoxPastPerformanceRange.Height / 2
+                );
             groupBoxPastPerformanceRange.Enabled = true;
             groupBoxPastPerformanceRange.Visible = true;
 
@@ -261,7 +269,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             dateTimePickerPastPerformancesStartDate.Focus();
         }
-
+        private Point GetFormCenter()
+        {
+            return new Point(this.Width / 2, this.Height / 2);
+        }
         private void AddPerformanceToDataGrid(Performance performance)
         {
             string timePerformance = $"{performance.LocalPerformanceDateTime.Hour:D2}:{performance.LocalPerformanceDateTime.Minute:D2}";

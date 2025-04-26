@@ -2,6 +2,7 @@
 using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
@@ -12,11 +13,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         private int seatNumber;
         private bool isAvailable = true;
         private Zone currentZone = null;
-        //private Color color = Color.LightBlue;
         public Point Location;
         public Size Size = new Size(50, 50);
-        //public bool Enabled = false;
-
 
         public Seat(int number, Point location)
         {
@@ -69,6 +67,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
         public System.Windows.Forms.Label ToLabel()
         {
+            
             System.Windows.Forms.Label label = new System.Windows.Forms.Label
             {
                 Name = this.SeatNumber.ToString(),
@@ -80,9 +79,9 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 ForeColor = Color.Black,
                 Font = new Font("Modern No. 20", 16, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleCenter
-
             };
-
+            Size textSize = TextRenderer.MeasureText(label.Text, label.Font);
+            label.MinimumSize = new Size(textSize.Width+6, textSize.Height + 6);
 
             label.Paint += (s, e) =>
             {

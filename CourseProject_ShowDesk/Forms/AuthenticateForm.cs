@@ -1,4 +1,5 @@
-﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
+﻿using BitMiracle.LibTiff.Classic;
+using CourseProject_ShowDesk.Forms.AdministratorForms;
 using CourseProject_ShowDesk.Forms.CashierForms;
 using CourseProject_ShowDesk.Forms.DirectorForms;
 using CourseProject_ShowDesk.Scripts.Constants;
@@ -98,19 +99,27 @@ namespace CourseProject_ShowDesk.Forms
 
         private void Authenticate()
         {
-            if (comboBoxUser.SelectedIndex == 0) AuthenticateDirector();
-            else if (comboBoxUser.SelectedIndex == 1) AuthenticateAdministrator();
-            else if (comboBoxUser.SelectedIndex == 2) AuthenticateCashier();
+            DialogResult result;
+            if (comboBoxUser.SelectedIndex == 0) result=AuthenticateDirector();
+            else if (comboBoxUser.SelectedIndex == 1) result = AuthenticateAdministrator();
+            else result = AuthenticateCashier();
+
+            if (result == DialogResult.OK) {
+                //ClearLogInField();
+                this.Show(); 
+            }  
+            else if (result == DialogResult.Abort) ShowErrorMessage();
+            else Application.Exit();
         }
 
-        private void AuthenticateDirector()
+        private DialogResult AuthenticateDirector()
         {
             Employee account = CheckAccountAndGetName(AppConstants.ListOfProfessions[0]);
 
             if (account == null)
             {
                 bool directorExist = employeeManager.Employees.Any((employee) => employee.ProfessionList.Contains(AppConstants.ListOfProfessions[0]));
-                if (directorExist) ShowErrorMessage();
+                if (directorExist) return DialogResult.Abort;
                 else
                 {
                     account = new Employee
@@ -118,59 +127,36 @@ namespace CourseProject_ShowDesk.Forms
                         FullName = "Visitor"
                     };
                 }
-                return;
             }
-
 
             ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(account);
             this.Hide();
-            DialogResult result = manageEmployeesForm.ShowDialog();
-
-            if (result != DialogResult.OK) Application.Exit();
-
-            this.Show();
-            //ClearLogInField();
+            return manageEmployeesForm.ShowDialog();        
         }
 
-        private void AuthenticateAdministrator()
+        private DialogResult AuthenticateAdministrator()
         {
             Employee account = CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
 
-            if (account == null)
-            {
-                ShowErrorMessage();
-                return;
-            }
+            if (account == null) return DialogResult.Abort;
 
             ManageStagesForm manageStagesForm = new ManageStagesForm(account);
             this.Hide();
-            DialogResult result = manageStagesForm.ShowDialog();
+            return manageStagesForm.ShowDialog();
 
-            if (result != DialogResult.OK) Application.Exit();
-
-            this.Show();
-            //ClearLogInField();
+            
         }
 
-        private void AuthenticateCashier()
+        private DialogResult AuthenticateCashier()
         {
             Employee account = CheckAccountAndGetName(AppConstants.ListOfProfessions[2]) ??
                     CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
 
-            if (account == null)
-            {
-                ShowErrorMessage();
-                return;
-            }
+            if (account == null) return DialogResult.Abort;
 
             ManagePerformancesForm managePerformancesForm = new ManagePerformancesForm(account);
             this.Hide();
-            DialogResult result = managePerformancesForm.ShowDialog();
-
-            if (result != DialogResult.OK) Application.Exit();
-
-            this.Show();
-            //ClearLogInField();
+            return managePerformancesForm.ShowDialog();
         }
 
         private Employee CheckAccountAndGetName(string currentProfession)

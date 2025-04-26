@@ -13,8 +13,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         private string hexColor;
         public Point Location;
         public Size Size = new Size(50, 50);
-        public BorderStyle BorderStyle = BorderStyle.FixedSingle;
-        public bool Enabled = false;
 
         public DecorativeElement(Point location)
         {
@@ -49,8 +47,9 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 Size = this.Size,
                 Location = this.Location,
                 BackColor = GetColor(),
-                BorderStyle = this.BorderStyle,
-                Enabled = this.Enabled
+                BorderStyle = BorderStyle.FixedSingle,
+                Enabled = false,
+                MinimumSize = new Size(10,10)
             };
 
             return panel;

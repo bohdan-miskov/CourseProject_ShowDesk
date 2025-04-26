@@ -78,11 +78,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             SearchByFragment();
         }
-        private void TextBoxSearchField_Enter(object sender, EventArgs e)
+        private void TextBoxSearchField_KeyUp(object sender, KeyEventArgs e)
         {
-            SearchByFragment();
+            if (e.KeyCode == Keys.Enter) SearchByFragment();
         }
-
         private void DataGridViewTickets_KeyDown(object sender, KeyEventArgs e)
         {
             searchData.SearchNavigation(e);

@@ -46,13 +46,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             DisableEditAndRemoveStage();
 
+            searchData = new SearchDataGrid(dataGridViewStages);
+        }
+        private void ManageStagesForm_Shown(object sender, EventArgs e)
+        {
             ShowGreetings(userAccount.FullName);
 
             timerUpdate.Start();
-
-            searchData = new SearchDataGrid(dataGridViewStages);
         }
-
         private void DataGridViewStages_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             DisableEditAndRemoveStage();
@@ -85,9 +86,9 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             SearchByFragment();
         }
 
-        private void TextBoxSearchField_Enter(object sender, EventArgs e)
+        private void TextBoxSearchField_KeyUp(object sender, KeyEventArgs e)
         {
-            SearchByFragment();
+            if (e.KeyCode == Keys.Enter) SearchByFragment();
         }
 
         private void DataGridViewStages_KeyDown(object sender, KeyEventArgs e)

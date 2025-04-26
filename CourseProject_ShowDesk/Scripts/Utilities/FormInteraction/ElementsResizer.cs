@@ -8,17 +8,19 @@ using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
 {
-    public class ElementResizer
+    public class ElementsResizer
     {
         private readonly Panel panelSeating;
-        private Control resizingControl;
+        private List<Control> resizingControls;
         private Point resizeStart;
-        private Size originalSize;
+        private List<Size> originalSizes;
         private bool isResizing;
 
-        public ElementResizer(Panel panelSeating)
+        public ElementsResizer(Panel panelSeating)
         {
             this.panelSeating = panelSeating;
+            resizingControls=new List<Control>();
+            originalSizes=new List<Size>();
         }
 
         public bool IsInResizeZone(Control control, Point mouseLocation)
@@ -28,29 +30,39 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
                 mouseLocation.Y >= control.Bottom - resizeMargin;
         }
 
-        public void StartResizing(Control control, Point location)
+        public void StartResizing(List<Control> controls, Point location)
         {
-            resizingControl = control;
+            resizingControls = new List<Control>(controls); 
             isResizing = true;
             resizeStart = location;
-            originalSize = control.Size;
+            originalSizes.Clear();
+
+            foreach (Control control in resizingControls)
+            {    
+                originalSizes.Add(control.Size);
+            }
         }
 
         public void Resize(Point location)
         {
-            if (!isResizing || resizingControl == null) return;
+            if (!isResizing || resizingControls.Count == 0) return;
 
             int deltaX = location.X - resizeStart.X;
             int deltaY = location.Y - resizeStart.Y;
-            resizingControl.Size = new Size(
-                Math.Max(20, originalSize.Width + deltaX), 
-                Math.Max(20, originalSize.Height + deltaY)
-                );
+            for(int i=0; i<resizingControls.Count; i++)
+            {
+                resizingControls[i].Size = new Size(
+                    originalSizes[i].Width + deltaX, 
+                    originalSizes[i].Height + deltaY
+                    );
+            }
         }
 
         public void Stop()
         {
             isResizing = false;
+            resizingControls.Clear();
+            originalSizes.Clear();
         }
     }
 }

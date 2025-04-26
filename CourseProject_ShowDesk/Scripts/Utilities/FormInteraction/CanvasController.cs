@@ -2,33 +2,54 @@
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
 {
     public class CanvasController
     {
+        //private const int MinControlSize= 20;
+
         private readonly Panel panelSeating;
         private readonly Panel panelViewport;
         private float zoomFactor = 1.0f;
         private bool isPanning;
         private Point startLocation;
 
-        private readonly ElementMover mover;
-        private readonly ElementResizer resizer;
+        private readonly ElementsMover mover;
+        private readonly ElementsResizer resizer;
 
         public CanvasController(Panel panelSeating, Panel panelViewport)
         {
             this.panelSeating = panelSeating;
             this.panelViewport = panelViewport;
-            mover = new ElementMover(panelSeating, panelViewport);
-            resizer = new ElementResizer(panelSeating);
+            mover = new ElementsMover(panelSeating, panelViewport);
+            resizer = new ElementsResizer(panelSeating);
         }
-        public ElementResizer Resizer
+        public CanvasController(Panel panelSeating, Panel panelViewport, Point location,Size size)
+        {
+            this.panelSeating = panelSeating;
+            this.panelViewport = panelViewport;
+            //this.zoomFactor = zoomFactor;
+            //ScaleCanvas(zoomFactor);
+            panelSeating.Size = size;
+            panelSeating.Location = location;
+            mover = new ElementsMover(panelSeating, panelViewport);
+            resizer = new ElementsResizer(panelSeating);
+        }
+        public ElementsResizer Resizer
         {
             get
             {
                 return resizer;
+            }
+        }
+        public float ZoomFactor
+        {
+            get
+            {
+                return zoomFactor;
             }
         }
         public void StartScaleCanvas(MouseEventArgs e, bool useControl)
@@ -36,8 +57,25 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             if (!useControl) return;
 
             float scaleFactor = e.Delta > 0 ? 1.05f : 0.95f;
+
+            if(!CheckOfAvailableMinSize(scaleFactor)) return;
+
             zoomFactor *= scaleFactor;
             ScaleCanvas(scaleFactor);
+        }
+
+        private bool CheckOfAvailableMinSize(float scaleFactor)
+        {
+            foreach (Control control in panelSeating.Controls)
+            {
+                int newWidth = (int)(control.Width * scaleFactor);
+                int newHeight = (int)(control.Height * scaleFactor);
+                if (
+                    ((newWidth < control.MinimumSize.Width || newHeight < control.MinimumSize.Height) && scaleFactor<1)
+                    )
+                    return false;
+            }
+            return true;
         }
 
         private void ScaleCanvas(float scaleFactor)
@@ -46,6 +84,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
 
             foreach (Control control in panelSeating.Controls)
             {
+               
                 control.Width = (int)(control.Width * scaleFactor);
                 control.Height = (int)(control.Height * scaleFactor);
 
@@ -88,25 +127,25 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             }
         }
 
-        public void StartResizing(MouseEventArgs e)
+        public void StartResizing(List<Control> selectedControls,MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
 
-            Control selectedControl = FindControlAtLocation(e.Location);
-            if (selectedControl != null && resizer.IsInResizeZone(selectedControl, e.Location))
+            //Control selectedControl = FindControlAtLocation(e.Location);
+            if (selectedControls.Count != 0 && selectedControls.Any(control => resizer.IsInResizeZone(control, e.Location)))
             {
-                resizer.StartResizing(selectedControl, e.Location);
+                resizer.StartResizing(selectedControls, e.Location);
             }
         }
 
-        public void StartDragging(MouseEventArgs e)
+        public void StartDragging(List<Control> selectedControls, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
 
             Control selectedControl = FindControlAtLocation(e.Location);
             if (selectedControl != null && !resizer.IsInResizeZone(selectedControl, e.Location))
             {
-                mover.StartDragging(selectedControl, e.Location);
+                mover.StartDragging(selectedControls, e.Location);
             }
         }
 

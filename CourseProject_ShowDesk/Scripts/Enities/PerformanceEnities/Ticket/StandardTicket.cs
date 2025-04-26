@@ -104,11 +104,11 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities.Ticket
                 throw new ArgumentOutOfRangeException(nameof(price), "Base price cannot be negative.");
             }
 
-            if (increase <= 0)
+            if (increase < 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(increase), "Price increase factor must be greater than 0.");
+                throw new ArgumentOutOfRangeException(nameof(increase), "Price increase factor cannot be negative.");
             }
-            calculatedPrice = (price * increase) + (price * (typeIncrease - 1));
+            calculatedPrice = (price * increase) + typeIncrease;
         }
 
         public virtual string GetAdditionalServices()

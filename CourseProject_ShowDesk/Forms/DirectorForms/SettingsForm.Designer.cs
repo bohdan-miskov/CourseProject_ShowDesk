@@ -535,7 +535,7 @@
             this.tabControlSetting.Location = new System.Drawing.Point(20, 60);
             this.tabControlSetting.Name = "tabControlSetting";
             this.tabControlSetting.SelectedIndex = 0;
-            this.tabControlSetting.Size = new System.Drawing.Size(629, 395);
+            this.tabControlSetting.Size = new System.Drawing.Size(629, 420);
             this.tabControlSetting.TabIndex = 10;
             // 
             // tabPagePerformanceSettings
@@ -549,7 +549,7 @@
             this.tabPagePerformanceSettings.Location = new System.Drawing.Point(4, 30);
             this.tabPagePerformanceSettings.Name = "tabPagePerformanceSettings";
             this.tabPagePerformanceSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePerformanceSettings.Size = new System.Drawing.Size(621, 361);
+            this.tabPagePerformanceSettings.Size = new System.Drawing.Size(621, 386);
             this.tabPagePerformanceSettings.TabIndex = 2;
             this.tabPagePerformanceSettings.Text = "Performance";
             // 
@@ -660,6 +660,11 @@
             0,
             65536});
             this.numericUpDownPremiumIncrease.Location = new System.Drawing.Point(134, 101);
+            this.numericUpDownPremiumIncrease.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numericUpDownPremiumIncrease.Name = "numericUpDownPremiumIncrease";
             this.numericUpDownPremiumIncrease.Size = new System.Drawing.Size(134, 28);
             this.numericUpDownPremiumIncrease.TabIndex = 8;
@@ -674,6 +679,11 @@
             0,
             65536});
             this.numericUpDownStandardPlusIncrease.Location = new System.Drawing.Point(134, 63);
+            this.numericUpDownStandardPlusIncrease.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numericUpDownStandardPlusIncrease.Name = "numericUpDownStandardPlusIncrease";
             this.numericUpDownStandardPlusIncrease.Size = new System.Drawing.Size(134, 28);
             this.numericUpDownStandardPlusIncrease.TabIndex = 7;
@@ -688,6 +698,11 @@
             0,
             65536});
             this.numericUpDownStandardIncrease.Location = new System.Drawing.Point(134, 29);
+            this.numericUpDownStandardIncrease.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             this.numericUpDownStandardIncrease.Name = "numericUpDownStandardIncrease";
             this.numericUpDownStandardIncrease.Size = new System.Drawing.Size(134, 28);
             this.numericUpDownStandardIncrease.TabIndex = 6;
@@ -816,7 +831,7 @@
             this.tabPageDatabaseSettings.Location = new System.Drawing.Point(4, 30);
             this.tabPageDatabaseSettings.Name = "tabPageDatabaseSettings";
             this.tabPageDatabaseSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDatabaseSettings.Size = new System.Drawing.Size(623, 381);
+            this.tabPageDatabaseSettings.Size = new System.Drawing.Size(621, 386);
             this.tabPageDatabaseSettings.TabIndex = 1;
             this.tabPageDatabaseSettings.Text = "Database";
             // 
@@ -1001,7 +1016,7 @@
             this.tabPageOtherSettings.Location = new System.Drawing.Point(4, 30);
             this.tabPageOtherSettings.Name = "tabPageOtherSettings";
             this.tabPageOtherSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOtherSettings.Size = new System.Drawing.Size(623, 381);
+            this.tabPageOtherSettings.Size = new System.Drawing.Size(621, 386);
             this.tabPageOtherSettings.TabIndex = 0;
             this.tabPageOtherSettings.Text = "Other";
             // 
@@ -1100,7 +1115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 475);
+            this.ClientSize = new System.Drawing.Size(669, 500);
             this.Controls.Add(this.tabControlSetting);
             this.Controls.Add(this.groupBoxProfile);
             this.Name = "SettingsForm";

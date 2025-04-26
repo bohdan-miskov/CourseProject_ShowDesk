@@ -72,7 +72,7 @@
             this.menuStripPerformance.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStripPerformance.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ticketToolStripMenuItem});
-            this.menuStripPerformance.Location = new System.Drawing.Point(-15, -37);
+            this.menuStripPerformance.Location = new System.Drawing.Point(-1, 0);
             this.menuStripPerformance.Name = "menuStripPerformance";
             this.menuStripPerformance.Padding = new System.Windows.Forms.Padding(11, 3, 0, 3);
             this.menuStripPerformance.Size = new System.Drawing.Size(89, 28);
@@ -219,6 +219,7 @@
             this.addTicketToolStripMenuItem1.Name = "addTicketToolStripMenuItem1";
             this.addTicketToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
             this.addTicketToolStripMenuItem1.Text = "Add ticket";
+            this.addTicketToolStripMenuItem1.Click += new System.EventHandler(this.BuyTicketFormToolStripMenuItem_Click);
             // 
             // changeStatusToolStripMenuItem1
             // 
@@ -226,6 +227,7 @@
             this.changeStatusToolStripMenuItem1.Name = "changeStatusToolStripMenuItem1";
             this.changeStatusToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
             this.changeStatusToolStripMenuItem1.Text = "Change ticket status";
+            this.changeStatusToolStripMenuItem1.Click += new System.EventHandler(this.ChangeStatusToolStripMenuItem_Click);
             // 
             // removeTicketToolStripMenuItem1
             // 
@@ -233,6 +235,7 @@
             this.removeTicketToolStripMenuItem1.Name = "removeTicketToolStripMenuItem1";
             this.removeTicketToolStripMenuItem1.Size = new System.Drawing.Size(205, 22);
             this.removeTicketToolStripMenuItem1.Text = "Remove ticket";
+            this.removeTicketToolStripMenuItem1.Click += new System.EventHandler(this.RemoveTicketToolStripMenuItem_Click);
             // 
             // timerUpdate
             // 
@@ -312,7 +315,7 @@
             this.textBoxSearchField.Name = "textBoxSearchField";
             this.textBoxSearchField.Size = new System.Drawing.Size(163, 26);
             this.textBoxSearchField.TabIndex = 23;
-            this.textBoxSearchField.Enter += new System.EventHandler(this.TextBoxSearchField_Enter);
+            this.textBoxSearchField.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSearchField_KeyUp);
             // 
             // pictureBoxUpdate
             // 

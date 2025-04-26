@@ -15,9 +15,9 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         private string stagesCollectionName = "Stages";
         private string employeesCollectionName = "Employees";
 
-        private double standardIncrease = 1;
-        private double standardPlusIncrease = 1.5;
-        private double premiumIncrease = 3;
+        private double standardIncrease = 0;
+        private double standardPlusIncrease = 10;
+        private double premiumIncrease = 30;
 
         private char currencySymbol = '$';
 

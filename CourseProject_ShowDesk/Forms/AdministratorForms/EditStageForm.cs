@@ -169,11 +169,11 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void EditSeating()
         {
-            AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(userAccount, stage);
+            AddEditSeatingForm editSeatingForm = new AddEditSeatingForm(userAccount, stage);
             this.Hide();
-            addSeatingForm.ShowDialog();
+            editSeatingForm.ShowDialog();
 
-            if (addSeatingForm.GetLogOut())
+            if (editSeatingForm.GetLogOut())
             {
                 LogOut();
                 return;
@@ -181,10 +181,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             this.Show();
 
-            if (addSeatingForm.GetIsValid())
+            if (editSeatingForm.GetIsValid())
             {
-                stage.SeatList = addSeatingForm.GetSeatList();
-                stage.DecorList = addSeatingForm.GetDecorList();
+                stage.SeatList = editSeatingForm.GetSeatList();
+                stage.DecorList = editSeatingForm.GetDecorList();
+                stage.StageLocation = editSeatingForm.GetCanvasLocation();
+                stage.StageSize = editSeatingForm.GetCanvasSize();
             }
         }
 

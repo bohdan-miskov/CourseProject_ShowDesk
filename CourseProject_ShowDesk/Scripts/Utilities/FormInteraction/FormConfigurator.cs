@@ -1,4 +1,5 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -10,17 +11,26 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
         public static void ConfigureForm(Form form, bool isFullScreenForm = false)
         {
             form.StartPosition = FormStartPosition.CenterScreen;
-
-            if (isFullScreenForm)
-            {
-                
-                form.WindowState = FormWindowState.Maximized;
-                
-            }
-            else form.MinimizeBox = false;
-            form.MaximizeBox = false;
+            form.MinimizeBox = false;
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            AddFocusToForm(form);
             
+
+            if (isFullScreenForm) form.WindowState = FormWindowState.Maximized;
+            else form.MaximizeBox = false;
+        }
+
+        private static void AddFocusToForm(Form form)
+        {
+            form.Shown += (sender, e) =>
+            {
+                if (form.WindowState == FormWindowState.Minimized)
+                    form.WindowState = FormWindowState.Normal;
+
+                form.Activate();
+                form.BringToFront();
+                form.Focus();
+            };
         }
 
         public static void SetActivePictureBoxUpdate(PictureBox pictureBox)
