@@ -1,7 +1,9 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
+using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
+using DotNetEnv;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -13,6 +15,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         private readonly List<Employee> employees;
 
         private readonly Employee currentEmployee;
+        private readonly MasterCypherAES masterCypher;
 
         private bool isValid;
         private bool logOut;
@@ -37,6 +40,10 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 PopulateFields();
             }
             else this.currentEmployee = new Employee();
+
+            Env.Load();
+            string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
+            masterCypher = new MasterCypherAES(masterKey);
         }
 
         private void TextBoxFullName_KeyUp(object sender, KeyEventArgs e)
@@ -103,7 +110,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             textBoxFullName.Text = currentEmployee.FullName;
             textBoxLogin.Text = currentEmployee.Login;
-            textBoxPassword.Text = currentEmployee.Password;
+            textBoxPassword.Text = masterCypher.Decrypt(currentEmployee.Password);
             checkBoxDirector.Checked = currentEmployee.ProfessionList.Contains(AppConstants.ListOfProfessions[0]);
             checkBoxAdministrator.Checked = currentEmployee.ProfessionList.Contains(AppConstants.ListOfProfessions[1]);
             checkBoxCashier.Checked = currentEmployee.ProfessionList.Contains(AppConstants.ListOfProfessions[2]);
@@ -130,6 +137,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             EmployeeValidator validator = new EmployeeValidator(employees);
             if (validator.Validate(currentEmployee, out string errorMessage))
             {
+                currentEmployee.Password=masterCypher.Encrypt(currentEmployee.Password);
                 isValid = true;
                 this.Close();
             }

@@ -5,6 +5,8 @@ using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
 using System.Windows.Forms;
+using DotNetEnv;
+using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
@@ -14,6 +16,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         private readonly Employee userAccount;
 
         private readonly SearchDataGrid searchData;
+        private readonly MasterCypherAES masterCypher;
 
         public ManageEmployeesForm(Employee userAccount)
         {
@@ -42,6 +45,10 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             DisableEditAndRemoveEmployees();
 
             searchData = new SearchDataGrid(dataGridViewEmployees);
+
+            Env.Load();
+            string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
+            masterCypher = new MasterCypherAES(masterKey);
         }
         private void ManageEmployeesForm_Shown(object sender, EventArgs e)
         {
@@ -241,8 +248,8 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         private void ShowPassword()
         {
             Guid id = GetCurrentRowId();
-
-            dataGridViewEmployees.CurrentRow.Cells[3].Value = employeeManager.GetById(id).Password;
+            string password = masterCypher.Decrypt(employeeManager.GetById(id).Password);
+            dataGridViewEmployees.CurrentRow.Cells[3].Value = password;
         }
         private void HidePassword()
         {

@@ -116,10 +116,10 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Helpers
             //}
             ProcessStartInfo processStartInfo = new ProcessStartInfo
             {
-                FileName = filePath, // Шлях до файлу PDF
-                Verb = "print", // Використовує команду "print"
-                CreateNoWindow = true, // Без відкриття вікна
-                WindowStyle = ProcessWindowStyle.Hidden // Сховане вікно
+                FileName = filePath, 
+                Verb = "print", 
+                CreateNoWindow = true, 
+                WindowStyle = ProcessWindowStyle.Hidden 
             };
             Process.Start(processStartInfo);
         }

@@ -35,7 +35,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         private bool isPrintReceipt = true;
         private string savePathReceipt = "C:\\Users\\Fujitsu\\Documents\\Tickets";
 
-        private string connectionString = "mongodb+srv://bohdanmiskov07:7XRSvDHtr.mongodb.net/?retryWrites=true&w=majority&appName=ShowDes";
+        private string connectionString;
 
         private int updateEmployeesInterval = 300000;
         private int updateStagesInterval = 300000;
