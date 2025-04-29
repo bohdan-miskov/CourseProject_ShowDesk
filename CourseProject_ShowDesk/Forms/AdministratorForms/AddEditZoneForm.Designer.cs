@@ -78,7 +78,7 @@
             0});
             this.numericUpDownStartPosition.Name = "numericUpDownStartPosition";
             this.numericUpDownStartPosition.Size = new System.Drawing.Size(168, 28);
-            this.numericUpDownStartPosition.TabIndex = 19;
+            this.numericUpDownStartPosition.TabIndex = 5;
             this.numericUpDownStartPosition.Value = new decimal(new int[] {
             1,
             0,
@@ -119,7 +119,7 @@
             this.buttonChangeColor.Location = new System.Drawing.Point(175, 124);
             this.buttonChangeColor.Name = "buttonChangeColor";
             this.buttonChangeColor.Size = new System.Drawing.Size(28, 28);
-            this.buttonChangeColor.TabIndex = 27;
+            this.buttonChangeColor.TabIndex = 3;
             this.buttonChangeColor.Text = " ";
             this.buttonChangeColor.UseVisualStyleBackColor = true;
             this.buttonChangeColor.Click += new System.EventHandler(this.ButtonChangeColor_Click);
@@ -132,7 +132,7 @@
             this.textBoxColor.Name = "textBoxColor";
             this.textBoxColor.ReadOnly = true;
             this.textBoxColor.Size = new System.Drawing.Size(133, 28);
-            this.textBoxColor.TabIndex = 26;
+            this.textBoxColor.TabIndex = 4;
             // 
             // labelColor
             // 
@@ -166,7 +166,7 @@
             0});
             this.numericUpDownIncrease.Name = "numericUpDownIncrease";
             this.numericUpDownIncrease.Size = new System.Drawing.Size(168, 28);
-            this.numericUpDownIncrease.TabIndex = 23;
+            this.numericUpDownIncrease.TabIndex = 2;
             this.numericUpDownIncrease.Value = new decimal(new int[] {
             1,
             0,
@@ -203,7 +203,7 @@
             this.textBoxZoneName.Location = new System.Drawing.Point(174, 37);
             this.textBoxZoneName.Name = "textBoxZoneName";
             this.textBoxZoneName.Size = new System.Drawing.Size(168, 28);
-            this.textBoxZoneName.TabIndex = 15;
+            this.textBoxZoneName.TabIndex = 1;
             this.textBoxZoneName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxZoneName_KeyUp);
             // 
             // labelStartPosition
@@ -245,7 +245,7 @@
             0});
             this.numericUpDownEndPosition.Name = "numericUpDownEndPosition";
             this.numericUpDownEndPosition.Size = new System.Drawing.Size(168, 28);
-            this.numericUpDownEndPosition.TabIndex = 20;
+            this.numericUpDownEndPosition.TabIndex = 6;
             this.numericUpDownEndPosition.Value = new decimal(new int[] {
             1,
             0,

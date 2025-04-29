@@ -7,6 +7,8 @@ using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
+using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
+using DotNetEnv;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,6 +18,7 @@ namespace CourseProject_ShowDesk.Forms
     public partial class AuthenticateForm : MetroFramework.Forms.MetroForm
     {
         private readonly EmployeeManager employeeManager;
+        private readonly MasterCypherAES masterCypher;
 
         public AuthenticateForm()
         {
@@ -34,6 +37,11 @@ namespace CourseProject_ShowDesk.Forms
                 //FormConfigurator.RestartForm<AuthenticateForm>(this);
                 FormConfigurator.RestartApp();
             }
+
+            Env.Load("../../.env");
+            string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
+            masterCypher = new MasterCypherAES(masterKey);
+
             PopulateComboBox();
 
             comboBoxUser.SelectedIndex = 2;
@@ -163,8 +171,9 @@ namespace CourseProject_ShowDesk.Forms
         {
             foreach (Employee employee in employeeManager.Employees)
             {
+                string pass = masterCypher.Decrypt(employee.Password);
                 if (employee.Login == textBoxLogin.Text &&
-                    employee.Password == textBoxPassword.Text &&
+                    pass == textBoxPassword.Text &&
                     employee.ProfessionList.Contains(currentProfession))
                 {
                     return employee;

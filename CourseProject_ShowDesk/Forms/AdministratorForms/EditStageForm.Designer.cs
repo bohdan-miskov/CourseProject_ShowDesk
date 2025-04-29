@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditStageForm));
             this.buttonSave = new System.Windows.Forms.Button();
             this.labelStageName = new System.Windows.Forms.Label();
@@ -55,10 +55,10 @@
             this.groupBoxZones = new System.Windows.Forms.GroupBox();
             this.groupBoxForm = new System.Windows.Forms.GroupBox();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
-            this.labelAccountName = new System.Windows.Forms.Label();
             this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
             this.menuStripStage.SuspendLayout();
             this.groupBoxStage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewZones)).BeginInit();
@@ -66,8 +66,8 @@
             this.groupBoxZones.SuspendLayout();
             this.groupBoxForm.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.contextMenuStripAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSave
@@ -79,7 +79,7 @@
             this.buttonSave.MinimumSize = new System.Drawing.Size(80, 0);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(111, 37);
-            this.buttonSave.TabIndex = 8;
+            this.buttonSave.TabIndex = 1;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
@@ -102,7 +102,7 @@
             this.textBoxStageName.Location = new System.Drawing.Point(168, 38);
             this.textBoxStageName.Name = "textBoxStageName";
             this.textBoxStageName.Size = new System.Drawing.Size(288, 28);
-            this.textBoxStageName.TabIndex = 7;
+            this.textBoxStageName.TabIndex = 0;
             this.textBoxStageName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStageName_KeyUp);
             // 
             // menuStripStage
@@ -113,7 +113,7 @@
             this.zoneToolStripMenuItem});
             this.menuStripStage.Location = new System.Drawing.Point(0, 0);
             this.menuStripStage.Name = "menuStripStage";
-            this.menuStripStage.Size = new System.Drawing.Size(75, 26);
+            this.menuStripStage.Size = new System.Drawing.Size(195, 26);
             this.menuStripStage.TabIndex = 12;
             this.menuStripStage.Text = "menuStrip1";
             // 
@@ -135,7 +135,7 @@
             this.addZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addZoneToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.add_icon;
             this.addZoneToolStripMenuItem.Name = "addZoneToolStripMenuItem";
-            this.addZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.addZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addZoneToolStripMenuItem.Text = "Add";
             this.addZoneToolStripMenuItem.Click += new System.EventHandler(this.AddZoneToolStripMenuItem_Click);
             // 
@@ -144,7 +144,7 @@
             this.editZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.editZoneToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.edit_icon;
             this.editZoneToolStripMenuItem.Name = "editZoneToolStripMenuItem";
-            this.editZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.editZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editZoneToolStripMenuItem.Text = "Edit";
             this.editZoneToolStripMenuItem.Click += new System.EventHandler(this.EditZoneToolStripMenuItem_Click);
             // 
@@ -153,7 +153,7 @@
             this.removeZoneToolStripMenuItem.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeZoneToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.remove_icon;
             this.removeZoneToolStripMenuItem.Name = "removeZoneToolStripMenuItem";
-            this.removeZoneToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.removeZoneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.removeZoneToolStripMenuItem.Text = "Remove";
             this.removeZoneToolStripMenuItem.Click += new System.EventHandler(this.RemoveZoneToolStripMenuItem_Click);
             // 
@@ -183,7 +183,7 @@
             this.buttonEditSeating.MinimumSize = new System.Drawing.Size(80, 0);
             this.buttonEditSeating.Name = "buttonEditSeating";
             this.buttonEditSeating.Size = new System.Drawing.Size(115, 37);
-            this.buttonEditSeating.TabIndex = 9;
+            this.buttonEditSeating.TabIndex = 2;
             this.buttonEditSeating.Text = "Edit Seating";
             this.buttonEditSeating.UseVisualStyleBackColor = false;
             this.buttonEditSeating.Click += new System.EventHandler(this.ButtonEditSeating_Click);
@@ -204,14 +204,14 @@
             this.columnStartSeads,
             this.columnEndPositions});
             this.dataGridViewZones.ContextMenuStrip = this.contextMenuStripStage;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewZones.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewZones.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewZones.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewZones.Location = new System.Drawing.Point(3, 24);
             this.dataGridViewZones.Name = "dataGridViewZones";
@@ -219,7 +219,7 @@
             this.dataGridViewZones.RowHeadersVisible = false;
             this.dataGridViewZones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewZones.Size = new System.Drawing.Size(508, 237);
-            this.dataGridViewZones.TabIndex = 12;
+            this.dataGridViewZones.TabIndex = 3;
             this.dataGridViewZones.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewZones_RowEnter);
             this.dataGridViewZones.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewZones_RowLeave);
             // 
@@ -332,6 +332,22 @@
             this.groupBoxProfile.TabIndex = 17;
             this.groupBoxProfile.TabStop = false;
             // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // pictureBoxAccountIcon
             // 
             this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
@@ -355,22 +371,6 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
-            // contextMenuStripAccount
-            // 
-            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            // 
             // EditStageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,8 +391,8 @@
             this.groupBoxForm.ResumeLayout(false);
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.contextMenuStripAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

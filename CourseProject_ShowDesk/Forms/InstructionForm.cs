@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CourseProject_ShowDesk.Forms
 {
@@ -49,7 +50,9 @@ namespace CourseProject_ShowDesk.Forms
 
             string fullText = File.ReadAllText(filePath);
 
-            string[] sections = Regex.Split(fullText, @"(?=^ВСТУП|^SETUP|^НАЛАШТУВАННЯ ПРОГРАМИ|^SETTINGS|^РОЛІ КОРИСТУВАЧІВ|^USER ROLES)", RegexOptions.Multiline);
+            string[] sections = Regex.Split(fullText,
+                @"(?=^ВСТУП|^SETUP|^НАЛАШТУВАННЯ ПРОГРАМИ|^SETTINGS|^РОЛІ КОРИСТУВАЧІВ|^USER ROLES|^РОБОТА З ПОДІЯМИ|^WORKING WITH EVENTS|^ПРОДАЖ КВИТКІВ|^TICKET SALES|^СТАТИСТИКА І ЗВІТНІСТЬ|^STATISTICS AND REPORTS)", 
+                RegexOptions.Multiline);
 
             PopulateFields(sections);
         }
@@ -59,6 +62,9 @@ namespace CourseProject_ShowDesk.Forms
             string entry = "";
             string startSettings = "";
             string roles = "";
+            string events = "";
+            string sales = "";
+            string statistics = "";
 
             foreach (string section in sections)
             {
@@ -68,12 +74,20 @@ namespace CourseProject_ShowDesk.Forms
                     startSettings = section.Trim();
                 else if (section.StartsWith("РОЛІ КОРИСТУВАЧІВ") || section.StartsWith("USER ROLES"))
                     roles = section.Trim();
+                else if (section.StartsWith("РОБОТА З ПОДІЯМИ") || section.StartsWith("WORKING WITH EVENTS"))
+                    events = section.Trim();
+                else if (section.StartsWith("ПРОДАЖ КВИТКІВ") || section.StartsWith("TICKET SALES"))
+                    sales = section.Trim();
+                else if (section.StartsWith("СТАТИСТИКА І ЗВІТНІСТЬ") || section.StartsWith("STATISTICS AND REPORTS"))
+                    statistics = section.Trim();
             }
-
 
             richTextBoxEntry.Text = entry;
             richTextBoxStartSettings.Text = startSettings;
             richTextBoxRoles.Text = roles;
+            richTextBoxWorkingWithEvents.Text=events;
+            richTextBoxTicketSales.Text = sales;
+            richTextBoxStatisticsAndReports.Text = statistics;
         }
     }
 }

@@ -36,21 +36,30 @@
             this.tabPageStart = new System.Windows.Forms.TabPage();
             this.richTextBoxStartSettings = new System.Windows.Forms.RichTextBox();
             this.tabPageRoles = new System.Windows.Forms.TabPage();
+            this.groupBoxPictures = new System.Windows.Forms.GroupBox();
+            this.pictureBoxCashier = new System.Windows.Forms.PictureBox();
             this.pictureBoxAdministrator = new System.Windows.Forms.PictureBox();
             this.pictureBoxDirector = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCashier = new System.Windows.Forms.PictureBox();
             this.richTextBoxRoles = new System.Windows.Forms.RichTextBox();
             this.comboBoxLanguage = new System.Windows.Forms.ComboBox();
-            this.groupBoxPictures = new System.Windows.Forms.GroupBox();
+            this.tabPageWorkingWithEvents = new System.Windows.Forms.TabPage();
+            this.tabPageTicketSales = new System.Windows.Forms.TabPage();
+            this.tabPageStatisticsAndReports = new System.Windows.Forms.TabPage();
+            this.richTextBoxWorkingWithEvents = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxTicketSales = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxStatisticsAndReports = new System.Windows.Forms.RichTextBox();
             this.tabControlInstruction.SuspendLayout();
             this.tabPageEntry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogotype)).BeginInit();
             this.tabPageStart.SuspendLayout();
             this.tabPageRoles.SuspendLayout();
+            this.groupBoxPictures.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCashier)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdministrator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDirector)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCashier)).BeginInit();
-            this.groupBoxPictures.SuspendLayout();
+            this.tabPageWorkingWithEvents.SuspendLayout();
+            this.tabPageTicketSales.SuspendLayout();
+            this.tabPageStatisticsAndReports.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlInstruction
@@ -58,6 +67,9 @@
             this.tabControlInstruction.Controls.Add(this.tabPageEntry);
             this.tabControlInstruction.Controls.Add(this.tabPageStart);
             this.tabControlInstruction.Controls.Add(this.tabPageRoles);
+            this.tabControlInstruction.Controls.Add(this.tabPageWorkingWithEvents);
+            this.tabControlInstruction.Controls.Add(this.tabPageTicketSales);
+            this.tabControlInstruction.Controls.Add(this.tabPageStatisticsAndReports);
             this.tabControlInstruction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlInstruction.Location = new System.Drawing.Point(20, 60);
             this.tabControlInstruction.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
@@ -133,6 +145,29 @@
             this.tabPageRoles.Text = "Roles";
             this.tabPageRoles.UseVisualStyleBackColor = true;
             // 
+            // groupBoxPictures
+            // 
+            this.groupBoxPictures.Controls.Add(this.pictureBoxCashier);
+            this.groupBoxPictures.Controls.Add(this.pictureBoxAdministrator);
+            this.groupBoxPictures.Controls.Add(this.pictureBoxDirector);
+            this.groupBoxPictures.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBoxPictures.Location = new System.Drawing.Point(698, 0);
+            this.groupBoxPictures.MaximumSize = new System.Drawing.Size(210, 0);
+            this.groupBoxPictures.Name = "groupBoxPictures";
+            this.groupBoxPictures.Size = new System.Drawing.Size(154, 536);
+            this.groupBoxPictures.TabIndex = 5;
+            this.groupBoxPictures.TabStop = false;
+            // 
+            // pictureBoxCashier
+            // 
+            this.pictureBoxCashier.Image = global::CourseProject_ShowDesk.Properties.Resources.Cashier;
+            this.pictureBoxCashier.Location = new System.Drawing.Point(0, 358);
+            this.pictureBoxCashier.Name = "pictureBoxCashier";
+            this.pictureBoxCashier.Size = new System.Drawing.Size(154, 182);
+            this.pictureBoxCashier.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxCashier.TabIndex = 2;
+            this.pictureBoxCashier.TabStop = false;
+            // 
             // pictureBoxAdministrator
             // 
             this.pictureBoxAdministrator.Image = global::CourseProject_ShowDesk.Properties.Resources.Administrator;
@@ -152,16 +187,6 @@
             this.pictureBoxDirector.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxDirector.TabIndex = 3;
             this.pictureBoxDirector.TabStop = false;
-            // 
-            // pictureBoxCashier
-            // 
-            this.pictureBoxCashier.Image = global::CourseProject_ShowDesk.Properties.Resources.Cashier;
-            this.pictureBoxCashier.Location = new System.Drawing.Point(0, 358);
-            this.pictureBoxCashier.Name = "pictureBoxCashier";
-            this.pictureBoxCashier.Size = new System.Drawing.Size(154, 182);
-            this.pictureBoxCashier.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxCashier.TabIndex = 2;
-            this.pictureBoxCashier.TabStop = false;
             // 
             // richTextBoxRoles
             // 
@@ -187,18 +212,71 @@
             this.comboBoxLanguage.TabIndex = 1;
             this.comboBoxLanguage.SelectedIndexChanged += new System.EventHandler(this.ComboBoxLanguage_SelectedIndexChanged);
             // 
-            // groupBoxPictures
+            // tabPageWorkingWithEvents
             // 
-            this.groupBoxPictures.Controls.Add(this.pictureBoxCashier);
-            this.groupBoxPictures.Controls.Add(this.pictureBoxAdministrator);
-            this.groupBoxPictures.Controls.Add(this.pictureBoxDirector);
-            this.groupBoxPictures.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBoxPictures.Location = new System.Drawing.Point(698, 0);
-            this.groupBoxPictures.MaximumSize = new System.Drawing.Size(210, 0);
-            this.groupBoxPictures.Name = "groupBoxPictures";
-            this.groupBoxPictures.Size = new System.Drawing.Size(154, 536);
-            this.groupBoxPictures.TabIndex = 5;
-            this.groupBoxPictures.TabStop = false;
+            this.tabPageWorkingWithEvents.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPageWorkingWithEvents.Controls.Add(this.richTextBoxWorkingWithEvents);
+            this.tabPageWorkingWithEvents.Location = new System.Drawing.Point(4, 30);
+            this.tabPageWorkingWithEvents.Name = "tabPageWorkingWithEvents";
+            this.tabPageWorkingWithEvents.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageWorkingWithEvents.Size = new System.Drawing.Size(852, 536);
+            this.tabPageWorkingWithEvents.TabIndex = 3;
+            this.tabPageWorkingWithEvents.Text = "Working with events";
+            // 
+            // tabPageTicketSales
+            // 
+            this.tabPageTicketSales.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPageTicketSales.Controls.Add(this.richTextBoxTicketSales);
+            this.tabPageTicketSales.Location = new System.Drawing.Point(4, 30);
+            this.tabPageTicketSales.Name = "tabPageTicketSales";
+            this.tabPageTicketSales.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTicketSales.Size = new System.Drawing.Size(852, 536);
+            this.tabPageTicketSales.TabIndex = 4;
+            this.tabPageTicketSales.Text = "Ticket sales";
+            // 
+            // tabPageStatisticsAndReports
+            // 
+            this.tabPageStatisticsAndReports.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPageStatisticsAndReports.Controls.Add(this.richTextBoxStatisticsAndReports);
+            this.tabPageStatisticsAndReports.Location = new System.Drawing.Point(4, 30);
+            this.tabPageStatisticsAndReports.Name = "tabPageStatisticsAndReports";
+            this.tabPageStatisticsAndReports.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageStatisticsAndReports.Size = new System.Drawing.Size(852, 536);
+            this.tabPageStatisticsAndReports.TabIndex = 5;
+            this.tabPageStatisticsAndReports.Text = "Statistics and reports";
+            // 
+            // richTextBoxWorkingWithEvents
+            // 
+            this.richTextBoxWorkingWithEvents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxWorkingWithEvents.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxWorkingWithEvents.Location = new System.Drawing.Point(3, 3);
+            this.richTextBoxWorkingWithEvents.Name = "richTextBoxWorkingWithEvents";
+            this.richTextBoxWorkingWithEvents.ReadOnly = true;
+            this.richTextBoxWorkingWithEvents.Size = new System.Drawing.Size(846, 530);
+            this.richTextBoxWorkingWithEvents.TabIndex = 1;
+            this.richTextBoxWorkingWithEvents.Text = resources.GetString("richTextBoxWorkingWithEvents.Text");
+            // 
+            // richTextBoxTicketSales
+            // 
+            this.richTextBoxTicketSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxTicketSales.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxTicketSales.Location = new System.Drawing.Point(3, 3);
+            this.richTextBoxTicketSales.Name = "richTextBoxTicketSales";
+            this.richTextBoxTicketSales.ReadOnly = true;
+            this.richTextBoxTicketSales.Size = new System.Drawing.Size(846, 530);
+            this.richTextBoxTicketSales.TabIndex = 1;
+            this.richTextBoxTicketSales.Text = resources.GetString("richTextBoxTicketSales.Text");
+            // 
+            // richTextBoxStatisticsAndReports
+            // 
+            this.richTextBoxStatisticsAndReports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTextBoxStatisticsAndReports.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxStatisticsAndReports.Location = new System.Drawing.Point(3, 3);
+            this.richTextBoxStatisticsAndReports.Name = "richTextBoxStatisticsAndReports";
+            this.richTextBoxStatisticsAndReports.ReadOnly = true;
+            this.richTextBoxStatisticsAndReports.Size = new System.Drawing.Size(846, 530);
+            this.richTextBoxStatisticsAndReports.TabIndex = 1;
+            this.richTextBoxStatisticsAndReports.Text = resources.GetString("richTextBoxStatisticsAndReports.Text");
             // 
             // InstructionForm
             // 
@@ -217,10 +295,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogotype)).EndInit();
             this.tabPageStart.ResumeLayout(false);
             this.tabPageRoles.ResumeLayout(false);
+            this.groupBoxPictures.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCashier)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdministrator)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDirector)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCashier)).EndInit();
-            this.groupBoxPictures.ResumeLayout(false);
+            this.tabPageWorkingWithEvents.ResumeLayout(false);
+            this.tabPageTicketSales.ResumeLayout(false);
+            this.tabPageStatisticsAndReports.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -240,5 +321,11 @@
         private System.Windows.Forms.PictureBox pictureBoxLogotype;
         private System.Windows.Forms.ComboBox comboBoxLanguage;
         private System.Windows.Forms.GroupBox groupBoxPictures;
+        private System.Windows.Forms.TabPage tabPageWorkingWithEvents;
+        private System.Windows.Forms.RichTextBox richTextBoxWorkingWithEvents;
+        private System.Windows.Forms.TabPage tabPageTicketSales;
+        private System.Windows.Forms.RichTextBox richTextBoxTicketSales;
+        private System.Windows.Forms.TabPage tabPageStatisticsAndReports;
+        private System.Windows.Forms.RichTextBox richTextBoxStatisticsAndReports;
     }
 }

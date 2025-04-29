@@ -3,10 +3,11 @@ using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
+using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
 using System;
 using System.Windows.Forms;
 using DotNetEnv;
-using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
+using System.IO;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
@@ -46,8 +47,10 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             searchData = new SearchDataGrid(dataGridViewEmployees);
 
-            Env.Load();
+            string envPath = "D:\\Коледж\\Курсова робота 3курс\\CourseProject_ShowDesk\\CourseProject_ShowDesk\\.env";
+            Env.Load(envPath);
             string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
+            MessageBox.Show("MASTER_PASSWORD = " + Environment.GetEnvironmentVariable("MASTER_PASSWORD"));
             masterCypher = new MasterCypherAES(masterKey);
         }
         private void ManageEmployeesForm_Shown(object sender, EventArgs e)
@@ -160,7 +163,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                     employee.Id,
                     employee.FullName,
                     employee.Login,
-                    new String(AppConstants.PasswordChar, employee.Password.Length),
+                    new String(AppConstants.PasswordChar, masterCypher.Decrypt(employee.Password).Length),
                     employee.GetStringOfProfessionList()
                     );
         }

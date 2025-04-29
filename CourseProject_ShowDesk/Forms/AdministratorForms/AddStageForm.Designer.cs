@@ -35,14 +35,14 @@
             this.labelStageName = new System.Windows.Forms.Label();
             this.groupBoxStage = new System.Windows.Forms.GroupBox();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
-            this.labelAccountName = new System.Windows.Forms.Label();
             this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
             this.groupBoxStage.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.contextMenuStripAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -52,7 +52,7 @@
             this.buttonAdd.Location = new System.Drawing.Point(98, 90);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(119, 36);
-            this.buttonAdd.TabIndex = 9;
+            this.buttonAdd.TabIndex = 1;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
@@ -63,7 +63,7 @@
             this.textBoxStageName.Location = new System.Drawing.Point(148, 41);
             this.textBoxStageName.Name = "textBoxStageName";
             this.textBoxStageName.Size = new System.Drawing.Size(168, 28);
-            this.textBoxStageName.TabIndex = 8;
+            this.textBoxStageName.TabIndex = 0;
             this.textBoxStageName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStageName_KeyUp);
             // 
             // labelStageName
@@ -102,6 +102,22 @@
             this.groupBoxProfile.TabIndex = 17;
             this.groupBoxProfile.TabStop = false;
             // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // pictureBoxAccountIcon
             // 
             this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
@@ -125,22 +141,6 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
-            // contextMenuStripAccount
-            // 
-            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            // 
             // AddStageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -154,8 +154,8 @@
             this.groupBoxStage.PerformLayout();
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.contextMenuStripAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1,5 +1,6 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -22,6 +23,9 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
                 var test = db.RunCommandAsync((Command<BsonDocument>)"{ping:1}").Result;
 
                 employeeCollection = db.GetCollection<Employee>(AppConstants.EmployeesCollectionName);
+
+                var update = Builders<Employee>.Update.Unset("ScaleFactor");
+                employeeCollection.UpdateMany(Builders<Employee>.Filter.Empty, update);
             }
             catch
             {

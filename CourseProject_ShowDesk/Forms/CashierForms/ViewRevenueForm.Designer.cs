@@ -59,6 +59,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
+            this.buttonSavePdf = new System.Windows.Forms.Button();
             this.groupBoxPeriod.SuspendLayout();
             this.groupBoxRevenue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).BeginInit();
@@ -92,6 +93,7 @@
             // groupBoxPeriod
             // 
             this.groupBoxPeriod.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxPeriod.Controls.Add(this.buttonSavePdf);
             this.groupBoxPeriod.Controls.Add(this.comboBoxChartType);
             this.groupBoxPeriod.Controls.Add(this.labelChartType);
             this.groupBoxPeriod.Controls.Add(this.labelFinishDate);
@@ -113,7 +115,7 @@
             this.comboBoxChartType.Location = new System.Drawing.Point(126, 98);
             this.comboBoxChartType.Name = "comboBoxChartType";
             this.comboBoxChartType.Size = new System.Drawing.Size(181, 29);
-            this.comboBoxChartType.TabIndex = 6;
+            this.comboBoxChartType.TabIndex = 2;
             // 
             // labelChartType
             // 
@@ -151,11 +153,11 @@
             // buttonCalculate
             // 
             this.buttonCalculate.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonCalculate.Location = new System.Drawing.Point(126, 136);
+            this.buttonCalculate.Location = new System.Drawing.Point(25, 149);
             this.buttonCalculate.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.buttonCalculate.Name = "buttonCalculate";
-            this.buttonCalculate.Size = new System.Drawing.Size(140, 45);
-            this.buttonCalculate.TabIndex = 2;
+            this.buttonCalculate.Size = new System.Drawing.Size(120, 40);
+            this.buttonCalculate.TabIndex = 3;
             this.buttonCalculate.Text = "Calculate";
             this.buttonCalculate.UseVisualStyleBackColor = false;
             this.buttonCalculate.Click += new System.EventHandler(this.ButtonCalculate_Click);
@@ -189,7 +191,7 @@
             this.chartRevenue.Location = new System.Drawing.Point(9, 30);
             this.chartRevenue.Name = "chartRevenue";
             this.chartRevenue.Size = new System.Drawing.Size(591, 388);
-            this.chartRevenue.TabIndex = 0;
+            this.chartRevenue.TabIndex = 8;
             // 
             // groupBoxForm
             // 
@@ -270,7 +272,7 @@
             this.textBoxBestPerformance.Name = "textBoxBestPerformance";
             this.textBoxBestPerformance.ReadOnly = true;
             this.textBoxBestPerformance.Size = new System.Drawing.Size(181, 28);
-            this.textBoxBestPerformance.TabIndex = 5;
+            this.textBoxBestPerformance.TabIndex = 6;
             // 
             // labelBestPerformance
             // 
@@ -287,7 +289,7 @@
             this.textBoxAverage.Name = "textBoxAverage";
             this.textBoxAverage.ReadOnly = true;
             this.textBoxAverage.Size = new System.Drawing.Size(181, 28);
-            this.textBoxAverage.TabIndex = 3;
+            this.textBoxAverage.TabIndex = 5;
             // 
             // labelAverage
             // 
@@ -304,7 +306,7 @@
             this.textBoxSum.Name = "textBoxSum";
             this.textBoxSum.ReadOnly = true;
             this.textBoxSum.Size = new System.Drawing.Size(181, 28);
-            this.textBoxSum.TabIndex = 1;
+            this.textBoxSum.TabIndex = 4;
             // 
             // labelSum
             // 
@@ -332,13 +334,13 @@
             this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -364,6 +366,18 @@
             this.labelAccountName.Size = new System.Drawing.Size(92, 17);
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
+            // 
+            // buttonSavePdf
+            // 
+            this.buttonSavePdf.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonSavePdf.Location = new System.Drawing.Point(185, 149);
+            this.buttonSavePdf.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.buttonSavePdf.Name = "buttonSavePdf";
+            this.buttonSavePdf.Size = new System.Drawing.Size(120, 40);
+            this.buttonSavePdf.TabIndex = 6;
+            this.buttonSavePdf.Text = "Save pdf";
+            this.buttonSavePdf.UseVisualStyleBackColor = false;
+            this.buttonSavePdf.Click += new System.EventHandler(this.ButtonSavePdf_Click);
             // 
             // ViewRevenueForm
             // 
@@ -419,5 +433,6 @@
         private System.Windows.Forms.Label labelAccountName;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripAccount;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Button buttonSavePdf;
     }
 }

@@ -150,7 +150,7 @@
             this.textBoxPerformancesCollectionName.Location = new System.Drawing.Point(137, 124);
             this.textBoxPerformancesCollectionName.Name = "textBoxPerformancesCollectionName";
             this.textBoxPerformancesCollectionName.Size = new System.Drawing.Size(148, 28);
-            this.textBoxPerformancesCollectionName.TabIndex = 1;
+            this.textBoxPerformancesCollectionName.TabIndex = 16;
             this.textBoxPerformancesCollectionName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPerformancesFileName_KeyPress);
             this.textBoxPerformancesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPerformancesCollectionName_KeyUp);
             // 
@@ -176,7 +176,7 @@
             this.textBoxCompanyName.Location = new System.Drawing.Point(181, 23);
             this.textBoxCompanyName.Name = "textBoxCompanyName";
             this.textBoxCompanyName.Size = new System.Drawing.Size(120, 28);
-            this.textBoxCompanyName.TabIndex = 12;
+            this.textBoxCompanyName.TabIndex = 37;
             this.textBoxCompanyName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxCompanyName_KeyUp);
             // 
             // labelCompanyName
@@ -197,7 +197,7 @@
             this.textBoxPasswordChar.MaxLength = 1;
             this.textBoxPasswordChar.Name = "textBoxPasswordChar";
             this.textBoxPasswordChar.Size = new System.Drawing.Size(120, 28);
-            this.textBoxPasswordChar.TabIndex = 10;
+            this.textBoxPasswordChar.TabIndex = 39;
             this.textBoxPasswordChar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPasswordChar_KeyUp);
             // 
             // labelPasswordChar
@@ -218,7 +218,7 @@
             this.textBoxCurrencySymbol.MaxLength = 1;
             this.textBoxCurrencySymbol.Name = "textBoxCurrencySymbol";
             this.textBoxCurrencySymbol.Size = new System.Drawing.Size(120, 28);
-            this.textBoxCurrencySymbol.TabIndex = 7;
+            this.textBoxCurrencySymbol.TabIndex = 38;
             this.textBoxCurrencySymbol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxCurrencySymbol_KeyPress);
             this.textBoxCurrencySymbol.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxCurrencySymbol_KeyUp);
             // 
@@ -239,7 +239,7 @@
             this.buttonCancelOtherSettings.Location = new System.Drawing.Point(485, 328);
             this.buttonCancelOtherSettings.Name = "buttonCancelOtherSettings";
             this.buttonCancelOtherSettings.Size = new System.Drawing.Size(125, 45);
-            this.buttonCancelOtherSettings.TabIndex = 8;
+            this.buttonCancelOtherSettings.TabIndex = 41;
             this.buttonCancelOtherSettings.Text = "Cancel";
             this.buttonCancelOtherSettings.UseVisualStyleBackColor = false;
             this.buttonCancelOtherSettings.Click += new System.EventHandler(this.ButtonCancelOtherChanges_Click);
@@ -250,7 +250,7 @@
             this.buttonSaveOtherSettings.Location = new System.Drawing.Point(319, 328);
             this.buttonSaveOtherSettings.Name = "buttonSaveOtherSettings";
             this.buttonSaveOtherSettings.Size = new System.Drawing.Size(125, 45);
-            this.buttonSaveOtherSettings.TabIndex = 7;
+            this.buttonSaveOtherSettings.TabIndex = 40;
             this.buttonSaveOtherSettings.Text = "Save";
             this.buttonSaveOtherSettings.UseVisualStyleBackColor = false;
             this.buttonSaveOtherSettings.Click += new System.EventHandler(this.ButtonSaveOtherSettings_Click);
@@ -280,7 +280,7 @@
             this.buttonCancelName.Location = new System.Drawing.Point(145, 316);
             this.buttonCancelName.Name = "buttonCancelName";
             this.buttonCancelName.Size = new System.Drawing.Size(100, 31);
-            this.buttonCancelName.TabIndex = 6;
+            this.buttonCancelName.TabIndex = 32;
             this.buttonCancelName.Text = "Cancel";
             this.buttonCancelName.UseVisualStyleBackColor = false;
             this.buttonCancelName.Click += new System.EventHandler(this.ButtonCancelName_Click);
@@ -292,7 +292,7 @@
             this.buttonRemoveName.Location = new System.Drawing.Point(145, 280);
             this.buttonRemoveName.Name = "buttonRemoveName";
             this.buttonRemoveName.Size = new System.Drawing.Size(125, 30);
-            this.buttonRemoveName.TabIndex = 14;
+            this.buttonRemoveName.TabIndex = 30;
             this.buttonRemoveName.Text = "Remove name";
             this.buttonRemoveName.UseVisualStyleBackColor = false;
             this.buttonRemoveName.Click += new System.EventHandler(this.ButtonRemoveName_Click);
@@ -303,7 +303,7 @@
             this.buttonAddName.Location = new System.Drawing.Point(9, 280);
             this.buttonAddName.Name = "buttonAddName";
             this.buttonAddName.Size = new System.Drawing.Size(125, 30);
-            this.buttonAddName.TabIndex = 13;
+            this.buttonAddName.TabIndex = 29;
             this.buttonAddName.Text = "Add name";
             this.buttonAddName.UseVisualStyleBackColor = false;
             this.buttonAddName.Click += new System.EventHandler(this.ButtonAddName_Click);
@@ -314,7 +314,7 @@
             this.buttonSaveName.Location = new System.Drawing.Point(14, 316);
             this.buttonSaveName.Name = "buttonSaveName";
             this.buttonSaveName.Size = new System.Drawing.Size(100, 31);
-            this.buttonSaveName.TabIndex = 5;
+            this.buttonSaveName.TabIndex = 31;
             this.buttonSaveName.Text = "Save name";
             this.buttonSaveName.UseVisualStyleBackColor = false;
             this.buttonSaveName.Click += new System.EventHandler(this.ButtonSaveName_Click);
@@ -337,7 +337,7 @@
             this.textBoxItemName.Location = new System.Drawing.Point(99, 243);
             this.textBoxItemName.Name = "textBoxItemName";
             this.textBoxItemName.Size = new System.Drawing.Size(154, 28);
-            this.textBoxItemName.TabIndex = 4;
+            this.textBoxItemName.TabIndex = 28;
             this.textBoxItemName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxItemName_KeyPress);
             this.textBoxItemName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxItemName_KeyUp);
             // 
@@ -358,7 +358,7 @@
             this.comboBoxListName.Location = new System.Drawing.Point(99, 27);
             this.comboBoxListName.Name = "comboBoxListName";
             this.comboBoxListName.Size = new System.Drawing.Size(154, 29);
-            this.comboBoxListName.TabIndex = 1;
+            this.comboBoxListName.TabIndex = 26;
             this.comboBoxListName.SelectedIndexChanged += new System.EventHandler(this.ComboBoxListName_SelectedIndexChanged);
             this.comboBoxListName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxListName_KeyUp);
             // 
@@ -369,7 +369,7 @@
             this.listBoxViewNames.Location = new System.Drawing.Point(9, 65);
             this.listBoxViewNames.Name = "listBoxViewNames";
             this.listBoxViewNames.Size = new System.Drawing.Size(244, 172);
-            this.listBoxViewNames.TabIndex = 0;
+            this.listBoxViewNames.TabIndex = 27;
             this.listBoxViewNames.SelectedIndexChanged += new System.EventHandler(this.ListBoxViewNames_SelectedIndexChanged);
             this.listBoxViewNames.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ListBoxViewNames_KeyUp);
             // 
@@ -410,7 +410,7 @@
             this.textBoxGeneralCollectionName.Location = new System.Drawing.Point(137, 24);
             this.textBoxGeneralCollectionName.Name = "textBoxGeneralCollectionName";
             this.textBoxGeneralCollectionName.Size = new System.Drawing.Size(148, 28);
-            this.textBoxGeneralCollectionName.TabIndex = 9;
+            this.textBoxGeneralCollectionName.TabIndex = 13;
             this.textBoxGeneralCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxGeneralCollectionName_KeyUp);
             // 
             // labelPastPerformancesCollectionName
@@ -430,7 +430,7 @@
             this.textBoxPastPerformancesCollectionName.Location = new System.Drawing.Point(137, 158);
             this.textBoxPastPerformancesCollectionName.Name = "textBoxPastPerformancesCollectionName";
             this.textBoxPastPerformancesCollectionName.Size = new System.Drawing.Size(148, 28);
-            this.textBoxPastPerformancesCollectionName.TabIndex = 7;
+            this.textBoxPastPerformancesCollectionName.TabIndex = 17;
             this.textBoxPastPerformancesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPastPerformancesCollectionName_KeyUp);
             // 
             // labelEmployeesCollectionName
@@ -450,7 +450,7 @@
             this.textBoxEmployeesCollectionName.Location = new System.Drawing.Point(137, 56);
             this.textBoxEmployeesCollectionName.Name = "textBoxEmployeesCollectionName";
             this.textBoxEmployeesCollectionName.Size = new System.Drawing.Size(148, 28);
-            this.textBoxEmployeesCollectionName.TabIndex = 5;
+            this.textBoxEmployeesCollectionName.TabIndex = 14;
             this.textBoxEmployeesCollectionName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxEmployeesFileName_KeyPress);
             this.textBoxEmployeesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxEmployeesCollectionName_KeyUp);
             // 
@@ -471,7 +471,7 @@
             this.textBoxStagesCollectionName.Location = new System.Drawing.Point(137, 90);
             this.textBoxStagesCollectionName.Name = "textBoxStagesCollectionName";
             this.textBoxStagesCollectionName.Size = new System.Drawing.Size(148, 28);
-            this.textBoxStagesCollectionName.TabIndex = 3;
+            this.textBoxStagesCollectionName.TabIndex = 15;
             this.textBoxStagesCollectionName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxStagesFileName_KeyPress);
             this.textBoxStagesCollectionName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxStagesCollectionName_KeyUp);
             // 
@@ -536,7 +536,7 @@
             this.tabControlSetting.Name = "tabControlSetting";
             this.tabControlSetting.SelectedIndex = 0;
             this.tabControlSetting.Size = new System.Drawing.Size(629, 420);
-            this.tabControlSetting.TabIndex = 10;
+            this.tabControlSetting.TabIndex = 25;
             // 
             // tabPagePerformanceSettings
             // 
@@ -559,7 +559,7 @@
             this.buttonCancelPerformanceSettings.Location = new System.Drawing.Point(336, 296);
             this.buttonCancelPerformanceSettings.Name = "buttonCancelPerformanceSettings";
             this.buttonCancelPerformanceSettings.Size = new System.Drawing.Size(125, 45);
-            this.buttonCancelPerformanceSettings.TabIndex = 16;
+            this.buttonCancelPerformanceSettings.TabIndex = 11;
             this.buttonCancelPerformanceSettings.Text = "Cancel";
             this.buttonCancelPerformanceSettings.UseVisualStyleBackColor = false;
             this.buttonCancelPerformanceSettings.Click += new System.EventHandler(this.ButtonCancelPerformanceSettings_Click);
@@ -570,7 +570,7 @@
             this.buttonSavePerformanceSettings.Location = new System.Drawing.Point(176, 296);
             this.buttonSavePerformanceSettings.Name = "buttonSavePerformanceSettings";
             this.buttonSavePerformanceSettings.Size = new System.Drawing.Size(125, 45);
-            this.buttonSavePerformanceSettings.TabIndex = 15;
+            this.buttonSavePerformanceSettings.TabIndex = 10;
             this.buttonSavePerformanceSettings.Text = "Save";
             this.buttonSavePerformanceSettings.UseVisualStyleBackColor = false;
             this.buttonSavePerformanceSettings.Click += new System.EventHandler(this.ButtonSavePerformanceSettings_Click);
@@ -599,7 +599,7 @@
             this.buttonSelectReceiptFolder.Location = new System.Drawing.Point(554, 59);
             this.buttonSelectReceiptFolder.Name = "buttonSelectReceiptFolder";
             this.buttonSelectReceiptFolder.Size = new System.Drawing.Size(28, 28);
-            this.buttonSelectReceiptFolder.TabIndex = 29;
+            this.buttonSelectReceiptFolder.TabIndex = 9;
             this.buttonSelectReceiptFolder.Text = " ";
             this.buttonSelectReceiptFolder.UseVisualStyleBackColor = false;
             this.buttonSelectReceiptFolder.Click += new System.EventHandler(this.ButtonSelectReceiptFolder_Click);
@@ -610,7 +610,7 @@
             this.checkBoxReceiptPrint.Location = new System.Drawing.Point(110, 27);
             this.checkBoxReceiptPrint.Name = "checkBoxReceiptPrint";
             this.checkBoxReceiptPrint.Size = new System.Drawing.Size(127, 25);
-            this.checkBoxReceiptPrint.TabIndex = 11;
+            this.checkBoxReceiptPrint.TabIndex = 7;
             this.checkBoxReceiptPrint.Text = "Print receipt";
             this.checkBoxReceiptPrint.UseVisualStyleBackColor = true;
             this.checkBoxReceiptPrint.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxReceiptPrint_KeyUp);
@@ -621,7 +621,7 @@
             this.textBoxReceiptSavePath.Location = new System.Drawing.Point(110, 59);
             this.textBoxReceiptSavePath.Name = "textBoxReceiptSavePath";
             this.textBoxReceiptSavePath.Size = new System.Drawing.Size(438, 28);
-            this.textBoxReceiptSavePath.TabIndex = 7;
+            this.textBoxReceiptSavePath.TabIndex = 8;
             this.textBoxReceiptSavePath.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxReceiptSavePath_KeyUp);
             // 
             // labelReceiptSavePath
@@ -667,7 +667,7 @@
             0});
             this.numericUpDownPremiumIncrease.Name = "numericUpDownPremiumIncrease";
             this.numericUpDownPremiumIncrease.Size = new System.Drawing.Size(134, 28);
-            this.numericUpDownPremiumIncrease.TabIndex = 8;
+            this.numericUpDownPremiumIncrease.TabIndex = 6;
             this.numericUpDownPremiumIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownPremiumIncrease_KeyUp);
             // 
             // numericUpDownStandardPlusIncrease
@@ -686,7 +686,7 @@
             0});
             this.numericUpDownStandardPlusIncrease.Name = "numericUpDownStandardPlusIncrease";
             this.numericUpDownStandardPlusIncrease.Size = new System.Drawing.Size(134, 28);
-            this.numericUpDownStandardPlusIncrease.TabIndex = 7;
+            this.numericUpDownStandardPlusIncrease.TabIndex = 5;
             this.numericUpDownStandardPlusIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownStandardPlusIncrease_KeyUp);
             // 
             // numericUpDownStandardIncrease
@@ -705,7 +705,7 @@
             0});
             this.numericUpDownStandardIncrease.Name = "numericUpDownStandardIncrease";
             this.numericUpDownStandardIncrease.Size = new System.Drawing.Size(134, 28);
-            this.numericUpDownStandardIncrease.TabIndex = 6;
+            this.numericUpDownStandardIncrease.TabIndex = 4;
             this.numericUpDownStandardIncrease.KeyUp += new System.Windows.Forms.KeyEventHandler(this.NumericUpDownStandardIncrease_KeyUp);
             // 
             // labelStandardIncrease
@@ -764,7 +764,7 @@
             this.dateTimePickerMaxDuration.Name = "dateTimePickerMaxDuration";
             this.dateTimePickerMaxDuration.ShowUpDown = true;
             this.dateTimePickerMaxDuration.Size = new System.Drawing.Size(141, 28);
-            this.dateTimePickerMaxDuration.TabIndex = 7;
+            this.dateTimePickerMaxDuration.TabIndex = 3;
             this.dateTimePickerMaxDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerMaxDuration_KeyUp);
             // 
             // dateTimePickerMinBreak
@@ -774,7 +774,7 @@
             this.dateTimePickerMinBreak.Name = "dateTimePickerMinBreak";
             this.dateTimePickerMinBreak.ShowUpDown = true;
             this.dateTimePickerMinBreak.Size = new System.Drawing.Size(141, 28);
-            this.dateTimePickerMinBreak.TabIndex = 6;
+            this.dateTimePickerMinBreak.TabIndex = 1;
             this.dateTimePickerMinBreak.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerMinBreak_KeyUp);
             // 
             // dateTimePickerInitialDuration
@@ -784,7 +784,7 @@
             this.dateTimePickerInitialDuration.Name = "dateTimePickerInitialDuration";
             this.dateTimePickerInitialDuration.ShowUpDown = true;
             this.dateTimePickerInitialDuration.Size = new System.Drawing.Size(141, 28);
-            this.dateTimePickerInitialDuration.TabIndex = 5;
+            this.dateTimePickerInitialDuration.TabIndex = 2;
             this.dateTimePickerInitialDuration.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerInitialDuration_KeyUp);
             // 
             // labelMinBreak
@@ -841,7 +841,7 @@
             this.buttonCancelDatabaseSettings.Location = new System.Drawing.Point(334, 314);
             this.buttonCancelDatabaseSettings.Name = "buttonCancelDatabaseSettings";
             this.buttonCancelDatabaseSettings.Size = new System.Drawing.Size(125, 45);
-            this.buttonCancelDatabaseSettings.TabIndex = 13;
+            this.buttonCancelDatabaseSettings.TabIndex = 24;
             this.buttonCancelDatabaseSettings.Text = "Cancel";
             this.buttonCancelDatabaseSettings.UseVisualStyleBackColor = false;
             this.buttonCancelDatabaseSettings.Click += new System.EventHandler(this.ButtonCancelDatabaseSettings_Click);
@@ -852,7 +852,7 @@
             this.buttonSaveDatabaseSettings.Location = new System.Drawing.Point(174, 314);
             this.buttonSaveDatabaseSettings.Name = "buttonSaveDatabaseSettings";
             this.buttonSaveDatabaseSettings.Size = new System.Drawing.Size(125, 45);
-            this.buttonSaveDatabaseSettings.TabIndex = 12;
+            this.buttonSaveDatabaseSettings.TabIndex = 23;
             this.buttonSaveDatabaseSettings.Text = "Save";
             this.buttonSaveDatabaseSettings.UseVisualStyleBackColor = false;
             this.buttonSaveDatabaseSettings.Click += new System.EventHandler(this.ButtonSaveDatabaseSettings_Click);
@@ -885,7 +885,7 @@
             this.dateTimePickerIntervalTickets.Name = "dateTimePickerIntervalTickets";
             this.dateTimePickerIntervalTickets.ShowUpDown = true;
             this.dateTimePickerIntervalTickets.Size = new System.Drawing.Size(140, 28);
-            this.dateTimePickerIntervalTickets.TabIndex = 24;
+            this.dateTimePickerIntervalTickets.TabIndex = 21;
             this.dateTimePickerIntervalTickets.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerIntervalTickets_KeyUp);
             // 
             // dateTimePickerIntervalPerformances
@@ -898,7 +898,7 @@
             this.dateTimePickerIntervalPerformances.Name = "dateTimePickerIntervalPerformances";
             this.dateTimePickerIntervalPerformances.ShowUpDown = true;
             this.dateTimePickerIntervalPerformances.Size = new System.Drawing.Size(140, 28);
-            this.dateTimePickerIntervalPerformances.TabIndex = 23;
+            this.dateTimePickerIntervalPerformances.TabIndex = 20;
             this.dateTimePickerIntervalPerformances.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerIntervalPerformances_KeyUp);
             // 
             // dateTimePickerIntervalStages
@@ -911,7 +911,7 @@
             this.dateTimePickerIntervalStages.Name = "dateTimePickerIntervalStages";
             this.dateTimePickerIntervalStages.ShowUpDown = true;
             this.dateTimePickerIntervalStages.Size = new System.Drawing.Size(140, 28);
-            this.dateTimePickerIntervalStages.TabIndex = 22;
+            this.dateTimePickerIntervalStages.TabIndex = 19;
             this.dateTimePickerIntervalStages.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerIntervalStages_KeyUp);
             // 
             // dateTimePickerIntervalEmployees
@@ -924,7 +924,7 @@
             this.dateTimePickerIntervalEmployees.Name = "dateTimePickerIntervalEmployees";
             this.dateTimePickerIntervalEmployees.ShowUpDown = true;
             this.dateTimePickerIntervalEmployees.Size = new System.Drawing.Size(140, 28);
-            this.dateTimePickerIntervalEmployees.TabIndex = 21;
+            this.dateTimePickerIntervalEmployees.TabIndex = 18;
             this.dateTimePickerIntervalEmployees.Value = new System.DateTime(2025, 4, 13, 7, 45, 28, 0);
             this.dateTimePickerIntervalEmployees.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerIntervalEmployees_KeyUp);
             // 
@@ -990,7 +990,7 @@
             this.textBoxDataBaseLink.Location = new System.Drawing.Point(137, 28);
             this.textBoxDataBaseLink.Name = "textBoxDataBaseLink";
             this.textBoxDataBaseLink.Size = new System.Drawing.Size(456, 28);
-            this.textBoxDataBaseLink.TabIndex = 7;
+            this.textBoxDataBaseLink.TabIndex = 22;
             this.textBoxDataBaseLink.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxDataBaseLink_KeyUp);
             // 
             // label3
@@ -1046,7 +1046,7 @@
             this.buttonChangeSeatHoverColor.Location = new System.Drawing.Point(43, 120);
             this.buttonChangeSeatHoverColor.Name = "buttonChangeSeatHoverColor";
             this.buttonChangeSeatHoverColor.Size = new System.Drawing.Size(28, 28);
-            this.buttonChangeSeatHoverColor.TabIndex = 29;
+            this.buttonChangeSeatHoverColor.TabIndex = 35;
             this.buttonChangeSeatHoverColor.Text = " ";
             this.buttonChangeSeatHoverColor.UseVisualStyleBackColor = false;
             this.buttonChangeSeatHoverColor.Click += new System.EventHandler(this.ButtonChangeSeatHoverColor_Click);
@@ -1063,7 +1063,7 @@
             this.buttonChangeSeatColor.Location = new System.Drawing.Point(43, 64);
             this.buttonChangeSeatColor.Name = "buttonChangeSeatColor";
             this.buttonChangeSeatColor.Size = new System.Drawing.Size(28, 28);
-            this.buttonChangeSeatColor.TabIndex = 28;
+            this.buttonChangeSeatColor.TabIndex = 33;
             this.buttonChangeSeatColor.Text = " ";
             this.buttonChangeSeatColor.UseVisualStyleBackColor = false;
             this.buttonChangeSeatColor.Click += new System.EventHandler(this.ButtonChangeSeatColor_Click);
@@ -1076,7 +1076,7 @@
             this.textBoxSeatHoverColor.Name = "textBoxSeatHoverColor";
             this.textBoxSeatHoverColor.ReadOnly = true;
             this.textBoxSeatHoverColor.Size = new System.Drawing.Size(159, 28);
-            this.textBoxSeatHoverColor.TabIndex = 10;
+            this.textBoxSeatHoverColor.TabIndex = 36;
             this.textBoxSeatHoverColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSeatHoverColor_KeyUp);
             // 
             // label1
@@ -1097,7 +1097,7 @@
             this.textBoxSeatColor.Name = "textBoxSeatColor";
             this.textBoxSeatColor.ReadOnly = true;
             this.textBoxSeatColor.Size = new System.Drawing.Size(159, 28);
-            this.textBoxSeatColor.TabIndex = 7;
+            this.textBoxSeatColor.TabIndex = 34;
             this.textBoxSeatColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxSeatColor_KeyUp);
             // 
             // label2

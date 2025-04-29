@@ -471,6 +471,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             this.Hide();
             viewRevenueForm.ShowDialog();
+            if (viewRevenueForm.GetLogOut())
+            {
+                LogOut();
+                return;
+            }
             this.Show();
         }
 

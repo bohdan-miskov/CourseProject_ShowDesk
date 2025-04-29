@@ -45,14 +45,14 @@
             this.labelDuration = new System.Windows.Forms.Label();
             this.toolTipPerformance = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
-            this.labelAccountName = new System.Windows.Forms.Label();
             this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
             this.groupBoxPerformance.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.contextMenuStripAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSave
@@ -63,7 +63,7 @@
             this.buttonSave.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(147, 40);
-            this.buttonSave.TabIndex = 17;
+            this.buttonSave.TabIndex = 5;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
@@ -127,7 +127,7 @@
             this.comboBoxStage.Location = new System.Drawing.Point(198, 170);
             this.comboBoxStage.Name = "comboBoxStage";
             this.comboBoxStage.Size = new System.Drawing.Size(222, 29);
-            this.comboBoxStage.TabIndex = 12;
+            this.comboBoxStage.TabIndex = 4;
             this.comboBoxStage.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxStage_KeyUp);
             // 
             // textBoxBaseTicketPrice
@@ -136,7 +136,7 @@
             this.textBoxBaseTicketPrice.Location = new System.Drawing.Point(198, 136);
             this.textBoxBaseTicketPrice.Name = "textBoxBaseTicketPrice";
             this.textBoxBaseTicketPrice.Size = new System.Drawing.Size(222, 28);
-            this.textBoxBaseTicketPrice.TabIndex = 11;
+            this.textBoxBaseTicketPrice.TabIndex = 3;
             this.toolTipPerformance.SetToolTip(this.textBoxBaseTicketPrice, "Base price, without increase");
             this.textBoxBaseTicketPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxBaseTicketPrice_KeyPress);
             this.textBoxBaseTicketPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxBaseTicketPrice_KeyUp);
@@ -147,7 +147,7 @@
             this.textBoxPerformanceName.Location = new System.Drawing.Point(198, 68);
             this.textBoxPerformanceName.Name = "textBoxPerformanceName";
             this.textBoxPerformanceName.Size = new System.Drawing.Size(222, 28);
-            this.textBoxPerformanceName.TabIndex = 10;
+            this.textBoxPerformanceName.TabIndex = 1;
             this.textBoxPerformanceName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPerformanceName_KeyUp);
             // 
             // dateTimePickerPerfomanceDate
@@ -159,7 +159,7 @@
             this.dateTimePickerPerfomanceDate.MinDate = new System.DateTime(2025, 1, 9, 0, 0, 0, 0);
             this.dateTimePickerPerfomanceDate.Name = "dateTimePickerPerfomanceDate";
             this.dateTimePickerPerfomanceDate.Size = new System.Drawing.Size(222, 28);
-            this.dateTimePickerPerfomanceDate.TabIndex = 9;
+            this.dateTimePickerPerfomanceDate.TabIndex = 0;
             this.dateTimePickerPerfomanceDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DateTimePickerPerfomanceDate_KeyUp);
             // 
             // groupBoxPerformance
@@ -207,7 +207,7 @@
             this.dateTimePickerDuration.Name = "dateTimePickerDuration";
             this.dateTimePickerDuration.ShowUpDown = true;
             this.dateTimePickerDuration.Size = new System.Drawing.Size(222, 28);
-            this.dateTimePickerDuration.TabIndex = 20;
+            this.dateTimePickerDuration.TabIndex = 2;
             // 
             // labelDuration
             // 
@@ -232,6 +232,22 @@
             this.groupBoxProfile.TabIndex = 19;
             this.groupBoxProfile.TabStop = false;
             // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
             // pictureBoxAccountIcon
             // 
             this.pictureBoxAccountIcon.BackColor = System.Drawing.Color.Transparent;
@@ -255,22 +271,6 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
-            // contextMenuStripAccount
-            // 
-            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            // 
             // AddEditPerformanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -284,8 +284,8 @@
             this.groupBoxPerformance.PerformLayout();
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.contextMenuStripAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
 
         }

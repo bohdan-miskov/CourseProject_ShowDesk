@@ -260,23 +260,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             if (comboBoxTicketType.SelectedIndex == 0)
             {
-                labelInfo.Text = "Only position";
                 groupBoxStandardPlus.Visible = false;
                 groupBoxPremium.Visible = false;
             }
             else if (comboBoxTicketType.SelectedIndex == 1)
             {
-                labelInfo.Text = "Standard + Separate entrance +" +
-                    "Drink of choice";
                 groupBoxStandardPlus.Visible = true;
                 groupBoxPremium.Visible = false;
                 PopulateComboBoxDrink();
             }
             else if (comboBoxTicketType.SelectedIndex == 2)
             {
-                labelInfo.Text = "Standard Plus +" +
-                    "A souvenir from the event +" +
-                    "Backstage access";
                 groupBoxStandardPlus.Visible = true;
                 groupBoxPremium.Visible = true;
                 PopulateComboBoxDrink();

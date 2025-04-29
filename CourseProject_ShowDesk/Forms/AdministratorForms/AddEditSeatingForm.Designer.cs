@@ -71,7 +71,7 @@
             this.buttonAddDecor.Location = new System.Drawing.Point(23, 258);
             this.buttonAddDecor.Name = "buttonAddDecor";
             this.buttonAddDecor.Size = new System.Drawing.Size(104, 41);
-            this.buttonAddDecor.TabIndex = 1;
+            this.buttonAddDecor.TabIndex = 4;
             this.buttonAddDecor.Text = "Add Decor";
             this.buttonAddDecor.UseVisualStyleBackColor = false;
             this.buttonAddDecor.Click += new System.EventHandler(this.ButtonAddDecor_Click);
@@ -83,7 +83,7 @@
             this.buttonChangeColor.Location = new System.Drawing.Point(23, 352);
             this.buttonChangeColor.Name = "buttonChangeColor";
             this.buttonChangeColor.Size = new System.Drawing.Size(104, 41);
-            this.buttonChangeColor.TabIndex = 2;
+            this.buttonChangeColor.TabIndex = 6;
             this.buttonChangeColor.Text = "Change color";
             this.buttonChangeColor.UseVisualStyleBackColor = false;
             this.buttonChangeColor.Click += new System.EventHandler(this.ButtonChangeColor_Click);
@@ -107,7 +107,7 @@
             this.buttonDeleteSeat.Location = new System.Drawing.Point(23, 154);
             this.buttonDeleteSeat.Name = "buttonDeleteSeat";
             this.buttonDeleteSeat.Size = new System.Drawing.Size(104, 41);
-            this.buttonDeleteSeat.TabIndex = 4;
+            this.buttonDeleteSeat.TabIndex = 2;
             this.buttonDeleteSeat.Text = "Delete Seat";
             this.buttonDeleteSeat.UseVisualStyleBackColor = false;
             this.buttonDeleteSeat.Click += new System.EventHandler(this.ButtonDeleteSeat_Click);
@@ -119,7 +119,7 @@
             this.buttonDeleteDecor.Location = new System.Drawing.Point(23, 305);
             this.buttonDeleteDecor.Name = "buttonDeleteDecor";
             this.buttonDeleteDecor.Size = new System.Drawing.Size(104, 41);
-            this.buttonDeleteDecor.TabIndex = 6;
+            this.buttonDeleteDecor.TabIndex = 5;
             this.buttonDeleteDecor.Text = "Delete Decor";
             this.buttonDeleteDecor.UseVisualStyleBackColor = false;
             this.buttonDeleteDecor.Click += new System.EventHandler(this.ButtonDeleteDecor_Click);
@@ -131,7 +131,7 @@
             this.buttonInsertSeat.Location = new System.Drawing.Point(23, 107);
             this.buttonInsertSeat.Name = "buttonInsertSeat";
             this.buttonInsertSeat.Size = new System.Drawing.Size(104, 41);
-            this.buttonInsertSeat.TabIndex = 5;
+            this.buttonInsertSeat.TabIndex = 1;
             this.buttonInsertSeat.Text = "Insert Seat";
             this.buttonInsertSeat.UseVisualStyleBackColor = false;
             this.buttonInsertSeat.Click += new System.EventHandler(this.ButtonInsertSeat_Click);
@@ -142,7 +142,7 @@
             this.panelSeating.Location = new System.Drawing.Point(-1000, -1000);
             this.panelSeating.Name = "panelSeating";
             this.panelSeating.Size = new System.Drawing.Size(3000, 3000);
-            this.panelSeating.TabIndex = 7;
+            this.panelSeating.TabIndex = 8;
             this.panelSeating.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseDown);
             this.panelSeating.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseMove);
             this.panelSeating.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PanelSeating_MouseUp);
@@ -154,7 +154,7 @@
             this.buttonSave.Location = new System.Drawing.Point(25, 443);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(104, 41);
-            this.buttonSave.TabIndex = 8;
+            this.buttonSave.TabIndex = 7;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
             this.buttonSave.Click += new System.EventHandler(this.ButtonSave_Click);
@@ -217,7 +217,7 @@
             this.panelViewport.Location = new System.Drawing.Point(135, 60);
             this.panelViewport.Name = "panelViewport";
             this.panelViewport.Size = new System.Drawing.Size(645, 430);
-            this.panelViewport.TabIndex = 8;
+            this.panelViewport.TabIndex = 9;
             // 
             // AddEditSeatingForm
             // 

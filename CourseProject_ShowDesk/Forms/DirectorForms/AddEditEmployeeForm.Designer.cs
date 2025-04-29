@@ -43,15 +43,15 @@
             this.labelLogin = new System.Windows.Forms.Label();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
-            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
-            this.labelAccountName = new System.Windows.Forms.Label();
             this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
+            this.labelAccountName = new System.Windows.Forms.Label();
             this.groupBoxEmployee.SuspendLayout();
             this.groupBoxProfessionList.SuspendLayout();
             this.groupBoxProfile.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.contextMenuStripAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxEmployee
@@ -93,7 +93,7 @@
             this.checkBoxCashier.Location = new System.Drawing.Point(11, 80);
             this.checkBoxCashier.Name = "checkBoxCashier";
             this.checkBoxCashier.Size = new System.Drawing.Size(75, 22);
-            this.checkBoxCashier.TabIndex = 2;
+            this.checkBoxCashier.TabIndex = 5;
             this.checkBoxCashier.Text = "Cashier";
             this.checkBoxCashier.UseVisualStyleBackColor = true;
             this.checkBoxCashier.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxCashier_KeyUp);
@@ -104,7 +104,7 @@
             this.checkBoxDirector.Location = new System.Drawing.Point(11, 24);
             this.checkBoxDirector.Name = "checkBoxDirector";
             this.checkBoxDirector.Size = new System.Drawing.Size(80, 22);
-            this.checkBoxDirector.TabIndex = 1;
+            this.checkBoxDirector.TabIndex = 3;
             this.checkBoxDirector.Text = "Director";
             this.checkBoxDirector.UseVisualStyleBackColor = true;
             this.checkBoxDirector.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxDirector_KeyUp);
@@ -115,7 +115,7 @@
             this.checkBoxAdministrator.Location = new System.Drawing.Point(11, 52);
             this.checkBoxAdministrator.Name = "checkBoxAdministrator";
             this.checkBoxAdministrator.Size = new System.Drawing.Size(119, 22);
-            this.checkBoxAdministrator.TabIndex = 0;
+            this.checkBoxAdministrator.TabIndex = 4;
             this.checkBoxAdministrator.Text = "Administrator";
             this.checkBoxAdministrator.UseVisualStyleBackColor = true;
             this.checkBoxAdministrator.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxAdministrator_KeyUp);
@@ -127,7 +127,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(168, 28);
-            this.textBoxPassword.TabIndex = 23;
+            this.textBoxPassword.TabIndex = 2;
             this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxPassword_KeyPress);
             this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPassword_KeyUp);
             // 
@@ -148,7 +148,7 @@
             this.textBoxFullName.Location = new System.Drawing.Point(201, 37);
             this.textBoxFullName.Name = "textBoxFullName";
             this.textBoxFullName.Size = new System.Drawing.Size(168, 28);
-            this.textBoxFullName.TabIndex = 15;
+            this.textBoxFullName.TabIndex = 0;
             this.textBoxFullName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxFullName_KeyPress);
             this.textBoxFullName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxFullName_KeyUp);
             // 
@@ -170,7 +170,7 @@
             this.buttonAddEmployee.Location = new System.Drawing.Point(201, 196);
             this.buttonAddEmployee.Name = "buttonAddEmployee";
             this.buttonAddEmployee.Size = new System.Drawing.Size(168, 48);
-            this.buttonAddEmployee.TabIndex = 16;
+            this.buttonAddEmployee.TabIndex = 6;
             this.buttonAddEmployee.Text = "Save";
             this.buttonAddEmployee.UseVisualStyleBackColor = false;
             this.buttonAddEmployee.Click += new System.EventHandler(this.ButtonAddEmployee_Click);
@@ -192,7 +192,7 @@
             this.textBoxLogin.Location = new System.Drawing.Point(201, 68);
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(168, 28);
-            this.textBoxLogin.TabIndex = 18;
+            this.textBoxLogin.TabIndex = 1;
             this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBoxLogin_KeyPress);
             this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxLogin_KeyUp);
             // 
@@ -206,6 +206,22 @@
             this.groupBoxProfile.Size = new System.Drawing.Size(167, 31);
             this.groupBoxProfile.TabIndex = 25;
             this.groupBoxProfile.TabStop = false;
+            // 
+            // contextMenuStripAccount
+            // 
+            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
+            this.contextMenuStripAccount.Size = new System.Drawing.Size(106, 26);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // pictureBoxAccountIcon
             // 
@@ -230,22 +246,6 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
-            // contextMenuStripAccount
-            // 
-            this.contextMenuStripAccount.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contextMenuStripAccount.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.contextMenuStripAccount.Name = "contextMenuStripAccount";
-            this.contextMenuStripAccount.Size = new System.Drawing.Size(181, 48);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Image = global::CourseProject_ShowDesk.Properties.Resources.exit_icon;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            // 
             // AddEditEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,8 +261,8 @@
             this.groupBoxProfessionList.PerformLayout();
             this.groupBoxProfile.ResumeLayout(false);
             this.groupBoxProfile.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.contextMenuStripAccount.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAccountIcon)).EndInit();
             this.ResumeLayout(false);
 
         }

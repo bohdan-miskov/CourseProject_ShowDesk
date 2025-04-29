@@ -47,7 +47,6 @@
             this.groupBoxStandardPlus = new System.Windows.Forms.GroupBox();
             this.comboBoxDrink = new System.Windows.Forms.ComboBox();
             this.labelDrink = new System.Windows.Forms.Label();
-            this.labelInfo = new System.Windows.Forms.Label();
             this.groupBoxProfile = new System.Windows.Forms.GroupBox();
             this.contextMenuStripAccount = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,7 +72,7 @@
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(140, 36);
-            this.buttonAdd.TabIndex = 36;
+            this.buttonAdd.TabIndex = 4;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
             this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
@@ -86,7 +85,7 @@
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.ReadOnly = true;
             this.textBoxPrice.Size = new System.Drawing.Size(213, 28);
-            this.textBoxPrice.TabIndex = 35;
+            this.textBoxPrice.TabIndex = 3;
             this.textBoxPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPrice_KeyUp);
             // 
             // labelPrice
@@ -108,7 +107,7 @@
             this.checkBoxReserved.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.checkBoxReserved.Name = "checkBoxReserved";
             this.checkBoxReserved.Size = new System.Drawing.Size(97, 25);
-            this.checkBoxReserved.TabIndex = 33;
+            this.checkBoxReserved.TabIndex = 2;
             this.checkBoxReserved.Text = "Reserved";
             this.checkBoxReserved.UseVisualStyleBackColor = true;
             this.checkBoxReserved.KeyUp += new System.Windows.Forms.KeyEventHandler(this.CheckBoxReserved_KeyUp);
@@ -120,7 +119,7 @@
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.ReadOnly = true;
             this.textBoxId.Size = new System.Drawing.Size(213, 28);
-            this.textBoxId.TabIndex = 32;
+            this.textBoxId.TabIndex = 0;
             this.textBoxId.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxIndex_KeyUp);
             // 
             // labelId
@@ -158,7 +157,7 @@
             this.comboBoxTicketType.Location = new System.Drawing.Point(148, 74);
             this.comboBoxTicketType.Name = "comboBoxTicketType";
             this.comboBoxTicketType.Size = new System.Drawing.Size(213, 29);
-            this.comboBoxTicketType.TabIndex = 27;
+            this.comboBoxTicketType.TabIndex = 1;
             this.comboBoxTicketType.SelectedIndexChanged += new System.EventHandler(this.ComboBoxTicketType_SelectedIndexChanged);
             this.comboBoxTicketType.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ComboBoxTicketType_KeyUp);
             // 
@@ -170,7 +169,6 @@
             this.groupBoxTicket.Controls.Add(this.labelCurrency);
             this.groupBoxTicket.Controls.Add(this.groupBoxPremium);
             this.groupBoxTicket.Controls.Add(this.groupBoxStandardPlus);
-            this.groupBoxTicket.Controls.Add(this.labelInfo);
             this.groupBoxTicket.Controls.Add(this.textBoxPrice);
             this.groupBoxTicket.Controls.Add(this.comboBoxTicketType);
             this.groupBoxTicket.Controls.Add(this.labelType);
@@ -233,7 +231,7 @@
             this.comboBoxSouvenir.Location = new System.Drawing.Point(119, 27);
             this.comboBoxSouvenir.Name = "comboBoxSouvenir";
             this.comboBoxSouvenir.Size = new System.Drawing.Size(182, 29);
-            this.comboBoxSouvenir.TabIndex = 31;
+            this.comboBoxSouvenir.TabIndex = 6;
             // 
             // labelSouvenir
             // 
@@ -270,7 +268,7 @@
             this.comboBoxDrink.Location = new System.Drawing.Point(119, 27);
             this.comboBoxDrink.Name = "comboBoxDrink";
             this.comboBoxDrink.Size = new System.Drawing.Size(184, 29);
-            this.comboBoxDrink.TabIndex = 31;
+            this.comboBoxDrink.TabIndex = 5;
             // 
             // labelDrink
             // 
@@ -282,19 +280,6 @@
             this.labelDrink.Size = new System.Drawing.Size(57, 21);
             this.labelDrink.TabIndex = 32;
             this.labelDrink.Text = "Drink";
-            // 
-            // labelInfo
-            // 
-            this.labelInfo.AutoSize = true;
-            this.labelInfo.BackColor = System.Drawing.Color.Silver;
-            this.labelInfo.Font = new System.Drawing.Font("Modern No. 20", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfo.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.labelInfo.Location = new System.Drawing.Point(29, 188);
-            this.labelInfo.MaximumSize = new System.Drawing.Size(180, 0);
-            this.labelInfo.Name = "labelInfo";
-            this.labelInfo.Size = new System.Drawing.Size(96, 18);
-            this.labelInfo.TabIndex = 37;
-            this.labelInfo.Text = "Only position";
             // 
             // groupBoxProfile
             // 
@@ -404,7 +389,6 @@
         private System.Windows.Forms.Label labelType;
         private System.Windows.Forms.ComboBox comboBoxTicketType;
         private System.Windows.Forms.GroupBox groupBoxTicket;
-        private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.GroupBox groupBoxStandardPlus;
         private System.Windows.Forms.ComboBox comboBoxDrink;
         private System.Windows.Forms.Label labelDrink;
