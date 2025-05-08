@@ -1,5 +1,4 @@
 ﻿using CourseProject_ShowDesk.Scripts.Utilities.FileService;
-using DotNetEnv;
 using System;
 using System.IO;
 
@@ -19,13 +18,6 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             try
             {
                 AppConstantsData appConstantsData = FileHandler.LoadElementFromJson<AppConstantsData>(appConstantsFileName);
-                if (string.IsNullOrEmpty(appConstantsData.ConnectionString))
-                {
-                    string envPath = "D:\\Коледж\\Курсова робота 3курс\\CourseProject_ShowDesk\\CourseProject_ShowDesk\\.env";
-                    Env.Load(envPath);
-                    string connectionStr = Environment.GetEnvironmentVariable("DATABASE_URL");
-                    appConstantsData.ConnectionString = connectionStr;
-                }
                 AppConstants.PopulateConstants(appConstantsData);
             }
             catch

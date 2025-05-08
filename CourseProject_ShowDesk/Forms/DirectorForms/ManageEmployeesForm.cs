@@ -33,7 +33,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SettingsForm settingsForm = new SettingsForm(new Employee());
                 settingsForm.ShowDialog();
-                //FormConfigurator.RestartForm<ManageEmployeesForm>(this, userAccount);
                 FormConfigurator.RestartApp();
             }
 
@@ -42,16 +41,15 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             timerUpdate.Interval = AppConstants.UpdateEmployeesInterval;
 
-            UpdateDataGridEmployees();
-            DisableEditAndRemoveEmployees();
-
             searchData = new SearchDataGrid(dataGridViewEmployees);
 
-            string envPath = "D:\\Коледж\\Курсова робота 3курс\\CourseProject_ShowDesk\\CourseProject_ShowDesk\\.env";
+            string envPath="../../.env";
             Env.Load(envPath);
             string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
-            MessageBox.Show("MASTER_PASSWORD = " + Environment.GetEnvironmentVariable("MASTER_PASSWORD"));
             masterCypher = new MasterCypherAES(masterKey);
+
+            UpdateDataGridEmployees();
+            DisableEditAndRemoveEmployees();
         }
         private void ManageEmployeesForm_Shown(object sender, EventArgs e)
         {

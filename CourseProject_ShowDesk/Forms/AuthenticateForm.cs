@@ -34,11 +34,11 @@ namespace CourseProject_ShowDesk.Forms
                 MessageBox.Show(ex.Message + "\nGo to the settings.", "Database error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SettingsForm settingsForm = new SettingsForm(new Employee());
                 settingsForm.ShowDialog();
-                //FormConfigurator.RestartForm<AuthenticateForm>(this);
                 FormConfigurator.RestartApp();
             }
 
-            Env.Load("../../.env");
+            string envPath = "../../.env";
+            Env.Load(envPath);
             string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
             masterCypher = new MasterCypherAES(masterKey);
 

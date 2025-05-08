@@ -3,6 +3,7 @@ using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
@@ -12,16 +13,19 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private bool logOut;
         private bool isValid;
 
-        private Stage newStage;
+        private readonly Stage newStage;
         private readonly Employee userAccount;
+        private readonly StageValidator validator;
 
-        public AddStageForm(Employee userAccount)
+        public AddStageForm(Employee userAccount,List<Stage> stages)
         {
             InitializeComponent();
             FormConfigurator.ConfigureForm(this);
 
             this.userAccount = userAccount;
             labelAccountName.Text = userAccount.FullName;
+            validator= new StageValidator(stages);
+            newStage = new Stage();
 
             isValid = false;
             logOut = false;
@@ -45,7 +49,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void SaveStage()
         {
             CreateStage();
-            StageValidator validator = new StageValidator();
             if (validator.Validate(newStage, out string errorMessage))
             {
                 AddEditSeatingForm addSeatingForm = new AddEditSeatingForm(userAccount);
@@ -81,7 +84,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void CreateStage()
         {
             string stageName = textBoxStageName.Text;
-            newStage = new Stage(stageName);
+            newStage.Name = stageName;
         }
 
         private void LogOut()

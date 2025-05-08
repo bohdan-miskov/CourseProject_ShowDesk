@@ -3,6 +3,7 @@ using CourseProject_ShowDesk.Forms.DirectorForms;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
@@ -14,6 +15,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
     public partial class ManageStagesForm : MetroFramework.Forms.MetroForm
     {
         private readonly StageManager stageManager;
+        private readonly PerformanceManager performanceManager;
         private readonly Employee userAccount;
 
         private readonly SearchDataGrid searchData;
@@ -26,6 +28,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             try
             {
                 stageManager = new StageManager(new StageBaseService());
+                performanceManager = new PerformanceManager(new PerformanceBaseService());
             }
             catch (DatabaseConnectionException ex)
             {
@@ -159,7 +162,8 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private void AddStage()
         {
-            AddStageForm addStageForm = new AddStageForm(userAccount);
+            performanceManager.LoadUpcomingPerformancesFromDatabase();
+            AddStageForm addStageForm = new AddStageForm(userAccount,stageManager.Stages);
             this.Hide();
             addStageForm.ShowDialog();
 
@@ -181,7 +185,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         {
             Guid stageId = GetCurrentRowId();
 
-            EditStageForm editStageForm = new EditStageForm(userAccount, stageManager.GetById(stageId));
+            EditStageForm editStageForm = new EditStageForm(
+                userAccount, 
+                stageManager.GetById(stageId), 
+                stageManager.Stages, 
+                performanceManager.Performances
+                );
             this.Hide();
             editStageForm.ShowDialog();
 

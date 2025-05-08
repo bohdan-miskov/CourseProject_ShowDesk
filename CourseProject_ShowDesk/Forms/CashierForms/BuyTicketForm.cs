@@ -333,6 +333,8 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             {
                 selectionManager.AddToSelection(selectedControl);
                 int currentSeatPosition = seatingManager.GetCurrentSeatPosition(selectedControl);
+                int currentSeatIndex = seatingManager.GetCurrentSeatIndex(selectedControl);
+                labelSeatInfo.Text = seatingManager.SeatList[currentSeatIndex].GetInfo();
                 newTickets.Add(CreateTicket(currentSeatPosition));
                 GetTicketPrice();
             }

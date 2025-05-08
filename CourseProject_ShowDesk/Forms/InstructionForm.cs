@@ -51,7 +51,7 @@ namespace CourseProject_ShowDesk.Forms
             string fullText = File.ReadAllText(filePath);
 
             string[] sections = Regex.Split(fullText,
-                @"(?=^ВСТУП|^SETUP|^НАЛАШТУВАННЯ ПРОГРАМИ|^SETTINGS|^РОЛІ КОРИСТУВАЧІВ|^USER ROLES|^РОБОТА З ПОДІЯМИ|^WORKING WITH EVENTS|^ПРОДАЖ КВИТКІВ|^TICKET SALES|^СТАТИСТИКА І ЗВІТНІСТЬ|^STATISTICS AND REPORTS)", 
+                @"(?=^ВСТУП|^INTRODUCTION|^НАЛАШТУВАННЯ ПРОГРАМИ|^PROGRAM SETTINGS|^РОЛІ КОРИСТУВАЧІВ|^USER ROLES|^РОБОТА З ПОДІЯМИ|^WORKING WITH EVENTS|^ПРОДАЖ КВИТКІВ|^TICKET SALES|^СТАТИСТИКА І ЗВІТНІСТЬ|^STATISTICS AND REPORTS)", 
                 RegexOptions.Multiline);
 
             PopulateFields(sections);
@@ -70,7 +70,7 @@ namespace CourseProject_ShowDesk.Forms
             {
                 if (section.StartsWith("ВСТУП") || section.StartsWith("INTRODUCTION"))
                     entry = section.Trim();
-                else if (section.StartsWith("НАЛАШТУВАННЯ ПРОГРАМИ") || section.StartsWith("SETTINGS"))
+                else if (section.StartsWith("НАЛАШТУВАННЯ ПРОГРАМИ") || section.StartsWith("PROGRAM SETTINGS"))
                     startSettings = section.Trim();
                 else if (section.StartsWith("РОЛІ КОРИСТУВАЧІВ") || section.StartsWith("USER ROLES"))
                     roles = section.Trim();

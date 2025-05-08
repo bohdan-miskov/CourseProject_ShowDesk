@@ -1,8 +1,10 @@
 ﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
+using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
@@ -14,9 +16,10 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
         private readonly Stage stage;
         private readonly Employee userAccount;
+        private readonly StageValidator validator;
 
 
-        public EditStageForm(Employee userAccount, Stage stage)
+        public EditStageForm(Employee userAccount, Stage stage, List<Stage> stages, List<Performance> performances)
         {
             InitializeComponent();
             FormConfigurator.ConfigureForm(this);
@@ -24,6 +27,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             this.stage = stage;
             this.userAccount = userAccount;
             labelAccountName.Text = userAccount.FullName;
+            validator = new StageValidator(stages, performances);
 
             PopulateStage();
 
@@ -198,7 +202,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void SaveStage()
         {
             CreateStage();
-            StageValidator validator = new StageValidator();
             if (validator.Validate(stage, out string errorMessage))
             {
                 isValid = true;
