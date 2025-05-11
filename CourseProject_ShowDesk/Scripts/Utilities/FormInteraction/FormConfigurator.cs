@@ -1,7 +1,4 @@
-﻿using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using Org.BouncyCastle.Bcpg.OpenPgp;
-using System;
-using System.Drawing;
+﻿using System;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
@@ -14,7 +11,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             form.MinimizeBox = false;
             form.FormBorderStyle = FormBorderStyle.FixedDialog;
             AddFocusToForm(form);
-            
+
 
             if (isFullScreenForm) form.WindowState = FormWindowState.Maximized;
             else form.MaximizeBox = false;

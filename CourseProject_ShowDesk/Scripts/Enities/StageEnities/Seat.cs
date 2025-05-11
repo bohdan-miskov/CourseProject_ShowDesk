@@ -67,7 +67,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
         public System.Windows.Forms.Label ToLabel()
         {
-            
+
             System.Windows.Forms.Label label = new System.Windows.Forms.Label
             {
                 Name = this.SeatNumber.ToString(),
@@ -81,7 +81,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 TextAlign = ContentAlignment.MiddleCenter
             };
             Size textSize = TextRenderer.MeasureText(label.Text, label.Font);
-            label.MinimumSize = new Size(textSize.Width+6, textSize.Height + 6);
+            label.MinimumSize = new Size(textSize.Width + 6, textSize.Height + 6);
 
             label.Paint += (s, e) =>
             {

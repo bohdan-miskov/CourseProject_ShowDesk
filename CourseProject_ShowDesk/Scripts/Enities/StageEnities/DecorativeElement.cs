@@ -49,7 +49,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
                 BackColor = GetColor(),
                 BorderStyle = BorderStyle.FixedSingle,
                 Enabled = false,
-                MinimumSize = new Size(10,10)
+                MinimumSize = new Size(10, 10)
             };
 
             return panel;

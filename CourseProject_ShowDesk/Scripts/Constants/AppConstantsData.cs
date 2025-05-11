@@ -33,7 +33,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         private char passwordChar = '*';
 
         private bool isPrintReceipt = true;
-        private string savePathReceipt = "C:\\Users\\Fujitsu\\Documents\\Tickets";
+        private string savePathReceipt = "";
 
         private string connectionString;
 
@@ -53,9 +53,9 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             }
             set
             {
-                if (value!=null)
+                if (value != null)
                 {
-                    firstLog=value;
+                    firstLog = value;
                 }
             }
         }
@@ -70,7 +70,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             {
                 if (!string.IsNullOrWhiteSpace(value))
                 {
-                companyName = value;
+                    companyName = value;
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
                 {
                     generalCollectionName = value;
                 }
-                
+
             }
         }
         public string PerformancesCollectionName
@@ -101,7 +101,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
                 {
                     performancesCollectionName = value;
                 }
-                
+
             }
         }
         public string PastPerformancesCollectionName
@@ -129,7 +129,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
             {
                 if (!string.IsNullOrWhiteSpace(value))
                 {
-                     stagesCollectionName = value;
+                    stagesCollectionName = value;
                 }
             }
         }

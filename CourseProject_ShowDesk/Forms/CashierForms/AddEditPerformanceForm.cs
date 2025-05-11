@@ -2,7 +2,6 @@
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
-using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using System;
@@ -19,7 +18,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         private readonly List<Performance> performances;
         private readonly Performance currentPerformance;
 
-        private readonly DateTime defaultDate= new DateTime(1900, 1, 1);
+        private readonly DateTime defaultDate = new DateTime(1900, 1, 1);
         private readonly bool isFilterFunction;
         private bool isValid;
         private bool logOut;

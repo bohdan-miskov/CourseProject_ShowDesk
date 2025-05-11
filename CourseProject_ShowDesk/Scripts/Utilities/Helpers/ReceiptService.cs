@@ -67,6 +67,9 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Helpers
                 $"Time: {currentPerformance.LocalPerformanceDateTime.TimeOfDay}"
                 ));
             doc.Add(new Paragraph(
+              $"Reserved: {ticket.Reserved}  "
+              ));
+            doc.Add(new Paragraph(
                 $"Stage: {currentStage.Name}"
                 ));
             doc.Add(new Paragraph(
@@ -116,10 +119,10 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Helpers
             //}
             ProcessStartInfo processStartInfo = new ProcessStartInfo
             {
-                FileName = filePath, 
-                Verb = "print", 
-                CreateNoWindow = true, 
-                WindowStyle = ProcessWindowStyle.Hidden 
+                FileName = filePath,
+                Verb = "print",
+                CreateNoWindow = true,
+                WindowStyle = ProcessWindowStyle.Hidden
             };
             Process.Start(processStartInfo);
         }

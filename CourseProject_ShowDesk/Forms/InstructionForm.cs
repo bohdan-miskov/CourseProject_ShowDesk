@@ -3,7 +3,6 @@ using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CourseProject_ShowDesk.Forms
 {
@@ -51,7 +50,7 @@ namespace CourseProject_ShowDesk.Forms
             string fullText = File.ReadAllText(filePath);
 
             string[] sections = Regex.Split(fullText,
-                @"(?=^ВСТУП|^INTRODUCTION|^НАЛАШТУВАННЯ ПРОГРАМИ|^PROGRAM SETTINGS|^РОЛІ КОРИСТУВАЧІВ|^USER ROLES|^РОБОТА З ПОДІЯМИ|^WORKING WITH EVENTS|^ПРОДАЖ КВИТКІВ|^TICKET SALES|^СТАТИСТИКА І ЗВІТНІСТЬ|^STATISTICS AND REPORTS)", 
+                @"(?=^ВСТУП|^INTRODUCTION|^НАЛАШТУВАННЯ ПРОГРАМИ|^PROGRAM SETTINGS|^РОЛІ КОРИСТУВАЧІВ|^USER ROLES|^РОБОТА З ПОДІЯМИ|^WORKING WITH EVENTS|^ПРОДАЖ КВИТКІВ|^TICKET SALES|^СТАТИСТИКА І ЗВІТНІСТЬ|^STATISTICS AND REPORTS)",
                 RegexOptions.Multiline);
 
             PopulateFields(sections);
@@ -85,7 +84,7 @@ namespace CourseProject_ShowDesk.Forms
             richTextBoxEntry.Text = entry;
             richTextBoxStartSettings.Text = startSettings;
             richTextBoxRoles.Text = roles;
-            richTextBoxWorkingWithEvents.Text=events;
+            richTextBoxWorkingWithEvents.Text = events;
             richTextBoxTicketSales.Text = sales;
             richTextBoxStatisticsAndReports.Text = statistics;
         }

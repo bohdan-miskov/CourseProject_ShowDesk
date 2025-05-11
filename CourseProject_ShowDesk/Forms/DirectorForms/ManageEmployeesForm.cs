@@ -4,10 +4,9 @@ using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
+using DotNetEnv;
 using System;
 using System.Windows.Forms;
-using DotNetEnv;
-using System.IO;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
 {
@@ -22,7 +21,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         public ManageEmployeesForm(Employee userAccount)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this,true);
+            FormConfigurator.ConfigureForm(this, true);
 
             try
             {
@@ -43,7 +42,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
 
             searchData = new SearchDataGrid(dataGridViewEmployees);
 
-            string envPath="../../.env";
+            string envPath = "../../.env";
             Env.Load(envPath);
             string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
             masterCypher = new MasterCypherAES(masterKey);
@@ -275,6 +274,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }       
+        }
     }
 }

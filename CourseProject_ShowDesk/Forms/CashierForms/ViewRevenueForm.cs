@@ -2,16 +2,13 @@
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System.Drawing.Imaging;
-using System.Drawing;
-using SharpCompress.Common;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
 {
@@ -263,7 +260,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             doc.Add(new Paragraph($"Period: {dateTimePickerStartDate.Value.ToShortDateString()} – {dateTimePickerFinishDate.Value.ToShortDateString()}"));
             doc.Add(new Paragraph("\n"));
         }
-        private void AddStatisticsChart(Document doc,string tempImagePath)
+        private void AddStatisticsChart(Document doc, string tempImagePath)
         {
             iTextSharp.text.Image chartImage = iTextSharp.text.Image.GetInstance(tempImagePath);
             chartImage.ScaleToFit(500f, 300f);
@@ -289,6 +286,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public bool GetLogOut()
         {
             return logOut;
-        } 
+        }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using CourseProject_ShowDesk.Scripts.Constants;
-using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
 using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using MongoDB.Bson;
@@ -7,7 +6,6 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
@@ -24,8 +22,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
                 var test = db.RunCommandAsync((Command<BsonDocument>)"{ping:1}").Result;
 
                 stageCollection = db.GetCollection<Stage>(AppConstants.StagesCollectionName);
-
-                RemoveFieldFromDataBase("Enabled");
             }
             catch
             {

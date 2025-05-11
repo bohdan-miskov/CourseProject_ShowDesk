@@ -29,7 +29,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public ManagePerformancesForm(Employee userAccount)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this,true);
+            FormConfigurator.ConfigureForm(this, true);
 
             try
             {
@@ -264,7 +264,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             //DateTime startDay = DateTime.Today;
             dateTimePickerPastPerformancesStartDate.MaxDate = DateTime.Today;
-            DateTime startDay = DateTime.Today.AddMonths(- 1);
+            DateTime startDay = DateTime.Today.AddMonths(-1);
             dateTimePickerPastPerformancesStartDate.Value = startDay;
 
             dateTimePickerPastPerformancesStartDate.Focus();
@@ -376,7 +376,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             AddEditPerformanceForm editPerformanceForm = new AddEditPerformanceForm(userAccount, stageManager.Stages, performanceManager.Performances, performanceManager.GetById(id));
             this.Hide();
             editPerformanceForm.ShowDialog();
-            
+
             if (editPerformanceForm.GetLogOut())
             {
                 LogOut();

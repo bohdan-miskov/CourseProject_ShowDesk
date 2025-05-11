@@ -26,7 +26,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         public ManageTicketsForm(Employee userAccount, Stage currentStage, Performance currentPerformance)
         {
             InitializeComponent();
-            FormConfigurator.ConfigureForm(this,true);
+            FormConfigurator.ConfigureForm(this, true);
 
             this.currentStage = currentStage;
             this.currentPerformance = currentPerformance;
@@ -162,6 +162,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             Guid id = GetCurrentRowId();
             currentPerformance.ChangeTicketStatus(id);
+            GenerateReceiptPdf(currentPerformance.GetTicketById(id));
         }
 
         private void RemoveTicket()
@@ -190,8 +191,21 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             {
                 foreach (StandardTicket ticket in buyTicketForm.GetNewTickets())
                 {
-                    currentPerformance.BuyTicket(ticket);
-                    GenerateReceiptPdf(ticket);
+                    try
+                    {
+                        currentPerformance.BuyTicket(ticket);
+                    }
+                    catch(InvalidOperationException)
+                    {
+                        MessageBox.Show(
+                            $"This ticket {ticket.Id} is not accessible",
+                            "Ticket error",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                            );
+                        return;
+                    }
+                    if(!ticket.Reserved) GenerateReceiptPdf(ticket);
                 }
             }
         }

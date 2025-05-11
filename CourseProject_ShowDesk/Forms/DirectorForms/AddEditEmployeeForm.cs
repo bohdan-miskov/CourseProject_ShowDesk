@@ -137,7 +137,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             EmployeeValidator validator = new EmployeeValidator(employees);
             if (validator.Validate(currentEmployee, out string errorMessage))
             {
-                currentEmployee.Password=masterCypher.Encrypt(currentEmployee.Password);
+                currentEmployee.Password = masterCypher.Encrypt(currentEmployee.Password);
                 isValid = true;
                 this.Close();
             }

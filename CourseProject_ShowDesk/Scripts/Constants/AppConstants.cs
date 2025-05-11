@@ -94,7 +94,7 @@ namespace CourseProject_ShowDesk.Scripts.Constants
         {
             return new AppConstantsData
             {
-                FirstLog=FirstLog,
+                FirstLog = FirstLog,
 
                 CompanyName = CompanyName,
                 GeneralCollectionName = GeneralCollectionName,

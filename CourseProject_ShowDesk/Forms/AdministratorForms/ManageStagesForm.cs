@@ -1,9 +1,8 @@
-﻿using CourseProject_ShowDesk.Forms.CashierForms;
-using CourseProject_ShowDesk.Forms.DirectorForms;
+﻿using CourseProject_ShowDesk.Forms.DirectorForms;
 using CourseProject_ShowDesk.Scripts.Constants;
 using CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities;
-using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities;
+using CourseProject_ShowDesk.Scripts.Enities.StageEnities;
 using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
@@ -29,6 +28,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             {
                 stageManager = new StageManager(new StageBaseService());
                 performanceManager = new PerformanceManager(new PerformanceBaseService());
+                performanceManager.LoadUpcomingPerformancesFromDatabase();
             }
             catch (DatabaseConnectionException ex)
             {
@@ -163,7 +163,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void AddStage()
         {
             performanceManager.LoadUpcomingPerformancesFromDatabase();
-            AddStageForm addStageForm = new AddStageForm(userAccount,stageManager.Stages);
+            AddStageForm addStageForm = new AddStageForm(userAccount, stageManager.Stages);
             this.Hide();
             addStageForm.ShowDialog();
 
@@ -184,11 +184,12 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void EditStage()
         {
             Guid stageId = GetCurrentRowId();
+            performanceManager.LoadUpcomingPerformancesFromDatabase();
 
             EditStageForm editStageForm = new EditStageForm(
-                userAccount, 
-                stageManager.GetById(stageId), 
-                stageManager.Stages, 
+                userAccount,
+                stageManager.GetById(stageId),
+                stageManager.Stages,
                 performanceManager.Performances
                 );
             this.Hide();
@@ -211,9 +212,37 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private void RemoveStage()
         {
             Guid stageId = GetCurrentRowId();
+            Stage currentsStage = stageManager.GetById(stageId);
+            performanceManager.LoadUpcomingPerformancesFromDatabase();
+
+            if (isStageActive(currentsStage, out string errorMessage))
+            {
+                MessageBox.Show(
+                                errorMessage,
+                                "Stage error",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                return;
+            }
+
             stageManager.RemoveStage(stageId);
         }
+        private bool isStageActive(Stage stage, out string errorMessage)
+        {
+            errorMessage = null;
+            if (performanceManager.Performances == null) return false;
 
+            foreach (Performance performance in performanceManager.Performances)
+            {
+                if (performance.StageId == stage.Id)
+                {
+                    errorMessage = "There was an error in the stage: If an upcoming performance is using this stage, its stage cannot be romove.";
+                    return true;
+                }
+            }
+
+            return false;
+        }
         private void DisableEditAndRemoveStage()
         {
             if (dataGridViewStages.CurrentRow != null)

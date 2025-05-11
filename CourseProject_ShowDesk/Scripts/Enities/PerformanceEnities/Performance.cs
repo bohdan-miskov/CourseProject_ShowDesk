@@ -4,7 +4,6 @@ using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 {
@@ -93,7 +92,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
             set
             {
-                performanceDateTime = value; 
+                performanceDateTime = value;
             }
         }
 
@@ -161,7 +160,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
             if (!availablePositions.Contains(newTicket.Position))
             {
-                throw new ArgumentNullException(nameof(newTicket), "Current position sold");
+                throw new InvalidOperationException("Current position sold");
             }
             availablePositions.Remove(newTicket.Position);
             tickets.Add(newTicket);
@@ -244,7 +243,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 
             foreach (StandardTicket ticket in tickets)
             {
-                revenue += ticket.CalculatedPrice;
+                if(!ticket.Reserved)
+                    revenue += ticket.CalculatedPrice;
             }
 
             return revenue;

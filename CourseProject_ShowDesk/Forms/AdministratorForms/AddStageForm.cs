@@ -17,14 +17,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
         private readonly Employee userAccount;
         private readonly StageValidator validator;
 
-        public AddStageForm(Employee userAccount,List<Stage> stages)
+        public AddStageForm(Employee userAccount, List<Stage> stages)
         {
             InitializeComponent();
             FormConfigurator.ConfigureForm(this);
 
             this.userAccount = userAccount;
             labelAccountName.Text = userAccount.FullName;
-            validator= new StageValidator(stages);
+            validator = new StageValidator(stages);
             newStage = new Stage();
 
             isValid = false;
@@ -61,8 +61,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                     return;
                 }
 
-                this.Show();
-
                 if (addSeatingForm.GetIsValid())
                 {
                     newStage.SeatList = addSeatingForm.GetSeatList();
@@ -73,6 +71,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                     isValid = true;
                     this.Close();
                 }
+                else this.Show();
             }
             else MessageBox.Show(
                                 errorMessage,

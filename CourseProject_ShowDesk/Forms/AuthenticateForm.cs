@@ -1,5 +1,4 @@
-﻿using BitMiracle.LibTiff.Classic;
-using CourseProject_ShowDesk.Forms.AdministratorForms;
+﻿using CourseProject_ShowDesk.Forms.AdministratorForms;
 using CourseProject_ShowDesk.Forms.CashierForms;
 using CourseProject_ShowDesk.Forms.DirectorForms;
 using CourseProject_ShowDesk.Scripts.Constants;
@@ -108,14 +107,15 @@ namespace CourseProject_ShowDesk.Forms
         private void Authenticate()
         {
             DialogResult result;
-            if (comboBoxUser.SelectedIndex == 0) result=AuthenticateDirector();
+            if (comboBoxUser.SelectedIndex == 0) result = AuthenticateDirector();
             else if (comboBoxUser.SelectedIndex == 1) result = AuthenticateAdministrator();
             else result = AuthenticateCashier();
 
-            if (result == DialogResult.OK) {
+            if (result == DialogResult.OK)
+            {
                 //ClearLogInField();
-                this.Show(); 
-            }  
+                this.Show();
+            }
             else if (result == DialogResult.Abort) ShowErrorMessage();
             else Application.Exit();
         }
@@ -139,7 +139,7 @@ namespace CourseProject_ShowDesk.Forms
 
             ManageEmployeesForm manageEmployeesForm = new ManageEmployeesForm(account);
             this.Hide();
-            return manageEmployeesForm.ShowDialog();        
+            return manageEmployeesForm.ShowDialog();
         }
 
         private DialogResult AuthenticateAdministrator()
@@ -152,7 +152,7 @@ namespace CourseProject_ShowDesk.Forms
             this.Hide();
             return manageStagesForm.ShowDialog();
 
-            
+
         }
 
         private DialogResult AuthenticateCashier()

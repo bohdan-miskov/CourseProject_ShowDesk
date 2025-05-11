@@ -9,7 +9,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
         private readonly List<Stage> stages;
         private readonly List<Performance> performances;
 
-        public StageValidator(List<Stage> stages, List<Performance> performances=null)
+        public StageValidator(List<Stage> stages, List<Performance> performances = null)
         {
             this.stages = stages;
             this.performances = performances;
@@ -19,7 +19,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
         {
             if (!ValidateStageName(stage.Name, out errorMessage))
                 return false;
-            if(IsNameRepeat(stage,out errorMessage))
+            if (IsNameRepeat(stage, out errorMessage))
                 return false;
             if (isStageActive(stage, out errorMessage))
                 return false;
@@ -41,7 +41,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.Validators
         {
             foreach (Stage stage in stages)
             {
-                if (stage.Name == newStage.Name && stage.Id!=newStage.Id)
+                if (stage.Name == newStage.Name && stage.Id != newStage.Id)
                 {
                     errorMessage = "There was an error in the name of the stage: the name cannot repeat";
                     return true;

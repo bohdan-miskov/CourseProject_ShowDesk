@@ -82,7 +82,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 
             allPerformances.Sort((p1, p2) => p1.PerformanceDateTime.CompareTo(p2.PerformanceDateTime));
 
-            return allPerformances[0];
+            return allPerformances.Count>0?allPerformances[0]:null;
         }
         public void MovePastPerformances()
         {

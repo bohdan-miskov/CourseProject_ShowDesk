@@ -1,48 +1,48 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
+﻿    using Newtonsoft.Json;
+    using System.Collections.Generic;
+    using System.IO;
 
-namespace CourseProject_ShowDesk.Scripts.Utilities.FileService
-{
-    public class FileHandler
+    namespace CourseProject_ShowDesk.Scripts.Utilities.FileService
     {
-        public static void SaveListToJson<T>(string fileName, List<T> objects)
+        public class FileHandler
         {
-            string jsonData = JsonConvert.SerializeObject(objects, Formatting.Indented, new JsonSerializerSettings
+            public static void SaveListToJson<T>(string fileName, List<T> objects)
             {
-                TypeNameHandling = TypeNameHandling.All
-            });
-            File.WriteAllText(fileName, jsonData);
-        }
+                string jsonData = JsonConvert.SerializeObject(objects, Formatting.Indented, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                });
+                File.WriteAllText(fileName, jsonData);
+            }
 
-        public static List<T> LoadListFromJson<T>(string fileName)
-        {
-            string jsonData = File.ReadAllText(fileName);
-            return JsonConvert.DeserializeObject<List<T>>(jsonData, new JsonSerializerSettings
+            public static List<T> LoadListFromJson<T>(string fileName)
             {
-                TypeNameHandling = TypeNameHandling.All,
-                ObjectCreationHandling = ObjectCreationHandling.Replace
-            });
-        }
+                string jsonData = File.ReadAllText(fileName);
+                return JsonConvert.DeserializeObject<List<T>>(jsonData, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                    ObjectCreationHandling = ObjectCreationHandling.Replace
+                });
+            }
 
-        public static void SaveElementToJson<T>(string fileName, T element)
-        {
-            string jsonData = JsonConvert.SerializeObject(element, Formatting.Indented, new JsonSerializerSettings
+            public static void SaveElementToJson<T>(string fileName, T element)
             {
-                TypeNameHandling = TypeNameHandling.All
-            });
-            File.WriteAllText(fileName, jsonData);
-        }
+                string jsonData = JsonConvert.SerializeObject(element, Formatting.Indented, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                });
+                File.WriteAllText(fileName, jsonData);
+            }
 
-        public static T LoadElementFromJson<T>(string fileName)
-        {
-            string jsonData = File.ReadAllText(fileName);
-            return JsonConvert.DeserializeObject<T>(jsonData, new JsonSerializerSettings
+            public static T LoadElementFromJson<T>(string fileName)
             {
-                TypeNameHandling = TypeNameHandling.All,
-                ObjectCreationHandling = ObjectCreationHandling.Replace
-            });
-        }
+                string jsonData = File.ReadAllText(fileName);
+                return JsonConvert.DeserializeObject<T>(jsonData, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                    ObjectCreationHandling = ObjectCreationHandling.Replace
+                });
+            }
 
+        }
     }
-}

@@ -13,7 +13,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         [BsonId]
         private Guid id = Guid.NewGuid();
         private string name;
-        private Point stageLocation=new Point(-1000,-1000);
+        private Point stageLocation = new Point(-1000, -1000);
         private Size stageSize;
         private List<Zone> zones;
         private List<Seat> seatList;
@@ -55,7 +55,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
             set
             {
-                if (value == null) 
+                if (value == null)
                     throw new ArgumentNullException(nameof(stageLocation), "Stage location cannot be null.");
                 stageLocation = value;
             }
@@ -68,7 +68,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
             set
             {
-                if (value.Height <= 0 || value.Width<=0)
+                if (value.Height <= 0 || value.Width <= 0)
                     throw new ArgumentOutOfRangeException(nameof(stageSize), "Stage size must be greater than 0.");
                 stageSize = value;
             }

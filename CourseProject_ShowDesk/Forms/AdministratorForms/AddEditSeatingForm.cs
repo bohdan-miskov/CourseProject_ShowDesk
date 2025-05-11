@@ -39,7 +39,7 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             if (stage != null)
             {
                 Seat lastSeat = seatingManager.SeatList[seatingManager.SeatList.Count - 1];
-                canvasController = new CanvasController(panelSeating, panelViewport,stage.StageLocation,stage.StageSize);
+                canvasController = new CanvasController(panelSeating, panelViewport, stage.StageLocation, stage.StageSize);
                 lastMousePos = new Point(lastSeat.Location.X, lastSeat.Location.Y);
             }
             else
@@ -116,16 +116,16 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             return panelSeating.PointToClient(panelViewport.PointToScreen(viewportCenter));
         }
-    
+
         private void CanvasMouseDown(MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
             else lastMousePos = e.Location;
 
-            bool useControl = ModifierKeys == Keys.Control; 
+            bool useControl = ModifierKeys == Keys.Control;
             HandleSelection(e, useControl);
             canvasController.StartPanning(e, useControl);
-            canvasController.StartDragging(selectionManager.SelectedControls,e);
+            canvasController.StartDragging(selectionManager.SelectedControls, e);
             canvasController.StartResizing(selectionManager.SelectedControls, e);
         }
         private void CanvasMouseUp()
@@ -156,11 +156,11 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 for (int i = selectionManager.SelectedControls.Count - 1; i >= 0; i--)
                 {
                     Control control = selectionManager.SelectedControls[i];
-                    Color initColor=AppConstants.SeatBaseColor;
+                    Color initColor = AppConstants.SeatBaseColor;
 
                     if (control is Label)
                         initColor = seatingManager.GetSeatColorByControl(control);
-                    else if (control is Panel) 
+                    else if (control is Panel)
                         initColor = seatingManager.GetDecorColorByControl(control);
 
                     selectionManager.RemoveSelection(control, initColor);

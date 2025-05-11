@@ -149,6 +149,7 @@
             this.dataGridViewTickets.Name = "dataGridViewTickets";
             this.dataGridViewTickets.ReadOnly = true;
             this.dataGridViewTickets.RowHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Modern No. 20", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTickets.RowsDefaultCellStyle = dataGridViewCellStyle2;

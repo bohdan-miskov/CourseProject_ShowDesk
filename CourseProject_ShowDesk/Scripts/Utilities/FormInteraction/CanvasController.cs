@@ -1,8 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
@@ -27,7 +26,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             mover = new ElementsMover(panelSeating, panelViewport);
             resizer = new ElementsResizer(panelSeating);
         }
-        public CanvasController(Panel panelSeating, Panel panelViewport, Point location,Size size)
+        public CanvasController(Panel panelSeating, Panel panelViewport, Point location, Size size)
         {
             this.panelSeating = panelSeating;
             this.panelViewport = panelViewport;
@@ -58,7 +57,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
 
             float scaleFactor = e.Delta > 0 ? 1.05f : 0.95f;
 
-            if(!CheckOfAvailableMinSize(scaleFactor)) return;
+            if (!CheckOfAvailableMinSize(scaleFactor)) return;
 
             zoomFactor *= scaleFactor;
             ScaleCanvas(scaleFactor);
@@ -71,7 +70,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
                 int newWidth = (int)(control.Width * scaleFactor);
                 int newHeight = (int)(control.Height * scaleFactor);
                 if (
-                    ((newWidth < control.MinimumSize.Width || newHeight < control.MinimumSize.Height) && scaleFactor<1)
+                    ((newWidth < control.MinimumSize.Width || newHeight < control.MinimumSize.Height) && scaleFactor < 1)
                     )
                     return false;
             }
@@ -84,7 +83,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
 
             foreach (Control control in panelSeating.Controls)
             {
-               
+
                 control.Width = (int)(control.Width * scaleFactor);
                 control.Height = (int)(control.Height * scaleFactor);
 
@@ -127,7 +126,7 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
             }
         }
 
-        public void StartResizing(List<Control> selectedControls,MouseEventArgs e)
+        public void StartResizing(List<Control> selectedControls, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
 

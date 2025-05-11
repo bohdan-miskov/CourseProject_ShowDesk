@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Web.UI.Design;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
@@ -14,7 +15,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         private List<Control> selectedControls;
         private ColorDialog colorDialog;
 
-        public SeatingManager(Panel seatingPanel, List<Seat> seatList = null, List<DecorativeElement> decorList = null, ColorDialog colorDialog = null, List<Control> selectedControls=null)
+        public SeatingManager(Panel seatingPanel, List<Seat> seatList = null, List<DecorativeElement> decorList = null, ColorDialog colorDialog = null, List<Control> selectedControls = null)
         {
             this.panelSeating = seatingPanel;
             this.colorDialog = colorDialog;
@@ -57,7 +58,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
             if (selectedControls.Count > 0 && (selectedControls[selectedControls.Count - 1] is Label selectedLabel))
                 seat.Size = selectedLabel.Size;
-            
+
             seatList.Add(seat);
             panelSeating.Controls.Add(seat.ToLabel());
         }
@@ -65,7 +66,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         public void AddDecorativeElement(Point location)
         {
             DecorativeElement decor = new DecorativeElement(location);
-            
+
             if (selectedControls.Count > 0 && (selectedControls[selectedControls.Count - 1] is Panel selectedPanel))
             {
                 decor.Size = selectedPanel.Size;
@@ -123,7 +124,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             foreach (Control control in panelSeating.Controls)
             {
                 if (control is Label) UpdateSeat(control);
-                else if(control is Panel) UpdateDecor(control);
+                else if (control is Panel) UpdateDecor(control);
             }
         }
         public void UpdateSeat(Control label)
@@ -152,7 +153,9 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         }
         public int GetCurrentSeatIndex(Control control)
         {
-            return control is Label && int.TryParse(control.Text, out int result) ? result - 1 : -1;
+            int index = control is Label && int.TryParse(control.Text, out int result) ? result - 1 : -1;
+
+            return index > (seatList.Count - 1) ? -1 : index;
         }
 
         private int GetCurrentDecorIndex(Control control)
@@ -166,7 +169,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 
         public void InsertSeat()
         {
-            if (selectedControls.Count ==0 || !(selectedControls[selectedControls.Count-1] is Label selectedLabel)) return;
+            if (selectedControls.Count == 0 || !(selectedControls[selectedControls.Count - 1] is Label selectedLabel)) return;
             int seatIndex = GetCurrentSeatIndex(selectedLabel);
             if (seatIndex == -1) return;
 
@@ -186,12 +189,14 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         }
         public Color GetSeatColorByControl(Control control)
         {
+            if (!(control is Label)) return AppConstants.SeatBaseColor;
             int seatIndex = GetCurrentSeatIndex(control);
             if (seatIndex != -1) return seatList[seatIndex].CurrentZone?.GetColor() ?? AppConstants.SeatBaseColor;
             return AppConstants.SeatBaseColor;
         }
         public Color GetDecorColorByControl(Control control)
         {
+            if (!(control is Panel)) return AppConstants.SeatBaseColor;
             int decorIndex = GetCurrentDecorIndex(control);
             if (decorIndex != -1) return decorList[decorIndex].GetColor();
             return AppConstants.SeatBaseColor;
