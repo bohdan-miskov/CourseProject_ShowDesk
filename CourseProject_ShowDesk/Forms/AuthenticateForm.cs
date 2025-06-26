@@ -17,7 +17,6 @@ namespace CourseProject_ShowDesk.Forms
     public partial class AuthenticateForm : MetroFramework.Forms.MetroForm
     {
         private readonly EmployeeManager employeeManager;
-        private readonly MasterCypherAES masterCypher;
 
         public AuthenticateForm()
         {
@@ -35,11 +34,6 @@ namespace CourseProject_ShowDesk.Forms
                 settingsForm.ShowDialog();
                 FormConfigurator.RestartApp();
             }
-
-            string envPath = "../../.env";
-            Env.Load(envPath);
-            string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
-            masterCypher = new MasterCypherAES(masterKey);
 
             PopulateComboBox();
 
@@ -176,9 +170,9 @@ namespace CourseProject_ShowDesk.Forms
         {
             foreach (Employee employee in employeeManager.Employees)
             {
-                string pass = masterCypher.Decrypt(employee.Password);
+                string pass = employee.Password;
                 if (employee.Login == textBoxLogin.Text &&
-                    pass == textBoxPassword.Text &&
+                    DataHasher.VerifyPassword(textBoxPassword.Text,pass) &&
                     employee.ProfessionList.Contains(currentProfession))
                 {
                     return employee;

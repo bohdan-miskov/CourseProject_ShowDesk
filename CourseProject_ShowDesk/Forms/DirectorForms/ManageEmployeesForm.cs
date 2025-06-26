@@ -17,7 +17,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         private readonly Employee userAccount;
 
         private readonly SearchDataGrid searchData;
-        private readonly MasterCypherAES masterCypher;
+        private readonly int passwordCypherLength = 8;
 
         public ManageEmployeesForm(Employee userAccount)
         {
@@ -42,11 +42,6 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             timerUpdate.Interval = AppConstants.UpdateEmployeesInterval;
 
             searchData = new SearchDataGrid(dataGridViewEmployees);
-
-            string envPath = "../../.env";
-            Env.Load(envPath);
-            string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
-            masterCypher = new MasterCypherAES(masterKey);
         }
 
         private async void ManageEmployeesForm_Load(object sender, EventArgs e)
@@ -166,7 +161,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                     employee.Id,
                     employee.FullName,
                     employee.Login,
-                    new String(AppConstants.PasswordChar, masterCypher.Decrypt(employee.Password).Length),
+                    new String(AppConstants.PasswordChar,passwordCypherLength),
                     employee.GetStringOfProfessionList()
                     );
         }
@@ -254,13 +249,12 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         private void ShowPassword()
         {
             Guid id = GetCurrentRowId();
-            string password = masterCypher.Decrypt(employeeManager.GetById(id).Password);
+            string password = employeeManager.GetById(id).Password;
             dataGridViewEmployees.CurrentRow.Cells[3].Value = password;
         }
         private void HidePassword()
         {
-            string currentPassword = dataGridViewEmployees.CurrentRow.Cells[3].Value.ToString();
-            dataGridViewEmployees.CurrentRow.Cells[3].Value = new String(AppConstants.PasswordChar, currentPassword.Length); ;
+            dataGridViewEmployees.CurrentRow.Cells[3].Value = new String(AppConstants.PasswordChar, passwordCypherLength); ;
         }
         private void SearchByFragment()
         {

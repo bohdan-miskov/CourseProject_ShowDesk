@@ -417,7 +417,7 @@
     <Compile Include="Scripts\Utilities\FormInteraction\CanvasController.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\SelectionManager.cs" />
     <Compile Include="Scripts\Utilities\FormInteraction\TabControlController.cs" />
-    <Compile Include="Scripts\Utilities\Helpers\MasterCypherAES.cs" />
+    <Compile Include="Scripts\Utilities\Helpers\DataHasher.cs" />
     <Compile Include="Scripts\Utilities\Helpers\ReceiptService.cs" />
     <Compile Include="Scripts\Utilities\Validators\EmployeeValidator.cs" />
     <Compile Include="Scripts\Utilities\Validators\ParametersValidator.cs" />
@@ -502,7 +502,6 @@
     <EmbeddedResource Include="Forms\DirectorForms\ManageEmployeesForm.resx">
       <DependentUpon>ManageEmployeesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include=".env" />
     <None Include="CourseProject_ShowDesk_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
