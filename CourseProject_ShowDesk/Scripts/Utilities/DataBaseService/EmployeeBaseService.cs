@@ -6,6 +6,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
@@ -22,9 +23,6 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
                 var test = db.RunCommandAsync((Command<BsonDocument>)"{ping:1}").Result;
 
                 employeeCollection = db.GetCollection<Employee>(AppConstants.EmployeesCollectionName);
-
-                var update = Builders<Employee>.Update.Unset("ScaleFactor");
-                employeeCollection.UpdateMany(Builders<Employee>.Filter.Empty, update);
             }
             catch
             {
@@ -32,9 +30,9 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             }
 
         }
-        public List<Employee> GetAllEmployees(bool sortByName = true)
+        public async Task<List<Employee>> GetAllEmployeesAsync(bool sortByName = true)
         {
-            List<Employee> employees = employeeCollection.Find(employee => true).ToList();
+            var employees = await employeeCollection.Find(_ => true).ToListAsync();
             if (sortByName)
             {
                 employees.Sort((p1, p2) => p1.FullName.CompareTo(p2.FullName));
@@ -42,21 +40,21 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             return employees;
         }
 
-        public void AddEmployee(Employee employee)
+        public async Task AddEmployeeAsync(Employee employee)
         {
-            employeeCollection.InsertOne(employee);
+            await employeeCollection.InsertOneAsync(employee);
         }
 
-        public void RemoveEmployee(Guid id)
+        public async Task RemoveEmployeeAsync(Guid id)
         {
             var filter = Builders<Employee>.Filter.Eq("Id", id);
-            employeeCollection.DeleteOne(filter);
+            await employeeCollection.DeleteOneAsync(filter);
         }
 
-        public void UpdateEmployee(Employee updatedEmployee)
+        public async Task UpdateEmployeeAsync(Employee updatedEmployee)
         {
             var filter = Builders<Employee>.Filter.Eq(p => p.Id, updatedEmployee.Id);
-            employeeCollection.ReplaceOne(filter, updatedEmployee);
+            await employeeCollection.ReplaceOneAsync(filter, updatedEmployee);
         }
     }
 }

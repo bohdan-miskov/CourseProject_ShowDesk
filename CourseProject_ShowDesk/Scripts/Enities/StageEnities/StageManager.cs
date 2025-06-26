@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
 {
@@ -13,7 +14,6 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
         public StageManager(StageBaseService databaseService)
         {
             database = databaseService;
-            LoadFromDatabase();
         }
 
         public List<Stage> Stages
@@ -24,9 +24,9 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             }
         }
 
-        public void LoadFromDatabase()
+        public async Task LoadFromDatabaseAsync()
         {
-            stages = database.GetAllStages();
+            stages = await database.GetAllStagesAsync();
         }
 
         public Stage GetById(Guid id)
@@ -34,30 +34,30 @@ namespace CourseProject_ShowDesk.Scripts.Enities.StageEnities
             return stages.FirstOrDefault(s => s.Id == id);
         }
 
-        public void AddStage(Stage stage)
+        public async Task AddStageAsync(Stage stage)
         {
             stages.Add(stage);
-            database.AddStage(stage);
+            await database.AddStageAsync(stage);
         }
 
-        public void RemoveStage(Guid id)
+        public async Task RemoveStageAsync(Guid id)
         {
             var stage = stages.FirstOrDefault(s => s.Id == id);
             if (stage != null)
             {
                 stages.Remove(stage);
-                database.RemoveStage(id);
+                await database.RemoveStageAsync(id);
             }
         }
 
-        public void UpdateStage(Stage updatedStage)
+        public async Task UpdateStageAsync(Stage updatedStage)
         {
             var existingStage = stages.FirstOrDefault(s => s.Id == updatedStage.Id);
             if (existingStage != null)
             {
                 int index = stages.IndexOf(existingStage);
                 stages[index] = updatedStage;
-                database.UpdateStage(updatedStage);
+                await database.UpdateStageAsync(updatedStage);
             }
         }
     }

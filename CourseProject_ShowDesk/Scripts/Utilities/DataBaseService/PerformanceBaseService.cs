@@ -8,6 +8,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
@@ -34,9 +35,9 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             }
         }
 
-        public List<Performance> GetAllUpcomingPerformances(bool sortByDate = true)
+        public async Task<List<Performance>> GetAllUpcomingPerformancesAsync(bool sortByDate = true)
         {
-            List<Performance> performances = upcomingCollection.Find(performance => true).ToList();
+            var performances = await upcomingCollection.Find(_ => true).ToListAsync();
 
             foreach (var performance in performances)
             {
@@ -51,9 +52,9 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             return performances;
         }
 
-        public List<Performance> GetAllPastPerformances(bool sortByDate = true)
+        public async Task<List<Performance>> GetAllPastPerformancesAsync(bool sortByDate = true)
         {
-            List<Performance> performances = pastCollection.Find(performance => true).ToList();
+            var performances = await pastCollection.Find(_ => true).ToListAsync();
 
             if (sortByDate)
             {
@@ -63,9 +64,10 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
             return performances;
         }
 
-        public List<Performance> GetPastPerformances(DateTime startDate, DateTime endDate, bool sortByDate = true)
+        public async Task<List<Performance>> GetPastPerformancesAsync(DateTime startDate, DateTime endDate, bool sortByDate = true)
         {
-            List<Performance> allPerformances = pastCollection.Find(performance => true).ToList();
+            var allPerformances = await pastCollection.Find(_ => true).ToListAsync();
+
             List<Performance> filterPerformances = allPerformances.Where(performance => (DateTime.Compare(performance.PerformanceDateTime, startDate) >= 0) &&
                 DateTime.Compare(performance.PerformanceDateTime, endDate) <= 0).ToList();
 
@@ -76,62 +78,62 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 
             return filterPerformances;
         }
-        public Performance GetOldestPerformance()
+        public async Task<Performance> GetOldestPerformanceAsync()
         {
-            List<Performance> allPerformances = pastCollection.Find(performance => true).ToList();
+            var allPerformances = await pastCollection.Find(_ => true).ToListAsync();
 
             allPerformances.Sort((p1, p2) => p1.PerformanceDateTime.CompareTo(p2.PerformanceDateTime));
 
             return allPerformances.Count>0?allPerformances[0]:null;
         }
-        public void MovePastPerformances()
+        public async Task MovePastPerformancesAsync()
         {
             var now = DateTime.Now;
             var pastFilter = Builders<Performance>.Filter.Lt(p => p.PerformanceDateTime, now);
-            var pastPerformances = upcomingCollection.Find(pastFilter).ToList();
+            var pastPerformances = await upcomingCollection.Find(pastFilter).ToListAsync();
 
             if (pastPerformances.Any())
             {
-                pastCollection.InsertMany(pastPerformances);
+                await pastCollection.InsertManyAsync(pastPerformances);
 
                 var idsToDelete = pastPerformances.Select(p => p.Id).ToList();
                 var deleteFilter = Builders<Performance>.Filter.In(p => p.Id, idsToDelete);
-                upcomingCollection.DeleteMany(deleteFilter);
+                await upcomingCollection.DeleteManyAsync(deleteFilter);
             }
         }
 
-        public void AddPerformance(Performance performance)
+        public async Task AddPerformanceAsync(Performance performance)
         {
-            upcomingCollection.InsertOne(performance);
+            await upcomingCollection.InsertOneAsync(performance);
         }
 
-        public void RemovePerformance(Guid id)
+        public async Task RemovePerformanceAsync(Guid id)
         {
             var filter = Builders<Performance>.Filter.Eq("Id", id);
-            upcomingCollection.DeleteOne(filter);
+            await upcomingCollection.DeleteOneAsync(filter);
         }
 
-        public void AddTicket(Guid performanceId, StandardTicket ticket)
+        public async Task AddTicketAsync(Guid performanceId, StandardTicket ticket)
         {
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
             var update = Builders<Performance>.Update.Push(p => p.Tickets, ticket);
-            upcomingCollection.UpdateOne(filter, update);
+            await upcomingCollection.UpdateOneAsync(filter, update);
         }
 
-        public void RemoveTicket(Guid performanceId, Guid ticketId)
+        public async Task RemoveTicketAsync(Guid performanceId, Guid ticketId)
         {
             var filter = Builders<Performance>.Filter.Eq(s => s.Id, performanceId);
             var update = Builders<Performance>.Update.PullFilter(s => s.Tickets, z => z.Id == ticketId);
-            upcomingCollection.UpdateOne(filter, update);
+            await upcomingCollection.UpdateOneAsync(filter, update);
         }
 
-        public void UpdatePerformance(Performance updatedPerformance)
+        public async Task UpdatePerformanceAsync(Performance updatedPerformance)
         {
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, updatedPerformance.Id);
-            upcomingCollection.ReplaceOne(filter, updatedPerformance);
+            await upcomingCollection.ReplaceOneAsync(filter, updatedPerformance);
         }
 
-        public void UpdateTicket(Guid performanceId, StandardTicket updatedTicket)
+        public async Task UpdateTicketAsync(Guid performanceId, StandardTicket updatedTicket)
         {
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
 
@@ -142,54 +144,46 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 
             var push = Builders<Performance>.Update.Push(p => p.Tickets, updatedTicket);
 
-            using (var session = client.StartSession())
+            using (var session = await client.StartSessionAsync())
             {
                 session.StartTransaction();
 
-                upcomingCollection.UpdateOne(session, filter, pull);
-                upcomingCollection.UpdateOne(session, filter, push);
+                await upcomingCollection.UpdateOneAsync(session, filter, pull);
+                await upcomingCollection.UpdateOneAsync(session, filter, push);
 
-                session.CommitTransaction();
+                await session.CommitTransactionAsync();
             }
         }
-        public void AddPosition(Guid performanceId, int position)
+        public async Task AddPositionAsync(Guid performanceId, int position)
         {
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
             var update = Builders<Performance>.Update.Push(p => p.AvailablePositions, position);
 
-            upcomingCollection.UpdateOne(filter, update);
+            await upcomingCollection.UpdateOneAsync(filter, update);
         }
-        public void RemovePosition(Guid performanceId, int position)
+        public async Task RemovePositionAsync(Guid performanceId, int position)
         {
             var filter = Builders<Performance>.Filter.Eq(p => p.Id, performanceId);
             var update = Builders<Performance>.Update.Pull(p => p.AvailablePositions, position);
 
-            upcomingCollection.UpdateOne(filter, update);
+            await upcomingCollection.UpdateOneAsync(filter, update);
         }
-        public bool IsPositionAvailable(Guid performanceId, int position)
+        public async Task<bool> IsPositionAvailableAsync(Guid performanceId, int position)
         {
             var filter = Builders<Performance>.Filter.And(
                 Builders<Performance>.Filter.Eq(p => p.Id, performanceId),
                 Builders<Performance>.Filter.AnyEq(p => p.AvailablePositions, position)
             );
 
-            return upcomingCollection.Find(filter).Any();
+            return await upcomingCollection.Find(filter).AnyAsync();
         }
-        public Performance GetUpdatedPerformance(Performance performance)
+        public async Task<Performance> GetUpdatedPerformanceAsync(Performance performance)
         {
             var filter = Builders<Performance>.Filter.Eq("Id", performance.Id);
-            Performance updatedPerformance = upcomingCollection.Find(filter).FirstOrDefault();
+            var updatedPerformance = await upcomingCollection.Find(filter).FirstOrDefaultAsync();
             updatedPerformance?.InitializeService(new PerformanceBaseService());
 
             return updatedPerformance;
-        }
-        public void RemoveFieldFromDataBase(string fieldName)
-        {
-            var update = Builders<Performance>.Update.Unset(fieldName);
-
-            upcomingCollection.UpdateMany(Builders<Performance>.Filter.Empty, update);
-
-            pastCollection.UpdateMany(Builders<Performance>.Filter.Empty, update);
         }
     }
 }

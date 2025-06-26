@@ -4,6 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 {
@@ -152,7 +153,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             this.performanceBaseService = performanceBaseService ?? throw new ArgumentNullException(nameof(performanceBaseService));
         }
 
-        public void BuyTicket(StandardTicket newTicket)
+        public async Task BuyTicketAsync(StandardTicket newTicket)
         {
             if (newTicket == null)
             {
@@ -164,23 +165,23 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             }
             availablePositions.Remove(newTicket.Position);
             tickets.Add(newTicket);
-            performanceBaseService.RemovePosition(this.id, newTicket.Position);
-            performanceBaseService.AddTicket(this.id, newTicket);
+            await performanceBaseService.RemovePositionAsync(this.id, newTicket.Position);
+            await performanceBaseService.AddTicketAsync(this.id, newTicket);
 
         }
 
-        public void ChangeTicketStatus(Guid ticketId)
+        public async Task ChangeTicketStatusAsync(Guid ticketId)
         {
             var existingTicket = tickets.FirstOrDefault(s => s.Id == ticketId);
             if (existingTicket != null)
             {
                 int index = tickets.IndexOf(existingTicket);
                 tickets[index].ChangeStatus();
-                performanceBaseService.UpdateTicket(this.id, tickets[index]);
+                await performanceBaseService.UpdateTicketAsync(this.id, tickets[index]);
             }
         }
 
-        public void RemoveTicket(Guid ticketId)
+        public async Task RemoveTicketAsync(Guid ticketId)
         {
             StandardTicket ticket = tickets.FirstOrDefault(p => p.Id == ticketId);
             if (ticket != null)
@@ -188,8 +189,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
                 tickets.Remove(ticket);
                 availablePositions.Add(ticket.Position);
                 availablePositions.Sort();
-                performanceBaseService.RemoveTicket(this.id, ticketId);
-                performanceBaseService.AddPosition(this.id, ticket.Position);
+                await performanceBaseService.RemoveTicketAsync(this.id, ticketId);
+                await performanceBaseService.AddPositionAsync(this.id, ticket.Position);
             }
         }
 
@@ -203,14 +204,14 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             return tickets.FirstOrDefault(s => s.Id == id);
         }
 
-        public void UpdateTicket(StandardTicket updatedTicket)
+        public async Task UpdateTicketAsync(StandardTicket updatedTicket)
         {
             var existingTicket = tickets.FirstOrDefault(s => s.Id == updatedTicket.Id);
             if (existingTicket != null)
             {
                 int index = tickets.IndexOf(existingTicket);
                 tickets[index] = updatedTicket;
-                performanceBaseService.UpdateTicket(this.id, updatedTicket);
+                await performanceBaseService.UpdateTicketAsync(this.id, updatedTicket);
             }
         }
 

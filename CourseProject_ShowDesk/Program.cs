@@ -4,6 +4,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk
@@ -23,8 +24,9 @@ namespace CourseProject_ShowDesk
             {
                 AppCostantsManager.LoadAppConstantsFromFile();
             }
-            catch (Exception ex)
+            catch (FileNotFoundException ex)
             {
+                AppConstants.PopulateConstants(new AppConstantsData());
                 MessageBox.Show(ex.Message + "\nSo program was loaded default values", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 

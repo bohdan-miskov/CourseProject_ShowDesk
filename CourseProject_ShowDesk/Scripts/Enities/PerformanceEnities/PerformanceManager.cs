@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
 {
@@ -29,43 +30,43 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
                 return pastPerformances;
             }
         }
-        public void LoadUpcomingPerformancesFromDatabase()
+        public async Task LoadUpcomingPerformancesFromDatabaseAsync()
         {
-            database.MovePastPerformances();
-            performances = database.GetAllUpcomingPerformances();
+            await database.MovePastPerformancesAsync();
+            performances = await database.GetAllUpcomingPerformancesAsync();
         }
-        public void LoadPastPerformancesFromDatabase(DateTime startDate, DateTime endDate)
+        public async Task LoadPastPerformancesFromDatabaseAsync(DateTime startDate, DateTime endDate)
         {
-            database.MovePastPerformances();
-            pastPerformances = database.GetPastPerformances(startDate, endDate);
+            await database.MovePastPerformancesAsync();
+            pastPerformances = await database.GetPastPerformancesAsync(startDate, endDate);
         }
-        public void LoadAllPastPerformancesFromDatabase()
+        public async Task LoadAllPastPerformancesFromDatabaseAsync()
         {
-            database.MovePastPerformances();
-            pastPerformances = database.GetAllPastPerformances();
+            await database.MovePastPerformancesAsync();
+            pastPerformances = await database.GetAllPastPerformancesAsync();
         }
         public void ResetPastPerformancesList()
         {
             pastPerformances = null;
         }
-        public Performance GetOldestPerformance()
+        public async Task<Performance> GetOldestPerformanceAsync()
         {
-            database.MovePastPerformances();
-            return database.GetOldestPerformance();
+            await database.MovePastPerformancesAsync();
+            return await database.GetOldestPerformanceAsync();
         }
-        public void AddPerformance(Performance perf)
+        public async Task AddPerformanceAsync(Performance perf)
         {
             performances.Add(perf);
-            database.AddPerformance(perf);
+            await database.AddPerformanceAsync(perf);
         }
 
-        public void RemovePerformance(Guid id)
+        public async Task RemovePerformanceAsync(Guid id)
         {
             var perf = performances.FirstOrDefault(p => p.Id == id);
             if (perf != null)
             {
                 performances.Remove(perf);
-                database.RemovePerformance(id);
+                await database.RemovePerformanceAsync(id);
             }
         }
 
@@ -74,14 +75,14 @@ namespace CourseProject_ShowDesk.Scripts.Enities.PerformanceEnities
             return performances.FirstOrDefault(s => s.Id == id);
         }
 
-        public void UpdatePerformance(Performance updatedPerformance)
+        public async Task UpdatePerformanceAsync(Performance updatedPerformance)
         {
             var existingPerformance = performances.FirstOrDefault(s => s.Id == updatedPerformance.Id);
             if (existingPerformance != null)
             {
                 int index = performances.IndexOf(existingPerformance);
                 performances[index] = updatedPerformance;
-                database.UpdatePerformance(updatedPerformance);
+                await database.UpdatePerformanceAsync(updatedPerformance);
             }
         }
     }

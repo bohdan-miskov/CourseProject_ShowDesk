@@ -6,6 +6,7 @@ using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
 using DotNetEnv;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
@@ -46,10 +47,15 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             Env.Load(envPath);
             string masterKey = Environment.GetEnvironmentVariable("MASTER_PASSWORD");
             masterCypher = new MasterCypherAES(masterKey);
+        }
 
+        private async void ManageEmployeesForm_Load(object sender, EventArgs e)
+        {
+            await employeeManager.LoadFromDatabaseAsync();
             UpdateDataGridEmployees();
             DisableEditAndRemoveEmployees();
         }
+
         private void ManageEmployeesForm_Shown(object sender, EventArgs e)
         {
             ShowGreetings(userAccount.FullName);
@@ -66,22 +72,22 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             DisableEditAndRemoveEmployees();
         }
 
-        private void AddEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void AddEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddEmployee();
-            UpdateDataFromDataBase();
+            await AddEmployeeAsync();
+            await UpdateDataFromDataBaseAsync();
         }
 
-        private void EditEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void EditEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditEmployee();
-            UpdateDataFromDataBase();
+            await EditEmployeeAsync();
+            await UpdateDataFromDataBaseAsync();
         }
 
-        private void RemoveEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void RemoveEmployeeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemoveEmployee();
-            UpdateDataFromDataBase();
+            await RemoveEmployeeAsync();
+            await UpdateDataFromDataBaseAsync();
         }
 
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,14 +116,14 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         {
             searchData.SearchNavigation(e);
         }
-        private void ButtonUpdate_Click(object sender, EventArgs e)
+        private async void ButtonUpdate_Click(object sender, EventArgs e)
         {
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
         }
 
-        private void TimerUpdate_Tick(object sender, EventArgs e)
+        private async void TimerUpdate_Tick(object sender, EventArgs e)
         {
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -136,10 +142,10 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
-        private void UpdateDataFromDataBase()
+        private async Task UpdateDataFromDataBaseAsync()
         {
             FormConfigurator.SetActivePictureBoxUpdate(pictureBoxUpdate);
-            employeeManager.LoadFromDatabase();
+            await employeeManager.LoadFromDatabaseAsync();
             UpdateDataGridEmployees();
             DisableEditAndRemoveEmployees();
             FormConfigurator.RemoveActivePictureBoxUpdate(pictureBoxUpdate);
@@ -188,7 +194,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             return Guid.Parse(dataGridViewEmployees.CurrentRow.Cells[0].Value.ToString());
         }
 
-        private void AddEmployee()
+        private async Task AddEmployeeAsync()
         {
             AddEditEmployeeForm addEmployeeForm = new AddEditEmployeeForm(userAccount, employeeManager.Employees);
             this.Hide();
@@ -203,10 +209,10 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             this.Show();
 
             if (addEmployeeForm.GetIsValid())
-                employeeManager.AddEmployee(addEmployeeForm.GetEmployee());
+                await employeeManager.AddEmployeeAsync(addEmployeeForm.GetEmployee());
         }
 
-        private void EditEmployee()
+        private async Task EditEmployeeAsync()
         {
             Guid id = GetCurrentRowId();
 
@@ -223,13 +229,13 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             this.Show();
 
             if (editEmployeeForm.GetIsValid())
-                employeeManager.UpdateEmployee(editEmployeeForm.GetEmployee());
+                await employeeManager.UpdateEmployeeAsync(editEmployeeForm.GetEmployee());
         }
 
-        private void RemoveEmployee()
+        private async Task RemoveEmployeeAsync()
         {
             Guid id = GetCurrentRowId();
-            employeeManager.RemoveEmployee(id);
+            await employeeManager.RemoveEmployeeAsync(id);
         }
         private void OpenSettings()
         {

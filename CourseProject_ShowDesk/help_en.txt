@@ -1,0 +1,177 @@
+
+INTRODUCTION
+
+This program was created to automate processes related to managing concert, theater, or other event venues. It allows you to create a hall structure (stages, zones, seats), sell tickets, control seat occupancy, manage staff, and analyze sales statistics.
+
+The main purpose of the program is to provide a tool for efficient event administration, reduce errors during ticket sales, ensure flexible role management, and create complete analytics on the venue's performance.
+
+Each user has their own role (Administrator, Cashier, or Director), which determines the available functionality. For more information about each role’s functions, see the relevant sections.
+
+Attention! If no users are registered in the system yet, access is possible only in the Director role without a password. It is recommended to check the functionality under each role after completing the initial system setup.
+
+---
+
+PROGRAM SETTINGS
+
+1. Connecting to MongoDB
+
+The program uses MongoDB as its primary data storage. Before starting, you must specify the MongoDB connection string in the settings. Example:  
+mongodb://localhost:27017
+
+If the server requires authorization, you must specify the login and password in the connection string.
+
+At the first launch, the program will automatically create the database and collections if they do not exist.
+
+Default collection names:
+- Event - main event collection
+- Employees - list of employees
+- Stages - list of stages/halls
+- UpcomingPerformances - list of upcoming performances
+- PastPerformances - list of past performances
+
+These names can be changed in the settings (Database tab).
+
+2. Company Name
+
+You must specify the company name in the settings, which will be printed at the top of the ticket.  
+If not specified, the default title "ShowDesk" will appear on the tickets.
+
+3. Initial Access to the Program
+
+If the database does not contain any users:
+- Access to the system is only possible in the Director role without a login and password.
+- In this mode, the Director must create at least one user account and assign a role (Cashier, Administrator, Director).
+
+After creating at least one Director account, further access to the system will only be possible with registered credentials.
+
+Attention! Only a Director account has access to the Settings section!
+
+4. Recommended Basic Settings
+
+- Choose a folder for saving receipts.
+- Set the currency symbol (₴, $, €).
+- Configure standard ticket markups.
+- Set minimum breaks between events and maximum event duration.
+- Define the lists of professions, ticket types, souvenirs, and drinks.
+
+---
+
+USER ROLES
+--------------------------------
+DIRECTOR
+--------------------------------
+
+The Director can:
+- Change program settings.
+- Create and edit employee accounts.
+
+--------------------------------
+ADMINISTRATOR
+--------------------------------
+
+The Administrator can:
+- Add, edit, and delete stages.
+- Manage zones of each stage (add, edit).
+- Set up seats in each zone (quantity, price, etc.).
+- Add, edit, and delete events.
+- Also has all the capabilities of the Cashier.
+
+--------------------------------
+CASHIER
+--------------------------------
+
+The Cashier can:
+- View the list of available events and stages.
+- Sell tickets.
+- Check seat availability in zones.
+- Create and view sales statistics.
+
+---
+
+WORKING WITH EVENTS
+
+The "Working with Events" section allows managing all scheduled events that will take place at the venue.  
+Each event has mandatory parameters that must be specified when creating:
+
+- Event name
+- Start date and time
+- Base ticket price
+- Event duration
+- Stage or hall name
+
+Section functionalities:
+
+- Viewing events  
+  The user can view the list of all created events. Sorting by name, date, duration, or price is available.
+
+- Adding a new event  
+  Creating an event is performed through a dedicated form. Correct dates, durations, and selected stage must be entered carefully.
+
+- Editing events  
+  The user can edit any parameters of an existing event (e.g., change event date or base ticket price).
+
+- Deleting events  
+  Before deleting an event, the system asks for confirmation to avoid accidental deletion.
+
+- Archiving past events  
+  After the event date, the program automatically moves the event to the "Past Performances" archive section.
+
+Recommendation: Always verify the entered event data before saving to avoid schedule confusion.
+
+---
+
+TICKET SALES
+
+The "Ticket Sales" section ensures the process of issuing tickets to clients and recording sales.
+
+Section functionalities:
+
+- Selecting an event for sale  
+  The user selects an event from the available list, with search and filtering options.
+
+- Viewing available seats  
+  After selecting an event, the stage plan with zones and seats is displayed. Seats are marked with different colors depending on the status:
+  - Available seat
+  - Reserved or sold seat
+
+- Selecting a seat  
+  The user selects an available seat. The system automatically calculates the ticket price based on the seat category.
+
+- Completing the sale  
+  After selecting a seat, the "Sell Ticket" button is pressed. The ticket is saved to the database, and the seat becomes unavailable for further sales.
+
+- Printing or saving the receipt  
+  After a successful sale, the system offers to print or save the receipt as an electronic document.
+
+- Sale errors  
+  In case of errors (e.g., seat already occupied), the system will display an explanatory message and will not allow double-selling.
+
+Recommendation: Always verify the selected seat before confirming the sale.
+
+---
+
+STATISTICS AND REPORTS
+
+The "Statistics and Reports" section provides tools for analyzing the venue's performance over a certain period.
+
+Section functionalities:
+
+- Generating reports by period  
+  The user selects the start and end dates to analyze ticket sales. All sales within this period will be included.
+
+- Generating reports by cashier  
+  The system can generate a report for a specific cashier to analyze individual performance.
+
+- Generating overall reports  
+  Reports for all users are generated, displaying:
+  - Total number of tickets sold
+  - Total revenue
+  - Average ticket price
+
+- Exporting reports  
+  Reports can be saved as files for further analysis or printing.
+
+- Real-time monitoring  
+  During operation, the system displays current sales figures for quick control.
+
+Recommendation: Regularly save generated reports for further analysis and venue statistics.

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
@@ -95,9 +96,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             canvasController.StartScaleCanvas(e, useControl);
         }
 
-        private void ButtonAdd_Click(object sender, EventArgs e)
+        private async void ButtonAdd_Click(object sender, EventArgs e)
         {
-            SaveTickets();
+            await SaveTicketsAsync();
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -198,9 +199,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void UpdateAllTicketsInformation()
+        private async Task UpdateAllTicketsInformationAsync()
         {
-            Performance newPerformance = dataBase.GetUpdatedPerformance(performance);
+            Performance newPerformance = await dataBase.GetUpdatedPerformanceAsync(performance);
             if (newPerformance != performance)
             {
                 performance = newPerformance;
@@ -380,9 +381,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void SaveTickets()
+        private async Task SaveTicketsAsync()
         {
-            List<int> canceledPosition = CheckPositions();
+            List<int> canceledPosition = await CheckPositionsAsync();
             if (canceledPosition.Count != 0)
             {
                 MessageBox.Show(
@@ -390,7 +391,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                      "Not available",
                      MessageBoxButtons.OK,
                      MessageBoxIcon.Error);
-                UpdateAllTicketsInformation();
+                await UpdateAllTicketsInformationAsync();
 
                 return;
             }
@@ -400,12 +401,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             this.Close();
         }
 
-        private List<int> CheckPositions()
+        private async Task<List<int>> CheckPositionsAsync()
         {
             List<int> canceledPositions = new List<int>();
             foreach (StandardTicket ticket in newTickets)
             {
-                if (!dataBase.IsPositionAvailable(performance.Id, ticket.Position))
+                if (!await dataBase.IsPositionAvailableAsync(performance.Id, ticket.Position))
                 {
                     canceledPositions.Add(ticket.Position);
                 }

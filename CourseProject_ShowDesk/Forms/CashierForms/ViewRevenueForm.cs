@@ -7,6 +7,7 @@ using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -26,10 +27,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             labelAccountName.Text = userAccount.FullName;
             logOut = false;
-
-            PopulateComponents();
         }
-
+        private async void ViewRevenueForm_Load(object sender, EventArgs e)
+        {
+            await PopulateComponentsAsync();
+        }
         private void DateTimePickerStartDate_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) dateTimePickerFinishDate.Focus();
@@ -50,9 +52,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             dateTimePickerStartDate.MaxDate = dateTimePickerFinishDate.Value;
         }
 
-        private void ButtonCalculate_Click(object sender, EventArgs e)
+        private async void ButtonCalculate_Click(object sender, EventArgs e)
         {
-            CreateGraph();
+            await CreateGraphAsync();
         }
 
         private void ButtonSavePdf_Click(object sender, EventArgs e)
@@ -64,14 +66,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             LogOut();
         }
 
-        private void PopulateComponents()
+        private async Task PopulateComponentsAsync()
         {
             labelCurrency.Text = AppConstants.CurrencySymbol.ToString();
             labelCurrency2.Text = AppConstants.CurrencySymbol.ToString();
 
             PopulateComboBoxChartType();
 
-            SetDateLimit();
+            await SetDateLimitAsync();
         }
 
         private void PopulateComboBoxChartType()
@@ -85,9 +87,9 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         }
 
 
-        private void SetDateLimit()
+        private async Task SetDateLimitAsync()
         {
-            Performance oldestPerformance = performanceManager.GetOldestPerformance();
+            Performance oldestPerformance = await performanceManager.GetOldestPerformanceAsync();
 
             if (oldestPerformance == null)
             {
@@ -108,12 +110,12 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             }
         }
 
-        private void CreateGraph()
+        private async Task CreateGraphAsync()
         {
             chartRevenue.Series.Clear();
             chartRevenue.Series.Add(CreateSeries());
 
-            Calculate(LoadPerformanceByDate());
+            Calculate(await LoadPerformanceByDateAsync());
             performanceManager.ResetPastPerformancesList();
         }
 
@@ -134,11 +136,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             return series;
         }
 
-        private List<Performance> LoadPerformanceByDate()
+        private async Task<List<Performance>> LoadPerformanceByDateAsync()
         {
             DateTime dateStart = dateTimePickerStartDate.Value.Date;
             DateTime dateFinish = dateTimePickerFinishDate.Value.Date;
-            performanceManager.LoadPastPerformancesFromDatabase(dateStart, dateFinish);
+            await performanceManager.LoadPastPerformancesFromDatabaseAsync(dateStart, dateFinish);
             return performanceManager.PastPerformances;
         }
 

@@ -32,11 +32,11 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.FormInteraction
 
         public static void SetActivePictureBoxUpdate(PictureBox pictureBox)
         {
-            //pictureBox.Image = Properties.Resources.loading_gif;
+            pictureBox.Image = Properties.Resources.loading_gif;
         }
         public static void RemoveActivePictureBoxUpdate(PictureBox pictureBox)
         {
-            //pictureBox.Image = Properties.Resources.restart_icon;
+            pictureBox.Image = Properties.Resources.restart_icon;
         }
         public static void SetAutoCompleteForTextBox(TextBox textBox, string[] source)
         {

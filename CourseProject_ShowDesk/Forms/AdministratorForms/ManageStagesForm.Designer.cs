@@ -330,6 +330,7 @@
             this.Name = "ManageStagesForm";
             this.Text = "ManageStages";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageStagesForm_FormClosing);
+            this.Load += new System.EventHandler(this.ManageStagesForm_Load);
             this.Shown += new System.EventHandler(this.ManageStagesForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStages)).EndInit();
             this.contextMenuStripStages.ResumeLayout(false);

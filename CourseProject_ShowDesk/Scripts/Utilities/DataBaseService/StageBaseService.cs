@@ -6,6 +6,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
 {
@@ -28,53 +29,28 @@ namespace CourseProject_ShowDesk.Scripts.Utilities.DataBaseService
                 throw new DatabaseConnectionException("Could not connect to the database.");
             }
         }
-        public List<Stage> GetAllStages(bool sortByName = true)
+        public async Task<List<Stage>> GetAllStagesAsync(bool sortByName = true)
         {
-            List<Stage> stages = stageCollection.Find(_ => true).ToList();
+            List<Stage> stages = await stageCollection.Find(_ => true).ToListAsync();
             if (sortByName)
             {
                 stages.Sort((p1, p2) => p1.Name.CompareTo(p2.Name));
             }
             return stages;
         }
-        public void AddStage(Stage stage)
+        public async Task AddStageAsync(Stage stage)
         {
-            stageCollection.InsertOne(stage);
+            await stageCollection.InsertOneAsync(stage);
         }
-        public void RemoveStage(Guid id)
+        public async Task RemoveStageAsync(Guid id)
         {
             var filter = Builders<Stage>.Filter.Eq("Id", id);
-            stageCollection.DeleteOne(filter);
+            await stageCollection.DeleteOneAsync(filter);
         }
-        public void UpdateStage(Stage updatedStage)
+        public async Task UpdateStageAsync(Stage updatedStage)
         {
             var filter = Builders<Stage>.Filter.Eq(p => p.Id, updatedStage.Id);
-            stageCollection.ReplaceOne(filter, updatedStage);
-        }
-
-        public void RemoveFieldFromDataBase(string fieldName)
-        {
-            var update = Builders<Stage>.Update.Unset("ScaleFactor");
-            stageCollection.UpdateMany(Builders<Stage>.Filter.Empty, update);
-            //var update2 = Builders<Stage>.Update.Unset("DecorList.$[].BorderStyle");
-            //stageCollection.UpdateMany(Builders<Stage>.Filter.Empty, update2);
-            //List<Stage> stages = stageCollection.Find(_ => true).ToList();
-
-            //foreach (var stage in stages)
-            //{
-
-            //    var cleanedSeats = new List<BsonDocument>();
-            //    foreach (var seat in stage.SeatList)
-            //    {
-            //        var bsonSeat = seat.ToBsonDocument();
-            //        bsonSeat.Remove(fieldName);
-            //        cleanedSeats.Add(bsonSeat);
-            //    }
-
-
-            //    var update = Builders<Stage>.Update.Set("SeatList", cleanedSeats);
-            //    stageCollection.UpdateOne(s => s.Id == stage.Id, update);
-            //}
+            await stageCollection.ReplaceOneAsync(filter, updatedStage);
         }
     }
 }

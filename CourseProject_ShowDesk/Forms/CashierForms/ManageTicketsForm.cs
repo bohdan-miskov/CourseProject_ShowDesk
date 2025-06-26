@@ -8,6 +8,7 @@ using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
@@ -39,12 +40,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             logOut = false;
 
-            UpdateDataGridTickets();
-            DisableEditAndRemoveTicket();
-
             timerUpdate.Start();
 
             searchData = new SearchDataGrid(dataGridViewTickets);
+        }
+        private void ManageTicketsForm_Load(object sender, EventArgs e)
+        {
+            UpdateDataGridTickets();
+            DisableEditAndRemoveTicket();
         }
         private void DataGridViewTickets_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -55,24 +58,24 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             DisableEditAndRemoveTicket();
         }
-        private void ChangeStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void ChangeStatusToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeTicketStatus();
+            await ChangeTicketStatusAsync();
 
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
         }
 
-        private void RemoveTicketToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void RemoveTicketToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemoveTicket();
+            await RemoveTicketAsync();
 
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
         }
-        private void BuyTicketFormToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void BuyTicketFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BuyOfTicket();
+            await BuyOfTicketAsync();
 
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
         }
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
@@ -86,14 +89,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             searchData.SearchNavigation(e);
         }
-        private void ButtonUpdate_Click(object sender, EventArgs e)
+        private async void ButtonUpdate_Click(object sender, EventArgs e)
         {
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
         }
 
-        private void TimerUpdate_Tick(object sender, EventArgs e)
+        private async void TimerUpdate_Tick(object sender, EventArgs e)
         {
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,10 +108,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             timerUpdate.Stop();
         }
-        private void UpdateDataFromDataBase()
+        private async Task UpdateDataFromDataBaseAsync()
         {
             FormConfigurator.SetActivePictureBoxUpdate(pictureBoxUpdate);
-            currentPerformance = dataBase.GetUpdatedPerformance(currentPerformance);
+            currentPerformance = await dataBase.GetUpdatedPerformanceAsync(currentPerformance);
 
             UpdateDataGridTickets();
             DisableEditAndRemoveTicket();
@@ -158,22 +161,22 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             return Guid.Parse(dataGridViewTickets.CurrentRow.Cells[0].Value.ToString());
         }
 
-        private void ChangeTicketStatus()
+        private async Task ChangeTicketStatusAsync()
         {
             Guid id = GetCurrentRowId();
-            currentPerformance.ChangeTicketStatus(id);
+            await currentPerformance.ChangeTicketStatusAsync(id);
             GenerateReceiptPdf(currentPerformance.GetTicketById(id));
         }
 
-        private void RemoveTicket()
+        private async Task RemoveTicketAsync()
         {
             Guid id = GetCurrentRowId();
-            currentPerformance.RemoveTicket(id);
+            await currentPerformance.RemoveTicketAsync(id);
         }
 
-        private void BuyOfTicket()
+        private async Task BuyOfTicketAsync()
         {
-            currentPerformance = dataBase.GetUpdatedPerformance(currentPerformance);
+            currentPerformance =await dataBase.GetUpdatedPerformanceAsync(currentPerformance);
             BuyTicketForm buyTicketForm = new BuyTicketForm(userAccount, currentStage, currentPerformance);
 
             this.Hide();
@@ -193,7 +196,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                 {
                     try
                     {
-                        currentPerformance.BuyTicket(ticket);
+                        await currentPerformance.BuyTicketAsync(ticket);
                     }
                     catch(InvalidOperationException)
                     {

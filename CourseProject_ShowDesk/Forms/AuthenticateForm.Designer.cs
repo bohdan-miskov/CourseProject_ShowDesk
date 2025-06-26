@@ -194,6 +194,7 @@
             this.Name = "AuthenticateForm";
             this.Text = "Authenticate";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AuthenticateForm_FormClosed);
+            this.Load += new System.EventHandler(this.AuthenticateForm_Load);
             this.groupBoxAuthenticate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAvatar)).EndInit();
             this.groupBoxChoice.ResumeLayout(false);

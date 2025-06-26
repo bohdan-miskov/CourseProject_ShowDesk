@@ -7,6 +7,7 @@ using CourseProject_ShowDesk.Scripts.Utilities.DataBaseService;
 using CourseProject_ShowDesk.Scripts.Utilities.Exceptions;
 using CourseProject_ShowDesk.Scripts.Utilities.FormInteraction;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.AdministratorForms
@@ -28,7 +29,6 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             {
                 stageManager = new StageManager(new StageBaseService());
                 performanceManager = new PerformanceManager(new PerformanceBaseService());
-                performanceManager.LoadUpcomingPerformancesFromDatabase();
             }
             catch (DatabaseConnectionException ex)
             {
@@ -45,12 +45,16 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             timerUpdate.Interval = AppConstants.UpdateStagesInterval;
 
-            UpdateDataGridStages();
-
-            DisableEditAndRemoveStage();
-
             searchData = new SearchDataGrid(dataGridViewStages);
         }
+        private async void ManageStagesForm_Load(object sender, EventArgs e)
+        {
+            await stageManager.LoadFromDatabaseAsync();
+            await performanceManager.LoadUpcomingPerformancesFromDatabaseAsync();
+            UpdateDataGridStages();
+            DisableEditAndRemoveStage();
+        }
+
         private void ManageStagesForm_Shown(object sender, EventArgs e)
         {
             ShowGreetings(userAccount.FullName);
@@ -67,22 +71,22 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             DisableEditAndRemoveStage();
         }
 
-        private void AddStageToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void AddStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddStage();
-            UpdataDataFromDatabase();
+            await AddStageAsync();
+            await UpdataDataFromDatabaseAsync();
         }
 
-        private void EditStageToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void EditStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditStage();
-            UpdataDataFromDatabase();
+            await EditStageAsync();
+            await UpdataDataFromDatabaseAsync();
         }
 
-        private void RemoveStageToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void RemoveStageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemoveStage();
-            UpdataDataFromDatabase();
+            await RemoveStageAsync();
+            await UpdataDataFromDatabaseAsync();
         }
         private void ButtonSearch_Click(object sender, EventArgs e)
         {
@@ -99,13 +103,13 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             searchData.SearchNavigation(e);
         }
 
-        private void ButtonUpdate_Click(object sender, EventArgs e)
+        private async void ButtonUpdate_Click(object sender, EventArgs e)
         {
-            UpdataDataFromDatabase();
+            await UpdataDataFromDatabaseAsync();
         }
-        private void TimerUpdate_Tick(object sender, EventArgs e)
+        private async void TimerUpdate_Tick(object sender, EventArgs e)
         {
-            UpdataDataFromDatabase();
+            await UpdataDataFromDatabaseAsync();
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -146,10 +150,10 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 stage.GetTotalPositions()
                     );
         }
-        private void UpdataDataFromDatabase()
+        private async Task UpdataDataFromDatabaseAsync()
         {
             FormConfigurator.SetActivePictureBoxUpdate(pictureBoxUpdate);
-            stageManager.LoadFromDatabase();
+            await stageManager.LoadFromDatabaseAsync();
             UpdateDataGridStages();
             DisableEditAndRemoveStage();
             FormConfigurator.RemoveActivePictureBoxUpdate(pictureBoxUpdate);
@@ -160,9 +164,9 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
             return Guid.Parse(dataGridViewStages.CurrentRow.Cells[0].Value.ToString());
         }
 
-        private void AddStage()
+        private async Task AddStageAsync()
         {
-            performanceManager.LoadUpcomingPerformancesFromDatabase();
+           await performanceManager.LoadUpcomingPerformancesFromDatabaseAsync();
             AddStageForm addStageForm = new AddStageForm(userAccount, stageManager.Stages);
             this.Hide();
             addStageForm.ShowDialog();
@@ -177,14 +181,14 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             if (addStageForm.GetIsValid())
             {
-                stageManager.AddStage(addStageForm.GetNewStage());
+                await stageManager.AddStageAsync(addStageForm.GetNewStage());
             }
         }
 
-        private void EditStage()
+        private async Task EditStageAsync()
         {
             Guid stageId = GetCurrentRowId();
-            performanceManager.LoadUpcomingPerformancesFromDatabase();
+            await performanceManager.LoadUpcomingPerformancesFromDatabaseAsync();
 
             EditStageForm editStageForm = new EditStageForm(
                 userAccount,
@@ -205,17 +209,17 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
 
             if (editStageForm.GetIsValid())
             {
-                stageManager.UpdateStage(editStageForm.GetStage());
+                await stageManager.UpdateStageAsync(editStageForm.GetStage());
             }
         }
 
-        private void RemoveStage()
+        private async Task RemoveStageAsync()
         {
             Guid stageId = GetCurrentRowId();
             Stage currentsStage = stageManager.GetById(stageId);
-            performanceManager.LoadUpcomingPerformancesFromDatabase();
+            await performanceManager.LoadUpcomingPerformancesFromDatabaseAsync();
 
-            if (isStageActive(currentsStage, out string errorMessage))
+            if (IsStageActive(currentsStage, out string errorMessage))
             {
                 MessageBox.Show(
                                 errorMessage,
@@ -225,9 +229,9 @@ namespace CourseProject_ShowDesk.Forms.AdministratorForms
                 return;
             }
 
-            stageManager.RemoveStage(stageId);
+            await stageManager.RemoveStageAsync(stageId);
         }
-        private bool isStageActive(Stage stage, out string errorMessage)
+        private bool IsStageActive(Stage stage, out string errorMessage)
         {
             errorMessage = null;
             if (performanceManager.Performances == null) return false;

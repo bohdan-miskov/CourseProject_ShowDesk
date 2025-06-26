@@ -347,6 +347,7 @@
             this.Name = "ManageTicketsForm";
             this.Text = "ManageTicketsForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ManageTicketsForm_FormClosing);
+            this.Load += new System.EventHandler(this.ManageTicketsForm_Load);
             this.menuStripPerformance.ResumeLayout(false);
             this.menuStripPerformance.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTickets)).EndInit();

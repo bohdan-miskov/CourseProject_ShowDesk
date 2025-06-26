@@ -46,6 +46,11 @@ namespace CourseProject_ShowDesk.Forms
             comboBoxUser.SelectedIndex = 2;
         }
 
+        private async void AuthenticateForm_Load(object sender, EventArgs e)
+        {
+            await employeeManager.LoadFromDatabaseAsync();
+        }
+
         private void TextBoxLogin_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) textBoxPassword.Focus();

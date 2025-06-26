@@ -35,6 +35,7 @@
             this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFinishDate = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPeriod = new System.Windows.Forms.GroupBox();
+            this.buttonSavePdf = new System.Windows.Forms.Button();
             this.comboBoxChartType = new System.Windows.Forms.ComboBox();
             this.labelChartType = new System.Windows.Forms.Label();
             this.labelFinishDate = new System.Windows.Forms.Label();
@@ -59,7 +60,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBoxAccountIcon = new System.Windows.Forms.PictureBox();
             this.labelAccountName = new System.Windows.Forms.Label();
-            this.buttonSavePdf = new System.Windows.Forms.Button();
             this.groupBoxPeriod.SuspendLayout();
             this.groupBoxRevenue.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartRevenue)).BeginInit();
@@ -108,6 +108,18 @@
             this.groupBoxPeriod.TabIndex = 6;
             this.groupBoxPeriod.TabStop = false;
             this.groupBoxPeriod.Text = "Period";
+            // 
+            // buttonSavePdf
+            // 
+            this.buttonSavePdf.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.buttonSavePdf.Location = new System.Drawing.Point(185, 149);
+            this.buttonSavePdf.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.buttonSavePdf.Name = "buttonSavePdf";
+            this.buttonSavePdf.Size = new System.Drawing.Size(120, 40);
+            this.buttonSavePdf.TabIndex = 6;
+            this.buttonSavePdf.Text = "Save as pdf";
+            this.buttonSavePdf.UseVisualStyleBackColor = false;
+            this.buttonSavePdf.Click += new System.EventHandler(this.ButtonSavePdf_Click);
             // 
             // comboBoxChartType
             // 
@@ -367,18 +379,6 @@
             this.labelAccountName.TabIndex = 0;
             this.labelAccountName.Text = "AccountName";
             // 
-            // buttonSavePdf
-            // 
-            this.buttonSavePdf.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.buttonSavePdf.Location = new System.Drawing.Point(185, 149);
-            this.buttonSavePdf.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.buttonSavePdf.Name = "buttonSavePdf";
-            this.buttonSavePdf.Size = new System.Drawing.Size(120, 40);
-            this.buttonSavePdf.TabIndex = 6;
-            this.buttonSavePdf.Text = "Save pdf";
-            this.buttonSavePdf.UseVisualStyleBackColor = false;
-            this.buttonSavePdf.Click += new System.EventHandler(this.ButtonSavePdf_Click);
-            // 
             // ViewRevenueForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -389,6 +389,7 @@
             this.Controls.Add(this.groupBoxForm);
             this.Name = "ViewRevenueForm";
             this.Text = "ViewRevenue";
+            this.Load += new System.EventHandler(this.ViewRevenueForm_Load);
             this.groupBoxPeriod.ResumeLayout(false);
             this.groupBoxPeriod.PerformLayout();
             this.groupBoxRevenue.ResumeLayout(false);

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
 {
@@ -13,8 +14,8 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
         public EmployeeManager(EmployeeBaseService databaseService)
         {
             database = databaseService;
-            LoadFromDatabase();
         }
+
         public List<Employee> Employees
         {
             get
@@ -23,9 +24,9 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
             }
         }
 
-        public void LoadFromDatabase()
+        public async Task LoadFromDatabaseAsync()
         {
-            employees = database.GetAllEmployees();
+            employees = await database.GetAllEmployeesAsync();
         }
 
         public Employee GetById(Guid id)
@@ -33,23 +34,23 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
             return employees.FirstOrDefault(e => e.Id == id);
         }
 
-        public void AddEmployee(Employee employee)
+        public async Task AddEmployeeAsync(Employee employee)
         {
             employees.Add(employee);
-            database.AddEmployee(employee);
+            await database.AddEmployeeAsync(employee);
         }
 
-        public void RemoveEmployee(Guid id)
+        public async Task RemoveEmployeeAsync(Guid id)
         {
             var emp = GetById(id);
             if (emp != null)
             {
                 employees.Remove(emp);
-                database.RemoveEmployee(id);
+                await database.RemoveEmployeeAsync(id);
             }
         }
 
-        public void UpdateEmployee(Employee updatedEmployee)
+        public async Task UpdateEmployeeAsync(Employee updatedEmployee)
         {
             var existing = GetById(updatedEmployee.Id);
             if (existing != null)
@@ -62,7 +63,7 @@ namespace CourseProject_ShowDesk.Scripts.Enities.EmployeeEnities
                 employees.Add(updatedEmployee);
             }
 
-            database.UpdateEmployee(updatedEmployee);
+            await database.UpdateEmployeeAsync(updatedEmployee);
         }
     }
 

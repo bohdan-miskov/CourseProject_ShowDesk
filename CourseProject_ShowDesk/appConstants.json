@@ -1,0 +1,43 @@
+{
+  "$type": "CourseProject_ShowDesk.Scripts.Constants.AppConstantsData, CourseProject_ShowDesk",
+  "FirstLog": "2025-04-20T09:44:51.1518645+03:00",
+  "CompanyName": "«ShowDesk»",
+  "GeneralCollectionName": "Event",
+  "PerformancesCollectionName": "UpcomingPerformances",
+  "PastPerformancesCollectionName": "PastPerformances",
+  "StagesCollectionName": "Stages",
+  "EmployeesCollectionName": "Employees",
+  "StandardIncrease": 0,
+  "StandardPlusIncrease": 10,
+  "PremiumIncrease": 30,
+  "CurrencySymbol": "$",
+  "MinBreakBetweenPerformance": "00:15:00",
+  "InitialPerformanceDuration": "01:30:00",
+  "MaxDuration": "05:00:00",
+  "ListOfProfessions": {
+    "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+    "$values": ["Director", "Administrator", "Cashier"]
+  },
+  "ListOfTicketTypes": {
+    "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+    "$values": ["Standard", "StandardPlus", "Premium"]
+  },
+  "ListOfSouvenirs": {
+    "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+    "$values": ["Poster", "Mask", "Book", "Magnetic", "Couloumb"]
+  },
+  "ListOfDrinks": {
+    "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+    "$values": ["Water", "Coffee", "Tea", "Juice"]
+  },
+  "PasswordChar": "*",
+  "IsPrintReceipt": true,
+  "SavePathReceipt": "C:\\Users\\Fujitsu\\Documents\\Tickets",
+  "ConnectionString": "mongodb+srv://bohdanmiskov07:7XRSvDHvZt2rL6gr@showdesk.tqctr.mongodb.net/?retryWrites=true&w=majority&appName=ShowDesk",
+  "UpdateEmployeesInterval": 300000,
+  "UpdateStagesInterval": 300000,
+  "UpdatePerformancesInterval": 300000,
+  "UpdateTicketsInterval": 60000,
+  "SeatBaseColor": "LightGray",
+  "SeatHoverColor": "Lime"
+}

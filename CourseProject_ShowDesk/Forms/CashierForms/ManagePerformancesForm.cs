@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.CashierForms
@@ -34,7 +35,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             try
             {
                 performanceManager = new PerformanceManager(new PerformanceBaseService());
-                performanceManager.LoadUpcomingPerformancesFromDatabase();
                 stageManager = new StageManager(new StageBaseService());
             }
             catch (DatabaseConnectionException ex)
@@ -54,13 +54,15 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             PopulateComponents();
 
-            UpdateDataGridPerformances();
-
-            DisableEditAndRemovePerformance();
-
             searchData = new SearchDataGrid(dataGridViewPerformances);
         }
-
+        private async void ManagePerformancesForm_Load(object sender, EventArgs e)
+        {
+            await stageManager.LoadFromDatabaseAsync();
+            await performanceManager.LoadUpcomingPerformancesFromDatabaseAsync();
+            UpdateDataGridPerformances();
+            DisableEditAndRemovePerformance();
+        }
         private void ManagePerformancesForm_Shown(object sender, EventArgs e)
         {
             ShowGreetings(userAccount.FullName);
@@ -77,33 +79,33 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             DisableEditAndRemovePerformance();
         }
 
-        private void AddPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void AddPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddPerformance();
-            UpdateDataFromDataBase();
+            await AddPerformanceAsync();
+            await UpdateDataFromDataBaseAsync();
         }
 
-        private void EditPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void EditPerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditPerformance();
-            UpdateDataFromDataBase();
+            await EditPerformanceAsync();
+            await UpdateDataFromDataBaseAsync();
         }
 
-        private void RemovePerformanceToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void RemovePerformanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemovePerformance();
-            UpdateDataFromDataBase();
+            await RemovePerformanceAsync();
+            await UpdateDataFromDataBaseAsync();
         }
 
-        private void FilterToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void FilterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FilterPerformancesWithForm();
+            await FilterPerformancesWithFormAsync();
         }
 
-        private void TicketsToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void TicketsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ViewTickets();
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
         }
         private void RevenueReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -121,13 +123,14 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             searchData.SearchNavigation(e);
         }
-        private void ButtonSwitch_Click(object sender, EventArgs e)
+        private async void ButtonSwitch_Click(object sender, EventArgs e)
         {
             SwitchPerformances();
+            await UpdateDataFromDataBaseAsync();
         }
-        private void ButtonUpdate_Click(object sender, EventArgs e)
+        private async void ButtonUpdate_Click(object sender, EventArgs e)
         {
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
             searchData.ClearResults();
         }
         private void DateTimePickerPastPerformancesStartDate_KeyUp(object sender, KeyEventArgs e)
@@ -148,17 +151,19 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             dateTimePickerPastPerformancesEndDate.MinDate = dateTimePickerPastPerformancesStartDate.Value;
         }
-        private void ButtonLoadPastPerformance_Click(object sender, EventArgs e)
+        private async void ButtonLoadPastPerformance_Click(object sender, EventArgs e)
         {
             SavePastPerformanceRange();
+            await UpdateDataFromDataBaseAsync();
         }
-        private void ButtonCancelPastPerformance_Click(object sender, EventArgs e)
+        private async void ButtonCancelPastPerformance_Click(object sender, EventArgs e)
         {
             CancelPastPerformanceRange();
+            await UpdateDataFromDataBaseAsync();
         }
-        private void TimerUpdate_Tick(object sender, EventArgs e)
+        private async void TimerUpdate_Tick(object sender, EventArgs e)
         {
-            UpdateDataFromDataBase();
+            await UpdateDataFromDataBaseAsync();
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -204,10 +209,10 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             groupBoxPastPerformanceRange.Enabled = false;
             groupBoxPastPerformanceRange.Visible = false;
         }
-        private void UpdateDataFromDataBase()
+        private async Task UpdateDataFromDataBaseAsync()
         {
             FormConfigurator.SetActivePictureBoxUpdate(pictureBoxUpdate);
-            stageManager.LoadFromDatabase();
+            await stageManager.LoadFromDatabaseAsync();
 
             if (isPastPerformances)
             {
@@ -215,7 +220,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
                     SelectPastPerformancesRange();
                 else
                 {
-                    performanceManager.LoadPastPerformancesFromDatabase(pastPerformanceStartDate, pastPerformanceEndDate); ;
+                    await performanceManager.LoadPastPerformancesFromDatabaseAsync(pastPerformanceStartDate, pastPerformanceEndDate); ;
                     UpdateDataGridPerformances(performanceManager.PastPerformances);
                     performanceManager.ResetPastPerformancesList();
                 }
@@ -224,7 +229,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             {
                 pastPerformanceStartDate = DateTime.MinValue;
                 pastPerformanceEndDate = DateTime.MinValue;
-                performanceManager.LoadUpcomingPerformancesFromDatabase();
+                await performanceManager.LoadUpcomingPerformancesFromDatabaseAsync();
                 UpdateDataGridPerformances();
             }
 
@@ -348,7 +353,7 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             return Guid.Parse(dataGridViewPerformances.CurrentRow.Cells[0].Value.ToString());
         }
 
-        private void AddPerformance()
+        private async Task AddPerformanceAsync()
         {
             AddEditPerformanceForm addPerformanceForm = new AddEditPerformanceForm(userAccount, stageManager.Stages, performanceManager.Performances);
             this.Hide();
@@ -365,11 +370,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             if (addPerformanceForm.GetIsValid())
             {
                 Performance perf = addPerformanceForm.GetPerformance();
-                performanceManager.AddPerformance(addPerformanceForm.GetPerformance());
+                await performanceManager.AddPerformanceAsync(perf);
             }
         }
 
-        private void EditPerformance()
+        private async Task EditPerformanceAsync()
         {
             Guid id = GetCurrentRowId();
 
@@ -388,17 +393,17 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             if (editPerformanceForm.GetIsValid())
             {
-                performanceManager.UpdatePerformance(editPerformanceForm.GetPerformance());
+                await performanceManager.UpdatePerformanceAsync(editPerformanceForm.GetPerformance());
             }
         }
 
-        private void RemovePerformance()
+        private async Task RemovePerformanceAsync()
         {
             Guid id = GetCurrentRowId();
-            performanceManager.RemovePerformance(id);
+            await performanceManager.RemovePerformanceAsync(id);
         }
 
-        private void FilterPerformancesWithForm()
+        private async Task FilterPerformancesWithFormAsync()
         {
             AddEditPerformanceForm filterPerformanceForm = new AddEditPerformanceForm(userAccount, stageManager.Stages, performanceManager.Performances, null, true);
             this.Hide();
@@ -419,13 +424,13 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
 
             if (isPastPerformances)
             {
-                performanceManager.LoadAllPastPerformancesFromDatabase();
+                await performanceManager.LoadAllPastPerformancesFromDatabaseAsync();
                 filteredPerformances = FilterPerformances(performanceManager.PastPerformances, perfParameters);
                 performanceManager.ResetPastPerformancesList();
             }
             else
             {
-                performanceManager.LoadUpcomingPerformancesFromDatabase();
+                await performanceManager.LoadUpcomingPerformancesFromDatabaseAsync();
                 filteredPerformances = FilterPerformances(performanceManager.Performances, perfParameters);
             }
 
@@ -497,8 +502,6 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
         {
             if (isPastPerformances) isPastPerformances = false;
             else isPastPerformances = true;
-
-            UpdateDataFromDataBase();
         }
 
         private void SavePastPerformanceRange()
@@ -508,13 +511,11 @@ namespace CourseProject_ShowDesk.Forms.CashierForms
             DateTime endDate = dateTimePickerPastPerformancesEndDate.Value;
             pastPerformanceEndDate = new DateTime(endDate.Year, endDate.Month, endDate.Day + 1);
             HidePastPerformanceRangeGroupBox();
-            UpdateDataFromDataBase();
         }
         private void CancelPastPerformanceRange()
         {
             isPastPerformances = false;
             HidePastPerformanceRangeGroupBox();
-            UpdateDataFromDataBase();
         }
 
         private void LogOut()
