@@ -522,9 +522,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
         }
         private bool ValidateIncreaseGroup()
         {
-            if (numericUpDownStandardIncrease.Value < 1 ||
-                numericUpDownStandardPlusIncrease.Value < 1 ||
-                numericUpDownPremiumIncrease.Value < 1)
+            if (numericUpDownStandardIncrease.Value < 0 ||
+                numericUpDownStandardPlusIncrease.Value < 0 ||
+                numericUpDownPremiumIncrease.Value < 0)
             {
                 MessageBox.Show(
                     "Increases cannot be less than zero.",

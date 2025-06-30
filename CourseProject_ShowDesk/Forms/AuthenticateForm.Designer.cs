@@ -149,7 +149,6 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(147, 28);
             this.textBoxPassword.TabIndex = 3;
-            this.textBoxPassword.Text = "Administrator";
             this.textBoxPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxPassword_KeyUp);
             // 
             // labelPassword
@@ -181,7 +180,6 @@
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(147, 28);
             this.textBoxLogin.TabIndex = 2;
-            this.textBoxLogin.Text = "Admin";
             this.textBoxLogin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBoxLogin_KeyUp);
             // 
             // AuthenticateForm

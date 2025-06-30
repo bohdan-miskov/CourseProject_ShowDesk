@@ -10,6 +10,7 @@ using CourseProject_ShowDesk.Scripts.Utilities.Helpers;
 using DotNetEnv;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms
@@ -65,9 +66,9 @@ namespace CourseProject_ShowDesk.Forms
             ChangeOfImage();
         }
 
-        private void ButtonAuthentificate_Click(object sender, EventArgs e)
+        private async void ButtonAuthentificate_Click(object sender, EventArgs e)
         {
-            Authenticate();
+            await Authenticate();
         }
 
         private void ButtonInstruction_Click(object sender, EventArgs e)
@@ -103,25 +104,25 @@ namespace CourseProject_ShowDesk.Forms
                 pictureBoxAvatar.Image = Properties.Resources.Cashier;
         }
 
-        private void Authenticate()
+        private async Task Authenticate()
         {
             DialogResult result;
-            if (comboBoxUser.SelectedIndex == 0) result = AuthenticateDirector();
-            else if (comboBoxUser.SelectedIndex == 1) result = AuthenticateAdministrator();
-            else result = AuthenticateCashier();
+            if (comboBoxUser.SelectedIndex == 0) result = await AuthenticateDirector();
+            else if (comboBoxUser.SelectedIndex == 1) result = await AuthenticateAdministrator();
+            else result = await AuthenticateCashier();
 
             if (result == DialogResult.OK)
             {
-                //ClearLogInField();
+                ClearLogInField();
                 this.Show();
             }
             else if (result == DialogResult.Abort) ShowErrorMessage();
             else Application.Exit();
         }
 
-        private DialogResult AuthenticateDirector()
+        private async Task<DialogResult> AuthenticateDirector()
         {
-            Employee account = CheckAccountAndGetName(AppConstants.ListOfProfessions[0]);
+            Employee account = await CheckAccountAndGetName(AppConstants.ListOfProfessions[0]);
 
             if (account == null)
             {
@@ -141,9 +142,9 @@ namespace CourseProject_ShowDesk.Forms
             return manageEmployeesForm.ShowDialog();
         }
 
-        private DialogResult AuthenticateAdministrator()
+        private async Task<DialogResult> AuthenticateAdministrator()
         {
-            Employee account = CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
+            Employee account = await CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
 
             if (account == null) return DialogResult.Abort;
 
@@ -154,10 +155,10 @@ namespace CourseProject_ShowDesk.Forms
 
         }
 
-        private DialogResult AuthenticateCashier()
+        private async Task<DialogResult> AuthenticateCashier()
         {
-            Employee account = CheckAccountAndGetName(AppConstants.ListOfProfessions[2]) ??
-                    CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
+            Employee account = await CheckAccountAndGetName(AppConstants.ListOfProfessions[2]) ??
+                    await CheckAccountAndGetName(AppConstants.ListOfProfessions[1]);
 
             if (account == null) return DialogResult.Abort;
 
@@ -166,13 +167,13 @@ namespace CourseProject_ShowDesk.Forms
             return managePerformancesForm.ShowDialog();
         }
 
-        private Employee CheckAccountAndGetName(string currentProfession)
+        private async Task<Employee> CheckAccountAndGetName(string currentProfession)
         {
             foreach (Employee employee in employeeManager.Employees)
             {
                 string pass = employee.Password;
                 if (employee.Login == textBoxLogin.Text &&
-                    DataHasher.VerifyPassword(textBoxPassword.Text,pass) &&
+                    await DataHasher.VerifyPassword(textBoxPassword.Text,pass) &&
                     employee.ProfessionList.Contains(currentProfession))
                 {
                     return employee;

@@ -6,6 +6,7 @@ using CourseProject_ShowDesk.Scripts.Utilities.Validators;
 using DotNetEnv;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseProject_ShowDesk.Forms.DirectorForms
@@ -92,9 +93,9 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             ParametersValidator.ValidatorLoginAndPassword(sender, e);
         }
 
-        private void ButtonAddEmployee_Click(object sender, EventArgs e)
+        private async void ButtonAddEmployee_Click(object sender, EventArgs e)
         {
-            SaveEmployee();
+            await SaveEmployee();
         }
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -132,7 +133,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             if (checkBoxCashier.Checked)
                 currentEmployee.AddProfession(AppConstants.ListOfProfessions[2]);
         }
-        private void SaveEmployee()
+        private async Task SaveEmployee()
         {
             CreateEmployee();
             EmployeeValidator validator = new EmployeeValidator(employees);
@@ -140,7 +141,7 @@ namespace CourseProject_ShowDesk.Forms.DirectorForms
             {
                 if (currentEmployee.Password != startedPassword)
                 {
-                    currentEmployee.Password = DataHasher.HashPassword(currentEmployee.Password);
+                    currentEmployee.Password = await DataHasher.HashPassword(currentEmployee.Password);
                 }
                 isValid = true;
                 this.Close();

@@ -20,6 +20,7 @@ namespace CourseProject_ShowDesk
             BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             try
             {
                 AppCostantsManager.LoadAppConstantsFromFile();
@@ -27,7 +28,7 @@ namespace CourseProject_ShowDesk
             catch (FileNotFoundException ex)
             {
                 AppConstants.PopulateConstants(new AppConstantsData());
-                MessageBox.Show(ex.Message + "\nSo program was loaded default values", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show(ex.Message + "\nSo program was loaded default values", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             if (AppConstants.FirstLog == DateTime.MinValue)
